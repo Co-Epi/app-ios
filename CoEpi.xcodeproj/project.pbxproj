@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		849DFE752427D37A0008ED65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE732427D37A0008ED65 /* LaunchScreen.storyboard */; };
 		849DFE802427D37A0008ED65 /* CoEpiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE7F2427D37A0008ED65 /* CoEpiTests.swift */; };
 		849DFE8B2427D37A0008ED65 /* CoEpiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE8A2427D37A0008ED65 /* CoEpiUITests.swift */; };
+		84FA00F22427E13000318104 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F12427E13000318104 /* Dependencies.swift */; };
+		84FA00F52427E83000318104 /* Dip in Frameworks */ = {isa = PBXBuildFile; productRef = 84FA00F42427E83000318104 /* Dip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 		849DFE862427D37A0008ED65 /* CoEpiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoEpiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE8A2427D37A0008ED65 /* CoEpiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiUITests.swift; sourceTree = "<group>"; };
 		849DFE8C2427D37A0008ED65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84FA00F12427E13000318104 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FA00F52427E83000318104 /* Dip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +113,7 @@
 				849DFE732427D37A0008ED65 /* LaunchScreen.storyboard */,
 				849DFE762427D37A0008ED65 /* Info.plist */,
 				849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */,
+				84FA00F12427E13000318104 /* Dependencies.swift */,
 			);
 			path = CoEpi;
 			sourceTree = "<group>";
@@ -147,6 +152,9 @@
 			dependencies = (
 			);
 			name = CoEpi;
+			packageProductDependencies = (
+				84FA00F42427E83000318104 /* Dip */,
+			);
 			productName = CoEpi;
 			productReference = 849DFE622427D3750008ED65 /* CoEpi.app */;
 			productType = "com.apple.product-type.application";
@@ -219,6 +227,9 @@
 				Base,
 			);
 			mainGroup = 849DFE592427D3750008ED65;
+			packageReferences = (
+				84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */,
+			);
 			productRefGroup = 849DFE632427D3750008ED65 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -265,6 +276,7 @@
 				849DFE6A2427D3750008ED65 /* ViewController.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
+				84FA00F22427E13000318104 /* Dependencies.swift in Sources */,
 				849DFE682427D3750008ED65 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +608,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/Dip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84FA00F42427E83000318104 /* Dip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */;
+			productName = Dip;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */ = {
