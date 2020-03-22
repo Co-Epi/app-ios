@@ -4,16 +4,16 @@ import Dip
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    internal var window: UIWindow?
-
     private let container: DependencyContainer = Dependencies().createContainer()
 
+    internal var window: UIWindow?
+    
+    private var rootWireframe: RootWireFrame?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = initWindow()
+        initUI()
         return true
     }
-
 
     // MARK: - Core Data stack
 
@@ -62,12 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Private
 
-    private func initWindow() -> UIWindow {
+    private func initUI() {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let homeViewController = HomeViewController.loadFromNib()
-        window.rootViewController = homeViewController
-        window.makeKeyAndVisible()
-        return window
+        rootWireframe = RootWireFrame(container: container, window: window)
+        self.window = window
     }
 }
-
