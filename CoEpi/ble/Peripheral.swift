@@ -5,12 +5,12 @@ import RxRelay
 
 protocol Peripheral {
     var peripheralState: PublishRelay<String> { get }
-    var peripheralContactSent: PublishRelay<Contact> { get }
+    var peripheralContactSent: PublishRelay<ContactOld> { get }
 }
 
 class PeripheralImpl: NSObject, Peripheral {
     let peripheralState: PublishRelay<String> = PublishRelay()
-    let peripheralContactSent: PublishRelay<Contact> = PublishRelay()
+    let peripheralContactSent: PublishRelay<ContactOld> = PublishRelay()
 
     private var peripheralManager: CBPeripheralManager!
 
@@ -105,7 +105,7 @@ extension PeripheralImpl: CBPeripheralManagerDelegate {
     }
 
     private func addNewContactEvent(with identifier: UUID) {
-        peripheralContactSent.accept(Contact(
+        peripheralContactSent.accept(ContactOld(
             identifier: identifier,
             timestamp: Date(),
             // TODO preference
@@ -114,7 +114,10 @@ extension PeripheralImpl: CBPeripheralManagerDelegate {
     }
 }
 
-struct Contact {
+// TODO outdated
+// replace with Contact
+// wait for ble library
+struct ContactOld {
     let identifier: UUID
     let timestamp: Date
     let isPotentiallyInfectious: Bool

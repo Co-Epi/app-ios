@@ -16,6 +16,9 @@ class Dependencies {
         container.register { DebugViewModelImpl(peripheral: try container.resolve(),
                                                 central: try container.resolve()) as DebugViewModel }
 
+        container.register(.singleton) { RealmProvider() }
+        container.register(.singleton) { RealmContactRepo(realmProvider: try container.resolve()) as ContactRepo }
+
         return container
     }
 }
