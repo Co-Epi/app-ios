@@ -33,6 +33,8 @@
 		84A4B9B2242CA67E00516F3B /* RealmContactRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B1242CA67E00516F3B /* RealmContactRepo.swift */; };
 		84A4B9B6242CA6EE00516F3B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B5242CA6EE00516F3B /* Contact.swift */; };
 		84A4B9B8242CC97600516F3B /* RealmRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B7242CC97600516F3B /* RealmRepo.swift */; };
+		84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */; };
+		84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9BB242CE42C00516F3B /* Symptom.swift */; };
 		84BF97202427FAF1001ADD6B /* OnboardingWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF971F2427FAF1001ADD6B /* OnboardingWireframe.swift */; };
 		84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
 		84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972324280ABA001ADD6B /* RootWireframe.swift */; };
@@ -103,6 +105,8 @@
 		84A4B9B1242CA67E00516F3B /* RealmContactRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmContactRepo.swift; sourceTree = "<group>"; };
 		84A4B9B5242CA6EE00516F3B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		84A4B9B7242CC97600516F3B /* RealmRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepo.swift; sourceTree = "<group>"; };
+		84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRepo.swift; sourceTree = "<group>"; };
+		84A4B9BB242CE42C00516F3B /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		84BF971F2427FAF1001ADD6B /* OnboardingWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWireframe.swift; sourceTree = "<group>"; };
 		84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		84BF972324280ABA001ADD6B /* RootWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 			children = (
 				84A4B9B0242CA66A00516F3B /* realm */,
 				84A4B9A3242CA24100516F3B /* ContactRepo.swift */,
+				84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */,
 			);
 			path = repo;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				84A4B9B5242CA6EE00516F3B /* Contact.swift */,
+				84A4B9BB242CE42C00516F3B /* Symptom.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -609,10 +615,12 @@
 				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
 				84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */,
 				84A4B9AF242CA5E600516F3B /* RealmProvider.swift in Sources */,
+				84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */,
 				84BF97202427FAF1001ADD6B /* OnboardingWireframe.swift in Sources */,
 				8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */,
 				84BF972C24281082001ADD6B /* LogSettings.swift in Sources */,
 				84A4B9A4242CA24100516F3B /* ContactRepo.swift in Sources */,
+				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
 				84BF972F24281082001ADD6B /* Central.swift in Sources */,

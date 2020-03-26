@@ -4,5 +4,5 @@ import RealmSwift
 protocol ContactRepo {
     func addContact(cen: Contact)
 
-    func retrieveContacts() -> [Contact]
+    func contacts() -> [Contact]
 }

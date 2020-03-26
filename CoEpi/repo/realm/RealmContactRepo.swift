@@ -18,7 +18,7 @@ class RealmContactRepo: ContactRepo, RealmRepo {
     // Ideally executed as part of flow in a background thread (e.g. fetch - grouping - send to api)
     // If critical for performance, the mapping to plain objects can be left out
     // NOTE Realm objects can't switch between threads. If it's necessary, use ThreadSafeReference.
-    func retrieveContacts() -> [Contact] {
+    func contacts() -> [Contact] {
         return realm.objects(RealmContact.self).map {
             Contact(cen: $0.cen, date: $0.date)
         }
