@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30EF94F7242C47A2007D61C7 /* HealthQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF94F5242C47A1007D61C7 /* HealthQuizViewController.swift */; };
+		30EF94F8242C47A2007D61C7 /* HealthQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30EF94F6242C47A1007D61C7 /* HealthQuizViewController.xib */; };
 		8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDC6242B9AC900A63DD5 /* RxSwift */; };
 		8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCA242B9AC900A63DD5 /* RxRelay */; };
 		8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCC242B9AC900A63DD5 /* RxCocoa */; };
@@ -61,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30EF94F5242C47A1007D61C7 /* HealthQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthQuizViewController.swift; path = home/HealthQuizViewController.swift; sourceTree = "<group>"; };
+		30EF94F6242C47A1007D61C7 /* HealthQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HealthQuizViewController.xib; path = home/HealthQuizViewController.xib; sourceTree = "<group>"; };
 		324F4D7DC6C28946706D180E /* Pods-CoEpiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiTests.release.xcconfig"; path = "Target Support Files/Pods-CoEpiTests/Pods-CoEpiTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DB73EEFE0BAFE71BAB85604 /* Pods-CoEpi-CoEpiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi-CoEpiUITests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi-CoEpiUITests/Pods-CoEpi-CoEpiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpi_CoEpiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +240,8 @@
 				84FA01432427F05500318104 /* home */,
 				84FA01422427F04E00318104 /* onboarding */,
 				84BF972324280ABA001ADD6B /* RootWireframe.swift */,
+				30EF94F5242C47A1007D61C7 /* HealthQuizViewController.swift */,
+				30EF94F6242C47A1007D61C7 /* HealthQuizViewController.xib */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -401,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				849DFE752427D37A0008ED65 /* LaunchScreen.storyboard in Resources */,
+				30EF94F8242C47A2007D61C7 /* HealthQuizViewController.xib in Resources */,
 				849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */,
 				84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */,
 				84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */,
@@ -543,6 +550,7 @@
 				84BF972D24281082001ADD6B /* Peripheral.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
+				30EF94F7242C47A2007D61C7 /* HealthQuizViewController.swift in Sources */,
 				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
 				84BF973124281082001ADD6B /* Types+DataRepresentable.swift in Sources */,
 				8486BDD6242BA28C00A63DD5 /* DebugViewModel.swift in Sources */,
