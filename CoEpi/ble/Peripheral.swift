@@ -1,23 +1,23 @@
 import Foundation
 import CoreBluetooth
 import os.log
+import RxRelay
 
-protocol PeripheralDelegate: class {
-    func onPeripheralStateChange(description: String)
-    func onPeripheralContact(_ contact: Contact)
+protocol Peripheral {
+    var peripheralState: PublishRelay<String> { get }
+    var peripheralContactSent: PublishRelay<Contact> { get }
 }
 
-class Peripheral: NSObject {
-    private weak var delegate: PeripheralDelegate?
+class PeripheralImpl: NSObject, Peripheral {
+    let peripheralState: PublishRelay<String> = PublishRelay()
+    let peripheralContactSent: PublishRelay<Contact> = PublishRelay()
 
     private var peripheralManager: CBPeripheralManager!
 
     private let serviceUuid: CBUUID = CBUUID(nsuuid: Uuids.service)
     private let characteristicUuid: CBUUID = CBUUID(nsuuid: Uuids.characteristic)
 
-    init(delegate: PeripheralDelegate) {
-        self.delegate = delegate
-
+    override init() {
         super.init()
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
@@ -51,7 +51,7 @@ class Peripheral: NSObject {
     }
 }
 
-extension Peripheral: CBPeripheralManagerDelegate {
+extension PeripheralImpl: CBPeripheralManagerDelegate {
 
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         switch peripheral.state {
@@ -74,7 +74,7 @@ extension Peripheral: CBPeripheralManagerDelegate {
     }
 
     private func report(state: String) {
-        delegate?.onPeripheralStateChange(description: state)
+        peripheralState.accept(state)
     }
 
     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
@@ -105,10 +105,10 @@ extension Peripheral: CBPeripheralManagerDelegate {
     }
 
     private func addNewContactEvent(with identifier: UUID) {
-        delegate?.onPeripheralContact(Contact(
+        peripheralContactSent.accept(Contact(
             identifier: identifier,
             timestamp: Date(),
-            // TODO preference, from React Native
+            // TODO preference
             isPotentiallyInfectious: true
         ))
     }

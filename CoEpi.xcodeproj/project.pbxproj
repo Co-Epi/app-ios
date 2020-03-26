@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDC6242B9AC900A63DD5 /* RxSwift */; };
+		8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCA242B9AC900A63DD5 /* RxRelay */; };
+		8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCC242B9AC900A63DD5 /* RxCocoa */; };
+		8486BDCF242B9AC900A63DD5 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCE242B9AC900A63DD5 /* RxBlocking */; };
+		8486BDD6242BA28C00A63DD5 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */; };
+		8486BDD9242BBCE700A63DD5 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD7242BBCE700A63DD5 /* DebugViewController.swift */; };
+		8486BDDA242BBCE700A63DD5 /* DebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8486BDD8242BBCE700A63DD5 /* DebugViewController.xib */; };
+		8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */; };
+		8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */; };
+		8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */; };
 		849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE652427D3750008ED65 /* AppDelegate.swift */; };
 		849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */; };
 		849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE712427D37A0008ED65 /* Assets.xcassets */; };
@@ -23,7 +33,7 @@
 		84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972A24281082001ADD6B /* DataRepresentable.swift */; };
 		84BF973124281082001ADD6B /* Types+DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972B24281082001ADD6B /* Types+DataRepresentable.swift */; };
 		84FA00F22427E13000318104 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F12427E13000318104 /* Dependencies.swift */; };
-		84FA00F52427E83000318104 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 84FA00F42427E83000318104 /* SwiftPackageProductDependency */; };
+		84FA00F52427E83000318104 /* Dip in Frameworks */ = {isa = PBXBuildFile; productRef = 84FA00F42427E83000318104 /* Dip */; };
 		84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F92427ED1900318104 /* OnboardingViewController.swift */; };
 		84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FA2427ED1900318104 /* OnboardingViewController.xib */; };
 		84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00FE2427ED5E00318104 /* HomeViewController.swift */; };
@@ -57,6 +67,12 @@
 		5E087D09295263EB6A4DB967 /* Pods-CoEpi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.debug.xcconfig"; sourceTree = "<group>"; };
 		74BF972AC9A1ED47A016DA3D /* Pods-CoEpi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.release.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.release.xcconfig"; sourceTree = "<group>"; };
 		83D98C7D6EAEBFA0E5292E3F /* Pods_CoEpi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
+		8486BDD7242BBCE700A63DD5 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		8486BDD8242BBCE700A63DD5 /* DebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugViewController.xib; sourceTree = "<group>"; };
+		8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+ReuseIdentifier.swift"; path = "CoEpi/ui/home/UITableView+ReuseIdentifier.swift"; sourceTree = SOURCE_ROOT; };
+		8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableCell+ReuseIdentifier.swift"; path = "CoEpi/ui/home/UITableCell+ReuseIdentifier.swift"; sourceTree = SOURCE_ROOT; };
 		849DFE622427D3750008ED65 /* CoEpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoEpi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE652427D3750008ED65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849DFE6F2427D3750008ED65 /* CoEpi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoEpi.xcdatamodel; sourceTree = "<group>"; };
@@ -93,8 +109,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84FA00F52427E83000318104 /* BuildFile in Frameworks */,
+				8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */,
+				8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */,
+				8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */,
+				84FA00F52427E83000318104 /* Dip in Frameworks */,
 				ED84885A0AB19A504317BA10 /* Pods_CoEpi.framework in Frameworks */,
+				8486BDCF242B9AC900A63DD5 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,8 +147,17 @@
 				910DD69A29B6DF9226FCFECA /* Pods-CoEpiTests.debug.xcconfig */,
 				324F4D7DC6C28946706D180E /* Pods-CoEpiTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8486BDD2242BA18400A63DD5 /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */,
+				8486BDD7242BBCE700A63DD5 /* DebugViewController.swift */,
+				8486BDD8242BBCE700A63DD5 /* DebugViewController.xib */,
+			);
+			path = debug;
 			sourceTree = "<group>";
 		};
 		849DFE592427D3750008ED65 = {
@@ -202,6 +231,7 @@
 		84FA00F82427EC4300318104 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8486BDD2242BA18400A63DD5 /* debug */,
 				84FA01412427F04800318104 /* extensions */,
 				84FA01432427F05500318104 /* home */,
 				84FA01422427F04E00318104 /* onboarding */,
@@ -213,6 +243,8 @@
 		84FA01412427F04800318104 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */,
+				8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -233,6 +265,7 @@
 			children = (
 				84FA00FE2427ED5E00318104 /* HomeViewController.swift */,
 				84FA00FF2427ED5E00318104 /* HomeViewController.xib */,
+				8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -266,7 +299,11 @@
 			);
 			name = CoEpi;
 			packageProductDependencies = (
-				84FA00F42427E83000318104 /* SwiftPackageProductDependency */,
+				84FA00F42427E83000318104 /* Dip */,
+				8486BDC6242B9AC900A63DD5 /* RxSwift */,
+				8486BDCA242B9AC900A63DD5 /* RxRelay */,
+				8486BDCC242B9AC900A63DD5 /* RxCocoa */,
+				8486BDCE242B9AC900A63DD5 /* RxBlocking */,
 			);
 			productName = CoEpi;
 			productReference = 849DFE622427D3750008ED65 /* CoEpi.app */;
@@ -344,7 +381,8 @@
 			);
 			mainGroup = 849DFE592427D3750008ED65;
 			packageReferences = (
-				84FA00F32427E83000318104 /* RemoteSwiftPackageReference */,
+				84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */,
+				8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 849DFE632427D3750008ED65 /* Products */;
 			projectDirPath = "";
@@ -366,6 +404,7 @@
 				849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */,
 				84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */,
 				84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */,
+				8486BDDA242BBCE700A63DD5 /* DebugViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,8 +532,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
 				84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */,
 				84BF97202427FAF1001ADD6B /* OnboardingWireframe.swift in Sources */,
+				8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */,
 				84BF972C24281082001ADD6B /* LogSettings.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
@@ -504,7 +545,10 @@
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
 				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
 				84BF973124281082001ADD6B /* Types+DataRepresentable.swift in Sources */,
+				8486BDD6242BA28C00A63DD5 /* DebugViewModel.swift in Sources */,
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
+				8486BDD9242BBCE700A63DD5 /* DebugViewController.swift in Sources */,
+				8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */,
 				84FA00F22427E13000318104 /* Dependencies.swift in Sources */,
 				84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */,
 			);
@@ -857,7 +901,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		84FA00F32427E83000318104 /* RemoteSwiftPackageReference */ = {
+		8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AliSoftware/Dip";
 			requirement = {
@@ -868,9 +920,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		84FA00F42427E83000318104 /* SwiftPackageProductDependency */ = {
+		8486BDC6242B9AC900A63DD5 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 84FA00F32427E83000318104 /* RemoteSwiftPackageReference */;
+			package = 8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		8486BDCA242B9AC900A63DD5 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		8486BDCC242B9AC900A63DD5 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		8486BDCE242B9AC900A63DD5 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		84FA00F42427E83000318104 /* Dip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */;
 			productName = Dip;
 		};
 /* End XCSwiftPackageProductDependency section */

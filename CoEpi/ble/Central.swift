@@ -4,14 +4,22 @@ import Foundation
 import CoreBluetooth
 import os.log
 import UIKit
+import RxRelay
 
-protocol CentralDelegate: class {
-    func onDiscovered(peripheral: CBPeripheral)
-    func onCentralContact(_ contact: Contact)
+struct DetectedPeripheral {
+    let uuid: UUID
+    let name: String?
 }
 
-class Central: NSObject {
-    private weak var delegate: CentralDelegate?
+
+protocol Central {
+    var discovery: PublishRelay<DetectedPeripheral> { get }
+    var centralContactReceived: PublishRelay<Contact> { get }
+}
+
+class CentralImpl: NSObject, Central {
+    let discovery: PublishRelay<DetectedPeripheral> = PublishRelay()
+    let centralContactReceived: PublishRelay<Contact> = PublishRelay()
 
     private var centralManager: CBCentralManager!
 
@@ -86,8 +94,7 @@ class Central: NSObject {
     }
     #endif
 
-    init(delegate: CentralDelegate) {
-        self.delegate = delegate
+    override init() {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
 
@@ -259,7 +266,7 @@ class Central: NSObject {
 
 }
 
-extension Central: CBCentralManagerDelegate {
+extension CentralImpl: CBCentralManagerDelegate {
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         os_log("Central manager did update state: %d", log: bleCentralLog, central.state.rawValue)
@@ -272,16 +279,14 @@ extension Central: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
                         advertisementData: [String: Any], rssi RSSI: NSNumber) {
 
-        delegate?.onDiscovered(peripheral: peripheral)
-
         self.peripheral = peripheral
 //        centralManager.stopScan()
-
-        delegate?.onDiscovered(peripheral: peripheral)
 
 //        os_log("advertisementData: %@", log: bleCentralLog, advertisementData)
 
         if !discoveredPeripherals.contains(peripheral) {
+            discovery.accept(DetectedPeripheral(uuid: peripheral.identifier, name: peripheral.name))
+
             os_log(
                 "Central manager did discover new peripheral (uuid: %@ name: %@) RSSI: %d",
                 log: bleCentralLog,
@@ -343,10 +348,10 @@ extension Central: CBCentralManagerDelegate {
     }
 
     private func addNewContactEvent(with identifier: UUID) {
-        delegate?.onCentralContact(Contact(
+        centralContactReceived.accept(Contact(
             identifier: identifier,
             timestamp: Date(),
-            // TODO preference, from React Native
+            // TODO preference
             isPotentiallyInfectious: true
         ))
     }
@@ -388,11 +393,10 @@ extension Central: CBCentralManagerDelegate {
             }
         }
     }
-
 }
 
 
-extension Central: CBPeripheralDelegate {
+extension CentralImpl: CBPeripheralDelegate {
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard let services = peripheral.services else { return }
@@ -558,7 +562,6 @@ extension Central: CBPeripheralDelegate {
         }
     }
 }
-
 
 extension TimeInterval {
     public static let peripheralConnectingTimeout: TimeInterval = 8

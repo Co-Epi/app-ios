@@ -23,9 +23,19 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbH-Ss-34p">
+                    <rect key="frame" x="328" y="804" width="66" height="38"/>
+                    <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                    <state key="normal" title="Debug"/>
+                    <connections>
+                        <action selector="debugTapped:" destination="-1" eventType="touchUpInside" id="s5K-zK-19r"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sbH-Ss-34p" secondAttribute="bottom" constant="20" id="8jm-EB-Rmf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sbH-Ss-34p" secondAttribute="trailing" constant="20" id="Uez-6S-IjW"/>
                 <constraint firstItem="mmt-sw-8tN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="YE4-lv-lRe"/>
                 <constraint firstItem="mmt-sw-8tN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ybp-0Y-Q2w"/>
             </constraints>
