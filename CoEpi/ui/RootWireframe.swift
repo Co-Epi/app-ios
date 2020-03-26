@@ -43,7 +43,7 @@ extension RootWireFrame : HomeViewModelDelegate {
         homeViewController?.present(debugViewController, animated: true, completion: nil)
     }
     
-    func quizTapped() {
+    func checkInTapped() {
         showQuiz()
     }
     
@@ -52,5 +52,17 @@ extension RootWireFrame : HomeViewModelDelegate {
         )
         quizViewController.title = "My Health"
         rootNavigationController.pushViewController(quizViewController, animated: true)
+    }
+    
+    func seeAlertsTapped(){
+        showAlerts()
+    }
+    
+    private func showAlerts(){
+        let alertsViewController = AlertsViewController.init(nibName: String(describing:AlertsViewController.self), bundle: nil
+               )
+               alertsViewController.title = "Alerts"
+               rootNavigationController.pushViewController(alertsViewController, animated: true)
+        
     }
 }

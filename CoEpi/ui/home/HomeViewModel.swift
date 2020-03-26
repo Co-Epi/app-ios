@@ -1,6 +1,7 @@
 protocol HomeViewModelDelegate {
     func debugTapped()
-    func quizTapped()
+    func checkInTapped()
+    func seeAlertsTapped()
 }
 
 class HomeViewModel  {
@@ -13,6 +14,10 @@ class HomeViewModel  {
     }
     
     func quizTapped() {
-        delegate?.quizTapped()
+        delegate?.checkInTapped()
+    }
+    
+    func seeAlertsTapped() {
+        delegate?.seeAlertsTapped()
     }
 }
