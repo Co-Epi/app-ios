@@ -20,11 +20,6 @@ class DebugViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupTableView() {
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.backgroundColor = .white
-    }
-
     override func viewDidLoad() {
         tableView.register(cellClass: UITableViewCell.self)
 

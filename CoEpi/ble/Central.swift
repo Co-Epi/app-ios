@@ -14,12 +14,12 @@ struct DetectedPeripheral {
 
 protocol Central {
     var discovery: PublishRelay<DetectedPeripheral> { get }
-    var centralContactReceived: PublishRelay<Contact> { get }
+    var centralContactReceived: PublishRelay<ContactOld> { get }
 }
 
 class CentralImpl: NSObject, Central {
     let discovery: PublishRelay<DetectedPeripheral> = PublishRelay()
-    let centralContactReceived: PublishRelay<Contact> = PublishRelay()
+    let centralContactReceived: PublishRelay<ContactOld> = PublishRelay()
 
     private var centralManager: CBCentralManager!
 
@@ -348,7 +348,7 @@ extension CentralImpl: CBCentralManagerDelegate {
     }
 
     private func addNewContactEvent(with identifier: UUID) {
-        centralContactReceived.accept(Contact(
+        centralContactReceived.accept(ContactOld(
             identifier: identifier,
             timestamp: Date(),
             // TODO preference
