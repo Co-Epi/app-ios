@@ -12,7 +12,8 @@ class DebugViewModelImpl: DebugViewModel {
     init(peripheral: Peripheral, central: Central) {
 
         let receivedContacts = central
-            .centralContactReceived.scan([]) { acc, element in acc + [element] }
+            .centralContactReceived
+            .scan([]) { acc, element in acc + [element] }
 
         let discovered = central
             .discovery
@@ -48,7 +49,7 @@ class DebugViewModelImpl: DebugViewModel {
                     + receivedContacts.map{
                         .Item($0.identifier.uuidString)
                     }
-                    + [ .Header("Discovered devices:") ]
+                    + [.Header("Discovered devices")]
                     + discovered.map{ .Item($0.debugIdentifier) }
             }
             .asDriver(onErrorJustReturn: [])
