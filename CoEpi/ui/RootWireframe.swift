@@ -19,7 +19,6 @@ class RootWireFrame {
         rootNavigationController.setViewControllers([homeViewController], animated: false)
         
         window.rootViewController = rootNavigationController
-        window.rootViewController = homeViewController
         window.makeKeyAndVisible()
 
         self.homeViewController = homeViewController
@@ -53,7 +52,5 @@ extension RootWireFrame : HomeViewModelDelegate {
         )
         quizViewController.title = "My Health"
         rootNavigationController.pushViewController(quizViewController, animated: true)
-        
-        
     }
 }
