@@ -3,7 +3,7 @@
 //  CoEpi
 //
 //  Created by Dusko Ojdanic on 3/26/20.
-//  Copyright © 2020 org.coepi. All rights reserved.
+//  Copyright © 2020 org.coepi. MIT licensed: see LICENSE file.
 //
 
 import UIKit
