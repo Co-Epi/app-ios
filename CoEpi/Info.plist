@@ -54,8 +54,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>TODO explain user how the app uses bluetooth</string>
+	<string>Bluetooth is required to exchange anonymous &apos;calling cards&apos; with phones of other participating people</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>TODO explain user how the app uses bluetooth</string>
+	<string>Bluetooth is required to exchange anonymous &apos;calling cards&apos; with phones of other participating people</string>
 </dict>
 </plist>
