@@ -39,11 +39,11 @@ class HomeViewController: UIViewController {
         myHealthDescriptionLabel.lineBreakMode = .byWordWrapping
         myHealthDescriptionLabel.sizeToFit()
         
-        myHealthDescriptionLabel.attributedText = NSMutableAttributedString(string: "Monitor your health \rand report symptoms.", attributes: [NSAttributedString.Key.kern: 0.25, NSAttributedString.Key.paragraphStyle: paragraphStyle ])
+        myHealthDescriptionLabel.attributedText = NSMutableAttributedString(string: "Monitor your health and report symptoms.", attributes: [NSAttributedString.Key.kern: 0.25, NSAttributedString.Key.paragraphStyle: paragraphStyle ])
         
         contactAlertsDescriptionLabel.numberOfLines = 0
         contactAlertsDescriptionLabel.lineBreakMode = .byWordWrapping
-        contactAlertsDescriptionLabel.attributedText = NSMutableAttributedString(string: "Approximate times \rthat you may have been exposed \rto a symptomatic individual", attributes: [NSAttributedString.Key.kern: 0.25, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        contactAlertsDescriptionLabel.attributedText = NSMutableAttributedString(string: "Approximate times that you may have been exposed to a symptomatic individual", attributes: [NSAttributedString.Key.kern: 0.25, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         configureCardView(cardView: self.stackContainerView)
         configureCardView(cardView: self.stackContainerViewTwo)
     }
