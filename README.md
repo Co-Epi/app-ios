@@ -4,7 +4,7 @@ This is the repository for the iOS implementation of CoEpi. See [CoEpi.org/visio
 
 ## Contribute
 
-1. Read the [code guidelines](https://github.com/Co-Epi/app-android/wiki/Code-guidelines).
+1. Read the [code guidelines](https://github.com/Co-Epi/app-ios/wiki/Code-guidelines).
 
 2. 
 - If you belong to the organization:
