@@ -9,6 +9,7 @@ class Dependencies {
         container.register { HomeViewModel() }
         container.register { OnboardingWireframe(container: container) }
         container.register { OnboardingViewModel() }
+        container.register { HealthQuizViewModel(container: container) }
 
         container.register(.eagerSingleton) { CentralImpl() as Central }
         container.register(.eagerSingleton) { PeripheralImpl() as Peripheral }
