@@ -19,6 +19,9 @@
 		8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */; };
 		8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */; };
 		8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */; };
+		849CEFA2242FEDE7003F9284 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CEFA1242FEDE7003F9284 /* Theme.swift */; };
+		849CEFA3242FEE23003F9284 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */; };
+		849CEFA4242FF335003F9284 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CEFA1242FEDE7003F9284 /* Theme.swift */; };
 		849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE652427D3750008ED65 /* AppDelegate.swift */; };
 		849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */; };
 		849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE712427D37A0008ED65 /* Assets.xcassets */; };
@@ -55,6 +58,32 @@
 		CE98BE9B242DDCFD00EFB67A /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE9A242DDCFD00EFB67A /* QuestionCell.swift */; };
 		CE98BE9F242DE02900EFB67A /* HealthQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98BE9E242DE02900EFB67A /* HealthQuizViewController.xib */; };
 		CE98BEA1242DE23400EFB67A /* HealthQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BEA0242DE23400EFB67A /* HealthQuizViewController.swift */; };
+		D41B0CDC242E467800A50447 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0CD7242E467700A50447 /* OnboardingButton.swift */; };
+		D41B0CDD242E467800A50447 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0CD8242E467700A50447 /* GradientView.swift */; };
+		D41B0CE5242E46C200A50447 /* OnboardingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0CE3242E46C200A50447 /* OnboardingViewControllerTests.swift */; };
+		D41B0CF2242E476000A50447 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0CD8242E467700A50447 /* GradientView.swift */; };
+		D41B0CF3242E476000A50447 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0CD7242E467700A50447 /* OnboardingButton.swift */; };
+		D41B0CF5242E476000A50447 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F92427ED1900318104 /* OnboardingViewController.swift */; };
+		D41B0CF6242E476000A50447 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FA2427ED1900318104 /* OnboardingViewController.xib */; };
+		D41B0CF7242E476000A50447 /* OnboardingWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF971F2427FAF1001ADD6B /* OnboardingWireframe.swift */; };
+		D41B0CF8242E476000A50447 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
+		D41B0D03242E476200A50447 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0CD8242E467700A50447 /* GradientView.swift */; };
+		D41B0D04242E476200A50447 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0CD7242E467700A50447 /* OnboardingButton.swift */; };
+		D41B0D06242E476200A50447 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F92427ED1900318104 /* OnboardingViewController.swift */; };
+		D41B0D07242E476200A50447 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FA2427ED1900318104 /* OnboardingViewController.xib */; };
+		D41B0D08242E476200A50447 /* OnboardingWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF971F2427FAF1001ADD6B /* OnboardingWireframe.swift */; };
+		D41B0D09242E476200A50447 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
+		D41B0D14242F59E900A50447 /* UITableCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */; };
+		D41B0D15242F59EA00A50447 /* UITableCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */; };
+		D41B0D18242F5A2A00A50447 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */; };
+		D41B0D19242F5A2A00A50447 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */; };
+		D41B0D1B242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D1A242F5BDA00A50447 /* StringMarkupAttributedExtension.swift */; };
+		D41B0D1C242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D1A242F5BDA00A50447 /* StringMarkupAttributedExtension.swift */; };
+		D41B0D1D242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D1A242F5BDA00A50447 /* StringMarkupAttributedExtension.swift */; };
+		D41B0D1F242F60CF00A50447 /* OnboardingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D1E242F60CF00A50447 /* OnboardingStrings.swift */; };
+		D41B0D20242F60CF00A50447 /* OnboardingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D1E242F60CF00A50447 /* OnboardingStrings.swift */; };
+		D41B0D21242F60CF00A50447 /* OnboardingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D1E242F60CF00A50447 /* OnboardingStrings.swift */; };
+		D41B0D23242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D22242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift */; };
 		D7710CEB4F1D549EA29A856F /* Pods_CoEpiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B1FB101DD42773F3ADB2EC /* Pods_CoEpiTests.framework */; };
 		ED84885A0AB19A504317BA10 /* Pods_CoEpi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D98C7D6EAEBFA0E5292E3F /* Pods_CoEpi.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +120,7 @@
 		8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+ReuseIdentifier.swift"; path = "CoEpi/ui/home/UITableView+ReuseIdentifier.swift"; sourceTree = SOURCE_ROOT; };
 		8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableCell+ReuseIdentifier.swift"; path = "CoEpi/ui/home/UITableCell+ReuseIdentifier.swift"; sourceTree = SOURCE_ROOT; };
+		849CEFA1242FEDE7003F9284 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = CoEpi/ui/theme/Theme.swift; sourceTree = SOURCE_ROOT; };
 		849DFE622427D3750008ED65 /* CoEpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoEpi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE652427D3750008ED65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849DFE6F2427D3750008ED65 /* CoEpi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoEpi.xcdatamodel; sourceTree = "<group>"; };
@@ -132,6 +162,13 @@
 		CE98BE9A242DDCFD00EFB67A /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		CE98BE9E242DE02900EFB67A /* HealthQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HealthQuizViewController.xib; sourceTree = "<group>"; };
 		CE98BEA0242DE23400EFB67A /* HealthQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthQuizViewController.swift; sourceTree = "<group>"; };
+		D41B0CD7242E467700A50447 /* OnboardingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
+		D41B0CD8242E467700A50447 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D41B0CE3242E46C200A50447 /* OnboardingViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewControllerTests.swift; sourceTree = "<group>"; };
+		D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		D41B0D1A242F5BDA00A50447 /* StringMarkupAttributedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMarkupAttributedExtension.swift; sourceTree = "<group>"; };
+		D41B0D1E242F60CF00A50447 /* OnboardingStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStrings.swift; sourceTree = "<group>"; };
+		D41B0D22242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMarkupAttributedExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +271,7 @@
 		849DFE7E2427D37A0008ED65 /* CoEpiTests */ = {
 			isa = PBXGroup;
 			children = (
+				D41B0CE1242E46C200A50447 /* Onboarding */,
 				849DFE7F2427D37A0008ED65 /* CoEpiTests.swift */,
 				849DFE812427D37A0008ED65 /* Info.plist */,
 			);
@@ -311,6 +349,7 @@
 		84FA00F82427EC4300318104 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				D41B0D0A242F47F000A50447 /* theme */,
 				8486BDD2242BA18400A63DD5 /* debug */,
 				84FA01412427F04800318104 /* extensions */,
 				84FA01432427F05500318104 /* home */,
@@ -326,6 +365,7 @@
 		84FA01412427F04800318104 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */,
 				8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */,
 				8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */,
 			);
@@ -335,10 +375,14 @@
 		84FA01422427F04E00318104 /* onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				D41B0CD8242E467700A50447 /* GradientView.swift */,
+				D41B0CD7242E467700A50447 /* OnboardingButton.swift */,
+				D41B0D1E242F60CF00A50447 /* OnboardingStrings.swift */,
 				84FA00F92427ED1900318104 /* OnboardingViewController.swift */,
-				84FA00FA2427ED1900318104 /* OnboardingViewController.xib */,
-				84BF971F2427FAF1001ADD6B /* OnboardingWireframe.swift */,
 				84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */,
+				84BF971F2427FAF1001ADD6B /* OnboardingWireframe.swift */,
+				D41B0D1A242F5BDA00A50447 /* StringMarkupAttributedExtension.swift */,
+				84FA00FA2427ED1900318104 /* OnboardingViewController.xib */,
 			);
 			path = onboarding;
 			sourceTree = "<group>";
@@ -373,6 +417,23 @@
 			);
 			path = healthquiz;
 			sourceTree = "<group>";
+		};
+		D41B0CE1242E46C200A50447 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D41B0CE3242E46C200A50447 /* OnboardingViewControllerTests.swift */,
+				D41B0D22242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D41B0D0A242F47F000A50447 /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				849CEFA1242FEDE7003F9284 /* Theme.swift */,
+			);
+			path = theme;
+			sourceTree = "<unknown>";
 		};
 /* End PBXGroup section */
 
@@ -511,6 +572,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41B0D07242E476200A50447 /* OnboardingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +580,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41B0CF6242E476000A50447 /* OnboardingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +697,7 @@
 				84A4B9AD242CA51D00516F3B /* RealmContact.swift in Sources */,
 				84A4B9B6242CA6EE00516F3B /* Contact.swift in Sources */,
 				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
+				849CEFA3242FEE23003F9284 /* UIColor+Hex.swift in Sources */,
 				84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */,
 				84A4B9AF242CA5E600516F3B /* RealmProvider.swift in Sources */,
 				84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */,
@@ -641,6 +705,7 @@
 				8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */,
 				84BF972C24281082001ADD6B /* LogSettings.swift in Sources */,
 				84A4B9A4242CA24100516F3B /* ContactRepo.swift in Sources */,
+				D41B0CDC242E467800A50447 /* OnboardingButton.swift in Sources */,
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
@@ -648,12 +713,19 @@
 				84BF972D24281082001ADD6B /* Peripheral.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
+				D41B0D1F242F60CF00A50447 /* OnboardingStrings.swift in Sources */,
+				D41B0D1B242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */,
+				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
+				D41B0CDD242E467800A50447 /* GradientView.swift in Sources */,
+				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
+				CE98BE99242DDCBC00EFB67A /* HealthQuizViewModel.swift in Sources */,
 				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
 				CE98BE99242DDCBC00EFB67A /* HealthQuizViewModel.swift in Sources */,
 				84BF973124281082001ADD6B /* Types+DataRepresentable.swift in Sources */,
 				8486BDD6242BA28C00A63DD5 /* DebugViewModel.swift in Sources */,
 				CE98BEA1242DE23400EFB67A /* HealthQuizViewController.swift in Sources */,
 				84A4B9B8242CC97600516F3B /* RealmRepo.swift in Sources */,
+				849CEFA2242FEDE7003F9284 /* Theme.swift in Sources */,
 				84A4B9B2242CA67E00516F3B /* RealmContactRepo.swift in Sources */,
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,
@@ -669,6 +741,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41B0D08242E476200A50447 /* OnboardingWireframe.swift in Sources */,
+				D41B0D04242E476200A50447 /* OnboardingButton.swift in Sources */,
+				D41B0D1C242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */,
+				D41B0D03242E476200A50447 /* GradientView.swift in Sources */,
+				849CEFA4242FF335003F9284 /* Theme.swift in Sources */,
+				D41B0CE5242E46C200A50447 /* OnboardingViewControllerTests.swift in Sources */,
+				D41B0D09242E476200A50447 /* OnboardingViewModel.swift in Sources */,
+				D41B0D14242F59E900A50447 /* UITableCell+ReuseIdentifier.swift in Sources */,
+				D41B0D23242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift in Sources */,
+				D41B0D20242F60CF00A50447 /* OnboardingStrings.swift in Sources */,
+				D41B0D06242E476200A50447 /* OnboardingViewController.swift in Sources */,
+				D41B0D18242F5A2A00A50447 /* UIColor+Hex.swift in Sources */,
 				849DFE802427D37A0008ED65 /* CoEpiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,7 +761,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41B0CF3242E476000A50447 /* OnboardingButton.swift in Sources */,
+				D41B0CF7242E476000A50447 /* OnboardingWireframe.swift in Sources */,
 				849DFE8B2427D37A0008ED65 /* CoEpiUITests.swift in Sources */,
+				D41B0D21242F60CF00A50447 /* OnboardingStrings.swift in Sources */,
+				D41B0CF8242E476000A50447 /* OnboardingViewModel.swift in Sources */,
+				D41B0D19242F5A2A00A50447 /* UIColor+Hex.swift in Sources */,
+				D41B0CF2242E476000A50447 /* GradientView.swift in Sources */,
+				D41B0CF5242E476000A50447 /* OnboardingViewController.swift in Sources */,
+				D41B0D1D242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */,
+				D41B0D15242F59EA00A50447 /* UITableCell+ReuseIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
