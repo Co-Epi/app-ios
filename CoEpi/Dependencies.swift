@@ -14,8 +14,8 @@ class Dependencies {
         container.register(.eagerSingleton) { CentralImpl() as Central }
         container.register(.eagerSingleton) { PeripheralImpl() as Peripheral }
 
-        container.register { DebugViewModelImpl(peripheral: try container.resolve(),
-                                                central: try container.resolve()) as DebugViewModel }
+        container.register { DebugViewModel(peripheral: try container.resolve(),
+                                            central: try container.resolve()) }
 
         container.register(.singleton) { RealmProvider() }
         container.register(.singleton) { RealmContactRepo(realmProvider: try container.resolve()) as ContactRepo }

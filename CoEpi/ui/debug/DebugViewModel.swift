@@ -1,11 +1,7 @@
 import RxSwift
 import RxCocoa
 
-protocol DebugViewModel {
-    var debugEntries: Driver<[DebugEntryViewData]> { get }
-}
-
-class DebugViewModelImpl: DebugViewModel {
+class DebugViewModel {
 
     let debugEntries: Driver<[DebugEntryViewData]>
 
