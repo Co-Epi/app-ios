@@ -54,6 +54,8 @@
 		84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00FE2427ED5E00318104 /* HomeViewController.swift */; };
 		84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FF2427ED5E00318104 /* HomeViewController.xib */; };
 		CC71F7CAF64914F41BBE05C5 /* Pods_CoEpi_CoEpiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */; };
+		CE626E092430A98B000DB8E7 /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */; };
+		CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */; };
 		CE98BE99242DDCBC00EFB67A /* HealthQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE98242DDCBC00EFB67A /* HealthQuizViewModel.swift */; };
 		CE98BE9B242DDCFD00EFB67A /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE9A242DDCFD00EFB67A /* QuestionCell.swift */; };
 		CE98BE9F242DE02900EFB67A /* HealthQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98BE9E242DE02900EFB67A /* HealthQuizViewController.xib */; };
@@ -106,8 +108,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertsViewController.swift; path = home/AlertsViewController.swift; sourceTree = "<group>"; };
-		30EF94FA242CFC9F007D61C7 /* AlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AlertsViewController.xib; path = home/AlertsViewController.xib; sourceTree = "<group>"; };
+		30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
+		30EF94FA242CFC9F007D61C7 /* AlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
 		324F4D7DC6C28946706D180E /* Pods-CoEpiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiTests.release.xcconfig"; path = "Target Support Files/Pods-CoEpiTests/Pods-CoEpiTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DB73EEFE0BAFE71BAB85604 /* Pods-CoEpi-CoEpiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi-CoEpiUITests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi-CoEpiUITests/Pods-CoEpi-CoEpiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpi_CoEpiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,8 @@
 		89B1FB101DD42773F3ADB2EC /* Pods_CoEpiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		910DD69A29B6DF9226FCFECA /* Pods-CoEpiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiTests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpiTests/Pods-CoEpiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C12F75FF3B79C829E72E1CF6 /* Pods-CoEpi-CoEpiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi-CoEpiUITests.release.xcconfig"; path = "Target Support Files/Pods-CoEpi-CoEpiUITests/Pods-CoEpi-CoEpiUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
+		CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
 		CE98BE98242DDCBC00EFB67A /* HealthQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthQuizViewModel.swift; sourceTree = "<group>"; };
 		CE98BE9A242DDCFD00EFB67A /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		CE98BE9E242DE02900EFB67A /* HealthQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HealthQuizViewController.xib; sourceTree = "<group>"; };
@@ -355,9 +359,8 @@
 				84FA01432427F05500318104 /* home */,
 				84FA01422427F04E00318104 /* onboarding */,
 				CE98BE97242DDC3D00EFB67A /* healthquiz */,
+				CE626E072430A787000DB8E7 /* alerts */,
 				84BF972324280ABA001ADD6B /* RootWireframe.swift */,
-				30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */,
-				30EF94FA242CFC9F007D61C7 /* AlertsViewController.xib */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -405,6 +408,17 @@
 				89B1FB101DD42773F3ADB2EC /* Pods_CoEpiTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE626E072430A787000DB8E7 /* alerts */ = {
+			isa = PBXGroup;
+			children = (
+				30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */,
+				30EF94FA242CFC9F007D61C7 /* AlertsViewController.xib */,
+				CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */,
+				CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */,
+			);
+			path = alerts;
 			sourceTree = "<group>";
 		};
 		CE98BE97242DDC3D00EFB67A /* healthquiz */ = {
@@ -694,6 +708,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */,
 				84A4B9AD242CA51D00516F3B /* RealmContact.swift in Sources */,
 				84A4B9B6242CA6EE00516F3B /* Contact.swift in Sources */,
 				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
@@ -703,6 +718,7 @@
 				84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */,
 				84BF97202427FAF1001ADD6B /* OnboardingWireframe.swift in Sources */,
 				8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */,
+				CE626E092430A98B000DB8E7 /* AlertsViewModel.swift in Sources */,
 				84BF972C24281082001ADD6B /* LogSettings.swift in Sources */,
 				84A4B9A4242CA24100516F3B /* ContactRepo.swift in Sources */,
 				D41B0CDC242E467800A50447 /* OnboardingButton.swift in Sources */,

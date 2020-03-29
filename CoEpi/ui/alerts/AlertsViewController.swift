@@ -10,6 +10,8 @@ import UIKit
 
 class AlertsViewController: UIViewController {
 
+    @IBOutlet weak var contactAlerts: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
