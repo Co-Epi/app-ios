@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     internal var window: UIWindow?
     
     private var rootWireframe: RootWireFrame?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         initUI()
         MSAppCenter.start("2581ac81-eb5b-423a-83e6-65cab9d64dd8", withServices: [MSDistribute.self])
