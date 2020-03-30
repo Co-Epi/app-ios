@@ -5,6 +5,7 @@ class QuestionCell: UITableViewCell {
 
     private let checkBox: CheckBox = .init()
     private var question: Question?
+    private var customFont: UIFont!
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -14,6 +15,10 @@ class QuestionCell: UITableViewCell {
             this.onChecked?(q, checked)
         }
         accessoryView = checkBox
+
+        textLabel?.font = UIFontMetrics.default.scaledFont(for: Fonts.robotoRegular)
+        textLabel?.adjustsFontForContentSizeCategory = true
+        
     }
 
     required init?(coder: NSCoder) {
