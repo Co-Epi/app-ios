@@ -57,5 +57,7 @@
 	<string>Bluetooth is required to exchange anonymous &apos;calling cards&apos; with phones of other participating people</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Bluetooth is required to exchange anonymous &apos;calling cards&apos; with phones of other participating people</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
