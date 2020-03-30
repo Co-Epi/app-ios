@@ -56,6 +56,10 @@
 		CC71F7CAF64914F41BBE05C5 /* Pods_CoEpi_CoEpiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */; };
 		CE626E092430A98B000DB8E7 /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */; };
 		CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */; };
+		CE626E0E2430B911000DB8E7 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE626E0D2430B911000DB8E7 /* AlertView.xib */; };
+		CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E0F2430F0FB000DB8E7 /* UIView+Nib.swift */; };
+		CE626E122430F348000DB8E7 /* AlertRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E112430F348000DB8E7 /* AlertRepo.swift */; };
+		CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E132430F3C5000DB8E7 /* Alert.swift */; };
 		CE98BE99242DDCBC00EFB67A /* HealthQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE98242DDCBC00EFB67A /* HealthQuizViewModel.swift */; };
 		CE98BE9B242DDCFD00EFB67A /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE9A242DDCFD00EFB67A /* QuestionCell.swift */; };
 		CE98BE9F242DE02900EFB67A /* HealthQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98BE9E242DE02900EFB67A /* HealthQuizViewController.xib */; };
@@ -162,6 +166,10 @@
 		C12F75FF3B79C829E72E1CF6 /* Pods-CoEpi-CoEpiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi-CoEpiUITests.release.xcconfig"; path = "Target Support Files/Pods-CoEpi-CoEpiUITests/Pods-CoEpi-CoEpiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
 		CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
+		CE626E0D2430B911000DB8E7 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		CE626E0F2430F0FB000DB8E7 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
+		CE626E112430F348000DB8E7 /* AlertRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRepo.swift; sourceTree = "<group>"; };
+		CE626E132430F3C5000DB8E7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		CE98BE98242DDCBC00EFB67A /* HealthQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthQuizViewModel.swift; sourceTree = "<group>"; };
 		CE98BE9A242DDCFD00EFB67A /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		CE98BE9E242DE02900EFB67A /* HealthQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HealthQuizViewController.xib; sourceTree = "<group>"; };
@@ -297,6 +305,7 @@
 				84A4B9B0242CA66A00516F3B /* realm */,
 				84A4B9A3242CA24100516F3B /* ContactRepo.swift */,
 				84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */,
+				CE626E112430F348000DB8E7 /* AlertRepo.swift */,
 			);
 			path = repo;
 			sourceTree = "<group>";
@@ -333,6 +342,7 @@
 			children = (
 				84A4B9B5242CA6EE00516F3B /* Contact.swift */,
 				84A4B9BB242CE42C00516F3B /* Symptom.swift */,
+				CE626E132430F3C5000DB8E7 /* Alert.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -371,6 +381,7 @@
 				D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */,
 				8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */,
 				8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */,
+				CE626E0F2430F0FB000DB8E7 /* UIView+Nib.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -417,6 +428,7 @@
 				30EF94FA242CFC9F007D61C7 /* AlertsViewController.xib */,
 				CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */,
 				CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */,
+				CE626E0D2430B911000DB8E7 /* AlertView.xib */,
 			);
 			path = alerts;
 			sourceTree = "<group>";
@@ -577,6 +589,7 @@
 				CE98BE9F242DE02900EFB67A /* HealthQuizViewController.xib in Resources */,
 				849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */,
 				84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */,
+				CE626E0E2430B911000DB8E7 /* AlertView.xib in Resources */,
 				84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */,
 				8486BDDA242BBCE700A63DD5 /* DebugViewController.xib in Resources */,
 			);
@@ -726,7 +739,9 @@
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
 				84BF972F24281082001ADD6B /* Central.swift in Sources */,
+				CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */,
 				84BF972D24281082001ADD6B /* Peripheral.swift in Sources */,
+				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
 				D41B0D1F242F60CF00A50447 /* OnboardingStrings.swift in Sources */,
@@ -747,6 +762,7 @@
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,
 				8486BDD9242BBCE700A63DD5 /* DebugViewController.swift in Sources */,
 				8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */,
+				CE626E122430F348000DB8E7 /* AlertRepo.swift in Sources */,
 				84FA00F22427E13000318104 /* Dependencies.swift in Sources */,
 				CE98BE9B242DDCFD00EFB67A /* QuestionCell.swift in Sources */,
 				84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */,

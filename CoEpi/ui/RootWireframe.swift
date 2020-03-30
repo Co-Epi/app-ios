@@ -56,15 +56,15 @@ extension RootWireFrame : HomeViewModelDelegate {
         rootNavigationController.pushViewController(quizViewController, animated: true)
     }
     
-    func seeAlertsTapped(){
+    func seeAlertsTapped() {
         showAlerts()
     }
     
-    private func showAlerts(){
-        let alertsViewController = AlertsViewController.init(nibName: String(describing:AlertsViewController.self), bundle: nil
-               )
-               alertsViewController.title = "Alerts"
-               rootNavigationController.pushViewController(alertsViewController, animated: true)
+    private func showAlerts() {
+        let viewModel: AlertsViewModel = try! container.resolve()
+
+        let alertsViewController = AlertsViewController(viewModel: viewModel)
+        rootNavigationController.pushViewController(alertsViewController, animated: true)
         
     }
 }

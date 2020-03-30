@@ -4,7 +4,7 @@ import RxCocoa
 
 class HealthQuizViewController: UIViewController {
     private let viewModel: HealthQuizViewModel
-    private let dataSource: HealthQuizQuestionsDataSource = HealthQuizQuestionsDataSource()
+    private let dataSource: HealthQuizQuestionsDataSource = .init()
 
     @IBOutlet weak var questionList: UITableView!
     
