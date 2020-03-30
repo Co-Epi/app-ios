@@ -4,12 +4,12 @@ import os.log
 import RxRelay
 
 protocol Peripheral {
-    var peripheralState: PublishRelay<String> { get }
+    var peripheralState: BehaviorRelay<String> { get }
     var peripheralContactSent: PublishRelay<ContactOld> { get }
 }
 
 class PeripheralImpl: NSObject, Peripheral {
-    let peripheralState: PublishRelay<String> = PublishRelay()
+    let peripheralState: BehaviorRelay<String> = BehaviorRelay(value: "unknown")
     let peripheralContactSent: PublishRelay<ContactOld> = PublishRelay()
 
     private var peripheralManager: CBPeripheralManager!

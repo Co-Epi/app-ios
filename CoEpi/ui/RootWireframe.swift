@@ -40,7 +40,7 @@ extension RootWireFrame : HomeViewModelDelegate {
         let debugViewModel: DebugViewModel = try! container.resolve()
 
         let debugViewController = DebugViewController(viewModel: debugViewModel)
-        homeViewController?.present(debugViewController, animated: true, completion: nil)
+        rootNavigationController.pushViewController(debugViewController, animated: true)
     }
     
     func checkInTapped() {
