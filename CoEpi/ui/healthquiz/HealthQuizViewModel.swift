@@ -5,29 +5,31 @@ class HealthQuizViewModel {
     weak var delegate: HealthQuizViewModelDelegate?
 
     private let symptomRepo: SymptomRepo
+    private let questionsRelay: BehaviorRelay<[Question]>
 
-    private var questions: [Question]
-    
     private(set) var rxQuestions: Driver<[Question]>
     
     init(container: DependencyContainer) {
         self.symptomRepo = try! container.resolve()
-        questions = symptomRepo.symptoms().map{ Question(symptom: $0) }
+        questionsRelay = BehaviorRelay(value: symptomRepo.symptoms()
+                                                .map{ Question(symptom: $0) })
 
-        rxQuestions = BehaviorRelay(value: questions)
+        rxQuestions = questionsRelay
             .asDriver(onErrorJustReturn: [])
     }
 
     func question(at index: Int) -> Question {
-        return questions[index]
+        return questionsRelay.value[index]
     }
 
     func handleAnswer(question: Question, idx: Int) {
-        questions[idx] = question
+        var newQuestions = questionsRelay.value
+        newQuestions[idx] = question
+        questionsRelay.accept(newQuestions)
     }
 
     func onTapSubmit() {
-        let selectedSymptoms = questions
+        let selectedSymptoms = questionsRelay.value
             .filter { $0.checked }
             .map { $0.toSymptom() }
         symptomRepo.submitSymptoms(symptoms: selectedSymptoms)

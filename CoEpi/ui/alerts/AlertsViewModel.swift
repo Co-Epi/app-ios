@@ -11,12 +11,11 @@ class AlertsViewModel {
     init(container: DependencyContainer) {
         self.alertRepo = try! container.resolve()
 
-        let titleString: String = AlertsViewModel.formatTitleLabel(count: alertRepo.alerts().count)
-        title = Observable.just(titleString)
+        title = alertRepo.alerts
+            .map { AlertsViewModel.formatTitleLabel(count: $0.count) }
             .asDriver(onErrorJustReturn: "Alerts")
 
-        alerts = Observable.just(alertRepo.alerts())
-            .asDriver(onErrorJustReturn: [])
+        alerts = alertRepo.alerts.asDriver(onErrorJustReturn: [])
     }
 
     private static func formatTitleLabel(count: Int) -> String {
@@ -26,5 +25,9 @@ class AlertsViewModel {
             return title
         }
         return title + "s"
+    }
+
+    public func acknowledge(alert: Alert) {
+        alertRepo.removeAlert(alert: alert)
     }
 }
