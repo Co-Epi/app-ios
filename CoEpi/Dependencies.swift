@@ -20,7 +20,6 @@ class Dependencies {
                                             central: try container.resolve()) }
 
         container.register(.singleton) { RealmProvider() }
-        container.register(.singleton) { RealmContactRepo(realmProvider: try container.resolve()) as ContactRepo }
         container.register(.singleton) { RealmCENRepo(realmProvider: try container.resolve()) as CENRepo }
         container.register(.singleton) { RealmCENReportRepo(realmProvider: try container.resolve()) as CENReportRepo }
         container.register(.singleton) { RealmCENKeyRepo(realmProvider: try container.resolve()) as CENKeyRepo }

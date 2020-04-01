@@ -1,10 +1,5 @@
 import Foundation
 
-struct Contact {
-    let cen: String
-    let date: Date
-}
-
 struct BTContact {
     private let theirData: Data?
     private let ourData: Data?
