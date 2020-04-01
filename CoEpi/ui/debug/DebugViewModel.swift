@@ -1,3 +1,4 @@
+import Foundation
 import RxSwift
 import RxCocoa
 
@@ -5,7 +6,7 @@ class DebugViewModel {
 
     let debugEntries: Driver<[DebugEntryViewData]>
 
-    init(peripheral: Peripheral, central: Central) {
+    init(peripheral: PeripheralReactive, central: CentralReactive) {
 
         let receivedContacts = central
             .centralContactReceived
@@ -21,7 +22,7 @@ class DebugViewModel {
                 .map { Optional($0) }
                 .startWith(nil),
 
-            peripheral.peripheralContactSent
+            peripheral.didReadCharacteristic
                 .map { Optional($0) }
                 .startWith(nil),
 
@@ -33,17 +34,17 @@ class DebugViewModel {
         )
 
         debugEntries = combined
-            .map { peripheralState, peripheralContactSent, receivedContacts, discovered in
+            .map { peripheralState, didReadCharacteristic, receivedContacts, discovered in
                 let peripheralState = peripheralState ?? ""
-                let peripheralContactSent = peripheralContactSent?.identifier.uuidString ?? "None"
+                let didReadCharacteristic: String = didReadCharacteristic?.ourIdentifier ?? "None"
                 return [
                     .Header("Peripheral state"),
                     .Item(peripheralState),
                     .Header("Contact sent"),
-                    .Item(peripheralContactSent),
+                    .Item(didReadCharacteristic),
                     .Header("Received contacts")]
                     + receivedContacts.map{
-                        .Item($0.identifier.uuidString)
+                        .Item($0.theirIdentifier)
                     }
                     + [.Header("Discovered devices")]
                     + discovered.map{ .Item($0.debugIdentifier) }
