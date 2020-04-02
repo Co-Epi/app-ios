@@ -5,6 +5,8 @@ protocol CENRepo {
     func insert(cen: CEN) -> Bool
 
     func loadAllCENRecords() -> [CEN]?
+
+    func match(start: Int64, end: Int64, hexEncodedCENs: [String]) -> [CEN]
 }
 
 class CENRepoImpl: CENRepo {
@@ -20,5 +22,9 @@ class CENRepoImpl: CENRepo {
 
     func loadAllCENRecords() -> [CEN]? {
         cenDao.loadAllCENRecords()
+    }
+
+    func match(start: Int64, end: Int64, hexEncodedCENs: [String]) -> [CEN] {
+        cenDao.match(start: start, end: end, hexEncodedCENs: hexEncodedCENs)
     }
 }

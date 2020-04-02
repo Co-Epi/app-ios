@@ -13,6 +13,7 @@ class AlertsViewModel {
 
         title = alertRepo.alerts
             .map { AlertsViewModel.formatTitleLabel(count: $0.count) }
+            .startWith(AlertsViewModel.formatTitleLabel(count: 0))
             .asDriver(onErrorJustReturn: "Alerts")
 
         alerts = alertRepo.alerts.asDriver(onErrorJustReturn: [])

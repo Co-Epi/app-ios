@@ -1,5 +1,6 @@
 import Foundation
 import CryptoSwift
+import os.log
 
 class CenLogic {
     private let CENKeyLifetimeInSeconds: Int64 = 2 * 60 // TODO: revert back to 7*86400
@@ -40,11 +41,19 @@ class CenLogic {
             tsAsUInt8Array.append(contentsOf: $0)
         }
 
-        //encrypt tsAsUnit8Array using decodedCENKey... using AES
-        let encData = try! AES(key: decodedCENKeyAsUInt8Array, blockMode: ECB(), padding: .pkcs5).encrypt(tsAsUInt8Array)
+        do {
+            //encrypt tsAsUnit8Array using decodedCENKey... using AES
+            let encData =
+                try AES(key: decodedCENKeyAsUInt8Array, blockMode: ECB(), padding: .pkcs5).encrypt(tsAsUInt8Array)
 
-        //return Data representation of encodedData
-        return NSData(bytes: encData, length: Int(encData.count)) as Data
+            //return Data representation of encodedData
+            return NSData(bytes: encData, length: Int(encData.count)) as Data
+
+        } catch let error {
+            os_log("Couldn't encrypt key: %@, error: %@", type: .error, CENKey, error.localizedDescription)
+            // TODO better handling, return Result type or propagate error maybe.
+            return Data(decodedCENKeyAsUInt8Array)
+        }
     }
 
     private func computeSymmetricKey() -> String {

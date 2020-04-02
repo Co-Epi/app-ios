@@ -1,3 +1,4 @@
+import Foundation
 import RxCocoa
 import RxSwift
 
@@ -16,7 +17,11 @@ class AlertRepoImpl: AlertRepo {
 
     lazy private(set) var alerts: Observable<[Alert]> = coEpiRepo.reports.map { reports in
         reports.map {
-            Alert(id: $0.id, exposure: $0.report, report: $0)
+            // TODO revert to reports. Temporarily only keys to test exposure.
+//            Alert(id: "$0.id", exposure: $0.report, report: $0)
+            Alert(id: "TODO",
+                  exposure: $0.cenKey,
+                  report: CENReport(id: "0", report: "TODO", timestamp: Int64(Date().timeIntervalSince1970)))
         }
     }
 

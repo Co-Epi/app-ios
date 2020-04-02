@@ -25,6 +25,9 @@
 		8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */; };
 		8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */; };
 		8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */; };
+		8491497B24366FF000975344 /* CenKeysFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497A24366FF000975344 /* CenKeysFetcher.swift */; };
+		8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497C2436881400975344 /* Data+StringFormatting.swift */; };
+		8491497F2436946900975344 /* CenMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497E2436946900975344 /* CenMatcher.swift */; };
 		849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849811572436119300EBD1DA /* CoEpiRepo.swift */; };
 		8498115A2436175500EBD1DA /* CenLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FB1162436056500BD1302 /* CenLogic.swift */; };
 		8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498115C243630E500EBD1DA /* ScannedCensHandler.swift */; };
@@ -151,6 +154,9 @@
 		8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+ReuseIdentifier.swift"; path = "CoEpi/ui/home/UITableView+ReuseIdentifier.swift"; sourceTree = SOURCE_ROOT; };
 		8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableCell+ReuseIdentifier.swift"; path = "CoEpi/ui/home/UITableCell+ReuseIdentifier.swift"; sourceTree = SOURCE_ROOT; };
+		8491497A24366FF000975344 /* CenKeysFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenKeysFetcher.swift; sourceTree = "<group>"; };
+		8491497C2436881400975344 /* Data+StringFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+StringFormatting.swift"; sourceTree = "<group>"; };
+		8491497E2436946900975344 /* CenMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenMatcher.swift; sourceTree = "<group>"; };
 		849811572436119300EBD1DA /* CoEpiRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiRepo.swift; sourceTree = "<group>"; };
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		849CEFA1242FEDE7003F9284 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = CoEpi/ui/theme/Theme.swift; sourceTree = SOURCE_ROOT; };
@@ -326,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				8498115C243630E500EBD1DA /* ScannedCensHandler.swift */,
+				8491497A24366FF000975344 /* CenKeysFetcher.swift */,
 			);
 			path = cross;
 			sourceTree = "<group>";
@@ -395,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				849FB1162436056500BD1302 /* CenLogic.swift */,
+				8491497E2436946900975344 /* CenMatcher.swift */,
 			);
 			path = logic;
 			sourceTree = "<group>";
@@ -481,6 +489,7 @@
 				8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */,
 				8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */,
 				CE626E0F2430F0FB000DB8E7 /* UIView+Nib.swift */,
+				8491497C2436881400975344 /* Data+StringFormatting.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -838,6 +847,7 @@
 				84A4B9B6242CA6EE00516F3B /* Contact.swift in Sources */,
 				CE6B7AC9243327FF00C42280 /* RealmCENKey.swift in Sources */,
 				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
+				8491497F2436946900975344 /* CenMatcher.swift in Sources */,
 				8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */,
 				849CEFA3242FEE23003F9284 /* UIColor+Hex.swift in Sources */,
 				CE6B7AC52433273200C42280 /* RealmCENKeyDao.swift in Sources */,
@@ -859,9 +869,11 @@
 				84BF972F24281082001ADD6B /* Central.swift in Sources */,
 				CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */,
 				CE6B7AB3243312FA00C42280 /* CENRepo.swift in Sources */,
+				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
 				84BF972D24281082001ADD6B /* Peripheral.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
+				8491497B24366FF000975344 /* CenKeysFetcher.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
 				849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */,
