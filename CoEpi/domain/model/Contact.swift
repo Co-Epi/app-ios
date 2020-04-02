@@ -1,5 +1,6 @@
 import Foundation
 
+/// TODO remove this, use only CEN (or BTCen to decouple from BT implementation)
 struct BTContact {
     private let theirData: Data?
     private let ourData: Data?

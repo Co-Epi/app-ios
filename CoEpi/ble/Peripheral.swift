@@ -7,6 +7,9 @@ protocol PeripheralReactive {
     var peripheralState: BehaviorRelay<String> { get }
 
     var didReadCharacteristic: PublishRelay<BTContact> { get }
+
+    // TODO update BLE code
+    func updateCen(value: String)
 }
 
 protocol PeripheralRequestHandler: class {
@@ -27,6 +30,10 @@ class PeripheralImpl: NSObject, PeripheralReactive {
         self.internalDelegate = internalDelegate
         super.init()
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+    }
+
+    func updateCen(value: String) {
+        os_log("TODO implement - updating CEN: %d ", log: blePeripheralLog, value)
     }
 
     private func startAdvertising() {

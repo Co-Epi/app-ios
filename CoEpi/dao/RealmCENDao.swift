@@ -1,7 +1,12 @@
 import Foundation
 import RealmSwift
 
-class RealmCENRepo: CENRepo, RealmRepo {
+protocol CENDao {
+    func insert(cen: CEN) -> Bool
+    func loadAllCENRecords() -> [CEN]?
+}
+
+class RealmCENDao: CENDao, RealmDao {
 
     let realm: Realm
 

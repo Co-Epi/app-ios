@@ -1,30 +1,31 @@
 import RxCocoa
 import RxSwift
 
+// TODO clarify logic alerts <-> CEN reports
 protocol AlertRepo {
-    var alerts: BehaviorRelay<[Alert]> { get }
+    var alerts: Observable<[Alert]> { get }
 
     func removeAlert(alert: Alert)
 }
 
 class AlertRepoImpl: AlertRepo {
-    private(set) var alerts: BehaviorRelay<[Alert]>
-    
-    private let tempAlertData: [Alert] = [
-        Alert(id: "a", exposure: "testa"),
-        Alert(id: "b", exposure: "testb"),
-        Alert(id: "c", exposure: "testc"),
-        Alert(id: "d", exposure: "testd"),
-    ]
 
-    init() {
-        alerts = BehaviorRelay(value: tempAlertData)
+    // For now like this. Later dependencies may be inverted to CENReportRepo -> CoEpiRepo, and we reference here only CoEpiRepo
+    private let coEpiRepo: CoEpiRepo
+    private let cenReportsRepo: CENReportRepo
+
+    lazy private(set) var alerts: Observable<[Alert]> = coEpiRepo.reports.map { reports in
+        reports.map {
+            Alert(id: $0.id, exposure: $0.report, report: $0)
+        }
+    }
+
+    init(coEpiRepo: CoEpiRepo, cenReportsRepo: CENReportRepo) {
+        self.coEpiRepo = coEpiRepo
+        self.cenReportsRepo = cenReportsRepo
     }
 
     func removeAlert(alert: Alert) {
-        guard let idx = alerts.value.firstIndex(where: { $0.id == alert.id }) else { return }
-        var newAlerts = alerts.value
-        newAlerts.remove(at: idx)
-        alerts.accept(newAlerts)
+        cenReportsRepo.delete(report: alert.report)
     }
 }

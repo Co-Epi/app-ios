@@ -1,5 +1,6 @@
 import Dip
 import RxCocoa
+import RxSwift
 
 class HealthQuizViewModel {
     weak var delegate: HealthQuizViewModelDelegate?
@@ -8,14 +9,20 @@ class HealthQuizViewModel {
     private let questionsRelay: BehaviorRelay<[Question]>
 
     private(set) var rxQuestions: Driver<[Question]>
-    
+
+    private let submitTrigger: PublishRelay<Void> = PublishRelay()
+
+    private let disposeBag = DisposeBag()
+
     init(container: DependencyContainer) {
         self.symptomRepo = try! container.resolve()
         questionsRelay = BehaviorRelay(value: symptomRepo.symptoms()
-                                                .map{ Question(symptom: $0) })
+            .map{ Question(symptom: $0) })
 
         rxQuestions = questionsRelay
             .asDriver(onErrorJustReturn: [])
+
+        observeSubmit()
     }
 
     func question(at index: Int) -> Question {
@@ -29,11 +36,24 @@ class HealthQuizViewModel {
     }
 
     func onTapSubmit() {
-        let selectedSymptoms = questionsRelay.value
-            .filter { $0.checked }
-            .map { $0.toSymptom() }
-        symptomRepo.submitSymptoms(symptoms: selectedSymptoms)
-        delegate?.onSubmit()
+        submitTrigger.accept(())
+    }
+
+    private func observeSubmit() {
+        let selectedSymptoms = questionsRelay
+            .map { questions in questions
+                .filter { $0.checked }
+                .map { $0.toSymptom() }
+            }
+
+        submitTrigger.withLatestFrom(selectedSymptoms)
+            .flatMap { [symptomRepo] (symptoms: [Symptom]) in
+                symptomRepo.submitSymptoms(symptoms: symptoms).andThen(Observable.just(()))
+            }
+            .subscribe(onNext: { [weak self] in
+                self?.delegate?.onSubmit()
+            })
+            .disposed(by: disposeBag)
     }
 }
 

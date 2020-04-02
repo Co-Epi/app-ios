@@ -1,12 +1,18 @@
 import Foundation
+import RxSwift
 
 protocol SymptomRepo {
     func symptoms() -> [Symptom]
 
-    func submitSymptoms(symptoms: [Symptom])
+    func submitSymptoms(symptoms: [Symptom]) -> Completable
 }
 
 class SymptomRepoImpl: SymptomRepo {
+    private let coEpiRepo: CoEpiRepo
+
+    init(coEpiRepo: CoEpiRepo) {
+        self.coEpiRepo = coEpiRepo
+    }
 
     private var symptomsData: [Symptom] = [
         Symptom(id: "1", name: "Fever"),
@@ -26,7 +32,15 @@ class SymptomRepoImpl: SymptomRepo {
         symptomsData
     }
 
-    func submitSymptoms(symptoms: [Symptom]) {
-        // Send to api
+    func submitSymptoms(symptoms: [Symptom]) -> Completable {
+        coEpiRepo.sendReport(report: symptoms.toCENReport())
+    }
+}
+
+private extension Sequence where Iterator.Element == Symptom {
+
+    func toCENReport() -> CENReport {
+        // TODO
+        CENReport(id: "123", report: "TODO symptoms -> CENReport", timestamp: Int64(Date().timeIntervalSince1970))
     }
 }
