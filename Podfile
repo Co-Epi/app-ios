@@ -17,4 +17,9 @@ target 'CoEpi' do
     # Pods for testing
   end
 
+  target 'CoEpiNetworkingTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
 end

@@ -25,7 +25,8 @@ class Dependencies {
         container.register { AlertsViewModel(container: container) }
 
         container.register { DebugViewModel(peripheral: try container.resolve(),
-                                            central: try container.resolve()) }
+                                            central: try container.resolve(),
+                                            api: try container.resolve()) }
     }
 
     private func registerDaos(container: DependencyContainer) {

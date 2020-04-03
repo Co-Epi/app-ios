@@ -1,4 +1,5 @@
 import Foundation
+import CryptoKit
 
 /// TODO remove this, use only CEN (or BTCen to decouple from BT implementation)
 struct BTContact {

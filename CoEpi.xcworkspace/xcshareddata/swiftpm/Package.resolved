@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "75bba56748359f297a83f620d45f72cf4ebee4e7",
+          "version": "4.8.2"
+        }
+      },
+      {
         "package": "CryptoSwift",
         "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift",
         "state": {
@@ -38,12 +47,21 @@
         }
       },
       {
+        "package": "RxAlamofire",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxAlamofire",
+        "state": {
+          "branch": null,
+          "revision": "64812f3aa1f7cc1ca1670ab890702c5dc6b9ff64",
+          "version": "5.1.0"
+        }
+      },
+      {
         "package": "RxSwift",
         "repositoryURL": "https://github.com/ReactiveX/RxSwift",
         "state": {
           "branch": null,
-          "revision": "712ff5348ece316f5422f8cd371cb4fef4f0f962",
-          "version": "5.1.1"
+          "revision": "b3e888b4972d9bc76495dd74d30a8c7fad4b9395",
+          "version": "5.0.1"
         }
       }
     ]

@@ -6,7 +6,21 @@ class DebugViewModel {
 
     let debugEntries: Driver<[DebugEntryViewData]>
 
-    init(peripheral: PeripheralReactive, central: CentralReactive) {
+    init(peripheral: PeripheralReactive, central: CentralReactive, api: Api) {
+
+
+        //TESTING NETWORK
+        print ("Testing Networking at lines 14 - 21 in DebugViewModel.swift")
+        api.getCenKeys()
+            .subscribe { print($0) }
+        
+        api.getCenReport(cenKey: CENKey(cenKey: "17FA287EBE6B42A3859A60C12CF71394"))
+            .subscribe { print($0) }
+
+        api.postCenReport(cenReport: CENReport(id: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140", report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==", timestamp: Int64(Date().timeIntervalSince1970)))
+            .subscribe { print($0) }
+        //TESTING NETWORK
+         
 
         let receivedContacts = central
             .centralContactReceived
