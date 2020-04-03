@@ -39,8 +39,8 @@ class SymptomRepoImpl: SymptomRepo {
 
 private extension Sequence where Iterator.Element == Symptom {
 
-    func toCENReport() -> CENReport {
-        // TODO
-        CENReport(id: "123", report: "TODO symptoms -> CENReport", timestamp: Int64(Date().timeIntervalSince1970))
+    func toCENReport() -> CenReport {
+        // TODO (has not been specified yet)
+        CenReport(id: "123", report: "TODO symptoms -> CENReport", timestamp: Date().coEpiTimestamp)
     }
 }

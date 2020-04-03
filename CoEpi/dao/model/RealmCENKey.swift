@@ -3,7 +3,7 @@ import RealmSwift
 
 final class RealmCENKey : Object {
     @objc dynamic var CENKey: String = ""
-    @objc dynamic var timestamp: Int64 = Int64(Date().timeIntervalSince1970)
+    @objc dynamic var timestamp: Int64 = Date().coEpiTimestamp
     
     override static func primaryKey() -> String? { "CENKey" }
 

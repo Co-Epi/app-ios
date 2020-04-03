@@ -6,11 +6,11 @@ import RxBlocking
 
 protocol Api {
 
-    func postCenReport(cenReport: CENReport) -> Completable
+    func postCenReport(cenReport: MyCenReport) -> Completable
 
     func getCenKeys() -> Single<[String]>
 
-    func getCenReport(cenKey: CENKey) -> Single<CENReport>
+    func getCenReport(cenKey: CENKey) -> Single<ReceivedCenReport>
 }
 
 // TODO finish
@@ -20,7 +20,7 @@ class ApiImpl: Api {
     var currentAttemptedExposureCheck = Date()
 
 
-    func postCenReport(cenReport: CENReport) -> Completable {
+    func postCenReport(cenReport: MyCenReport) -> Completable {
         struct reportPayload: Encodable {
             let reportID: String
             let report: String
@@ -28,10 +28,10 @@ class ApiImpl: Api {
             let reportTimestamp: Int64
         }
 
-        let payload: reportPayload = reportPayload(reportID: cenReport.id,
-                                                   report: cenReport.report,
+        let payload: reportPayload = reportPayload(reportID: cenReport.report.id,
+                                                   report: cenReport.report.report,
                                                    cenKeys: cenReport.keys,
-                                                   reportTimestamp: cenReport.timestamp)
+                                                   reportTimestamp: cenReport.report.timestamp)
 
         guard let jsonData = try? JSONEncoder().encode(payload) else {
             return Completable.empty()
@@ -57,11 +57,11 @@ class ApiImpl: Api {
         }
     }
 
-    func getCenReport(cenKey: CENKey) -> Single<CENReport> {
+    func getCenReport(cenKey: CENKey) -> Single<ReceivedCenReport> {
         let stringURL = "https://coepi.wolk.com:8080/cenreport/\(cenKey)"
         return json(.get, stringURL).asSingle().map { result in
             // TODO actual result
-            CENReport(id: "1", report: "report1", timestamp: Int64(Date().timeIntervalSince1970))
+            ReceivedCenReport(report: CenReport(id: "1", report: "report1", timestamp: Date().coEpiTimestamp))
         }
     }
 }

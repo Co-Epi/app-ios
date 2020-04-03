@@ -25,7 +25,7 @@ class CenMatcherImpl: CenMatcher {
 
         // last time (unix timestamp) the CENKeys were requested
 
-        let max = 7*24*(60/CENLifetimeInSeconds)
+        let max = Int(7*24*(Double(60)/Double(CENLifetimeInSeconds)))
 
         var possibleCENs: [String] = []
         possibleCENs.reserveCapacity(max)

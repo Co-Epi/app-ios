@@ -23,7 +23,7 @@ class BleAdapter {
 
     func didDiscoverCen(cen: Data) {
         // maybe create ReceivedCen type like in Android.
-        discovered.onNext(CEN(CEN: cen.toHex(), timestamp: Int64(Date().timeIntervalSince1970)))
+        discovered.onNext(CEN(CEN: cen.toHex(), timestamp: Date().coEpiTimestamp))
     }
 
     func peripheralWasRead(cen: Data) {

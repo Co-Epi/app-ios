@@ -7,6 +7,7 @@ protocol CENKeyDao {
     func generateAndStoreCENKey() -> CENKey
     func insert(key: CENKey) -> Bool
     func getCENKeys(limit: Int64) -> [CENKey]
+    func getLatestCENKey() -> CENKey?
 }
 
 class RealmCENKeyDao: RealmDao, CENKeyDao {
@@ -20,7 +21,7 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
     }
 
     func generateAndStoreCENKey() -> CENKey {
-        let curTimestamp = Int64(Date().timeIntervalSince1970)
+        let curTimestamp = Date().coEpiTimestamp
 
         if let latestCenKey = getLatestCENKey() {
             if (cenLogic.shouldGenerateNewCenKey(curTimestamp: curTimestamp, cenKeyTimestamp: latestCenKey.timestamp)) {
@@ -40,7 +41,8 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
         return newCENKey
     }
 
-    private func getLatestCENKey() -> CENKey? {
+    // TODO last n keys? for the reports
+    func getLatestCENKey() -> CENKey? {
         let cenKeysObject = realm.objects(RealmCENKey.self).sorted(byKeyPath: "timestamp", ascending: false)
         if let lastCenKey = cenKeysObject.first {
             return CENKey(cenKey: lastCenKey.CENKey, timestamp: lastCenKey.timestamp)

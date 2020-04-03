@@ -3,7 +3,7 @@ import RealmSwift
 
 class RealmCEN: Object {
     @objc dynamic var CEN = ""
-    @objc dynamic var timestamp: Int64 = Int64(Date().timeIntervalSince1970)
+    @objc dynamic var timestamp: Int64 = Date().coEpiTimestamp
 
     convenience init(_ cen: CEN) {
         self.init()

@@ -1,6 +1,7 @@
 import RealmSwift
 import Foundation
 
+// TODO rename in RealmReceivedCENReport, after migration implemented, otherwise this crashes when updating the app
 final class RealmCENReport : Object {
 
     // CENReportID is a local internal attribute only
@@ -14,11 +15,11 @@ final class RealmCENReport : Object {
 
     override static func primaryKey() -> String? { "id" }
 
-    convenience init(_ r: CENReport) {
+    convenience init(_ r: ReceivedCenReport) {
         self.init()
 
-        id = r.id
-        report = r.report
-        reportTimestamp = r.timestamp
+        id = r.report.id
+        report = r.report.report
+        reportTimestamp = r.report.timestamp
     }
 }

@@ -10,3 +10,8 @@ let blePeripheralLog = OSLog(
     subsystem: Bundle.main.bundleIdentifier!,
     category: "BLEPeripheral"
 )
+
+let servicesLog = OSLog(
+    subsystem: Bundle.main.bundleIdentifier!,
+    category: "services"
+)

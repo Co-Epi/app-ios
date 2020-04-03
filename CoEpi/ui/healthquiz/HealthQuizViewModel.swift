@@ -1,6 +1,7 @@
 import Dip
 import RxCocoa
 import RxSwift
+import os.log
 
 class HealthQuizViewModel {
     weak var delegate: HealthQuizViewModelDelegate?
@@ -52,6 +53,8 @@ class HealthQuizViewModel {
             }
             .subscribe(onNext: { [weak self] in
                 self?.delegate?.onSubmit()
+            }, onError: { error in
+                os_log("Error submitting symptoms: %@", type: .error, "\(error)")
             })
             .disposed(by: disposeBag)
     }
