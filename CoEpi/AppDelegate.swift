@@ -15,7 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         initUI()
         MSAppCenter.start("2581ac81-eb5b-423a-83e6-65cab9d64dd8", withServices: [MSDistribute.self])
+        startBle()
         return true
+    }
+
+    private func startBle() {
+        let bleController: BluetoothController = try! container.resolve()
+        bleController.start()
     }
 
     // MARK: - Core Data stack

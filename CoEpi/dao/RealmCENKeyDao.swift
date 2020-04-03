@@ -10,12 +10,12 @@ protocol CENKeyDao {
 }
 
 class RealmCENKeyDao: RealmDao, CENKeyDao {
-    var realm: Realm
-
     private let cenLogic: CenLogic
 
+    let realmProvider: RealmProvider
+
     init(realmProvider: RealmProvider, cenLogic: CenLogic) {
-        realm = realmProvider.realm
+        self.realmProvider = realmProvider
         self.cenLogic = cenLogic
     }
 

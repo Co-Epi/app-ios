@@ -4,30 +4,22 @@ import RxSwift
 
 class ScannedCensHandler {
     private let coepiRepo: CoEpiRepo
-    private let bleCentral: CentralReactive
+    private let bleAdapter: BleAdapter
 
     private let disposeBag = DisposeBag()
 
-    init(coepiRepo: CoEpiRepo, bleCentral: CentralReactive) {
+    init(coepiRepo: CoEpiRepo, bleAdapter: BleAdapter) {
         self.coepiRepo = coepiRepo
-        self.bleCentral = bleCentral
+        self.bleAdapter = bleAdapter
 
         forwardScannedCensToCoEpiRepo()
     }
 
     private func forwardScannedCensToCoEpiRepo() {
-        bleCentral.centralContactReceived.map {
-            $0.toReceivedCen()
-        }.subscribe(onNext: { [coepiRepo] cen in
+        bleAdapter.discovered.subscribe(onNext: { [coepiRepo] cen in
             coepiRepo.storeObservedCen(cen: cen)
         }, onError: { error in
             os_log("Error in central cen observer: %@", log: bleCentralLog, error.localizedDescription)
         }).disposed(by: disposeBag)
-    }
-}
-
-private extension BTContact {
-    func toReceivedCen() -> CEN {
-        CEN(CEN: theirIdentifier, timestamp: Int64(Date().timeIntervalSince1970))
     }
 }

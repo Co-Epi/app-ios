@@ -6,7 +6,7 @@ class DebugViewModel {
 
     let debugEntries: Driver<[DebugEntryViewData]>
 
-    init(peripheral: PeripheralReactive, central: CentralReactive, api: Api) {
+    init(bleAdapter: BleAdapter, api: Api) {
 
 
         //TESTING NETWORK
@@ -20,60 +20,49 @@ class DebugViewModel {
         api.postCenReport(cenReport: CENReport(id: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140", report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==", timestamp: Int64(Date().timeIntervalSince1970)))
             .subscribe { print($0) }
         //TESTING NETWORK
-         
 
-        let receivedContacts = central
-            .centralContactReceived
+        let discovered = bleAdapter.discovered
             .scan([]) { acc, element in acc + [element] }
 
-        let discovered = central
-            .discovery
+        let peripheralWasRead = bleAdapter.peripheralWasRead
+            .scan([]) { acc, element in acc + [element] }
+
+        let centralDidWrite = bleAdapter.centralDidWrite
+            .scan([]) { acc, element in acc + [element] }
+
+        let peripheralWasWrittenTo = bleAdapter.peripheralWasWrittenTo
             .scan([]) { acc, element in acc + [element] }
 
         let combined = Observable.combineLatest(
-            peripheral
-                .peripheralState
-                .map { Optional($0) }
-                .startWith(nil),
-
-            peripheral.didReadCharacteristic
-                .map { Optional($0) }
-                .startWith(nil),
-
-            receivedContacts
-                .startWith([]),
-
-            discovered
-                .startWith([])
+            discovered.startWith([]),
+            peripheralWasRead.startWith([]),
+            centralDidWrite.startWith([]),
+            peripheralWasWrittenTo.startWith([])
         )
 
         debugEntries = combined
-            .map { peripheralState, didReadCharacteristic, receivedContacts, discovered in
-                let peripheralState = peripheralState ?? ""
-                let didReadCharacteristic: String = didReadCharacteristic?.ourIdentifier ?? "None"
-                return [
-                    .Header("Peripheral state"),
-                    .Item(peripheralState),
-                    .Header("Contact sent"),
-                    .Item(didReadCharacteristic),
-                    .Header("Received contacts")]
-                    + receivedContacts.map{
-                        .Item($0.theirIdentifier)
-                    }
-                    + [.Header("Discovered devices")]
-                    + discovered.map{ .Item($0.debugIdentifier) }
+            .map { discovered, peripheralWasRead, centralDidWrite, peripheralWasWrittenTo in
+                return generateItems(discovered: discovered, peripheralWasRead: peripheralWasRead,
+                                     centralDidWrite: centralDidWrite, peripheralWasWrittenTo: peripheralWasWrittenTo)
             }
             .asDriver(onErrorJustReturn: [])
-    }
-}
-
-private extension DetectedPeripheral {
-    var debugIdentifier: String {
-        (name.map { "\($0), " } ?? "") + uuid.uuidString
     }
 }
 
 enum DebugEntryViewData {
     case Header(String)
     case Item(String)
+}
+
+private func generateItems(discovered: [CEN], peripheralWasRead: [String], centralDidWrite: [String],
+                           peripheralWasWrittenTo: [String]) -> [DebugEntryViewData] {
+
+    return items(header: "Discovered", items: discovered.map{ $0.CEN })
+        + items(header: "Peripheral was read", items: peripheralWasRead)
+        + items(header: "Central did write", items: centralDidWrite)
+        + items(header: "Peripheral was written to", items: peripheralWasWrittenTo)
+}
+
+private func items(header: String, items: [String]) -> [DebugEntryViewData] {
+    [.Header(header)] + items.map{ .Item($0) }
 }

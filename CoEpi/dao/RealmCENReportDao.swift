@@ -12,17 +12,17 @@ protocol CENReportDao {
 class RealmCENReportDao: CENReportDao, RealmDao {
     lazy var reports = reportsSubject.asObservable()
     private let reportsSubject: BehaviorSubject<[CENReport]> = BehaviorSubject(value: [])
-    
-    let realm: Realm
 
     var notificationToken: NotificationToken? = nil
 
     private let reportsResults: Results<RealmCENReport>
 
-    init(realmProvider: RealmProvider) {
-        realm = realmProvider.realm
+    let realmProvider: RealmProvider
 
-        reportsResults = realm.objects(RealmCENReport.self)
+    init(realmProvider: RealmProvider) {
+        self.realmProvider = realmProvider
+
+        reportsResults = realmProvider.realm.objects(RealmCENReport.self)
         notificationToken = reportsResults.observe { [weak self] (_: RealmCollectionChange) in
             guard let self = self else { return }
             self.reportsSubject.onNext(self.reportsResults.map {

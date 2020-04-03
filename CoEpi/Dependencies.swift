@@ -6,13 +6,14 @@ class Dependencies {
     func createContainer() -> DependencyContainer {
         let container = DependencyContainer()
 
+        registerLogic(container: container)
         registerViewModels(container: container)
         registerDaos(container: container)
         registerRepos(container: container)
         registerServices(container: container)
-        registerLogic(container: container)
         registerNetworking(container: container)
         registerWiring(container: container)
+        registerBle(container: container)
 
         return container
     }
@@ -24,8 +25,7 @@ class Dependencies {
         container.register { HealthQuizViewModel(container: container) }
         container.register { AlertsViewModel(container: container) }
 
-        container.register { DebugViewModel(peripheral: try container.resolve(),
-                                            central: try container.resolve(),
+        container.register { DebugViewModel(bleAdapter: try container.resolve(),
                                             api: try container.resolve()) }
     }
 
@@ -51,15 +51,13 @@ class Dependencies {
     }
 
     private func registerServices(container: DependencyContainer) {
-        container.register { ContactReceivedHandler(cenKeyRepo: try container.resolve(),
-                                                    cenLogic: try container.resolve()) as PeripheralRequestHandler }
-        container.register(.eagerSingleton) { CentralImpl() as CentralReactive }
-        container.register(.eagerSingleton) { PeripheralImpl(internalDelegate: try container.resolve()) as PeripheralReactive }
+        container.register(.singleton) { ContactReceivedHandler(cenKeyRepo: try container.resolve(),
+                                                    cenLogic: try container.resolve()) }
+
     }
 
     private func registerLogic(container: DependencyContainer) {
-        container.register { CenLogic() }
-        container.register { () }
+        container.register(.singleton) { CenLogic() }
     }
 
     private func registerNetworking(container: DependencyContainer) {
@@ -67,13 +65,20 @@ class Dependencies {
     }
 
     private func registerWiring(container: DependencyContainer) {
-        container.register { ScannedCensHandler(coepiRepo: try container.resolve(),
-                                                bleCentral: try container.resolve()) }
+        container.register(.singleton) { ScannedCensHandler(coepiRepo: try container.resolve(),
+                                                bleAdapter: try container.resolve()) }
         container.register(.eagerSingleton) { CenKeysFetcher(api: try container.resolve()) }
         container.register(.singleton) { CenMatcherImpl(cenRepo: try container.resolve(),
-                                                    cenLogic: try container.resolve()) as CenMatcher }
+                                                        cenLogic: try container.resolve()) as CenMatcher }
 
         // .eagerSingleton appears not to work. Triggering initialization.
         let _: CoEpiRepo = try! container.resolve()
     }
+
+    private func registerBle(container: DependencyContainer) {
+        container.register(.singleton) { BleAdapter(cenReadHandler: try container.resolve()) }
+        container.register(.eagerSingleton) { BluetoothController(delegate: try container.resolve()) }
+
+    }
 }
+

@@ -1,7 +1,7 @@
 import Foundation
 
 struct CEN: Codable {
-    let CEN: String
+    let CEN: String // Hex encoded
     let timestamp: Int64
 
     init(CEN: String, timestamp: Int64 = Int64(Date().timeIntervalSince1970)) {

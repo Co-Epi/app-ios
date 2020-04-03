@@ -32,6 +32,11 @@
 		8491497B24366FF000975344 /* CenKeysFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497A24366FF000975344 /* CenKeysFetcher.swift */; };
 		8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497C2436881400975344 /* Data+StringFormatting.swift */; };
 		8491497F2436946900975344 /* CenMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497E2436946900975344 /* CenMatcher.swift */; };
+		849149822436A16C00975344 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849149812436A16C00975344 /* BluetoothController.swift */; };
+		849149842436A19B00975344 /* CBPeripheral+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849149832436A19B00975344 /* CBPeripheral+Additions.swift */; };
+		849149862436A1CF00975344 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849149852436A1CF00975344 /* BluetoothService.swift */; };
+		849149882436A1E600975344 /* BluetoothService+CoreBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849149872436A1E600975344 /* BluetoothService+CoreBluetooth.swift */; };
+		8491498B2436A28E00975344 /* BerkananSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 8491498A2436A28E00975344 /* BerkananSDK */; };
 		849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849811572436119300EBD1DA /* CoEpiRepo.swift */; };
 		8498115A2436175500EBD1DA /* CenLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FB1162436056500BD1302 /* CenLogic.swift */; };
 		8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498115C243630E500EBD1DA /* ScannedCensHandler.swift */; };
@@ -44,10 +49,10 @@
 		849DFE752427D37A0008ED65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE732427D37A0008ED65 /* LaunchScreen.storyboard */; };
 		849DFE802427D37A0008ED65 /* CoEpiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE7F2427D37A0008ED65 /* CoEpiTests.swift */; };
 		849DFE8B2427D37A0008ED65 /* CoEpiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE8A2427D37A0008ED65 /* CoEpiUITests.swift */; };
+		84A1C0CD24375C4300875DAE /* BleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C0CC24375C4300875DAE /* BleAdapter.swift */; };
 		84A4B9A7242CA4D500516F3B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 84A4B9A6242CA4D500516F3B /* Realm */; };
 		84A4B9A9242CA4D500516F3B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84A4B9A8242CA4D500516F3B /* RealmSwift */; };
 		84A4B9AF242CA5E600516F3B /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9AE242CA5E600516F3B /* RealmProvider.swift */; };
-		84A4B9B6242CA6EE00516F3B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B5242CA6EE00516F3B /* Contact.swift */; };
 		84A4B9B8242CC97600516F3B /* RealmDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B7242CC97600516F3B /* RealmDao.swift */; };
 		84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */; };
 		84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9BB242CE42C00516F3B /* Symptom.swift */; };
@@ -55,11 +60,8 @@
 		84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
 		84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972324280ABA001ADD6B /* RootWireframe.swift */; };
 		84BF972C24281082001ADD6B /* LogSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972624281082001ADD6B /* LogSettings.swift */; };
-		84BF972D24281082001ADD6B /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972724281082001ADD6B /* Peripheral.swift */; };
 		84BF972E24281082001ADD6B /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972824281082001ADD6B /* uuids.swift */; };
-		84BF972F24281082001ADD6B /* Central.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972924281082001ADD6B /* Central.swift */; };
 		84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972A24281082001ADD6B /* DataRepresentable.swift */; };
-		84BF973124281082001ADD6B /* Types+DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972B24281082001ADD6B /* Types+DataRepresentable.swift */; };
 		84FA00F22427E13000318104 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F12427E13000318104 /* Dependencies.swift */; };
 		84FA00F52427E83000318104 /* Dip in Frameworks */ = {isa = PBXBuildFile; productRef = 84FA00F42427E83000318104 /* Dip */; };
 		84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F92427ED1900318104 /* OnboardingViewController.swift */; };
@@ -176,6 +178,10 @@
 		8491497A24366FF000975344 /* CenKeysFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenKeysFetcher.swift; sourceTree = "<group>"; };
 		8491497C2436881400975344 /* Data+StringFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+StringFormatting.swift"; sourceTree = "<group>"; };
 		8491497E2436946900975344 /* CenMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenMatcher.swift; sourceTree = "<group>"; };
+		849149812436A16C00975344 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
+		849149832436A19B00975344 /* CBPeripheral+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBPeripheral+Additions.swift"; sourceTree = "<group>"; };
+		849149852436A1CF00975344 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
+		849149872436A1E600975344 /* BluetoothService+CoreBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothService+CoreBluetooth.swift"; sourceTree = "<group>"; };
 		849811572436119300EBD1DA /* CoEpiRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiRepo.swift; sourceTree = "<group>"; };
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		849CEFA1242FEDE7003F9284 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = CoEpi/ui/theme/Theme.swift; sourceTree = SOURCE_ROOT; };
@@ -192,8 +198,8 @@
 		849DFE8A2427D37A0008ED65 /* CoEpiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiUITests.swift; sourceTree = "<group>"; };
 		849DFE8C2427D37A0008ED65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849FB1162436056500BD1302 /* CenLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenLogic.swift; sourceTree = "<group>"; };
+		84A1C0CC24375C4300875DAE /* BleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleAdapter.swift; sourceTree = "<group>"; };
 		84A4B9AE242CA5E600516F3B /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
-		84A4B9B5242CA6EE00516F3B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		84A4B9B7242CC97600516F3B /* RealmDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDao.swift; sourceTree = "<group>"; };
 		84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRepo.swift; sourceTree = "<group>"; };
 		84A4B9BB242CE42C00516F3B /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
@@ -201,11 +207,8 @@
 		84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		84BF972324280ABA001ADD6B /* RootWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		84BF972624281082001ADD6B /* LogSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogSettings.swift; sourceTree = "<group>"; };
-		84BF972724281082001ADD6B /* Peripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
 		84BF972824281082001ADD6B /* uuids.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uuids.swift; sourceTree = "<group>"; };
-		84BF972924281082001ADD6B /* Central.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Central.swift; sourceTree = "<group>"; };
 		84BF972A24281082001ADD6B /* DataRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepresentable.swift; sourceTree = "<group>"; };
-		84BF972B24281082001ADD6B /* Types+DataRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Types+DataRepresentable.swift"; sourceTree = "<group>"; };
 		84FA00F12427E13000318104 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		84FA00F92427ED1900318104 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		84FA00FA2427ED1900318104 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
@@ -270,6 +273,7 @@
 				8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */,
 				8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */,
 				84FA00F52427E83000318104 /* Dip in Frameworks */,
+				8491498B2436A28E00975344 /* BerkananSDK in Frameworks */,
 				ED84885A0AB19A504317BA10 /* Pods_CoEpi.framework in Frameworks */,
 				8486BDCF242B9AC900A63DD5 /* RxBlocking in Frameworks */,
 			);
@@ -362,6 +366,17 @@
 				8486BDD8242BBCE700A63DD5 /* DebugViewController.xib */,
 			);
 			path = debug;
+			sourceTree = "<group>";
+		};
+		849149802436A15700975344 /* covidwatch */ = {
+			isa = PBXGroup;
+			children = (
+				849149812436A16C00975344 /* BluetoothController.swift */,
+				849149832436A19B00975344 /* CBPeripheral+Additions.swift */,
+				849149852436A1CF00975344 /* BluetoothService.swift */,
+				849149872436A1E600975344 /* BluetoothService+CoreBluetooth.swift */,
+			);
+			path = covidwatch;
 			sourceTree = "<group>";
 		};
 		84981159243614C500EBD1DA /* dao */ = {
@@ -495,7 +510,6 @@
 		84A4B9B4242CA6E300516F3B /* model */ = {
 			isa = PBXGroup;
 			children = (
-				84A4B9B5242CA6EE00516F3B /* Contact.swift */,
 				84A4B9BB242CE42C00516F3B /* Symptom.swift */,
 				CE626E132430F3C5000DB8E7 /* Alert.swift */,
 				CE6B7AB8243316B800C42280 /* CEN.swift */,
@@ -508,13 +522,12 @@
 		84BF972524280ECF001ADD6B /* ble */ = {
 			isa = PBXGroup;
 			children = (
-				84BF972924281082001ADD6B /* Central.swift */,
+				849149802436A15700975344 /* covidwatch */,
 				84BF972A24281082001ADD6B /* DataRepresentable.swift */,
 				84BF972624281082001ADD6B /* LogSettings.swift */,
-				84BF972724281082001ADD6B /* Peripheral.swift */,
-				84BF972B24281082001ADD6B /* Types+DataRepresentable.swift */,
 				84BF972824281082001ADD6B /* uuids.swift */,
 				CE6B7ACA24332C9800C42280 /* ContactReceivedHandler.swift */,
+				84A1C0CC24375C4300875DAE /* BleAdapter.swift */,
 			);
 			path = ble;
 			sourceTree = "<group>";
@@ -679,6 +692,7 @@
 				4B7FB336242DF0F9002EDE0A /* Alamofire */,
 				30EF95602434E07B007D61C7 /* RxAlamofire */,
 				30EF955A2432E009007D61C7 /* CryptoSwift */,
+				8491498A2436A28E00975344 /* BerkananSDK */,
 			);
 			productName = CoEpi;
 			productReference = 849DFE622427D3750008ED65 /* CoEpi.app */;
@@ -766,6 +780,7 @@
 				4B7FB335242DF0F9002EDE0A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				30EF955F2434E07B007D61C7 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				30EF95592432E009007D61C7 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				849149892436A28E00975344 /* XCRemoteSwiftPackageReference "BerkananSDK" */,
 			);
 			productRefGroup = 849DFE632427D3750008ED65 /* Products */;
 			projectDirPath = "";
@@ -965,7 +980,6 @@
 				62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */,
 				62B9A01A2433D2A200885519 /* DateFormatter.swift in Sources */,
 				CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */,
-				84A4B9B6242CA6EE00516F3B /* Contact.swift in Sources */,
 				CE6B7AC9243327FF00C42280 /* RealmCENKey.swift in Sources */,
 				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
 				8491497F2436946900975344 /* CenMatcher.swift in Sources */,
@@ -978,23 +992,26 @@
 				84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */,
 				84BF97202427FAF1001ADD6B /* OnboardingWireframe.swift in Sources */,
 				8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */,
+				849149822436A16C00975344 /* BluetoothController.swift in Sources */,
 				CE626E092430A98B000DB8E7 /* AlertsViewModel.swift in Sources */,
 				84BF972C24281082001ADD6B /* LogSettings.swift in Sources */,
 				CE6B7ACB24332C9800C42280 /* ContactReceivedHandler.swift in Sources */,
 				CE6B7ABF2433252300C42280 /* CENReportRepo.swift in Sources */,
+				849149842436A19B00975344 /* CBPeripheral+Additions.swift in Sources */,
 				D41B0CDC242E467800A50447 /* OnboardingButton.swift in Sources */,
 				84FEDB6F24364FE300F41160 /* Api.swift in Sources */,
+				849149862436A1CF00975344 /* BluetoothService.swift in Sources */,
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
-				84BF972F24281082001ADD6B /* Central.swift in Sources */,
 				CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */,
+				849149882436A1E600975344 /* BluetoothService+CoreBluetooth.swift in Sources */,
 				CE6B7AB3243312FA00C42280 /* CENRepo.swift in Sources */,
 				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
-				84BF972D24281082001ADD6B /* Peripheral.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
 				8491497B24366FF000975344 /* CenKeysFetcher.swift in Sources */,
+				84A1C0CD24375C4300875DAE /* BleAdapter.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
 				849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */,
@@ -1008,7 +1025,6 @@
 				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
 				CE98BE99242DDCBC00EFB67A /* HealthQuizViewModel.swift in Sources */,
-				84BF973124281082001ADD6B /* Types+DataRepresentable.swift in Sources */,
 				84A4B9B8242CC97600516F3B /* RealmDao.swift in Sources */,
 				CE98BEA1242DE23400EFB67A /* HealthQuizViewController.swift in Sources */,
 				CE6B7AC3243326FD00C42280 /* CENKey.swift in Sources */,
@@ -1486,6 +1502,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		849149892436A28E00975344 /* XCRemoteSwiftPackageReference "BerkananSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zssz/BerkananSDK";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.8;
+			};
+		};
 		84A4B9A5242CA4D500516F3B /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
@@ -1539,6 +1563,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxBlocking;
+		};
+		8491498A2436A28E00975344 /* BerkananSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 849149892436A28E00975344 /* XCRemoteSwiftPackageReference "BerkananSDK" */;
+			productName = BerkananSDK;
 		};
 		84A4B9A6242CA4D500516F3B /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

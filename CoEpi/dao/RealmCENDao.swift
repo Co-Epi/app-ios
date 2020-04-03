@@ -8,12 +8,9 @@ protocol CENDao {
 }
 
 class RealmCENDao: CENDao, RealmDao {
-    let realm: Realm
-    // TODO better method to provide thread safe realm - maybe just put RealmProvider in trait
-    private let realmProvider: RealmProvider
+    let realmProvider: RealmProvider
 
     init(realmProvider: RealmProvider) {
-        realm = realmProvider.realm
         self.realmProvider = realmProvider
     }
 
@@ -32,7 +29,7 @@ class RealmCENDao: CENDao, RealmDao {
     }
 
     func match(start: Int64, end: Int64, hexEncodedCENs: [String]) -> [CEN] {
-        realmProvider.realm.objects(RealmCEN.self)
+        realm.objects(RealmCEN.self)
             .filter("timestamp >= %d", start)
             .filter("timestamp <= %d", end)
             .filter(NSPredicate(format: "CEN IN %@", hexEncodedCENs))
