@@ -10,15 +10,12 @@ protocol Api {
 
     func getCenKeys() -> Single<[String]>
 
-    func getCenReport(cenKey: CENKey) -> Single<ReceivedCenReport>
+    func getCenReports(cenKey: CENKey) -> Single<[ReceivedCenReport]>
 }
 
-// TODO finish
+// TODO error handling
+
 class ApiImpl: Api {
-
-    var lastSuccessfulExposureCheck = Date()
-    var currentAttemptedExposureCheck = Date()
-
 
     func postCenReport(cenReport: MyCenReport) -> Completable {
         struct reportPayload: Encodable {
@@ -50,18 +47,22 @@ class ApiImpl: Api {
     }
 
     func getCenKeys() -> Single<[String]> {
-        let unixDT = Int(currentAttemptedExposureCheck.timeIntervalSince1970)
-        let stringURL = "https://coepi.wolk.com:8080/cenkeys/\(unixDT)"
+        let stringURL = "https://coepi.wolk.com:8080/cenkeys"
         return json(.get, stringURL).asSingle().map { result in
             result as! [String]
         }
     }
 
-    func getCenReport(cenKey: CENKey) -> Single<ReceivedCenReport> {
-        let stringURL = "https://coepi.wolk.com:8080/cenreport/\(cenKey)"
-        return json(.get, stringURL).asSingle().map { result in
-            // TODO actual result
-            ReceivedCenReport(report: CenReport(id: "1", report: "report1", timestamp: Date().coEpiTimestamp))
+    func getCenReports(cenKey: CENKey) -> Single<[ReceivedCenReport]> {
+        let stringURL = "https://coepi.wolk.com:8080/cenreport/\(cenKey.cenKey)"
+        return RxAlamofire.requestJSON(.get, stringURL).debug().asSingle().map { (r, json) in
+            let jsonArray = json as! [[String: AnyObject]]
+            return jsonArray.map {
+                let id = $0["reportID"] as! String
+                let report = $0["report"] as! String
+                let timestamp = $0["reportTimeStamp"] as! Int64
+                return ReceivedCenReport(report: CenReport(id: id, report: report, timestamp: timestamp))
+            }
         }
     }
 }

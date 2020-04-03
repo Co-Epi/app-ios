@@ -6,16 +6,23 @@ class DebugViewModel {
 
     let debugEntries: Driver<[DebugEntryViewData]>
 
+    private let disposeBag = DisposeBag()
+
+
     init(bleAdapter: BleAdapter, api: Api) {
 
 
         //TESTING NETWORK
         print ("Testing Networking at lines 14 - 21 in DebugViewModel.swift")
         api.getCenKeys()
-            .subscribe { print($0) }
+            .subscribe { print($0) }.disposed(by: disposeBag)
         
-        api.getCenReport(cenKey: CENKey(cenKey: "17FA287EBE6B42A3859A60C12CF71394"))
-            .subscribe { print($0) }
+        api.getCenReports(cenKey: CENKey(cenKey: "b85c4b373adde4c66651ba63aef40f48"))
+            .subscribe(onSuccess: { (reports) in
+                print("got reports: \(reports)")
+            }, onError: { error in
+                print("error retrieving reports: \(error)")
+            })
 
         let cenReport = CenReport(id: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140",
                                   report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==",

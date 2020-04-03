@@ -61,12 +61,18 @@ class CoEpiRepoImpl: CoEpiRepo {
             })
 
             // Retrieve reports for matching keys
-            .flatMap { matchedKeys -> Observable<[ReceivedCenReport]> in
-                let requests: [Observable<ReceivedCenReport>] = matchedKeys.map {
-                    api.getCenReport(cenKey: $0).asObservable()
+            .flatMap { matchedKeys -> Observable<[[ReceivedCenReport]]> in
+                let requests: [Observable<[ReceivedCenReport]>] = matchedKeys.map {
+                    api.getCenReports(cenKey: $0).asObservable()
                 }
                 return Observable.merge(requests).toArray().asObservable()
             }
+
+            // Flatten
+            .map { reports -> [ReceivedCenReport] in
+                reports.flatMap { $0 }
+            }
+            
             .observeOn(MainScheduler.instance) // TODO switch to main only in view models
             .share()
 
