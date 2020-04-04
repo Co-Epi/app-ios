@@ -18,7 +18,6 @@
 		30EF95612434E07B007D61C7 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 30EF95602434E07B007D61C7 /* RxAlamofire */; };
 		30EF956D24363115007D61C7 /* CoEpiNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF956C24363115007D61C7 /* CoEpiNetworkingTests.swift */; };
 		4B7FB337242DF0F9002EDE0A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4B7FB336242DF0F9002EDE0A /* Alamofire */; };
-		62B9A01A2433D2A200885519 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B9A0192433D2A200885519 /* DateFormatter.swift */; };
 		62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */; };
 		8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDC6242B9AC900A63DD5 /* RxSwift */; };
 		8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCA242B9AC900A63DD5 /* RxRelay */; };
@@ -168,9 +167,7 @@
 		3DB73EEFE0BAFE71BAB85604 /* Pods-CoEpi-CoEpiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi-CoEpiUITests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi-CoEpiUITests/Pods-CoEpi-CoEpiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A8C33FD92971388B446839F /* Pods-CoEpiNetworkingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiNetworkingTests.release.xcconfig"; path = "Target Support Files/Pods-CoEpiNetworkingTests/Pods-CoEpiNetworkingTests.release.xcconfig"; sourceTree = "<group>"; };
 		4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpi_CoEpiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B7FB33D242ED38C002EDE0A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFormatter.swift; path = "/Users/hamishrodda/Documents/Apps/app-ios/CoEpi/network/DateFormatter.swift"; sourceTree = "<absolute>"; };
 		5E087D09295263EB6A4DB967 /* Pods-CoEpi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.debug.xcconfig"; sourceTree = "<group>"; };
-		62B9A0192433D2A200885519 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFormatter.swift; path = CoEpi/network/DateFormatter.swift; sourceTree = "<group>"; };
 		74BF972AC9A1ED47A016DA3D /* Pods-CoEpi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.release.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.release.xcconfig"; sourceTree = "<group>"; };
 		83D98C7D6EAEBFA0E5292E3F /* Pods_CoEpi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
@@ -358,14 +355,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		4B52B00D242DE3A4005CBE24 /* network */ = {
-			isa = PBXGroup;
-			children = (
-				4B7FB33D242ED38C002EDE0A /* DateFormatter.swift */,
-			);
-			path = network;
-			sourceTree = "<group>";
-		};
 		8486BDD2242BA18400A63DD5 /* debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,7 +401,6 @@
 		849DFE592427D3750008ED65 = {
 			isa = PBXGroup;
 			children = (
-				62B9A0192433D2A200885519 /* DateFormatter.swift */,
 				849DFE642427D3750008ED65 /* CoEpi */,
 				849DFE7E2427D37A0008ED65 /* CoEpiTests */,
 				849DFE892427D37A0008ED65 /* CoEpiUITests */,
@@ -437,7 +425,6 @@
 		849DFE642427D3750008ED65 /* CoEpi */ = {
 			isa = PBXGroup;
 			children = (
-				4B52B00D242DE3A4005CBE24 /* network */,
 				84FEDB6D24364FD800F41160 /* api */,
 				84A4B9B3242CA6CC00516F3B /* domain */,
 				84981159243614C500EBD1DA /* dao */,
@@ -998,7 +985,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */,
-				62B9A01A2433D2A200885519 /* DateFormatter.swift in Sources */,
 				CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */,
 				CE6B7AC9243327FF00C42280 /* RealmCENKey.swift in Sources */,
 				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
