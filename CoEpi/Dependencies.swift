@@ -61,7 +61,7 @@ class Dependencies {
     }
 
     private func registerNetworking(container: DependencyContainer) {
-        container.register(.singleton) { ApiImpl() as Api }
+        container.register(.singleton) { CoEpiApiImpl() as CoEpiApi }
     }
 
     private func registerWiring(container: DependencyContainer) {

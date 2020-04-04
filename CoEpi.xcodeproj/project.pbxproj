@@ -15,10 +15,8 @@
 		30EF953124313F61007D61C7 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 30EF952C24313F61007D61C7 /* LICENSE.txt */; };
 		30EF953224313F61007D61C7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30EF952D24313F61007D61C7 /* Roboto-Bold.ttf */; };
 		30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30EF955A2432E009007D61C7 /* CryptoSwift */; };
-		30EF95612434E07B007D61C7 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 30EF95602434E07B007D61C7 /* RxAlamofire */; };
 		30EF956D24363115007D61C7 /* CoEpiNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF956C24363115007D61C7 /* CoEpiNetworkingTests.swift */; };
 		30EF957A24379E01007D61C7 /* CoEpiLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF957924379E01007D61C7 /* CoEpiLaunchScreen.storyboard */; };
-		4B7FB337242DF0F9002EDE0A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4B7FB336242DF0F9002EDE0A /* Alamofire */; };
 		62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */; };
 		848434522438BF91006A5839 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 848434512438BF91006A5839 /* SwiftEntryKit */; };
 		848434552438C03C006A5839 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434542438C03C006A5839 /* ErrorView.swift */; };
@@ -28,6 +26,9 @@
 		848434622438C622006A5839 /* UIViewController+ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434612438C622006A5839 /* UIViewController+ErrorView.swift */; };
 		848434642438C71F006A5839 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434632438C71F006A5839 /* UIViewController+Rx.swift */; };
 		848434662438E663006A5839 /* UINotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434652438E663006A5839 /* UINotification.swift */; };
+		8484346A2438F09C006A5839 /* ApiCenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434692438F09C006A5839 /* ApiCenReport.swift */; };
+		8484346E2438F441006A5839 /* ApiParamsCenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484346D2438F441006A5839 /* ApiParamsCenReport.swift */; };
+		848434712438F6CA006A5839 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 848434702438F6CA006A5839 /* Alamofire */; };
 		8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDC6242B9AC900A63DD5 /* RxSwift */; };
 		8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCA242B9AC900A63DD5 /* RxRelay */; };
 		8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCC242B9AC900A63DD5 /* RxCocoa */; };
@@ -80,7 +81,7 @@
 		84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FA2427ED1900318104 /* OnboardingViewController.xib */; };
 		84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00FE2427ED5E00318104 /* HomeViewController.swift */; };
 		84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FF2427ED5E00318104 /* HomeViewController.xib */; };
-		84FEDB6F24364FE300F41160 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB6E24364FE300F41160 /* Api.swift */; };
+		84FEDB6F24364FE300F41160 /* CoEpiApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB6E24364FE300F41160 /* CoEpiApi.swift */; };
 		B8D966C74B8325F17A9EEF37 /* Pods_CoEpiNetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88428D93C9233C223136D1B /* Pods_CoEpiNetworkingTests.framework */; };
 		CC71F7CAF64914F41BBE05C5 /* Pods_CoEpi_CoEpiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */; };
 		CE626E092430A98B000DB8E7 /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */; };
@@ -187,6 +188,8 @@
 		848434612438C622006A5839 /* UIViewController+ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorView.swift"; sourceTree = "<group>"; };
 		848434632438C71F006A5839 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		848434652438E663006A5839 /* UINotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINotification.swift; sourceTree = "<group>"; };
+		848434692438F09C006A5839 /* ApiCenReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCenReport.swift; sourceTree = "<group>"; };
+		8484346D2438F441006A5839 /* ApiParamsCenReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParamsCenReport.swift; sourceTree = "<group>"; };
 		8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
 		8486BDD7242BBCE700A63DD5 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		8486BDD8242BBCE700A63DD5 /* DebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugViewController.xib; sourceTree = "<group>"; };
@@ -236,7 +239,7 @@
 		84FA00FA2427ED1900318104 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		84FA00FE2427ED5E00318104 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84FA00FF2427ED5E00318104 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		84FEDB6E24364FE300F41160 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		84FEDB6E24364FE300F41160 /* CoEpiApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiApi.swift; sourceTree = "<group>"; };
 		89B1FB101DD42773F3ADB2EC /* Pods_CoEpiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		910DD69A29B6DF9226FCFECA /* Pods-CoEpiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiTests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpiTests/Pods-CoEpiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C12F75FF3B79C829E72E1CF6 /* Pods-CoEpi-CoEpiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi-CoEpiUITests.release.xcconfig"; path = "Target Support Files/Pods-CoEpi-CoEpiUITests/Pods-CoEpi-CoEpiUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -286,10 +289,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B7FB337242DF0F9002EDE0A /* Alamofire in Frameworks */,
 				84A4B9A9242CA4D500516F3B /* RealmSwift in Frameworks */,
 				84A4B9A7242CA4D500516F3B /* Realm in Frameworks */,
-				30EF95612434E07B007D61C7 /* RxAlamofire in Frameworks */,
 				30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */,
 				8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */,
 				8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */,
@@ -297,6 +298,7 @@
 				8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */,
 				84FA00F52427E83000318104 /* Dip in Frameworks */,
 				8491498B2436A28E00975344 /* BerkananSDK in Frameworks */,
+				848434712438F6CA006A5839 /* Alamofire in Frameworks */,
 				ED84885A0AB19A504317BA10 /* Pods_CoEpi.framework in Frameworks */,
 				8486BDCF242B9AC900A63DD5 /* RxBlocking in Frameworks */,
 			);
@@ -396,6 +398,31 @@
 				8484345D2438C3F4006A5839 /* CustomView.swift */,
 			);
 			path = traits;
+			sourceTree = "<group>";
+		};
+		848434682438F086006A5839 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8484346C2438F430006A5839 /* request */,
+				8484346B2438F427006A5839 /* reponse */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8484346B2438F427006A5839 /* reponse */ = {
+			isa = PBXGroup;
+			children = (
+				848434692438F09C006A5839 /* ApiCenReport.swift */,
+			);
+			path = reponse;
+			sourceTree = "<group>";
+		};
+		8484346C2438F430006A5839 /* request */ = {
+			isa = PBXGroup;
+			children = (
+				8484346D2438F441006A5839 /* ApiParamsCenReport.swift */,
+			);
+			path = request;
 			sourceTree = "<group>";
 		};
 		8486BDD2242BA18400A63DD5 /* debug */ = {
@@ -645,7 +672,8 @@
 		84FEDB6D24364FD800F41160 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				84FEDB6E24364FE300F41160 /* Api.swift */,
+				848434682438F086006A5839 /* model */,
+				84FEDB6E24364FE300F41160 /* CoEpiApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -746,11 +774,10 @@
 				8486BDCE242B9AC900A63DD5 /* RxBlocking */,
 				84A4B9A6242CA4D500516F3B /* Realm */,
 				84A4B9A8242CA4D500516F3B /* RealmSwift */,
-				4B7FB336242DF0F9002EDE0A /* Alamofire */,
-				30EF95602434E07B007D61C7 /* RxAlamofire */,
 				30EF955A2432E009007D61C7 /* CryptoSwift */,
 				8491498A2436A28E00975344 /* BerkananSDK */,
 				848434512438BF91006A5839 /* SwiftEntryKit */,
+				848434702438F6CA006A5839 /* Alamofire */,
 			);
 			productName = CoEpi;
 			productReference = 849DFE622427D3750008ED65 /* CoEpi.app */;
@@ -835,11 +862,10 @@
 				84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */,
 				8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				84A4B9A5242CA4D500516F3B /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-				4B7FB335242DF0F9002EDE0A /* XCRemoteSwiftPackageReference "Alamofire" */,
-				30EF955F2434E07B007D61C7 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				30EF95592432E009007D61C7 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				849149892436A28E00975344 /* XCRemoteSwiftPackageReference "BerkananSDK" */,
 				848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
+				8484346F2438F6CA006A5839 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 849DFE632427D3750008ED65 /* Products */;
 			projectDirPath = "";
@@ -1061,8 +1087,9 @@
 				CE6B7ABF2433252300C42280 /* CENReportRepo.swift in Sources */,
 				849149842436A19B00975344 /* CBPeripheral+Additions.swift in Sources */,
 				D41B0CDC242E467800A50447 /* OnboardingButton.swift in Sources */,
-				84FEDB6F24364FE300F41160 /* Api.swift in Sources */,
+				84FEDB6F24364FE300F41160 /* CoEpiApi.swift in Sources */,
 				849149862436A1CF00975344 /* BluetoothService.swift in Sources */,
+				8484346E2438F441006A5839 /* ApiParamsCenReport.swift in Sources */,
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				848434552438C03C006A5839 /* ErrorView.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
@@ -1099,6 +1126,7 @@
 				CE6B7AB52433156900C42280 /* RealmCENDao.swift in Sources */,
 				8484345E2438C3F4006A5839 /* CustomView.swift in Sources */,
 				30EF952E24313F61007D61C7 /* Fonts.swift in Sources */,
+				8484346A2438F09C006A5839 /* ApiCenReport.swift in Sources */,
 				8498115A2436175500EBD1DA /* CenLogic.swift in Sources */,
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,
@@ -1348,7 +1376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SQAPAYXXBX;
+				DEVELOPMENT_TEAM = 37QAPDY2PR;
 				INFOPLIST_FILE = CoEpi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1370,7 +1398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SQAPAYXXBX;
+				DEVELOPMENT_TEAM = 37QAPDY2PR;
 				INFOPLIST_FILE = CoEpi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1548,20 +1576,20 @@
 				minimumVersion = 1.3.0;
 			};
 		};
-		30EF955F2434E07B007D61C7 /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+		848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire";
+			repositoryURL = "https://github.com/huri000/SwiftEntryKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				minimumVersion = 1.2.3;
 			};
 		};
-		4B7FB335242DF0F9002EDE0A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		8484346F2438F6CA006A5839 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
-				kind = exactVersion;
-				version = 4.8.2;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.5;
 			};
 		};
 		848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
@@ -1612,14 +1640,14 @@
 			package = 30EF95592432E009007D61C7 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
 		};
-		30EF95602434E07B007D61C7 /* RxAlamofire */ = {
+		848434512438BF91006A5839 /* SwiftEntryKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 30EF955F2434E07B007D61C7 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
-			productName = RxAlamofire;
+			package = 848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
+			productName = SwiftEntryKit;
 		};
-		4B7FB336242DF0F9002EDE0A /* Alamofire */ = {
+		848434702438F6CA006A5839 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B7FB335242DF0F9002EDE0A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 8484346F2438F6CA006A5839 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		848434512438BF91006A5839 /* SwiftEntryKit */ = {

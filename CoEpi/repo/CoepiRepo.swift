@@ -19,7 +19,7 @@ protocol CoEpiRepo {
 
 class CoEpiRepoImpl: CoEpiRepo {
     private let cenRepo: CENRepo
-    private let api: Api
+    private let api: CoEpiApi
     private let cenMatcher: CenMatcher
     private let cenKeyDao: CENKeyDao
 
@@ -31,7 +31,7 @@ class CoEpiRepoImpl: CoEpiRepo {
 
     private let disposeBag = DisposeBag()
 
-    init(cenRepo: CENRepo, api: Api, keysFetcher: CenKeysFetcher, cenMatcher: CenMatcher, cenKeyDao: CENKeyDao) {
+    init(cenRepo: CENRepo, api: CoEpiApi, keysFetcher: CenKeysFetcher, cenMatcher: CenMatcher, cenKeyDao: CENKeyDao) {
         self.cenRepo = cenRepo
         self.api = api
         self.cenMatcher = cenMatcher
@@ -63,7 +63,11 @@ class CoEpiRepoImpl: CoEpiRepo {
             // Retrieve reports for matching keys
             .flatMap { matchedKeys -> Observable<[[ReceivedCenReport]]> in
                 let requests: [Observable<[ReceivedCenReport]>] = matchedKeys.map {
-                    api.getCenReports(cenKey: $0).asObservable()
+                    api.getCenReports(cenKey: $0)
+                        .map({ apiCenReports in
+                            apiCenReports.map { ReceivedCenReport(report: $0.toCenReport()) }
+                        })
+                        .asObservable()
                 }
                 return Observable.merge(requests).toArray().asObservable()
             }
@@ -88,7 +92,8 @@ class CoEpiRepoImpl: CoEpiRepo {
     // TODO clarify with Rust lib, does it store the keys or we pass them
     func sendReport(report: CenReport) -> Completable {
         if let lastCenKey = cenKeyDao.getLatestCENKey() { // TODO last n keys?
-            return api.postCenReport(cenReport: MyCenReport(report: report, keys: lastCenKey.cenKey))
+            // TODO clarify id
+            return api.postCenReport(cenReport: MyCenReport(id: "123", report: report, keys: lastCenKey.cenKey))
         } else {
             return Completable.error(RepoError.userHasNoCenKeys)
         }

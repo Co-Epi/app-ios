@@ -3,7 +3,7 @@ import RxSwift
 import os.log
 
 class CenKeysFetcher {
-    private let api: Api
+    private let api: CoEpiApi
 
     lazy var keys: Observable<[CENKey]> = Observable<Int>
         // TODO 1 min just for testing
@@ -15,7 +15,7 @@ class CenKeysFetcher {
             strings.map { CENKey(cenKey: $0) }
         }
 
-    init(api: Api) {
+    init(api: CoEpiApi) {
         self.api = api
     }
 }

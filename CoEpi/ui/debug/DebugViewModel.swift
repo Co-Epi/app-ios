@@ -9,7 +9,7 @@ class DebugViewModel {
     private let disposeBag = DisposeBag()
 
 
-    init(bleAdapter: BleAdapter, api: Api) {
+    init(bleAdapter: BleAdapter, api: CoEpiApi) {
 
 
         //TESTING NETWORK
@@ -27,7 +27,7 @@ class DebugViewModel {
         let cenReport = CenReport(id: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140",
                                   report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==",
                                   timestamp: Date().coEpiTimestamp)
-        api.postCenReport(cenReport: MyCenReport(report: cenReport, keys: "17FA287EBE6B42A3859A60C12CF71394"))
+        api.postCenReport(cenReport: MyCenReport(id: "123", report: cenReport, keys: "17FA287EBE6B42A3859A60C12CF71394"))
             .subscribe { print($0) }
         //TESTING NETWORK
 

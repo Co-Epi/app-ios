@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "75bba56748359f297a83f620d45f72cf4ebee4e7",
-          "version": "4.8.2"
+          "revision": "59037bfd28aa963a7916f1eb22a74107a3522f16",
+          "version": "5.0.5"
         }
       },
       {
@@ -80,15 +80,6 @@
           "branch": null,
           "revision": "35662ff940e340bf630ad1d1d88acfc7af18bee6",
           "version": "5.23.8"
-        }
-      },
-      {
-        "package": "RxAlamofire",
-        "repositoryURL": "https://github.com/RxSwiftCommunity/RxAlamofire",
-        "state": {
-          "branch": null,
-          "revision": "64812f3aa1f7cc1ca1670ab890702c5dc6b9ff64",
-          "version": "5.1.0"
         }
       },
       {
