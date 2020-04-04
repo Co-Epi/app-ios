@@ -17,6 +17,7 @@
 		30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30EF955A2432E009007D61C7 /* CryptoSwift */; };
 		30EF95612434E07B007D61C7 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 30EF95602434E07B007D61C7 /* RxAlamofire */; };
 		30EF956D24363115007D61C7 /* CoEpiNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF956C24363115007D61C7 /* CoEpiNetworkingTests.swift */; };
+		30EF957A24379E01007D61C7 /* CoEpiLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF957924379E01007D61C7 /* CoEpiLaunchScreen.storyboard */; };
 		4B7FB337242DF0F9002EDE0A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4B7FB336242DF0F9002EDE0A /* Alamofire */; };
 		62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */; };
 		8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDC6242B9AC900A63DD5 /* RxSwift */; };
@@ -163,6 +164,7 @@
 		30EF956A24363115007D61C7 /* CoEpiNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoEpiNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EF956C24363115007D61C7 /* CoEpiNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiNetworkingTests.swift; sourceTree = "<group>"; };
 		30EF956E24363115007D61C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30EF957924379E01007D61C7 /* CoEpiLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoEpiLaunchScreen.storyboard; sourceTree = "<group>"; };
 		324F4D7DC6C28946706D180E /* Pods-CoEpiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiTests.release.xcconfig"; path = "Target Support Files/Pods-CoEpiTests/Pods-CoEpiTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DB73EEFE0BAFE71BAB85604 /* Pods-CoEpi-CoEpiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi-CoEpiUITests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi-CoEpiUITests/Pods-CoEpi-CoEpiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A8C33FD92971388B446839F /* Pods-CoEpiNetworkingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiNetworkingTests.release.xcconfig"; path = "Target Support Files/Pods-CoEpiNetworkingTests/Pods-CoEpiNetworkingTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -338,6 +340,14 @@
 				30EF956E24363115007D61C7 /* Info.plist */,
 			);
 			path = CoEpiNetworkingTests;
+			sourceTree = "<group>";
+		};
+		30EF957824379DD8007D61C7 /* launch screen */ = {
+			isa = PBXGroup;
+			children = (
+				30EF957924379E01007D61C7 /* CoEpiLaunchScreen.storyboard */,
+			);
+			path = "launch screen";
 			sourceTree = "<group>";
 		};
 		44CF83504F0FD8582FEC242D /* Pods */ = {
@@ -542,6 +552,7 @@
 		84FA00F82427EC4300318104 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				30EF957824379DD8007D61C7 /* launch screen */,
 				30EF952624313F61007D61C7 /* resources */,
 				D41B0D0A242F47F000A50447 /* theme */,
 				8486BDD2242BA18400A63DD5 /* debug */,
@@ -821,6 +832,7 @@
 				84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */,
 				CE626E0E2430B911000DB8E7 /* AlertView.xib in Resources */,
 				84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */,
+				30EF957A24379E01007D61C7 /* CoEpiLaunchScreen.storyboard in Resources */,
 				30EF953024313F61007D61C7 /* Roboto-Regular.ttf in Resources */,
 				30EF952F24313F61007D61C7 /* Roboto-Light.ttf in Resources */,
 				30EF953124313F61007D61C7 /* LICENSE.txt in Resources */,

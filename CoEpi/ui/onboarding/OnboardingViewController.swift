@@ -42,12 +42,9 @@ class OnboardingViewController: UIViewController {
     
     func setupLabels() {
         
-        let pointSize: CGFloat = 14
-        let color = UIColor.darkText
-        
-        trackLabel.attributedText = OnboardingStrings.track.markupAttributed(pointSize: pointSize, color: color)
-        monitorLabel.attributedText = OnboardingStrings.monitor.markupAttributed(pointSize: pointSize, color: color)
-        alertsLabel.attributedText = OnboardingStrings.alerts.markupAttributed(pointSize: pointSize, color: color)
+        trackLabel.attributedText = OnboardingStrings.makeAttributedTrack() //.markupAttributed(pointSize: pointSize, color: color)
+        monitorLabel.attributedText = OnboardingStrings.makeAttributedMonitor() //.markupAttributed(pointSize: pointSize, color: color)
+        alertsLabel.attributedText = OnboardingStrings.makeAttributedAlerts() //.markupAttributed(pointSize: pointSize, color: color)
         
         tagLineLabel.text = OnboardingStrings.collaborate
         
@@ -77,7 +74,8 @@ private extension OnboardingViewController {
         
         let attrs: FontAttributes = [
             .foregroundColor: UIColor.white,
-            .kern: 5
+            .kern: 5,
+            .font: Fonts.robotoBold14
         ]
         
         return NSAttributedString(string: OnboardingStrings.getStarted.uppercased(),

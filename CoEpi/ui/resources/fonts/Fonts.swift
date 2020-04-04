@@ -29,6 +29,13 @@ class Fonts {
         return font
     }()
     
+    static var robotoBold14 : UIFont = { guard let font = UIFont(name: FontNames.robotoBold.rawValue , size: 14)
+        else {
+            fatalError(fatalFontErrorMessage(font: .robotoBold))
+        }
+        return font
+    }()
+    
     static func fatalFontErrorMessage(font: FontNames) -> String {
         let message = """
             Failed to load the "\(font.rawValue)" font.

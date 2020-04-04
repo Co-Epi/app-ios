@@ -19,8 +19,10 @@ class OnboardingWireframe {
         self.parent = parent
         viewModel.delegate = self
         let onboardingController = OnboardingViewController(viewModel: viewModel)
-        
-        parent.present(onboardingController, animated: true, completion: nil)
+        //Schedule presentation of the VC on the main queue (should be executed after HomeViewController is rendered completely, avoiding "Presenting view controllers on detached view controllers is discouraged" warning
+        DispatchQueue.main.async(execute: {
+            parent.present(onboardingController, animated: true, completion: nil)
+        });
 
         self.onboardingController = onboardingController
         
@@ -28,6 +30,10 @@ class OnboardingWireframe {
 }
 
 extension OnboardingWireframe : OnboardingViewModelDelegate {
+    func onNext() {
+        onboardingController?.dismiss(animated: true, completion: nil)
+    }
+    
     func onClose() {
         onboardingController?.dismiss(animated: true, completion: nil)
     }
