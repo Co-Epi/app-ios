@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HealthQuizViewController: UIViewController {
+class HealthQuizViewController: UIViewController, ErrorDisplayer {
     private let viewModel: HealthQuizViewModel
     private let dataSource: HealthQuizQuestionsDataSource = .init()
 
@@ -33,6 +33,10 @@ class HealthQuizViewController: UIViewController {
 
         viewModel.rxQuestions
             .drive(questionList.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+        viewModel.notification
+            .drive(rx.notification)
             .disposed(by: disposeBag)
      }
 }

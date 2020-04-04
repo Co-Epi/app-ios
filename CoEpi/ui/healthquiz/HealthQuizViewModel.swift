@@ -4,12 +4,15 @@ import RxSwift
 import os.log
 
 class HealthQuizViewModel {
+    let rxQuestions: Driver<[Question]>
+    let notification: Driver<UINotification>
+
+    private let notificationSubject: PublishRelay<UINotification> = PublishRelay()
+
     weak var delegate: HealthQuizViewModelDelegate?
 
     private let symptomRepo: SymptomRepo
     private let questionsRelay: BehaviorRelay<[Question]>
-
-    private(set) var rxQuestions: Driver<[Question]>
 
     private let submitTrigger: PublishRelay<Void> = PublishRelay()
 
@@ -22,6 +25,9 @@ class HealthQuizViewModel {
 
         rxQuestions = questionsRelay
             .asDriver(onErrorJustReturn: [])
+
+        notification = notificationSubject
+            .asDriver(onErrorDriveWith: .empty())
 
         observeSubmit()
     }
@@ -48,15 +54,28 @@ class HealthQuizViewModel {
             }
 
         submitTrigger.withLatestFrom(selectedSymptoms)
-            .flatMap { [symptomRepo] (symptoms: [Symptom]) in
-                symptomRepo.submitSymptoms(symptoms: symptoms).andThen(Observable.just(()))
+            .flatMap { [symptomRepo, notificationSubject] symptoms in
+                Self.submitSymptoms(symptomRepo: symptomRepo, symptoms: symptoms, notificationSubject: notificationSubject)
             }
-            .subscribe(onNext: { [weak self] in
-                self?.delegate?.onSubmit()
+            .subscribe(onNext: { [weak self] success in
+                if success {
+                    self?.delegate?.onSubmit()
+                    self?.notificationSubject.accept(.success(message: "Symptoms submitted!"))
+                }
             }, onError: { error in
                 os_log("Error submitting symptoms: %@", type: .error, "\(error)")
             })
             .disposed(by: disposeBag)
+    }
+
+    private static func submitSymptoms(symptomRepo: SymptomRepo, symptoms: [Symptom],
+                                       notificationSubject: PublishRelay<UINotification>) -> Observable<Bool> {
+        symptomRepo.submitSymptoms(symptoms: symptoms)
+            .do(onError: { [notificationSubject] error in
+                notificationSubject.accept(.error(message: "\(error)"))
+            })
+            .andThen(.just(true))
+            .catchErrorJustReturn(false)
     }
 }
 
