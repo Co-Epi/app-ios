@@ -1376,7 +1376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37QAPDY2PR;
+				DEVELOPMENT_TEAM = SQAPAYXXBX;
 				INFOPLIST_FILE = CoEpi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1398,7 +1398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37QAPDY2PR;
+				DEVELOPMENT_TEAM = SQAPAYXXBX;
 				INFOPLIST_FILE = CoEpi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1475,7 +1475,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VU7B7BR34W;
+				DEVELOPMENT_TEAM = SQAPAYXXBX;
 				INFOPLIST_FILE = CoEpiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1500,7 +1500,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VU7B7BR34W;
+				DEVELOPMENT_TEAM = SQAPAYXXBX;
 				INFOPLIST_FILE = CoEpiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1592,14 +1592,6 @@
 				minimumVersion = 5.0.5;
 			};
 		};
-		848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/huri000/SwiftEntryKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.3;
-			};
-		};
 		8486BDC5242B9AC900A63DD5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -1649,11 +1641,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8484346F2438F6CA006A5839 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		848434512438BF91006A5839 /* SwiftEntryKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
-			productName = SwiftEntryKit;
 		};
 		8486BDC6242B9AC900A63DD5 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;

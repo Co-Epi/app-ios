@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,10 +18,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CoEpi" customModuleProvider="target">
             <connections>
+                <outlet property="buildLabel" destination="0sB-oG-nLH" id="Wjb-OL-Chd"/>
                 <outlet property="contactAlertsDescriptionLabel" destination="ION-yb-bj7" id="0yc-j5-Hyo"/>
                 <outlet property="myHealthDescriptionLabel" destination="hDq-6a-Gjc" id="JZJ-nm-zgt"/>
                 <outlet property="stackContainerView" destination="ho3-Q1-9Ta" id="3hU-gS-mJk"/>
                 <outlet property="stackContainerViewTwo" destination="871-hC-mXL" id="sgQ-tF-lyG"/>
+                <outlet property="versionLabel" destination="wxx-IU-WaY" id="QOS-7g-sz2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -133,6 +136,18 @@
                                 <constraint firstItem="aAJ-5K-KGC" firstAttribute="leading" secondItem="zio-Rs-7WL" secondAttribute="trailing" constant="12" id="fSL-c1-5Tn"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxx-IU-WaY">
+                            <rect key="frame" x="120" y="316.5" width="47.5" height="16.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                            <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sB-oG-nLH">
+                            <rect key="frame" x="187.5" y="316.5" width="31.5" height="16.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                            <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbH-Ss-34p">
                             <rect key="frame" x="239" y="306" width="61" height="37"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
@@ -144,12 +159,16 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="sbH-Ss-34p" firstAttribute="leading" secondItem="0sB-oG-nLH" secondAttribute="trailing" constant="20" id="57v-KG-d78"/>
                         <constraint firstItem="871-hC-mXL" firstAttribute="top" secondItem="ho3-Q1-9Ta" secondAttribute="bottom" constant="33" id="6V0-YI-bbD"/>
                         <constraint firstItem="ho3-Q1-9Ta" firstAttribute="centerX" secondItem="Nid-AG-B0D" secondAttribute="centerX" id="AIu-xH-tPS"/>
                         <constraint firstAttribute="trailing" secondItem="ho3-Q1-9Ta" secondAttribute="trailing" constant="20" id="Ade-Nl-vaT"/>
+                        <constraint firstItem="sbH-Ss-34p" firstAttribute="centerY" secondItem="wxx-IU-WaY" secondAttribute="centerY" id="Boq-CV-h7I"/>
                         <constraint firstItem="sbH-Ss-34p" firstAttribute="trailing" secondItem="871-hC-mXL" secondAttribute="trailing" id="DMe-XL-zFn"/>
                         <constraint firstItem="ho3-Q1-9Ta" firstAttribute="leading" secondItem="871-hC-mXL" secondAttribute="leading" id="JPg-y1-Gvh"/>
                         <constraint firstItem="ho3-Q1-9Ta" firstAttribute="trailing" secondItem="871-hC-mXL" secondAttribute="trailing" id="RtB-hU-MCv"/>
+                        <constraint firstItem="0sB-oG-nLH" firstAttribute="centerY" secondItem="wxx-IU-WaY" secondAttribute="centerY" id="SZ1-GR-jhJ"/>
+                        <constraint firstItem="0sB-oG-nLH" firstAttribute="leading" secondItem="wxx-IU-WaY" secondAttribute="trailing" constant="20" id="Xjn-oH-Fvj"/>
                         <constraint firstAttribute="bottom" secondItem="sbH-Ss-34p" secondAttribute="bottom" constant="20" id="Zfd-ot-2h1"/>
                         <constraint firstItem="sbH-Ss-34p" firstAttribute="top" secondItem="871-hC-mXL" secondAttribute="bottom" constant="20" id="bUi-Qu-l1P"/>
                         <constraint firstItem="ho3-Q1-9Ta" firstAttribute="leading" secondItem="Nid-AG-B0D" secondAttribute="leading" constant="20" id="lVi-LZ-s7u"/>

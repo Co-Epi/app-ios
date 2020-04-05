@@ -13,6 +13,10 @@ class HomeViewController: UIViewController {
     }
     @IBOutlet weak var myHealthDescriptionLabel: UILabel!
     @IBOutlet weak var contactAlertsDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var buildLabel: UILabel!
+    
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
@@ -46,6 +50,27 @@ class HomeViewController: UIViewController {
         contactAlertsDescriptionLabel.attributedText = NSMutableAttributedString(string: "Approximate times that you may have been exposed to a symptomatic individual", attributes: [NSAttributedString.Key.kern: 0.25, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         configureCardView(cardView: self.stackContainerView)
         configureCardView(cardView: self.stackContainerViewTwo)
+        
+        versionLabel.text = getVersionNumber()
+        buildLabel.text = getBuildNumber()
+    }
+    
+    private func getVersionNumber() -> String{
+        
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+         else{
+            fatalError("Failed to read bundle version")
+        }
+        print("Version : \(version)");
+        return "Version: \(version)"
+    }
+    
+    private func getBuildNumber() -> String {
+        guard let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else {
+            fatalError("Failed to read build number")
+        }
+        print("Build : \(build)")
+        return "Build: \(build)"
     }
     
     private func configureCardView(cardView: UIView){
