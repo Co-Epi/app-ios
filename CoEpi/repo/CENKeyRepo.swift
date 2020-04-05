@@ -1,5 +1,5 @@
 protocol CENKeyRepo {
-    func generateAndStoreCENKey() -> CENKey
+    func generateAndStoreCENKey() -> Result<CENKey, DaoError>
 
     func getCENKeys(limit: Int64) -> [CENKey]
 
@@ -13,7 +13,7 @@ class CENKeyRepoImpl: CENKeyRepo {
         self.cenKeyDao = cenKeyDao
     }
 
-    func generateAndStoreCENKey() -> CENKey {
+    func generateAndStoreCENKey() -> Result<CENKey, DaoError> {
         cenKeyDao.generateAndStoreCENKey()
     }
 

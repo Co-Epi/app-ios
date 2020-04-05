@@ -55,6 +55,7 @@
 		849D1AFC2439D7B300804511 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = 849D1AFB2439D7B300804511 /* RxSwiftExt */; };
 		849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1AFE2439D90C00804511 /* Completable+Convenience.swift */; };
 		849D1B082439EAD200804511 /* UINotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1B072439EAD200804511 /* UINotifier.swift */; };
+		849D1B0A2439F31D00804511 /* DaoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1B092439F31D00804511 /* DaoError.swift */; };
 		849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE652427D3750008ED65 /* AppDelegate.swift */; };
 		849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */; };
 		849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE712427D37A0008ED65 /* Assets.xcassets */; };
@@ -211,6 +212,7 @@
 		849CEFA1242FEDE7003F9284 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = CoEpi/ui/theme/Theme.swift; sourceTree = SOURCE_ROOT; };
 		849D1AFE2439D90C00804511 /* Completable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Completable+Convenience.swift"; sourceTree = "<group>"; };
 		849D1B072439EAD200804511 /* UINotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINotifier.swift; sourceTree = "<group>"; };
+		849D1B092439F31D00804511 /* DaoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoError.swift; sourceTree = "<group>"; };
 		849DFE622427D3750008ED65 /* CoEpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoEpi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE652427D3750008ED65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849DFE6F2427D3750008ED65 /* CoEpi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoEpi.xcdatamodel; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				CE6B7AB42433156900C42280 /* RealmCENDao.swift */,
 				CE6B7ABC243324BA00C42280 /* RealmCENReportDao.swift */,
 				CE6B7AC42433273200C42280 /* RealmCENKeyDao.swift */,
+				849D1B092439F31D00804511 /* DaoError.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -1129,6 +1132,7 @@
 				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
+				849D1B0A2439F31D00804511 /* DaoError.swift in Sources */,
 				8491497B24366FF000975344 /* CenKeysFetcher.swift in Sources */,
 				84A1C0CD24375C4300875DAE /* BleAdapter.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,

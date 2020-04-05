@@ -1,7 +1,7 @@
 import Foundation
 
 struct CENKey: Codable {
-    let cenKey: String
+    let cenKey: String // Base64
     let timestamp: Int64
     
     init(cenKey: String, timestamp: Int64 = Date().coEpiTimestamp) {

@@ -91,11 +91,15 @@ class CoEpiRepoImpl: CoEpiRepo {
 
     // TODO clarify with Rust lib, does it store the keys or we pass them
     func sendReport(report: CenReport) -> Completable {
-        if let lastCenKey = cenKeyDao.getLatestCENKey() { // TODO last n keys?
+        switch cenKeyDao.generateAndStoreCENKey() {  // TODO last n keys?
+        case .success(let key):
             // TODO clarify id
-            return api.postCenReport(cenReport: MyCenReport(id: "123", report: report, keys: lastCenKey.cenKey))
-        } else {
-            return Completable.error(RepoError.userHasNoCenKeys)
+            return api.postCenReport(cenReport: MyCenReport(id: "123", report: report, keys: key.cenKey))
+        case .failure(let error):
+            switch error {
+            case .couldNotComputeKey: return .error(RepoError.couldNotComputeKey)
+            case .database: return .error(RepoError.database)
+            }
         }
     }
 }

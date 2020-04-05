@@ -1,4 +1,4 @@
-enum RepoError: Error {
+enum DaoError: Error {
     case couldNotComputeKey
     case database
 }

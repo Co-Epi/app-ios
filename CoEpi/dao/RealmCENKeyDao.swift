@@ -4,10 +4,9 @@ import RealmSwift
 import Security
 
 protocol CENKeyDao {
-    func generateAndStoreCENKey() -> CENKey
+    func generateAndStoreCENKey() -> Result<CENKey, DaoError>
     func insert(key: CENKey) -> Bool
     func getCENKeys(limit: Int64) -> [CENKey]
-    func getLatestCENKey() -> CENKey?
 }
 
 class RealmCENKeyDao: RealmDao, CENKeyDao {
@@ -19,8 +18,8 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
         self.realmProvider = realmProvider
         self.cenLogic = cenLogic
     }
-
-    func generateAndStoreCENKey() -> CENKey {
+ 
+    func generateAndStoreCENKey() -> Result<CENKey, DaoError> {
         let curTimestamp = Date().coEpiTimestamp
 
         if let latestCenKey = getLatestCENKey() {
@@ -28,21 +27,27 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
                 return generateAndInsertCenKey(curTimestamp: curTimestamp)
 
             } else {
-                return latestCenKey
+                return .success(latestCenKey)
             }
         } else { // There's no latest CEN key
             return generateAndInsertCenKey(curTimestamp: curTimestamp)
         }
     }
 
-    private func generateAndInsertCenKey(curTimestamp: Int64) -> CENKey {
-        let newCENKey = cenLogic.generateCenKey(curTimestamp: curTimestamp)
-        _ = insert(key: newCENKey)
-        return newCENKey
+    private func generateAndInsertCenKey(curTimestamp: Int64) -> Result<CENKey, DaoError> {
+        switch cenLogic.generateCenKey(curTimestamp: curTimestamp) {
+        case .success(let key):
+            _ = insert(key: key)
+            return .success(key)
+        case .failure(let error):
+            switch error {
+            case .couldNotComputeKey: return .failure(.couldNotComputeKey)
+            }
+        }
     }
 
-    // TODO last n keys? for the reports
-    func getLatestCENKey() -> CENKey? {
+    // TODO last n keys? for the reports?
+    private func getLatestCENKey() -> CENKey? {
         let cenKeysObject = realm.objects(RealmCENKey.self).sorted(byKeyPath: "timestamp", ascending: false)
         if let lastCenKey = cenKeysObject.first {
             return CENKey(cenKey: lastCenKey.CENKey, timestamp: lastCenKey.timestamp)

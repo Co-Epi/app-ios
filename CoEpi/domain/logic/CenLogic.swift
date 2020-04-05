@@ -10,17 +10,15 @@ class CenLogic {
          (cenKeyTimestamp == 0) || (roundedTimestamp(ts: curTimestamp) > roundedTimestamp(ts: cenKeyTimestamp))
     }
 
-    func generateCenKey(curTimestamp: Int64) -> CENKey {
+    func generateCenKey(curTimestamp: Int64) -> Result<CENKey, CenLogicError> {
         //generate a new AES Key and store it in local storage
 
         //generate base64string representation of key
         let cenKeyString = computeSymmetricKey()
-        let cenKeyTimestamp = curTimestamp
 
-        //Create CENKey and insert/save to Realm
-        let newCENKey = CENKey(cenKey: cenKeyString, timestamp: cenKeyTimestamp)
-        
-        return newCENKey
+        return cenKeyString.map {
+            CENKey(cenKey: $0, timestamp: curTimestamp)
+        }
     }
 
     // TODO ideally this should return Cen, not Data. Implement Cen <-> Data (separately)
@@ -56,7 +54,7 @@ class CenLogic {
         }
     }
 
-    private func computeSymmetricKey() -> String {
+    private func computeSymmetricKey() -> Result<String, CenLogicError> {
         var keyData = Data(count: 32) // 32 bytes === 256 bits
         let keyDataCount = keyData.count
         let result = keyData.withUnsafeMutableBytes {
@@ -64,9 +62,9 @@ class CenLogic {
             SecRandomCopyBytes(kSecRandomDefault, keyDataCount, mutableBytes)
         }
         if result == errSecSuccess {
-            return keyData.base64EncodedString()
+            return .success(keyData.base64EncodedString())
         } else {
-            return ""
+            return .failure(.couldNotComputeKey)
         }
     }
 
@@ -74,3 +72,8 @@ class CenLogic {
         Int64(ts / CENKeyLifetimeInSeconds) * CENKeyLifetimeInSeconds
     }
 }
+
+public enum CenLogicError: Error {
+    case couldNotComputeKey
+}
+

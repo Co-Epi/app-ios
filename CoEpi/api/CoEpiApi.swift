@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import Alamofire
+import os.log
 
 protocol CoEpiApi {
 
@@ -16,7 +17,9 @@ class CoEpiApiImpl: CoEpiApi {
     private let baseUrl = "https://coepi.wolk.com:8080/"
 
     func postCenReport(cenReport: MyCenReport) -> Completable {
-        post(url: baseUrl + "cenreport", params: ApiParamsCenReport(report: cenReport))
+        os_log("Sending CEN report to API: %@", log: servicesLog, type: .debug, "\(cenReport)")
+
+        return post(url: baseUrl + "cenreport", params: ApiParamsCenReport(report: cenReport))
     }
 
     func getCenKeys() -> Single<[String]> {
