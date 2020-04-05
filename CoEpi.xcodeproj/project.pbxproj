@@ -52,6 +52,9 @@
 		849CEFA2242FEDE7003F9284 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CEFA1242FEDE7003F9284 /* Theme.swift */; };
 		849CEFA3242FEE23003F9284 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */; };
 		849CEFA4242FF335003F9284 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CEFA1242FEDE7003F9284 /* Theme.swift */; };
+		849D1AFC2439D7B300804511 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = 849D1AFB2439D7B300804511 /* RxSwiftExt */; };
+		849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1AFE2439D90C00804511 /* Completable+Convenience.swift */; };
+		849D1B082439EAD200804511 /* UINotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1B072439EAD200804511 /* UINotifier.swift */; };
 		849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE652427D3750008ED65 /* AppDelegate.swift */; };
 		849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */; };
 		849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE712427D37A0008ED65 /* Assets.xcassets */; };
@@ -206,6 +209,8 @@
 		849811572436119300EBD1DA /* CoEpiRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiRepo.swift; sourceTree = "<group>"; };
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		849CEFA1242FEDE7003F9284 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = CoEpi/ui/theme/Theme.swift; sourceTree = SOURCE_ROOT; };
+		849D1AFE2439D90C00804511 /* Completable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Completable+Convenience.swift"; sourceTree = "<group>"; };
+		849D1B072439EAD200804511 /* UINotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINotifier.swift; sourceTree = "<group>"; };
 		849DFE622427D3750008ED65 /* CoEpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoEpi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE652427D3750008ED65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849DFE6F2427D3750008ED65 /* CoEpi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoEpi.xcdatamodel; sourceTree = "<group>"; };
@@ -289,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849D1AFC2439D7B300804511 /* RxSwiftExt in Frameworks */,
 				84A4B9A9242CA4D500516F3B /* RealmSwift in Frameworks */,
 				84A4B9A7242CA4D500516F3B /* Realm in Frameworks */,
 				30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */,
@@ -468,6 +474,22 @@
 			path = cross;
 			sourceTree = "<group>";
 		};
+		849D1AFD2439D8FF00804511 /* rx */ = {
+			isa = PBXGroup;
+			children = (
+				849D1AFE2439D90C00804511 /* Completable+Convenience.swift */,
+			);
+			path = rx;
+			sourceTree = "<group>";
+		};
+		849D1B062439EAD200804511 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				849D1B072439EAD200804511 /* UINotifier.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
 		849DFE592427D3750008ED65 = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +566,7 @@
 		84A1C0CE2437BFCC00875DAE /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				849D1AFD2439D8FF00804511 /* rx */,
 				84A1C0CF2437BFE200875DAE /* Date+Convenience.swift */,
 			);
 			path = extensions;
@@ -618,6 +641,7 @@
 				30EF952624313F61007D61C7 /* resources */,
 				D41B0D0A242F47F000A50447 /* theme */,
 				8486BDD2242BA18400A63DD5 /* debug */,
+				849D1B062439EAD200804511 /* protocols */,
 				84FA01412427F04800318104 /* extensions */,
 				84FA01432427F05500318104 /* home */,
 				84FA01422427F04E00318104 /* onboarding */,
@@ -778,6 +802,7 @@
 				8491498A2436A28E00975344 /* BerkananSDK */,
 				848434512438BF91006A5839 /* SwiftEntryKit */,
 				848434702438F6CA006A5839 /* Alamofire */,
+				849D1AFB2439D7B300804511 /* RxSwiftExt */,
 			);
 			productName = CoEpi;
 			productReference = 849DFE622427D3750008ED65 /* CoEpi.app */;
@@ -866,6 +891,7 @@
 				849149892436A28E00975344 /* XCRemoteSwiftPackageReference "BerkananSDK" */,
 				848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				8484346F2438F6CA006A5839 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				849D1AFA2439D7B300804511 /* XCRemoteSwiftPackageReference "RxSwiftExt" */,
 			);
 			productRefGroup = 849DFE632427D3750008ED65 /* Products */;
 			projectDirPath = "";
@@ -1075,6 +1101,7 @@
 				CE6B7AC52433273200C42280 /* RealmCENKeyDao.swift in Sources */,
 				84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */,
 				84A4B9AF242CA5E600516F3B /* RealmProvider.swift in Sources */,
+				849D1B082439EAD200804511 /* UINotifier.swift in Sources */,
 				CE6B7AC1243325F200C42280 /* RealmCENReport.swift in Sources */,
 				84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */,
 				84BF97202427FAF1001ADD6B /* OnboardingWireframe.swift in Sources */,
@@ -1110,6 +1137,7 @@
 				D41B0D1F242F60CF00A50447 /* OnboardingStrings.swift in Sources */,
 				D41B0D1B242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */,
 				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
+				849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */,
 				D41B0CDD242E467800A50447 /* GradientView.swift in Sources */,
 				CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */,
 				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
@@ -1608,6 +1636,14 @@
 				minimumVersion = 2.2.8;
 			};
 		};
+		849D1AFA2439D7B300804511 /* XCRemoteSwiftPackageReference "RxSwiftExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxSwiftExt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
 		84A4B9A5242CA4D500516F3B /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
@@ -1666,6 +1702,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 849149892436A28E00975344 /* XCRemoteSwiftPackageReference "BerkananSDK" */;
 			productName = BerkananSDK;
+		};
+		849D1AFB2439D7B300804511 /* RxSwiftExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 849D1AFA2439D7B300804511 /* XCRemoteSwiftPackageReference "RxSwiftExt" */;
+			productName = RxSwiftExt;
 		};
 		84A4B9A6242CA4D500516F3B /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

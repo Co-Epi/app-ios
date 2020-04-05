@@ -1,13 +1,14 @@
 import Dip
 import RxCocoa
 import RxSwift
+import RxSwiftExt
 import os.log
 
-class HealthQuizViewModel {
+class HealthQuizViewModel: UINotifier {
     let rxQuestions: Driver<[Question]>
     let notification: Driver<UINotification>
 
-    private let notificationSubject: PublishRelay<UINotification> = PublishRelay()
+    let notificationSubject: PublishRelay<UINotification> = PublishRelay()
 
     weak var delegate: HealthQuizViewModelDelegate?
 
@@ -16,7 +17,7 @@ class HealthQuizViewModel {
 
     private let submitTrigger: PublishRelay<Void> = PublishRelay()
 
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
 
     init(container: DependencyContainer) {
         self.symptomRepo = try! container.resolve()
@@ -53,29 +54,18 @@ class HealthQuizViewModel {
                 .map { $0.toSymptom() }
             }
 
-        submitTrigger.withLatestFrom(selectedSymptoms)
-            .flatMap { [symptomRepo, notificationSubject] symptoms in
-                Self.submitSymptoms(symptomRepo: symptomRepo, symptoms: symptoms, notificationSubject: notificationSubject)
+        let events: Observable<Event<()>> = submitTrigger.withLatestFrom(selectedSymptoms)
+            .flatMap { [symptomRepo] symptoms in
+                symptomRepo.submitSymptoms(symptoms: symptoms)
+                    .materialize()
             }
-            .subscribe(onNext: { [weak self] success in
-                if success {
-                    self?.delegate?.onSubmit()
-                    self?.notificationSubject.accept(.success(message: "Symptoms submitted!"))
-                }
-            }, onError: { error in
-                os_log("Error submitting symptoms: %@", type: .error, "\(error)")
-            })
-            .disposed(by: disposeBag)
-    }
+            .share()
 
-    private static func submitSymptoms(symptomRepo: SymptomRepo, symptoms: [Symptom],
-                                       notificationSubject: PublishRelay<UINotification>) -> Observable<Bool> {
-        symptomRepo.submitSymptoms(symptoms: symptoms)
-            .do(onError: { [notificationSubject] error in
-                notificationSubject.accept(.error(message: "\(error)"))
-            })
-            .andThen(.just(true))
-            .catchErrorJustReturn(false)
+        events.elements().subscribe(onNext: { [weak self] success in
+            self?.delegate?.onSubmit()
+        }).disposed(by: disposeBag)
+
+        bindSuccessErrorNotifier(events, successMessage: "Symptoms submitted!")
     }
 }
 
