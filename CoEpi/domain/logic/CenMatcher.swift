@@ -1,4 +1,5 @@
 import Foundation
+import os.log
 
 protocol CenMatcher {
     func hasMatches(key: CENKey, maxTimestamp: Int64) -> Bool
@@ -19,25 +20,30 @@ class CenMatcherImpl: CenMatcher {
 
     // Copied from Android implementation
     private func match(key: CENKey, maxTimestamp: Int64) -> [CEN] {
+
+        // Unclear why maxTimestamp is a parameter
+        let maxTimestamp = Date().coEpiTimestamp
+        
         // take the last 7 days of timestamps and generate all the possible CENs (e.g. 7 days) TODO: Parallelize this?
-        let minTimestamp: Int64 = maxTimestamp - 7*24*60
+        let minTimestamp: Int64 = maxTimestamp - 7*24*60*60
         var CENLifetimeInSeconds = 15*60   // every 15 mins a new CEN is generated
 
         // last time (unix timestamp) the CENKeys were requested
 
-        let max = Int(7*24*(Double(60)/Double(CENLifetimeInSeconds)))
+        let max = Int(Double(7*24*60*60)/Double(CENLifetimeInSeconds))
 
         var possibleCENs: [String] = []
         possibleCENs.reserveCapacity(max)
 
-        let CENKeyLifetimeInSeconds = 7*86400 // every 7 days a new key is generated
-
         for i in 0...max {
             let ts = maxTimestamp - Int64(CENLifetimeInSeconds * i)
-            let cen = cenLogic.generateCen(CENKey: key.cenKey)
+            let cen = cenLogic.generateCen(CENKey: key.cenKey, timestamp: ts)
 //            possibleCENs[i] = cen.toHex()
             possibleCENs.append(cen.toHex()) // No fixed size array
         }
+
+        os_log("Generated results for key: %@, possible CENs: %@",
+               log: servicesLog, type: .debug, key.cenKey, "\(possibleCENs.count)")
 
         return cenRepo.match(start: minTimestamp, end: maxTimestamp, hexEncodedCENs: possibleCENs)
     }

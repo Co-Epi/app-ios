@@ -12,8 +12,11 @@ class Dependencies {
         registerRepos(container: container)
         registerServices(container: container)
         registerNetworking(container: container)
-        registerWiring(container: container)
         registerBle(container: container)
+        registerWiring(container: container)
+
+        // Throws if components fail to instantiate
+        try! container.bootstrap()
 
         return container
     }
@@ -32,7 +35,7 @@ class Dependencies {
     private func registerDaos(container: DependencyContainer) {
         container.register(.singleton) { RealmProvider() }
         container.register(.singleton) { RealmCENDao(realmProvider: try container.resolve()) as CENDao }
-        container.register(.singleton) { RealmCENReportDao(realmProvider: try container.resolve()) as CENReportDao }
+        container.register(.eagerSingleton) { RealmCENReportDao(realmProvider: try container.resolve()) as CENReportDao }
         container.register(.singleton) { RealmCENKeyDao(realmProvider: try container.resolve(),
                                                         cenLogic: try container.resolve()) as CENKeyDao }
     }
@@ -44,7 +47,7 @@ class Dependencies {
         container.register(.singleton) { CenReportRepoImpl(cenReportDao: try container.resolve(),
                                                            coEpiRepo: try container.resolve()) as CENReportRepo }
         container.register(.singleton) { CENKeyRepoImpl(cenKeyDao: try container.resolve()) as CENKeyRepo }
-        container.register(.singleton) { CoEpiRepoImpl(cenRepo: try container.resolve(),
+        container.register(.eagerSingleton) { CoEpiRepoImpl(cenRepo: try container.resolve(),
                                                        api: try container.resolve(),
                                                        keysFetcher: try container.resolve(),
                                                        cenMatcher: try container.resolve(),
@@ -65,14 +68,11 @@ class Dependencies {
     }
 
     private func registerWiring(container: DependencyContainer) {
-        container.register(.singleton) { ScannedCensHandler(coepiRepo: try container.resolve(),
+        container.register(.eagerSingleton) { ScannedCensHandler(coepiRepo: try container.resolve(),
                                                 bleAdapter: try container.resolve()) }
         container.register(.eagerSingleton) { CenKeysFetcher(api: try container.resolve()) }
         container.register(.singleton) { CenMatcherImpl(cenRepo: try container.resolve(),
                                                         cenLogic: try container.resolve()) as CenMatcher }
-
-        // .eagerSingleton appears not to work. Triggering initialization.
-        let _: CoEpiRepo = try! container.resolve()
     }
 
     private func registerBle(container: DependencyContainer) {

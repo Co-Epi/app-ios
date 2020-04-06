@@ -17,6 +17,7 @@ class ScannedCensHandler {
 
     private func forwardScannedCensToCoEpiRepo() {
         bleAdapter.discovered.subscribe(onNext: { [coepiRepo] cen in
+            os_log("Storing CEN: %@", log: bleCentralLog, "\(cen)")
             coepiRepo.storeObservedCen(cen: cen)
         }, onError: { error in
             os_log("Error in central cen observer: %@", log: bleCentralLog, error.localizedDescription)

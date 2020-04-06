@@ -22,8 +22,7 @@ class CenLogic {
     }
 
     // TODO ideally this should return Cen, not Data. Implement Cen <-> Data (separately)
-    func generateCen(CENKey: String) -> Data {
-        let currentTs: Int64 = Date().coEpiTimestamp
+    func generateCen(CENKey: String, timestamp: Int64) -> Data {
         // decode the base64 encoded key
         let decodedCENKey: Data = Data(base64Encoded: CENKey)!
 
@@ -35,7 +34,7 @@ class CenLogic {
 
         //convert timestamp to [UInt8]
         var tsAsUInt8Array: [UInt8] = []
-        [roundedTimestamp(ts: currentTs)].withUnsafeBytes {
+        [roundedTimestamp(ts: timestamp)].withUnsafeBytes {
             tsAsUInt8Array.append(contentsOf: $0)
         }
 

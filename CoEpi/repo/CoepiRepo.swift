@@ -37,11 +37,20 @@ class CoEpiRepoImpl: CoEpiRepo {
         self.cenMatcher = cenMatcher
         self.cenKeyDao = cenKeyDao
 
+        // Benchmarking
+        var matchingStartTime: CFAbsoluteTime?
+
         reports = keysFetcher.keys
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .do(onNext: { keys in
-                os_log("Fetched keys from API: %@", log: servicesLog, type: .debug, "\(keys)")
+                 matchingStartTime = CFAbsoluteTimeGetCurrent()
+                os_log("Fetched keys from API (%d)", log: servicesLog, type: .debug, keys.count)
             })
+
+//            // Uncomment this to benchmark a few keys quickly...
+//            .map({ keys in
+//                keys[0...2]
+//            })
 
             // Filter matching keys
             .map { keys -> [CENKey] in keys.compactMap { key in
@@ -53,6 +62,10 @@ class CoEpiRepoImpl: CoEpiRepo {
             }}
 
             .do(onNext: { matchedKeys in
+                if let matchingStartTime = matchingStartTime {
+                    let time = CFAbsoluteTimeGetCurrent() - matchingStartTime
+                    os_log("Took %.2f to match keys", log: servicesLog, type: .debug, time)
+                }
                 if !matchedKeys.isEmpty {
                     os_log("Matches found for keys: %@", log: servicesLog, type: .debug, "\(matchedKeys)")
                 } else {
