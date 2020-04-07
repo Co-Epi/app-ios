@@ -14,6 +14,7 @@ class Dependencies {
         registerNetworking(container: container)
         registerBle(container: container)
         registerWiring(container: container)
+        registerSystem(container: container)
 
         // Throws if components fail to instantiate
         try! container.bootstrap()
@@ -78,7 +79,10 @@ class Dependencies {
     private func registerBle(container: DependencyContainer) {
         container.register(.singleton) { BleAdapter(cenReadHandler: try container.resolve()) }
         container.register(.eagerSingleton) { BluetoothController(delegate: try container.resolve()) }
+    }
 
+    private func registerSystem(container: DependencyContainer) {
+        container.register(.singleton) { KeyValueStoreImpl() as KeyValueStore }
     }
 }
 

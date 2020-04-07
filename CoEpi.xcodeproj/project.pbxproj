@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		055A9D78243A892800A12285 /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A9D77243A892800A12285 /* KeyValueStore.swift */; };
 		30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */; };
 		30EF94FC242CFC9F007D61C7 /* AlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30EF94FA242CFC9F007D61C7 /* AlertsViewController.xib */; };
 		30EF952E24313F61007D61C7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF952824313F61007D61C7 /* Fonts.swift */; };
@@ -167,6 +168,7 @@
 
 /* Begin PBXFileReference section */
 		01E44CAE9F9B6871D9529B29 /* Pods-CoEpiNetworkingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiNetworkingTests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpiNetworkingTests/Pods-CoEpiNetworkingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		055A9D77243A892800A12285 /* KeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
 		30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
 		30EF94FA242CFC9F007D61C7 /* AlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
 		30EF952824313F61007D61C7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				CE6B7AC2243326FD00C42280 /* CENKey.swift */,
 				84A1C0D12437C25B00875DAE /* ReceivedCenReport.swift */,
 				84A1C0D32437C34400875DAE /* CenReport.swift */,
+				055A9D77243A892800A12285 /* KeyValueStore.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				8491497F2436946900975344 /* CenMatcher.swift in Sources */,
 				8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */,
 				849CEFA3242FEE23003F9284 /* UIColor+Hex.swift in Sources */,
+				055A9D78243A892800A12285 /* KeyValueStore.swift in Sources */,
 				CE6B7AC52433273200C42280 /* RealmCENKeyDao.swift in Sources */,
 				84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */,
 				84A4B9AF242CA5E600516F3B /* RealmProvider.swift in Sources */,

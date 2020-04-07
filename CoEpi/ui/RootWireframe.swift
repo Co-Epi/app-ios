@@ -10,7 +10,6 @@ class RootWireFrame {
 
     init(container: DependencyContainer, window: UIWindow) {
         self.container = container
-        let showOnboarding = true
 
         let homeViewModel: HomeViewModel = try! container.resolve()
         homeViewModel.delegate = self
@@ -23,11 +22,19 @@ class RootWireFrame {
 
         self.homeViewController = homeViewController
 
-        if showOnboarding {
-            let wireFrame: OnboardingWireframe = try! container.resolve()
-            wireFrame.showIfNeeded(parent: homeViewController)
-            onboardingWireframe = wireFrame
+        let keyValueStore: KeyValueStore = try! container.resolve()
+        showOnboardingIfNeeded(keyValueStore: keyValueStore, parent: homeViewController)
+    }
+
+    private func showOnboardingIfNeeded(keyValueStore: KeyValueStore, parent: UIViewController) {
+        guard !keyValueStore.getBool(key: .seenOnboarding) else {
+            return
         }
+
+        let wireFrame: OnboardingWireframe = try! container.resolve()
+        wireFrame.showIfNeeded(parent: parent)
+        onboardingWireframe = wireFrame
+        keyValueStore.putBool(key: .seenOnboarding, value: true)
     }
 }
 
