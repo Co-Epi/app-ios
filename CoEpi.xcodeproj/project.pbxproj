@@ -17,6 +17,9 @@
 		30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30EF955A2432E009007D61C7 /* CryptoSwift */; };
 		30EF956D24363115007D61C7 /* CoEpiNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF956C24363115007D61C7 /* CoEpiNetworkingTests.swift */; };
 		30EF957A24379E01007D61C7 /* CoEpiLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF957924379E01007D61C7 /* CoEpiLaunchScreen.storyboard */; };
+		62983D8F243CE25F00B0294C /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972324280ABA001ADD6B /* RootWireframe.swift */; };
+		62983D90243CE39E00B0294C /* HealthQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE98242DDCBC00EFB67A /* HealthQuizViewModel.swift */; };
+		62983D91243CE60600B0294C /* RealmDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B7242CC97600516F3B /* RealmDao.swift */; };
 		62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */; };
 		848434522438BF91006A5839 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 848434512438BF91006A5839 /* SwiftEntryKit */; };
 		848434552438C03C006A5839 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434542438C03C006A5839 /* ErrorView.swift */; };
@@ -70,12 +73,10 @@
 		84A4B9A7242CA4D500516F3B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 84A4B9A6242CA4D500516F3B /* Realm */; };
 		84A4B9A9242CA4D500516F3B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84A4B9A8242CA4D500516F3B /* RealmSwift */; };
 		84A4B9AF242CA5E600516F3B /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9AE242CA5E600516F3B /* RealmProvider.swift */; };
-		84A4B9B8242CC97600516F3B /* RealmDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B7242CC97600516F3B /* RealmDao.swift */; };
 		84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */; };
 		84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9BB242CE42C00516F3B /* Symptom.swift */; };
 		84BF97202427FAF1001ADD6B /* OnboardingWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF971F2427FAF1001ADD6B /* OnboardingWireframe.swift */; };
 		84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
-		84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972324280ABA001ADD6B /* RootWireframe.swift */; };
 		84BF972C24281082001ADD6B /* LogSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972624281082001ADD6B /* LogSettings.swift */; };
 		84BF972E24281082001ADD6B /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972824281082001ADD6B /* uuids.swift */; };
 		84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972A24281082001ADD6B /* DataRepresentable.swift */; };
@@ -107,7 +108,6 @@
 		CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7AC62433279000C42280 /* CENKeyRepo.swift */; };
 		CE6B7AC9243327FF00C42280 /* RealmCENKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7AC8243327FF00C42280 /* RealmCENKey.swift */; };
 		CE6B7ACB24332C9800C42280 /* ContactReceivedHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7ACA24332C9800C42280 /* ContactReceivedHandler.swift */; };
-		CE98BE99242DDCBC00EFB67A /* HealthQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE98242DDCBC00EFB67A /* HealthQuizViewModel.swift */; };
 		CE98BE9B242DDCFD00EFB67A /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE9A242DDCFD00EFB67A /* QuestionCell.swift */; };
 		CE98BE9F242DE02900EFB67A /* HealthQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98BE9E242DE02900EFB67A /* HealthQuizViewController.xib */; };
 		CE98BEA1242DE23400EFB67A /* HealthQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BEA0242DE23400EFB67A /* HealthQuizViewController.swift */; };
@@ -1093,6 +1093,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62983D91243CE60600B0294C /* RealmDao.swift in Sources */,
+				62983D90243CE39E00B0294C /* HealthQuizViewModel.swift in Sources */,
+				62983D8F243CE25F00B0294C /* RootWireframe.swift in Sources */,
 				62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */,
 				CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */,
 				CE6B7AC9243327FF00C42280 /* RealmCENKey.swift in Sources */,
@@ -1140,19 +1143,12 @@
 				849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */,
 				D41B0D1F242F60CF00A50447 /* OnboardingStrings.swift in Sources */,
 				D41B0D1B242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */,
-				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
 				849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */,
 				D41B0CDD242E467800A50447 /* GradientView.swift in Sources */,
 				CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */,
-				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
-				CE98BE99242DDCBC00EFB67A /* HealthQuizViewModel.swift in Sources */,
-				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
-				CE98BE99242DDCBC00EFB67A /* HealthQuizViewModel.swift in Sources */,
-				84A4B9B8242CC97600516F3B /* RealmDao.swift in Sources */,
 				CE98BEA1242DE23400EFB67A /* HealthQuizViewController.swift in Sources */,
 				CE6B7AC3243326FD00C42280 /* CENKey.swift in Sources */,
-				84A4B9B8242CC97600516F3B /* RealmDao.swift in Sources */,
 				84A1C0D42437C34400875DAE /* CenReport.swift in Sources */,
 				849CEFA2242FEDE7003F9284 /* Theme.swift in Sources */,
 				CE6B7AB52433156900C42280 /* RealmCENDao.swift in Sources */,
