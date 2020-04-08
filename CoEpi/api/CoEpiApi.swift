@@ -14,7 +14,7 @@ protocol CoEpiApi {
 
 class CoEpiApiImpl: CoEpiApi {
 
-    private let baseUrl = "https://coepi.wolk.com:8080/"
+    private let baseUrl = "https://q69c4m2myb.execute-api.us-west-2.amazonaws.com/v3/"
 
     func postCenReport(cenReport: MyCenReport) -> Completable {
         os_log("Sending CEN report to API: %@", log: servicesLog, type: .debug, "\(cenReport)")

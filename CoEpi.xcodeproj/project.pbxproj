@@ -66,6 +66,7 @@
 		849DFE752427D37A0008ED65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE732427D37A0008ED65 /* LaunchScreen.storyboard */; };
 		849DFE802427D37A0008ED65 /* CoEpiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE7F2427D37A0008ED65 /* CoEpiTests.swift */; };
 		849DFE8B2427D37A0008ED65 /* CoEpiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE8A2427D37A0008ED65 /* CoEpiUITests.swift */; };
+		849F50CD243E08B6008EC9E8 /* String+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F50CC243E08B6008EC9E8 /* String+Convenience.swift */; };
 		84A1C0CD24375C4300875DAE /* BleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C0CC24375C4300875DAE /* BleAdapter.swift */; };
 		84A1C0D02437BFE200875DAE /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C0CF2437BFE200875DAE /* Date+Convenience.swift */; };
 		84A1C0D22437C25B00875DAE /* ReceivedCenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C0D12437C25B00875DAE /* ReceivedCenReport.swift */; };
@@ -227,6 +228,7 @@
 		849DFE862427D37A0008ED65 /* CoEpiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoEpiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE8A2427D37A0008ED65 /* CoEpiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiUITests.swift; sourceTree = "<group>"; };
 		849DFE8C2427D37A0008ED65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		849F50CC243E08B6008EC9E8 /* String+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Convenience.swift"; sourceTree = "<group>"; };
 		849FB1162436056500BD1302 /* CenLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenLogic.swift; sourceTree = "<group>"; };
 		84A1C0CC24375C4300875DAE /* BleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleAdapter.swift; sourceTree = "<group>"; };
 		84A1C0CF2437BFE200875DAE /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 			children = (
 				849D1AFD2439D8FF00804511 /* rx */,
 				84A1C0CF2437BFE200875DAE /* Date+Convenience.swift */,
+				849F50CC243E08B6008EC9E8 /* String+Convenience.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1147,6 +1150,8 @@
 				849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */,
 				D41B0D1F242F60CF00A50447 /* OnboardingStrings.swift in Sources */,
 				D41B0D1B242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */,
+				84BF972424280ABA001ADD6B /* RootWireframe.swift in Sources */,
+				849F50CD243E08B6008EC9E8 /* String+Convenience.swift in Sources */,
 				849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */,
 				D41B0CDD242E467800A50447 /* GradientView.swift in Sources */,
 				CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */,

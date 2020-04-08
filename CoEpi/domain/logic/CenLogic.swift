@@ -13,7 +13,7 @@ class CenLogic {
     func generateCenKey(curTimestamp: Int64) -> Result<CENKey, CenLogicError> {
         //generate a new AES Key and store it in local storage
 
-        //generate base64string representation of key
+        //generate hex representation of key
         let cenKeyString = computeSymmetricKey()
 
         return cenKeyString.map {
@@ -23,8 +23,8 @@ class CenLogic {
 
     // TODO ideally this should return Cen, not Data. Implement Cen <-> Data (separately)
     func generateCen(CENKey: String, timestamp: Int64) -> Data {
-        // decode the base64 encoded key
-        let decodedCENKey: Data = Data(base64Encoded: CENKey)!
+        // decode the hex encoded key
+        let decodedCENKey: Data = Data(hex: CENKey)
 
         //convert key to [UInt8]
         var decodedCENKeyAsUInt8Array: [UInt8] = []
@@ -54,14 +54,14 @@ class CenLogic {
     }
 
     private func computeSymmetricKey() -> Result<String, CenLogicError> {
-        var keyData = Data(count: 32) // 32 bytes === 256 bits
+        var keyData = Data(count: 16)
         let keyDataCount = keyData.count
         let result = keyData.withUnsafeMutableBytes {
             (mutableBytes: UnsafeMutablePointer) -> Int32 in
             SecRandomCopyBytes(kSecRandomDefault, keyDataCount, mutableBytes)
         }
         if result == errSecSuccess {
-            return .success(keyData.base64EncodedString())
+            return .success(keyData.toHex())
         } else {
             return .failure(.couldNotComputeKey)
         }
