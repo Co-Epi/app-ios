@@ -7,41 +7,48 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertsViewController" customModule="CoEpi" customModuleProvider="target">
             <connections>
-                <outlet property="contactAlerts" destination="H7P-vp-ftf" id="jtc-bT-7K0"/>
-                <outlet property="titleLabel" destination="qxH-KZ-h4A" id="mwd-sn-2Sb"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="contactAlerts" destination="cC3-JH-DHS" id="Tly-gf-NqL"/>
+                <outlet property="titleLabel" destination="ots-QD-6oQ" id="58n-Nr-rog"/>
+                <outlet property="view" destination="iN0-l3-epB" id="JhA-bB-T6Q"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-Pr-FkT">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxH-KZ-h4A">
-                    <rect key="frame" x="44" y="99" width="327" height="58"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <attributedString key="attributedText">
-                        <fragment content="1 new contact alert">
-                            <attributes>
-                                <font key="NSFont" size="26" name="Helvetica"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=") new alerts" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ots-QD-6oQ">
+                    <rect key="frame" x="40" y="94" width="334" height="30.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="26"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H7P-vp-ftf">
-                    <rect key="frame" x="27" y="162" width="360" height="700"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cC3-JH-DHS">
+                    <rect key="frame" x="0.0" y="134.5" width="414" height="761.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="128.98550724637681" y="153.34821428571428"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="cC3-JH-DHS" firstAttribute="top" secondItem="ots-QD-6oQ" secondAttribute="bottom" constant="10" id="BPG-66-mBT"/>
+                <constraint firstItem="ots-QD-6oQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="IWp-sR-5FO"/>
+                <constraint firstItem="cC3-JH-DHS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="VVP-tX-IdY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cC3-JH-DHS" secondAttribute="trailing" id="WDR-dR-f80"/>
+                <constraint firstAttribute="bottom" secondItem="cC3-JH-DHS" secondAttribute="bottom" id="bmO-1E-KuC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ots-QD-6oQ" secondAttribute="trailing" constant="40" id="j2I-nw-NAB"/>
+                <constraint firstItem="ots-QD-6oQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="rsb-Tw-gqK"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="156.52173913043478" y="177.45535714285714"/>
         </view>
     </objects>
 </document>

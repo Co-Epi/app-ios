@@ -3,8 +3,8 @@ import CryptoSwift
 import os.log
 
 class CenLogic {
-    private let CENKeyLifetimeInSeconds: Int64 = 2 * 60 // TODO: revert back to 7*86400
-    private let CENLifetimeInSeconds: Int64 = 1 * 60 // TODO: revert back to 15*60
+    private let CENKeyLifetimeInSeconds: Int64 = 7 * 86400
+    private let CENLifetimeInSeconds: Int64 = 15 * 60
 
     func shouldGenerateNewCenKey(curTimestamp: Int64, cenKeyTimestamp: Int64) -> Bool {
          (cenKeyTimestamp == 0) || (roundedTimestamp(ts: curTimestamp) > roundedTimestamp(ts: cenKeyTimestamp))
@@ -54,7 +54,7 @@ class CenLogic {
     }
 
     private func computeSymmetricKey() -> Result<String, CenLogicError> {
-        var keyData = Data(count: 16)
+        var keyData = Data(count: 32)
         let keyDataCount = keyData.count
         let result = keyData.withUnsafeMutableBytes {
             (mutableBytes: UnsafeMutablePointer) -> Int32 in

@@ -2,17 +2,23 @@ import CryptoKit
 import Foundation
 import RealmSwift
 import Security
+import RxSwift
 
 protocol CENKeyDao {
     func generateAndStoreCENKey() -> Result<CENKey, DaoError>
     func insert(key: CENKey) -> Bool
     func getCENKeys(limit: Int64) -> [CENKey]
+
+    // For debug view
+    var generatedMyKey: ReplaySubject<String> { get }
 }
 
 class RealmCENKeyDao: RealmDao, CENKeyDao {
     private let cenLogic: CenLogic
 
     let realmProvider: RealmProvider
+
+    let generatedMyKey: ReplaySubject<String> = .create(bufferSize: 1)
 
     init(realmProvider: RealmProvider, cenLogic: CenLogic) {
         self.realmProvider = realmProvider
@@ -22,17 +28,28 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
     func generateAndStoreCENKey() -> Result<CENKey, DaoError> {
         let curTimestamp = Date().coEpiTimestamp
 
-        if let latestCenKey = getLatestCENKey() {
-            if (cenLogic.shouldGenerateNewCenKey(curTimestamp: curTimestamp, cenKeyTimestamp: latestCenKey.timestamp)) {
-                return generateAndInsertCenKey(curTimestamp: curTimestamp)
+        let result: Result<CENKey, DaoError> = {
+            if let latestCenKey = getLatestCENKey() {
+                if (cenLogic.shouldGenerateNewCenKey(curTimestamp: curTimestamp, cenKeyTimestamp: latestCenKey.timestamp)) {
+                    return generateAndInsertCenKey(curTimestamp: curTimestamp)
 
-            } else {
-                return .success(latestCenKey)
+                } else {
+                    return .success(latestCenKey)
+                }
+            } else { // There's no latest CEN key
+                return generateAndInsertCenKey(curTimestamp: curTimestamp)
             }
-        } else { // There's no latest CEN key
-            return generateAndInsertCenKey(curTimestamp: curTimestamp)
+        }()
+
+        // Debugging
+        switch result {
+        case .success(let key): generatedMyKey.onNext(key.cenKey)
+        case .failure(_): break
         }
+
+        return result
     }
+
 
     private func generateAndInsertCenKey(curTimestamp: Int64) -> Result<CENKey, DaoError> {
         switch cenLogic.generateCenKey(curTimestamp: curTimestamp) {

@@ -8,28 +8,12 @@ class DebugViewModel {
 
     private let disposeBag = DisposeBag()
 
+    init(bleAdapter: BleAdapter, cenKeyDao: CENKeyDao, api: CoEpiApi) {
+        let myKey = cenKeyDao.generatedMyKey
+            .scan([]) { acc, element in acc + [element] }
 
-    init(bleAdapter: BleAdapter, api: CoEpiApi) {
-
-
-        //TESTING NETWORK
-        print ("Testing Networking at lines 14 - 21 in DebugViewModel.swift")
-        api.getCenKeys()
-            .subscribe { print($0) }.disposed(by: disposeBag)
-        
-        api.getCenReports(cenKey: CENKey(cenKey: "b85c4b373adde4c66651ba63aef40f48"))
-            .subscribe(onSuccess: { (reports) in
-                print("got reports: \(reports)")
-            }, onError: { error in
-                print("error retrieving reports: \(error)")
-            })
-
-        let cenReport = CenReport(id: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140",
-                                  report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==",
-                                  timestamp: Date().coEpiTimestamp)
-        api.postCenReport(cenReport: MyCenReport(id: "123", report: cenReport, keys: ["17FA287EBE6B42A3859A60C12CF71394"]))
-            .subscribe { print($0) }
-        //TESTING NETWORK
+        let myCen = bleAdapter.myCen
+            .scan([]) { acc, element in acc + [element] }
 
         let discovered = bleAdapter.discovered
             .scan([]) { acc, element in acc + [element] }
@@ -44,6 +28,8 @@ class DebugViewModel {
             .scan([]) { acc, element in acc + [element] }
 
         let combined = Observable.combineLatest(
+            myKey.startWith([]),
+            myCen.startWith([]),
             discovered.startWith([]),
             peripheralWasRead.startWith([]),
             centralDidWrite.startWith([]),
@@ -51,8 +37,8 @@ class DebugViewModel {
         )
 
         debugEntries = combined
-            .map { discovered, peripheralWasRead, centralDidWrite, peripheralWasWrittenTo in
-                return generateItems(discovered: discovered, peripheralWasRead: peripheralWasRead,
+            .map { myKey, myCen, discovered, peripheralWasRead, centralDidWrite, peripheralWasWrittenTo in
+                return generateItems(myKey: myKey, myCen: myCen, discovered: discovered, peripheralWasRead: peripheralWasRead,
                                      centralDidWrite: centralDidWrite, peripheralWasWrittenTo: peripheralWasWrittenTo)
             }
             .asDriver(onErrorJustReturn: [])
@@ -64,10 +50,11 @@ enum DebugEntryViewData {
     case Item(String)
 }
 
-private func generateItems(discovered: [CEN], peripheralWasRead: [String], centralDidWrite: [String],
-                           peripheralWasWrittenTo: [String]) -> [DebugEntryViewData] {
-
-    return items(header: "Discovered", items: discovered.map{ $0.CEN })
+private func generateItems(myKey: [String], myCen: [String], discovered: [CEN], peripheralWasRead: [String],
+                           centralDidWrite: [String], peripheralWasWrittenTo: [String]) -> [DebugEntryViewData] {
+    return items(header: "My key", items: myKey)
+        + items(header: "My CEN", items: myCen)
+        + items(header: "Discovered", items: discovered.map{ $0.CEN })
         + items(header: "Peripheral was read", items: peripheralWasRead)
         + items(header: "Central did write", items: centralDidWrite)
         + items(header: "Peripheral was written to", items: peripheralWasWrittenTo)

@@ -26,7 +26,7 @@ class AlertsViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        contactAlerts.register(cellClass: AlertCell.self)
+        setupTableView()
 
         viewModel.title
             .drive(titleLabel.rx.text)
@@ -35,6 +35,12 @@ class AlertsViewController: UIViewController {
         viewModel.alerts
             .drive(contactAlerts.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+    }
+
+    private func setupTableView() {
+        contactAlerts.rowHeight = UITableView.automaticDimension
+        contactAlerts.estimatedRowHeight = 120
+        contactAlerts.register(cellClass: AlertCell.self)
     }
 }
 

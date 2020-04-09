@@ -1,12 +1,15 @@
 import Foundation
 
 struct ApiParamsCenReport: Encodable {
+    let reportID: String
     let report: String
-    let cenKeys: [String]
+    let cenKeys: String
+    let reportTimestamp: Int64
 }
 
 extension ApiParamsCenReport {
     init(report: MyCenReport) {
-        self.init(report: report.report.report, cenKeys: report.keys)
+        self.init(reportID: report.id, report: report.report.report, cenKeys: report.keys.joined(separator: ","),
+                  reportTimestamp: report.report.timestamp)
     }
 }

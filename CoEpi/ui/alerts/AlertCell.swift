@@ -13,16 +13,23 @@ class AlertCell: UITableViewCell {
     
     private func setupUI(alert: Alert) {
         let view: AlertView = AlertView.fromNib()
+
+        view.exposureTypeLabel.text = alert.exposure
+        view.timeLabel.text = "\(Date(timeIntervalSince1970: TimeInterval(alert.report.report.timestamp)))"
         view.onAcknowledged = { [weak self] in
             self?.onAcknowledged?(alert)
         }
 
         contentView.addSubview(view)
+        view.pinAllEdgesToParent()
     }
 }
 
 class AlertView: UIView {
     public var onAcknowledged: (() ->())?
+
+    @IBOutlet weak var exposureTypeLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
 
     @IBAction func acknowledge(_ sender: UIButton) {
         onAcknowledged?()

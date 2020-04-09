@@ -30,6 +30,7 @@ class Dependencies {
         container.register { AlertsViewModel(container: container) }
 
         container.register { DebugViewModel(bleAdapter: try container.resolve(),
+                                            cenKeyDao: try container.resolve(),
                                             api: try container.resolve()) }
     }
 
@@ -45,8 +46,8 @@ class Dependencies {
         container.register(.singleton) { SymptomRepoImpl(coEpiRepo: try container.resolve()) as SymptomRepo }
         container.register(.singleton) { AlertRepoImpl(cenReportsRepo: try container.resolve()) as AlertRepo }
         container.register(.singleton) { CENRepoImpl(cenDao: try container.resolve()) as CENRepo }
-        container.register(.singleton) { CenReportRepoImpl(cenReportDao: try container.resolve(),
-                                                           coEpiRepo: try container.resolve()) as CENReportRepo }
+        container.register(.eagerSingleton) { CenReportRepoImpl(cenReportDao: try container.resolve(),
+                                                                coEpiRepo: try container.resolve()) as CENReportRepo }
         container.register(.singleton) { CENKeyRepoImpl(cenKeyDao: try container.resolve()) as CENKeyRepo }
         container.register(.eagerSingleton) { CoEpiRepoImpl(cenRepo: try container.resolve(),
                                                        api: try container.resolve(),

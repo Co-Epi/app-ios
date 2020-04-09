@@ -16,7 +16,9 @@ class ContactReceivedHandler {
     func provideMyCen() -> Data {
         switch cenKeyRepo.generateAndStoreCENKey() {
         case .success(let key):
-            return cenLogic.generateCen(CENKey: key.cenKey, timestamp: Date().coEpiTimestamp)
+            let cen = cenLogic.generateCen(CENKey: key.cenKey, timestamp: Date().coEpiTimestamp)
+            os_log("Generated my CEN: %@ with key: %@", log: servicesLog, cen.toHex(), "\(key.cenKey)")
+            return cen
             //*** Scenario 1: https://docs.google.com/document/d/1f65V3PI214-uYfZLUZtm55kdVwoazIMqGJrxcYNI4eg/edit#
             // iOS - Central + iOS - Peripheral -- so commenting out addNewContact
             //addNewContactEvent(with: identifier)

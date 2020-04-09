@@ -4,12 +4,13 @@ import RxSwift
 /// Bridges between app and covidwatch BLE lib
 class BleAdapter {
 
-    let discovered: ReplaySubject<CEN> = ReplaySubject.create(bufferSize: 1)
+    let discovered: ReplaySubject<CEN> = .create(bufferSize: 1)
 
     // Debugging
-    let peripheralWasRead: ReplaySubject<String> = ReplaySubject.create(bufferSize: 1)
-    let centralDidWrite: ReplaySubject<String> = ReplaySubject.create(bufferSize: 1)
-    let peripheralWasWrittenTo: ReplaySubject<String> = ReplaySubject.create(bufferSize: 1)
+    let myCen: ReplaySubject<String> = .create(bufferSize: 1)
+    let peripheralWasRead: ReplaySubject<String> = .create(bufferSize: 1)
+    let centralDidWrite: ReplaySubject<String> = .create(bufferSize: 1)
+    let peripheralWasWrittenTo: ReplaySubject<String> = .create(bufferSize: 1)
 
     private let cenReadHandler: ContactReceivedHandler
 
@@ -18,7 +19,9 @@ class BleAdapter {
     }
 
     func provideMyCen() -> Data {
-        cenReadHandler.provideMyCen()
+        let cen = cenReadHandler.provideMyCen()
+        myCen.onNext(cen.toHex())
+        return cen
     }
 
     func didDiscoverCen(cen: Data) {
