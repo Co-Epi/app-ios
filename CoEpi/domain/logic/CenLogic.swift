@@ -7,7 +7,7 @@ class CenLogic {
     private let CENLifetimeInSeconds: Int64 = 15 * 60
 
     func shouldGenerateNewCenKey(curTimestamp: Int64, cenKeyTimestamp: Int64) -> Bool {
-         (cenKeyTimestamp == 0) || (roundedTimestamp(ts: curTimestamp) > roundedTimestamp(ts: cenKeyTimestamp))
+         (cenKeyTimestamp == 0) || (roundedTimestamp(ts: curTimestamp, roundingInterval: CENKeyLifetimeInSeconds) > roundedTimestamp(ts: cenKeyTimestamp, roundingInterval: CENKeyLifetimeInSeconds))
     }
 
     func generateCenKey(curTimestamp: Int64) -> Result<CENKey, CenLogicError> {
@@ -34,7 +34,7 @@ class CenLogic {
 
         //convert timestamp to [UInt8]
         var tsAsUInt8Array: [UInt8] = []
-        [roundedTimestamp(ts: timestamp)].withUnsafeBytes {
+        [roundedTimestamp(ts: timestamp, roundingInterval: CENLifetimeInSeconds)].withUnsafeBytes {
             tsAsUInt8Array.append(contentsOf: $0)
         }
 
@@ -67,8 +67,10 @@ class CenLogic {
         }
     }
 
-    private func roundedTimestamp(ts : Int64) -> Int64 {
-        Int64(ts / CENKeyLifetimeInSeconds) * CENKeyLifetimeInSeconds
+    private func roundedTimestamp(ts : Int64, roundingInterval: Int64) -> Int64 {
+        let mod = ts % roundingInterval
+        let roundedTimestamp = ts - mod
+        return roundedTimestamp
     }
 }
 

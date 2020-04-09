@@ -526,8 +526,8 @@ extension BluetoothController: CBCentralManagerDelegate {
             else {
                 if (isConnectable) {
                     self.peripheralsToWriteContactEventIdentifierTo.insert(peripheral)
-                    // OR use reading. Both cases are handled.
-                    // self.peripheralsToReadContactEventIdentifierFrom.insert(peripheral)
+                    // OR use reading. Both cases are handled. - duskoo: Pretty sure we need to enable reading
+                    self.peripheralsToReadContactEventIdentifierFrom.insert(peripheral)
                     self.connectPeripheralsIfNeeded()
                 }
             }
