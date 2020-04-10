@@ -1,4 +1,5 @@
 import UIKit
+import SafariServices
 
 class OnboardingViewController: UIViewController {
 
@@ -54,6 +55,15 @@ class OnboardingViewController: UIViewController {
         viewModel.onCloseClick()
     }
     
+    @IBAction func howDataUsedClick(_ sender: UIButton) {
+        if let url = URL(string: "https://www.coepi.org/privacy/") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = false
+
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
+    }
 }
 
 private extension OnboardingViewController {
