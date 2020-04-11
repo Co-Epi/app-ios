@@ -43,6 +43,7 @@ class RealmCENReportDao: CENReportDao, RealmDao {
             return true
         } else {
             //duplicate entry: skipping
+            os_log("Report already in db, id = %@", type: .debug, report.report.id)
             return false
         }
     }

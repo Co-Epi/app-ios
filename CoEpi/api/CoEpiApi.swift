@@ -5,7 +5,7 @@ import os.log
 
 protocol CoEpiApi {
 
-    func postCenReport(cenReport: MyCenReport) -> Completable
+    func postCenReport(myCenReport: MyCenReport) -> Completable
 
     func getCenKeys() -> Single<[String]>
 
@@ -17,10 +17,10 @@ class CoEpiApiImpl: CoEpiApi {
 //    private let baseUrl = "https://q69c4m2myb.execute-api.us-west-2.amazonaws.com/v3/"
     private let baseUrl = "https://v1.api.coepi.org/"
 
-    func postCenReport(cenReport: MyCenReport) -> Completable {
-        os_log("Sending CEN report to API: %@", log: servicesLog, type: .debug, "\(cenReport)")
+    func postCenReport(myCenReport: MyCenReport) -> Completable {
+        os_log("Sending CEN report to API: %@", log: servicesLog, type: .debug, "\(myCenReport)")
 
-        return post(url: baseUrl + "cenreport", params: ApiParamsCenReport(report: cenReport))
+        return post(url: baseUrl + "cenreport", params: ApiParamsCenReport(report: myCenReport))
     }
 
     func getCenKeys() -> Single<[String]> {

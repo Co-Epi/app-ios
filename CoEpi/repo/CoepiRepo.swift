@@ -102,7 +102,7 @@ class CoEpiRepoImpl: CoEpiRepo {
         switch cenKeyDao.generateAndStoreCENKey() {  // TODO last n keys?
         case .success(let key):
             // TODO clarify id
-            return api.postCenReport(cenReport: MyCenReport(id: "123", report: report, keys: [key.cenKey]))
+            return api.postCenReport(myCenReport: MyCenReport(id: "123", report: report, keys: [key.cenKey]))
         case .failure(let error):
             switch error {
             case .couldNotComputeKey: return .error(RepoError.couldNotComputeKey)

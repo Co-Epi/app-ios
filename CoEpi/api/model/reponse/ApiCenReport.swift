@@ -8,6 +8,11 @@ struct ApiCenReport: Codable {
 
 extension ApiCenReport {
     func toCenReport() -> CenReport {
-        CenReport(id: reportID, report: report, timestamp: reportTimeStamp)
+        guard let decodedData = Data(base64Encoded: report),
+            let decodedReport = String(data: decodedData, encoding: .utf8) else {
+                return CenReport(id: reportID, report: "Decoding error", timestamp: reportTimeStamp)
+        }
+        
+        return CenReport(id: reportID, report: decodedReport, timestamp: reportTimeStamp)
     }
 }

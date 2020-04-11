@@ -9,7 +9,7 @@ struct ApiParamsCenReport: Encodable {
 
 extension ApiParamsCenReport {
     init(report: MyCenReport) {
-        self.init(reportID: report.id, report: report.report.report, cenKeys: report.keys.joined(separator: ","),
+        self.init(reportID: report.report.id, report: report.report.report.toBase64() ?? "Decoding error".toBase64()! , cenKeys: report.keys.joined(separator: ","),
                   reportTimestamp: report.report.timestamp)
     }
 }

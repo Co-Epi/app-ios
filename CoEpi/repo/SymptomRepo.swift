@@ -44,11 +44,10 @@ class SymptomRepoImpl: SymptomRepo {
 }
 
 private extension Sequence where Iterator.Element == Symptom {
-
     func toCENReport() -> CenReport? {
-        // TODO (has not been specified yet)
-        "TODO symptoms -> CENReport".toBase64().map {
-            CenReport(id: "123", report: $0, timestamp: Date().coEpiTimestamp)
-        }
+        let separator = ", "
+        let stringReport : String  = self.reduce("") {$0 + $1.name + separator}
+        let cs = CharacterSet.init(charactersIn: separator)
+        return CenReport(id: UUID().uuidString, report: stringReport.trimmingCharacters(in: cs), timestamp: Date().coEpiTimestamp)
     }
 }
