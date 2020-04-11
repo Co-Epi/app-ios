@@ -83,6 +83,8 @@
 		84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972A24281082001ADD6B /* DataRepresentable.swift */; };
 		84DE6A24243F99A200CCF4A6 /* AlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */; };
 		84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A27243F9AA800CCF4A6 /* AlertView.xib */; };
+		84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE1C5C2441D72F0055E22B /* Sharer.swift */; };
+		84EE1C5F2441DC200055E22B /* ConfirmationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE1C5E2441DC200055E22B /* ConfirmationAlert.swift */; };
 		84FA00F22427E13000318104 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F12427E13000318104 /* Dependencies.swift */; };
 		84FA00F52427E83000318104 /* Dip in Frameworks */ = {isa = PBXBuildFile; productRef = 84FA00F42427E83000318104 /* Dip */; };
 		84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F92427ED1900318104 /* OnboardingViewController.swift */; };
@@ -246,6 +248,8 @@
 		84BF972A24281082001ADD6B /* DataRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepresentable.swift; sourceTree = "<group>"; };
 		84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
 		84DE6A27243F9AA800CCF4A6 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		84EE1C5C2441D72F0055E22B /* Sharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharer.swift; sourceTree = "<group>"; };
+		84EE1C5E2441DC200055E22B /* ConfirmationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAlert.swift; sourceTree = "<group>"; };
 		84FA00F12427E13000318104 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		84FA00F92427ED1900318104 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		84FA00FA2427ED1900318104 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
@@ -641,9 +645,19 @@
 			path = ble;
 			sourceTree = "<group>";
 		};
+		84EE1C5B2441D7220055E22B /* common */ = {
+			isa = PBXGroup;
+			children = (
+				84EE1C5C2441D72F0055E22B /* Sharer.swift */,
+				84EE1C5E2441DC200055E22B /* ConfirmationAlert.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		84FA00F82427EC4300318104 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				84EE1C5B2441D7220055E22B /* common */,
 				30EF957824379DD8007D61C7 /* launch screen */,
 				8484345C2438C3E6006A5839 /* traits */,
 				848434532438C029006A5839 /* error */,
@@ -1134,6 +1148,7 @@
 				848434552438C03C006A5839 /* ErrorView.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
+				84EE1C5F2441DC200055E22B /* ConfirmationAlert.swift in Sources */,
 				CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */,
 				84A1C0D22437C25B00875DAE /* ReceivedCenReport.swift in Sources */,
 				849149882436A1E600975344 /* BluetoothService+CoreBluetooth.swift in Sources */,
@@ -1167,6 +1182,7 @@
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,
 				8486BDD9242BBCE700A63DD5 /* DebugViewController.swift in Sources */,
+				84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */,
 				848434592438C28A006A5839 /* UIView+Autolayout.swift in Sources */,
 				8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */,
 				CE626E122430F348000DB8E7 /* AlertRepo.swift in Sources */,

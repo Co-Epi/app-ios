@@ -32,12 +32,19 @@ class HomeViewController: UIViewController {
         viewModel.debugTapped()
     }
     
+    @objc func share(sender: UIView) {
+        Sharer().share(viewController: self, sourceView: sender)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let paragraphStyle = NSMutableParagraphStyle()
 
         paragraphStyle.lineHeightMultiple = 1.07
+        
+        let share = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
+        share.tintColor = UIColor.black
+        navigationItem.rightBarButtonItem = share
         
         myHealthDescriptionLabel.numberOfLines = 0
         myHealthDescriptionLabel.lineBreakMode = .byWordWrapping

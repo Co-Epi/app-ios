@@ -23,9 +23,29 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func share() {
+        Sharer().share(viewController: self, completion: { [weak self] in
+            self?.viewModel.onTapSubmit()
+        })
+    }
 
+    private func showAlert() {
+        ConfirmationAlert().show(on: self,
+                                 title: "Thank you for reporting your symptoms",
+                                 message: "Please share this app so we can stop the spread of Covid-19",
+                                 yesText: "Share",
+                                 noText: "Don't Share",
+                                 yesAction: { [weak self] in
+                                    self?.share()
+                                 },
+                                 noAction: { [weak self] in
+                                    self?.viewModel.onTapSubmit()
+                                 })
+    }
+    
     @IBAction func submit(_ sender: UIButton) {
-        viewModel.onTapSubmit()
+        showAlert()
     }
 
     override func viewDidLoad() {
