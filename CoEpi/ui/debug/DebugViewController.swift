@@ -54,7 +54,7 @@ extension DebugListDataSource: UITableViewDataSource {
         switch debugEntries[indexPath.row] {
         case .Header(let text):
             label?.text = text
-            cell.backgroundColor = .blue
+            cell.backgroundColor = .lightGray
         case .Item(let text):
             label?.text = text
             cell.backgroundColor = .clear
