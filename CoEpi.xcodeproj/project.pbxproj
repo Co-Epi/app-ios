@@ -1657,7 +1657,7 @@
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.1.0;
 			};
 		};
 		849149892436A28E00975344 /* XCRemoteSwiftPackageReference "BerkananSDK" */ = {
