@@ -4,7 +4,7 @@ import os.log
 
 class CenLogic {
     private let CENKeyLifetimeInSeconds: Int64 = 7 * 86400
-    private let CENLifetimeInSeconds: Int64 = 15 * 60
+    static let CENLifetimeInSeconds: Int64 = 15 * 60
 
     func shouldGenerateNewCenKey(curTimestamp: Int64, cenKeyTimestamp: Int64) -> Bool {
          (cenKeyTimestamp == 0) || (roundedTimestamp(ts: curTimestamp, roundingInterval: CENKeyLifetimeInSeconds) > roundedTimestamp(ts: cenKeyTimestamp, roundingInterval: CENKeyLifetimeInSeconds))
@@ -34,7 +34,7 @@ class CenLogic {
 
         //convert timestamp to [UInt8]
         var tsAsUInt8Array: [UInt8] = []
-        [roundedTimestamp(ts: timestamp, roundingInterval: CENLifetimeInSeconds)].withUnsafeBytes {
+        [roundedTimestamp(ts: timestamp, roundingInterval: CenLogic.CENLifetimeInSeconds)].withUnsafeBytes {
             tsAsUInt8Array.append(contentsOf: $0)
         }
 

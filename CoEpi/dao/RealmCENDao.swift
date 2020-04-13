@@ -5,6 +5,7 @@ protocol CENDao {
     func insert(cen: CEN) -> Bool
     func loadAllCENRecords() -> [CEN]?
     func match(start: Int64, end: Int64, hexEncodedCENs: [String]) -> [CEN]
+    func loadCensForTimeInterval(start: Int64, end: Int64) -> [CEN]
 }
 
 class RealmCENDao: CENDao, RealmDao {
@@ -39,5 +40,13 @@ class RealmCENDao: CENDao, RealmDao {
     func loadAllCENRecords() -> [CEN]? {
         let DBCENObject = realm.objects(RealmCEN.self).sorted(byKeyPath: "timestamp", ascending: false)
         return DBCENObject.map { CEN(CEN: $0.CEN, timestamp: $0.timestamp) }
+    }
+    
+    func loadCensForTimeInterval(start: Int64, end: Int64) -> [CEN] {
+        realm.objects(RealmCEN.self)
+            .filter("timestamp >= %d", start)
+            .filter("timestamp <= %d", end)
+            .compactMap { CEN(CEN: $0.CEN, timestamp: $0.timestamp)
+        }
     }
 }

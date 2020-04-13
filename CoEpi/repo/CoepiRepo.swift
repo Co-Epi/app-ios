@@ -53,14 +53,16 @@ class CoEpiRepoImpl: CoEpiRepo {
 //            })
 
             // Filter matching keys
-            .map { keys -> [CENKey] in keys.compactMap { key in
-                if (cenMatcher.hasMatches(key: key, maxTimestamp: CoEpiRepoImpl.lastCENKeysCheck)) {
-                    return key
-                } else {
-                    return nil
-                }
-            }}
-
+//            .map { keys -> [CENKey] in keys.compactMap { key in
+//                if (cenMatcher.hasMatches(key: key, maxTimestamp: CoEpiRepoImpl.lastCENKeysCheck)) {
+//                    return key
+//                } else {
+//                    return nil
+//                }
+//            }}
+            
+            .map{keys -> [CENKey] in cenMatcher.matchLocalFirst(keys: keys, maxTimestamp: Date().coEpiTimestamp) }
+            
             .do(onNext: { matchedKeys in
                 if let matchingStartTime = matchingStartTime {
                     let time = CFAbsoluteTimeGetCurrent() - matchingStartTime

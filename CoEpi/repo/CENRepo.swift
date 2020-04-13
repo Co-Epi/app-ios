@@ -7,6 +7,8 @@ protocol CENRepo {
     func loadAllCENRecords() -> [CEN]?
 
     func match(start: Int64, end: Int64, hexEncodedCENs: [String]) -> [CEN]
+    
+    func loadCensForTimeInterval(start: Int64, end: Int64) -> [CEN]
 }
 
 class CENRepoImpl: CENRepo {
@@ -26,5 +28,9 @@ class CENRepoImpl: CENRepo {
 
     func match(start: Int64, end: Int64, hexEncodedCENs: [String]) -> [CEN] {
         cenDao.match(start: start, end: end, hexEncodedCENs: hexEncodedCENs)
+    }
+    
+    func loadCensForTimeInterval(start: Int64, end: Int64) -> [CEN] {
+        cenDao.loadCensForTimeInterval(start: start, end: end)
     }
 }
