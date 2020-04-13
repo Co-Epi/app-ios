@@ -59,6 +59,8 @@
 		849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1AFE2439D90C00804511 /* Completable+Convenience.swift */; };
 		849D1B082439EAD200804511 /* UINotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1B072439EAD200804511 /* UINotifier.swift */; };
 		849D1B0A2439F31D00804511 /* DaoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1B092439F31D00804511 /* DaoError.swift */; };
+		849D28F92444300B0034EC4C /* Observable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D28F82444300B0034EC4C /* Observable+Convenience.swift */; };
+		849D28FB244436280034EC4C /* Array+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D28FA244436280034EC4C /* Array+Convenience.swift */; };
 		849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE652427D3750008ED65 /* AppDelegate.swift */; };
 		849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */; };
 		849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE712427D37A0008ED65 /* Assets.xcassets */; };
@@ -217,6 +219,8 @@
 		849D1AFE2439D90C00804511 /* Completable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Completable+Convenience.swift"; sourceTree = "<group>"; };
 		849D1B072439EAD200804511 /* UINotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINotifier.swift; sourceTree = "<group>"; };
 		849D1B092439F31D00804511 /* DaoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoError.swift; sourceTree = "<group>"; };
+		849D28F82444300B0034EC4C /* Observable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Convenience.swift"; sourceTree = "<group>"; };
+		849D28FA244436280034EC4C /* Array+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Convenience.swift"; sourceTree = "<group>"; };
 		849DFE622427D3750008ED65 /* CoEpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoEpi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE652427D3750008ED65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849DFE6F2427D3750008ED65 /* CoEpi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoEpi.xcdatamodel; sourceTree = "<group>"; };
@@ -489,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				849D1AFE2439D90C00804511 /* Completable+Convenience.swift */,
+				849D28F82444300B0034EC4C /* Observable+Convenience.swift */,
 			);
 			path = rx;
 			sourceTree = "<group>";
@@ -580,6 +585,7 @@
 				849D1AFD2439D8FF00804511 /* rx */,
 				84A1C0CF2437BFE200875DAE /* Date+Convenience.swift */,
 				849F50CC243E08B6008EC9E8 /* String+Convenience.swift */,
+				849D28FA244436280034EC4C /* Array+Convenience.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1168,6 +1174,7 @@
 				849F50CD243E08B6008EC9E8 /* String+Convenience.swift in Sources */,
 				849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */,
 				D41B0CDD242E467800A50447 /* GradientView.swift in Sources */,
+				849D28F92444300B0034EC4C /* Observable+Convenience.swift in Sources */,
 				CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */,
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
 				CE98BEA1242DE23400EFB67A /* HealthQuizViewController.swift in Sources */,
@@ -1187,6 +1194,7 @@
 				8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */,
 				CE626E122430F348000DB8E7 /* AlertRepo.swift in Sources */,
 				CE6B7ABB2433244700C42280 /* MyCenReport.swift in Sources */,
+				849D28FB244436280034EC4C /* Array+Convenience.swift in Sources */,
 				84FA00F22427E13000318104 /* Dependencies.swift in Sources */,
 				CE98BE9B242DDCFD00EFB67A /* QuestionCell.swift in Sources */,
 				848434642438C71F006A5839 /* UIViewController+Rx.swift in Sources */,

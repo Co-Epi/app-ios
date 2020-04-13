@@ -9,31 +9,13 @@ class DebugViewModel {
     private let disposeBag = DisposeBag()
 
     init(bleAdapter: BleAdapter, cenKeyDao: CENKeyDao, api: CoEpiApi) {
-        let myKey = cenKeyDao.generatedMyKey
-            .scan([]) { acc, element in acc + [element] }
-
-        let myCen = bleAdapter.myCen
-            .scan([]) { acc, element in acc + [element] }
-
-        let discovered = bleAdapter.discovered
-            .scan([]) { acc, element in acc + [element] }
-
-        let peripheralWasRead = bleAdapter.peripheralWasRead
-            .scan([]) { acc, element in acc + [element] }
-
-        let centralDidWrite = bleAdapter.centralDidWrite
-            .scan([]) { acc, element in acc + [element] }
-
-        let peripheralWasWrittenTo = bleAdapter.peripheralWasWrittenTo
-            .scan([]) { acc, element in acc + [element] }
-
         let combined = Observable.combineLatest(
-            myKey.startWith([]),
-            myCen.startWith([]),
-            discovered.startWith([]),
-            peripheralWasRead.startWith([]),
-            centralDidWrite.startWith([]),
-            peripheralWasWrittenTo.startWith([])
+            cenKeyDao.generatedMyKey.asSequence().map { $0.distinct() },
+            bleAdapter.myCen.asSequence().map { $0.distinct() },
+            bleAdapter.discovered.asSequence().map { $0.distinct() },
+            bleAdapter.peripheralWasRead.asSequence().map { $0.distinct() },
+            bleAdapter.centralDidWrite.asSequence().map { $0.distinct() },
+            bleAdapter.peripheralWasWrittenTo.asSequence().map { $0.distinct() }
         )
 
         debugEntries = combined

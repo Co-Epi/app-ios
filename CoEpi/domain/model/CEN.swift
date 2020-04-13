@@ -14,3 +14,9 @@ struct CEN: Codable, CustomStringConvertible {
         return "CEN: \(CEN), time: \(date)"
     }
 }
+
+extension CEN: Equatable {
+    static func == (lhs: CEN, rhs: CEN) -> Bool {
+        lhs.CEN == rhs.CEN
+    }
+}
