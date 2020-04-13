@@ -33,7 +33,7 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
     private func showAlert() {
         ConfirmationAlert().show(on: self,
                                  title: "Thank you for reporting your symptoms",
-                                 message: "Please share this app so we can stop the spread of Covid-19",
+                                 message: "Would you like to invite anyone else to test the CoEpi app with you? If so, share this link with them so they can sign up as beta testers.",
                                  yesText: "Share",
                                  noText: "Don't Share",
                                  yesAction: { [weak self] in
