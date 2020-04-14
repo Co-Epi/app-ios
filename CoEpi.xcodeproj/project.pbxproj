@@ -86,7 +86,6 @@
 		84DE6A24243F99A200CCF4A6 /* AlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */; };
 		84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A27243F9AA800CCF4A6 /* AlertView.xib */; };
 		84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE1C5C2441D72F0055E22B /* Sharer.swift */; };
-		84EE1C5F2441DC200055E22B /* ConfirmationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE1C5E2441DC200055E22B /* ConfirmationAlert.swift */; };
 		84FA00F22427E13000318104 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F12427E13000318104 /* Dependencies.swift */; };
 		84FA00F52427E83000318104 /* Dip in Frameworks */ = {isa = PBXBuildFile; productRef = 84FA00F42427E83000318104 /* Dip */; };
 		84FA00FB2427ED1900318104 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F92427ED1900318104 /* OnboardingViewController.swift */; };
@@ -1154,7 +1153,6 @@
 				848434552438C03C006A5839 /* ErrorView.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
-				84EE1C5F2441DC200055E22B /* ConfirmationAlert.swift in Sources */,
 				CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */,
 				84A1C0D22437C25B00875DAE /* ReceivedCenReport.swift in Sources */,
 				849149882436A1E600975344 /* BluetoothService+CoreBluetooth.swift in Sources */,

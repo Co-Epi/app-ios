@@ -30,22 +30,9 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
         })
     }
 
-    private func showAlert() {
-        ConfirmationAlert().show(on: self,
-                                 title: "Thank you for reporting your symptoms",
-                                 message: "Would you like to invite anyone else to test the CoEpi app with you? If so, share this link with them so they can sign up as beta testers.",
-                                 yesText: "Share",
-                                 noText: "Don't Share",
-                                 yesAction: { [weak self] in
-                                    self?.share()
-                                 },
-                                 noAction: { [weak self] in
-                                    self?.viewModel.onTapSubmit()
-                                 })
-    }
     
     @IBAction func submit(_ sender: UIButton) {
-        showAlert()
+        viewModel.onTapSubmit()
     }
 
     override func viewDidLoad() {
