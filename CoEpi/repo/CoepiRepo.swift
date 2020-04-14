@@ -69,7 +69,7 @@ class CoEpiRepoImpl: CoEpiRepo {
                     os_log("Took %.2f to match keys", log: servicesLog, type: .debug, time)
                 }
                 if !matchedKeys.isEmpty {
-                    os_log("Matches found for keys: %@", log: servicesLog, type: .debug, "\(matchedKeys)")
+                    os_log("Matches found for [%{public}d] keys: %{public}@", log: servicesLog, type: .debug, matchedKeys.count ,"\(matchedKeys)")
                 } else {
                     os_log("No matches found for keys", log: servicesLog, type: .debug)
                 }

@@ -9,6 +9,10 @@ protocol CenMatcher {
 class CenMatcherImpl: CenMatcher {
     private let cenRepo: CENRepo // TODO decouple from DB
     private let cenLogic: CenLogic
+    
+    var matchedKeys : [CENKey] = []
+    //Concurent queue on which to run matching tasks
+    private let matchingQueue = DispatchQueue(label: "org.coepi.matchingQueue", attributes: .concurrent)
 
     init(cenRepo: CENRepo, cenLogic: CenLogic) {
         self.cenRepo = cenRepo
@@ -21,35 +25,56 @@ class CenMatcherImpl: CenMatcher {
     
     func matchLocalFirst(keys: [CENKey], maxTimestamp: Int64) -> [CENKey] {
         let modulus = maxTimestamp % Int64(CenLogic.CENLifetimeInSeconds)
-        
         let roundedMaxTimestamp = maxTimestamp - modulus
         let minTimestamp: Int64 = roundedMaxTimestamp - 7*24*60*60
         
-        
         let localCens: [CEN] = cenRepo.loadCensForTimeInterval(start: minTimestamp, end: maxTimestamp)
-        os_log("Count of local CENs = %d", localCens.count)
+        os_log("Count of local CENs = %{public}d", localCens.count)
         
-        var matchedKeys : [CENKey] = []
+        let concurrentMatchingGroup: DispatchGroup = DispatchGroup()
+        let matchingIsCompleteSemaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
         
         for localCen in localCens {
-            let mod = localCen.timestamp % Int64(CenLogic.CENLifetimeInSeconds)
-            let roundedLocalTimestamp = localCen.timestamp - mod
-            os_log("Local CEN: cen = [ %@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", localCen.CEN, localCen.timestamp, roundedLocalTimestamp)
-            var i : Int = 0
-            for key in keys {
-                i+=1
-                let candidateCen = cenLogic.generateCen(CENKey: key.cenKey, timestamp: roundedLocalTimestamp)
-                let candidateCenHex = candidateCen.toHex()
-                os_log("%d. candidateCenHex: [%@] based on key [%@ %lld] \n", i, candidateCenHex, key.cenKey, key.timestamp  )
-                if localCen.CEN == candidateCenHex {
-                    os_log("Match found for [%@]", candidateCenHex)
-                    matchedKeys.append(key)
-                    break
-                }
-                
+            concurrentMatchingGroup.enter()
+            matchingQueue.async {
+                self.checkForPotentialInfection(cen: localCen, infectedKeys: keys){concurrentMatchingGroup.leave()}
             }
         }
+        concurrentMatchingGroup.notify(queue: DispatchQueue.main){
+            //All matching batches are done
+            os_log("Matching is completed!")
+            matchingIsCompleteSemaphore.signal()
+        }
+        
+        //Block execution untill all matching batches are done
+        matchingIsCompleteSemaphore.wait()
+        
         return matchedKeys
+        
+    }
+    
+    private func checkForPotentialInfection(cen: CEN, infectedKeys: [CENKey], completion: () -> Void){
+        let mod = cen.timestamp % Int64(CenLogic.CENLifetimeInSeconds)
+        let roundedLocalTimestamp = cen.timestamp - mod
+        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", cen.CEN, cen.timestamp, roundedLocalTimestamp)
+        var i : Int = 0
+        for key in infectedKeys {
+            i+=1
+            let candidateCen = cenLogic.generateCen(CENKey: key.cenKey, timestamp: roundedLocalTimestamp)
+            let candidateCenHex = candidateCen.toHex()
+            os_log("%p %d. candidateCenHex: [%{public}@] based on key [%{public}@ %lld] \n", Thread.current, i, candidateCenHex, key.cenKey, key.timestamp)
+            if cen.CEN == candidateCenHex {
+                os_log("Match found for [ %{public}@ ]", candidateCenHex)
+                //Update matchedKeys on Main thread (preventing race conditions)
+                DispatchQueue.main.async{
+                    self.matchedKeys.append(key)
+                }
+                break
+            }
+            
+        }
+        //leave concurrentMatchingGroup
+        completion()
     }
 
     // Copied from Android implementation
