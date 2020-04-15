@@ -45,9 +45,7 @@ class SymptomRepoImpl: SymptomRepo {
 
 private extension Sequence where Iterator.Element == Symptom {
     func toCENReport() -> CenReport? {
-        let separator = ", "
-        let stringReport : String  = self.reduce("") {$0 + $1.name + separator}
-        let cs = CharacterSet.init(charactersIn: separator)
-        return CenReport(id: UUID().uuidString, report: stringReport.trimmingCharacters(in: cs), timestamp: Date().coEpiTimestamp)
+        let stringReport : String  = map { $0.name }.joined(separator: ", ")
+        return CenReport(id: UUID().uuidString, report: stringReport, timestamp: Date().coEpiTimestamp)
     }
 }
