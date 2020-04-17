@@ -21,6 +21,8 @@
 		62983D90243CE39E00B0294C /* HealthQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE98242DDCBC00EFB67A /* HealthQuizViewModel.swift */; };
 		62983D91243CE60600B0294C /* RealmDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B7242CC97600516F3B /* RealmDao.swift */; };
 		62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */; };
+		844D26BA24479DCA0045FDD6 /* TCNClient in Frameworks */ = {isa = PBXBuildFile; productRef = 844D26B924479DCA0045FDD6 /* TCNClient */; };
+		844D26BC24479E1D0045FDD6 /* BleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D26BB24479E1D0045FDD6 /* BleAdapter.swift */; };
 		848434522438BF91006A5839 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 848434512438BF91006A5839 /* SwiftEntryKit */; };
 		848434552438C03C006A5839 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434542438C03C006A5839 /* ErrorView.swift */; };
 		848434572438C046006A5839 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848434562438C046006A5839 /* ErrorView.xib */; };
@@ -44,10 +46,6 @@
 		8491497B24366FF000975344 /* CenKeysFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497A24366FF000975344 /* CenKeysFetcher.swift */; };
 		8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497C2436881400975344 /* Data+StringFormatting.swift */; };
 		8491497F2436946900975344 /* CenMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497E2436946900975344 /* CenMatcher.swift */; };
-		849149822436A16C00975344 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849149812436A16C00975344 /* BluetoothController.swift */; };
-		849149842436A19B00975344 /* CBPeripheral+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849149832436A19B00975344 /* CBPeripheral+Additions.swift */; };
-		849149862436A1CF00975344 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849149852436A1CF00975344 /* BluetoothService.swift */; };
-		849149882436A1E600975344 /* BluetoothService+CoreBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849149872436A1E600975344 /* BluetoothService+CoreBluetooth.swift */; };
 		8491498B2436A28E00975344 /* BerkananSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 8491498A2436A28E00975344 /* BerkananSDK */; };
 		849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849811572436119300EBD1DA /* CoEpiRepo.swift */; };
 		8498115A2436175500EBD1DA /* CenLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FB1162436056500BD1302 /* CenLogic.swift */; };
@@ -68,7 +66,6 @@
 		849DFE802427D37A0008ED65 /* CoEpiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE7F2427D37A0008ED65 /* CoEpiTests.swift */; };
 		849DFE8B2427D37A0008ED65 /* CoEpiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE8A2427D37A0008ED65 /* CoEpiUITests.swift */; };
 		849F50CD243E08B6008EC9E8 /* String+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F50CC243E08B6008EC9E8 /* String+Convenience.swift */; };
-		84A1C0CD24375C4300875DAE /* BleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C0CC24375C4300875DAE /* BleAdapter.swift */; };
 		84A1C0D02437BFE200875DAE /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C0CF2437BFE200875DAE /* Date+Convenience.swift */; };
 		84A1C0D22437C25B00875DAE /* ReceivedCenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C0D12437C25B00875DAE /* ReceivedCenReport.swift */; };
 		84A1C0D42437C34400875DAE /* CenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C0D32437C34400875DAE /* CenReport.swift */; };
@@ -190,6 +187,7 @@
 		5E087D09295263EB6A4DB967 /* Pods-CoEpi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.debug.xcconfig"; sourceTree = "<group>"; };
 		74BF972AC9A1ED47A016DA3D /* Pods-CoEpi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.release.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.release.xcconfig"; sourceTree = "<group>"; };
 		83D98C7D6EAEBFA0E5292E3F /* Pods_CoEpi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		844D26BB24479E1D0045FDD6 /* BleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleAdapter.swift; sourceTree = "<group>"; };
 		848434542438C03C006A5839 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		848434562438C046006A5839 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		848434582438C28A006A5839 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
@@ -208,10 +206,6 @@
 		8491497A24366FF000975344 /* CenKeysFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenKeysFetcher.swift; sourceTree = "<group>"; };
 		8491497C2436881400975344 /* Data+StringFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+StringFormatting.swift"; sourceTree = "<group>"; };
 		8491497E2436946900975344 /* CenMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenMatcher.swift; sourceTree = "<group>"; };
-		849149812436A16C00975344 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
-		849149832436A19B00975344 /* CBPeripheral+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBPeripheral+Additions.swift"; sourceTree = "<group>"; };
-		849149852436A1CF00975344 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
-		849149872436A1E600975344 /* BluetoothService+CoreBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothService+CoreBluetooth.swift"; sourceTree = "<group>"; };
 		849811572436119300EBD1DA /* CoEpiRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiRepo.swift; sourceTree = "<group>"; };
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		849CEFA1242FEDE7003F9284 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = CoEpi/ui/theme/Theme.swift; sourceTree = SOURCE_ROOT; };
@@ -234,7 +228,6 @@
 		849DFE8C2427D37A0008ED65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849F50CC243E08B6008EC9E8 /* String+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Convenience.swift"; sourceTree = "<group>"; };
 		849FB1162436056500BD1302 /* CenLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenLogic.swift; sourceTree = "<group>"; };
-		84A1C0CC24375C4300875DAE /* BleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleAdapter.swift; sourceTree = "<group>"; };
 		84A1C0CF2437BFE200875DAE /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
 		84A1C0D12437C25B00875DAE /* ReceivedCenReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedCenReport.swift; sourceTree = "<group>"; };
 		84A1C0D32437C34400875DAE /* CenReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenReport.swift; sourceTree = "<group>"; };
@@ -318,6 +311,7 @@
 				84FA00F52427E83000318104 /* Dip in Frameworks */,
 				8491498B2436A28E00975344 /* BerkananSDK in Frameworks */,
 				848434712438F6CA006A5839 /* Alamofire in Frameworks */,
+				844D26BA24479DCA0045FDD6 /* TCNClient in Frameworks */,
 				ED84885A0AB19A504317BA10 /* Pods_CoEpi.framework in Frameworks */,
 				8486BDCF242B9AC900A63DD5 /* RxBlocking in Frameworks */,
 			);
@@ -452,17 +446,6 @@
 				8486BDD8242BBCE700A63DD5 /* DebugViewController.xib */,
 			);
 			path = debug;
-			sourceTree = "<group>";
-		};
-		849149802436A15700975344 /* covidwatch */ = {
-			isa = PBXGroup;
-			children = (
-				849149812436A16C00975344 /* BluetoothController.swift */,
-				849149832436A19B00975344 /* CBPeripheral+Additions.swift */,
-				849149852436A1CF00975344 /* BluetoothService.swift */,
-				849149872436A1E600975344 /* BluetoothService+CoreBluetooth.swift */,
-			);
-			path = covidwatch;
 			sourceTree = "<group>";
 		};
 		84981159243614C500EBD1DA /* dao */ = {
@@ -640,12 +623,11 @@
 		84BF972524280ECF001ADD6B /* ble */ = {
 			isa = PBXGroup;
 			children = (
-				849149802436A15700975344 /* covidwatch */,
 				84BF972A24281082001ADD6B /* DataRepresentable.swift */,
 				84BF972624281082001ADD6B /* LogSettings.swift */,
 				84BF972824281082001ADD6B /* uuids.swift */,
 				CE6B7ACA24332C9800C42280 /* ContactReceivedHandler.swift */,
-				84A1C0CC24375C4300875DAE /* BleAdapter.swift */,
+				844D26BB24479E1D0045FDD6 /* BleAdapter.swift */,
 			);
 			path = ble;
 			sourceTree = "<group>";
@@ -831,6 +813,7 @@
 				848434512438BF91006A5839 /* SwiftEntryKit */,
 				848434702438F6CA006A5839 /* Alamofire */,
 				849D1AFB2439D7B300804511 /* RxSwiftExt */,
+				844D26B924479DCA0045FDD6 /* TCNClient */,
 			);
 			productName = CoEpi;
 			productReference = 849DFE622427D3750008ED65 /* CoEpi.app */;
@@ -920,6 +903,7 @@
 				848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				8484346F2438F6CA006A5839 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				849D1AFA2439D7B300804511 /* XCRemoteSwiftPackageReference "RxSwiftExt" */,
+				844D26B824479DCA0045FDD6 /* XCRemoteSwiftPackageReference "tcn-client-ios" */,
 			);
 			productRefGroup = 849DFE632427D3750008ED65 /* Products */;
 			projectDirPath = "";
@@ -1138,16 +1122,13 @@
 				84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */,
 				84BF97202427FAF1001ADD6B /* OnboardingWireframe.swift in Sources */,
 				8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */,
-				849149822436A16C00975344 /* BluetoothController.swift in Sources */,
 				84A1C0D02437BFE200875DAE /* Date+Convenience.swift in Sources */,
 				CE626E092430A98B000DB8E7 /* AlertsViewModel.swift in Sources */,
 				84BF972C24281082001ADD6B /* LogSettings.swift in Sources */,
 				CE6B7ACB24332C9800C42280 /* ContactReceivedHandler.swift in Sources */,
 				CE6B7ABF2433252300C42280 /* CENReportRepo.swift in Sources */,
-				849149842436A19B00975344 /* CBPeripheral+Additions.swift in Sources */,
 				D41B0CDC242E467800A50447 /* OnboardingButton.swift in Sources */,
 				84FEDB6F24364FE300F41160 /* CoEpiApi.swift in Sources */,
-				849149862436A1CF00975344 /* BluetoothService.swift in Sources */,
 				8484346E2438F441006A5839 /* ApiParamsCenReport.swift in Sources */,
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				848434552438C03C006A5839 /* ErrorView.swift in Sources */,
@@ -1155,7 +1136,6 @@
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
 				CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */,
 				84A1C0D22437C25B00875DAE /* ReceivedCenReport.swift in Sources */,
-				849149882436A1E600975344 /* BluetoothService+CoreBluetooth.swift in Sources */,
 				848434662438E663006A5839 /* UINotification.swift in Sources */,
 				CE6B7AB3243312FA00C42280 /* CENRepo.swift in Sources */,
 				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
@@ -1163,9 +1143,9 @@
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
 				849D1B0A2439F31D00804511 /* DaoError.swift in Sources */,
 				8491497B24366FF000975344 /* CenKeysFetcher.swift in Sources */,
-				84A1C0CD24375C4300875DAE /* BleAdapter.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
+				844D26BC24479E1D0045FDD6 /* BleAdapter.swift in Sources */,
 				849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */,
 				D41B0D1F242F60CF00A50447 /* OnboardingStrings.swift in Sources */,
 				D41B0D1B242F5BDA00A50447 /* StringMarkupAttributedExtension.swift in Sources */,
@@ -1436,7 +1416,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SQAPAYXXBX;
 				INFOPLIST_FILE = CoEpi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1458,7 +1438,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SQAPAYXXBX;
 				INFOPLIST_FILE = CoEpi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1634,6 +1614,14 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		844D26B824479DCA0045FDD6 /* XCRemoteSwiftPackageReference "tcn-client-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TCNCoalition/tcn-client-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
 		848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huri000/SwiftEntryKit";
@@ -1697,6 +1685,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 30EF95592432E009007D61C7 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
+		};
+		844D26B924479DCA0045FDD6 /* TCNClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 844D26B824479DCA0045FDD6 /* XCRemoteSwiftPackageReference "tcn-client-ios" */;
+			productName = TCNClient;
 		};
 		848434512438BF91006A5839 /* SwiftEntryKit */ = {
 			isa = XCSwiftPackageProductDependency;

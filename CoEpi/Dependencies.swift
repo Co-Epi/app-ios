@@ -78,8 +78,7 @@ class Dependencies {
     }
 
     private func registerBle(container: DependencyContainer) {
-        container.register(.singleton) { BleAdapter(cenReadHandler: try container.resolve()) }
-        container.register(.eagerSingleton) { BluetoothController(delegate: try container.resolve()) }
+        container.register(.eagerSingleton) { BleAdapter(cenReadHandler: try container.resolve()) }
     }
 
     private func registerSystem(container: DependencyContainer) {

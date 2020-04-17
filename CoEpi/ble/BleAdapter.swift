@@ -1,43 +1,32 @@
 import Foundation
+import TCNClient
 import RxSwift
+import os.log
 
-/// Bridges between app and covidwatch BLE lib
 class BleAdapter {
+    private let cenReadHandler: ContactReceivedHandler
+
+    private let tcnService: TCNBluetoothService
 
     let discovered: ReplaySubject<CEN> = .create(bufferSize: 1)
-
-    // Debugging
     let myCen: ReplaySubject<String> = .create(bufferSize: 1)
-    let peripheralWasRead: ReplaySubject<String> = .create(bufferSize: 1)
-    let centralDidWrite: ReplaySubject<String> = .create(bufferSize: 1)
-    let peripheralWasWrittenTo: ReplaySubject<String> = .create(bufferSize: 1)
-
-    private let cenReadHandler: ContactReceivedHandler
 
     init(cenReadHandler: ContactReceivedHandler) {
         self.cenReadHandler = cenReadHandler
-    }
 
-    func provideMyCen() -> Data {
-        let cen = cenReadHandler.provideMyCen()
-        myCen.onNext(cen.toHex())
-        return cen
-    }
+        tcnService = TCNBluetoothService(tcnGenerator: { [myCen] () -> Data in
+            let cen = cenReadHandler.provideMyCen()
+            myCen.onNext(cen.toHex())
+            return cen
 
-    func didDiscoverCen(cen: Data) {
-        // maybe create ReceivedCen type like in Android.
-        discovered.onNext(CEN(CEN: cen.toHex(), timestamp: Date().coEpiTimestamp))
-    }
+        }, tcnFinder: { [discovered] data in
+            discovered.onNext(CEN(CEN: data.toHex(), timestamp: Date().coEpiTimestamp))
 
-    func peripheralWasRead(cen: Data) {
-        peripheralWasRead.onNext(cen.toHex())
-    }
+        }) { error in
+            // TODO What kind of errors? Should we notify the user?
+            os_log("TCN service error: %@", type: .error, "\(error)")
+        }
 
-    func peripheralWasWrittenTo(cen: Data) {
-        peripheralWasWrittenTo.onNext(cen.toHex())
-    }
-
-    func centralDidWrite(cen: Data) {
-        centralDidWrite.onNext(cen.toHex())
+        tcnService.start()
     }
 }

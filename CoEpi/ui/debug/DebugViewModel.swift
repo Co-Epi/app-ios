@@ -12,16 +12,12 @@ class DebugViewModel {
         let combined = Observable.combineLatest(
             cenKeyDao.generatedMyKey.asSequence().map { $0.distinct() },
             bleAdapter.myCen.asSequence().map { $0.distinct() },
-            bleAdapter.discovered.asSequence().map { $0.distinct() },
-            bleAdapter.peripheralWasRead.asSequence().map { $0.distinct() },
-            bleAdapter.centralDidWrite.asSequence().map { $0.distinct() },
-            bleAdapter.peripheralWasWrittenTo.asSequence().map { $0.distinct() }
+            bleAdapter.discovered.asSequence().map { $0.distinct() }
         )
 
         debugEntries = combined
-            .map { myKey, myCen, discovered, peripheralWasRead, centralDidWrite, peripheralWasWrittenTo in
-                return generateItems(myKey: myKey, myCen: myCen, discovered: discovered, peripheralWasRead: peripheralWasRead,
-                                     centralDidWrite: centralDidWrite, peripheralWasWrittenTo: peripheralWasWrittenTo)
+            .map { myKey, myCen, discovered in
+                return generateItems(myKey: myKey, myCen: myCen, discovered: discovered)
             }
             .asDriver(onErrorJustReturn: [])
     }
@@ -32,14 +28,10 @@ enum DebugEntryViewData {
     case Item(String)
 }
 
-private func generateItems(myKey: [String], myCen: [String], discovered: [CEN], peripheralWasRead: [String],
-                           centralDidWrite: [String], peripheralWasWrittenTo: [String]) -> [DebugEntryViewData] {
+private func generateItems(myKey: [String], myCen: [String], discovered: [CEN]) -> [DebugEntryViewData] {
     return items(header: "My key", items: myKey)
         + items(header: "My CEN", items: myCen)
         + items(header: "Discovered", items: discovered.map{ $0.CEN })
-        + items(header: "Peripheral was read", items: peripheralWasRead)
-        + items(header: "Central did write", items: centralDidWrite)
-        + items(header: "Peripheral was written to", items: peripheralWasWrittenTo)
 }
 
 private func items(header: String, items: [String]) -> [DebugEntryViewData] {
