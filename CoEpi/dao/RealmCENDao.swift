@@ -4,8 +4,8 @@ import RealmSwift
 protocol CENDao {
     func insert(cen: CEN) -> Bool
     func loadAllCENRecords() -> [CEN]?
-    func match(start: Int64, end: Int64, hexEncodedCENs: [String]) -> [CEN]
-    func loadCensForTimeInterval(start: Int64, end: Int64) -> [CEN]
+    func match(start: UnixTime, end: UnixTime, hexEncodedCENs: [String]) -> [CEN]
+    func loadCensForTimeInterval(start: UnixTime, end: UnixTime) -> [CEN]
 }
 
 class RealmCENDao: CENDao, RealmDao {
@@ -29,24 +29,24 @@ class RealmCENDao: CENDao, RealmDao {
         }
     }
 
-    func match(start: Int64, end: Int64, hexEncodedCENs: [String]) -> [CEN] {
+    func match(start: UnixTime, end: UnixTime, hexEncodedCENs: [String]) -> [CEN] {
         realm.objects(RealmCEN.self)
-            .filter("timestamp >= %d", start)
-            .filter("timestamp <= %d", end)
+            .filter("timestamp >= %d", start.value)
+            .filter("timestamp <= %d", end.value)
             .filter(NSPredicate(format: "CEN IN %@", hexEncodedCENs))
-            .map { CEN(CEN: $0.CEN, timestamp: $0.timestamp) }
+            .map { CEN(CEN: $0.CEN, timestamp: UnixTime(value: $0.timestamp)) }
     }
 
     func loadAllCENRecords() -> [CEN]? {
         let DBCENObject = realm.objects(RealmCEN.self).sorted(byKeyPath: "timestamp", ascending: false)
-        return DBCENObject.map { CEN(CEN: $0.CEN, timestamp: $0.timestamp) }
+        return DBCENObject.map { CEN(CEN: $0.CEN, timestamp: UnixTime(value: $0.timestamp)) }
     }
     
-    func loadCensForTimeInterval(start: Int64, end: Int64) -> [CEN] {
+    func loadCensForTimeInterval(start: UnixTime, end: UnixTime) -> [CEN] {
         realm.objects(RealmCEN.self)
-            .filter("timestamp >= %d", start)
-            .filter("timestamp <= %d", end)
-            .compactMap { CEN(CEN: $0.CEN, timestamp: $0.timestamp)
+            .filter("timestamp >= %d", start.value)
+            .filter("timestamp <= %d", end.value)
+            .compactMap { CEN(CEN: $0.CEN, timestamp: UnixTime(value: $0.timestamp))
         }
     }
 }

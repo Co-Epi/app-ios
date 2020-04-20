@@ -2,8 +2,8 @@ import Foundation
 import os.log
 
 protocol CenMatcher {
-    func hasMatches(key: CENKey, maxTimestamp: Int64) -> Bool
-    func matchLocalFirst(keys: [CENKey], maxTimestamp: Int64) -> [CENKey]
+    func hasMatches(key: CENKey, maxTimestamp: UnixTime) -> Bool
+    func matchLocalFirst(keys: [CENKey], maxTimestamp: UnixTime) -> [CENKey]
 }
 
 class CenMatcherImpl: CenMatcher {
@@ -19,16 +19,20 @@ class CenMatcherImpl: CenMatcher {
         self.cenLogic = cenLogic
     }
 
-    func hasMatches(key: CENKey, maxTimestamp: Int64) -> Bool {
+    func hasMatches(key: CENKey, maxTimestamp: UnixTime) -> Bool {
         !match(key: key, maxTimestamp: maxTimestamp).isEmpty
     }
     
-    func matchLocalFirst(keys: [CENKey], maxTimestamp: Int64) -> [CENKey] {
-        let modulus = maxTimestamp % Int64(CenLogic.CENLifetimeInSeconds)
-        let roundedMaxTimestamp = maxTimestamp - modulus
+    func matchLocalFirst(keys: [CENKey], maxTimestamp: UnixTime) -> [CENKey] {
+        let modulus = maxTimestamp.value % Int64(CenLogic.CENLifetimeInSeconds)
+        let roundedMaxTimestamp = maxTimestamp.value - modulus
         let minTimestamp: Int64 = roundedMaxTimestamp - 7*24*60*60
         
-        let localCens: [CEN] = cenRepo.loadCensForTimeInterval(start: minTimestamp, end: maxTimestamp)
+        let localCens: [CEN] = cenRepo.loadCensForTimeInterval(
+            start: UnixTime(value: minTimestamp),
+            end: maxTimestamp
+        )
+
         os_log("Count of local CENs = %{public}d", localCens.count)
         
         let concurrentMatchingGroup: DispatchGroup = DispatchGroup()
@@ -54,15 +58,15 @@ class CenMatcherImpl: CenMatcher {
     }
     
     private func checkForPotentialInfection(cen: CEN, infectedKeys: [CENKey], completion: () -> Void){
-        let mod = cen.timestamp % Int64(CenLogic.CENLifetimeInSeconds)
-        let roundedLocalTimestamp = cen.timestamp - mod
-        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", cen.CEN, cen.timestamp, roundedLocalTimestamp)
+        let mod = cen.timestamp.value % Int64(CenLogic.CENLifetimeInSeconds)
+        let roundedLocalTimestamp = cen.timestamp.value - mod
+        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", cen.CEN, cen.timestamp.value, roundedLocalTimestamp)
         var i : Int = 0
         for key in infectedKeys {
             i+=1
             let candidateCen = cenLogic.generateCen(CENKey: key.cenKey, timestamp: roundedLocalTimestamp)
             let candidateCenHex = candidateCen.toHex()
-            os_log("%p %d. candidateCenHex: [%{public}@] based on key [%{public}@ %lld] \n", Thread.current, i, candidateCenHex, key.cenKey, key.timestamp)
+            os_log("%p %d. candidateCenHex: [%{public}@] based on key [%{public}@ %lld] \n", Thread.current, i, candidateCenHex, key.cenKey, key.timestamp.value)
             if cen.CEN == candidateCenHex {
                 os_log("Match found for [ %{public}@ ]", candidateCenHex)
                 //Update matchedKeys on Main thread (preventing race conditions)
@@ -78,15 +82,11 @@ class CenMatcherImpl: CenMatcher {
     }
 
     // Copied from Android implementation
-    private func match(key: CENKey, maxTimestamp: Int64) -> [CEN] {
-
-        // Unclear why maxTimestamp is a parameter
-        let maxTimestamp = Date().coEpiTimestamp
-
+    private func match(key: CENKey, maxTimestamp: UnixTime) -> [CEN] {
         let interval: Int64 = 7 * 24 * 60 * 60
         
         // take the last 7 days of timestamps and generate all the possible CENs (e.g. 7 days) TODO: Parallelize this?
-        let minTimestamp: Int64 = maxTimestamp - interval
+        let minTimestamp: Int64 = maxTimestamp.value - interval
         let CENLifetimeInSeconds = 15 * 60   // every 15 mins a new CEN is generated
 
         // last time (unix timestamp) the CENKeys were requested
@@ -97,7 +97,7 @@ class CenMatcherImpl: CenMatcher {
         possibleCENs.reserveCapacity(max)
 
         for i in 0...max {
-            let ts = maxTimestamp - Int64(CENLifetimeInSeconds * i)
+            let ts = maxTimestamp.value - Int64(CENLifetimeInSeconds * i)
             let cen = cenLogic.generateCen(CENKey: key.cenKey, timestamp: ts)
 //            possibleCENs[i] = cen.toHex()
             possibleCENs.append(cen.toHex()) // No fixed size array
@@ -110,6 +110,6 @@ class CenMatcherImpl: CenMatcher {
 //        os_log("Currently stored CENs: %@, minTime: %@, maxtime: %@", log: servicesLog, type: .debug,
 //               "\(String(describing: currentlyStoredCens))", "\(minTimestamp)", "\(maxTimestamp)")
 
-        return cenRepo.match(start: minTimestamp, end: maxTimestamp, hexEncodedCENs: possibleCENs)
+        return cenRepo.match(start: UnixTime(value: minTimestamp), end: maxTimestamp, hexEncodedCENs: possibleCENs)
     }
 }

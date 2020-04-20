@@ -61,7 +61,7 @@ class CoEpiRepoImpl: CoEpiRepo {
 //                }
 //            }}
             
-            .map{keys -> [CENKey] in cenMatcher.matchLocalFirst(keys: keys, maxTimestamp: Date().coEpiTimestamp) }
+            .map{keys -> [CENKey] in cenMatcher.matchLocalFirst(keys: keys, maxTimestamp: .now()) }
             
             .do(onNext: { matchedKeys in
                 if let matchingStartTime = matchingStartTime {

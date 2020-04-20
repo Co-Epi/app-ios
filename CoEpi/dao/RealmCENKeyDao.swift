@@ -26,18 +26,18 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
     }
  
     func generateAndStoreCENKey() -> Result<CENKey, DaoError> {
-        let curTimestamp = Date().coEpiTimestamp
+        let curTimestamp = UnixTime.now()
 
         let result: Result<CENKey, DaoError> = {
             if let latestCenKey = getLatestCENKey() {
-                if (cenLogic.shouldGenerateNewCenKey(curTimestamp: curTimestamp, cenKeyTimestamp: latestCenKey.timestamp)) {
-                    return generateAndInsertCenKey(curTimestamp: curTimestamp)
+                if (cenLogic.shouldGenerateNewCenKey(curTimestamp: curTimestamp, cenTimestamp: latestCenKey.timestamp)) {
+                    return generateAndInsertCenKey(timestamp: curTimestamp)
 
                 } else {
                     return .success(latestCenKey)
                 }
             } else { // There's no latest CEN key
-                return generateAndInsertCenKey(curTimestamp: curTimestamp)
+                return generateAndInsertCenKey(timestamp: curTimestamp)
             }
         }()
 
@@ -51,8 +51,8 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
     }
 
 
-    private func generateAndInsertCenKey(curTimestamp: Int64) -> Result<CENKey, DaoError> {
-        switch cenLogic.generateCenKey(curTimestamp: curTimestamp) {
+    private func generateAndInsertCenKey(timestamp: UnixTime) -> Result<CENKey, DaoError> {
+        switch cenLogic.generateCenKey(timestamp: timestamp) {
         case .success(let key):
             _ = insert(key: key)
             return .success(key)
@@ -67,7 +67,7 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
     private func getLatestCENKey() -> CENKey? {
         let cenKeysObject = realm.objects(RealmCENKey.self).sorted(byKeyPath: "timestamp", ascending: false)
         if let lastCenKey = cenKeysObject.first {
-            return CENKey(cenKey: lastCenKey.CENKey, timestamp: lastCenKey.timestamp)
+            return CENKey(cenKey: lastCenKey.CENKey, timestamp: UnixTime(value: lastCenKey.timestamp))
         } else {
             return nil
         }
@@ -81,7 +81,7 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
             var retrievedCENKeyList:[CENKey] = []
             for index in 0..<cenKeysObject.count {
                 retrievedCENKeyList.append(CENKey(cenKey: cenKeysObject[index].CENKey,
-                                                  timestamp: cenKeysObject[index].timestamp))
+                                                  timestamp: UnixTime(value: cenKeysObject[index].timestamp)))
                 if retrievedCENKeyList.count >= limit {
                     break
                 }
@@ -91,7 +91,7 @@ class RealmCENKeyDao: RealmDao, CENKeyDao {
     }
 
     func insert(key: CENKey) -> Bool {
-        let sameObject = realm.objects(RealmCENKey.self).filter("timestamp = %@", key.timestamp)
+        let sameObject = realm.objects(RealmCENKey.self).filter("timestamp = %@", key.timestamp.value)
         if sameObject.count > 0 {
             //Duplicate Entry: NOT inserting
             return false

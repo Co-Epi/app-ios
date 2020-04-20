@@ -6,18 +6,20 @@ class CenLogic {
     private let CENKeyLifetimeInSeconds: Int64 = 7 * 86400
     static let CENLifetimeInSeconds: Int64 = 15 * 60
 
-    func shouldGenerateNewCenKey(curTimestamp: Int64, cenKeyTimestamp: Int64) -> Bool {
-         (cenKeyTimestamp == 0) || (roundedTimestamp(ts: curTimestamp, roundingInterval: CENKeyLifetimeInSeconds) > roundedTimestamp(ts: cenKeyTimestamp, roundingInterval: CENKeyLifetimeInSeconds))
+    func shouldGenerateNewCenKey(curTimestamp: UnixTime, cenTimestamp: UnixTime) -> Bool {
+        (cenTimestamp.value == 0) ||
+            (roundedTimestamp(ts: curTimestamp.value, roundingInterval: CENKeyLifetimeInSeconds) >
+                roundedTimestamp(ts: cenTimestamp.value, roundingInterval: CENKeyLifetimeInSeconds))
     }
 
-    func generateCenKey(curTimestamp: Int64) -> Result<CENKey, CenLogicError> {
+    func generateCenKey(timestamp: UnixTime) -> Result<CENKey, CenLogicError> {
         //generate a new AES Key and store it in local storage
 
         //generate hex representation of key
         let cenKeyString = computeSymmetricKey()
 
         return cenKeyString.map {
-            CENKey(cenKey: $0, timestamp: curTimestamp)
+            CENKey(cenKey: $0, timestamp: timestamp)
         }
     }
 
