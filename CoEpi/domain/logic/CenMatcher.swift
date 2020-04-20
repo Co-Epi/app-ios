@@ -50,7 +50,7 @@ class CenMatcherImpl: CenMatcher {
             matchingIsCompleteSemaphore.signal()
         }
         
-        //Block execution untill all matching batches are done
+        //Block execution until all matching batches are done
         matchingIsCompleteSemaphore.wait()
         
         return matchedKeys
@@ -58,27 +58,36 @@ class CenMatcherImpl: CenMatcher {
     }
     
     private func checkForPotentialInfection(cen: CEN, infectedKeys: [CENKey], completion: () -> Void){
-        let mod = cen.timestamp.value % Int64(CenLogic.CENLifetimeInSeconds)
-        let roundedLocalTimestamp = cen.timestamp.value - mod
-        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", cen.CEN, cen.timestamp.value, roundedLocalTimestamp)
-        var i : Int = 0
+        let mod = cen.timestamp % Int64(CenLogic.CENLifetimeInSeconds)
+        let roundedLocalTimestamp = cen.timestamp - mod
+        let previousRoundedLocalTimestamp = roundedLocalTimestamp - CenLogic.CENLifetimeInSeconds
+//        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", cen.CEN, cen.timestamp, roundedLocalTimestamp)
+        let numOfKeys = infectedKeys.count
         for key in infectedKeys {
-            i+=1
-            let candidateCen = cenLogic.generateCen(CENKey: key.cenKey, timestamp: roundedLocalTimestamp)
-            let candidateCenHex = candidateCen.toHex()
-            os_log("%p %d. candidateCenHex: [%{public}@] based on key [%{public}@ %lld] \n", Thread.current, i, candidateCenHex, key.cenKey, key.timestamp.value)
-            if cen.CEN == candidateCenHex {
-                os_log("Match found for [ %{public}@ ]", candidateCenHex)
-                //Update matchedKeys on Main thread (preventing race conditions)
-                DispatchQueue.main.async{
-                    self.matchedKeys.append(key)
-                }
+            if matchKeyForTimestamp(key: key, cen: cen, timestamp: roundedLocalTimestamp) {
                 break
             }
-            
+            if matchKeyForTimestamp(key: key, cen: cen, timestamp: previousRoundedLocalTimestamp) {
+                break
+            }
         }
         //leave concurrentMatchingGroup
         completion()
+    }
+    
+    private func matchKeyForTimestamp(key: CENKey, cen: CEN, timestamp: Int64) -> Bool{
+        let candidateCen = cenLogic.generateCen(CENKey: key.cenKey, timestamp: timestamp)
+        let candidateCenHex = candidateCen.toHex()
+        if cen.CEN == candidateCenHex {
+//            os_log("Match found for [ %{public}@ ]", candidateCenHex)
+            //Update matchedKeys on Main thread (preventing race conditions)
+            DispatchQueue.main.async{
+                self.matchedKeys.append(key)
+            }
+            return true
+        }
+        
+        return false
     }
 
     // Copied from Android implementation
