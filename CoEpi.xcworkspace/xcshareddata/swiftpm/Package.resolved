@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Action",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/Action",
+        "state": {
+          "branch": null,
+          "revision": "cdade63f7bbe1f5e1eff7779e5858a796dc2c001",
+          "version": "4.0.1"
+        }
+      },
+      {
         "package": "Alamofire",
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {

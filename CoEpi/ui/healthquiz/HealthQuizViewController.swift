@@ -45,6 +45,10 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
         viewModel.notification
             .drive(rx.notification)
             .disposed(by: disposeBag)
+
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
      }
 }
 

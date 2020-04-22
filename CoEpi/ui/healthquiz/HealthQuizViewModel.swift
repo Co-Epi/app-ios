@@ -3,10 +3,12 @@ import RxCocoa
 import RxSwift
 import RxSwiftExt
 import os.log
+import Action
 
 class HealthQuizViewModel: UINotifier {
     let rxQuestions: Driver<[Question]>
     let notification: Driver<UINotification>
+    let setActivityIndicatorVisible: Driver<Bool>
 
     let notificationSubject: PublishRelay<UINotification> = PublishRelay()
 
@@ -15,12 +17,13 @@ class HealthQuizViewModel: UINotifier {
     private let symptomRepo: SymptomRepo
     private let questionsRelay: BehaviorRelay<[Question]>
 
-    private let submitTrigger: PublishRelay<Void> = PublishRelay()
+    private let submitAction: CocoaAction
 
     let disposeBag = DisposeBag()
 
-    init(container: DependencyContainer) {
-        self.symptomRepo = try! container.resolve()
+    init(symptomRepo: SymptomRepo) {
+        self.symptomRepo = symptomRepo
+        
         questionsRelay = BehaviorRelay(value: symptomRepo.symptoms()
             .map{ Question(symptom: $0) })
 
@@ -30,7 +33,21 @@ class HealthQuizViewModel: UINotifier {
         notification = notificationSubject
             .asDriver(onErrorDriveWith: .empty())
 
-        observeSubmit()
+        let selectedSymptoms = questionsRelay
+            .map { questions in questions
+                .filter { $0.checked }
+                .map { $0.toSymptom() }
+            }
+        submitAction = Action { [symptomRepo] in
+            selectedSymptoms.flatMap {
+                symptomRepo.submitSymptoms(symptoms: $0).asVoidObservable()
+            }
+        }
+
+        setActivityIndicatorVisible = submitAction.executing
+            .asDriver(onErrorJustReturn: false)
+
+        bindSubmit()
     }
 
     func question(at index: Int) -> Question {
@@ -44,28 +61,16 @@ class HealthQuizViewModel: UINotifier {
     }
 
     func onTapSubmit() {
-        submitTrigger.accept(())
+        submitAction.execute()
     }
 
-    private func observeSubmit() {
-        let selectedSymptoms = questionsRelay
-            .map { questions in questions
-                .filter { $0.checked }
-                .map { $0.toSymptom() }
-            }
-
-        let events: Observable<Event<()>> = submitTrigger.withLatestFrom(selectedSymptoms)
-            .flatMap { [symptomRepo] symptoms in
-                symptomRepo.submitSymptoms(symptoms: symptoms)
-                    .materialize()
-            }
-            .share()
-
-        events.elements().subscribe(onNext: { [weak self] success in
+    private func bindSubmit() {
+        submitAction.elements.subscribe(onNext: { [weak self] _ in
             self?.delegate?.onSubmit()
         }).disposed(by: disposeBag)
 
-        bindSuccessErrorNotifier(events, successMessage: "Symptoms submitted!")
+        bindSuccessNotifier(submitAction.elements, message: "Symptoms submitted!")
+        bindErrorNotifier(submitAction.errors)
     }
 }
 

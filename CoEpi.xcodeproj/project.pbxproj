@@ -22,6 +22,11 @@
 		62983D91243CE60600B0294C /* RealmDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B7242CC97600516F3B /* RealmDao.swift */; };
 		62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */; };
 		84201691244B21FF000EE281 /* UnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201690244B21FF000EE281 /* UnixTime.swift */; };
+		84201694244C901C000EE281 /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = 84201693244C901C000EE281 /* Action */; };
+		84201696244CA14D000EE281 /* UIView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201695244CA14D000EE281 /* UIView+Rx.swift */; };
+		84201698244CA18D000EE281 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201697244CA18D000EE281 /* UIView+ActivityIndicator.swift */; };
+		8420169A244CA1AC000EE281 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201699244CA1AC000EE281 /* ActivityIndicatorView.swift */; };
+		8420169D244CA3F1000EE281 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8420169C244CA3F1000EE281 /* ActivityIndicatorView.xib */; };
 		844D26BA24479DCA0045FDD6 /* TCNClient in Frameworks */ = {isa = PBXBuildFile; productRef = 844D26B924479DCA0045FDD6 /* TCNClient */; };
 		844D26BC24479E1D0045FDD6 /* BleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D26BB24479E1D0045FDD6 /* BleAdapter.swift */; };
 		848434522438BF91006A5839 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 848434512438BF91006A5839 /* SwiftEntryKit */; };
@@ -188,6 +193,10 @@
 		74BF972AC9A1ED47A016DA3D /* Pods-CoEpi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.release.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.release.xcconfig"; sourceTree = "<group>"; };
 		83D98C7D6EAEBFA0E5292E3F /* Pods_CoEpi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84201690244B21FF000EE281 /* UnixTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTime.swift; sourceTree = "<group>"; };
+		84201695244CA14D000EE281 /* UIView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rx.swift"; sourceTree = "<group>"; };
+		84201697244CA18D000EE281 /* UIView+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		84201699244CA1AC000EE281 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		8420169C244CA3F1000EE281 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
 		844D26BB24479E1D0045FDD6 /* BleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleAdapter.swift; sourceTree = "<group>"; };
 		848434542438C03C006A5839 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		848434562438C046006A5839 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
@@ -305,6 +314,7 @@
 				84A4B9A7242CA4D500516F3B /* Realm in Frameworks */,
 				30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */,
 				8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */,
+				84201694244C901C000EE281 /* Action in Frameworks */,
 				8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */,
 				848434522438BF91006A5839 /* SwiftEntryKit in Frameworks */,
 				8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */,
@@ -394,6 +404,15 @@
 				4A8C33FD92971388B446839F /* Pods-CoEpiNetworkingTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8420169B244CA3D9000EE281 /* activity indicator */ = {
+			isa = PBXGroup;
+			children = (
+				8420169C244CA3F1000EE281 /* ActivityIndicatorView.xib */,
+				84201699244CA1AC000EE281 /* ActivityIndicatorView.swift */,
+			);
+			path = "activity indicator";
 			sourceTree = "<group>";
 		};
 		848434532438C029006A5839 /* error */ = {
@@ -644,6 +663,7 @@
 		84FA00F82427EC4300318104 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8420169B244CA3D9000EE281 /* activity indicator */,
 				84EE1C5B2441D7220055E22B /* common */,
 				30EF957824379DD8007D61C7 /* launch screen */,
 				8484345C2438C3E6006A5839 /* traits */,
@@ -674,6 +694,8 @@
 				848434582438C28A006A5839 /* UIView+Autolayout.swift */,
 				848434612438C622006A5839 /* UIViewController+ErrorView.swift */,
 				848434632438C71F006A5839 /* UIViewController+Rx.swift */,
+				84201695244CA14D000EE281 /* UIView+Rx.swift */,
+				84201697244CA18D000EE281 /* UIView+ActivityIndicator.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -814,6 +836,7 @@
 				848434702438F6CA006A5839 /* Alamofire */,
 				849D1AFB2439D7B300804511 /* RxSwiftExt */,
 				844D26B924479DCA0045FDD6 /* TCNClient */,
+				84201693244C901C000EE281 /* Action */,
 			);
 			productName = CoEpi;
 			productReference = 849DFE622427D3750008ED65 /* CoEpi.app */;
@@ -904,6 +927,7 @@
 				8484346F2438F6CA006A5839 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				849D1AFA2439D7B300804511 /* XCRemoteSwiftPackageReference "RxSwiftExt" */,
 				844D26B824479DCA0045FDD6 /* XCRemoteSwiftPackageReference "tcn-client-ios" */,
+				84201692244C901B000EE281 /* XCRemoteSwiftPackageReference "Action" */,
 			);
 			productRefGroup = 849DFE632427D3750008ED65 /* Products */;
 			projectDirPath = "";
@@ -929,6 +953,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8420169D244CA3F1000EE281 /* ActivityIndicatorView.xib in Resources */,
 				849DFE752427D37A0008ED65 /* LaunchScreen.storyboard in Resources */,
 				CE98BE9F242DE02900EFB67A /* HealthQuizViewController.xib in Resources */,
 				849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */,
@@ -1139,6 +1164,7 @@
 				CE6B7AB3243312FA00C42280 /* CENRepo.swift in Sources */,
 				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
+				84201696244CA14D000EE281 /* UIView+Rx.swift in Sources */,
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
 				849D1B0A2439F31D00804511 /* DaoError.swift in Sources */,
 				8491497B24366FF000975344 /* CenKeysFetcher.swift in Sources */,
@@ -1153,6 +1179,7 @@
 				D41B0CDD242E467800A50447 /* GradientView.swift in Sources */,
 				84201691244B21FF000EE281 /* UnixTime.swift in Sources */,
 				849D28F92444300B0034EC4C /* Observable+Convenience.swift in Sources */,
+				84201698244CA18D000EE281 /* UIView+ActivityIndicator.swift in Sources */,
 				CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */,
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
 				CE98BEA1242DE23400EFB67A /* HealthQuizViewController.swift in Sources */,
@@ -1176,6 +1203,7 @@
 				84FA00F22427E13000318104 /* Dependencies.swift in Sources */,
 				CE98BE9B242DDCFD00EFB67A /* QuestionCell.swift in Sources */,
 				848434642438C71F006A5839 /* UIViewController+Rx.swift in Sources */,
+				8420169A244CA1AC000EE281 /* ActivityIndicatorView.swift in Sources */,
 				CE6B7ABD243324BA00C42280 /* RealmCENReportDao.swift in Sources */,
 				84A1C0D62437CBBF00875DAE /* RepoError.swift in Sources */,
 				84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */,
@@ -1614,6 +1642,14 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		84201692244C901B000EE281 /* XCRemoteSwiftPackageReference "Action" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/Action";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 		844D26B824479DCA0045FDD6 /* XCRemoteSwiftPackageReference "tcn-client-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TCNCoalition/tcn-client-ios";
@@ -1685,6 +1721,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 30EF95592432E009007D61C7 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
+		};
+		84201693244C901C000EE281 /* Action */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84201692244C901B000EE281 /* XCRemoteSwiftPackageReference "Action" */;
+			productName = Action;
 		};
 		844D26B924479DCA0045FDD6 /* TCNClient */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -26,7 +26,7 @@ class Dependencies {
         container.register { HomeViewModel() }
         container.register { OnboardingWireframe(container: container) }
         container.register { OnboardingViewModel() }
-        container.register { HealthQuizViewModel(container: container) }
+        container.register { HealthQuizViewModel(symptomRepo: try container.resolve()) }
         container.register { AlertsViewModel(container: container) }
 
         container.register { DebugViewModel(bleAdapter: try container.resolve(),
