@@ -58,8 +58,8 @@ class CenMatcherImpl: CenMatcher {
     }
     
     private func checkForPotentialInfection(cen: CEN, infectedKeys: [CENKey], completion: () -> Void){
-        let mod = cen.timestamp % Int64(CenLogic.CENLifetimeInSeconds)
-        let roundedLocalTimestamp = cen.timestamp - mod
+        let mod = cen.timestamp.value % Int64(CenLogic.CENLifetimeInSeconds)
+        let roundedLocalTimestamp = cen.timestamp.value - mod
         let previousRoundedLocalTimestamp = roundedLocalTimestamp - CenLogic.CENLifetimeInSeconds
 //        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", cen.CEN, cen.timestamp, roundedLocalTimestamp)
         let numOfKeys = infectedKeys.count
