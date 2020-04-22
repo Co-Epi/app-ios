@@ -62,7 +62,7 @@ class CenMatcherImpl: CenMatcher {
         let roundedLocalTimestamp = cen.timestamp.value - mod
         let previousRoundedLocalTimestamp = roundedLocalTimestamp - CenLogic.CENLifetimeInSeconds
 //        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", cen.CEN, cen.timestamp, roundedLocalTimestamp)
-        let numOfKeys = infectedKeys.count
+
         for key in infectedKeys {
             if matchKeyForTimestamp(key: key, cen: cen, timestamp: roundedLocalTimestamp) {
                 break

@@ -19,9 +19,8 @@ class BleAdapter {
             myCen.onNext(cen.toHex())
             return cen
 
-        }, tcnFinder: { [discovered] data in
+        }, tcnFinder: { [discovered] (data, _) in
             discovered.onNext(CEN(CEN: data.toHex(), timestamp: .now()))
-
         }) { error in
             // TODO What kind of errors? Should we notify the user?
             os_log("TCN service error: %@", type: .error, "\(error)")

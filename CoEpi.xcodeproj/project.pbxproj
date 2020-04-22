@@ -1654,8 +1654,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TCNCoalition/tcn-client-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.1;
+				branch = develop;
+				kind = branch;
 			};
 		};
 		848434502438BF91006A5839 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
