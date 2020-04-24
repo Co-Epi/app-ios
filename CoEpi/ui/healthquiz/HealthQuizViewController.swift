@@ -7,6 +7,7 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
     private let dataSource: HealthQuizQuestionsDataSource = .init()
 
     @IBOutlet weak var questionList: UITableView!
+    @IBOutlet weak var submitButton: UIButton!
     
     private let disposeBag = DisposeBag()
     
@@ -37,7 +38,7 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
 
     override func viewDidLoad() {
         questionList.register(cellClass: QuestionCell.self)
-
+        
         viewModel.rxQuestions
             .drive(questionList.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -48,6 +49,16 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
 
         viewModel.setActivityIndicatorVisible
             .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
+
+        viewModel.submitButtonEnabled
+            .drive(submitButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        // TODO clarify (global) button styles
+        viewModel.submitButtonEnabled
+            .map { $0 ? .systemIndigo : .lightGray }
+            .drive(submitButton.rx.backgroundColor)
             .disposed(by: disposeBag)
      }
 }

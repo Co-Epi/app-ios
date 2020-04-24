@@ -9,6 +9,7 @@ class HealthQuizViewModel: UINotifier {
     let rxQuestions: Driver<[Question]>
     let notification: Driver<UINotification>
     let setActivityIndicatorVisible: Driver<Bool>
+    let submitButtonEnabled: Driver<Bool>
 
     let notificationSubject: PublishRelay<UINotification> = PublishRelay()
 
@@ -45,6 +46,12 @@ class HealthQuizViewModel: UINotifier {
         }
 
         setActivityIndicatorVisible = submitAction.executing
+            .asDriver(onErrorJustReturn: false)
+
+        submitButtonEnabled = Observable
+            .combineLatest(selectedSymptoms, submitAction.executing) { selectedSymptoms, submitExecuting in
+                !selectedSymptoms.isEmpty && !submitExecuting
+            }
             .asDriver(onErrorJustReturn: false)
 
         bindSubmit()
