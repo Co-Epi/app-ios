@@ -1,0 +1,44 @@
+"alerts.count.none" = "新しい連絡先アラートはありません";
+"alerts.count.one" = "1件の新しい連絡先アラート";
+"alerts.count.some" = "%d件の新しい連絡先アラート";
+"alerts.title" = "アラート";
+
+"healthquiz.submit" = "参加する";
+"healthquiz.symptomQuestion" = "次の症状のいずれかが発生していますか？";
+"healthquiz.title" = "私の健康状態";
+
+"home.contactAlerts.button" = "アラートを見る";
+"home.contactAlerts.description" = "症状のある個人に接触した可能性があるおよその時間";
+"home.contactAlerts.title" = "連絡先アラート";
+"home.footer.build" = "ビルド";
+"home.footer.debug" = "デバッグ";
+"home.footer.version" = "バージョン";
+"home.myHealth.button" = "チェックイン";
+"home.myHealth.description" = "健康状態を監視して症状を報告する";
+"home.myHealth.title" = "私の健康状態";
+"home.share" = "シェア";
+
+"onboarding.alerts.beforeBold" = "感染症への可能性のある暴露についての";
+"onboarding.alerts.bold" = "状況に応じたアラート";
+"onboarding.alerts.afterBold" = "を取得する";
+"onboarding.getStarted" = "始めましょう";
+"onboarding.howDataUsed" = "データの使用方法";
+"onboarding.logo" = "コラボレーション。通知します。保護。";
+"onboarding.monitor.beforeBold" = "あなたの健康を";
+"onboarding.monitor.bold" = "監視する";
+"onboarding.monitor.afterBold" = "";
+"onboarding.track.beforeBold" = "どこにいたかを";
+"onboarding.track.bold" = "追跡";
+"onboarding.track.afterBold" = "";
+
+"symptom.fever" = "熱";
+"symptom.tiredness" = "疲れ";
+"symptom.dryCough" = "乾いた咳";
+"symptom.muscleAches" = "筋肉痛";
+"symptom.nasalCongestion" = "鼻詰まり";
+"symptom.runnyNose" = "鼻水";
+"symptom.soreThroat" = "喉の痛み";
+"symptom.diarrhea" = "下痢";
+"symptom.difficultyBreathing" = "呼吸困難";
+"symptom.lossOfSmellTaste" = "においや味の喪失";
+"symptom.none" = "上記のどれでもない";

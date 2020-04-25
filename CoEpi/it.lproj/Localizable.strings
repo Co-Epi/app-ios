@@ -1,0 +1,44 @@
+"alerts.count.none" = "nessun nuovo avviso di contatto";
+"alerts.count.one" = "1 nuovo avviso di contatto";
+"alerts.count.some" = "%d nuovi avvisi di contatto";
+"alerts.title" = "Avvisi";
+
+"healthquiz.submit" = "INVIA";
+"healthquiz.symptomQuestion" = "Stai riscontrando uno dei seguenti sintomi?";
+"healthquiz.title" = "La mia salute";
+
+"home.contactAlerts.button" = "VEDI AVVISI";
+"home.contactAlerts.description" = "Tempi approssimativi in cui potresti essere stato esposto a un individuo sintomatico";
+"home.contactAlerts.title" = "Avvisi di contatto";
+"home.footer.build" = "Costruire";
+"home.footer.debug" = "mettere a punto";
+"home.footer.version" = "Versione";
+"home.myHealth.button" = "REGISTRARE";
+"home.myHealth.description" = "Monitora la tua salute e segnala i sintomi";
+"home.myHealth.title" = "La mia salute";
+"home.share" = "Condividere";
+
+"onboarding.alerts.beforeBold" = "Ricevi ";
+"onboarding.alerts.bold" = "avvisi contestualizzati";
+"onboarding.alerts.afterBold" = " sulla possibile esposizione a malattie infettive";
+"onboarding.getStarted" = "INIZIARE";
+"onboarding.howDataUsed" = "Come vengono utilizzati i tuoi dati";
+"onboarding.logo" = "Collaborare. Far sapere. Proteggere.";
+"onboarding.monitor.beforeBold" = "";
+"onboarding.monitor.bold" = "Monitora";
+"onboarding.monitor.afterBold" = " la tua salute";
+"onboarding.track.beforeBold" = "";
+"onboarding.track.bold" = "Tieni traccia";
+"onboarding.track.afterBold" = " di dove sei stato";
+
+"symptom.fever" = "Febbre";
+"symptom.tiredness" = "Stanchezza";
+"symptom.dryCough" = "Tosse secca";
+"symptom.muscleAches" = "Dolori muscolari";
+"symptom.nasalCongestion" = "Congestione nasale";
+"symptom.runnyNose" = "Rinorrea";
+"symptom.soreThroat" = "Gola infiammata";
+"symptom.diarrhea" = "Diarrea";
+"symptom.difficultyBreathing" = "Respirazione difficoltosa";
+"symptom.lossOfSmellTaste" = "Perdita di odore / sapore";
+"symptom.none" = "Nessuno dei precedenti";
