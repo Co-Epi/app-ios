@@ -2,8 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,8 +18,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CoEpi" customModuleProvider="target">
             <connections>
                 <outlet property="buildLabel" destination="0sB-oG-nLH" id="Wjb-OL-Chd"/>
+                <outlet property="contactAlertsButton" destination="wu4-6I-1eQ" id="ijM-HB-MxQ"/>
                 <outlet property="contactAlertsDescriptionLabel" destination="ION-yb-bj7" id="0yc-j5-Hyo"/>
+                <outlet property="contactAlertsTitle" destination="1H3-EG-gYR" id="WXP-67-IQC"/>
+                <outlet property="debugButton" destination="sbH-Ss-34p" id="ws3-3x-x8X"/>
+                <outlet property="myHealthButton" destination="ctf-a4-WBU" id="bEr-DB-pNZ"/>
                 <outlet property="myHealthDescriptionLabel" destination="hDq-6a-Gjc" id="JZJ-nm-zgt"/>
+                <outlet property="myHealthTitle" destination="PKZ-Mp-cvR" id="vTy-8O-TCL"/>
                 <outlet property="stackContainerView" destination="ho3-Q1-9Ta" id="3hU-gS-mJk"/>
                 <outlet property="stackContainerViewTwo" destination="871-hC-mXL" id="sgQ-tF-lyG"/>
                 <outlet property="versionLabel" destination="wxx-IU-WaY" id="QOS-7g-sz2"/>

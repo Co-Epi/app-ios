@@ -6,6 +6,7 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
     private let viewModel: HealthQuizViewModel
     private let dataSource: HealthQuizQuestionsDataSource = .init()
 
+    @IBOutlet weak var symptomQuestionHeader: UILabel!
     @IBOutlet weak var questionList: UITableView!
     @IBOutlet weak var submitButton: UIButton!
     
@@ -14,7 +15,7 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
     init(viewModel: HealthQuizViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
-        title = "My Health"
+        title = L10n.Healthquiz.title
         
         dataSource.onChecked = { (question, idx) in
             viewModel.handleAnswer(question: question, idx: idx)
@@ -60,6 +61,9 @@ class HealthQuizViewController: UIViewController, ErrorDisplayer {
             .map { $0 ? .systemIndigo : .lightGray }
             .drive(submitButton.rx.backgroundColor)
             .disposed(by: disposeBag)
+        
+        symptomQuestionHeader.text = L10n.Healthquiz.symptomQuestion
+        submitButton.setTitle(L10n.Healthquiz.submit, for: .normal)
      }
 }
 

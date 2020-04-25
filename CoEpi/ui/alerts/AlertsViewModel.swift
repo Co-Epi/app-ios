@@ -20,12 +20,13 @@ class AlertsViewModel {
     }
 
     private static func formatTitleLabel(count: Int) -> String {
-        let title: String = "\(count) new contact alert"
-        
-        if count < 2 {
-            return title
+        if count == 0 {
+            return L10n.Alerts.Count.none
         }
-        return title + "s"
+        if count == 1 {
+            return L10n.Alerts.Count.one
+        }
+        return L10n.Alerts.Count.some(count)
     }
 
     public func acknowledge(alert: Alert) {

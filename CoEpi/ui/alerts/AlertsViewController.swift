@@ -15,7 +15,7 @@ class AlertsViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
         
-        title = "Alerts"
+        title = L10n.Alerts.title
         dataSource.onAcknowledged = { (alert) in
             viewModel.acknowledge(alert: alert)
         }

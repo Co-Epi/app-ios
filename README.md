@@ -29,3 +29,8 @@ Fork and create a branch in the fork
 
 3. Commit changes to the branch
 4. Push your code and make a pull request
+
+### Internationalization
+
+Any text visible to the user should be translated into the phone's preferred language.
+See the [Internationalization wiki page](https://github.com/Co-Epi/app-ios/wiki/Internationalization) for details on how to do that.

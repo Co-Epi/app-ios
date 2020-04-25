@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		054A34F2244E61B600282E17 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 054A34F1244E61B600282E17 /* swiftgen.yml */; };
+		054A34FC244E691500282E17 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054A34FB244E691500282E17 /* strings.swift */; };
 		055A9D78243A892800A12285 /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A9D77243A892800A12285 /* KeyValueStore.swift */; };
+		05E0E4C8244403FE00D27F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05E0E4CA244403FE00D27F9A /* Localizable.strings */; };
 		30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */; };
 		30EF952E24313F61007D61C7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF952824313F61007D61C7 /* Fonts.swift */; };
 		30EF952F24313F61007D61C7 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30EF952A24313F61007D61C7 /* Roboto-Light.ttf */; };
@@ -174,7 +177,11 @@
 
 /* Begin PBXFileReference section */
 		01E44CAE9F9B6871D9529B29 /* Pods-CoEpiNetworkingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiNetworkingTests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpiNetworkingTests/Pods-CoEpiNetworkingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		054A34F1244E61B600282E17 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		054A34FB244E691500282E17 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		055A9D77243A892800A12285 /* KeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
+		05E0E4C9244403FE00D27F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		05E0E4CC2444056F00D27F9A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
 		30EF952824313F61007D61C7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		30EF952A24313F61007D61C7 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -346,6 +353,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		054A34FA244E68F700282E17 /* generated */ = {
+			isa = PBXGroup;
+			children = (
+				054A34FB244E691500282E17 /* strings.swift */,
+			);
+			path = generated;
+			sourceTree = "<group>";
+		};
 		30EF952624313F61007D61C7 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +549,7 @@
 		849DFE642427D3750008ED65 /* CoEpi */ = {
 			isa = PBXGroup;
 			children = (
+				054A34FA244E68F700282E17 /* generated */,
 				84FEDB6D24364FD800F41160 /* api */,
 				84A4B9B3242CA6CC00516F3B /* domain */,
 				84981159243614C500EBD1DA /* dao */,
@@ -548,6 +564,8 @@
 				849DFE762427D37A0008ED65 /* Info.plist */,
 				849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */,
 				84FA00F12427E13000318104 /* Dependencies.swift */,
+				05E0E4CA244403FE00D27F9A /* Localizable.strings */,
+				054A34F1244E61B600282E17 /* swiftgen.yml */,
 			);
 			path = CoEpi;
 			sourceTree = "<group>";
@@ -915,6 +933,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 849DFE592427D3750008ED65;
 			packageReferences = (
@@ -957,6 +976,7 @@
 				849DFE752427D37A0008ED65 /* LaunchScreen.storyboard in Resources */,
 				CE98BE9F242DE02900EFB67A /* HealthQuizViewController.xib in Resources */,
 				849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */,
+				054A34F2244E61B600282E17 /* swiftgen.yml in Resources */,
 				30EF953224313F61007D61C7 /* Roboto-Bold.ttf in Resources */,
 				84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */,
 				84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */,
@@ -964,6 +984,7 @@
 				30EF957A24379E01007D61C7 /* CoEpiLaunchScreen.storyboard in Resources */,
 				848434572438C046006A5839 /* ErrorView.xib in Resources */,
 				30EF953024313F61007D61C7 /* Roboto-Regular.ttf in Resources */,
+				05E0E4C8244403FE00D27F9A /* Localizable.strings in Resources */,
 				30EF952F24313F61007D61C7 /* Roboto-Light.ttf in Resources */,
 				84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */,
 				30EF953124313F61007D61C7 /* LICENSE.txt in Resources */,
@@ -1191,6 +1212,7 @@
 				30EF952E24313F61007D61C7 /* Fonts.swift in Sources */,
 				8484346A2438F09C006A5839 /* ApiCenReport.swift in Sources */,
 				8498115A2436175500EBD1DA /* CenLogic.swift in Sources */,
+				054A34FC244E691500282E17 /* strings.swift in Sources */,
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,
 				8486BDD9242BBCE700A63DD5 /* DebugViewController.swift in Sources */,
@@ -1268,6 +1290,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		05E0E4CA244403FE00D27F9A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05E0E4C9244403FE00D27F9A /* en */,
+				05E0E4CC2444056F00D27F9A /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		849DFE732427D37A0008ED65 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1325,6 +1356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1385,6 +1417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

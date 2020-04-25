@@ -16,17 +16,17 @@ class SymptomRepoImpl: SymptomRepo {
     }
 
     private var symptomsData: [Symptom] = [
-        Symptom(id: "1", name: "Fever"),
-        Symptom(id: "2", name: "Tiredness"),
-        Symptom(id: "3", name: "Dry cough"),
-        Symptom(id: "4", name: "Muscle aches"),
-        Symptom(id: "5", name: "Nasal congestion"),
-        Symptom(id: "6", name: "Runny nose"),
-        Symptom(id: "7", name: "Sore throat"),
-        Symptom(id: "8", name: "Diarrhea"),
-        Symptom(id: "9", name: "Difficulty breathing"),
-        Symptom(id: "10", name: "Loss of smell/taste"),
-        Symptom(id: "11", name: "None of the Above")
+        Symptom(id: "1", name: L10n.Symptom.fever),
+        Symptom(id: "2", name: L10n.Symptom.tiredness),
+        Symptom(id: "3", name: L10n.Symptom.dryCough),
+        Symptom(id: "4", name: L10n.Symptom.muscleAches),
+        Symptom(id: "5", name: L10n.Symptom.nasalCongestion),
+        Symptom(id: "6", name: L10n.Symptom.runnyNose),
+        Symptom(id: "7", name: L10n.Symptom.soreThroat),
+        Symptom(id: "8", name: L10n.Symptom.diarrhea),
+        Symptom(id: "9", name: L10n.Symptom.difficultyBreathing),
+        Symptom(id: "10", name: L10n.Symptom.lossOfSmellTaste),
+        Symptom(id: "11", name: L10n.Symptom.none)
     ]
     
     func symptoms() -> [Symptom] {
