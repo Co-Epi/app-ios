@@ -15,6 +15,8 @@ protocol CoEpiRepo {
 
     // Send symptoms report
     func sendReport(report: CenReport) -> Completable
+
+    func updateReports() -> Single<[ReceivedCenReport]>
 }
 
 class CoEpiRepoImpl: CoEpiRepo {
@@ -22,6 +24,7 @@ class CoEpiRepoImpl: CoEpiRepo {
     private let api: CoEpiApi
     private let cenMatcher: CenMatcher
     private let cenKeyDao: CENKeyDao
+    private let reportsHandler: MatchingReportsHandler
 
     let reports: Observable<[ReceivedCenReport]>
 
@@ -31,66 +34,29 @@ class CoEpiRepoImpl: CoEpiRepo {
 
     private let disposeBag = DisposeBag()
 
-    init(cenRepo: CENRepo, api: CoEpiApi, keysFetcher: CenKeysFetcher, cenMatcher: CenMatcher, cenKeyDao: CENKeyDao) {
+    private var matchingStartTime: CFAbsoluteTime? = nil
+
+    init(cenRepo: CENRepo, api: CoEpiApi, periodicKeysFetcher: PeriodicCenKeysFetcher, cenMatcher: CenMatcher,
+         cenKeyDao: CENKeyDao, reportsHandler: MatchingReportsHandler) {
+
         self.cenRepo = cenRepo
         self.api = api
         self.cenMatcher = cenMatcher
         self.cenKeyDao = cenKeyDao
+        self.reportsHandler = reportsHandler
 
-        // Benchmarking
-        var matchingStartTime: CFAbsoluteTime?
+        reports = reportsWith(keys: periodicKeysFetcher.keys, cenMatcher: cenMatcher, api: api,
+                              reportsHandler: reportsHandler)
+        reports.share().subscribe().disposed(by: disposeBag)
+    }
 
-        reports = keysFetcher.keys
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .do(onNext: { keys in
-                 matchingStartTime = CFAbsoluteTimeGetCurrent()
-                os_log("Fetched keys from API (%d)", log: servicesLog, type: .debug, keys.count)
-            })
+    func updateReports() -> Single<[ReceivedCenReport]> {
+        let keysObservable = api.getCenKeys().map {
+            $0.map { CENKey(cenKey: $0) }
+        }.asObservable()
 
-//            // Uncomment this to benchmark a few keys quickly...
-//            .map({ keys in
-//                keys[0...2]
-//            })
-
-            // Filter matching keys
-//            .map { keys -> [CENKey] in keys.compactMap { key in
-//                if (cenMatcher.hasMatches(key: key, maxTimestamp: CoEpiRepoImpl.lastCENKeysCheck)) {
-//                    return key
-//                } else {
-//                    return nil
-//                }
-//            }}
-            
-            .map{keys -> [CENKey] in cenMatcher.matchLocalFirst(keys: keys, maxTimestamp: .now()) }
-            
-            .do(onNext: { matchedKeys in
-                if let matchingStartTime = matchingStartTime {
-                    let time = CFAbsoluteTimeGetCurrent() - matchingStartTime
-                    os_log("Took %.2f to match keys", log: servicesLog, type: .debug, time)
-                }
-                if !matchedKeys.isEmpty {
-                    os_log("Matches found for [%{public}d] keys: %{public}@", log: servicesLog, type: .debug, matchedKeys.count ,"\(matchedKeys)")
-                } else {
-                    os_log("No matches found for keys", log: servicesLog, type: .debug)
-                }
-            })
-
-            // Retrieve reports for matching keys
-            .flatMap { matchedKeys -> Observable<[ReceivedCenReport]> in
-                let requests: [Observable<[ReceivedCenReport]>] = matchedKeys.map {
-                    api.getCenReports(cenKey: $0)
-                        .map({ apiCenReports in
-                            apiCenReports.map { ReceivedCenReport(report: $0.toCenReport()) }
-                        })
-                        .asObservable()
-                }
-                return .merge(requests)
-            }
-            
-            .observeOn(MainScheduler.instance) // TODO switch to main only in view models
-            .share()
-
-        reports.subscribe().disposed(by: disposeBag)
+        return reportsWith(keys: keysObservable, cenMatcher: cenMatcher, api: api, reportsHandler: reportsHandler)
+            .asSingle()
     }
 
     func storeObservedCen(cen: CEN) {
@@ -112,4 +78,65 @@ class CoEpiRepoImpl: CoEpiRepo {
             }
         }
     }
+}
+
+private func reportsWith(keys: Observable<[CENKey]>, cenMatcher: CenMatcher, api: CoEpiApi,
+                         reportsHandler: MatchingReportsHandler) -> Observable<[ReceivedCenReport]> {
+    // Benchmarking
+    var matchingStartTime: CFAbsoluteTime?
+
+    return keys
+        .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        .do(onNext: { keys in
+            matchingStartTime = CFAbsoluteTimeGetCurrent()
+            os_log("Fetched keys from API (%d)", log: servicesLog, type: .debug, keys.count)
+        })
+
+//            // Uncomment this to benchmark a few keys quickly...
+//            .map({ keys in
+//                keys[0...2]
+//            })
+
+        // Filter matching keys
+//            .map { keys -> [CENKey] in keys.compactMap { key in
+//                if (cenMatcher.hasMatches(key: key, maxTimestamp: CoEpiRepoImpl.lastCENKeysCheck)) {
+//                    return key
+//                } else {
+//                    return nil
+//                }
+//            }}
+
+        .map{ keys -> [CENKey] in cenMatcher.matchLocalFirst(keys: keys, maxTimestamp: .now()) }
+
+        .do(onNext: { matchedKeys in
+            if let matchingStartTime = matchingStartTime {
+                let time = CFAbsoluteTimeGetCurrent() - matchingStartTime
+                os_log("Took %.2f to match keys", log: servicesLog, type: .debug, time)
+            }
+            if !matchedKeys.isEmpty {
+                os_log("Matches found for [%{public}d] keys: %{public}@", log: servicesLog, type: .debug, matchedKeys.count ,"\(matchedKeys)")
+            } else {
+                os_log("No matches found for keys", log: servicesLog, type: .debug)
+            }
+        })
+
+        // Retrieve reports for matching keys
+        .flatMap { matchedKeys -> Observable<[ReceivedCenReport]> in
+            let requests: [Observable<[ReceivedCenReport]>] = matchedKeys.map {
+                api.getCenReports(cenKey: $0)
+                    .map({ apiCenReports in
+                        apiCenReports.map { ReceivedCenReport(report: $0.toCenReport()) }
+                    })
+                    .asObservable()
+            }
+            return Observable.zip(requests) { (reports: [[ReceivedCenReport]]) in
+                reports.flatMap { $0 }
+            }
+        }
+
+        .do(onNext: { reports in
+            reportsHandler.handleMatchingReports(reports: reports)
+        })
+
+        .observeOn(MainScheduler.instance) // TODO switch to main only in view models
 }

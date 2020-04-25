@@ -5,3 +5,9 @@ struct ReceivedCenReport: Codable, CustomStringConvertible {
         "ReceivedCenReport: \(report)"
     }
 }
+
+extension ReceivedCenReport: Equatable {
+    static func == (lhs: ReceivedCenReport, rhs: ReceivedCenReport) -> Bool {
+        lhs.report == rhs.report
+    }
+}

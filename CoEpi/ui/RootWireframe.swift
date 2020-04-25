@@ -1,5 +1,6 @@
 import Dip
 import UIKit
+import RxSwift
 
 class RootWireFrame {
     private let container: DependencyContainer
@@ -8,12 +9,15 @@ class RootWireFrame {
     private var onboardingWireframe: OnboardingWireframe?
     private var rootNavigationController = UINavigationController()
 
+    private let disposeBag = DisposeBag()
+
     init(container: DependencyContainer, window: UIWindow) {
         self.container = container
 
+        initNav()
+
         let homeViewModel: HomeViewModel = try! container.resolve()
-        homeViewModel.delegate = self
-        
+
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         rootNavigationController.setViewControllers([homeViewController], animated: false)
         
@@ -26,6 +30,14 @@ class RootWireFrame {
         showOnboardingIfNeeded(keyValueStore: keyValueStore, parent: homeViewController)
     }
 
+    private func initNav() {
+        let rootNav: RootNav = try! container.resolve()
+
+        rootNav.navigationCommands.subscribe(onNext: { [weak self] command in
+            self?.onNavigationCommand(navCommand: command)
+        }).disposed(by: disposeBag)
+    }
+
     private func showOnboardingIfNeeded(keyValueStore: KeyValueStore, parent: UIViewController) {
         guard !keyValueStore.getBool(key: .seenOnboarding) else {
             return
@@ -36,48 +48,38 @@ class RootWireFrame {
         onboardingWireframe = wireFrame
         keyValueStore.putBool(key: .seenOnboarding, value: true)
     }
-}
 
-extension RootWireFrame : HomeViewModelDelegate {
-    func debugTapped() {
-        showDebug()
+    private func onNavigationCommand(navCommand: RootNavCommand) {
+        switch navCommand {
+        case .to(let destination): navigate(to: destination)
+        case .back: rootNavigationController.popViewController(animated: true)
+        }
+    }
+
+    private func navigate(to: RootNavDestination) {
+        switch to {
+        case .quiz: showQuiz()
+        case .debug: showDebug()
+        case .alerts: showAlerts()
+        }
     }
 
     private func showDebug() {
         let debugViewModel: DebugViewModel = try! container.resolve()
-
         let debugViewController = DebugViewController(viewModel: debugViewModel)
         rootNavigationController.pushViewController(debugViewController, animated: true)
     }
-    
-    func checkInTapped() {
-        showQuiz()
-    }
-    
+
+
     private func showQuiz() {
         let viewModel: HealthQuizViewModel = try! container.resolve()
-        
         let quizViewController = HealthQuizViewController(viewModel: viewModel)
-
-        viewModel.delegate = self
         rootNavigationController.pushViewController(quizViewController, animated: true)
     }
-    
-    func seeAlertsTapped() {
-        showAlerts()
-    }
-    
+
     private func showAlerts() {
         let viewModel: AlertsViewModel = try! container.resolve()
-
         let alertsViewController = AlertsViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(alertsViewController, animated: true)
-        
-    }
-}
-
-extension RootWireFrame : HealthQuizViewModelDelegate {
-    func onSubmit() {
-        rootNavigationController.popViewController(animated: true)
     }
 }

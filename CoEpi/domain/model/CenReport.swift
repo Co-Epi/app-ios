@@ -10,3 +10,8 @@ struct CenReport: Codable, CustomStringConvertible {
     }
 }
 
+extension CenReport: Equatable {
+    static func == (lhs: CenReport, rhs: CenReport) -> Bool {
+        lhs.id == rhs.id && lhs.report == rhs.report && lhs.timestamp == rhs.timestamp
+    }
+}

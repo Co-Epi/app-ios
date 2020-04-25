@@ -96,7 +96,7 @@
         "repositoryURL": "https://github.com/ReactiveX/RxSwift",
         "state": {
           "branch": null,
-          "revision": "002d325b0bdee94e7882e1114af5ff4fe1e96afa",
+          "revision": "712ff5348ece316f5422f8cd371cb4fef4f0f962",
           "version": "5.1.1"
         }
       },
@@ -131,9 +131,9 @@
         "package": "TCNClient",
         "repositoryURL": "https://github.com/TCNCoalition/tcn-client-ios",
         "state": {
-          "branch": "develop",
-          "revision": "f3735e00e7c51fb8365561384e8fd7e2a656aeb6",
-          "version": null
+          "branch": null,
+          "revision": "c86b034472f0b3217617bb7927f97093bb6be464",
+          "version": "0.4.1"
         }
       }
     ]

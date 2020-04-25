@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import os.log
 
-class CenKeysFetcher {
+class PeriodicCenKeysFetcher {
     private let api: CoEpiApi
 
     lazy var keys: Observable<[CENKey]> = Observable<Int>

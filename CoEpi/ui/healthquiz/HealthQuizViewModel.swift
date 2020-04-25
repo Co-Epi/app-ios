@@ -13,17 +13,18 @@ class HealthQuizViewModel: UINotifier {
 
     let notificationSubject: PublishRelay<UINotification> = PublishRelay()
 
-    weak var delegate: HealthQuizViewModelDelegate?
-
     private let symptomRepo: SymptomRepo
+    private let rootNav: RootNav
+
     private let questionsRelay: BehaviorRelay<[Question]>
 
     private let submitAction: CocoaAction
 
     let disposeBag = DisposeBag()
 
-    init(symptomRepo: SymptomRepo) {
+    init(symptomRepo: SymptomRepo, rootNav: RootNav) {
         self.symptomRepo = symptomRepo
+        self.rootNav = rootNav
         
         questionsRelay = BehaviorRelay(value: symptomRepo.symptoms()
             .map{ Question(symptom: $0) })
@@ -72,8 +73,8 @@ class HealthQuizViewModel: UINotifier {
     }
 
     private func bindSubmit() {
-        submitAction.elements.subscribe(onNext: { [weak self] _ in
-            self?.delegate?.onSubmit()
+        submitAction.elements.subscribe(onNext: { [rootNav] _ in
+            rootNav.navigate(command: .back)
         }).disposed(by: disposeBag)
 
         bindSuccessNotifier(submitAction.elements, message: "Symptoms submitted!")

@@ -6,16 +6,30 @@ import AppCenterDistribute
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    private let container: DependencyContainer = Dependencies().createContainer()
+    let container: DependencyContainer = Dependencies().createContainer()
 
     internal var window: UIWindow?
     
     private var rootWireframe: RootWireFrame?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        initUI()
         MSAppCenter.start("2581ac81-eb5b-423a-83e6-65cab9d64dd8", withServices: [MSDistribute.self])
+
+        let bgManager: BackgroundTasksManager = try! container.resolve()
+        bgManager.onApplicationFinishLaunching()
+
         return true
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        let bgManager: BackgroundTasksManager = try! container.resolve()
+        bgManager.applicationDidEnterBackground()
+    }
+
+    // MARK: UISceneSession Lifecycle
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     // MARK: - Core Data stack
@@ -61,13 +75,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
-
-    // MARK: - Private
-
-    private func initUI() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        rootWireframe = RootWireFrame(container: container, window: window)
-        self.window = window
     }
 }
