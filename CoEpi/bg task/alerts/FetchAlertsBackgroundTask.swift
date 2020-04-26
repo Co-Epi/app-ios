@@ -17,10 +17,12 @@ class FetchAlertsBackgroundTask: BackgroundTask {
     }
 
     func execute(task: BGProcessingTask) {
-        os_log("Starting fetch alerts bg task...", log: servicesLog, type: .debug)
-        coEpiRepo.updateReports().subscribe { res in
+        coEpiRepo.updateReportsState.filter { $0.isComplete() }.subscribe { res in
             os_log("Got results in bg task... %@", log: servicesLog, type: .debug, "\(res)")
             task.setTaskCompleted(success: true)
         }.disposed(by: disposeBag)
+
+        os_log("Starting fetch alerts bg task...", log: servicesLog, type: .debug)
+        coEpiRepo.updateReports()
     }
 }

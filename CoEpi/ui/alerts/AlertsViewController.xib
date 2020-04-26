@@ -2,8 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +16,7 @@
             <connections>
                 <outlet property="contactAlerts" destination="cC3-JH-DHS" id="Tly-gf-NqL"/>
                 <outlet property="titleLabel" destination="ots-QD-6oQ" id="58n-Nr-rog"/>
+                <outlet property="updateStatusLabel" destination="yUk-sg-amb" id="a6E-Ro-hPb"/>
                 <outlet property="view" destination="iN0-l3-epB" id="JhA-bB-T6Q"/>
             </connections>
         </placeholder>
@@ -33,22 +33,30 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cC3-JH-DHS">
-                    <rect key="frame" x="0.0" y="134.5" width="414" height="761.5"/>
+                    <rect key="frame" x="0.0" y="164.5" width="414" height="731.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUk-sg-amb">
+                    <rect key="frame" x="40" y="144.5" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="cC3-JH-DHS" firstAttribute="top" secondItem="ots-QD-6oQ" secondAttribute="bottom" constant="10" id="BPG-66-mBT"/>
+                <constraint firstItem="yUk-sg-amb" firstAttribute="top" secondItem="ots-QD-6oQ" secondAttribute="bottom" constant="20" id="8jP-bJ-bsT"/>
+                <constraint firstItem="cC3-JH-DHS" firstAttribute="top" secondItem="ots-QD-6oQ" secondAttribute="bottom" constant="40" id="9XE-w3-K20"/>
                 <constraint firstItem="ots-QD-6oQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="IWp-sR-5FO"/>
                 <constraint firstItem="cC3-JH-DHS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="VVP-tX-IdY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cC3-JH-DHS" secondAttribute="trailing" id="WDR-dR-f80"/>
                 <constraint firstAttribute="bottom" secondItem="cC3-JH-DHS" secondAttribute="bottom" id="bmO-1E-KuC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ots-QD-6oQ" secondAttribute="trailing" constant="40" id="j2I-nw-NAB"/>
+                <constraint firstItem="yUk-sg-amb" firstAttribute="leading" secondItem="ots-QD-6oQ" secondAttribute="leading" id="pDk-GQ-Vsk"/>
                 <constraint firstItem="ots-QD-6oQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="rsb-Tw-gqK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="156.52173913043478" y="177.45535714285714"/>
+            <point key="canvasLocation" x="155.07246376811597" y="177.45535714285714"/>
         </view>
     </objects>
 </document>

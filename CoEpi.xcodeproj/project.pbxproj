@@ -96,6 +96,7 @@
 		84BF972C24281082001ADD6B /* LogSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972624281082001ADD6B /* LogSettings.swift */; };
 		84BF972E24281082001ADD6B /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972824281082001ADD6B /* uuids.swift */; };
 		84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972A24281082001ADD6B /* DataRepresentable.swift */; };
+		84D069642455A7600004E8B6 /* OperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D069632455A7600004E8B6 /* OperationState.swift */; };
 		84DE6A24243F99A200CCF4A6 /* AlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */; };
 		84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A27243F9AA800CCF4A6 /* AlertView.xib */; };
 		84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE1C5C2441D72F0055E22B /* Sharer.swift */; };
@@ -288,6 +289,7 @@
 		84BF972624281082001ADD6B /* LogSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogSettings.swift; sourceTree = "<group>"; };
 		84BF972824281082001ADD6B /* uuids.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uuids.swift; sourceTree = "<group>"; };
 		84BF972A24281082001ADD6B /* DataRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepresentable.swift; sourceTree = "<group>"; };
+		84D069632455A7600004E8B6 /* OperationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationState.swift; sourceTree = "<group>"; };
 		84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
 		84DE6A27243F9AA800CCF4A6 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		84EE1C5C2441D72F0055E22B /* Sharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharer.swift; sourceTree = "<group>"; };
@@ -600,6 +602,7 @@
 		849DFE642427D3750008ED65 /* CoEpi */ = {
 			isa = PBXGroup;
 			children = (
+				84D069622455A7510004E8B6 /* common */,
 				054A34FA244E68F700282E17 /* generated */,
 				84FEDB6D24364FD800F41160 /* api */,
 				84A4B9B3242CA6CC00516F3B /* domain */,
@@ -720,6 +723,14 @@
 				844D26BB24479E1D0045FDD6 /* BleAdapter.swift */,
 			);
 			path = ble;
+			sourceTree = "<group>";
+		};
+		84D069622455A7510004E8B6 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				84D069632455A7600004E8B6 /* OperationState.swift */,
+			);
+			path = common;
 			sourceTree = "<group>";
 		};
 		84DDC4D424519138002F6D82 /* bg task */ = {
@@ -1297,6 +1308,7 @@
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
 				CE98BEA1242DE23400EFB67A /* HealthQuizViewController.swift in Sources */,
 				CE6B7AC3243326FD00C42280 /* CENKey.swift in Sources */,
+				84D069642455A7600004E8B6 /* OperationState.swift in Sources */,
 				84A1C0D42437C34400875DAE /* CenReport.swift in Sources */,
 				849CEFA2242FEDE7003F9284 /* Theme.swift in Sources */,
 				849327B62452D947009589E6 /* FetchAlertsBackgroundTask.swift in Sources */,

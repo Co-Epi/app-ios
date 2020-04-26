@@ -8,8 +8,11 @@ class AlertsViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contactAlerts: UITableView!
+    @IBOutlet weak var updateStatusLabel: UILabel!
 
     private let disposeBag = DisposeBag()
+
+    private let refreshControl = UIRefreshControl()
 
     init(viewModel: AlertsViewModel) {
         self.viewModel = viewModel
@@ -35,10 +38,26 @@ class AlertsViewController: UIViewController {
         viewModel.alerts
             .drive(contactAlerts.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+
+        viewModel.updateStatusText
+            .drive(updateStatusLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        refreshControl.rx.controlEvent(.valueChanged)
+            .subscribe(onNext: { [viewModel] in
+                viewModel.updateReports()
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.alertUpdateCompleted
+            .drive(refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
     }
 
     private func setupTableView() {
         contactAlerts.rowHeight = UITableView.automaticDimension
+
+        contactAlerts.addSubview(refreshControl)
         contactAlerts.estimatedRowHeight = 120
         contactAlerts.register(cellClass: AlertCell.self)
     }

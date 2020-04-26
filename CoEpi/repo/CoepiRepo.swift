@@ -1,14 +1,14 @@
 import Foundation
 import RxSwift
 import os.log
+import Action
+import RxCocoa
 
-// NOTE: This is interace for possible Rust shared library
+// NOTE: This is interface for possible Rust shared library
 // Reports storage unclear, most likely shared lib forwards api call result, we cache in Realm
 // For now the caching happens _in_ CoEpiRepo
 
 protocol CoEpiRepo {
-    // Infection reports fetched periodically from the API
-    var reports: Observable<[ReceivedCenReport]> { get }
 
     // Store CEN from other device
     func storeObservedCen(cen: CEN)
@@ -16,7 +16,14 @@ protocol CoEpiRepo {
     // Send symptoms report
     func sendReport(report: CenReport) -> Completable
 
-    func updateReports() -> Single<[ReceivedCenReport]>
+    // Trigger manually report update
+    func updateReports()
+
+    var updateReportsState: Observable<OperationState<CenReportUpdateResult>> { get }
+}
+
+struct CenReportUpdateResult {
+    let timeSpent: TimeInterval
 }
 
 class CoEpiRepoImpl: CoEpiRepo {
@@ -26,8 +33,6 @@ class CoEpiRepoImpl: CoEpiRepo {
     private let cenKeyDao: CENKeyDao
     private let reportsHandler: MatchingReportsHandler
 
-    let reports: Observable<[ReceivedCenReport]>
-
     // last time (unix timestamp) the CENKeys were requested
     // TODO has to be updated. In Android it's currently also not updated.
     private static var lastCENKeysCheck: Int64 = 0
@@ -35,6 +40,15 @@ class CoEpiRepoImpl: CoEpiRepo {
     private let disposeBag = DisposeBag()
 
     private var matchingStartTime: CFAbsoluteTime? = nil
+
+    private let updateReportsStateSubject: BehaviorSubject<OperationState<CenReportUpdateResult>> =
+        BehaviorSubject(value: .notStarted)
+    lazy var updateReportsState: Observable<OperationState<CenReportUpdateResult>> =
+        updateReportsStateSubject.asObservable()
+
+    private let manualReportsUpdateAction: CocoaAction
+
+    private let manualReportsUpdateActionTrigger: PublishRelay<Void> = PublishRelay()
 
     init(cenRepo: CENRepo, api: CoEpiApi, periodicKeysFetcher: PeriodicCenKeysFetcher, cenMatcher: CenMatcher,
          cenKeyDao: CENKeyDao, reportsHandler: MatchingReportsHandler) {
@@ -45,18 +59,40 @@ class CoEpiRepoImpl: CoEpiRepo {
         self.cenKeyDao = cenKeyDao
         self.reportsHandler = reportsHandler
 
-        reports = reportsWith(keys: periodicKeysFetcher.keys, cenMatcher: cenMatcher, api: api,
-                              reportsHandler: reportsHandler)
-        reports.share().subscribe().disposed(by: disposeBag)
+        reportsWith(keys: periodicKeysFetcher.keys, cenMatcher: cenMatcher, api: api,
+                    reportsHandler: reportsHandler,
+                    updateReportsStateSubject: updateReportsStateSubject)
+            .subscribe()
+            .disposed(by: disposeBag)
+
+        let manualReportsUpdateAction: CocoaAction = Action { [updateReportsStateSubject] in
+            let keysObservable = api.getCenKeys()
+                .map { $0.map { CENKey(cenKey: $0) }}
+                .asObservable()
+            return reportsWith(keys: keysObservable, cenMatcher: cenMatcher, api: api, reportsHandler: reportsHandler,
+                updateReportsStateSubject: updateReportsStateSubject).ignoreElements().asVoidObservable()
+        }
+        self.manualReportsUpdateAction = manualReportsUpdateAction
+
+        manualReportsUpdateActionTrigger
+            // Don't start update if already running
+            .flatMap { [updateReportsState] in
+                Observable.combineLatest(
+                    manualReportsUpdateAction.executing,
+                    updateReportsState.map { $0.isProgress() }
+                ).map { manualExecuting, inProgress in
+                    !manualExecuting && !inProgress
+                }
+            }
+            .filter { !$0 }
+            .subscribe(onNext: { _ in
+                manualReportsUpdateAction.execute()
+            })
+            .disposed(by: disposeBag)
     }
 
-    func updateReports() -> Single<[ReceivedCenReport]> {
-        let keysObservable = api.getCenKeys().map {
-            $0.map { CENKey(cenKey: $0) }
-        }.asObservable()
-
-        return reportsWith(keys: keysObservable, cenMatcher: cenMatcher, api: api, reportsHandler: reportsHandler)
-            .asSingle()
+    func updateReports() {
+        manualReportsUpdateActionTrigger.accept(())
     }
 
     func storeObservedCen(cen: CEN) {
@@ -81,12 +117,20 @@ class CoEpiRepoImpl: CoEpiRepo {
 }
 
 private func reportsWith(keys: Observable<[CENKey]>, cenMatcher: CenMatcher, api: CoEpiApi,
-                         reportsHandler: MatchingReportsHandler) -> Observable<[ReceivedCenReport]> {
+                         reportsHandler: MatchingReportsHandler,
+                         updateReportsStateSubject: BehaviorSubject<OperationState<CenReportUpdateResult>>) -> Observable<[ReceivedCenReport]> {
     // Benchmarking
     var matchingStartTime: CFAbsoluteTime?
+    var totalStartTime: CFAbsoluteTime?
 
     return keys
+        .do(onSubscribe: {
+            totalStartTime = CFAbsoluteTimeGetCurrent()
+            updateReportsStateSubject.onNext(.progress)
+        })
+
         .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+
         .do(onNext: { keys in
             matchingStartTime = CFAbsoluteTimeGetCurrent()
             os_log("Fetched keys from API (%d)", log: servicesLog, type: .debug, keys.count)
@@ -129,13 +173,31 @@ private func reportsWith(keys: Observable<[CENKey]>, cenMatcher: CenMatcher, api
                     })
                     .asObservable()
             }
-            return Observable.zip(requests) { (reports: [[ReceivedCenReport]]) in
-                reports.flatMap { $0 }
+
+            if requests.isEmpty {
+                return Observable.just([])
+            } else {
+                return Observable.zip(requests) { (reports: [[ReceivedCenReport]]) in
+                    reports.flatMap { $0 }
+                }
             }
         }
 
         .do(onNext: { reports in
             reportsHandler.handleMatchingReports(reports: reports)
+        })
+
+        .do(onNext: { reports in
+            if let totalStartTime = totalStartTime {
+                let time = CFAbsoluteTimeGetCurrent() - totalStartTime
+                os_log("Took %.2f to retrieve reports", log: servicesLog, type: .debug, time)
+                updateReportsStateSubject.onNext(.success(data: CenReportUpdateResult(timeSpent: time)))
+            }
+            updateReportsStateSubject.onNext(.notStarted)
+        })
+
+        .do(onError: {
+            updateReportsStateSubject.onNext(.failure(error: $0))
         })
 
         .observeOn(MainScheduler.instance) // TODO switch to main only in view models

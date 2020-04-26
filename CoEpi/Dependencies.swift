@@ -27,7 +27,7 @@ class Dependencies {
         container.register { OnboardingWireframe(container: container) }
         container.register { OnboardingViewModel() }
         container.register { HealthQuizViewModel(symptomRepo: try container.resolve(), rootNav: try container.resolve()) }
-        container.register { AlertsViewModel(container: container) }
+        container.register { AlertsViewModel(alertRepo: try container.resolve()) }
 
         container.register { DebugViewModel(bleAdapter: try container.resolve(),
                                             cenKeyDao: try container.resolve(),
@@ -44,7 +44,8 @@ class Dependencies {
 
     private func registerRepos(container: DependencyContainer) {
         container.register(.singleton) { SymptomRepoImpl(coEpiRepo: try container.resolve()) as SymptomRepo }
-        container.register(.singleton) { AlertRepoImpl(cenReportsRepo: try container.resolve()) as AlertRepo }
+        container.register(.singleton) { AlertRepoImpl(cenReportsRepo: try container.resolve(),
+                                                       coEpiRepo: try container.resolve()) as AlertRepo }
         container.register(.singleton) { CENRepoImpl(cenDao: try container.resolve()) as CENRepo }
         container.register(.eagerSingleton) { CenReportRepoImpl(cenReportDao: try container.resolve()) as CENReportRepo }
         container.register(.singleton) { CENKeyRepoImpl(cenKeyDao: try container.resolve()) as CENKeyRepo }
