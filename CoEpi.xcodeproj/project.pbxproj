@@ -1842,8 +1842,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TCNCoalition/tcn-client-ios";
 			requirement = {
-				kind = exactVersion;
-				version = 0.4.1;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.2;
 			};
 		};
 		84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */ = {

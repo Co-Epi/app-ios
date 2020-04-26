@@ -33,7 +33,7 @@ class CenMatcherImpl: CenMatcher {
             end: maxTimestamp
         )
 
-        os_log("Count of local CENs = %{public}d", localCens.count)
+        os_log("Count of local CENs = %{public}d", log: servicesLog, localCens.count)
         
         let concurrentMatchingGroup: DispatchGroup = DispatchGroup()
         let matchingIsCompleteSemaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
@@ -46,7 +46,7 @@ class CenMatcherImpl: CenMatcher {
         }
         concurrentMatchingGroup.notify(queue: DispatchQueue.main){
             //All matching batches are done
-            os_log("Matching is completed!")
+            os_log("Matching is completed!", log: servicesLog)
             matchingIsCompleteSemaphore.signal()
         }
         
@@ -61,7 +61,7 @@ class CenMatcherImpl: CenMatcher {
         let mod = cen.timestamp.value % Int64(CenLogic.CENLifetimeInSeconds)
         let roundedLocalTimestamp = cen.timestamp.value - mod
         let previousRoundedLocalTimestamp = roundedLocalTimestamp - CenLogic.CENLifetimeInSeconds
-//        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", cen.CEN, cen.timestamp, roundedLocalTimestamp)
+//        os_log("Local CEN: cen = [ %{public}@ ], timestamp = [ %lld ], rounded timestamp = [ %lld ]", log: servicesLog, cen.CEN, cen.timestamp.value, roundedLocalTimestamp)
 
         for key in infectedKeys {
             if matchKeyForTimestamp(key: key, cen: cen, timestamp: roundedLocalTimestamp) {
@@ -112,8 +112,8 @@ class CenMatcherImpl: CenMatcher {
             possibleCENs.append(cen.toHex()) // No fixed size array
         }
 
-        os_log("Generated results for key: %@, possible CENs count: %@, CENs: %@", log: servicesLog, type: .debug, key.cenKey,
-               "\(possibleCENs.count)", "\(possibleCENs)")
+        os_log("Generated results for key: %@, possible CENs count: %@, CENs: %@", log: servicesLog, type: .debug,
+               key.cenKey, "\(possibleCENs.count)", "\(possibleCENs)")
 
 //        let currentlyStoredCens = cenRepo.loadAllCENRecords()
 //        os_log("Currently stored CENs: %@, minTime: %@, maxtime: %@", log: servicesLog, type: .debug,
