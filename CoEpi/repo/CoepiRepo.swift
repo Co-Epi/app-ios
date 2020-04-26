@@ -84,7 +84,7 @@ class CoEpiRepoImpl: CoEpiRepo {
                     !manualExecuting && !inProgress
                 }
             }
-            .filter { !$0 }
+            .filter { $0 }
             .subscribe(onNext: { _ in
                 manualReportsUpdateAction.execute()
             })
