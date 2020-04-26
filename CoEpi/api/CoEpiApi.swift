@@ -17,8 +17,10 @@ class CoEpiApiImpl: CoEpiApi {
 //    private let baseUrl = "https://q69c4m2myb.execute-api.us-west-2.amazonaws.com/v3/"
     private let baseUrl = "https://v1.api.coepi.org/"
 
+    private let session = Session(configuration: .default, eventMonitors: [ AlamofireLogger() ])
+
     func postCenReport(myCenReport: MyCenReport) -> Completable {
-        os_log("Sending CEN report to API: %{public}@", log: servicesLog, type: .debug, "\(myCenReport)")
+        os_log("Sending CEN report to API: %{public}@", log: networkingLog, type: .debug, "\(myCenReport)")
 
         return post(url: baseUrl + "cenreport", params: ApiParamsCenReport(report: myCenReport))
     }
@@ -32,8 +34,8 @@ class CoEpiApiImpl: CoEpiApi {
     }
 
     private func get<T: Decodable>(url: String) -> Single<T> {
-        Single.create { emitter -> Disposable in
-            let request = AF.request(url).responseJSON { response in
+        Single.create { [session] emitter -> Disposable in
+            let request = session.request(url).responseJSON { response in
                 if let apiError = response.apiError {
                     emitter(.error(apiError))
                 } else {
@@ -50,9 +52,10 @@ class CoEpiApiImpl: CoEpiApi {
         }
     }
 
+
     private func post<T: Encodable>(url: String, params: T) -> Completable {
-        Single<Void>.create { emitter -> Disposable in
-            let request = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default)
+        Single<Void>.create { [session] emitter -> Disposable in
+            let request = session.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default)
                 .response { response in
                     if let apiError = response.apiError {
                         emitter(.error(apiError))
@@ -85,7 +88,7 @@ private extension AFDataResponse {
                     return .error(message: "Http status: \(statusCode), data: \(dataStr)")
                 }
             } else {
-                os_log("Data response without response. Ignoring. %{public}@", log: servicesLog, type: .debug, "\(self)")
+                os_log("Data response without response. Ignoring. %{public}@", log: networkingLog, type: .debug, "\(self)")
                 return nil
             }
         }
@@ -97,8 +100,10 @@ private func processGetResultData<T: Decodable>(data: Data) -> SingleEvent<T> {
         let decoder = JSONDecoder()
         let obj = try decoder.decode(T.self, from: data)
         return .success(obj)
+
     } catch let error {
-        return .error(ApiError.error(message: "Couldn't parse response: \(error), " +
-            "data: \(String(describing: String(data: data, encoding: .utf8)))"))
+        let msg = "Couldn't parse response: \(error), data: \(String(describing: String(data: data, encoding: .utf8)))"
+        os_log("Api error: %{public}@", log: networkingLog, type: .debug, "\(msg)")
+        return .error(ApiError.error(message: msg))
     }
 }

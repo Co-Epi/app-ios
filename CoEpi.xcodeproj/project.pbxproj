@@ -43,6 +43,7 @@
 		8484346A2438F09C006A5839 /* ApiCenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434692438F09C006A5839 /* ApiCenReport.swift */; };
 		8484346E2438F441006A5839 /* ApiParamsCenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484346D2438F441006A5839 /* ApiParamsCenReport.swift */; };
 		848434712438F6CA006A5839 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 848434702438F6CA006A5839 /* Alamofire */; };
+		8485025924562353006C7C62 /* AlamofireLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485025824562353006C7C62 /* AlamofireLogger.swift */; };
 		8486BDC7242B9AC900A63DD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDC6242B9AC900A63DD5 /* RxSwift */; };
 		8486BDCB242B9AC900A63DD5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCA242B9AC900A63DD5 /* RxRelay */; };
 		8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8486BDCC242B9AC900A63DD5 /* RxCocoa */; };
@@ -239,6 +240,7 @@
 		848434652438E663006A5839 /* UINotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINotification.swift; sourceTree = "<group>"; };
 		848434692438F09C006A5839 /* ApiCenReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCenReport.swift; sourceTree = "<group>"; };
 		8484346D2438F441006A5839 /* ApiParamsCenReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParamsCenReport.swift; sourceTree = "<group>"; };
+		8485025824562353006C7C62 /* AlamofireLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireLogger.swift; sourceTree = "<group>"; };
 		8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
 		8486BDD7242BBCE700A63DD5 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		8486BDD8242BBCE700A63DD5 /* DebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugViewController.xib; sourceTree = "<group>"; };
@@ -841,6 +843,7 @@
 			children = (
 				848434682438F086006A5839 /* model */,
 				84FEDB6E24364FE300F41160 /* CoEpiApi.swift */,
+				8485025824562353006C7C62 /* AlamofireLogger.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1280,6 +1283,7 @@
 				84FEDB6F24364FE300F41160 /* CoEpiApi.swift in Sources */,
 				84D069692455E7C10004E8B6 /* AlertViewData.swift in Sources */,
 				8484346E2438F441006A5839 /* ApiParamsCenReport.swift in Sources */,
+				8485025924562353006C7C62 /* AlamofireLogger.swift in Sources */,
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */,
 				848434552438C03C006A5839 /* ErrorView.swift in Sources */,

@@ -15,3 +15,8 @@ let servicesLog = OSLog(
     subsystem: Bundle.main.bundleIdentifier!,
     category: "services"
 )
+
+let networkingLog = OSLog(
+    subsystem: Bundle.main.bundleIdentifier!,
+    category: "networking"
+)
