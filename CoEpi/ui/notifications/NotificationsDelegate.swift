@@ -26,7 +26,7 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
         let identifierStr = response.notification.request.identifier
 
         guard let identifier = NotificationId(rawValue: identifierStr) else {
-            os_log("Selected notification with unknown id: %@", log: servicesLog, type: .debug, identifierStr)
+            os_log("Selected notification with unknown id: %{public}@", log: servicesLog, type: .debug, identifierStr)
             return
         }
 

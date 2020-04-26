@@ -18,7 +18,7 @@ class FetchAlertsBackgroundTask: BackgroundTask {
 
     func execute(task: BGProcessingTask) {
         coEpiRepo.updateReportsState.filter { $0.isComplete() }.subscribe { res in
-            os_log("Got results in bg task... %@", log: servicesLog, type: .debug, "\(res)")
+            os_log("Got results in bg task... %{public}@", log: servicesLog, type: .debug, "\(res)")
             task.setTaskCompleted(success: true)
         }.disposed(by: disposeBag)
 

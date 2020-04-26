@@ -20,7 +20,7 @@ class ScannedCensHandler {
 //            os_log("Storing CEN: %@", log: bleCentralLog, "\(cen)")
             coepiRepo.storeObservedCen(cen: cen)
         }, onError: { error in
-            os_log("Error in central cen observer: %@", log: bleCentralLog, error.localizedDescription)
+            os_log("Error in central cen observer: %{public}@", log: bleCentralLog, error.localizedDescription)
         }).disposed(by: disposeBag)
     }
 }

@@ -39,7 +39,7 @@ class BackgroundTaskScheduler {
     }
 
     private func schedule(delay: TimeInterval) {
-        os_log("Scheduling BG task. Delay: %@", log: servicesLog, type: .debug, "\(delay)")
+        os_log("Scheduling BG task. Delay: %{public}@", log: servicesLog, type: .debug, "\(delay)")
 
         let request = BGProcessingTaskRequest(identifier: task.identifier)
         request.earliestBeginDate = Date(timeIntervalSinceNow: delay)
@@ -49,7 +49,7 @@ class BackgroundTaskScheduler {
           // TODO flag to use bg thread. Or maybe just use always thread.
           try BGTaskScheduler.shared.submit(request)
         } catch let e {
-          os_log("Unable to submit task: %@, error: %@", log: servicesLog, type: .debug, "\(request)", "\(e)")
+          os_log("Unable to submit task: %{public}@, error: %{public}@", log: servicesLog, type: .debug, "\(request)", "\(e)")
         }
     }
 }

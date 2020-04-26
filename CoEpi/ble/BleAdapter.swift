@@ -23,7 +23,7 @@ class BleAdapter {
             discovered.onNext(CEN(CEN: data.toHex(), timestamp: .now()))
         }) { error in
             // TODO What kind of errors? Should we notify the user?
-            os_log("TCN service error: %@", type: .error, "\(error)")
+            os_log("TCN service error: %{public}@", type: .error, "\(error)")
         }
 
         tcnService.start()

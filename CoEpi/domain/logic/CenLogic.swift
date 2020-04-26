@@ -49,7 +49,7 @@ class CenLogic {
             return NSData(bytes: encData, length: Int(encData.count)) as Data
 
         } catch let error {
-            os_log("Couldn't encrypt key: %@, error: %@", type: .error, CENKey, error.localizedDescription)
+            os_log("Couldn't encrypt key: %{public}@, error: %{public}@", type: .error, CENKey, error.localizedDescription)
             // TODO better handling, return Result type or propagate error maybe.
             return Data(decodedCENKeyAsUInt8Array)
         }

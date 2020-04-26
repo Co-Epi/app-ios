@@ -35,7 +35,7 @@ class RealmCENReportDao: CENReportDao, RealmDao {
     func insert(report: ReceivedCenReport) -> Bool {
         let result = realm.objects(RealmCENReport.self).filter("id = %@", report.report.id)
         if result.count == 0 {
-            os_log("Report didn't exist in db, inserting: %@", type: .debug, report.description)
+            os_log("Report didn't exist in db, inserting: %{public}@", type: .debug, report.description)
             let newCENReport = RealmCENReport(report)
             write {
                 realm.add(newCENReport)
@@ -43,7 +43,7 @@ class RealmCENReportDao: CENReportDao, RealmDao {
             return true
         } else {
             //duplicate entry: skipping
-            os_log("Report already in db, id = %@", type: .debug, report.report.id)
+            os_log("Report already in db, id = %{public}@", type: .debug, report.report.id)
             return false
         }
     }

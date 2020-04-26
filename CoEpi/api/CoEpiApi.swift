@@ -18,7 +18,7 @@ class CoEpiApiImpl: CoEpiApi {
     private let baseUrl = "https://v1.api.coepi.org/"
 
     func postCenReport(myCenReport: MyCenReport) -> Completable {
-        os_log("Sending CEN report to API: %@", log: servicesLog, type: .debug, "\(myCenReport)")
+        os_log("Sending CEN report to API: %{public}@", log: servicesLog, type: .debug, "\(myCenReport)")
 
         return post(url: baseUrl + "cenreport", params: ApiParamsCenReport(report: myCenReport))
     }
@@ -85,7 +85,7 @@ private extension AFDataResponse {
                     return .error(message: "Http status: \(statusCode), data: \(dataStr)")
                 }
             } else {
-                os_log("Data response without response. Ignoring. %@", log: servicesLog, type: .debug, "\(self)")
+                os_log("Data response without response. Ignoring. %{public}@", log: servicesLog, type: .debug, "\(self)")
                 return nil
             }
         }

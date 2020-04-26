@@ -12,7 +12,7 @@ class HomeViewModel {
         self.rootNav = rootNav
 
         startPermissions.granted.subscribe(onNext: { granted in
-            os_log("Start permissions granted: %@", log: servicesLog, type: .debug, "\(granted)")
+            os_log("Start permissions granted: %{public}@", log: servicesLog, type: .debug, "\(granted)")
         }).disposed(by: disposeBag)
 
         startPermissions.request()

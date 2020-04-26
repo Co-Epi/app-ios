@@ -22,7 +22,7 @@ class AppBadgeUpdaterImpl: AppBadgeUpdater {
         else { return }
 
         DispatchQueue.main.async {
-            os_log("Updating app badge: %@", log: servicesLog, type: .debug, "\(number)")
+            os_log("Updating app badge: %{public}@", log: servicesLog, type: .debug, "\(number)")
             UIApplication.shared.applicationIconBadgeNumber = number
         }
     }

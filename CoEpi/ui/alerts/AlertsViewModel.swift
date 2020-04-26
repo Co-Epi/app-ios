@@ -24,7 +24,7 @@ class AlertsViewModel {
 
         updateStatusText = alertRepo.updateReportsState
             .do(onNext: { result in
-                os_log("Got alerts result in view model: %@", log: servicesLog, type: .debug, "\(result)")
+                os_log("Got alerts result in view model: %{public}@", log: servicesLog, type: .debug, "\(result)")
             })
             .filter { $0.shouldBeShown() }
             .map { $0.asText() }

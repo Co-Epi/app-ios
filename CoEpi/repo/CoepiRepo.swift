@@ -97,7 +97,7 @@ class CoEpiRepoImpl: CoEpiRepo {
 
     func storeObservedCen(cen: CEN) {
         if !(cenRepo.insert(cen: cen)) {
-            os_log("Observed CEN already in DB: %@", log: servicesLog, type: .debug, "\(cen)")
+            os_log("Observed CEN already in DB: %{public}@", log: servicesLog, type: .debug, "\(cen)")
         }
     }
 
@@ -133,7 +133,7 @@ private func reportsWith(keys: Observable<[CENKey]>, cenMatcher: CenMatcher, api
 
         .do(onNext: { keys in
             matchingStartTime = CFAbsoluteTimeGetCurrent()
-            os_log("Fetched keys from API (%d)", log: servicesLog, type: .debug, keys.count)
+            os_log("Fetched keys from API (%{public}d)", log: servicesLog, type: .debug, keys.count)
         })
 
 //            // Uncomment this to benchmark a few keys quickly...
