@@ -8,7 +8,7 @@ final class DateHoursMinsFormatter: DateFormatter {
 
     override init() {
         super.init()
-        dateFormat = "dd.MM.yyyy HH:mm"
+        dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
     }
 
     required init?(coder aDecoder: NSCoder) {
