@@ -13,6 +13,8 @@ final class RealmCENReport : Object {
 
     @objc dynamic var reportTimestamp: Int64 = 0
 
+    @objc dynamic var deleted: Bool = false
+
     override static func primaryKey() -> String? { "id" }
 
     convenience init(_ r: ReceivedCenReport) {

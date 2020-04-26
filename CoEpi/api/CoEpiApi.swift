@@ -98,7 +98,7 @@ private func processGetResultData<T: Decodable>(data: Data) -> SingleEvent<T> {
         let obj = try decoder.decode(T.self, from: data)
         return .success(obj)
     } catch let error {
-        return .error(ApiError.error(message: "Couldn't parse reponse: \(error), " +
+        return .error(ApiError.error(message: "Couldn't parse response: \(error), " +
             "data: \(String(describing: String(data: data, encoding: .utf8)))"))
     }
 }

@@ -190,14 +190,15 @@ private func reportsWith(keys: Observable<[CENKey]>, cenMatcher: CenMatcher, api
         .do(onNext: { reports in
             if let totalStartTime = totalStartTime {
                 let time = CFAbsoluteTimeGetCurrent() - totalStartTime
-                os_log("Took %.2f to retrieve reports", log: servicesLog, type: .debug, time)
+                os_log("Took %{public}.2f to retrieve reports", log: servicesLog, type: .debug, time)
                 updateReportsStateSubject.onNext(.success(data: CenReportUpdateResult(timeSpent: time)))
             }
             updateReportsStateSubject.onNext(.notStarted)
         })
 
-        .do(onError: {
-            updateReportsStateSubject.onNext(.failure(error: $0))
+        .do(onError: { error in
+            os_log("Error retrieving reports: %{public}@", log: servicesLog, type: .debug, "\(error)")
+            updateReportsStateSubject.onNext(.failure(error: error))
         })
 
         .observeOn(MainScheduler.instance) // TODO switch to main only in view models
