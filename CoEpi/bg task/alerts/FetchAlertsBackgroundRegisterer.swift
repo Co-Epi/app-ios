@@ -1,6 +1,7 @@
 class FetchAlertsBackgroundRegisterer {
 
     init(tasksManager: BackgroundTasksManager, coEpiRepo: CoEpiRepo) {
-        tasksManager.register(task: FetchAlertsBackgroundTask(coEpiRepo: coEpiRepo))
+        // Disabled until properly tested / completed.
+//        tasksManager.register(task: FetchAlertsBackgroundTask(coEpiRepo: coEpiRepo))
     }
 }
