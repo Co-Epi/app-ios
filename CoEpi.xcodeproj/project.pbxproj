@@ -97,6 +97,8 @@
 		84BF972E24281082001ADD6B /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972824281082001ADD6B /* uuids.swift */; };
 		84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972A24281082001ADD6B /* DataRepresentable.swift */; };
 		84D069642455A7600004E8B6 /* OperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D069632455A7600004E8B6 /* OperationState.swift */; };
+		84D069672455E6E40004E8B6 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D069662455E6E40004E8B6 /* DateFormatters.swift */; };
+		84D069692455E7C10004E8B6 /* AlertViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D069682455E7C10004E8B6 /* AlertViewData.swift */; };
 		84DE6A24243F99A200CCF4A6 /* AlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */; };
 		84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A27243F9AA800CCF4A6 /* AlertView.xib */; };
 		84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE1C5C2441D72F0055E22B /* Sharer.swift */; };
@@ -290,6 +292,8 @@
 		84BF972824281082001ADD6B /* uuids.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uuids.swift; sourceTree = "<group>"; };
 		84BF972A24281082001ADD6B /* DataRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepresentable.swift; sourceTree = "<group>"; };
 		84D069632455A7600004E8B6 /* OperationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationState.swift; sourceTree = "<group>"; };
+		84D069662455E6E40004E8B6 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		84D069682455E7C10004E8B6 /* AlertViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewData.swift; sourceTree = "<group>"; };
 		84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
 		84DE6A27243F9AA800CCF4A6 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		84EE1C5C2441D72F0055E22B /* Sharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharer.swift; sourceTree = "<group>"; };
@@ -729,6 +733,7 @@
 			isa = PBXGroup;
 			children = (
 				84D069632455A7600004E8B6 /* OperationState.swift */,
+				84D069662455E6E40004E8B6 /* DateFormatters.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -859,6 +864,7 @@
 				CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */,
 				84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */,
 				84DE6A27243F9AA800CCF4A6 /* AlertView.xib */,
+				84D069682455E7C10004E8B6 /* AlertViewData.swift */,
 			);
 			path = alerts;
 			sourceTree = "<group>";
@@ -1272,6 +1278,7 @@
 				CE6B7ABF2433252300C42280 /* CENReportRepo.swift in Sources */,
 				D41B0CDC242E467800A50447 /* OnboardingButton.swift in Sources */,
 				84FEDB6F24364FE300F41160 /* CoEpiApi.swift in Sources */,
+				84D069692455E7C10004E8B6 /* AlertViewData.swift in Sources */,
 				8484346E2438F441006A5839 /* ApiParamsCenReport.swift in Sources */,
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */,
@@ -1321,6 +1328,7 @@
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,
 				8486BDD9242BBCE700A63DD5 /* DebugViewController.swift in Sources */,
+				84D069672455E6E40004E8B6 /* DateFormatters.swift in Sources */,
 				84F93BF42451BF8900B5F54D /* BackgroundTask.swift in Sources */,
 				84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */,
 				849327B12452D8EB009589E6 /* BackgroundTasksManager.swift in Sources */,

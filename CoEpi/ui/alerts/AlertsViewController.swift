@@ -19,7 +19,7 @@ class AlertsViewController: UIViewController {
         super.init(nibName: String(describing: Self.self), bundle: nil)
         
         title = L10n.Alerts.title
-        dataSource.onAcknowledged = { (alert) in
+        dataSource.onAcknowledged = { alert in
             viewModel.acknowledge(alert: alert)
         }
     }
@@ -44,13 +44,11 @@ class AlertsViewController: UIViewController {
             .disposed(by: disposeBag)
 
         refreshControl.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: { [viewModel] in
+            .subscribe(onNext: { [viewModel, refreshControl] in
                 viewModel.updateReports()
+                // Hide refresh control immediately. Progress status is shown in label.
+                refreshControl.endRefreshing()
             })
-            .disposed(by: disposeBag)
-
-        viewModel.alertUpdateCompleted
-            .drive(refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
     }
 
@@ -64,10 +62,10 @@ class AlertsViewController: UIViewController {
 }
 
 class AlertsDataSource: NSObject, RxTableViewDataSourceType {
-    private var alerts: [Alert] = []
-    public var onAcknowledged: ((Alert) -> ())?
+    private var alerts: [AlertViewData] = []
+    public var onAcknowledged: ((AlertViewData) -> ())?
 
-    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[Alert]>) {
+    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[AlertViewData]>) {
         if case let .next(alerts) = observedEvent {
             self.alerts = alerts
             tableView.reloadData()
@@ -84,7 +82,7 @@ extension AlertsDataSource: UITableViewDataSource {
         let cell: UITableViewCell = tableView.dequeue(cellClass: AlertCell.self, forIndexPath: indexPath)
         guard let alertCell = cell as? AlertCell else { return cell }
 
-        let alert: Alert = alerts[indexPath.row]
+        let alert: AlertViewData = alerts[indexPath.row]
         alertCell.setAlert(alert: alert)
         alertCell.onAcknowledged = onAcknowledged
 

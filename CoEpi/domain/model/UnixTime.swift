@@ -10,10 +10,14 @@ struct UnixTime: Codable {
     static func now() -> UnixTime {
         UnixTime(value: Int64(Date().timeIntervalSince1970))
     }
+
+    func toDate() -> Date {
+        Date(timeIntervalSince1970: Double(value))
+    }
 }
 
 extension UnixTime: CustomDebugStringConvertible {
     var debugDescription: String {
-        "\(value), \(Date(timeIntervalSince1970: Double(value)))"
+        "\(value), \(toDate())"
     }
 }

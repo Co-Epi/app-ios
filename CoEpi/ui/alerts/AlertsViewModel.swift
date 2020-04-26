@@ -1,12 +1,13 @@
 import Dip
 import RxCocoa
 import RxSwift
+import os.log
 
 class AlertsViewModel {
     private let alertRepo: AlertRepo
 
     let title: Driver<String>
-    let alerts: Driver<[Alert]>
+    let alerts: Driver<[AlertViewData]>
     let updateStatusText: Driver<String>
 
     init(alertRepo: AlertRepo) {
@@ -17,9 +18,14 @@ class AlertsViewModel {
             .startWith(AlertsViewModel.formatTitleLabel(count: 0))
             .asDriver(onErrorJustReturn: "Alerts")
 
-        alerts = alertRepo.alerts.asDriver(onErrorJustReturn: [])
+        alerts = alertRepo.alerts
+            .map { alerts in alerts.map { $0.toViewData() }}
+            .asDriver(onErrorJustReturn: [])
 
         updateStatusText = alertRepo.updateReportsState
+            .do(onNext: { result in
+                os_log("Got alerts result in view model: %@", log: servicesLog, type: .debug, "\(result)")
+            })
             .filter { $0.shouldBeShown() }
             .map { $0.asText() }
             .asDriver(onErrorJustReturn: "Unknown error")
@@ -29,8 +35,8 @@ class AlertsViewModel {
         alertRepo.updateReports()
     }
 
-    func acknowledge(alert: Alert) {
-        alertRepo.removeAlert(alert: alert)
+    func acknowledge(alert: AlertViewData) {
+        alertRepo.removeAlert(alert: alert.alert)
     }
 
     private static func formatTitleLabel(count: Int) -> String {
@@ -39,6 +45,16 @@ class AlertsViewModel {
         case 1: return L10n.Alerts.Count.one
         default: return L10n.Alerts.Count.some(count)
         }
+    }
+}
+
+private extension Alert {
+    func toViewData() -> AlertViewData {
+        AlertViewData(
+            symptoms: exposure,
+            time: DateFormatters.dateHoursMins.string(from: timestamp.toDate()),
+            alert: self
+        )
     }
 }
 

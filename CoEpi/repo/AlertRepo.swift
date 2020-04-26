@@ -16,11 +16,8 @@ class AlertRepoImpl: AlertRepo {
 
     lazy var updateReportsState: Observable<OperationState<CenReportUpdateResult>> = coEpiRepo.updateReportsState
 
-    lazy private(set) var alerts: Observable<[Alert]> = cenReportsRepo.reports.map { reports in
-        reports.map {
-            Alert(id: $0.report.id, exposure: $0.report.report, report: $0)
-        }
-    }
+    lazy private(set) var alerts: Observable<[Alert]> = cenReportsRepo.reports
+        .map { reports in reports.map { $0.toAlert() }}
 
     init(cenReportsRepo: CENReportRepo, coEpiRepo: CoEpiRepo) {
         self.cenReportsRepo = cenReportsRepo
@@ -33,5 +30,17 @@ class AlertRepoImpl: AlertRepo {
 
     func updateReports() {
         coEpiRepo.updateReports()
+    }
+}
+
+private extension ReceivedCenReport {
+
+    func toAlert() -> Alert {
+        Alert(
+            id: report.id,
+            exposure: report.report,
+            timestamp: UnixTime(value: report.timestamp),
+            report: self
+        )
     }
 }
