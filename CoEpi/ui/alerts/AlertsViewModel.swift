@@ -51,7 +51,7 @@ class AlertsViewModel {
 private extension Alert {
     func toViewData() -> AlertViewData {
         AlertViewData(
-            symptoms: exposure,
+            symptoms: exposure.isEmpty ? L10n.Alerts.Label.noSymptomsReported : exposure,
             time: DateFormatters.dateHoursMins.string(from: timestamp.toDate()),
             alert: self
         )

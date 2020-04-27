@@ -6,6 +6,7 @@
 "alerts.count.one" = "1 new contact alert";
 "alerts.count.some" = "%d new contact alerts";
 "alerts.title" = "Alerts";
+"alerts.label.no_symptoms_reported" = "No symptoms reported";
 
 "healthquiz.submit" = "SUBMIT";
 "healthquiz.symptomQuestion" = "Are you experiencing any of the following symptoms?";

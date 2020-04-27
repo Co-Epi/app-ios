@@ -25,6 +25,10 @@ internal enum L10n {
         return L10n.tr("Localizable", "alerts.count.some", p1)
       }
     }
+    internal enum Label {
+      /// No symptoms reported
+      internal static let noSymptomsReported = L10n.tr("Localizable", "alerts.label.no_symptoms_reported")
+    }
   }
 
   internal enum Healthquiz {
