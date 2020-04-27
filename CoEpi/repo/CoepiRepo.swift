@@ -97,7 +97,9 @@ class CoEpiRepoImpl: CoEpiRepo {
 
     func storeObservedCen(cen: CEN) {
         if !(cenRepo.insert(cen: cen)) {
-            os_log("Observed CEN already in DB: %{public}@", log: servicesLog, type: .debug, "\(cen)")
+            os_log("Stored new CEN in DB: %{public}@", log: bleLog, type: .debug, "\(cen)")
+        } else {
+            os_log("CEN was already in DB: %{public}@", log: bleLog, type: .debug, "\(cen)")
         }
     }
 

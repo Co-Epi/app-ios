@@ -1,14 +1,9 @@
 import Foundation
 import os.log
 
-let bleCentralLog = OSLog(
+let bleLog = OSLog(
     subsystem: Bundle.main.bundleIdentifier!,
-    category: "BLECentral"
-)
-
-let blePeripheralLog = OSLog(
-    subsystem: Bundle.main.bundleIdentifier!,
-    category: "BLEPeripheral"
+    category: "ble"
 )
 
 let servicesLog = OSLog(

@@ -16,11 +16,14 @@ class ScannedCensHandler {
     }
 
     private func forwardScannedCensToCoEpiRepo() {
-        bleAdapter.discovered.subscribe(onNext: { [coepiRepo] cen in
-//            os_log("Storing CEN: %@", log: bleCentralLog, "\(cen)")
-            coepiRepo.storeObservedCen(cen: cen)
-        }, onError: { error in
-            os_log("Error in central cen observer: %{public}@", log: bleCentralLog, error.localizedDescription)
-        }).disposed(by: disposeBag)
+        bleAdapter.discovered
+            .distinctUntilChanged()
+            .subscribe(onNext: { [coepiRepo] data in
+                let cen = CEN(CEN: data.toHex(), timestamp: .now())
+                os_log("Observed CEN: %{public}@", log: bleLog, "\(cen)")
+                coepiRepo.storeObservedCen(cen: cen)
+            }, onError: { error in
+                os_log("Error in central cen observer: %{public}@", log: bleLog, error.localizedDescription)
+            }).disposed(by: disposeBag)
     }
 }

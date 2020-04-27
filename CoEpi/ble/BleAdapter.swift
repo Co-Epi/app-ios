@@ -8,7 +8,7 @@ class BleAdapter {
 
     private let tcnService: TCNBluetoothService
 
-    let discovered: ReplaySubject<CEN> = .create(bufferSize: 1)
+    let discovered: ReplaySubject<Data> = .create(bufferSize: 1)
     let myCen: ReplaySubject<String> = .create(bufferSize: 1)
 
     init(cenReadHandler: ContactReceivedHandler) {
@@ -20,7 +20,7 @@ class BleAdapter {
             return cen
 
         }, tcnFinder: { [discovered] (data, _) in
-            discovered.onNext(CEN(CEN: data.toHex(), timestamp: .now()))
+            discovered.onNext(data)
         }) { error in
             // TODO What kind of errors? Should we notify the user?
             os_log("TCN service error: %{public}@", type: .error, "\(error)")

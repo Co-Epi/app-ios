@@ -10,9 +10,9 @@ class DebugViewModel {
 
     init(bleAdapter: BleAdapter, cenKeyDao: CENKeyDao, api: CoEpiApi) {
         let combined = Observable.combineLatest(
-            cenKeyDao.generatedMyKey.asSequence().map { $0.distinct() },
-            bleAdapter.myCen.asSequence().map { $0.distinct() },
-            bleAdapter.discovered.asSequence().map { $0.distinct() }
+            cenKeyDao.generatedMyKey.distinctUntilChanged().asSequence(),
+            bleAdapter.myCen.distinctUntilChanged().asSequence(),
+            bleAdapter.discovered.distinctUntilChanged().asSequence().map { $0.distinct() }
         )
 
         debugEntries = combined
@@ -28,10 +28,10 @@ enum DebugEntryViewData {
     case Item(String)
 }
 
-private func generateItems(myKey: [String], myCen: [String], discovered: [CEN]) -> [DebugEntryViewData] {
+private func generateItems(myKey: [String], myCen: [String], discovered: [Data]) -> [DebugEntryViewData] {
     return items(header: "My key", items: myKey)
         + items(header: "My CEN", items: myCen)
-        + items(header: "Discovered", items: discovered.map{ $0.CEN })
+        + items(header: "Discovered", items: discovered.map { $0.toHex() })
 }
 
 private func items(header: String, items: [String]) -> [DebugEntryViewData] {
