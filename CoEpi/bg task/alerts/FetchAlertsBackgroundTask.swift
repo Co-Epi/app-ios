@@ -6,7 +6,7 @@ class FetchAlertsBackgroundTask: BackgroundTask {
 
     let identifier: String = "org.coepi.tcn_matching"
 
-    let scheduleInterval: TimeInterval = 15 * 60
+    let scheduleInterval: TimeInterval = 60 * 60 // 1h
 
     private let coEpiRepo: CoEpiRepo
 

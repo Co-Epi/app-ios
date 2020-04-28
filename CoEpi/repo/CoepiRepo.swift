@@ -76,14 +76,14 @@ class CoEpiRepoImpl: CoEpiRepo {
 
         manualReportsUpdateActionTrigger
             // Don't start update if already running
-            .flatMap { [updateReportsState] in
+            .withLatestFrom(
                 Observable.combineLatest(
                     manualReportsUpdateAction.executing,
                     updateReportsState.map { $0.isProgress() }
                 ).map { manualExecuting, inProgress in
                     !manualExecuting && !inProgress
                 }
-            }
+            )
             .filter { $0 }
             .subscribe(onNext: { _ in
                 manualReportsUpdateAction.execute()
