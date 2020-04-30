@@ -1,35 +1,35 @@
-"alerts.count.none" = "Keine neuen Kontaktbenachrichtigungen";
-"alerts.count.one" = "1 neuer Kontaktalarm";
-"alerts.count.some" = "%d neue Kontaktbenachrichtigungen";
-"alerts.title" = "Warnungen";
+"alerts.count.none" = "Keine neue Nachricht über Kontakte";
+"alerts.count.one" = "1 neue Nachricht über Kontakte";
+"alerts.count.some" = "%d neue Nachtichten über Kontakte";
+"alerts.title" = "Nachrichten";
 
-"healthquiz.submit" = "EINREICHEN";
 "healthquiz.symptomQuestion" = "Treten bei Ihnen folgende Symptome auf?";
 "healthquiz.title" = "Meine Gesundheit";
+"healthquiz.submit" = "ABSENDEN";
 
-"home.contactAlerts.button" = "SIEHE ALERTS";
-"home.contactAlerts.description" = "Ungefähre Zeiten, in denen Sie möglicherweise einer symptomatischen Person ausgesetzt waren";
-"home.contactAlerts.title" = "Kontaktbenachrichtigungen";
-"home.footer.build" = "Bauen";
+"home.contactAlerts.button" = "NACHRICHTEN SEHEN";
+"home.contactAlerts.description" = "Wie oft Sie ungefähr in der Nähe einer symptomatischen Person waren";
+"home.contactAlerts.title" = "Nachrichten über Kontakte";
+"home.footer.build" = "Generieren";
 "home.footer.debug" = "Debuggen";
-"home.footer.version" = "Ausführung";
-"home.myHealth.button" = "CHECK-IN";
-"home.myHealth.description" = "Überwachen Sie Ihre Gesundheit und melden Sie Symptome";
+"home.footer.version" = "Version";
+"home.myHealth.button" = "EINCHECKEN";
+"home.myHealth.description" = "Auf Ihre Gesundheit achten und Symptome melden";
 "home.myHealth.title" = "Meine Gesundheit";
 "home.share" = "Teilen";
 
+"onboarding.logo" = "Gemeinsam informieren. Gemeinsam schützen.";
 "onboarding.alerts.beforeBold" = "Erhalten Sie ";
-"onboarding.alerts.bold" = "kontextualisierte Benachrichtigungen";
-"onboarding.alerts.afterBold" = " über mögliche Exposition gegenüber Infektionskrankheiten";
+"onboarding.alerts.bold" = "personalisierte Informationen";
+"onboarding.alerts.afterBold" = " darüber, ob Sie Infektionskrankheiten ausgesetzt waren";
 "onboarding.getStarted" = "LOSLEGEN";
 "onboarding.howDataUsed" = "Wie Ihre Daten verwendet werden";
-"onboarding.logo" = "Zusammenarbeiten. Informieren. Schützen.";
 "onboarding.monitor.beforeBold" = "";
-"onboarding.monitor.bold" = "Überwachen";
-"onboarding.monitor.afterBold" = " Sie Ihre Gesundheit";
+"onboarding.monitor.bold" = "Achten";
+"onboarding.monitor.afterBold" = " Sie auf Ihre Gesundheit";
 "onboarding.track.beforeBold" = "";
-"onboarding.track.bold" = "Verfolgen Sie";
-"onboarding.track.afterBold" = ", wo Sie gewesen sind";
+"onboarding.track.bold" = "Verfolgen ";
+"onboarding.track.afterBold" = "Sie nach, wo Sie gewesen sind";
 
 "symptom.fever" = "Fieber";
 "symptom.tiredness" = "Müdigkeit";
@@ -41,4 +41,4 @@
 "symptom.diarrhea" = "Durchfall";
 "symptom.difficultyBreathing" = "Atembeschwerden";
 "symptom.lossOfSmellTaste" = "Geruchs- oder Geschmacksverlust";
-"symptom.none" = "Nichts des oben Genannten";
+"symptom.none" = "Keines der oben genannten";
