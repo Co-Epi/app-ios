@@ -11,6 +11,9 @@
 		054A34FC244E691500282E17 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054A34FB244E691500282E17 /* strings.swift */; };
 		055A9D78243A892800A12285 /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A9D77243A892800A12285 /* KeyValueStore.swift */; };
 		05E0E4C8244403FE00D27F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05E0E4CA244403FE00D27F9A /* Localizable.strings */; };
+		30DDD30D24587D4A0016FF25 /* CoEpiNetworkingV4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDD30B24587D4A0016FF25 /* CoEpiNetworkingV4Tests.swift */; };
+		30DDD30F24587E230016FF25 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 30DDD30E24587E230016FF25 /* Alamofire */; };
+		30DDD313246099390016FF25 /* TCNClient in Frameworks */ = {isa = PBXBuildFile; productRef = 30DDD312246099390016FF25 /* TCNClient */; };
 		30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */; };
 		30EF952E24313F61007D61C7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF952824313F61007D61C7 /* Fonts.swift */; };
 		30EF952F24313F61007D61C7 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30EF952A24313F61007D61C7 /* Roboto-Light.ttf */; };
@@ -18,7 +21,6 @@
 		30EF953124313F61007D61C7 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 30EF952C24313F61007D61C7 /* LICENSE.txt */; };
 		30EF953224313F61007D61C7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30EF952D24313F61007D61C7 /* Roboto-Bold.ttf */; };
 		30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30EF955A2432E009007D61C7 /* CryptoSwift */; };
-		30EF956D24363115007D61C7 /* CoEpiNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF956C24363115007D61C7 /* CoEpiNetworkingTests.swift */; };
 		30EF957A24379E01007D61C7 /* CoEpiLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF957924379E01007D61C7 /* CoEpiLaunchScreen.storyboard */; };
 		62983D8F243CE25F00B0294C /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972324280ABA001ADD6B /* RootWireframe.swift */; };
 		62983D90243CE39E00B0294C /* HealthQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BE98242DDCBC00EFB67A /* HealthQuizViewModel.swift */; };
@@ -114,7 +116,6 @@
 		84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00FE2427ED5E00318104 /* HomeViewController.swift */; };
 		84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FF2427ED5E00318104 /* HomeViewController.xib */; };
 		84FEDB6F24364FE300F41160 /* CoEpiApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB6E24364FE300F41160 /* CoEpiApi.swift */; };
-		B8D966C74B8325F17A9EEF37 /* Pods_CoEpiNetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88428D93C9233C223136D1B /* Pods_CoEpiNetworkingTests.framework */; };
 		CC71F7CAF64914F41BBE05C5 /* Pods_CoEpi_CoEpiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */; };
 		CE626E092430A98B000DB8E7 /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */; };
 		CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */; };
@@ -168,13 +169,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		30EF9573243632E6007D61C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 849DFE5A2427D3750008ED65 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 849DFE612427D3750008ED65;
-			remoteInfo = CoEpi;
-		};
 		849DFE7C2427D37A0008ED65 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 849DFE5A2427D3750008ED65 /* Project object */;
@@ -192,7 +186,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01E44CAE9F9B6871D9529B29 /* Pods-CoEpiNetworkingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiNetworkingTests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpiNetworkingTests/Pods-CoEpiNetworkingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		054A34F1244E61B600282E17 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		054A34FB244E691500282E17 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		055A9D77243A892800A12285 /* KeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
@@ -207,6 +200,8 @@
 		055B63572454716C00E2558E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05E0E4C9244403FE00D27F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05E0E4CC2444056F00D27F9A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30DDD30A24587D4A0016FF25 /* CoEpiNetworkingV3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoEpiNetworkingV3Tests.swift; sourceTree = "<group>"; };
+		30DDD30B24587D4A0016FF25 /* CoEpiNetworkingV4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoEpiNetworkingV4Tests.swift; sourceTree = "<group>"; };
 		30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
 		30EF952824313F61007D61C7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		30EF952A24313F61007D61C7 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -219,7 +214,6 @@
 		30EF957924379E01007D61C7 /* CoEpiLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoEpiLaunchScreen.storyboard; sourceTree = "<group>"; };
 		324F4D7DC6C28946706D180E /* Pods-CoEpiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiTests.release.xcconfig"; path = "Target Support Files/Pods-CoEpiTests/Pods-CoEpiTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DB73EEFE0BAFE71BAB85604 /* Pods-CoEpi-CoEpiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi-CoEpiUITests.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi-CoEpiUITests/Pods-CoEpi-CoEpiUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4A8C33FD92971388B446839F /* Pods-CoEpiNetworkingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpiNetworkingTests.release.xcconfig"; path = "Target Support Files/Pods-CoEpiNetworkingTests/Pods-CoEpiNetworkingTests.release.xcconfig"; sourceTree = "<group>"; };
 		4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpi_CoEpiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E087D09295263EB6A4DB967 /* Pods-CoEpi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.debug.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.debug.xcconfig"; sourceTree = "<group>"; };
 		74BF972AC9A1ED47A016DA3D /* Pods-CoEpi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoEpi.release.xcconfig"; path = "Target Support Files/Pods-CoEpi/Pods-CoEpi.release.xcconfig"; sourceTree = "<group>"; };
@@ -341,7 +335,6 @@
 		D41B0D1A242F5BDA00A50447 /* StringMarkupAttributedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMarkupAttributedExtension.swift; sourceTree = "<group>"; };
 		D41B0D1E242F60CF00A50447 /* OnboardingStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStrings.swift; sourceTree = "<group>"; };
 		D41B0D22242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMarkupAttributedExtensionTests.swift; sourceTree = "<group>"; };
-		F88428D93C9233C223136D1B /* Pods_CoEpiNetworkingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoEpiNetworkingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,7 +342,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8D966C74B8325F17A9EEF37 /* Pods_CoEpiNetworkingTests.framework in Frameworks */,
+				30DDD30F24587E230016FF25 /* Alamofire in Frameworks */,
+				30DDD313246099390016FF25 /* TCNClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +427,8 @@
 		30EF956B24363115007D61C7 /* CoEpiNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
+				30DDD30A24587D4A0016FF25 /* CoEpiNetworkingV3Tests.swift */,
+				30DDD30B24587D4A0016FF25 /* CoEpiNetworkingV4Tests.swift */,
 				30EF956C24363115007D61C7 /* CoEpiNetworkingTests.swift */,
 				30EF956E24363115007D61C7 /* Info.plist */,
 			);
@@ -456,8 +452,6 @@
 				C12F75FF3B79C829E72E1CF6 /* Pods-CoEpi-CoEpiUITests.release.xcconfig */,
 				910DD69A29B6DF9226FCFECA /* Pods-CoEpiTests.debug.xcconfig */,
 				324F4D7DC6C28946706D180E /* Pods-CoEpiTests.release.xcconfig */,
-				01E44CAE9F9B6871D9529B29 /* Pods-CoEpiNetworkingTests.debug.xcconfig */,
-				4A8C33FD92971388B446839F /* Pods-CoEpiNetworkingTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -854,7 +848,6 @@
 				83D98C7D6EAEBFA0E5292E3F /* Pods_CoEpi.framework */,
 				4AB30FDD8E48688E1BF91F91 /* Pods_CoEpi_CoEpiUITests.framework */,
 				89B1FB101DD42773F3ADB2EC /* Pods_CoEpiTests.framework */,
-				F88428D93C9233C223136D1B /* Pods_CoEpiNetworkingTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -907,7 +900,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30EF956F24363115007D61C7 /* Build configuration list for PBXNativeTarget "CoEpiNetworkingTests" */;
 			buildPhases = (
-				66E568ACCEC9DD63842FD922 /* [CP] Check Pods Manifest.lock */,
 				30EF956624363115007D61C7 /* Sources */,
 				30EF956724363115007D61C7 /* Frameworks */,
 				30EF956824363115007D61C7 /* Resources */,
@@ -915,9 +907,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				30EF9574243632E6007D61C7 /* PBXTargetDependency */,
 			);
 			name = CoEpiNetworkingTests;
+			packageProductDependencies = (
+				30DDD30E24587E230016FF25 /* Alamofire */,
+				30DDD312246099390016FF25 /* TCNClient */,
+			);
 			productName = CoEpiNetworkingTests;
 			productReference = 30EF956A24363115007D61C7 /* CoEpiNetworkingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1008,7 +1003,7 @@
 				TargetAttributes = {
 					30EF956924363115007D61C7 = {
 						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = 849DFE612427D3750008ED65;
+						LastSwiftMigration = 1130;
 					};
 					849DFE612427D3750008ED65 = {
 						CreatedOnToolsVersion = 11.3;
@@ -1151,28 +1146,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoEpi/Pods-CoEpi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		66E568ACCEC9DD63842FD922 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CoEpiNetworkingTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		787970C7C1EB5ED7195FBD12 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1246,7 +1219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30EF956D24363115007D61C7 /* CoEpiNetworkingTests.swift in Sources */,
+				30DDD30D24587D4A0016FF25 /* CoEpiNetworkingV4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1394,11 +1367,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		30EF9574243632E6007D61C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 849DFE612427D3750008ED65 /* CoEpi */;
-			targetProxy = 30EF9573243632E6007D61C7 /* PBXContainerItemProxy */;
-		};
 		849DFE7D2427D37A0008ED65 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 849DFE612427D3750008ED65 /* CoEpi */;
@@ -1443,12 +1411,12 @@
 /* Begin XCBuildConfiguration section */
 		30EF957024363115007D61C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01E44CAE9F9B6871D9529B29 /* Pods-CoEpiNetworkingTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SQAPAYXXBX;
 				INFOPLIST_FILE = CoEpiNetworkingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1456,20 +1424,20 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.CoEpiNetworkingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoEpi.app/CoEpi";
 			};
 			name = Debug;
 		};
 		30EF957124363115007D61C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A8C33FD92971388B446839F /* Pods-CoEpiNetworkingTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SQAPAYXXBX;
 				INFOPLIST_FILE = CoEpiNetworkingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1479,7 +1447,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoEpi.app/CoEpi";
 			};
 			name = Release;
 		};
@@ -1881,6 +1848,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		30DDD30E24587E230016FF25 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8484346F2438F6CA006A5839 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		30DDD312246099390016FF25 /* TCNClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84F93BFF2451D95300B5F54D /* XCRemoteSwiftPackageReference "tcn-client-ios" */;
+			productName = TCNClient;
+		};
 		30EF955A2432E009007D61C7 /* CryptoSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 30EF95592432E009007D61C7 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
