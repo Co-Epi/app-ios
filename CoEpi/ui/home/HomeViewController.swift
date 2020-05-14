@@ -1,24 +1,36 @@
 import UIKit
+import SafariServices
 
 class HomeViewController: UIViewController {
     private let viewModel: HomeViewModel
-
-    @IBOutlet weak var stackContainerView: UIView!
-    @IBOutlet weak var stackContainerViewTwo: UIView!
-    @IBAction func checkInButtonTapped(_ sender: UIButton) {
+    
+    @IBOutlet weak var redCircle: UIImageView!
+    
+    //button labels
+    @IBOutlet weak var reportButtonLabel: UIButton!
+    @IBOutlet weak var alertButtonLabel: UIButton!
+    @IBOutlet weak var howDataUsedLabel: UIButton!
+    
+    //button actions
+    @IBAction func reportButtonAction(_ sender: Any) {
         viewModel.quizTapped()
     }
-    @IBAction func seeAlertsButtonTapped(_ sender: UIButton) {
+    
+    @IBAction func alertButtonAction(_ sender: Any) {
         viewModel.seeAlertsTapped()
     }
     
-    @IBOutlet weak var myHealthTitle: UILabel!
-    @IBOutlet weak var myHealthDescriptionLabel: UILabel!
-    @IBOutlet weak var myHealthButton: UIButton!
-    @IBOutlet weak var contactAlertsTitle: UILabel!
-    @IBOutlet weak var contactAlertsDescriptionLabel: UILabel!
-    @IBOutlet weak var contactAlertsButton: UIButton!
+    @IBAction func howDataUsedButton(_ sender: Any) {
+        if let url = URL(string: "https://www.coepi.org/privacy/") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = false
+
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
+    }
     
+        //debug
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var buildLabel: UILabel!
     @IBOutlet weak var debugButton: UIButton!
@@ -45,6 +57,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_purple.png")!)
+        
         let paragraphStyle = NSMutableParagraphStyle()
 
         paragraphStyle.lineHeightMultiple = 1.07
@@ -53,26 +68,42 @@ class HomeViewController: UIViewController {
         share.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = share
         
-        myHealthDescriptionLabel.numberOfLines = 0
-        myHealthDescriptionLabel.lineBreakMode = .byWordWrapping
-        myHealthDescriptionLabel.sizeToFit()
+        //setup button labels
         
-        myHealthTitle.text = L10n.Home.MyHealth.title
-        myHealthDescriptionLabel.attributedText = NSMutableAttributedString(string: L10n.Home.MyHealth.description, attributes: [NSAttributedString.Key.kern: 0.25, NSAttributedString.Key.paragraphStyle: paragraphStyle ])
-        myHealthButton.setTitle(L10n.Home.MyHealth.button, for: .normal)
+        howDataUsedLabel.setTitle(L10n.Ux.Home.how, for: .normal)
         
-        contactAlertsTitle.text = L10n.Home.ContactAlerts.title
-        contactAlertsDescriptionLabel.numberOfLines = 0
-        contactAlertsDescriptionLabel.lineBreakMode = .byWordWrapping
-        contactAlertsDescriptionLabel.attributedText = NSMutableAttributedString(string: L10n.Home.ContactAlerts.description, attributes: [NSAttributedString.Key.kern: 0.25, NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        contactAlertsButton.setTitle(L10n.Home.ContactAlerts.button, for: .normal)
+        let attributedTextReport = NSMutableAttributedString(string: L10n.Ux.Home.report1, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)])
+        attributedTextReport.append(NSMutableAttributedString(string: L10n.Ux.Home.report2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
+        reportButtonLabel.setAttributedTitle(attributedTextReport, for: .normal)
         
-        configureCardView(cardView: self.stackContainerView)
-        configureCardView(cardView: self.stackContainerViewTwo)
         
+        let tempNumbnerOfNotifications = 0 //temp for testing will need to be replaced with checking if new alerts are available
+        
+        if tempNumbnerOfNotifications == 0{
+            redCircle.isHidden = true
+            let attributedTextAlert = NSMutableAttributedString(string: L10n.Ux.Home.alerts1, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)])
+            attributedTextAlert.append(NSMutableAttributedString(string: L10n.Ux.Home.alerts2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
+            alertButtonLabel.setAttributedTitle(attributedTextAlert, for: .normal)
+            alertButtonLabel.setBackgroundImage(UIImage(named: "healthButton.pdf"), for: .normal)
+        }
+        else{
+            redCircle.isHidden = false
+            let attributedTextAlert = NSMutableAttributedString(string: L10n.Ux.Home.detected, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20), .foregroundColor: UIColor.red])
+            attributedTextAlert.append(NSMutableAttributedString(string: L10n.Ux.Home.alerts1, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)]))
+            
+            attributedTextAlert.append(NSMutableAttributedString(string: L10n.Ux.Home.alerts2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
+            
+            alertButtonLabel.setAttributedTitle(attributedTextAlert, for: .normal)
+            alertButtonLabel.setBackgroundImage(UIImage(named: "healthButtonLarge.pdf"), for: .normal)
+        }
+        
+        //debug
         versionLabel.text = getVersionNumber()
         buildLabel.text = getBuildNumber()
         debugButton.setTitle(L10n.Home.Footer.debug, for: .normal)
+        
+        //viewModel.testTapped()
+        
     }
     
     private func getVersionNumber() -> String{
@@ -91,15 +122,5 @@ class HomeViewController: UIViewController {
         }
         print("Build : \(build)")
         return "\(L10n.Home.Footer.build): \(build)"
-    }
-    
-    private func configureCardView(cardView: UIView){
-        cardView.layer.cornerRadius = 6
-        cardView.layer.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1).cgColor
-        //https://www.hackingwithswift.com/example-code/uikit/how-to-add-a-shadow-to-a-uiview
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 1
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 3)
-        cardView.layer.shadowRadius = 3
     }
 }

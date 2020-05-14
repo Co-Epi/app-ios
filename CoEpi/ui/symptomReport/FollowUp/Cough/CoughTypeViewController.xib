@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoughTypeViewController" customModule="CoEpi" customModuleProvider="target">
+            <connections>
+                <outlet property="dryButtonLabel" destination="T6Z-Nt-KHf" id="nvh-ar-wlM"/>
+                <outlet property="skipButtonLabel" destination="mJP-Vj-rgk" id="6wB-Rh-W9l"/>
+                <outlet property="titleLabel" destination="zzc-XR-oVc" id="G3Y-R9-dJX"/>
+                <outlet property="view" destination="iN0-l3-epB" id="UeG-4Q-UFB"/>
+                <outlet property="wetButtonLabel" destination="vWJ-zu-T6f" id="BtK-1K-p2P"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLabel" translatesAutoresizingMaskIntoConstraints="NO" id="SHr-aV-qih">
+                    <rect key="frame" x="0.0" y="-6" width="414" height="221"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="SHr-aV-qih" secondAttribute="height" multiplier="15:8" id="U5H-rx-049"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fXT-mT-QUf">
+                    <rect key="frame" x="10" y="352" width="394" height="192"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vWJ-zu-T6f">
+                            <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="vWJ-zu-T6f" secondAttribute="height" multiplier="1:1" id="sGK-i3-X48"/>
+                            </constraints>
+                            <state key="normal" title="" backgroundImage="largeCircleButton"/>
+                            <state key="highlighted" backgroundImage="largeCircleButton_Selected"/>
+                            <connections>
+                                <action selector="wetButtonAction:" destination="-1" eventType="touchUpInside" id="Yo8-JN-FmG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="T6Z-Nt-KHf">
+                            <rect key="frame" x="202" y="0.0" width="192" height="192"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="T6Z-Nt-KHf" secondAttribute="height" multiplier="1:1" id="jqL-9D-EYG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <state key="normal" backgroundImage="largeCircleButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="largeCircleButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="dryButtonAction:" destination="-1" eventType="touchUpInside" id="Fpd-dS-P5Z"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJP-Vj-rgk">
+                    <rect key="frame" x="50" y="594" width="30" height="30"/>
+                    <state key="normal" title="Skip">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="skipButtonAction:" destination="-1" eventType="touchUpInside" id="ICO-9v-UpT"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzc-XR-oVc">
+                    <rect key="frame" x="20" y="74" width="374" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mJP-Vj-rgk" firstAttribute="top" secondItem="fXT-mT-QUf" secondAttribute="bottom" constant="50" id="2qy-p1-Jdq"/>
+                <constraint firstItem="SHr-aV-qih" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NH9-wh-icw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SHr-aV-qih" secondAttribute="trailing" id="RHD-37-73K"/>
+                <constraint firstItem="zzc-XR-oVc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="VZz-Aw-iZf"/>
+                <constraint firstItem="mJP-Vj-rgk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="W0Y-vZ-15a"/>
+                <constraint firstItem="fXT-mT-QUf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bX5-QH-W5e"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fXT-mT-QUf" secondAttribute="trailing" constant="10" id="e0w-D5-uPr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zzc-XR-oVc" secondAttribute="trailing" constant="20" id="g6a-VS-wNA"/>
+                <constraint firstItem="fXT-mT-QUf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="ih6-6t-y75"/>
+                <constraint firstItem="zzc-XR-oVc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="mhx-Ws-Sqz"/>
+                <constraint firstItem="SHr-aV-qih" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-50" id="xeF-NV-SKK"/>
+                <constraint firstItem="fXT-mT-QUf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yHB-R8-2j6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="HeaderLabel" width="375" height="109"/>
+        <image name="largeCircleButton" width="159" height="159"/>
+        <image name="largeCircleButton_Selected" width="159" height="159"/>
+        <namedColor name="CoEpiPurple">
+            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

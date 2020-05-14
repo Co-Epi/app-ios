@@ -36,6 +36,7 @@
 "onboarding.track.bold" = "Track";
 "onboarding.track.afterBold" = " where you've been";
 
+//Should be removed in favor of new ux
 "symptom.fever" = "Fever";
 "symptom.tiredness" = "Tiredness";
 "symptom.dryCough" = "Dry cough";
@@ -47,3 +48,103 @@
 "symptom.difficultyBreathing" = "Difficulty breathing";
 "symptom.lossOfSmellTaste" = "Loss of smell/taste";
 "symptom.none" = "None of the above";
+
+
+
+//NewUX
+    //general
+"UX.submit" = "SUBMIT";
+"UX.unknown" = "I don't know";
+"UX.yes" = "Yes";
+"UX.no" = "No";
+"UX.skip" = "Skip";
+"UX.days" = "days";
+
+    //permissions
+"UX.permissions.BT.title" = "CoEpi would like to use Bluetooth";
+"UX.permissions.BT.body" = "Activating Bluetooth will enable CoEpi to detect interactions from nearby devices running compatible apps.";
+
+    //symptomReport
+"UX.symptomReport.heading" = "Symptom Report";
+"UX.symptomReport.title" = "What symptoms do you have today?";
+"UX.symptomReport.subtitle" = "Select all that apply";
+"UX.symptomReport.noSymptoms" = "I don't have any symptoms today";
+"UX.symptomReport.cough" = "Cough";
+"UX.symptomReport.breathless" = "Breathlessness";
+"UX.symptomReport.fever" = "Fever";
+"UX.symptomReport.ache" = "Muscle aches";
+"UX.symptomReport.loss" = "Loss of smell or taste";
+"UX.symptomReport.diarrhea" = "Diarrhea";
+"UX.symptomReport.nose" = "Runny nose";
+"UX.symptomReport.other" = "I have symptoms that are not on the list";
+
+    //thankyou
+"UX.thankyou.title" = "Thank you for saving your symptoms! We will keep you notified about exposures this week.";
+"UX.thankyou.more" = "Log more symptoms";
+"UX.thankyou.viewExposures" = "View exposures";
+"UX.thankyou.home" = "Return to home screen";
+
+    // breathless
+"UX.breathless.heading" = "Follow up: Breathlessness";
+"UX.breathless.title" = "I feel breathless when:";
+"UX.breathless.subtitle" = "Select one option";
+"UX.breathless.p0" = "I am too breathless to leave the house or I am breathless when dressing";
+"UX.breathless.p1" = "I stop for breath after walking about 100 yards or after a few minutes on level ground";
+"UX.breathless.p2" = "On level ground, I have to stop for breath when walking at my own pace";
+"UX.breathless.p3" = "I get short of breath when hurrying on level ground or walking up a slight hill";
+"UX.breathless.p4" = "I only get breathless with strenuous exercise";
+
+    //cough
+"UX.cough.heading" = "Follow up: Cough";
+"UX.cough.title1" = "I would describe my cough as:";
+"UX.cough.title2" = "How many days have you been coughing?";
+"UX.cough.title3" = "Today my cough has:";
+"UX.cough.subtitle3" = "Select all that apply";
+"UX.cough.titleWet" = "Wet";
+"UX.cough.subtitleWet" = "\nIt feels like there is mucus \nin my throat and/or chest";
+"UX.cough.titleDry" = "Dry";
+"UX.cough.subtitleDry" = "\nMy throat feels 'tickly' or 'scratchy' without mucus";
+"UX.cough.better" = "Felt better and worse throughout the day";
+"UX.cough.worse" = "Felt worse when I am outside";
+"UX.cough.same" = "Stayed the same or felt steadily worse";
+
+    //fever
+"UX.fever.heading" = "Follow up: Fever";
+"UX.fever.title1" = "How many days have you had a fever?";
+"UX.fever.title2" = "Have you taken your temperature today?";
+"UX.fever.title3" = "Where did you take your temperature most recently?";
+"UX.fever.title4" = "What was the highest temperature reading today?";
+"UX.fever.mouth" = "Mouth";
+"UX.fever.ear" = "Ear";
+"UX.fever.armpit" = "Armpit";
+"UX.fever.other" = "Other";
+"UX.fever.C" = "Cº";
+"UX.fever.F" = "Fº";
+
+    //onboarding
+"UX.onboarding.title1" = "Track where you’ve been.";
+"UX.onboarding.body1" = "Know if you’ve come in contact with others who may have been contagious based on proximity, arrival times, and departure times.";
+"UX.onboarding.title2" = "Monitor your health";
+"UX.onboarding.body2" = "Along with your community, monitor your health, and if relevant, the health of your family. Help in keeping yourself and others safe!";
+"UX.onboarding.title3" = "Stay informed";
+"UX.onboarding.body3" = "Get contextualized alerts about exposure to transmissible illnesses, including locations and times, giving you time to seek medical attention.";
+"UX.onboarding.title4" = "Collaborate. Inform. Protect.";
+"UX.onboarding.body4" = "Halt the spread of contagious illnesses. View screening tests and results, find the right advice, and above all, understand and stop the spread of disease.";
+"UX.onboarding.how" = "How is my data used?";
+"UX.onboarding.next" = "NEXT";
+"UX.onboarding.join" = "Join";
+"UX.onboarding.questions" = "Frequently asked questions";
+
+
+    //homescreen
+"UX.home.title" = "CoEpi";
+"UX.home.report1" = "    My Symptom Report\n\n";
+"UX.home.report2" = "    Track how you are feeling";
+"UX.home.alerts1" = "    Exposure Alerts\n\n";
+"UX.home.alerts2" = "    Find out reported alerts \n    around you";
+"UX.home.detected" = "        new exposures detected\n\n";
+"UX.home.how" = "How is my data being used?";
+
+    // symptom days
+"UX.symptomsdays.heading" = "Follow up: Symptoms Duration";
+"UX.symptomsdays.title" = "How many days have you had any symptoms?";

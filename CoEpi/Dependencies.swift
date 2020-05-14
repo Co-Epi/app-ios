@@ -24,8 +24,25 @@ class Dependencies {
 
     private func registerViewModels(container: DependencyContainer) {
         container.register { HomeViewModel(startPermissions: try container.resolve(), rootNav: try container.resolve()) }
-        container.register { OnboardingWireframe(container: container) }
+        //container.register { OnboardingWireframe(container: container) }
         container.register { OnboardingViewModel() }
+        
+        
+        container.register { ThankYouViewModel() }
+        container.register { BreathlessViewModel() }
+        container.register { CoughTypeViewModel() }
+        container.register { CoughDaysViewModel() }
+        container.register { CoughHowViewModel() }
+        container.register { FeverDaysViewModel() }
+        container.register { FeverTodayViewModel() }
+        container.register { FeverWhereViewModel() }
+        container.register { FeverWhereViewModelOther() }
+        container.register { FeverTempViewModel() }
+        container.register { SymptomReportViewModel() }
+        container.register { OnboardingViewModel() }
+        container.register { OnboardingWireframe(container: container) }
+        container.register { SymptomStartDaysViewModel() }
+        
         container.register { HealthQuizViewModel(symptomRepo: try container.resolve(), rootNav: try container.resolve()) }
         container.register { AlertsViewModel(alertRepo: try container.resolve()) }
 

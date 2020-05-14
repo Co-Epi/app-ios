@@ -2,7 +2,7 @@ import RxSwift
 import os.log
 
 class HomeViewModel {
-    let title = "CoEpi"
+    let title = L10n.Ux.Home.title
 
     private let disposeBag = DisposeBag()
 
@@ -21,12 +21,16 @@ class HomeViewModel {
     func debugTapped() {
         rootNav.navigate(command: .to(destination: .debug))
     }
-    
+
     func quizTapped() {
         rootNav.navigate(command: .to(destination: .quiz))
     }
-    
+
     func seeAlertsTapped() {
         rootNav.navigate(command: .to(destination: .alerts))
+    }
+
+    func testTapped() {
+        rootNav.navigate(command: .to(destination: .feverTemp))
     }
 }

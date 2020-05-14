@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SymptomReportViewController" customModule="CoEpi" customModuleProvider="target">
+            <connections>
+                <outlet property="acheButtonLabel" destination="v0b-Sa-yN1" id="wN7-rd-c6x"/>
+                <outlet property="breathlessButtonLabel" destination="Rae-bS-c65" id="VM6-Eg-dw5"/>
+                <outlet property="coughButtonLabel" destination="gVh-TZ-dYr" id="8CZ-nt-ufJ"/>
+                <outlet property="diarrheaButtonLabel" destination="YHe-VN-N41" id="qeV-jS-q5J"/>
+                <outlet property="feverButtonLabel" destination="bDp-nU-fcm" id="CXc-n5-0HT"/>
+                <outlet property="lossButtonLabel" destination="3Y2-gP-YXz" id="R1i-oj-oln"/>
+                <outlet property="noSymptomsButtonLabel" destination="WmM-73-lcD" id="oRd-w2-A6P"/>
+                <outlet property="noseButtonLabel" destination="Bnc-uQ-cf9" id="o4u-US-xNI"/>
+                <outlet property="otherSymptomsButtonLabel" destination="tVM-ZP-u7V" id="wU1-KV-svA"/>
+                <outlet property="submitButtonLabel" destination="oZb-xH-Oa5" id="CIs-sV-QlO"/>
+                <outlet property="subtitleLabel" destination="qry-Br-89e" id="viH-2z-YWH"/>
+                <outlet property="titleLabel" destination="WJO-gl-oGy" id="Mws-3e-nZ2"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Q4d-N1-ycu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yKF-Yc-ieG">
+                    <rect key="frame" x="33.666666666666657" y="175" width="341" height="499"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmM-73-lcD">
+                            <rect key="frame" x="0.0" y="0.0" width="341" height="48.333333333333336"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="noSymptomsButtonAction:" destination="-1" eventType="touchUpInside" id="ssg-n8-0oa"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVh-TZ-dYr">
+                            <rect key="frame" x="0.0" y="56.333333333333343" width="341" height="48.333333333333343"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="coughButtonAction:" destination="-1" eventType="touchUpInside" id="CV3-x2-JQv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rae-bS-c65">
+                            <rect key="frame" x="0.0" y="112.66666666666667" width="341" height="48.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="breathlessButtonAction:" destination="-1" eventType="touchUpInside" id="1Rz-wa-Crx"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDp-nU-fcm">
+                            <rect key="frame" x="0.0" y="169" width="341" height="48.333333333333343"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="feverButtonAction:" destination="-1" eventType="touchUpInside" id="5uy-VT-03B"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0b-Sa-yN1">
+                            <rect key="frame" x="0.0" y="225.33333333333331" width="341" height="48.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="acheButtonAction:" destination="-1" eventType="touchUpInside" id="ytI-mJ-oPs"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Y2-gP-YXz">
+                            <rect key="frame" x="0.0" y="281.66666666666669" width="341" height="48.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="lossButtonAction:" destination="-1" eventType="touchUpInside" id="8Yg-ek-wEt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHe-VN-N41">
+                            <rect key="frame" x="0.0" y="338" width="341" height="48.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="diarrheaButtonAction:" destination="-1" eventType="touchUpInside" id="6dY-Fo-5yK"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bnc-uQ-cf9">
+                            <rect key="frame" x="0.0" y="394.33333333333337" width="341" height="48.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="noseButtonAction:" destination="-1" eventType="touchUpInside" id="z5K-75-69B"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVM-ZP-u7V">
+                            <rect key="frame" x="0.0" y="450.66666666666663" width="341" height="48.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" backgroundImage="smallOvalButton">
+                                <color key="titleColor" name="CoEpiPurple"/>
+                            </state>
+                            <state key="selected" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="smallOvalButton_Selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="otherSymptomsButtonAction:" destination="-1" eventType="touchUpInside" id="qE6-zt-CH3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="gVh-TZ-dYr" secondAttribute="trailing" id="1I6-f3-BfJ"/>
+                        <constraint firstItem="bDp-nU-fcm" firstAttribute="centerX" secondItem="yKF-Yc-ieG" secondAttribute="centerX" id="4Q3-Xn-hw9"/>
+                        <constraint firstAttribute="trailing" secondItem="v0b-Sa-yN1" secondAttribute="trailing" id="Fsz-f0-wEf"/>
+                        <constraint firstAttribute="trailing" secondItem="3Y2-gP-YXz" secondAttribute="trailing" id="H0R-kR-yKy"/>
+                        <constraint firstAttribute="trailing" secondItem="bDp-nU-fcm" secondAttribute="trailing" id="K3Y-a2-Kag"/>
+                        <constraint firstAttribute="trailing" secondItem="WmM-73-lcD" secondAttribute="trailing" id="OwG-ES-SO5"/>
+                        <constraint firstAttribute="trailing" secondItem="Rae-bS-c65" secondAttribute="trailing" id="QEC-oB-ao6"/>
+                        <constraint firstAttribute="width" secondItem="yKF-Yc-ieG" secondAttribute="height" multiplier="151:221" id="RLt-Tm-NbG"/>
+                        <constraint firstAttribute="trailing" secondItem="YHe-VN-N41" secondAttribute="trailing" id="V1A-du-3oA"/>
+                        <constraint firstAttribute="trailing" secondItem="tVM-ZP-u7V" secondAttribute="trailing" id="gln-LK-bUw"/>
+                        <constraint firstAttribute="trailing" secondItem="Bnc-uQ-cf9" secondAttribute="trailing" id="vV7-wD-mbd"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZb-xH-Oa5">
+                    <rect key="frame" x="217" y="681" width="156" height="52"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="oZb-xH-Oa5" secondAttribute="height" multiplier="3:1" id="YvJ-Cb-sR8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" backgroundImage="SubmitButton_Selected">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="submitButtonAction:" destination="-1" eventType="touchUpInside" id="6n3-H6-HWh"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJO-gl-oGy">
+                    <rect key="frame" x="20" y="108" width="374" height="28.666666666666657"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" name="CoEpiPurple"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qry-Br-89e">
+                    <rect key="frame" x="20" y="146.66666666666666" width="30.666666666666671" height="13.333333333333343"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                    <color key="textColor" name="CoEpiPurple"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WJO-gl-oGy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="7YN-Vy-ayi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oZb-xH-Oa5" secondAttribute="trailing" constant="41" id="8W6-Z4-zEO"/>
+                <constraint firstItem="yKF-Yc-ieG" firstAttribute="top" secondItem="qry-Br-89e" secondAttribute="bottom" constant="15" id="8y2-tO-Aba"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yKF-Yc-ieG" secondAttribute="trailing" constant="39.5" id="CI0-h7-tct"/>
+                <constraint firstItem="qry-Br-89e" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Hbz-2m-nVb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WJO-gl-oGy" secondAttribute="trailing" constant="20" id="J6P-XG-C5m"/>
+                <constraint firstItem="WJO-gl-oGy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="Rk3-bK-Dda"/>
+                <constraint firstItem="qry-Br-89e" firstAttribute="top" secondItem="WJO-gl-oGy" secondAttribute="bottom" constant="10" id="XVR-cU-GNg"/>
+                <constraint firstItem="yKF-Yc-ieG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="33.5" id="jQb-JM-pvf"/>
+                <constraint firstItem="oZb-xH-Oa5" firstAttribute="top" secondItem="yKF-Yc-ieG" secondAttribute="bottom" constant="7" id="laG-ww-qFc"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="136.80000000000001" y="87.706146926536732"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="SubmitButton_Selected" width="106" height="26"/>
+        <image name="smallOvalButton" width="294" height="34"/>
+        <image name="smallOvalButton_Selected" width="294" height="34"/>
+        <namedColor name="CoEpiPurple">
+            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>
