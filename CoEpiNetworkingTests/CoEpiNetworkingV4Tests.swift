@@ -29,6 +29,7 @@ final class AlamofireLogger: EventMonitor {
 
 enum BackendType{
     case aws
+    case aws_updated_interval_format
     case golang
 }
 
@@ -49,8 +50,16 @@ func configureBackend(_ type: BackendType = .aws) -> BackendConfig{
             url: "https://v1.api.coepi.org/tcnreport/v0.4.0",
             intervalLength: 86400,
             intervalLengthParam: "intervalLength",
-            dateParam: nil
-        )
+            dateParam: nil)
+        
+    case .aws_updated_interval_format:
+    //curl -X GET "https://zmqh8rwdx4.execute-api.us-west-2.amazonaws.com/v4/tcnreport/0.4.0?intervalNumber=73581&intervalLength=21600"
+        return BackendConfig(type: .aws_updated_interval_format,
+             url: "https://zmqh8rwdx4.execute-api.us-west-2.amazonaws.com/v4/tcnreport/0.4.0",
+             intervalLength: 21600,
+             intervalLengthParam: "intervalLength",
+             dateParam: nil)
+    
     default:
         return BackendConfig(
             type: .aws,
@@ -63,7 +72,7 @@ func configureBackend(_ type: BackendType = .aws) -> BackendConfig{
 
 class CoEpiNetworkingV4Tests: XCTestCase {
     
-    let backend = configureBackend(.aws)
+    let backend = configureBackend(.aws_updated_interval_format)
     
     func testV4GetTcnReport() {
         /*
@@ -79,7 +88,7 @@ class CoEpiNetworkingV4Tests: XCTestCase {
         /**
          curl -X GET https://18ye1iivg6.execute-api.us-west-1.amazonaws.com/v4/tcnreport?date=2020-04-19
          */
-        let dateString = "2020-05-12"
+        let dateString = "2020-05-17"
         guard let date = getDateForString(dateString) else
         {
             XCTFail("Date conversion failed for [\(dateString)]")
@@ -122,7 +131,7 @@ class CoEpiNetworkingV4Tests: XCTestCase {
         let session = Session(configuration:configuration, eventMonitors: [ AlamofireLogger() ])
         
         do {
-            let _ = session.request(urlRequest)
+            let _ = session.request(urlRequest).validate()
                 .cURLDescription { description in
                     NSLog(description)
             }
@@ -186,19 +195,15 @@ class CoEpiNetworkingV4Tests: XCTestCase {
     
     
     func testReportInflation(){
-        /*
-         2020-05-09 18:42:13.357119+0200 xctest[93577:13557797] ⚡️ Decoded once :<ZmQ4ZGViOWQ5MWExM2UxNDRjYTViMGNlMTRlMjg5NTMyZTA0MGZlMGJmOTIyYzZlM2RhZGIxZTRlMjMzM2M3OGRmNTM1YjkwYWM5OWJlYzhiZTNhOGFkZDQ1Y2U3Nzg5N2IxZTdjYjE5MDZiNWNmZjEwOTdkM2NiMTQyZmQ5ZDAwMjAwMGEwMDAwMTk3Mzc5NmQ3MDc0NmY2ZDIwNjQ2MTc0NjEyMDViMzEzNTM4MzkzMDM0MzIzNTMxMzg1ZDVmZjcxZjA5ZTc3MDAxZGVkY2QwZDA1MTZhOGMxMWQ4ZDI5ZjZjMjgzNDAwZmQxM2Q1YzEzYmVhMDgwMDIzODFkNmUxZTkzMGNiYmQ1ZDQxZjk4YmI2MjkwMmZhMTQ4NTRmNGUxNmY4NzRhY2E1YzFkZWRhZjQzMjI1ODc5MDA4> -> <fd8deb9d91a13e144ca5b0ce14e289532e040fe0bf922c6e3dadb1e4e2333c78df535b90ac99bec8be3a8add45ce77897b1e7cb1906b5cff1097d3cb142fd9d002000a00001973796d70746f6d2064617461205b313538393034323531385d5ff71f09e77001dedcd0d0516a8c11d8d29f6c283400fd13d5c13bea08002381d6e1e930cbbd5d41f98bb62902fa14854f4e16f874aca5c1dedaf43225879008>
-         2020-05-09 18:42:13.357495+0200 xctest[93577:13557797] ⚡️ Decoded once :<ZmQ4ZGViOWQ5MWExM2UxNDRjYTViMGNlMTRlMjg5NTMyZTA0MGZlMGJmOTIyYzZlM2RhZGIxZTRlMjMzM2M3OGRmNTM1YjkwYWM5OWJlYzhiZTNhOGFkZDQ1Y2U3Nzg5N2IxZTdjYjE5MDZiNWNmZjEwOTdkM2NiMTQyZmQ5ZDAwMjAwMGEwMDAwMTk3Mzc5NmQ3MDc0NmY2ZDIwNjQ2MTc0NjEyMDViMzEzNTM4MzkzMDM0MzIzNDM2MzY1ZGIxOTMxYTUwZmRiZmVjMGFjZjVlMGU5NjU5Y2YwMzNlNDFhMjc3OTc1YmIyYzM0MTcwMWEyNTYwY2EwZTY3ZWViYmY2Y2E2ZmNmZjhhYzk2MzFkYzk1MmI3Mzg1ZjI5MGNiMzNmYjBjY2IxYTc0YTdjNGY4NDM0NzYwZTAxYjA2> -> <fd8deb9d91a13e144ca5b0ce14e289532e040fe0bf922c6e3dadb1e4e2333c78df535b90ac99bec8be3a8add45ce77897b1e7cb1906b5cff1097d3cb142fd9d002000a00001973796d70746f6d2064617461205b313538393034323436365db1931a50fdbfec0acf5e0e9659cf033e41a277975bb2c341701a2560ca0e67eebbf6ca6fcff8ac9631dc952b7385f290cb33fb0ccb1a74a7c4f8434760e01b06>
-         2020-05-09 18:42:13.374818+0200 xctest[93577:13557797] ⚡️ Decoded once :<ZmQ4ZGViOWQ5MWExM2UxNDRjYTViMGNlMTRlMjg5NTMyZTA0MGZlMGJmOTIyYzZlM2RhZGIxZTRlMjMzM2M3OGRmNTM1YjkwYWM5OWJlYzhiZTNhOGFkZDQ1Y2U3Nzg5N2IxZTdjYjE5MDZiNWNmZjEwOTdkM2NiMTQyZmQ5ZDAwMjAwMGEwMDAwMGM3Mzc5NmQ3MDc0NmY2ZDIwNjQ2MTc0NjEzN2ZmM2U0YmI0OTQzYWQ3NGI4NjhkM2Y1OTM2MjhmY2VhYmQ2MjJlYzAyMzU4NzUzZWVmNzJiYWUyYmI1ZjJlMDhkZTNlMmIxZjI4YWZmYTU5ZGE2OWRmNzRmZWQ1NDQzYzRkZGM0NmI5MDY4OGY1MGVjNzJlN2FhNmM4ZTgwZQ==> -> <fd8deb9d91a13e144ca5b0ce14e289532e040fe0bf922c6e3dadb1e4e2333c78df535b90ac99bec8be3a8add45ce77897b1e7cb1906b5cff1097d3cb142fd9d002000a00000c73796d70746f6d206461746137ff3e4bb4943ad74b868d3f593628fceabd622ec02358753eef72bae2bb5f2e08de3e2b1f28affa59da69df74fed5443c4ddc46b90688f50ec72e7aa6c8e80e>
-         */
-        
         //        let hexEncodedSignedReport = "fd8deb9d91a13e144ca5b0ce14e289532e040fe0bf922c6e3dadb1e4e2333c78df535b90ac99bec8be3a8add45ce77897b1e7cb1906b5cff1097d3cb142fd9d002000a00001973796d70746f6d2064617461205b313538393034323531385d5ff71f09e77001dedcd0d0516a8c11d8d29f6c283400fd13d5c13bea08002381d6e1e930cbbd5d41f98bb62902fa14854f4e16f874aca5c1dedaf43225879008"
         
-        let hexEncodedSignedReport = "fd8deb9d91a13e144ca5b0ce14e289532e040fe0bf922c6e3dadb1e4e2333c78b86907c5bc76452bc57c8aac263f2003310f41d7b6d761ad833fb0c50ac96dedf401f901001973796d70746f6d2064617461205b313538393134353139365d2a3528b3c1d0945a58856b2845679f2372d48e9f1ed2e38042f23fbf37072833022b6b07186a1b1dfa2819a93675a53e9bad5c79a3c1ef0f5f08b3080bac6e0f"
+        //        let hexEncodedSignedReport = "fd8deb9d91a13e144ca5b0ce14e289532e040fe0bf922c6e3dadb1e4e2333c78b86907c5bc76452bc57c8aac263f2003310f41d7b6d761ad833fb0c50ac96dedf401f901001973796d70746f6d2064617461205b313538393134353139365d2a3528b3c1d0945a58856b2845679f2372d48e9f1ed2e38042f23fbf37072833022b6b07186a1b1dfa2819a93675a53e9bad5c79a3c1ef0f5f08b3080bac6e0f"
+        
+        let hexEncodedSignedReport = "O3NjFJFeY/YdaWqNZoZYT+K54DAiiZJNrR3OUzfwLwkQMJOhvKPus4P4VFutzHKOVoqrUU09EGTISM7VJJQULgEAAQAACwEA5se6XgAAAAAEtI3zGVfTKgfRbUPDfaosvhaKnYW0yLw90syDF3wUBj8eVWcbe43zL+/sQewXc+5+okOQqie489E9LeHt1gOKBQ=="
         
         
         do {
-            let signedReport = try SignedReport(serializedData: hexEncodedSignedReport.hexDecodedData())
+            let signedReport = try SignedReport(serializedData: Data(base64Encoded: hexEncodedSignedReport)!)
             do {
                 let verified = try signedReport.verify()
                 print("verified = \(verified)")
@@ -207,12 +212,15 @@ class CoEpiNetworkingV4Tests: XCTestCase {
                 let n2 = signedReport.report.endIndex
                 let memoData = signedReport.report.memoData
                 
-                let memo : String = String(data:memoData, encoding: .utf8)!
                 
                 print("start = \(n1)")
                 print("end = \(n2)")
                 print("memoData = \(memoData)")
-                print("memo = \(memo)")
+                if let memo : String = String(data:memoData, encoding: .utf8){
+                    print("memo = \(memo)")
+                }else{
+                    print("Problem with memo")
+                }
                 
             }
             catch {
@@ -342,7 +350,9 @@ class CoEpiNetworkingV4Tests: XCTestCase {
             case .aws:
                 url += "&\(backend.intervalLengthParam)=\(intervalLengthMillis)"
                 url += "&date=\(formatedDate)"
-            case .golang:
+         
+            //curl -X GET "https://zmqh8rwdx4.execute-api.us-west-2.amazonaws.com/v4/tcnreport/0.4.0?intervalNumber=73581&intervalLength=21600"
+            case .golang, .aws_updated_interval_format:
                 url += "&\(backend.intervalLengthParam)=\(backend.intervalLength)"
             }
             
@@ -361,13 +371,14 @@ class CoEpiNetworkingV4Tests: XCTestCase {
         configuration.urlCredentialStorage = nil
         
         let session = Session(configuration: configuration,  eventMonitors: [ AlamofireLogger()])
-        let _ = session.request(url)
+        let _ = session.request(url).validate()
             .cURLDescription { description in
                 NSLog(description)
-        }
+            }
         .responseJSON { response in
             let statusCode = response.response?.statusCode
             NSLog("⚡️ StatusCode : [\(statusCode!)]")
+            
             expect.fulfill()
             switch response.result {
             case .success(let JSON):
@@ -401,12 +412,17 @@ class CoEpiNetworkingV4Tests: XCTestCase {
                                 let n2 = signedReport.report.endIndex
                                 let memoData = signedReport.report.memoData
                                 
-                                let memo : String = String(data:memoData, encoding: .utf8)!
                                 
-                                print("start = \(n1)")
-                                print("end = \(n2)")
-                                print("memoData = \(memoData)")
-                                print("memo = \(memo)")
+//                                print("start = \(n1)")
+                                NSLog("⚡️start = \(n1)")
+                                NSLog("⚡️end = \(n2)")
+                                NSLog("⚡️memoData = \(memoData)")
+                                
+                                if let memo : String = String(data:memoData, encoding: .utf8){
+                                     NSLog("⚡️memo = \(memo)")
+                                }else{
+                                   NSLog("⚡️⚡️⚡️ Problem decoding memo!!!")
+                                }
                                 
                             }
                             catch {
