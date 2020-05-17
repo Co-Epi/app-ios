@@ -70,6 +70,8 @@
 		84201698244CA18D000EE281 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201697244CA18D000EE281 /* UIView+ActivityIndicator.swift */; };
 		8420169A244CA1AC000EE281 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201699244CA1AC000EE281 /* ActivityIndicatorView.swift */; };
 		8420169D244CA3F1000EE281 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8420169C244CA3F1000EE281 /* ActivityIndicatorView.xib */; };
+		84313144247087B100DE475B /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 84313143247087B100DE475B /* Cartfile.resolved */; };
+		843131532470A2B200DE475B /* CoEpiCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843131522470A2B200DE475B /* CoEpiCore.framework */; };
 		844D26BC24479E1D0045FDD6 /* BleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D26BB24479E1D0045FDD6 /* BleAdapter.swift */; };
 		848434522438BF91006A5839 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 848434512438BF91006A5839 /* SwiftEntryKit */; };
 		848434552438C03C006A5839 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848434542438C03C006A5839 /* ErrorView.swift */; };
@@ -114,6 +116,7 @@
 		849D1B0A2439F31D00804511 /* DaoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1B092439F31D00804511 /* DaoError.swift */; };
 		849D28F92444300B0034EC4C /* Observable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D28F82444300B0034EC4C /* Observable+Convenience.swift */; };
 		849D28FB244436280034EC4C /* Array+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D28FA244436280034EC4C /* Array+Convenience.swift */; };
+		849D58EB246DD77200134502 /* NativeCoEpiApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D58EA246DD77200134502 /* NativeCoEpiApi.swift */; };
 		849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE652427D3750008ED65 /* AppDelegate.swift */; };
 		849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */; };
 		849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849DFE712427D37A0008ED65 /* Assets.xcassets */; };
@@ -270,12 +273,15 @@
 		6291BE78246CB92E00984583 /* SymptomStartDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartDaysViewController.swift; sourceTree = "<group>"; };
 		6291BE7A246CB93E00984583 /* SymptomStartDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartDaysViewModel.swift; sourceTree = "<group>"; };
 		6291BE7C246D17C100984583 /* OnboardingWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWireframe.swift; sourceTree = "<group>"; };
+		840405D6246C50C7008048BF /* Rust-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Rust-Bridging-Header.h"; sourceTree = "<group>"; };
 		841D399F244E3EE200A9CD64 /* StartPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPermissions.swift; sourceTree = "<group>"; };
 		84201690244B21FF000EE281 /* UnixTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTime.swift; sourceTree = "<group>"; };
 		84201695244CA14D000EE281 /* UIView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rx.swift"; sourceTree = "<group>"; };
 		84201697244CA18D000EE281 /* UIView+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		84201699244CA1AC000EE281 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		8420169C244CA3F1000EE281 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
+		84313143247087B100DE475B /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
+		843131522470A2B200DE475B /* CoEpiCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoEpiCore.framework; path = Carthage/Build/iOS/CoEpiCore.framework; sourceTree = "<group>"; };
 		844D26BB24479E1D0045FDD6 /* BleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleAdapter.swift; sourceTree = "<group>"; };
 		848434542438C03C006A5839 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		848434562438C046006A5839 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
@@ -310,6 +316,7 @@
 		849D1B092439F31D00804511 /* DaoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoError.swift; sourceTree = "<group>"; };
 		849D28F82444300B0034EC4C /* Observable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Convenience.swift"; sourceTree = "<group>"; };
 		849D28FA244436280034EC4C /* Array+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Convenience.swift"; sourceTree = "<group>"; };
+		849D58EA246DD77200134502 /* NativeCoEpiApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeCoEpiApi.swift; sourceTree = "<group>"; };
 		849DFE622427D3750008ED65 /* CoEpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoEpi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE652427D3750008ED65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849DFE6F2427D3750008ED65 /* CoEpi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoEpi.xcdatamodel; sourceTree = "<group>"; };
@@ -344,10 +351,7 @@
 		84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
 		84DE6A27243F9AA800CCF4A6 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		84E76D6B24704460009C1D97 /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenter.framework; path = Carthage/Build/iOS/AppCenter.framework; sourceTree = "<group>"; };
-		84E76D6F247044B6009C1D97 /* AppCenterPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterPush.framework; path = Carthage/Build/iOS/AppCenterPush.framework; sourceTree = "<group>"; };
 		84E76D70247044B6009C1D97 /* AppCenterDistribute.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterDistribute.framework; path = Carthage/Build/iOS/AppCenterDistribute.framework; sourceTree = "<group>"; };
-		84E76D71247044B6009C1D97 /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterAnalytics.framework; path = Carthage/Build/iOS/AppCenterAnalytics.framework; sourceTree = "<group>"; };
-		84E76D72247044B6009C1D97 /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterCrashes.framework; path = Carthage/Build/iOS/AppCenterCrashes.framework; sourceTree = "<group>"; };
 		84EE1C5C2441D72F0055E22B /* Sharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharer.swift; sourceTree = "<group>"; };
 		84EE1C5E2441DC200055E22B /* ConfirmationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAlert.swift; sourceTree = "<group>"; };
 		84F93BF32451BF8900B5F54D /* BackgroundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTask.swift; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 				84E76D75247044B6009C1D97 /* AppCenterDistribute.framework in Frameworks */,
 				84A4B9A9242CA4D500516F3B /* RealmSwift in Frameworks */,
 				84A4B9A7242CA4D500516F3B /* Realm in Frameworks */,
+				843131532470A2B200DE475B /* CoEpiCore.framework in Frameworks */,
 				30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */,
 				8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */,
 				84201694244C901C000EE281 /* Action in Frameworks */,
@@ -748,6 +753,8 @@
 				84FA00F12427E13000318104 /* Dependencies.swift */,
 				05E0E4CA244403FE00D27F9A /* Localizable.strings */,
 				054A34F1244E61B600282E17 /* swiftgen.yml */,
+				84313143247087B100DE475B /* Cartfile.resolved */,
+				840405D6246C50C7008048BF /* Rust-Bridging-Header.h */,
 			);
 			path = CoEpi;
 			sourceTree = "<group>";
@@ -874,10 +881,8 @@
 		84E76D6A2470445F009C1D97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84E76D71247044B6009C1D97 /* AppCenterAnalytics.framework */,
-				84E76D72247044B6009C1D97 /* AppCenterCrashes.framework */,
+				843131522470A2B200DE475B /* CoEpiCore.framework */,
 				84E76D70247044B6009C1D97 /* AppCenterDistribute.framework */,
-				84E76D6F247044B6009C1D97 /* AppCenterPush.framework */,
 				84E76D6B24704460009C1D97 /* AppCenter.framework */,
 			);
 			name = Frameworks;
@@ -972,6 +977,7 @@
 			children = (
 				848434682438F086006A5839 /* model */,
 				84FEDB6E24364FE300F41160 /* CoEpiApi.swift */,
+				849D58EA246DD77200134502 /* NativeCoEpiApi.swift */,
 				8485025824562353006C7C62 /* AlamofireLogger.swift */,
 			);
 			path = api;
@@ -1206,6 +1212,7 @@
 				622AC2F2245FD33200A6EB90 /* FeverWhereViewController.xib in Resources */,
 				622AC2F7245FDA0300A6EB90 /* SymptomReportViewController.xib in Resources */,
 				84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */,
+				84313144247087B100DE475B /* Cartfile.resolved in Resources */,
 				84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */,
 				622AC2F0245FD32700A6EB90 /* FeverTodayViewController.xib in Resources */,
 				622AC2F4245FD34300A6EB90 /* FeverTempViewController.xib in Resources */,
@@ -1309,6 +1316,7 @@
 				849327B82452D972009589E6 /* BackgroundTaskScheduler.swift in Sources */,
 				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
 				849327BD2452ED45009589E6 /* ReportsHandler.swift in Sources */,
+				849D58EB246DD77200134502 /* NativeCoEpiApi.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
 				84201696244CA14D000EE281 /* UIView+Rx.swift in Sources */,
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
@@ -1615,6 +1623,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CoEpi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1622,9 +1631,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoEpi/Rust-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1640,6 +1654,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CoEpi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1647,9 +1662,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoEpi/Rust-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

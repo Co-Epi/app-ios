@@ -96,7 +96,8 @@ class Dependencies {
     }
 
     private func registerNetworking(container: DependencyContainer) {
-        container.register(.singleton) { CoEpiApiImpl() as CoEpiApi }
+//        container.register(.singleton) { CoEpiApiImpl() as CoEpiApi }
+        container.register(.singleton) { NativeCoEpiApi() as CoEpiApi }
     }
 
     private func registerWiring(container: DependencyContainer) {
