@@ -1049,7 +1049,6 @@
 				849DFE5E2427D3750008ED65 /* Sources */,
 				849DFE5F2427D3750008ED65 /* Frameworks */,
 				849DFE602427D3750008ED65 /* Resources */,
-				84E76D7B2470454E009C1D97 /* Carthage run script */,
 			);
 			buildRules = (
 			);
@@ -1243,31 +1242,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		84E76D7B2470454E009C1D97 /* Carthage run script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/AppCenter.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AppCenterDistribute.framework",
-			);
-			name = "Carthage run script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AppCenter.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AppCenterDistribute.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		30EF956624363115007D61C7 /* Sources */ = {
