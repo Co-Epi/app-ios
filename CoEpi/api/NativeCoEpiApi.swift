@@ -77,8 +77,22 @@ private func getCenReportsSync(cenKey: CENKey) -> Result<[String], ApiError> {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+struct NativeAlert: Codable {
+    let id: String
+    let memo: String
+}
 
 class NativeCoEpiApi: CoEpiApi {
+
+    func fetchNewAlerts() -> Result<[NativeAlert], ApiError> {
+        let libResult: LibResult<[NativeAlert]> = toLibResult(rawResult: fetch_new_reports())
+        return libResult.toResult()
+
+        // TODO alert time (see Rust)
+        // TODO id (see Rust)
+        // TODO memo
+        // TODO refactor Alert/ReceivedCenReport/etc. and return here Alert
+    }
 
     func postCenReport(myCenReport: MyCenReport) -> Completable {
         return Completable.create { emitter -> Disposable in
