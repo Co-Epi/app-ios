@@ -4,6 +4,7 @@ import RxSwift
 import RxSwiftExt
 import os.log
 import Action
+import Foundation
 
 class HealthQuizViewModel: UINotifier {
     let rxQuestions: Driver<[Question]>
@@ -41,9 +42,16 @@ class HealthQuizViewModel: UINotifier {
                 .map { $0.toSymptom() }
             }
         submitAction = Action { [symptomRepo] in
-            selectedSymptoms.flatMap {
-                symptomRepo.submitSymptoms(symptoms: $0).asVoidObservable()
+            selectedSymptoms.map {
+                let result = symptomRepo.submitSymptoms(symptoms: $0)
+                os_log("Update symptoms result = %{public}d", log: servicesLog, "\(result)")
+                // TODO errors -> UI notifications
+                // TODO core components will return now primarily Result (instead of Single/Completable)
+                // TODO so we need wiring Result failure -> Observable error or maybe directly to error notifications
             }
+            // TODO maybe put these 2 in extension doInBackground() or similar
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
         }
 
         setActivityIndicatorVisible = submitAction.executing

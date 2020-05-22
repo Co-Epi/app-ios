@@ -12,24 +12,24 @@ protocol AlertRepo {
 }
 
 class AlertRepoImpl: AlertRepo {
-    private let cenReportsRepo: CENReportRepo
+    private let cenReportDao: CENReportDao
     private let alertsFetcher: AlertsFetcher
     private let alertDao: RawAlertDao
 
     private let updateReportsStateSubject: BehaviorRelay<VoidOperationState> = BehaviorRelay(value: .notStarted)
     lazy var updateReportsState: Observable<VoidOperationState> = updateReportsStateSubject.asObservable()
 
-    lazy private(set) var alerts: Observable<[Alert]> = cenReportsRepo.reports
+    lazy private(set) var alerts: Observable<[Alert]> = cenReportDao.reports
         .map { reports in reports.map { $0.toAlert() }}
 
-    init(cenReportsRepo: CENReportRepo, alertsFetcher: AlertsFetcher, alertDao: RawAlertDao) {
-        self.cenReportsRepo = cenReportsRepo
+    init(cenReportDao: CENReportDao, alertsFetcher: AlertsFetcher, alertDao: RawAlertDao) {
+        self.cenReportDao = cenReportDao
         self.alertsFetcher = alertsFetcher
         self.alertDao = alertDao
     }
 
     func removeAlert(alert: Alert) {
-        cenReportsRepo.delete(report: alert.report)
+        cenReportDao.delete(report: alert.report)
     }
 
     // TODO review thread safety with FFI/Rust: What happens if background task and foreground update

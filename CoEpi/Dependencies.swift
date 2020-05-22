@@ -12,7 +12,6 @@ class Dependencies {
         registerRepos(container: container)
         registerNativeCore(container: container)
         registerServices(container: container)
-        registerNetworking(container: container)
         registerBle(container: container)
         registerWiring(container: container)
         registerSystem(container: container)
@@ -48,8 +47,7 @@ class Dependencies {
         container.register { AlertsViewModel(alertRepo: try container.resolve()) }
 
         container.register { DebugViewModel(bleAdapter: try container.resolve(),
-                                            cenKeyDao: try container.resolve(),
-                                            api: try container.resolve()) }
+                                            cenKeyDao: try container.resolve()) }
     }
 
     private func registerDaos(container: DependencyContainer) {
@@ -62,12 +60,11 @@ class Dependencies {
     }
 
     private func registerRepos(container: DependencyContainer) {
-        container.register(.singleton) { SymptomRepoImpl(reportRepo: try container.resolve()) as SymptomRepo }
-        container.register(.singleton) { AlertRepoImpl(cenReportsRepo: try container.resolve(),
+        container.register(.singleton) { SymptomRepoImpl(symptomsReporter: try container.resolve()) as SymptomRepo }
+        container.register(.singleton) { AlertRepoImpl(cenReportDao: try container.resolve(),
                                                        alertsFetcher: try container.resolve(),
                                                        alertDao: try container.resolve()) as AlertRepo }
         container.register(.singleton) { CENRepoImpl(cenDao: try container.resolve()) as CENRepo }
-        container.register(.eagerSingleton) { CenReportRepoImpl(cenReportDao: try container.resolve()) as CENReportRepo }
         container.register(.singleton) { CENKeyRepoImpl(cenKeyDao: try container.resolve()) as CENKeyRepo }
     }
 
@@ -85,21 +82,17 @@ class Dependencies {
                                                                    appBadgeUpdater: try container.resolve())
             as MatchingReportsHandler }
         container.register(.eagerSingleton) { NotificationsDelegate(rootNav: try container.resolve()) }
-
     }
 
     private func registerNativeCore(container: DependencyContainer) {
         let nativeCore = NativeCore()
-        container.register(.eagerSingleton) { nativeCore as AlertsFetcher }
+        container.register(.singleton) { nativeCore as AlertsFetcher }
+        container.register(.singleton) { nativeCore as SymptomsReporter }
     }
 
     private func registerLogic(container: DependencyContainer) {
         container.register(.singleton) { CenLogic() }
 //        container.register(.eagerSingleton) { AlertNotificationsShower(alertsRepo: try container.resolve()) }
-    }
-
-    private func registerNetworking(container: DependencyContainer) {
-        container.register(.singleton) { NativeCoEpiApi() as CoEpiApi }
     }
 
     private func registerWiring(container: DependencyContainer) {

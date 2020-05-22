@@ -3,6 +3,7 @@ import RealmSwift
 import RxSwift
 import os.log
 
+// TODO remove, move functionality to RawAlertDao
 protocol CENReportDao {
     var reports: Observable<[ReceivedCenReport]> { get }
 

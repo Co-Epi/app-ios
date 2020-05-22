@@ -15,7 +15,7 @@ typealias ArbitraryType = String
 
 extension LibResult {
 
-    func toResult() -> Result<T, ApiError> {
+    func toResult() -> Result<T, CoreError> {
         if isSuccess() {
             if let data = data {
                 return .success(data)
@@ -27,7 +27,7 @@ extension LibResult {
         }
     }
 
-    func toVoidResult() -> Result<(), ApiError> {
+    func toVoidResult() -> Result<(), CoreError> {
         if isSuccess() {
             return .success(())
         } else {
@@ -54,4 +54,8 @@ extension Unmanaged where Instance == CFString {
             return LibResult(status: 502, data: nil, error_message: "Invalid library result: \(e)")
         }
     }
+}
+
+public enum CoreError: Error {
+    case error(message: String)
 }

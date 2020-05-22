@@ -5,14 +5,14 @@ import os.log
 protocol SymptomRepo {
     func symptoms() -> [Symptom]
 
-    func submitSymptoms(symptoms: [Symptom]) -> Completable
+    func submitSymptoms(symptoms: [Symptom]) -> Result<(), ServicesError>
 }
 
 class SymptomRepoImpl: SymptomRepo {
-    private let reportRepo: CENReportRepo
+    private let symptomsReporter: SymptomsReporter
 
-    init(reportRepo: CENReportRepo) {
-        self.reportRepo = reportRepo
+    init(symptomsReporter: SymptomsReporter) {
+        self.symptomsReporter = symptomsReporter
     }
 
     private var symptomsData: [Symptom] = [
@@ -33,19 +33,18 @@ class SymptomRepoImpl: SymptomRepo {
         symptomsData
     }
 
-    func submitSymptoms(symptoms: [Symptom]) -> Completable {
-        if let cenReport = symptoms.toCENReport() {
-            return reportRepo.sendReport(report: cenReport)
-        } else {
-            os_log("Couldn't encode symptoms: %@ to Base64", log: servicesLog, type: .debug, "\(symptoms)")
-            return Completable.error(RepoError.unknown)
-        }
-    }
-}
-
-private extension Sequence where Iterator.Element == Symptom {
-    func toCENReport() -> CenReport? {
-        let stringReport : String  = map { $0.name }.joined(separator: ", ")
-        return CenReport(id: UUID().uuidString, report: stringReport, timestamp: UnixTime.now().value)
+    func submitSymptoms(symptoms: [Symptom]) -> Result<(), ServicesError> {
+        // TODO
+        // 1. Port symptom inputs aggregate from Android (1:1)
+        // 2. Implement inputs processing in Rust
+        // 3. Send here inputs to Rust
+        // Possible improvement: Set individual symptoms in Rust directly, so we don't have to maintain inputs aggregate here
+        // this may not work well with current JSON based api though as serializing/deserializing adds some overhead
+        // can be resumed when Rust integration is more stable and we switch to non-JSON payload
+        symptomsReporter.postCenReport(myCenReport: MyCenReport(
+            id: "not used",
+            report: CenReport(id: "not used", report: "not used", timestamp: UnixTime.now().value),
+            keys: []
+        ))
     }
 }

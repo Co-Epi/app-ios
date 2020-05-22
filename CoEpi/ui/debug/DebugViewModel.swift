@@ -8,7 +8,7 @@ class DebugViewModel {
 
     private let disposeBag = DisposeBag()
 
-    init(bleAdapter: BleAdapter, cenKeyDao: CENKeyDao, api: CoEpiApi) {
+    init(bleAdapter: BleAdapter, cenKeyDao: CENKeyDao) {
         let combined = Observable.combineLatest(
             cenKeyDao.generatedMyKey.distinctUntilChanged().asSequence(),
             bleAdapter.myCen.distinctUntilChanged().asSequence(),
