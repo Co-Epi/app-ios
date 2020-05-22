@@ -10,6 +10,7 @@ class Dependencies {
         registerViewModels(container: container)
         registerDaos(container: container)
         registerRepos(container: container)
+        registerNativeCore(container: container)
         registerServices(container: container)
         registerNetworking(container: container)
         registerBle(container: container)
@@ -53,6 +54,7 @@ class Dependencies {
 
     private func registerDaos(container: DependencyContainer) {
         container.register(.singleton) { RealmProvider() }
+        container.register(.singleton) { RealmRawAlertDao(realmProvider: try container.resolve()) as RawAlertDao }
         container.register(.singleton) { RealmCENDao(realmProvider: try container.resolve()) as CENDao }
         container.register(.eagerSingleton) { RealmCENReportDao(realmProvider: try container.resolve()) as CENReportDao }
         container.register(.singleton) { RealmCENKeyDao(realmProvider: try container.resolve(),
@@ -60,18 +62,13 @@ class Dependencies {
     }
 
     private func registerRepos(container: DependencyContainer) {
-        container.register(.singleton) { SymptomRepoImpl(coEpiRepo: try container.resolve()) as SymptomRepo }
+        container.register(.singleton) { SymptomRepoImpl(reportRepo: try container.resolve()) as SymptomRepo }
         container.register(.singleton) { AlertRepoImpl(cenReportsRepo: try container.resolve(),
-                                                       coEpiRepo: try container.resolve()) as AlertRepo }
+                                                       alertsFetcher: try container.resolve(),
+                                                       alertDao: try container.resolve()) as AlertRepo }
         container.register(.singleton) { CENRepoImpl(cenDao: try container.resolve()) as CENRepo }
         container.register(.eagerSingleton) { CenReportRepoImpl(cenReportDao: try container.resolve()) as CENReportRepo }
         container.register(.singleton) { CENKeyRepoImpl(cenKeyDao: try container.resolve()) as CENKeyRepo }
-        container.register(.eagerSingleton) { CoEpiRepoImpl(cenRepo: try container.resolve(),
-                                                            api: try container.resolve(),
-                                                            periodicKeysFetcher: try container.resolve(),
-                                                            cenMatcher: try container.resolve(),
-                                                            cenKeyDao: try container.resolve(),
-                                                            reportsHandler: try container.resolve()) as CoEpiRepo }
     }
 
     private func registerServices(container: DependencyContainer) {
@@ -82,12 +79,18 @@ class Dependencies {
 
         container.register(.singleton) { BackgroundTasksManager() }
         container.register(.eagerSingleton) { FetchAlertsBackgroundRegisterer(tasksManager: try container.resolve(),
-                                                                              coEpiRepo: try container.resolve()) }
+                                                                              alertRepo: try container.resolve()) }
         container.register(.singleton) { MatchingReportsHandlerImpl(reportsDao: try container.resolve(),
                                                                    notificationShower: try container.resolve(),
                                                                    appBadgeUpdater: try container.resolve())
             as MatchingReportsHandler }
         container.register(.eagerSingleton) { NotificationsDelegate(rootNav: try container.resolve()) }
+
+    }
+
+    private func registerNativeCore(container: DependencyContainer) {
+        let nativeCore = NativeCore()
+        container.register(.eagerSingleton) { nativeCore as AlertsFetcher }
     }
 
     private func registerLogic(container: DependencyContainer) {
@@ -96,14 +99,13 @@ class Dependencies {
     }
 
     private func registerNetworking(container: DependencyContainer) {
-//        container.register(.singleton) { CoEpiApiImpl() as CoEpiApi }
         container.register(.singleton) { NativeCoEpiApi() as CoEpiApi }
     }
 
     private func registerWiring(container: DependencyContainer) {
-        container.register(.eagerSingleton) { ScannedCensHandler(coepiRepo: try container.resolve(),
+        container.register(.eagerSingleton) { ScannedCensHandler(cenRepo: try container.resolve(),
                                                                  bleAdapter: try container.resolve()) }
-        container.register(.eagerSingleton) { PeriodicCenKeysFetcher(api: try container.resolve()) }
+        container.register(.eagerSingleton) { PeriodicAlertsFetcher(alertRepo: try container.resolve()) }
         container.register(.singleton) { CenMatcherImpl(cenRepo: try container.resolve(),
                                                         cenLogic: try container.resolve()) as CenMatcher }
         container.register(.singleton) { MatchingReportsHandlerImpl(reportsDao: try container.resolve(),

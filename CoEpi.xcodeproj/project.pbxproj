@@ -94,7 +94,7 @@
 		8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */; };
 		8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */; };
 		8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */; };
-		8491497B24366FF000975344 /* PeriodicCenKeysFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497A24366FF000975344 /* PeriodicCenKeysFetcher.swift */; };
+		8491497B24366FF000975344 /* PeriodicAlertsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497A24366FF000975344 /* PeriodicAlertsFetcher.swift */; };
 		8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497C2436881400975344 /* Data+StringFormatting.swift */; };
 		8491497F2436946900975344 /* CenMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491497E2436946900975344 /* CenMatcher.swift */; };
 		8491498B2436A28E00975344 /* BerkananSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 8491498A2436A28E00975344 /* BerkananSDK */; };
@@ -104,7 +104,6 @@
 		849327B82452D972009589E6 /* BackgroundTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849327B72452D972009589E6 /* BackgroundTaskScheduler.swift */; };
 		849327BD2452ED45009589E6 /* ReportsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849327BC2452ED45009589E6 /* ReportsHandler.swift */; };
 		8493283D2452F983009589E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493283C2452F983009589E6 /* SceneDelegate.swift */; };
-		849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849811572436119300EBD1DA /* CoEpiRepo.swift */; };
 		8498115A2436175500EBD1DA /* CenLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FB1162436056500BD1302 /* CenLogic.swift */; };
 		8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498115C243630E500EBD1DA /* ScannedCensHandler.swift */; };
 		849CEFA2242FEDE7003F9284 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CEFA1242FEDE7003F9284 /* Theme.swift */; };
@@ -134,6 +133,11 @@
 		84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9BB242CE42C00516F3B /* Symptom.swift */; };
 		84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9C245306E6001908E8 /* NotificationsDelegate.swift */; };
 		84B48A9F24530AAB001908E8 /* RootNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9E24530AAA001908E8 /* RootNav.swift */; };
+		84B492182476E0B800FF69AD /* LibResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492172476E0B800FF69AD /* LibResult.swift */; };
+		84B4921A2476F54700FF69AD /* NativeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492192476F54700FF69AD /* NativeCore.swift */; };
+		84B4921E2476F71A00FF69AD /* RawAlertDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4921D2476F71A00FF69AD /* RawAlertDao.swift */; };
+		84B492202476F78000FF69AD /* RealmRawAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4921F2476F78000FF69AD /* RealmRawAlert.swift */; };
+		84B492222476F7E900FF69AD /* RawAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492212476F7E900FF69AD /* RawAlert.swift */; };
 		84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
 		84BF972C24281082001ADD6B /* LogSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972624281082001ADD6B /* LogSettings.swift */; };
 		84BF972E24281082001ADD6B /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972824281082001ADD6B /* uuids.swift */; };
@@ -156,7 +160,6 @@
 		84FA00FC2427ED1900318104 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FA2427ED1900318104 /* OnboardingViewController.xib */; };
 		84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00FE2427ED5E00318104 /* HomeViewController.swift */; };
 		84FA01012427ED5E00318104 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FF2427ED5E00318104 /* HomeViewController.xib */; };
-		84FEDB6F24364FE300F41160 /* CoEpiApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB6E24364FE300F41160 /* CoEpiApi.swift */; };
 		CE626E092430A98B000DB8E7 /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */; };
 		CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */; };
 		CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E0F2430F0FB000DB8E7 /* UIView+Nib.swift */; };
@@ -299,7 +302,7 @@
 		8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8486BDE3242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+ReuseIdentifier.swift"; path = "CoEpi/ui/home/UITableView+ReuseIdentifier.swift"; sourceTree = SOURCE_ROOT; };
 		8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableCell+ReuseIdentifier.swift"; path = "CoEpi/ui/home/UITableCell+ReuseIdentifier.swift"; sourceTree = SOURCE_ROOT; };
-		8491497A24366FF000975344 /* PeriodicCenKeysFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodicCenKeysFetcher.swift; sourceTree = "<group>"; };
+		8491497A24366FF000975344 /* PeriodicAlertsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodicAlertsFetcher.swift; sourceTree = "<group>"; };
 		8491497C2436881400975344 /* Data+StringFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+StringFormatting.swift"; sourceTree = "<group>"; };
 		8491497E2436946900975344 /* CenMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenMatcher.swift; sourceTree = "<group>"; };
 		849327B02452D8EB009589E6 /* BackgroundTasksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasksManager.swift; sourceTree = "<group>"; };
@@ -308,7 +311,6 @@
 		849327B72452D972009589E6 /* BackgroundTaskScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskScheduler.swift; sourceTree = "<group>"; };
 		849327BC2452ED45009589E6 /* ReportsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsHandler.swift; sourceTree = "<group>"; };
 		8493283C2452F983009589E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		849811572436119300EBD1DA /* CoEpiRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiRepo.swift; sourceTree = "<group>"; };
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		849CEFA1242FEDE7003F9284 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = CoEpi/ui/theme/Theme.swift; sourceTree = SOURCE_ROOT; };
 		849D1AFE2439D90C00804511 /* Completable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Completable+Convenience.swift"; sourceTree = "<group>"; };
@@ -340,6 +342,11 @@
 		84A4B9BB242CE42C00516F3B /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		84B48A9C245306E6001908E8 /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
 		84B48A9E24530AAA001908E8 /* RootNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNav.swift; sourceTree = "<group>"; };
+		84B492172476E0B800FF69AD /* LibResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibResult.swift; sourceTree = "<group>"; };
+		84B492192476F54700FF69AD /* NativeCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeCore.swift; sourceTree = "<group>"; };
+		84B4921D2476F71A00FF69AD /* RawAlertDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawAlertDao.swift; sourceTree = "<group>"; };
+		84B4921F2476F78000FF69AD /* RealmRawAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRawAlert.swift; sourceTree = "<group>"; };
+		84B492212476F7E900FF69AD /* RawAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawAlert.swift; sourceTree = "<group>"; };
 		84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		84BF972324280ABA001ADD6B /* RootWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		84BF972624281082001ADD6B /* LogSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogSettings.swift; sourceTree = "<group>"; };
@@ -362,7 +369,6 @@
 		84FA00FA2427ED1900318104 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		84FA00FE2427ED5E00318104 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84FA00FF2427ED5E00318104 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		84FEDB6E24364FE300F41160 /* CoEpiApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiApi.swift; sourceTree = "<group>"; };
 		CE626E082430A98B000DB8E7 /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
 		CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
 		CE626E0F2430F0FB000DB8E7 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
@@ -675,6 +681,7 @@
 				CE6B7ABC243324BA00C42280 /* RealmCENReportDao.swift */,
 				CE6B7AC42433273200C42280 /* RealmCENKeyDao.swift */,
 				849D1B092439F31D00804511 /* DaoError.swift */,
+				84B4921D2476F71A00FF69AD /* RawAlertDao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -683,7 +690,7 @@
 			isa = PBXGroup;
 			children = (
 				8498115C243630E500EBD1DA /* ScannedCensHandler.swift */,
-				8491497A24366FF000975344 /* PeriodicCenKeysFetcher.swift */,
+				8491497A24366FF000975344 /* PeriodicAlertsFetcher.swift */,
 				849327BC2452ED45009589E6 /* ReportsHandler.swift */,
 			);
 			path = cross;
@@ -744,6 +751,7 @@
 				84A1C0CE2437BFCC00875DAE /* extensions */,
 				84FA00F82427EC4300318104 /* ui */,
 				84DDC4D424519138002F6D82 /* bg task */,
+				84B492162476E09600FF69AD /* native */,
 				849DFE652427D3750008ED65 /* AppDelegate.swift */,
 				8493283C2452F983009589E6 /* SceneDelegate.swift */,
 				849DFE712427D37A0008ED65 /* Assets.xcassets */,
@@ -805,7 +813,6 @@
 				CE6B7AB2243312FA00C42280 /* CENRepo.swift */,
 				CE6B7ABE2433252300C42280 /* CENReportRepo.swift */,
 				CE6B7AC62433279000C42280 /* CENKeyRepo.swift */,
-				849811572436119300EBD1DA /* CoEpiRepo.swift */,
 				84A1C0D52437CBBF00875DAE /* RepoError.swift */,
 			);
 			path = repo;
@@ -817,6 +824,7 @@
 				CE6B7AB62433166600C42280 /* RealmCEN.swift */,
 				CE6B7AC0243325F200C42280 /* RealmCENReport.swift */,
 				CE6B7AC8243327FF00C42280 /* RealmCENKey.swift */,
+				84B4921F2476F78000FF69AD /* RealmRawAlert.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -842,8 +850,18 @@
 				84A1C0D32437C34400875DAE /* CenReport.swift */,
 				055A9D77243A892800A12285 /* KeyValueStore.swift */,
 				84201690244B21FF000EE281 /* UnixTime.swift */,
+				84B492212476F7E900FF69AD /* RawAlert.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		84B492162476E09600FF69AD /* native */ = {
+			isa = PBXGroup;
+			children = (
+				84B492172476E0B800FF69AD /* LibResult.swift */,
+				84B492192476F54700FF69AD /* NativeCore.swift */,
+			);
+			path = native;
 			sourceTree = "<group>";
 		};
 		84BF972524280ECF001ADD6B /* ble */ = {
@@ -976,7 +994,6 @@
 			isa = PBXGroup;
 			children = (
 				848434682438F086006A5839 /* model */,
-				84FEDB6E24364FE300F41160 /* CoEpiApi.swift */,
 				849D58EA246DD77200134502 /* NativeCoEpiApi.swift */,
 				8485025824562353006C7C62 /* AlamofireLogger.swift */,
 			);
@@ -1274,6 +1291,7 @@
 				CE6B7AC9243327FF00C42280 /* RealmCENKey.swift in Sources */,
 				848434622438C622006A5839 /* UIViewController+ErrorView.swift in Sources */,
 				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
+				84B4921A2476F54700FF69AD /* NativeCore.swift in Sources */,
 				8493283D2452F983009589E6 /* SceneDelegate.swift in Sources */,
 				8491497F2436946900975344 /* CenMatcher.swift in Sources */,
 				6291BE79246CB92E00984583 /* SymptomStartDaysViewController.swift in Sources */,
@@ -1295,7 +1313,6 @@
 				622AC2EA245FD2F400A6EB90 /* FeverWhereViewController.swift in Sources */,
 				CE6B7ABF2433252300C42280 /* CENReportRepo.swift in Sources */,
 				622AC2BE245CC2F900A6EB90 /* ThankYouViewController.swift in Sources */,
-				84FEDB6F24364FE300F41160 /* CoEpiApi.swift in Sources */,
 				84D069692455E7C10004E8B6 /* AlertViewData.swift in Sources */,
 				622AC2E0245FD23A00A6EB90 /* FeverTodayViewModel.swift in Sources */,
 				622AC2D6245FC66800A6EB90 /* CoughHowViewController.swift in Sources */,
@@ -1317,13 +1334,14 @@
 				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
 				849327BD2452ED45009589E6 /* ReportsHandler.swift in Sources */,
 				849D58EB246DD77200134502 /* NativeCoEpiApi.swift in Sources */,
+				84B492222476F7E900FF69AD /* RawAlert.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
 				84201696244CA14D000EE281 /* UIView+Rx.swift in Sources */,
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
 				622AC2F9245FDA1300A6EB90 /* SymptomReportViewController.swift in Sources */,
 				622AC2C8245FBE7400A6EB90 /* BreathlessViewModel.swift in Sources */,
 				849D1B0A2439F31D00804511 /* DaoError.swift in Sources */,
-				8491497B24366FF000975344 /* PeriodicCenKeysFetcher.swift in Sources */,
+				8491497B24366FF000975344 /* PeriodicAlertsFetcher.swift in Sources */,
 				622AC2C0245F65FB00A6EB90 /* ThankYouViewModel.swift in Sources */,
 				622AC2FF2461DC5400A6EB90 /* FeverWhereViewControllerOther.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
@@ -1331,12 +1349,12 @@
 				84F93BF92451C32100B5F54D /* NotificationShower.swift in Sources */,
 				844D26BC24479E1D0045FDD6 /* BleAdapter.swift in Sources */,
 				84F93BFB2451C4D700B5F54D /* AppBadgeUpdater.swift in Sources */,
-				849811582436119300EBD1DA /* CoEpiRepo.swift in Sources */,
 				849F50CD243E08B6008EC9E8 /* String+Convenience.swift in Sources */,
 				849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */,
 				84201691244B21FF000EE281 /* UnixTime.swift in Sources */,
 				849D28F92444300B0034EC4C /* Observable+Convenience.swift in Sources */,
 				622AC2D8245FC67C00A6EB90 /* CoughTypeViewModel.swift in Sources */,
+				84B492182476E0B800FF69AD /* LibResult.swift in Sources */,
 				84201698244CA18D000EE281 /* UIView+ActivityIndicator.swift in Sources */,
 				CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */,
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
@@ -1347,8 +1365,10 @@
 				84D069642455A7600004E8B6 /* OperationState.swift in Sources */,
 				84A1C0D42437C34400875DAE /* CenReport.swift in Sources */,
 				849CEFA2242FEDE7003F9284 /* Theme.swift in Sources */,
+				84B4921E2476F71A00FF69AD /* RawAlertDao.swift in Sources */,
 				849327B62452D947009589E6 /* FetchAlertsBackgroundTask.swift in Sources */,
 				CE6B7AB52433156900C42280 /* RealmCENDao.swift in Sources */,
+				84B492202476F78000FF69AD /* RealmRawAlert.swift in Sources */,
 				8484345E2438C3F4006A5839 /* CustomView.swift in Sources */,
 				30EF952E24313F61007D61C7 /* Fonts.swift in Sources */,
 				8484346A2438F09C006A5839 /* ApiCenReport.swift in Sources */,

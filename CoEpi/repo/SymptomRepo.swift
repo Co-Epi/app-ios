@@ -9,10 +9,10 @@ protocol SymptomRepo {
 }
 
 class SymptomRepoImpl: SymptomRepo {
-    private let coEpiRepo: CoEpiRepo
+    private let reportRepo: CENReportRepo
 
-    init(coEpiRepo: CoEpiRepo) {
-        self.coEpiRepo = coEpiRepo
+    init(reportRepo: CENReportRepo) {
+        self.reportRepo = reportRepo
     }
 
     private var symptomsData: [Symptom] = [
@@ -35,7 +35,7 @@ class SymptomRepoImpl: SymptomRepo {
 
     func submitSymptoms(symptoms: [Symptom]) -> Completable {
         if let cenReport = symptoms.toCENReport() {
-            return coEpiRepo.sendReport(report: cenReport)
+            return reportRepo.sendReport(report: cenReport)
         } else {
             os_log("Couldn't encode symptoms: %@ to Base64", log: servicesLog, type: .debug, "\(symptoms)")
             return Completable.error(RepoError.unknown)

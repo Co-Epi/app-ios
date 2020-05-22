@@ -1,6 +1,7 @@
 import RxSwift
 import os.log
 import BackgroundTasks
+import Action
 
 class FetchAlertsBackgroundTask: BackgroundTask {
 
@@ -8,21 +9,33 @@ class FetchAlertsBackgroundTask: BackgroundTask {
 
     let scheduleInterval: TimeInterval = 60 * 60 // 1h
 
-    private let coEpiRepo: CoEpiRepo
+    private let alertRepo: AlertRepo
 
-    private let disposeBag = DisposeBag()
+    private let fetchAlertsAction: CocoaAction
 
-    init(coEpiRepo: CoEpiRepo) {
-        self.coEpiRepo = coEpiRepo
+    init(alertRepo: AlertRepo) {
+        self.alertRepo = alertRepo
+
+        let fetchAlertsAction: CocoaAction = Action { [alertRepo] in
+            fetchReportsCompletable(alertRepo: alertRepo)
+                .asVoidObservable()
+        }
+        self.fetchAlertsAction = fetchAlertsAction
+
     }
 
     func execute(task: BGProcessingTask) {
-        coEpiRepo.updateReportsState.filter { $0.isComplete() }.subscribe { res in
-            os_log("Got results in bg task... %{public}@", log: servicesLog, type: .debug, "\(res)")
-            task.setTaskCompleted(success: true)
-        }.disposed(by: disposeBag)
-
         os_log("Starting fetch alerts bg task...", log: servicesLog, type: .debug)
-        coEpiRepo.updateReports()
+
+        fetchAlertsAction.execute()
     }
+}
+
+private func fetchReportsCompletable(alertRepo: AlertRepo) -> Completable {
+    Completable.create { emitter -> Disposable in
+        alertRepo.updateReports()
+        emitter(.completed)
+        return Disposables.create {}
+    }
+    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
 }

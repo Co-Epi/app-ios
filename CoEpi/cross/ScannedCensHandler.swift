@@ -3,13 +3,13 @@ import os.log
 import RxSwift
 
 class ScannedCensHandler {
-    private let coepiRepo: CoEpiRepo
+    private let cenRepo: CENRepo
     private let bleAdapter: BleAdapter
 
     private let disposeBag = DisposeBag()
 
-    init(coepiRepo: CoEpiRepo, bleAdapter: BleAdapter) {
-        self.coepiRepo = coepiRepo
+    init(cenRepo: CENRepo, bleAdapter: BleAdapter) {
+        self.cenRepo = cenRepo
         self.bleAdapter = bleAdapter
 
         forwardScannedCensToCoEpiRepo()
@@ -18,12 +18,20 @@ class ScannedCensHandler {
     private func forwardScannedCensToCoEpiRepo() {
         bleAdapter.discovered
             .distinctUntilChanged()
-            .subscribe(onNext: { [coepiRepo] data in
+
+            .subscribe(onNext: { [cenRepo] data in
                 let cen = CEN(CEN: data.toHex(), timestamp: .now())
                 os_log("Observed CEN: %{public}@", log: bleLog, "\(cen)")
-                coepiRepo.storeObservedCen(cen: cen)
+
+                if !(cenRepo.insert(cen: cen)) {
+                    os_log("Stored new CEN in DB: %{public}@", log: bleLog, type: .debug, "\(cen)")
+                } else {
+                    os_log("CEN was already in DB: %{public}@", log: bleLog, type: .debug, "\(cen)")
+                }
+
             }, onError: { error in
                 os_log("Error in central cen observer: %{public}@", log: bleLog, error.localizedDescription)
             }).disposed(by: disposeBag)
     }
+
 }

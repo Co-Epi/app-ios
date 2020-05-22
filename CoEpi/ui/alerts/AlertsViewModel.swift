@@ -26,7 +26,7 @@ class AlertsViewModel {
             .do(onNext: { result in
                 os_log("Got alerts result in view model: %{public}@", log: servicesLog, type: .debug, "\(result)")
             })
-            .filter { $0.shouldBeShown() }
+            .filter { $0.shouldShowText() }
             .map { $0.asText() }
             .asDriver(onErrorJustReturn: "Unknown error")
     }
@@ -58,9 +58,9 @@ private extension Alert {
     }
 }
 
-private extension OperationState where T == CenReportUpdateResult {
+private extension OperationState {
 
-    func shouldBeShown() -> Bool {
+    func shouldShowText() -> Bool {
         switch self {
         case .progress, .failure, .success: return true
         case .notStarted: return false

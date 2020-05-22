@@ -29,6 +29,25 @@ enum OperationState<T> {
     }
 }
 
+extension OperationState: Equatable where T: Equatable {
+
+    static func ==(lhs: OperationState, rhs: OperationState) -> Bool {
+        switch (lhs, rhs) {
+        case (let .success(data1), let .success(data2)):
+            return data1 == data2
+        case (let .failure(error1), let .failure(error2)):
+            return error1.localizedDescription == error2.localizedDescription
+        case (.notStarted, .notStarted):
+            return true
+        case (.progress, .progress):
+            return true
+        default: return false
+        }
+    }
+}
+
+typealias VoidOperationState = OperationState<()>
+
 extension OperationState {
 
     func isComplete() -> Bool {
