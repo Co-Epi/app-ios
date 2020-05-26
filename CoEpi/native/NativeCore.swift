@@ -24,6 +24,19 @@ protocol SymptomsInputManager {
     func submit() -> Result<(), ServicesError>
 }
 
+protocol ServicesBootstrapper {
+    func bootstrap(dbPath: String) -> Result<(), ServicesError>
+}
+
+extension NativeCore: ServicesBootstrapper {
+
+    // WARN: Must not run long operations. Currently executed synchronously during startup.
+    func bootstrap(dbPath: String) -> Result<(), ServicesError> {
+        let libResult: LibResult<ArbitraryType>? = bootstrap_core(dbPath)?.toLibResult()
+        return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
+    }
+}
+
 class NativeCore: AlertsFetcher {
 
     func fetchNewAlerts() -> Result<[RawAlert], ServicesError> {

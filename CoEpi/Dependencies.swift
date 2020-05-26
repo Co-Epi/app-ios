@@ -4,13 +4,21 @@ import Dip
 class Dependencies {
 
     func createContainer() -> DependencyContainer {
+
         let container = DependencyContainer()
+
+        let fileSystem: FileSystem = FileSystemImpl()
+        container.register { fileSystem }
+
+        // NOTE: Has to be initialized before everything else (besides FileSystem)
+        // to ensure that core services are available to all dependencies.
+        // TODO consider initializing dependencies asynchronously.
+        registerAndInitNativeCore(container: container, fileSystem: fileSystem)
 
         registerLogic(container: container)
         registerViewModels(container: container)
         registerDaos(container: container)
         registerRepos(container: container)
-        registerNativeCore(container: container)
         registerServices(container: container)
         registerBle(container: container)
         registerWiring(container: container)
@@ -20,6 +28,20 @@ class Dependencies {
         try! container.bootstrap()
 
         return container
+    }
+
+    private func registerAndInitNativeCore(container: DependencyContainer, fileSystem: FileSystem) {
+        let nativeCore = NativeCore()
+
+        let coreDatabasePath = fileSystem.coreDatabasePath().expect("CRITICAL: Couldn't get path to core database:")
+        let bootstrapResult = nativeCore.bootstrap(dbPath: coreDatabasePath)
+        if bootstrapResult.isFailure() {
+            fatalError("CRITICAL: Couldn't initialize core: \(bootstrapResult)")
+        }
+
+        container.register(.singleton) { nativeCore as ServicesBootstrapper }
+        container.register(.singleton) { nativeCore as AlertsFetcher }
+        container.register(.singleton) { nativeCore as SymptomsInputManager }
     }
 
     private func registerViewModels(container: DependencyContainer) {
@@ -85,11 +107,6 @@ class Dependencies {
         container.register(.eagerSingleton) { NotificationsDelegate(rootNav: try container.resolve()) }
     }
 
-    private func registerNativeCore(container: DependencyContainer) {
-        let nativeCore = NativeCore()
-        container.register(.singleton) { nativeCore as AlertsFetcher }
-        container.register(.singleton) { nativeCore as SymptomsInputManager }
-    }
 
     private func registerLogic(container: DependencyContainer) {
         container.register(.singleton) { CenLogic() }
@@ -118,4 +135,3 @@ class Dependencies {
         container.register(.singleton) { StartPermissionsImpl() as StartPermissions }
     }
 }
-
