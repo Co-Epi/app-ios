@@ -28,6 +28,10 @@ protocol ServicesBootstrapper {
     func bootstrap(dbPath: String) -> Result<(), ServicesError>
 }
 
+protocol ObservedTcnsRecorder {
+    func recordTcn(tcn: Data) -> Result<(), ServicesError>
+}
+
 extension NativeCore: ServicesBootstrapper {
 
     // WARN: Must not run long operations. Currently executed synchronously during startup.
@@ -35,6 +39,16 @@ extension NativeCore: ServicesBootstrapper {
         let libResult: LibResult<ArbitraryType>? = bootstrap_core(dbPath)?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
+}
+
+extension NativeCore: ObservedTcnsRecorder {
+
+    func recordTcn(tcn: Data) -> Result<(), ServicesError> {
+        let tcnStr = tcn.toHex()
+        let libResult: LibResult<ArbitraryType>? = record_tcn(tcnStr)?.toLibResult()
+        return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
+    }
+
 }
 
 class NativeCore: AlertsFetcher {

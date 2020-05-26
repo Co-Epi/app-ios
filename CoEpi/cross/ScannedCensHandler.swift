@@ -3,14 +3,14 @@ import os.log
 import RxSwift
 
 class ScannedCensHandler {
-    private let cenRepo: CENRepo
     private let bleAdapter: BleAdapter
+    private let tcnsRecorder: ObservedTcnsRecorder
 
     private let disposeBag = DisposeBag()
 
-    init(cenRepo: CENRepo, bleAdapter: BleAdapter) {
-        self.cenRepo = cenRepo
+    init(bleAdapter: BleAdapter, tcnsRecorder: ObservedTcnsRecorder) {
         self.bleAdapter = bleAdapter
+        self.tcnsRecorder = tcnsRecorder
 
         forwardScannedCensToCoEpiRepo()
     }
@@ -19,14 +19,13 @@ class ScannedCensHandler {
         bleAdapter.discovered
             .distinctUntilChanged()
 
-            .subscribe(onNext: { [cenRepo] data in
-                let cen = CEN(CEN: data.toHex(), timestamp: .now())
-                os_log("Observed CEN: %{public}@", log: bleLog, "\(cen)")
+            .subscribe(onNext: { [tcnsRecorder] data in
+                os_log("Observed CEN: %{public}@", log: bleLog, "\(data.toHex())")
 
-                if !(cenRepo.insert(cen: cen)) {
-                    os_log("Stored new CEN in DB: %{public}@", log: bleLog, type: .debug, "\(cen)")
-                } else {
-                    os_log("CEN was already in DB: %{public}@", log: bleLog, type: .debug, "\(cen)")
+                let res = tcnsRecorder.recordTcn(tcn: data)
+
+                if (!res.isSuccess()) {
+                    os_log("Error recording TCN: %{public}@", log: bleLog, type: .debug, "\(res)")
                 }
 
             }, onError: { error in

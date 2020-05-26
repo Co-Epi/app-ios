@@ -42,6 +42,8 @@ class Dependencies {
         container.register(.singleton) { nativeCore as ServicesBootstrapper }
         container.register(.singleton) { nativeCore as AlertsFetcher }
         container.register(.singleton) { nativeCore as SymptomsInputManager }
+        container.register(.singleton) { nativeCore as ObservedTcnsRecorder }
+
     }
 
     private func registerViewModels(container: DependencyContainer) {
@@ -114,8 +116,8 @@ class Dependencies {
     }
 
     private func registerWiring(container: DependencyContainer) {
-        container.register(.eagerSingleton) { ScannedCensHandler(cenRepo: try container.resolve(),
-                                                                 bleAdapter: try container.resolve()) }
+        container.register(.eagerSingleton) { ScannedCensHandler(bleAdapter: try container.resolve(),
+                                                                 tcnsRecorder: try container.resolve())}
         container.register(.eagerSingleton) { PeriodicAlertsFetcher(alertRepo: try container.resolve()) }
         container.register(.singleton) { CenMatcherImpl(cenRepo: try container.resolve(),
                                                         cenLogic: try container.resolve()) as CenMatcher }
