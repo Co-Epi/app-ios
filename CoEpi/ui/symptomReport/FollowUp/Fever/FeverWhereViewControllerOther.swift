@@ -1,5 +1,6 @@
 import UIKit
 
+// TODO disable, will not be used for now
 class FeverWhereViewControllerOther: UIViewController {
     private let viewModel: FeverWhereViewModelOther
     //labels

@@ -1,6 +1,6 @@
 import Foundation
 
 struct Symptom {
-    let id: String
+    let id: SymptomId
     let name: String
 }

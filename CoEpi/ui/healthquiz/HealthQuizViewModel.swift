@@ -6,6 +6,7 @@ import os.log
 import Action
 import Foundation
 
+// TODO replace with new symptoms view model
 class HealthQuizViewModel: UINotifier {
     let rxQuestions: Driver<[Question]>
     let notification: Driver<UINotification>
@@ -16,6 +17,7 @@ class HealthQuizViewModel: UINotifier {
 
     private let symptomRepo: SymptomRepo
     private let rootNav: RootNav
+    private let inputsManager: SymptomsInputManager
 
     private let questionsRelay: BehaviorRelay<[Question]>
 
@@ -23,9 +25,10 @@ class HealthQuizViewModel: UINotifier {
 
     let disposeBag = DisposeBag()
 
-    init(symptomRepo: SymptomRepo, rootNav: RootNav) {
+    init(symptomRepo: SymptomRepo, rootNav: RootNav, inputsManager: SymptomsInputManager) {
         self.symptomRepo = symptomRepo
         self.rootNav = rootNav
+        self.inputsManager = inputsManager
         
         questionsRelay = BehaviorRelay(value: symptomRepo.symptoms()
             .map{ Question(symptom: $0) })
@@ -42,12 +45,8 @@ class HealthQuizViewModel: UINotifier {
                 .map { $0.toSymptom() }
             }
         submitAction = Action { [symptomRepo] in
-            selectedSymptoms.map {
-                let result = symptomRepo.submitSymptoms(symptoms: $0)
-                os_log("Update symptoms result = %{public}d", log: servicesLog, "\(result)")
-                // TODO errors -> UI notifications
-                // TODO core components will return now primarily Result (instead of Single/Completable)
-                // TODO so we need wiring Result failure -> Observable error or maybe directly to error notifications
+            selectedSymptoms.map { symptoms in
+                inputsManager.setSymptoms(Set(symptoms.map { $0.id } )).expect()
             }
             // TODO maybe put these 2 in extension doInBackground() or similar
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
@@ -91,11 +90,11 @@ class HealthQuizViewModel: UINotifier {
 }
 
 struct Question {
-    let id: String
+    let id: SymptomId
     let text: String
     let checked: Bool
 
-    init(id: String, text: String, checked: Bool) {
+    init(id: SymptomId, text: String, checked: Bool) {
         self.id = id
         self.text = text
         self.checked = checked

@@ -10,11 +10,11 @@ class CoughTypeViewController: UIViewController {
     @IBOutlet weak var skipButtonLabel: UIButton!
     
     @IBAction func wetButtonAction(_ sender: UIButton) {
-        
+        viewModel.onTapWet()
     }
     
     @IBAction func dryButtonAction(_ sender: UIButton) {
-
+        viewModel.onTapDry()
      }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {

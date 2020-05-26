@@ -29,21 +29,22 @@ class Dependencies {
         
         
         container.register { ThankYouViewModel() }
-        container.register { BreathlessViewModel() }
-        container.register { CoughTypeViewModel() }
-        container.register { CoughDaysViewModel() }
-        container.register { CoughHowViewModel() }
-        container.register { FeverDaysViewModel() }
-        container.register { FeverTodayViewModel() }
-        container.register { FeverWhereViewModel() }
+        container.register { BreathlessViewModel(inputsManager: try container.resolve()) }
+        container.register { CoughTypeViewModel(inputsManager: try container.resolve()) }
+        container.register { CoughDaysViewModel(inputsManager: try container.resolve()) }
+        container.register { CoughHowViewModel(inputsManager: try container.resolve()) }
+        container.register { FeverDaysViewModel(inputsManager: try container.resolve()) }
+        container.register { FeverTodayViewModel(inputsManager: try container.resolve()) }
+        container.register { FeverWhereViewModel(inputsManager: try container.resolve()) }
         container.register { FeverWhereViewModelOther() }
-        container.register { FeverTempViewModel() }
+        container.register { FeverTempViewModel(inputsManager: try container.resolve()) }
         container.register { SymptomReportViewModel() }
         container.register { OnboardingViewModel() }
         container.register { OnboardingWireframe(container: container) }
         container.register { SymptomStartDaysViewModel() }
         
-        container.register { HealthQuizViewModel(symptomRepo: try container.resolve(), rootNav: try container.resolve()) }
+        container.register { HealthQuizViewModel(symptomRepo: try container.resolve(), rootNav: try container.resolve(),
+                                                 inputsManager: try container.resolve()) }
         container.register { AlertsViewModel(alertRepo: try container.resolve()) }
 
         container.register { DebugViewModel(bleAdapter: try container.resolve(),
@@ -60,7 +61,7 @@ class Dependencies {
     }
 
     private func registerRepos(container: DependencyContainer) {
-        container.register(.singleton) { SymptomRepoImpl(symptomsReporter: try container.resolve()) as SymptomRepo }
+        container.register(.singleton) { SymptomRepoImpl(inputManager: try container.resolve()) as SymptomRepo }
         container.register(.singleton) { AlertRepoImpl(cenReportDao: try container.resolve(),
                                                        alertsFetcher: try container.resolve(),
                                                        alertDao: try container.resolve()) as AlertRepo }
@@ -87,7 +88,7 @@ class Dependencies {
     private func registerNativeCore(container: DependencyContainer) {
         let nativeCore = NativeCore()
         container.register(.singleton) { nativeCore as AlertsFetcher }
-        container.register(.singleton) { nativeCore as SymptomsReporter }
+        container.register(.singleton) { nativeCore as SymptomsInputManager }
     }
 
     private func registerLogic(container: DependencyContainer) {
