@@ -58,13 +58,18 @@ class NativeCore: AlertsFetcher {
             return libraryFailure()
         }
 
-        // TODO contact time instead of .now() (see Rust)
         // TODO id (see Rust)
-        // TODO memo
 
         return libResult.toResult().mapErrorToServicesError().map { nativeAlerts in
             nativeAlerts.map {
-                RawAlert(id: $0.id, memoStr: $0.memo, contactTime: .now())
+                RawAlert(
+                    id: $0.id,
+                    memoStr: $0.memo,
+                    // Using UInt64 for time in Rust, as stylistic preference, as we can't have a negative timestamp.
+                    // UInt64 can be safely converted to Int64 for unix time.
+                    // Consider using UInt64 here too, for consistency.
+                    contactTime: UnixTime.init(value: Int64($0.time)
+                ))
             }
         }
     }
@@ -251,10 +256,10 @@ private extension UserInput where T == Bool {
     }
 }
 
-// TODO Remove NativeAlert, use directly RawAlert for Rust mapping (after adding contact time in Rust)
 private struct NativeAlert: Codable {
     let id: String
     let memo: String
+    let time: UInt64
 }
 
 extension Result where Failure == CoreError {
