@@ -14,7 +14,7 @@ class AlertCell: UITableViewCell {
     private func setupUI(alert: AlertViewData) {
         let view: AlertView = AlertView.fromNib()
 
-        view.exposureTypeLabel.text = alert.symptoms
+        view.exposureTypeLabel.text = alert.symptoms.joined(separator: ", ") // Temporary. In new UX symptoms are a vertical list.
         view.timeLabel.text = alert.time
         view.onAcknowledged = { [weak self] in
             self?.onAcknowledged?(alert)

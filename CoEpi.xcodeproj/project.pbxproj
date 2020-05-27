@@ -136,9 +136,9 @@
 		84B48A9F24530AAB001908E8 /* RootNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9E24530AAA001908E8 /* RootNav.swift */; };
 		84B492182476E0B800FF69AD /* LibResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492172476E0B800FF69AD /* LibResult.swift */; };
 		84B4921A2476F54700FF69AD /* NativeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492192476F54700FF69AD /* NativeCore.swift */; };
-		84B4921E2476F71A00FF69AD /* RawAlertDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4921D2476F71A00FF69AD /* RawAlertDao.swift */; };
-		84B492202476F78000FF69AD /* RealmRawAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4921F2476F78000FF69AD /* RealmRawAlert.swift */; };
-		84B492222476F7E900FF69AD /* RawAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492212476F7E900FF69AD /* RawAlert.swift */; };
+		84B4921E2476F71A00FF69AD /* AlertDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4921D2476F71A00FF69AD /* AlertDao.swift */; };
+		84B492202476F78000FF69AD /* RealmAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4921F2476F78000FF69AD /* RealmAlert.swift */; };
+		84B492222476F7E900FF69AD /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492212476F7E900FF69AD /* Alert.swift */; };
 		84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
 		84BF972C24281082001ADD6B /* LogSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972624281082001ADD6B /* LogSettings.swift */; };
 		84BF972E24281082001ADD6B /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972824281082001ADD6B /* uuids.swift */; };
@@ -166,7 +166,6 @@
 		CE626E0B2430A9A9000DB8E7 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */; };
 		CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E0F2430F0FB000DB8E7 /* UIView+Nib.swift */; };
 		CE626E122430F348000DB8E7 /* AlertRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E112430F348000DB8E7 /* AlertRepo.swift */; };
-		CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E132430F3C5000DB8E7 /* Alert.swift */; };
 		CE6B7AB3243312FA00C42280 /* CENRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7AB2243312FA00C42280 /* CENRepo.swift */; };
 		CE6B7AB52433156900C42280 /* RealmCENDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7AB42433156900C42280 /* RealmCENDao.swift */; };
 		CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7AB62433166600C42280 /* RealmCEN.swift */; };
@@ -346,9 +345,9 @@
 		84B48A9E24530AAA001908E8 /* RootNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNav.swift; sourceTree = "<group>"; };
 		84B492172476E0B800FF69AD /* LibResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibResult.swift; sourceTree = "<group>"; };
 		84B492192476F54700FF69AD /* NativeCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeCore.swift; sourceTree = "<group>"; };
-		84B4921D2476F71A00FF69AD /* RawAlertDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawAlertDao.swift; sourceTree = "<group>"; };
-		84B4921F2476F78000FF69AD /* RealmRawAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRawAlert.swift; sourceTree = "<group>"; };
-		84B492212476F7E900FF69AD /* RawAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawAlert.swift; sourceTree = "<group>"; };
+		84B4921D2476F71A00FF69AD /* AlertDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDao.swift; sourceTree = "<group>"; };
+		84B4921F2476F78000FF69AD /* RealmAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAlert.swift; sourceTree = "<group>"; };
+		84B492212476F7E900FF69AD /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		84BF972324280ABA001ADD6B /* RootWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		84BF972624281082001ADD6B /* LogSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogSettings.swift; sourceTree = "<group>"; };
@@ -376,7 +375,6 @@
 		CE626E0A2430A9A9000DB8E7 /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
 		CE626E0F2430F0FB000DB8E7 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		CE626E112430F348000DB8E7 /* AlertRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRepo.swift; sourceTree = "<group>"; };
-		CE626E132430F3C5000DB8E7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		CE6B7AB2243312FA00C42280 /* CENRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CENRepo.swift; sourceTree = "<group>"; };
 		CE6B7AB42433156900C42280 /* RealmCENDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCENDao.swift; sourceTree = "<group>"; };
 		CE6B7AB62433166600C42280 /* RealmCEN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCEN.swift; sourceTree = "<group>"; };
@@ -683,7 +681,7 @@
 				CE6B7ABC243324BA00C42280 /* RealmCENReportDao.swift */,
 				CE6B7AC42433273200C42280 /* RealmCENKeyDao.swift */,
 				849D1B092439F31D00804511 /* DaoError.swift */,
-				84B4921D2476F71A00FF69AD /* RawAlertDao.swift */,
+				84B4921D2476F71A00FF69AD /* AlertDao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -826,7 +824,7 @@
 				CE6B7AB62433166600C42280 /* RealmCEN.swift */,
 				CE6B7AC0243325F200C42280 /* RealmCENReport.swift */,
 				CE6B7AC8243327FF00C42280 /* RealmCENKey.swift */,
-				84B4921F2476F78000FF69AD /* RealmRawAlert.swift */,
+				84B4921F2476F78000FF69AD /* RealmAlert.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -844,7 +842,6 @@
 			isa = PBXGroup;
 			children = (
 				84A4B9BB242CE42C00516F3B /* Symptom.swift */,
-				CE626E132430F3C5000DB8E7 /* Alert.swift */,
 				CE6B7AB8243316B800C42280 /* CEN.swift */,
 				CE6B7ABA2433244700C42280 /* MyCenReport.swift */,
 				CE6B7AC2243326FD00C42280 /* CENKey.swift */,
@@ -852,7 +849,7 @@
 				84A1C0D32437C34400875DAE /* CenReport.swift */,
 				055A9D77243A892800A12285 /* KeyValueStore.swift */,
 				84201690244B21FF000EE281 /* UnixTime.swift */,
-				84B492212476F7E900FF69AD /* RawAlert.swift */,
+				84B492212476F7E900FF69AD /* Alert.swift */,
 				84E10812247AD84E00D65E85 /* SymptomInputs.swift */,
 			);
 			path = model;
@@ -1326,7 +1323,6 @@
 				848434552438C03C006A5839 /* ErrorView.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
-				CE626E142430F3C5000DB8E7 /* Alert.swift in Sources */,
 				622AC2DE245FD22400A6EB90 /* FeverDaysViewModel.swift in Sources */,
 				84A1C0D22437C25B00875DAE /* ReceivedCenReport.swift in Sources */,
 				622AC2E6245FD2C300A6EB90 /* FeverDaysViewController.swift in Sources */,
@@ -1335,7 +1331,7 @@
 				849327B82452D972009589E6 /* BackgroundTaskScheduler.swift in Sources */,
 				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
 				849327BD2452ED45009589E6 /* ReportsHandler.swift in Sources */,
-				84B492222476F7E900FF69AD /* RawAlert.swift in Sources */,
+				84B492222476F7E900FF69AD /* Alert.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
 				84201696244CA14D000EE281 /* UIView+Rx.swift in Sources */,
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
@@ -1368,10 +1364,10 @@
 				84D069642455A7600004E8B6 /* OperationState.swift in Sources */,
 				84A1C0D42437C34400875DAE /* CenReport.swift in Sources */,
 				849CEFA2242FEDE7003F9284 /* Theme.swift in Sources */,
-				84B4921E2476F71A00FF69AD /* RawAlertDao.swift in Sources */,
+				84B4921E2476F71A00FF69AD /* AlertDao.swift in Sources */,
 				849327B62452D947009589E6 /* FetchAlertsBackgroundTask.swift in Sources */,
 				CE6B7AB52433156900C42280 /* RealmCENDao.swift in Sources */,
-				84B492202476F78000FF69AD /* RealmRawAlert.swift in Sources */,
+				84B492202476F78000FF69AD /* RealmAlert.swift in Sources */,
 				8484345E2438C3F4006A5839 /* CustomView.swift in Sources */,
 				30EF952E24313F61007D61C7 /* Fonts.swift in Sources */,
 				8484346A2438F09C006A5839 /* ApiCenReport.swift in Sources */,

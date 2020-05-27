@@ -48,11 +48,47 @@ class AlertsViewModel {
     }
 }
 
+private extension FeverSeverity {
+    // TODO localize
+    func toLocalizedName() -> String {
+        switch self {
+        case .Mild: return L10n.Alerts.Label.noSymptomsReported
+        case .Serious: return L10n.Alerts.Label.noSymptomsReported
+        case .None: return L10n.Alerts.Label.noSymptomsReported
+        }
+    }
+}
+
+private extension CoughSeverity {
+    // TODO localize
+    func toLocalizedName() -> String {
+        switch self {
+        case .Dry: return L10n.Alerts.Label.noSymptomsReported
+        case .Existing: return L10n.Alerts.Label.noSymptomsReported
+        case .Wet: return L10n.Alerts.Label.noSymptomsReported
+        case .None: return L10n.Alerts.Label.noSymptomsReported
+        }
+    }
+}
+
 private extension Alert {
+
+    // TODO localize
+    func symptomList() -> [String] {
+        let feverStr = "Fever: " + feverSeverity.toLocalizedName()
+        let feverCoughStr = "Cough: " + coughSeverity.toLocalizedName()
+        let breathlessnessStr = "Breathlessness: \(breathlessness)"
+
+        // TODO map to "days ago"
+        let earliestDate = "Earliest report date: \(earliestSymptomTime)"
+
+        return [feverStr, feverCoughStr, breathlessnessStr, earliestDate]
+    }
+
     func toViewData() -> AlertViewData {
         AlertViewData(
-            symptoms: exposure.isEmpty ? L10n.Alerts.Label.noSymptomsReported : exposure,
-            time: DateFormatters.dateHoursMins.string(from: timestamp.toDate()),
+            symptoms: symptomList(),
+            time: "\(contactTime)", // TODO map to date and format
             alert: self
         )
     }

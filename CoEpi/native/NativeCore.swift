@@ -1,7 +1,7 @@
 import Foundation
 
 protocol AlertsFetcher {
-    func fetchNewAlerts() -> Result<[RawAlert], ServicesError>
+    func fetchNewAlerts() -> Result<[Alert], ServicesError>
 }
 
 // For now discontinuing this approach and submitting each symptom individually.
@@ -42,18 +42,83 @@ extension NativeCore: ServicesBootstrapper {
 }
 
 extension NativeCore: ObservedTcnsRecorder {
-
     func recordTcn(tcn: Data) -> Result<(), ServicesError> {
         let tcnStr = tcn.toHex()
         let libResult: LibResult<ArbitraryType>? = record_tcn(tcnStr)?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
+}
 
+struct CorePublicReport: Decodable {
+  let earliest_symptom_time: CoreUserInput<UnixTime>
+  let fever_severity: FeverSeverity
+  let cough_severity: CoughSeverity
+  let breathlessness: Bool
+}
+
+
+enum FeverSeverity: String, Decodable {
+  // TODO decoding configuration to map capitalized to lower case
+  case None, Mild, Serious
+}
+
+enum CoughSeverity: String, Decodable {
+// TODO decoding configuration to map capitalized to lower case
+  case None, Existing, Wet, Dry
+}
+
+enum CoreUserInput<T: Decodable>: Decodable {
+    case none, some(value: T)
+
+    func map<U>(f: (T) -> U) -> UserInput<U> {
+        switch self {
+        case .none: return .none
+        case .some(let value): return .some(f(value))
+        }
+    }
+
+    func flatMap<U> (f: (T) -> UserInput<U>) -> UserInput<U> {
+        switch self {
+        case .none: return .none
+        case .some(let value): return f(value)
+        }
+    }
+
+    func toUserInput() -> UserInput<T> {
+        switch self {
+        case .none: return .none
+        case .some(let value): return .some(value)
+        }
+    }
+}
+
+extension CoreUserInput {
+    enum CodingError: Error { case decoding(String) }
+    enum CodableKeys: String, CodingKey { case Some }
+
+    init(from decoder: Decoder) throws {
+        do {
+            self = .some(value: try decoder
+                .container(keyedBy: CodableKeys.self)
+                .decode(T.self, forKey: .Some))
+        } catch let decodingSomeError {
+            do {
+                let value = try decoder.singleValueContainer().decode(String.self)
+                if value != "None" {
+                    throw CodingError.decoding(value)
+                }
+                self = .none
+            } catch let decodingNoneError {
+                throw CodingError.decoding("Wasn't able to decode user input: To Some: \(decodingSomeError), To None: "
+                    + "\(decodingNoneError)")
+            }
+        }
+    }
 }
 
 class NativeCore: AlertsFetcher {
 
-    func fetchNewAlerts() -> Result<[RawAlert], ServicesError> {
+    func fetchNewAlerts() -> Result<[Alert], ServicesError> {
         guard let libResult: LibResult<[NativeAlert]> = fetch_new_reports()?.toLibResult() else {
             return libraryFailure()
         }
@@ -61,15 +126,18 @@ class NativeCore: AlertsFetcher {
         // TODO id (see Rust)
 
         return libResult.toResult().mapErrorToServicesError().map { nativeAlerts in
-            nativeAlerts.map {
-                RawAlert(
+            return nativeAlerts.map {
+                Alert(
                     id: $0.id,
-                    memoStr: $0.memo,
                     // Using UInt64 for time in Rust, as stylistic preference, as we can't have a negative timestamp.
                     // UInt64 can be safely converted to Int64 for unix time.
                     // Consider using UInt64 here too, for consistency.
-                    contactTime: UnixTime.init(value: Int64($0.time)
-                ))
+                    contactTime: UnixTime.init(value: Int64($0.contact_time)),
+                    earliestSymptomTime: $0.report.earliest_symptom_time.toUserInput(),
+                    feverSeverity: $0.report.fever_severity,
+                    coughSeverity: $0.report.cough_severity,
+                    breathlessness: $0.report.breathlessness
+                )
             }
         }
     }
@@ -256,10 +324,10 @@ private extension UserInput where T == Bool {
     }
 }
 
-private struct NativeAlert: Codable {
+private struct NativeAlert: Decodable {
     let id: String
-    let memo: String
-    let time: UInt64
+    let report: CorePublicReport
+    let contact_time: UInt64
 }
 
 extension Result where Failure == CoreError {

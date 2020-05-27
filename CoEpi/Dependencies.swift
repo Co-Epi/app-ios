@@ -77,7 +77,7 @@ class Dependencies {
 
     private func registerDaos(container: DependencyContainer) {
         container.register(.singleton) { RealmProvider() }
-        container.register(.singleton) { RealmRawAlertDao(realmProvider: try container.resolve()) as RawAlertDao }
+        container.register(.singleton) { RealmAlertDao(realmProvider: try container.resolve()) as AlertDao }
         container.register(.singleton) { RealmCENDao(realmProvider: try container.resolve()) as CENDao }
         container.register(.eagerSingleton) { RealmCENReportDao(realmProvider: try container.resolve()) as CENReportDao }
         container.register(.singleton) { RealmCENKeyDao(realmProvider: try container.resolve(),
@@ -86,8 +86,7 @@ class Dependencies {
 
     private func registerRepos(container: DependencyContainer) {
         container.register(.singleton) { SymptomRepoImpl(inputManager: try container.resolve()) as SymptomRepo }
-        container.register(.singleton) { AlertRepoImpl(cenReportDao: try container.resolve(),
-                                                       alertsFetcher: try container.resolve(),
+        container.register(.singleton) { AlertRepoImpl(alertsFetcher: try container.resolve(),
                                                        alertDao: try container.resolve()) as AlertRepo }
         container.register(.singleton) { CENRepoImpl(cenDao: try container.resolve()) as CENRepo }
         container.register(.singleton) { CENKeyRepoImpl(cenKeyDao: try container.resolve()) as CENKeyRepo }
