@@ -15,6 +15,14 @@ carthage bootstrap
 ```
 \* This project uses primarily SPM as dependecy manager. Carthage is used temporarily as [fallback for some dependencies](https://github.com/Co-Epi/app-ios/wiki/Architecture) 
 
+## Core
+
+The core (domain logic, networking, etc.) of this app is written in Rust and can be found [here](https://github.com/Co-Epi/app-backend-rust).
+
+Core is used as a normal dependency via Carthage, so you don't need additional setup. Just keep in mind to run `carthage update` to ensure that you're using the latest version (at the moment it changes often). The versions used by Carthage are [here](https://github.com/Co-Epi/app-backend-rust/releases).
+
+If you want to contribute to core, just create a PR in its [repo](https://github.com/Co-Epi/app-backend-rust)! The documentation to set it up for iOS is in the [wiki](https://github.com/Co-Epi/app-backend-rust/wiki/Building-library-for-iOS). Don't worry about lack of Rust skill. We are all learning.
+
 ## Contribute
 
 1. Read the [code guidelines](https://github.com/Co-Epi/app-ios/wiki/Code-guidelines).
