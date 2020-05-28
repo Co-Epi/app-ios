@@ -1,31 +1,30 @@
 import UIKit
+import RxSwift
 
 class SymptomStartDaysViewController: UIViewController {
     private let viewModel: SymptomStartDaysViewModel
     
-    //labels
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!
-    //buttonLabels
     
     @IBOutlet weak var unknownButtonLabel: UIButton!
     @IBOutlet weak var submitButtonLabel: UIButton!
     @IBOutlet weak var skipButtonLabel: UIButton!
-    
-    //day input field
-   
+
     @IBOutlet weak var daysInput: UITextField!
-    
-    //button actions
+
+    private let disposeBag = DisposeBag()
 
     @IBAction func unknownButtonAction(_ sender: Any) {
+        viewModel.onUnknownTap()
     }
     
     @IBAction func submitButtonAction(_ sender: Any) {
+        viewModel.onSubmitTap()
     }
     
     @IBAction func skipButtonAction(_ sender: Any) {
+        viewModel.onSkipTap()
     }
     
     init(viewModel: SymptomStartDaysViewModel) {
@@ -39,6 +38,13 @@ class SymptomStartDaysViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            viewModel.onBack()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
@@ -49,7 +55,16 @@ class SymptomStartDaysViewController: UIViewController {
         
         unknownButtonLabel.setTitle(L10n.Ux.unknown, for: .normal)
         submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
-        
-        
+
+        daysInput.rx.text
+            .distinctUntilChanged()
+            .subscribe(onNext: { [viewModel] text in
+                viewModel.onDaysChanged(daysStr: text ?? "")
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
      }
 }

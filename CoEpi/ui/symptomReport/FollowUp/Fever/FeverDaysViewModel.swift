@@ -3,24 +3,41 @@ import RxCocoa
 import RxSwift
 import os.log
 
-class FeverDaysViewModel{
-    private let inputsManager: SymptomsInputManager
+class FeverDaysViewModel {
+    private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Fever.heading
 
-    init(inputsManager: SymptomsInputManager) {
-        self.inputsManager = inputsManager
+    init(symptomFlowManager: SymptomFlowManager) {
+        self.symptomFlowManager = symptomFlowManager
     }
 
     func onDaysChanged(daysStr: String) {
         if (daysStr.isEmpty) {
-            inputsManager.setFeverDays(.none).expect()
+            symptomFlowManager.setFeverDays(.none).expect()
         } else {
             if let days: Int = Int(daysStr) {
-                inputsManager.setFeverDays(.some(SymptomInputs.Days(value: days))).expect()
+                symptomFlowManager.setFeverDays(.some(SymptomInputs.Days(value: days))).expect()
             } else {
-                fatalError("Invalid input: \(daysStr)")
+                // TODO handle
+                os_log("Invalid input: %{public}@ TODO handle", log: servicesLog, type: .debug, "\(daysStr)")
             }
         }
+    }
+
+    func onSubmitTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onUnknownTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onSkipTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onBack() {
+        symptomFlowManager.onBack()
     }
 }

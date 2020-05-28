@@ -12,6 +12,7 @@ class BreathlessViewController: UIViewController {
     @IBOutlet weak var skipButtonLabel: UIButton!
     
     @IBAction func skipButtonAction(_ sender: Any) {
+        viewModel.onSkipTap()
     }
     
     private let disposeBag = DisposeBag()
@@ -25,6 +26,13 @@ class BreathlessViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            viewModel.onBack()
+        }
     }
 
     override func viewDidLoad() {
@@ -81,8 +89,6 @@ class BreathlessViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-
-        
      }
 }
 

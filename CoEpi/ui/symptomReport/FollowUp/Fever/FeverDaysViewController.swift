@@ -1,9 +1,10 @@
 import UIKit
+import RxSwift
 
 class FeverDaysViewController: UIViewController {
     private let viewModel: FeverDaysViewModel
     
-    @IBOutlet weak var dasyInput: UITextField!
+    @IBOutlet weak var daysInput: UITextField!
     
     @IBOutlet weak var unknownButtonLabel: UIButton!
     @IBOutlet weak var submitButtonLabel: UIButton!
@@ -11,19 +12,20 @@ class FeverDaysViewController: UIViewController {
     
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+
+    private let disposeBag = DisposeBag()
     
     @IBAction func unknownButtonAction(_ sender: UIButton) {
-
+        viewModel.onUnknownTap()
     }
     
     @IBAction func submitButtonAction(_ sender: UIButton) {
-
+        viewModel.onSubmitTap()
     }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {
-
+        viewModel.onSkipTap()
     }
-    
     
     init(viewModel: FeverDaysViewModel) {
         self.viewModel = viewModel
@@ -36,6 +38,13 @@ class FeverDaysViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            viewModel.onBack()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
@@ -46,5 +55,12 @@ class FeverDaysViewController: UIViewController {
         
         unknownButtonLabel.setTitle(L10n.Ux.unknown, for: .normal)
         submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
+
+        daysInput.rx.text
+            .distinctUntilChanged()
+            .subscribe(onNext: { [viewModel] text in
+                viewModel.onDaysChanged(daysStr: text ?? "")
+            })
+            .disposed(by: disposeBag)
      }
 }

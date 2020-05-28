@@ -11,6 +11,8 @@ class RootWireFrame {
 
     private let disposeBag = DisposeBag()
 
+    private var symptomFlowManager: SymptomFlowManager?
+
     init(container: DependencyContainer, window: UIWindow) {
         self.container = container
 
@@ -53,41 +55,76 @@ class RootWireFrame {
         switch navCommand {
         case .to(let destination): navigate(to: destination)
         case .back: rootNavigationController.popViewController(animated: true)
+        case .backTo(let destination): navigateBack(to: destination)
+        case .backToAndTo(let backDestination, let toDestination): navigateBackAndTo(backDestination: backDestination,
+                                                                                     toDestination: toDestination)
         }
     }
 
     private func navigate(to: RootNavDestination) {
         switch to {
-        case .quiz: showQuiz()
         case .debug: showDebug()
         case .alerts: showAlerts()
         case .thankYou: showThankYou()
         case .breathless: showBreathless()
         case .coughType: showCoughType()
         case .coughDays: showCoughDays()
-        case .coughHow: showCoughHow()
+        case .coughDescription: showCoughHow()
         case .feverDays: showFeverDays()
-        case .feverToday: showFeverToday()
-        case .feverWhere: showFeverWhere()
-        case .feverWhereOther: showFeverWhereOther()
-        case .feverTemp: showFeverTemp()
+        case .feverTemperatureTakenToday: showFeverToday()
+        case .feverTemperatureSpot: showFeverWhere()
+        case .feverTemperatureSpotInput: showFeverWhereOther()
+        case .feverHighestTemperature: showFeverTemp()
         case .symptomReport: showSymptomReport()
-        case .onboarding: showOnboarding()
         case .SymptomStartDays: showSymptomStartDays()
+        case .home: showHome()
         }
+    }
+
+    private func clear(until: RootNavDestination) {
+        let type = HomeViewController.self
+        rootNavigationController.clearNavigationUntil(type: type)
+    }
+
+    private func viewControllerTypeFor(destination: RootNavDestination) -> UIViewController.Type {
+        switch destination {
+        case .debug: return DebugViewController.self
+        case .alerts: return AlertsViewController.self
+        case .thankYou: return ThankYouViewController.self
+        case .breathless: return BreathlessViewController.self
+        case .coughType: return CoughTypeViewController.self
+        case .coughDays: return CoughDaysViewController.self
+        case .coughDescription: return CoughHowViewController.self
+        case .feverDays: return FeverDaysViewController.self
+        case .feverTemperatureTakenToday: return FeverTodayViewController.self
+        case .feverTemperatureSpot: return FeverWhereViewController.self
+        case .feverTemperatureSpotInput: return FeverWhereViewControllerOther.self
+        case .feverHighestTemperature: return FeverTempViewController.self
+        case .symptomReport: return SymptomReportViewController.self
+        case .SymptomStartDays: return SymptomStartDaysViewController.self
+        case .home: return HomeViewController.self
+        }
+    }
+
+    private func navigateBack(to: RootNavDestination) {
+        rootNavigationController.backToViewController(type: viewControllerTypeFor(destination: to))
+    }
+
+    private func navigateBackAndTo(backDestination: RootNavDestination, toDestination: RootNavDestination) {
+        navigateBack(to: backDestination)
+        navigate(to: toDestination)
+    }
+
+    private func showHome() {
+        let viewModel: HomeViewModel = try! container.resolve()
+        let viewController = HomeViewController(viewModel: viewModel)
+        rootNavigationController.pushViewController(viewController, animated: true)
     }
 
     private func showDebug() {
         let debugViewModel: DebugViewModel = try! container.resolve()
         let debugViewController = DebugViewController(viewModel: debugViewModel)
         rootNavigationController.pushViewController(debugViewController, animated: true)
-    }
-
-
-    private func showQuiz() {
-        let viewModel: HealthQuizViewModel = try! container.resolve()
-        let quizViewController = HealthQuizViewController(viewModel: viewModel)
-        rootNavigationController.pushViewController(quizViewController, animated: true)
     }
 
     private func showAlerts() {
@@ -162,16 +199,31 @@ class RootWireFrame {
         rootNavigationController.pushViewController(symptomReportViewController, animated: true)
     }
     
-    private func showOnboarding() {
-        let viewModel: OnboardingViewModel = try! container.resolve()
-        let onboardingViewController = OnboardingViewController(viewModel: viewModel)
-        rootNavigationController.pushViewController(onboardingViewController, animated: true)
-    }
-    
     private func showSymptomStartDays() {
         let viewModel: SymptomStartDaysViewModel = try! container.resolve()
         let symptomStartDaysViewController = SymptomStartDaysViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(symptomStartDaysViewController, animated: true)
     }
     
+}
+
+extension UINavigationController {
+
+    func backToViewController<T: UIViewController>(type: T.Type) {
+        for element in viewControllers as Array {
+            if element is T {
+                popToViewController(element, animated: true)
+                break
+            }
+        }
+    }
+
+    func clearNavigationUntil<T: UIViewController>(type: T.Type) {
+        for i in (0..<viewControllers.count).reversed() {
+            if self.viewControllers[i] is T {
+                return
+            }
+            self.viewControllers.remove(at: i)
+        }
+    }
 }

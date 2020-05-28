@@ -22,6 +22,7 @@ protocol SymptomsInputManager {
     func setEarliestSymptomStartedDaysAgo(_ input: UserInput<Int>) -> Result<(), ServicesError>
 
     func submit() -> Result<(), ServicesError>
+    func clear() -> Result<(), ServicesError>
 }
 
 protocol ServicesBootstrapper {
@@ -299,6 +300,11 @@ extension NativeCore: SymptomsInputManager {
 
     func submit() -> Result<(), ServicesError> {
         let libResult: LibResult<ArbitraryType>? = submit_symptoms()?.toLibResult()
+        return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
+    }
+
+    func clear() -> Result<(), ServicesError> {
+        let libResult: LibResult<ArbitraryType>? = clear_symptoms()?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
 }

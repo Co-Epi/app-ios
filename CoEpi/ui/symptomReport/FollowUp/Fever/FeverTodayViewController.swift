@@ -10,18 +10,17 @@ class FeverTodayViewController: UIViewController {
     @IBOutlet weak var skipButtonLabel: UIButton!
     
     @IBAction func yesButtonAction(_ sender: UIButton) {
-
+        viewModel.onYesTap()
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {
-
+        viewModel.onNoTap()
     }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {
-
+        viewModel.onSkipTap()
     }
-    
-    
+
     init(viewModel: FeverTodayViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
@@ -31,6 +30,13 @@ class FeverTodayViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            viewModel.onBack()
+        }
     }
 
     override func viewDidLoad() {

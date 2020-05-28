@@ -4,15 +4,24 @@ import RxSwift
 import os.log
 
 class FeverWhereViewModel {
-    private let inputsManager: SymptomsInputManager
+    private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Fever.heading
 
-    init(inputsManager: SymptomsInputManager) {
-        self.inputsManager = inputsManager
+    init(symptomFlowManager: SymptomFlowManager) {
+        self.symptomFlowManager = symptomFlowManager
     }
 
     func onWhereSelected(spot: SymptomInputs.Fever.TemperatureSpot) {
-        inputsManager.setFeverTakenTemperatureSpot(.some(spot)).expect()
+        symptomFlowManager.setFeverTakenTemperatureSpot(.some(spot)).expect()
+        symptomFlowManager.navigateForward()
+    }
+
+    func onSkipTap() {
+        symptomFlowManager.navigateForward()
+    }
+    
+    func onBack() {
+        symptomFlowManager.onBack()
     }
 }

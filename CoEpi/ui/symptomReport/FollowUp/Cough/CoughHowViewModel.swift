@@ -4,16 +4,24 @@ import RxSwift
 import os.log
 
 class CoughHowViewModel {
-
-    private let inputsManager: SymptomsInputManager
+    private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Cough.heading
 
-    init(inputsManager: SymptomsInputManager) {
-        self.inputsManager = inputsManager
+    init(symptomFlowManager: SymptomFlowManager) {
+        self.symptomFlowManager = symptomFlowManager
     }
 
     func onStatusSelected(status: SymptomInputs.Cough.Status) {
-        inputsManager.setCoughStatus(.some(status)).expect()
+        symptomFlowManager.setCoughStatus(.some(status)).expect()
+        symptomFlowManager.navigateForward()
+    }
+
+    func onSkipTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onBack() {
+        symptomFlowManager.onBack()
     }
 }

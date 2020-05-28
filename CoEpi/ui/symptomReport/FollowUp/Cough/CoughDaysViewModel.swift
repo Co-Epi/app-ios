@@ -4,24 +4,40 @@ import RxSwift
 import os.log
 
 class CoughDaysViewModel {
-
-    private let inputsManager: SymptomsInputManager
+    private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Cough.heading
 
-    init(inputsManager: SymptomsInputManager) {
-        self.inputsManager = inputsManager
+    init(symptomFlowManager: SymptomFlowManager) {
+        self.symptomFlowManager = symptomFlowManager
     }
 
     func onDaysChanged(daysStr: String) {
         if (daysStr.isEmpty) {
-            inputsManager.setCoughDays(.none).expect()
+            symptomFlowManager.setCoughDays(.none).expect()
         } else {
             if let days: Int = Int(daysStr) {
-                inputsManager.setCoughDays(.some(SymptomInputs.Days(value: days))).expect()
+                symptomFlowManager.setCoughDays(.some(SymptomInputs.Days(value: days))).expect()
             } else {
-                fatalError("Invalid input: \(daysStr)")
+                // TODO handle
+                os_log("Invalid input: %{public}@ TODO handle", log: servicesLog, type: .debug, "\(daysStr)")
             }
         }
+    }
+
+    func onSubmitTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onUnknownTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onSkipTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onBack() {
+        symptomFlowManager.onBack()
     }
 }

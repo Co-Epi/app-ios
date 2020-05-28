@@ -4,19 +4,29 @@ import RxSwift
 import os.log
 
 class FeverTodayViewModel {
-    private let inputsManager: SymptomsInputManager
+    private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Fever.heading
 
-    init(inputsManager: SymptomsInputManager) {
-        self.inputsManager = inputsManager
+    init(symptomFlowManager: SymptomFlowManager) {
+        self.symptomFlowManager = symptomFlowManager
     }
 
-    func onTapYes() {
-        inputsManager.setFeverTakenTemperatureToday(.some(true)).expect()
+    func onYesTap() {
+        symptomFlowManager.setFeverTakenTemperatureToday(.some(true)).expect()
+        symptomFlowManager.navigateForward()
     }
 
-    func onTapNo() {
-        inputsManager.setFeverTakenTemperatureToday(.some(false)).expect()
+    func onNoTap() {
+        symptomFlowManager.setFeverTakenTemperatureToday(.some(false)).expect()
+        symptomFlowManager.navigateForward()
+    }
+
+    func onSkipTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onBack() {
+        symptomFlowManager.onBack()
     }
 }

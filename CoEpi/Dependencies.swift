@@ -16,12 +16,12 @@ class Dependencies {
         registerAndInitNativeCore(container: container, fileSystem: fileSystem)
 
         registerLogic(container: container)
+        registerWiring(container: container)
         registerViewModels(container: container)
         registerDaos(container: container)
         registerRepos(container: container)
         registerServices(container: container)
         registerBle(container: container)
-        registerWiring(container: container)
         registerSystem(container: container)
 
         // Throws if components fail to instantiate
@@ -48,27 +48,25 @@ class Dependencies {
 
     private func registerViewModels(container: DependencyContainer) {
         container.register { HomeViewModel(startPermissions: try container.resolve(), rootNav: try container.resolve()) }
-        //container.register { OnboardingWireframe(container: container) }
         container.register { OnboardingViewModel() }
         
-        
-        container.register { ThankYouViewModel() }
-        container.register { BreathlessViewModel(inputsManager: try container.resolve()) }
-        container.register { CoughTypeViewModel(inputsManager: try container.resolve()) }
-        container.register { CoughDaysViewModel(inputsManager: try container.resolve()) }
-        container.register { CoughHowViewModel(inputsManager: try container.resolve()) }
-        container.register { FeverDaysViewModel(inputsManager: try container.resolve()) }
-        container.register { FeverTodayViewModel(inputsManager: try container.resolve()) }
-        container.register { FeverWhereViewModel(inputsManager: try container.resolve()) }
+        container.register { ThankYouViewModel(rootNav: try container.resolve()) }
+        container.register { BreathlessViewModel(symptomFlowManager: try container.resolve()) }
+        container.register { CoughTypeViewModel(symptomFlowManager: try container.resolve()) }
+        container.register { CoughDaysViewModel(symptomFlowManager: try container.resolve()) }
+        container.register { CoughHowViewModel(symptomFlowManager: try container.resolve()) }
+        container.register { FeverDaysViewModel(symptomFlowManager: try container.resolve()) }
+        container.register { FeverTodayViewModel(symptomFlowManager: try container.resolve()) }
+        container.register { FeverWhereViewModel(symptomFlowManager: try container.resolve()) }
         container.register { FeverWhereViewModelOther() }
-        container.register { FeverTempViewModel(inputsManager: try container.resolve()) }
-        container.register { SymptomReportViewModel() }
-        container.register { OnboardingViewModel() }
+        container.register { FeverTempViewModel(symptomFlowManager: try container.resolve()) }
+        container.register { SymptomReportViewModel(symptomRepo: try container.resolve(),
+                                                    rootNav: try container.resolve(),
+                                                    symptomFlowManager: try container.resolve())}
+
         container.register { OnboardingWireframe(container: container) }
-        container.register { SymptomStartDaysViewModel() }
-        
-        container.register { HealthQuizViewModel(symptomRepo: try container.resolve(), rootNav: try container.resolve(),
-                                                 inputsManager: try container.resolve()) }
+        container.register { SymptomStartDaysViewModel(symptomFlowManager: try container.resolve()) }
+
         container.register { AlertsViewModel(alertRepo: try container.resolve()) }
 
         container.register { DebugViewModel(bleAdapter: try container.resolve(),
@@ -125,6 +123,11 @@ class Dependencies {
                                                                    appBadgeUpdater: try container.resolve())
             as MatchingReportsHandler }
         container.register(.eagerSingleton) { RootNav() }
+
+        container.register(.singleton) { SymptomRouterImpl(rootNav: try container.resolve()) as SymptomRouter }
+        container.register(.singleton) { SymptomFlowManager(symptomRouter: try container.resolve(),
+                                                            rootNavigation: try container.resolve(),
+                                                            inputsManager: try container.resolve()) }
     }
 
     private func registerBle(container: DependencyContainer) {

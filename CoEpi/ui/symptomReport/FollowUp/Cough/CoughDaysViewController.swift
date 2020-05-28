@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 class CoughDaysViewController: UIViewController {
     private let viewModel: CoughDaysViewModel
@@ -11,20 +12,21 @@ class CoughDaysViewController: UIViewController {
     @IBOutlet weak var skipButtonLabel: UIButton!
     
     @IBOutlet weak var daysInput: UITextField!
-    
+
+    private let disposeBag = DisposeBag()
+
     @IBAction func unknownButtonAction(_ sender: UIButton) {
-
+        viewModel.onUnknownTap()
      }
-    
+
     @IBAction func submitButtonAction(_ sender: UIButton) {
-
+        viewModel.onSubmitTap()
     }
-    
+
     @IBAction func skipButtonAction(_ sender: UIButton) {
-
+        viewModel.onSkipTap()
     }
-    
-    
+
     init(viewModel: CoughDaysViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
@@ -34,6 +36,13 @@ class CoughDaysViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            viewModel.onBack()
+        }
     }
 
     override func viewDidLoad() {
@@ -46,7 +55,12 @@ class CoughDaysViewController: UIViewController {
         
         unknownButtonLabel.setTitle(L10n.Ux.unknown, for: .normal)
         submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
-        
-        
+
+        daysInput.rx.text
+            .distinctUntilChanged()
+            .subscribe(onNext: { [viewModel] text in
+                viewModel.onDaysChanged(daysStr: text ?? "")
+            })
+            .disposed(by: disposeBag)
      }
 }

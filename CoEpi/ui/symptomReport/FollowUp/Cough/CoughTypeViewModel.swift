@@ -4,19 +4,29 @@ import RxSwift
 import os.log
 
 class CoughTypeViewModel {
-    private let inputsManager: SymptomsInputManager
+    private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Cough.heading
 
-    init(inputsManager: SymptomsInputManager) {
-        self.inputsManager = inputsManager
+    init(symptomFlowManager: SymptomFlowManager) {
+        self.symptomFlowManager = symptomFlowManager
     }
 
     func onTapWet() {
-        inputsManager.setCoughType(.some(.wet)).expect()
+        symptomFlowManager.setCoughType(.some(.wet)).expect()
+        symptomFlowManager.navigateForward()
     }
 
     func onTapDry() {
-        inputsManager.setCoughType(.some(.dry)).expect()
+        symptomFlowManager.setCoughType(.some(.dry)).expect()
+        symptomFlowManager.navigateForward()
+    }
+    
+    func onSkipTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onBack() {
+        symptomFlowManager.onBack()
     }
 }

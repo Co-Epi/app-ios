@@ -4,23 +4,40 @@ import RxSwift
 import os.log
 
 class FeverTempViewModel {
-    private let inputsManager: SymptomsInputManager
+    private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Fever.heading
 
-    init(inputsManager: SymptomsInputManager) {
-        self.inputsManager = inputsManager
+    init(symptomFlowManager: SymptomFlowManager) {
+        self.symptomFlowManager = symptomFlowManager
     }
 
     func onTempChanged(tempStr: String) {
         if (tempStr.isEmpty) {
-            inputsManager.setFeverHighestTemperatureTaken(.none).expect()
+            symptomFlowManager.setFeverHighestTemperatureTaken(.none).expect()
         } else {
             if let temp: Float = Float(tempStr) {
-                inputsManager.setFeverHighestTemperatureTaken(.some(.fahrenheit(value: temp))).expect()
+                symptomFlowManager.setFeverHighestTemperatureTaken(.some(.fahrenheit(value: temp))).expect()
             } else {
-                fatalError("Invalid input: \(tempStr)")
+                // TODO handle
+                os_log("Invalid input: %{public}@ TODO handle", log: servicesLog, type: .debug, "\(tempStr)")
             }
         }
+    }
+
+    func onSubmitTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onUnknownTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onSkipTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onBack() {
+        symptomFlowManager.onBack()
     }
 }

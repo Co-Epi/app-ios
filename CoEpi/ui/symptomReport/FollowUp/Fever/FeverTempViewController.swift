@@ -1,33 +1,32 @@
 import UIKit
+import RxSwift
 
 class FeverTempViewController: UIViewController {
     private let viewModel: FeverTempViewModel
     
     var scale = ""
-    
-    //labels
+
     @IBOutlet weak var titleLabel: UILabel!
-    
-    //numberInput
+
     @IBOutlet weak var numberInput: UITextField!
-    
-    //buttonLabels
+
     @IBOutlet weak var unknownButtonLabel: UIButton!
     @IBOutlet weak var submitButtonLabel: UIButton!
     @IBOutlet weak var skipButtonLabel: UIButton!
     @IBOutlet weak var scaleButtonLabel: UIButton!
-    
-    //button actions
-    @IBAction func unknownButtonAction(_ sender: UIButton) {
 
+    private let disposeBag = DisposeBag()
+
+    @IBAction func unknownButtonAction(_ sender: UIButton) {
+        viewModel.onUnknownTap()
     }
     
     @IBAction func submitButtonAction(_ sender: UIButton) {
-
+        viewModel.onSubmitTap()
     }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {
-
+        viewModel.onSkipTap()
     }
     
     @IBAction func scaleButtonAction(_ sender: UIButton) {
@@ -69,6 +68,13 @@ class FeverTempViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            viewModel.onBack()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
@@ -91,6 +97,12 @@ class FeverTempViewController: UIViewController {
         
         unknownButtonLabel.setTitle(L10n.Ux.unknown, for: .normal)
         submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
-        
+
+        numberInput.rx.text
+            .distinctUntilChanged()
+            .subscribe(onNext: { [viewModel] text in
+                viewModel.onTempChanged(tempStr: text ?? "")
+            })
+            .disposed(by: disposeBag)
      }
 }

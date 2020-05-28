@@ -10,15 +10,15 @@ class ThankYouViewController: UIViewController {
     @IBOutlet weak var homeButtonLabel: UIButton!
     
     @IBAction func moreButtonAction(_ sender: UIButton) {
-
-     }
+        viewModel.onCheckInClick()
+    }
     
     @IBAction func viewExposuresButtonAction(_ sender: UIButton) {
-        
+        viewModel.onSeeAlertsClick()
      }
     
     @IBAction func homeButtonAction(_ sender: UIButton) {
-
+        viewModel.onCloseClick()
      }
     
     init(viewModel: ThankYouViewModel) {

@@ -1,0 +1,153 @@
+import os.log
+import RxCocoa
+import RxSwift
+
+class SymptomFlowManager {
+    let symptomRouter: SymptomRouter
+    let rootNavigation: RootNav
+    let inputsManager: SymptomsInputManager
+
+    var symptomFlow: SymptomFlow? = nil
+
+    private let finishFlowTrigger: PublishRelay<()> = PublishRelay()
+
+    private let disposeBag = DisposeBag()
+
+    private let submitSymptomsStateSubject: PublishRelay<VoidOperationState> = PublishRelay()
+    lazy var submitSymptomsState: Observable<VoidOperationState> = submitSymptomsStateSubject
+        .asObservable()
+        .startWith(.notStarted)
+
+    init(symptomRouter: SymptomRouter, rootNavigation: RootNav, inputsManager: SymptomsInputManager) {
+        self.symptomRouter = symptomRouter
+        self.rootNavigation = rootNavigation
+        self.inputsManager = inputsManager
+
+        finishFlowTrigger
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .do(onNext: { [submitSymptomsStateSubject] _ in
+                submitSymptomsStateSubject.accept(.progress)
+            })
+            .map { inputsManager.submit() }
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
+                self?.handleSubmitReportResult(result)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func startFlow(symptomIds: [SymptomId]) -> Bool {
+        if (symptomIds.isEmpty) {
+            os_log("Symptoms ids is empty", log: servicesLog, type: .debug)
+            return false
+        }
+
+        inputsManager.setSymptoms(Set(symptomIds)).expect()
+        symptomFlow = .create(symptomIds: symptomIds)
+
+        updateNavigation()
+        return true
+    }
+
+    func navigateForward() {
+        guard let symptomFlow = symptomFlow else {
+            // Navigate forward is called from screens in the input flow
+            fatalError("Can't navigate forward if there's no input flow")
+        }
+
+        if (symptomFlow.next() == nil) {
+            finishFlowTrigger.accept(())
+        } else {
+            updateNavigation()
+        }
+    }
+
+    func updateNavigation() {
+        guard let symptomFlow = symptomFlow else {
+            os_log("No symptom inputs. Showing thanks screen.", log: servicesLog, type: .debug)
+            finishFlowTrigger.accept(())
+            return
+        }
+
+        rootNavigation.navigate(command: .to(destination: symptomRouter.destination(step: symptomFlow.currentStep)))
+    }
+
+    func handleSubmitReportResult(_ result: Result<(), ServicesError>) {
+        switch result {
+        case .success:
+            submitSymptomsStateSubject.accept(.success(data: ()))
+            rootNavigation.navigate(command: .to(destination: .thankYou))
+            clear()
+        case .failure(let e):
+            submitSymptomsStateSubject.accept(.failure(error: e))
+            // TODO user friendly / localized error message (and retry etc)
+            print(e)
+//            uiNotifier.notify(Failure(it.message ?? "Unknown error"))
+        }
+        submitSymptomsStateSubject.accept(.notStarted)
+    }
+
+    // NOTE: With current back handling, based on willMove(toParent parent: UIViewController?)
+    // this will be called too when navigating back programmatically from thanks screen to start
+    // (at least for the last view controller on the stack). We ignore this event with guard (at this
+    // point flow has been cleared).
+    func onBack() {
+        guard let symptomFlow = symptomFlow else {
+            return
+        }
+        if symptomFlow.previous() == nil {
+            os_log("No previous step.", log: servicesLog, type: .debug)
+        }
+    }
+
+    func clear() {
+        symptomFlow = nil
+        inputsManager.clear().expect()
+    }
+}
+
+extension SymptomFlowManager {
+    func setSymptoms(_ input: Set<SymptomId>) -> Result<(), ServicesError> {
+        inputsManager.setSymptoms(input)
+    }
+
+    func setCoughType(_ input: UserInput<SymptomInputs.Cough.CoughType>) -> Result<(), ServicesError> {
+        inputsManager.setCoughType(input)
+    }
+
+    func setCoughDays(_ input: UserInput<SymptomInputs.Days>) -> Result<(), ServicesError> {
+        inputsManager.setCoughDays(input)
+    }
+
+    func setCoughStatus(_ input: UserInput<SymptomInputs.Cough.Status>) -> Result<(), ServicesError> {
+        inputsManager.setCoughStatus(input)
+    }
+
+    func setBreathlessnessCause(_ input: UserInput<SymptomInputs.Breathlessness.Cause>) -> Result<(), ServicesError> {
+        inputsManager.setBreathlessnessCause(input)
+    }
+
+    func setFeverDays(_ input: UserInput<SymptomInputs.Days>) -> Result<(), ServicesError> {
+        inputsManager.setFeverDays(input)
+    }
+
+    func setFeverTakenTemperatureToday(_ input: UserInput<Bool>) -> Result<(), ServicesError> {
+        inputsManager.setFeverTakenTemperatureToday(input)
+    }
+
+    func setFeverTakenTemperatureSpot(_ input: UserInput<SymptomInputs.Fever.TemperatureSpot>) -> Result<(), ServicesError> {
+        inputsManager.setFeverTakenTemperatureSpot(input)
+    }
+
+    func setFeverHighestTemperatureTaken(_ input: UserInput<Temperature>) -> Result<(), ServicesError> {
+        inputsManager.setFeverHighestTemperatureTaken(input)
+    }
+
+    func setEarliestSymptomStartedDaysAgo(_ input: UserInput<Int>) -> Result<(), ServicesError> {
+        inputsManager.setEarliestSymptomStartedDaysAgo(input)
+    }
+
+    func submit() -> Result<(), ServicesError> {
+        inputsManager.submit()
+    }
+}

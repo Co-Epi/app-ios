@@ -12,21 +12,20 @@ class CoughHowViewController: UIViewController {
     @IBOutlet weak var skipButtonLabel: UIButton!
     
     @IBAction func betterButtonAction(_ sender: UIButton) {
-
+        viewModel.onStatusSelected(status: .betterAndWorseThroughDay)
     }
     
     @IBAction func worseButtonAction(_ sender: UIButton) {
-
+        viewModel.onStatusSelected(status: .worseWhenOutside)
     }
     
     @IBAction func sameButtonAction(_ sender: UIButton) {
-
+        viewModel.onStatusSelected(status: .sameOrSteadilyWorse)
     }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {
-
+        viewModel.onSkipTap()
     }
-    
     
     init(viewModel: CoughHowViewModel) {
         self.viewModel = viewModel
@@ -37,6 +36,13 @@ class CoughHowViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            viewModel.onBack()
+        }
     }
 
     override func viewDidLoad() {
@@ -50,7 +56,5 @@ class CoughHowViewController: UIViewController {
         betterButtonLabel.setTitle(L10n.Ux.Cough.better, for: .normal)
         worseButtonLabel.setTitle(L10n.Ux.Cough.worse, for: .normal)
         sameButtonLabel.setTitle(L10n.Ux.Cough.same, for: .normal)
-        
-        
      }
 }

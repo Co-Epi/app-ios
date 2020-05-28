@@ -1,13 +1,21 @@
 class BreathlessViewModel {
-    private let inputsManager: SymptomsInputManager
+    private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Breathless.heading
 
-    init(inputsManager: SymptomsInputManager) {
-        self.inputsManager = inputsManager
+    init(symptomFlowManager: SymptomFlowManager) {
+        self.symptomFlowManager = symptomFlowManager
     }
 
     func onCauseSelected(cause: SymptomInputs.Breathlessness.Cause) {
-        inputsManager.setBreathlessnessCause(.some(cause)).expect()
+        symptomFlowManager.setBreathlessnessCause(.some(cause)).expect()
+    }
+
+    func onSkipTap() {
+        symptomFlowManager.navigateForward()
+    }
+
+    func onBack() {
+        symptomFlowManager.onBack()
     }
 }

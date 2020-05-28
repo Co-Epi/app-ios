@@ -1,7 +1,5 @@
 import UIKit
 import SafariServices
-import RxSwift
-import RxCocoa
 
 class OnboardingViewController: UIViewController {
     private let viewModel: OnboardingViewModel
@@ -70,11 +68,14 @@ class OnboardingViewController: UIViewController {
     
     
     @IBAction func questionsButtonAction(_ sender: Any) {
+        if let url = URL(string: "https://www.coepi.org/faq/") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = false
+
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
     }
-    
-    
-    
-    
     
     init(viewModel: OnboardingViewModel) {
         self.viewModel = viewModel

@@ -18,10 +18,8 @@ class CoughTypeViewController: UIViewController {
      }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {
-
+        viewModel.onSkipTap()
      }
-    
-    
     
     init(viewModel: CoughTypeViewModel) {
         self.viewModel = viewModel
@@ -34,9 +32,16 @@ class CoughTypeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            viewModel.onBack()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
         
         titleLabel.text = L10n.Ux.Cough.title1
         skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
@@ -50,6 +55,5 @@ class CoughTypeViewController: UIViewController {
         attributedTextDry.append(NSMutableAttributedString(string: L10n.Ux.Cough.subtitleDry, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)]))
         dryButtonLabel.setAttributedTitle(attributedTextDry, for: .normal)
         dryButtonLabel.titleLabel?.textAlignment = .center
-        
      }
 }

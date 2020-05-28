@@ -6,12 +6,10 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var redCircle: UIImageView!
     
-    //button labels
     @IBOutlet weak var reportButtonLabel: UIButton!
     @IBOutlet weak var alertButtonLabel: UIButton!
     @IBOutlet weak var howDataUsedLabel: UIButton!
     
-    //button actions
     @IBAction func reportButtonAction(_ sender: Any) {
         viewModel.quizTapped()
     }
@@ -30,7 +28,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-        //debug
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var buildLabel: UILabel!
     @IBOutlet weak var debugButton: UIButton!
@@ -101,9 +98,6 @@ class HomeViewController: UIViewController {
         versionLabel.text = getVersionNumber()
         buildLabel.text = getBuildNumber()
         debugButton.setTitle(L10n.Home.Footer.debug, for: .normal)
-        
-        //viewModel.testTapped()
-        
     }
     
     private func getVersionNumber() -> String{

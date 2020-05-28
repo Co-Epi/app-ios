@@ -23,14 +23,11 @@ class HomeViewModel {
     }
 
     func quizTapped() {
-        rootNav.navigate(command: .to(destination: .quiz))
+//        rootNav.navigate(command: .to(destination: .quiz))
+        rootNav.navigate(command: .to(destination: .symptomReport))
     }
 
     func seeAlertsTapped() {
         rootNav.navigate(command: .to(destination: .alerts))
-    }
-
-    func testTapped() {
-        rootNav.navigate(command: .to(destination: .feverTemp))
     }
 }
