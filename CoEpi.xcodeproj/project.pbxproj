@@ -143,6 +143,8 @@
 		84B4921A2476F54700FF69AD /* NativeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492192476F54700FF69AD /* NativeCore.swift */; };
 		84B492202476F78000FF69AD /* RealmAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4921F2476F78000FF69AD /* RealmAlert.swift */; };
 		84B492222476F7E900FF69AD /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492212476F7E900FF69AD /* Alert.swift */; };
+		84BC728C248256CE00CF38BF /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054A34FB244E691500282E17 /* strings.swift */; };
+		84BC728D24825CC100CF38BF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF952824313F61007D61C7 /* Fonts.swift */; };
 		84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
 		84BF972C24281082001ADD6B /* LogSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972624281082001ADD6B /* LogSettings.swift */; };
 		84BF972E24281082001ADD6B /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF972824281082001ADD6B /* uuids.swift */; };
@@ -185,7 +187,6 @@
 		CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7AC62433279000C42280 /* CENKeyRepo.swift */; };
 		CE6B7AC9243327FF00C42280 /* RealmCENKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7AC8243327FF00C42280 /* RealmCENKey.swift */; };
 		CE6B7ACB24332C9800C42280 /* ContactReceivedHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B7ACA24332C9800C42280 /* ContactReceivedHandler.swift */; };
-		D41B0CE5242E46C200A50447 /* OnboardingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0CE3242E46C200A50447 /* OnboardingViewControllerTests.swift */; };
 		D41B0CF5242E476000A50447 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA00F92427ED1900318104 /* OnboardingViewController.swift */; };
 		D41B0CF6242E476000A50447 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FA00FA2427ED1900318104 /* OnboardingViewController.xib */; };
 		D41B0CF8242E476000A50447 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF97212427FCFE001ADD6B /* OnboardingViewModel.swift */; };
@@ -196,7 +197,6 @@
 		D41B0D15242F59EA00A50447 /* UITableCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDE5242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift */; };
 		D41B0D18242F5A2A00A50447 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */; };
 		D41B0D19242F5A2A00A50447 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */; };
-		D41B0D23242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D22242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -400,9 +400,7 @@
 		CE6B7AC62433279000C42280 /* CENKeyRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CENKeyRepo.swift; sourceTree = "<group>"; };
 		CE6B7AC8243327FF00C42280 /* RealmCENKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCENKey.swift; sourceTree = "<group>"; };
 		CE6B7ACA24332C9800C42280 /* ContactReceivedHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactReceivedHandler.swift; sourceTree = "<group>"; };
-		D41B0CE3242E46C200A50447 /* OnboardingViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewControllerTests.swift; sourceTree = "<group>"; };
 		D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
-		D41B0D22242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMarkupAttributedExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -796,7 +794,6 @@
 		849DFE7E2427D37A0008ED65 /* CoEpiTests */ = {
 			isa = PBXGroup;
 			children = (
-				D41B0CE1242E46C200A50447 /* Onboarding */,
 				849DFE7F2427D37A0008ED65 /* CoEpiTests.swift */,
 				849DFE812427D37A0008ED65 /* Info.plist */,
 			);
@@ -1037,15 +1034,6 @@
 				84D069682455E7C10004E8B6 /* AlertViewData.swift */,
 			);
 			path = alerts;
-			sourceTree = "<group>";
-		};
-		D41B0CE1242E46C200A50447 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				D41B0CE3242E46C200A50447 /* OnboardingViewControllerTests.swift */,
-				D41B0D22242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift */,
-			);
-			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1420,10 +1408,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41B0CE5242E46C200A50447 /* OnboardingViewControllerTests.swift in Sources */,
+				84BC728D24825CC100CF38BF /* Fonts.swift in Sources */,
 				D41B0D09242E476200A50447 /* OnboardingViewModel.swift in Sources */,
 				D41B0D14242F59E900A50447 /* UITableCell+ReuseIdentifier.swift in Sources */,
-				D41B0D23242F63F200A50447 /* StringMarkupAttributedExtensionTests.swift in Sources */,
+				84BC728C248256CE00CF38BF /* strings.swift in Sources */,
 				D41B0D06242E476200A50447 /* OnboardingViewController.swift in Sources */,
 				D41B0D18242F5A2A00A50447 /* UIColor+Hex.swift in Sources */,
 				849DFE802427D37A0008ED65 /* CoEpiTests.swift in Sources */,
@@ -1716,7 +1704,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VU7B7BR34W;
 				INFOPLIST_FILE = CoEpiTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1742,7 +1730,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VU7B7BR34W;
 				INFOPLIST_FILE = CoEpiTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
