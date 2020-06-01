@@ -79,9 +79,10 @@
 "UX.symptomReport.other" = "I have symptoms that are not on the list";
 
     //thankyou
-"UX.thankyou.title" = "Thank you for logging your symptoms! We will alert if you have any relevant exposures to review.";
-"UX.thankyou.more" = "Update your symptom report";
-"UX.thankyou.viewExposures" = "View exposure alerts";
+"UX.thankyou.heading" = "Thank you";
+"UX.thankyou.title" = "Thank you for saving your symptoms! We will keep you notified about exposures this week.";
+"UX.thankyou.more" = "Log more symptoms";
+"UX.thankyou.viewExposures" = "View exposures";
 "UX.thankyou.home" = "Return to home screen";
 
     // breathless

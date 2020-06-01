@@ -8,7 +8,7 @@ class ThankYouViewController: UIViewController {
     @IBOutlet weak var moreButtonLabel: UIButton!
     @IBOutlet weak var viewExposuresButtonLabel: UIButton!
     @IBOutlet weak var homeButtonLabel: UIButton!
-    
+
     @IBAction func moreButtonAction(_ sender: UIButton) {
         viewModel.onCheckInClick()
     }
@@ -25,7 +25,6 @@ class ThankYouViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
         title = viewModel.title
-        UINavigationBar.appearance().titleTextAttributes = [.font: Fonts.robotoRegular]
     }
     
     required init?(coder: NSCoder) {
@@ -40,5 +39,7 @@ class ThankYouViewController: UIViewController {
         moreButtonLabel.setTitle(L10n.Ux.Thankyou.more, for: .normal)
         viewExposuresButtonLabel.setTitle(L10n.Ux.Thankyou.viewExposures, for: .normal)
         homeButtonLabel.setTitle(L10n.Ux.Thankyou.home, for: .normal)
+
+        navigationItem.hidesBackButton = true
      }
 }

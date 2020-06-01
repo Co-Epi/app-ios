@@ -176,6 +176,8 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "UX.symptomsdays.title")
     }
     internal enum Thankyou {
+      /// Thank you
+      internal static let heading = L10n.tr("Localizable", "UX.thankyou.heading")
       /// Return to home screen
       internal static let home = L10n.tr("Localizable", "UX.thankyou.home")
       /// Log more symptoms

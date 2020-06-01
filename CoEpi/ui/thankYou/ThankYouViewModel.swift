@@ -6,7 +6,7 @@ import os.log
 class ThankYouViewModel {
     private let rootNav: RootNav
 
-    let title = ""
+    let title = L10n.Ux.Thankyou.heading
 
     init(rootNav: RootNav) {
         self.rootNav = rootNav
