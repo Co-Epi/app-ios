@@ -8,25 +8,64 @@ class FeverTempViewModel {
 
     let title = L10n.Ux.Fever.heading
 
+    let temperatureText: Driver<String>
+    let selectedTemperatureUnit: Driver<TemperatureUnit>
+
+    private let temperatureTrigger: PublishRelay<UserInput<Temperature>> = PublishRelay()
+    private let toggleTemperatureUnitTrigger: PublishRelay<()> = PublishRelay()
+    private let temperatureTextTrigger: PublishRelay<String> = PublishRelay()
+    private let selectedTemperatureUnitTrigger: BehaviorRelay<TemperatureUnit> = BehaviorRelay(value: .fahrenheit)
+    private let submitTrigger: PublishRelay<()> = PublishRelay()
+
+    private let disposeBag = DisposeBag()
+
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
+
+        selectedTemperatureUnit = selectedTemperatureUnitTrigger
+            .asDriver(onErrorJustReturn: .fahrenheit)
+
+        let temperature = temperatureTrigger.asObservable()
+
+        temperatureText = temperature
+            .map { $0.toUserString() }
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: "")
+
+        submitTrigger.withLatestFrom(temperature)
+            .subscribe(onNext: { temperature in
+                symptomFlowManager.setFeverHighestTemperatureTaken(temperature).expect()
+                symptomFlowManager.navigateForward()
+            }).disposed(by: disposeBag)
+
+        toggleTemperatureUnitTrigger.withLatestFrom(selectedTemperatureUnitTrigger)
+            .map { $0.toggle() }
+            .subscribe(onNext: { [selectedTemperatureUnitTrigger] unit in
+                selectedTemperatureUnitTrigger.accept(unit)
+            }).disposed(by: disposeBag)
+
+        selectedTemperatureUnitTrigger.withLatestFrom(temperature,
+                                                      resultSelector: { selectedUnit, currentTemp in
+                                                        toTemperature(newUnit: selectedUnit, currentInput: currentTemp)
+        })
+        .subscribe(onNext: { [temperatureTrigger] newTemp in
+            temperatureTrigger.accept(newTemp)
+        }).disposed(by: disposeBag)
+
+        temperatureTextTrigger.withLatestFrom(selectedTemperatureUnitTrigger.asObservable(), resultSelector: { text, unit in
+            toTemperature(unit: unit, tempStr: text)
+        })
+        .subscribe(onNext: { [temperatureTrigger] newTemp in
+            temperatureTrigger.accept(newTemp)
+        }).disposed(by: disposeBag)
     }
 
     func onTempChanged(tempStr: String) {
-        if (tempStr.isEmpty) {
-            symptomFlowManager.setFeverHighestTemperatureTaken(.none).expect()
-        } else {
-            if let temp: Float = Float(tempStr) {
-                symptomFlowManager.setFeverHighestTemperatureTaken(.some(.fahrenheit(value: temp))).expect()
-            } else {
-                // TODO handle
-                os_log("Invalid input: %{public}@ TODO handle", log: servicesLog, type: .debug, "\(tempStr)")
-            }
-        }
+        temperatureTextTrigger.accept(tempStr)
     }
 
     func onSubmitTap() {
-        symptomFlowManager.navigateForward()
+        submitTrigger.accept(())
     }
 
     func onUnknownTap() {
@@ -39,5 +78,60 @@ class FeverTempViewModel {
 
     func onBack() {
         symptomFlowManager.onBack()
+    }
+
+    func onTemperatureUnitPress() {
+        toggleTemperatureUnitTrigger.accept(())
+    }
+}
+
+private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<Temperature> {
+    switch tempStr {
+    case "": return .none
+    default:
+        if let temp: Float = NumberFormatters.decimalsMax2.number(from: tempStr)?.floatValue {
+            switch unit {
+            case .celsius: return .some(.celsius(value: temp))
+            case .fahrenheit: return .some(.fahrenheit(value: temp))
+            }
+        } else {
+            os_log("WARN: Not numeric temperature input: %{public}@", log: servicesLog, tempStr)
+            return .none
+        }
+    }
+}
+
+private func toTemperature(newUnit: TemperatureUnit, currentInput: UserInput<Temperature>) -> UserInput<Temperature> {
+    switch currentInput {
+    case .none: return .none
+    case .some(let temp): return .some(toTemperature(newUnit: newUnit, currentTemp: temp))
+    }
+}
+
+private func toTemperature(newUnit: TemperatureUnit, currentTemp: Temperature) -> Temperature {
+    switch newUnit {
+    case .celsius:
+        return .celsius(value: currentTemp.asCelsius())
+    case .fahrenheit:
+        return .fahrenheit(value:  currentTemp.asFarenheit())
+
+    }
+}
+
+private extension UserInput where T == Temperature {
+    func toUserString() -> String {
+        switch self {
+        case .none: return ""
+        case .some(let temp): return temp.toUserString()
+        }
+    }
+}
+
+private extension TemperatureUnit {
+    func toggle() -> TemperatureUnit {
+        switch self {
+        case .celsius: return .fahrenheit
+        case .fahrenheit: return .celsius
+        }
     }
 }

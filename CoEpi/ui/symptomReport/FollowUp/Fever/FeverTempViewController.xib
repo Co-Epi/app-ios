@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,21 +31,21 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-IZ-Bes">
-                    <rect key="frame" x="50" y="370.5" width="314" height="155"/>
+                    <rect key="frame" x="50" y="370" width="314" height="156"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="VCq-l6-TA3">
-                            <rect key="frame" x="0.0" y="0.0" width="314" height="60"/>
+                            <rect key="frame" x="0.0" y="0.0" width="314" height="60.5"/>
                             <subviews>
                                 <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" adjustsFontSizeToFit="NO" minimumFontSize="40" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UnH-FU-AjW">
-                                    <rect key="frame" x="0.0" y="0.0" width="182.5" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="184" height="60.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="UnH-FU-AjW" secondAttribute="height" multiplier="73:24" id="BgN-AY-sMx"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="41"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex1-Mg-7F1">
-                                    <rect key="frame" x="207.5" y="0.0" width="106.5" height="60"/>
+                                    <rect key="frame" x="209" y="0.0" width="105" height="60.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                     <state key="normal" title="Cº/Fº">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,10 +57,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tqv-QC-mkI">
-                            <rect key="frame" x="0.0" y="110" width="314" height="45"/>
+                            <rect key="frame" x="0.0" y="110.5" width="314" height="45.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RD-uN-jJj">
-                                    <rect key="frame" x="0.0" y="0.0" width="161.5" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="161.5" height="45.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="0RD-uN-jJj" secondAttribute="height" multiplier="139:39" id="GfF-SJ-aFg"/>
                                     </constraints>
@@ -73,7 +73,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yN-a8-TVz">
-                                    <rect key="frame" x="181.5" y="0.0" width="132.5" height="45"/>
+                                    <rect key="frame" x="181.5" y="0.0" width="132.5" height="45.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4yN-a8-TVz" secondAttribute="height" multiplier="38:13" id="lup-FR-dJL"/>
                                     </constraints>
@@ -96,7 +96,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGK-F4-EBs">
-                    <rect key="frame" x="50" y="575.5" width="30" height="30"/>
+                    <rect key="frame" x="50" y="576" width="30" height="30"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>

@@ -3,8 +3,6 @@ import RxSwift
 
 class FeverTempViewController: UIViewController {
     private let viewModel: FeverTempViewModel
-    
-    var scale = ""
 
     @IBOutlet weak var titleLabel: UILabel!
 
@@ -30,38 +28,13 @@ class FeverTempViewController: UIViewController {
     }
     
     @IBAction func scaleButtonAction(_ sender: UIButton) {
-        
-        if scale == "F"{
-            let attributedTextScale = NSMutableAttributedString(string: L10n.Ux.Fever.f, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 35)])
-            
-             attributedTextScale.append(NSMutableAttributedString(string: "/", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40)]))
-            
-            attributedTextScale.append(NSMutableAttributedString(string: L10n.Ux.Fever.c, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 40)]))
-            scaleButtonLabel.setAttributedTitle(attributedTextScale, for: .normal)
-            scale = "C"
-        }
-        else{
-            let attributedTextScale = NSMutableAttributedString(string: L10n.Ux.Fever.f, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 40)])
-            
-             attributedTextScale.append(NSMutableAttributedString(string: "/", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40)]))
-            
-            attributedTextScale.append(NSMutableAttributedString(string: L10n.Ux.Fever.c, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 35)]))
-            scaleButtonLabel.setAttributedTitle(attributedTextScale, for: .normal)
-            scale = "F"
-        }
-        
-        
-        
-
+        viewModel.onTemperatureUnitPress()
     }
     
-    
-    
+
     init(viewModel: FeverTempViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
-        title = viewModel.title
-        UINavigationBar.appearance().titleTextAttributes = [.font: Fonts.robotoRegular]
     }
     
     required init?(coder: NSCoder) {
@@ -77,32 +50,60 @@ class FeverTempViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
-        
-        titleLabel.text = L10n.Ux.Fever.title4
-        skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
-        //daysLabel.text = L10n.Ux.days
-        
-        scale = "F"
-        
-        let attributedTextScale = NSMutableAttributedString(string: L10n.Ux.Fever.f, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 40)])
-        
-         attributedTextScale.append(NSMutableAttributedString(string: "/", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40)]))
-        
-        attributedTextScale.append(NSMutableAttributedString(string: L10n.Ux.Fever.c, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 35)]))
-        scaleButtonLabel.setAttributedTitle(attributedTextScale, for: .normal)
-        scaleButtonLabel.tintColor = .black
-        
-        
-        
-        unknownButtonLabel.setTitle(L10n.Ux.unknown, for: .normal)
-        submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
+        setupStyle()
+        setupText()
+        bindInputs()
+        bindOutputs()
+     }
 
+    private func bindInputs() {
         numberInput.rx.text
-            .distinctUntilChanged()
             .subscribe(onNext: { [viewModel] text in
                 viewModel.onTempChanged(tempStr: text ?? "")
             })
             .disposed(by: disposeBag)
-     }
+    }
+
+    private func bindOutputs() {
+        viewModel.selectedTemperatureUnit
+            .map { toButtonText(unit: $0) }
+            .drive(scaleButtonLabel.rx.attributedTitle())
+            .disposed(by: disposeBag)
+
+        viewModel.temperatureText
+            .drive(numberInput.rx.text)
+            .disposed(by: disposeBag)
+    }
+
+    private func setupStyle() {
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
+        scaleButtonLabel.tintColor = .black
+    }
+
+    private func setupText() {
+        title = viewModel.title
+        titleLabel.text = L10n.Ux.Fever.title4
+        skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
+        unknownButtonLabel.setTitle(L10n.Ux.unknown, for: .normal)
+        submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
+    }
+}
+
+private func toButtonText(unit: TemperatureUnit) -> NSAttributedString {
+    let selectedSize: CGFloat = 40
+    let unSelectedSize: CGFloat = 35
+
+    let (celsiusSize, fahrenheitSize): (CGFloat, CGFloat) = {
+        switch unit {
+        case .celsius: return (selectedSize, unSelectedSize)
+        case .fahrenheit: return (unSelectedSize, selectedSize)
+        }
+    }()
+
+    return attrString(string: L10n.Ux.Fever.f, size: fahrenheitSize) + attrString(string: "/", size: 40)
+        + attrString(string: L10n.Ux.Fever.c, size: celsiusSize)
+}
+
+private func attrString(string: String, size: CGFloat) -> NSAttributedString {
+    NSAttributedString(string: string, attributes: [.font: UIFont.systemFont(ofSize: size)])
 }

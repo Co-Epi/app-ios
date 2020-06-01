@@ -84,6 +84,10 @@ enum UserInput<T> {
     }
 }
 
+enum TemperatureUnit {
+    case celsius, fahrenheit
+}
+
 enum Temperature {
     case celsius(value: Float)
     case fahrenheit(value: Float)
@@ -99,6 +103,19 @@ enum Temperature {
         switch self {
         case .fahrenheit(let value): return value
         case .celsius(let value): return 9 / 5.0 * value + 32
+        }
+    }
+
+    func toUserString() -> String {
+        // Force unwrap since for particular formatter and inputs, there seem to be no cases where it can return nil.
+        // TODO unit tests / confirm
+        NumberFormatters.decimalsMax2.string(from: value)!
+    }
+
+    private var value: Float {
+        switch self {
+        case .celsius(let value): return value
+        case .fahrenheit(let value): return value
         }
     }
 }
