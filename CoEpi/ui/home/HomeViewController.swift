@@ -67,12 +67,23 @@ class HomeViewController: UIViewController {
         
         //setup button labels
         
+        reportButtonLabel.layer.cornerRadius = 15
+        reportButtonLabel.layer.shadowColor = UIColor.black.cgColor
+        reportButtonLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
+        reportButtonLabel.layer.shadowRadius = 4
+        reportButtonLabel.layer.shadowOpacity = 1.0
+        
+        alertButtonLabel.layer.cornerRadius = 15
+        alertButtonLabel.layer.shadowColor = UIColor.black.cgColor
+        alertButtonLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
+        alertButtonLabel.layer.shadowRadius = 4
+        alertButtonLabel.layer.shadowOpacity = 1.0
+        
         howDataUsedLabel.setTitle(L10n.Ux.Home.how, for: .normal)
         
         let attributedTextReport = NSMutableAttributedString(string: L10n.Ux.Home.report1, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)])
         attributedTextReport.append(NSMutableAttributedString(string: L10n.Ux.Home.report2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
         reportButtonLabel.setAttributedTitle(attributedTextReport, for: .normal)
-        
         
         let tempNumbnerOfNotifications = 0 //temp for testing will need to be replaced with checking if new alerts are available
         
@@ -81,7 +92,6 @@ class HomeViewController: UIViewController {
             let attributedTextAlert = NSMutableAttributedString(string: L10n.Ux.Home.alerts1, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)])
             attributedTextAlert.append(NSMutableAttributedString(string: L10n.Ux.Home.alerts2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
             alertButtonLabel.setAttributedTitle(attributedTextAlert, for: .normal)
-            alertButtonLabel.setBackgroundImage(UIImage(named: "healthButton.pdf"), for: .normal)
         }
         else{
             redCircle.isHidden = false
@@ -91,7 +101,6 @@ class HomeViewController: UIViewController {
             attributedTextAlert.append(NSMutableAttributedString(string: L10n.Ux.Home.alerts2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
             
             alertButtonLabel.setAttributedTitle(attributedTextAlert, for: .normal)
-            alertButtonLabel.setBackgroundImage(UIImage(named: "healthButtonLarge.pdf"), for: .normal)
         }
         
         //debug

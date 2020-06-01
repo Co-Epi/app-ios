@@ -71,8 +71,9 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZwQ-hd-n4h">
-                    <rect key="frame" x="20" y="262" width="335" height="142"/>
-                    <state key="normal" title="alerts" backgroundImage="healthButton">
+                    <rect key="frame" x="20" y="154" width="335" height="34"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="alerts">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -80,9 +81,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-CT-5e9">
-                    <rect key="frame" x="20" y="100" width="335" height="142"/>
+                    <rect key="frame" x="20" y="100" width="335" height="34"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
-                    <state key="normal" title="report" backgroundImage="healthButton">
+                    <state key="normal" title="report">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -132,7 +134,6 @@
     </objects>
     <resources>
         <image name="family icon" width="400" height="400"/>
-        <image name="healthButton" width="301" height="142"/>
         <image name="redCircle" width="40" height="40"/>
     </resources>
 </document>
