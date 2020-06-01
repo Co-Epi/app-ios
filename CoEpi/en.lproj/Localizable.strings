@@ -2,9 +2,9 @@
    to regenerate generate/strings.swift.
  */
 
-"alerts.count.none" = "no new contact alerts";
-"alerts.count.one" = "1 new contact alert";
-"alerts.count.some" = "%d new contact alerts";
+"alerts.count.none" = "No new exposure alerts";
+"alerts.count.one" = "1 new exposure alert";
+"alerts.count.some" = "%d new exposure alerts";
 "alerts.title" = "Alerts";
 "alerts.label.no_symptoms_reported" = "No symptoms reported";
 
@@ -79,9 +79,9 @@
 "UX.symptomReport.other" = "I have symptoms that are not on the list";
 
     //thankyou
-"UX.thankyou.title" = "Thank you for saving your symptoms! We will keep you notified about exposures this week.";
-"UX.thankyou.more" = "Log more symptoms";
-"UX.thankyou.viewExposures" = "View exposures";
+"UX.thankyou.title" = "Thank you for logging your symptoms! We will alert if you have any relevant exposures to review.";
+"UX.thankyou.more" = "Update your symptom report";
+"UX.thankyou.viewExposures" = "View exposure alerts";
 "UX.thankyou.home" = "Return to home screen";
 
     // breathless
@@ -122,26 +122,26 @@
 "UX.fever.F" = "Fº";
 
     //onboarding
-"UX.onboarding.title1" = "Track where you’ve been.";
-"UX.onboarding.body1" = "Know if you’ve come in contact with others who may have been contagious based on proximity, arrival times, and departure times.";
+"UX.onboarding.title1" = "Log your interactions";
+"UX.onboarding.body1" = "CoEpi will anonymously log interactions with other devices using compatible apps.";
 "UX.onboarding.title2" = "Monitor your health";
-"UX.onboarding.body2" = "Along with your community, monitor your health, and if relevant, the health of your family. Help in keeping yourself and others safe!";
+"UX.onboarding.body2" = "Share any symptoms you may have, when you notice them.";
 "UX.onboarding.title3" = "Stay informed";
-"UX.onboarding.body3" = "Get contextualized alerts about exposure to transmissible illnesses, including locations and times, giving you time to seek medical attention.";
-"UX.onboarding.title4" = "Collaborate. Inform. Protect.";
-"UX.onboarding.body4" = "Halt the spread of contagious illnesses. View screening tests and results, find the right advice, and above all, understand and stop the spread of disease.";
+"UX.onboarding.body3" = "You will get alerts about potential exposure to individuals with contagious illnesses.";
+"UX.onboarding.title4" = "Collaborate. Share. Protect.";
+"UX.onboarding.body4" = "Help prevent the spread of contagious illnesses. Together, we can make a difference.";
 "UX.onboarding.how" = "How is my data used?";
 "UX.onboarding.next" = "NEXT";
-"UX.onboarding.join" = "Join";
+"UX.onboarding.join" = "Get started";
 "UX.onboarding.questions" = "Frequently asked questions";
 
 
     //homescreen
 "UX.home.title" = "CoEpi";
-"UX.home.report1" = "    My Symptom Report\n\n";
-"UX.home.report2" = "    Track how you are feeling";
+"UX.home.report1" = "    Symptom Reporting\n\n";
+"UX.home.report2" = "    Share how you are feeling";
 "UX.home.alerts1" = "    Exposure Alerts\n\n";
-"UX.home.alerts2" = "    Find out reported alerts \n    around you";
+"UX.home.alerts2" = "    Review your potential exposures";
 "UX.home.detected" = "        new exposures detected\n\n";
 "UX.home.how" = "How is my data being used?";
 
