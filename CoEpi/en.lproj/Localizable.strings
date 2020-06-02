@@ -2,11 +2,27 @@
    to regenerate generate/strings.swift.
  */
 
+
+"alerts.count.none" = "No new contact alerts";
+"alerts.count.one" = "Click the alert to learn more";
+"alerts.count.some" = "Click each alert to learn more";
+"alerts.title" = "";
+"alerts.header" = "Exposure Alerts";
+"alerts.subtitle" = "Click each alert to learn more";
+"alerts.buttonLabel" = "What are exposure alerts?";
+"alerts.moreInfoTitle" = "Exposure Alert";
 "alerts.count.none" = "No new exposure alerts";
 "alerts.count.one" = "1 new exposure alert";
 "alerts.count.some" = "%d new exposure alerts";
 "alerts.title" = "Alerts";
 "alerts.label.no_symptoms_reported" = "No symptoms reported";
+"alerts.label.fever.mild" = "Mild Fever";
+"alerts.label.fever.serious" = "Serious Fever";
+"alerts.label.fever.none" = "No Fever";
+"alerts.label.cough.dry" = "Dry Cough";
+"alerts.label.cough.existing" = "Cough";
+"alerts.label.cough.wet" = "Wet Cough";
+"alerts.label.cough.none" = "No Cough";
 
 "healthquiz.submit" = "SUBMIT";
 "healthquiz.symptomQuestion" = "Are you experiencing any of the following symptoms?";

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertsViewController" customModule="CoEpi" customModuleProvider="target">
             <connections>
+                <outlet property="buttonlabel" destination="pA5-HJ-GFL" id="gTy-U5-V2e"/>
                 <outlet property="contactAlerts" destination="cC3-JH-DHS" id="Tly-gf-NqL"/>
+                <outlet property="subtextLabel" destination="FGr-3c-2gu" id="BeF-pj-q40"/>
                 <outlet property="titleLabel" destination="ots-QD-6oQ" id="58n-Nr-rog"/>
                 <outlet property="updateStatusLabel" destination="yUk-sg-amb" id="a6E-Ro-hPb"/>
                 <outlet property="view" destination="iN0-l3-epB" id="JhA-bB-T6Q"/>
@@ -82,8 +84,8 @@
         </view>
     </objects>
     <resources>
-        <image name="smallOvalButton" width="294" height="34"/>
-        <image name="smallOvalButton_Selected" width="294" height="34"/>
+        <image name="smallOvalButton" width="302" height="42"/>
+        <image name="smallOvalButton_Selected" width="302" height="42"/>
         <namedColor name="CoEpiPurple">
             <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

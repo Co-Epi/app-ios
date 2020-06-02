@@ -9,6 +9,8 @@ class AlertsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contactAlerts: UITableView!
     @IBOutlet weak var updateStatusLabel: UILabel!
+    @IBOutlet weak var subtextLabel: UILabel!
+    @IBOutlet weak var buttonlabel: UIButton!
 
     private let disposeBag = DisposeBag()
 
@@ -31,9 +33,9 @@ class AlertsViewController: UIViewController {
     override func viewDidLoad() {
         setupTableView()
 
-        viewModel.title
-            .drive(titleLabel.rx.text)
-            .disposed(by: disposeBag)
+        buttonlabel.setTitle(L10n.Alerts.buttonLabel, for: .normal)
+        subtextLabel.text = L10n.Alerts.subtitle
+        titleLabel.text = L10n.Alerts.header
 
         viewModel.alerts
             .drive(contactAlerts.rx.items(dataSource: dataSource))

@@ -6,17 +6,11 @@ import os.log
 class AlertsViewModel {
     private let alertRepo: AlertRepo
 
-    let title: Driver<String>
     let alerts: Driver<[AlertViewData]>
     let updateStatusText: Driver<String>
 
     init(alertRepo: AlertRepo) {
         self.alertRepo = alertRepo
-
-        title = alertRepo.alerts
-            .map { AlertsViewModel.formatTitleLabel(count: $0.count) }
-            .startWith(AlertsViewModel.formatTitleLabel(count: 0))
-            .asDriver(onErrorJustReturn: "Alerts")
 
         alerts = alertRepo.alerts
             .map { alerts in alerts.map { $0.toViewData() }}
@@ -38,35 +32,25 @@ class AlertsViewModel {
     func acknowledge(alert: AlertViewData) {
         alertRepo.removeAlert(alert: alert.alert)
     }
-
-    private static func formatTitleLabel(count: Int) -> String {
-        switch count {
-        case 0: return L10n.Alerts.Count.none
-        case 1: return L10n.Alerts.Count.one
-        default: return L10n.Alerts.Count.some(count)
-        }
-    }
 }
 
 private extension FeverSeverity {
-    // TODO localize
     func toLocalizedName() -> String {
         switch self {
-        case .Mild: return L10n.Alerts.Label.noSymptomsReported
-        case .Serious: return L10n.Alerts.Label.noSymptomsReported
-        case .None: return L10n.Alerts.Label.noSymptomsReported
+        case .Mild: return L10n.Alerts.Label.Fever.mild
+        case .Serious: return L10n.Alerts.Label.Fever.serious
+        case .None: return L10n.Alerts.Label.Fever.none
         }
     }
 }
 
 private extension CoughSeverity {
-    // TODO localize
     func toLocalizedName() -> String {
         switch self {
-        case .Dry: return L10n.Alerts.Label.noSymptomsReported
-        case .Existing: return L10n.Alerts.Label.noSymptomsReported
-        case .Wet: return L10n.Alerts.Label.noSymptomsReported
-        case .None: return L10n.Alerts.Label.noSymptomsReported
+        case .Dry: return L10n.Alerts.Label.Cough.dry
+        case .Existing: return L10n.Alerts.Label.Cough.existing
+        case .Wet: return L10n.Alerts.Label.Cough.wet
+        case .None: return L10n.Alerts.Label.Cough.none
         }
     }
 }

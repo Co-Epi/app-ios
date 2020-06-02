@@ -191,7 +191,11 @@ internal enum L10n {
 
   internal enum Alerts {
     /// Alerts
+    internal static let header = L10n.tr("Localizable", "alerts.header")
+    internal static let subtitle = L10n.tr("Localizable", "alerts.subtitle")
+    internal static let buttonLabel = L10n.tr("Localizable", "alerts.buttonLabel")
     internal static let title = L10n.tr("Localizable", "alerts.title")
+    internal static let title2 = L10n.tr("Localizable", "alerts.moreInfoTitle")
     internal enum Count {
       /// no new contact alerts
       internal static let `none` = L10n.tr("Localizable", "alerts.count.none")
@@ -205,6 +209,17 @@ internal enum L10n {
     internal enum Label {
       /// No symptoms reported
       internal static let noSymptomsReported = L10n.tr("Localizable", "alerts.label.no_symptoms_reported")
+        internal enum Fever {
+            internal static let mild = L10n.tr("Localizable", "alerts.label.fever.mild")
+            internal static let serious = L10n.tr("Localizable", "alerts.label.fever.serious")
+            internal static let none = L10n.tr("Localizable", "alerts.label.fever.none")
+        }
+        internal enum Cough {
+            internal static let dry = L10n.tr("Localizable", "alerts.label.cough.dry")
+            internal static let existing = L10n.tr("Localizable", "alerts.label.cough.existing")
+            internal static let wet = L10n.tr("Localizable", "alerts.label.cough.wet")
+            internal static let none = L10n.tr("Localizable", "alerts.label.cough.none")
+        }
     }
   }
 
