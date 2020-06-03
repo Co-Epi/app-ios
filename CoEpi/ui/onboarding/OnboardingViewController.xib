@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,7 +38,7 @@
                     </constraints>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroCard" translatesAutoresizingMaskIntoConstraints="NO" id="s1X-on-vhk">
-                    <rect key="frame" x="0.0" y="228" width="414" height="668"/>
+                    <rect key="frame" x="0.0" y="562" width="414" height="334"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AIZ-9R-DYg">
                     <rect key="frame" x="20" y="812" width="128" height="20"/>
@@ -107,7 +107,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJU-0a-YmX">
-                    <rect key="frame" x="182" y="783" width="212" height="52"/>
+                    <rect key="frame" x="288" y="809" width="106" height="26"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" backgroundImage="SubmitButton_Selected">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,7 +127,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xnb-Z9-ga8">
-                    <rect key="frame" x="20" y="453" width="374" height="283"/>
+                    <rect key="frame" x="20" y="523" width="374" height="213"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-In-5b8">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="29"/>
@@ -142,7 +142,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-TU-JXw">
-                            <rect key="frame" x="0.0" y="113" width="374" height="70"/>
+                            <rect key="frame" x="0.0" y="113" width="374" height="35"/>
                             <state key="normal" title="Button" backgroundImage="onboardingButton">
                                 <color key="titleColor" name="CoEpiPurple"/>
                             </state>
@@ -151,7 +151,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qA-FX-jYw">
-                            <rect key="frame" x="0.0" y="213" width="374" height="70"/>
+                            <rect key="frame" x="0.0" y="178" width="374" height="35"/>
                             <state key="normal" title="Button" backgroundImage="onboardingButton">
                                 <color key="titleColor" name="CoEpiPurple"/>
                             </state>

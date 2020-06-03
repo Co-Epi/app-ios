@@ -36,7 +36,6 @@ class FeverWhereViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
         title = viewModel.title
-        UINavigationBar.appearance().titleTextAttributes = [.font: Fonts.robotoRegular]
     }
     
     required init?(coder: NSCoder) {

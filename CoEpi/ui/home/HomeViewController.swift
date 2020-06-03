@@ -37,7 +37,6 @@ class HomeViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
         self.title = self.viewModel.title
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: Fonts.robotoRegular]
     }
 
     required init?(coder: NSCoder) {
