@@ -34,9 +34,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Bluetooth is required to exchange anonymous 'calling cards' with phones of other participating people</string>
+	<string>Bluetooth is required to exchange anonymous &apos;calling cards&apos; with phones of other participating people</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Bluetooth is required to exchange anonymous 'calling cards' with phones of other participating people</string>
+	<string>Bluetooth is required to exchange anonymous &apos;calling cards&apos; with phones of other participating people</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Regular.ttf</string>
@@ -85,5 +85,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
