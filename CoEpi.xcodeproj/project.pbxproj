@@ -134,6 +134,12 @@
 		84A5C1D12489596400B002E2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1D02489596400B002E2 /* GradientView.swift */; };
 		84A5C1D624896EFF00B002E2 /* WhatAreAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1D424896EFF00B002E2 /* WhatAreAlertsViewController.swift */; };
 		84A5C1D724896EFF00B002E2 /* WhatAreAlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A5C1D524896EFF00B002E2 /* WhatAreAlertsViewController.xib */; };
+		84A5C1DA2489728500B002E2 /* AlertDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1D82489728500B002E2 /* AlertDetailsViewController.swift */; };
+		84A5C1DB2489728500B002E2 /* AlertDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A5C1D92489728500B002E2 /* AlertDetailsViewController.xib */; };
+		84A5C1DD248972F600B002E2 /* AlertDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1DC248972F600B002E2 /* AlertDetailsViewModel.swift */; };
+		84A5C1DF2489739900B002E2 /* AlertDetailsViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1DE2489739900B002E2 /* AlertDetailsViewData.swift */; };
+		84A5C1E124897B5D00B002E2 /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1E024897B5D00B002E2 /* Date+Convenience.swift */; };
+		84A5C1E324897B9500B002E2 /* Alert+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1E224897B9500B002E2 /* Alert+Strings.swift */; };
 		84AC26D7247D3C6F00C93D29 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26D6247D3C6F00C93D29 /* FileSystem.swift */; };
 		84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9C245306E6001908E8 /* NotificationsDelegate.swift */; };
 		84B48A9F24530AAB001908E8 /* RootNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9E24530AAA001908E8 /* RootNav.swift */; };
@@ -350,6 +356,12 @@
 		84A5C1D02489596400B002E2 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		84A5C1D424896EFF00B002E2 /* WhatAreAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAreAlertsViewController.swift; sourceTree = "<group>"; };
 		84A5C1D524896EFF00B002E2 /* WhatAreAlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhatAreAlertsViewController.xib; sourceTree = "<group>"; };
+		84A5C1D82489728500B002E2 /* AlertDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewController.swift; sourceTree = "<group>"; };
+		84A5C1D92489728500B002E2 /* AlertDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertDetailsViewController.xib; sourceTree = "<group>"; };
+		84A5C1DC248972F600B002E2 /* AlertDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewModel.swift; sourceTree = "<group>"; };
+		84A5C1DE2489739900B002E2 /* AlertDetailsViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewData.swift; sourceTree = "<group>"; };
+		84A5C1E024897B5D00B002E2 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
+		84A5C1E224897B9500B002E2 /* Alert+Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Strings.swift"; sourceTree = "<group>"; };
 		84AC26D6247D3C6F00C93D29 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		84B48A9C245306E6001908E8 /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
 		84B48A9E24530AAA001908E8 /* RootNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNav.swift; sourceTree = "<group>"; };
@@ -966,6 +978,8 @@
 				84201697244CA18D000EE281 /* UIView+ActivityIndicator.swift */,
 				849D8AAD247FB8680041FCAB /* UIColor+Theme.swift */,
 				84F186E524814E9100E7979B /* NSAttributedString+Convenience.swift */,
+				84A5C1E024897B5D00B002E2 /* Date+Convenience.swift */,
+				84A5C1E224897B9500B002E2 /* Alert+Strings.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1011,6 +1025,10 @@
 				84D069682455E7C10004E8B6 /* AlertViewData.swift */,
 				84A5C1D424896EFF00B002E2 /* WhatAreAlertsViewController.swift */,
 				84A5C1D524896EFF00B002E2 /* WhatAreAlertsViewController.xib */,
+				84A5C1D82489728500B002E2 /* AlertDetailsViewController.swift */,
+				84A5C1D92489728500B002E2 /* AlertDetailsViewController.xib */,
+				84A5C1DC248972F600B002E2 /* AlertDetailsViewModel.swift */,
+				84A5C1DE2489739900B002E2 /* AlertDetailsViewData.swift */,
 			);
 			path = alerts;
 			sourceTree = "<group>";
@@ -1198,6 +1216,7 @@
 				6291BE77246CB79300984583 /* SymptomStartDaysViewController.xib in Resources */,
 				849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */,
 				622AC3012461DCD700A6EB90 /* FeverWhereViewControllerOther.xib in Resources */,
+				84A5C1DB2489728500B002E2 /* AlertDetailsViewController.xib in Resources */,
 				054A34F2244E61B600282E17 /* swiftgen.yml in Resources */,
 				622AC2F2245FD33200A6EB90 /* FeverWhereViewController.xib in Resources */,
 				622AC2F7245FDA0300A6EB90 /* SymptomReportViewController.xib in Resources */,
@@ -1293,6 +1312,7 @@
 				622AC2E0245FD23A00A6EB90 /* FeverTodayViewModel.swift in Sources */,
 				622AC2D6245FC66800A6EB90 /* CoughHowViewController.swift in Sources */,
 				8484346E2438F441006A5839 /* ApiParamsCenReport.swift in Sources */,
+				84A5C1DA2489728500B002E2 /* AlertDetailsViewController.swift in Sources */,
 				8485025924562353006C7C62 /* AlamofireLogger.swift in Sources */,
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */,
@@ -1301,6 +1321,7 @@
 				848434552438C03C006A5839 /* ErrorView.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,
 				84BF97222427FCFE001ADD6B /* OnboardingViewModel.swift in Sources */,
+				84A5C1DD248972F600B002E2 /* AlertDetailsViewModel.swift in Sources */,
 				622AC2DE245FD22400A6EB90 /* FeverDaysViewModel.swift in Sources */,
 				84A1C0D22437C25B00875DAE /* ReceivedCenReport.swift in Sources */,
 				622AC2E6245FD2C300A6EB90 /* FeverDaysViewController.swift in Sources */,
@@ -1313,6 +1334,7 @@
 				849327BD2452ED45009589E6 /* ReportsHandler.swift in Sources */,
 				84B492222476F7E900FF69AD /* Alert.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
+				84A5C1DF2489739900B002E2 /* AlertDetailsViewData.swift in Sources */,
 				84201696244CA14D000EE281 /* UIView+Rx.swift in Sources */,
 				CE626E102430F0FB000DB8E7 /* UIView+Nib.swift in Sources */,
 				622AC2F9245FDA1300A6EB90 /* SymptomReportViewController.swift in Sources */,
@@ -1335,6 +1357,7 @@
 				622AC2D8245FC67C00A6EB90 /* CoughTypeViewModel.swift in Sources */,
 				84B492182476E0B800FF69AD /* LibResult.swift in Sources */,
 				84201698244CA18D000EE281 /* UIView+ActivityIndicator.swift in Sources */,
+				84A5C1E324897B9500B002E2 /* Alert+Strings.swift in Sources */,
 				CE6B7AC72433279000C42280 /* CENKeyRepo.swift in Sources */,
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
 				622AC2FD2461DC1400A6EB90 /* FeverWhereViewModelOther.swift in Sources */,
@@ -1351,6 +1374,7 @@
 				6291BE7D246D17C100984583 /* OnboardingWireframe.swift in Sources */,
 				849D8AAE247FB8680041FCAB /* UIColor+Theme.swift in Sources */,
 				8498115A2436175500EBD1DA /* CenLogic.swift in Sources */,
+				84A5C1E124897B5D00B002E2 /* Date+Convenience.swift in Sources */,
 				054A34FC244E691500282E17 /* strings.swift in Sources */,
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,

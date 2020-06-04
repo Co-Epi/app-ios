@@ -6,12 +6,14 @@ import Foundation
 
 class AlertsViewModel {
     private let alertRepo: AlertRepo
+    private let nav: RootNav
 
     let alertCells: Driver<[AlertViewDataSection]>
     let updateStatusText: Driver<String>
 
-    init(alertRepo: AlertRepo) {
+    init(alertRepo: AlertRepo, nav: RootNav) {
         self.alertRepo = alertRepo
+        self.nav = nav
 
         alertCells = alertRepo.alerts
             .map { alerts in alerts.toSections() }
@@ -33,6 +35,10 @@ class AlertsViewModel {
 
     func acknowledge(alert: AlertViewData) {
         alertRepo.removeAlert(alert: alert.alert)
+    }
+
+    func onAlertTap(alert: AlertViewData) {
+        nav.navigate(command: .to(destination: .alertDetails(alert: alert.alert)))
     }
 }
 
@@ -64,26 +70,6 @@ private extension Array where Element == Alert {
     }
 }
 
-private extension FeverSeverity {
-    func toSymptomUIString() -> String? {
-        switch self {
-        case .Mild: return L10n.Alerts.Label.Fever.mild
-        case .Serious: return L10n.Alerts.Label.Fever.serious
-        case .None: return nil
-        }
-    }
-}
-
-private extension CoughSeverity {
-    func toSymptomUIString() -> String? {
-        switch self {
-        case .Dry: return L10n.Alerts.Label.Cough.dry
-        case .Existing: return L10n.Alerts.Label.Cough.existing
-        case .Wet: return L10n.Alerts.Label.Cough.wet
-        case .None: return nil
-        }
-    }
-}
 
 private extension Alert {
 
@@ -98,17 +84,9 @@ private extension Alert {
     func toViewData() -> AlertViewData {
         AlertViewData(
             symptoms: symptomListString(),
-            contactTime: DateFormatters.dateHoursMins.string(from: contactTime.toDate()),
+            contactTime: DateFormatters.hoursMins.string(from: contactTime.toDate()),
             alert: self
         )
-    }
-
-    private func breathlessnessUIString() -> String? {
-        if (breathlessness) {
-            return L10n.Alerts.Label.breathlessness
-        } else {
-            return nil
-        }
     }
 }
 
@@ -128,17 +106,5 @@ private extension OperationState {
         case .progress: return "Updating..."
         case .failure(let error): return "Error updating: \(error)"
         }
-    }
-}
-
-private extension Date {
-
-    // Special formatting to add "th" to the day.
-    // TODO test with non-EN langs. Probably needs to differentiate based on locale.
-    func formatMonthOrdinalDay() -> String {
-        let day = Calendar.current.component(.day, from: self)
-        let dayOrdinal = NumberFormatters.ordinal.string(from: NSNumber(value: day))!
-        let month = DateFormatters.month.string(from: self)
-        return "\(month) \(dayOrdinal)"
     }
 }

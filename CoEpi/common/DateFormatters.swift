@@ -1,11 +1,12 @@
 import UIKit
 
 class DateFormatters {
-    static let dateHoursMins = DateHoursMinsFormatter()
+    static let hoursMins = HoursMinsFormatter()
     static let month = MonthFormatter()
+    static let monthDay = MonthDayFormatter()
 }
 
-final class DateHoursMinsFormatter: DateFormatter {
+final class HoursMinsFormatter: DateFormatter {
 
     override init() {
         super.init()
@@ -22,12 +23,23 @@ final class DateHoursMinsFormatter: DateFormatter {
     }
 }
 
-
 final class MonthFormatter: DateFormatter {
 
     override init() {
         super.init()
         dateFormat = "MMM"
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+final class MonthDayFormatter: DateFormatter {
+
+    override init() {
+        super.init()
+        dateFormat = "MMM d"
     }
 
     required init?(coder aDecoder: NSCoder) {

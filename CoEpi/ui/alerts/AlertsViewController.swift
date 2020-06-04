@@ -132,4 +132,9 @@ extension AlertsViewController: UITableViewDelegate {
         }
         return UISwipeActionsConfiguration(actions: [delete])
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = dataSource.sections[indexPath.section].alerts[indexPath.row]
+        viewModel.onAlertTap(alert: alert)
+    }
 }

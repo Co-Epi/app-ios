@@ -26,6 +26,10 @@
 "alerts.label.breathlessness" = "Breathlessness";
 "alerts.label.archive" = "Archive";
 
+"alerts.details.title" = "Exposure Alert";
+"alerts.details.label.symptoms_title" = "Symptoms";
+"alerts.details.label.reported_on" = "Reported on %@ at %@";
+
 "healthquiz.submit" = "SUBMIT";
 "healthquiz.symptomQuestion" = "Are you experiencing any of the following symptoms?";
 "healthquiz.title" = "My Health";

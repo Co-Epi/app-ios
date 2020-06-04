@@ -33,4 +33,5 @@ enum RootNavDestination {
     case symptomReport
     case SymptomStartDays
     case home
+    case alertDetails(alert: Alert)
 }

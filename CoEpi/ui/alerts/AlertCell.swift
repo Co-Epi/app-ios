@@ -9,6 +9,8 @@ class AlertCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+
+        selectionStyle = .none
     }
 
     required init?(coder: NSCoder) {
@@ -57,5 +59,20 @@ class AlertView: UIView {
 
     @IBAction func acknowledge(_ sender: UIButton) {
         onAcknowledged?()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        containerView.backgroundColor = .coEpiLightGray
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        containerView.backgroundColor = .white
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        containerView.backgroundColor = .white
     }
 }

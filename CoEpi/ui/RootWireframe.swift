@@ -78,6 +78,7 @@ class RootWireFrame {
         case .symptomReport: showSymptomReport()
         case .SymptomStartDays: showSymptomStartDays()
         case .home: showHome()
+        case .alertDetails(let alert): showAlertDetails(alert: alert)
         }
     }
 
@@ -103,6 +104,7 @@ class RootWireFrame {
         case .symptomReport: return SymptomReportViewController.self
         case .SymptomStartDays: return SymptomStartDaysViewController.self
         case .home: return HomeViewController.self
+        case .alertDetails: return AlertDetailsViewController.self
         }
     }
 
@@ -204,7 +206,12 @@ class RootWireFrame {
         let symptomStartDaysViewController = SymptomStartDaysViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(symptomStartDaysViewController, animated: true)
     }
-    
+
+    private func showAlertDetails(alert: Alert) {
+        let viewModel: AlertDetailsViewModel = try! container.resolve(arguments: alert)
+        let viewController = AlertDetailsViewController(viewModel: viewModel)
+        rootNavigationController.pushViewController(viewController, animated: true)
+    }
 }
 
 extension UINavigationController {

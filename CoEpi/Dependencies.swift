@@ -43,7 +43,6 @@ class Dependencies {
         container.register(.singleton) { nativeCore as AlertsFetcher }
         container.register(.singleton) { nativeCore as SymptomsInputManager }
         container.register(.singleton) { nativeCore as ObservedTcnsRecorder }
-
     }
 
     private func registerViewModels(container: DependencyContainer) {
@@ -67,10 +66,12 @@ class Dependencies {
         container.register { OnboardingWireframe(container: container) }
         container.register { SymptomStartDaysViewModel(symptomFlowManager: try container.resolve()) }
 
-        container.register { AlertsViewModel(alertRepo: try container.resolve()) }
+        container.register { AlertsViewModel(alertRepo: try container.resolve(),
+                                             nav: try container.resolve()) }
 
         container.register { DebugViewModel(bleAdapter: try container.resolve(),
                                             cenKeyDao: try container.resolve()) }
+        container.register { AlertDetailsViewModel(alert: $0) }
     }
 
     private func registerDaos(container: DependencyContainer) {

@@ -206,6 +206,18 @@ internal enum L10n {
         return L10n.tr("Localizable", "alerts.count.some", p1)
       }
     }
+    internal enum Details {
+      /// Exposure Alert
+      internal static let title = L10n.tr("Localizable", "alerts.details.title")
+      internal enum Label {
+        /// Reported on %@ at %@
+        internal static func reportedOn(_ p1: String, _ p2: String) -> String {
+          return L10n.tr("Localizable", "alerts.details.label.reported_on", p1, p2)
+        }
+        /// Symptoms
+        internal static let symptomsTitle = L10n.tr("Localizable", "alerts.details.label.symptoms_title")
+      }
+    }
     internal enum Label {
       /// Archive
       internal static let archive = L10n.tr("Localizable", "alerts.label.archive")
