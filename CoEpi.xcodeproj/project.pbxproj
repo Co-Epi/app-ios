@@ -131,6 +131,9 @@
 		84A4B9AF242CA5E600516F3B /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9AE242CA5E600516F3B /* RealmProvider.swift */; };
 		84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */; };
 		84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9BB242CE42C00516F3B /* Symptom.swift */; };
+		84A5C1D12489596400B002E2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1D02489596400B002E2 /* GradientView.swift */; };
+		84A5C1D624896EFF00B002E2 /* WhatAreAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1D424896EFF00B002E2 /* WhatAreAlertsViewController.swift */; };
+		84A5C1D724896EFF00B002E2 /* WhatAreAlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A5C1D524896EFF00B002E2 /* WhatAreAlertsViewController.xib */; };
 		84AC26D7247D3C6F00C93D29 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26D6247D3C6F00C93D29 /* FileSystem.swift */; };
 		84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9C245306E6001908E8 /* NotificationsDelegate.swift */; };
 		84B48A9F24530AAB001908E8 /* RootNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9E24530AAA001908E8 /* RootNav.swift */; };
@@ -344,6 +347,9 @@
 		84A4B9B7242CC97600516F3B /* RealmDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDao.swift; sourceTree = "<group>"; };
 		84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRepo.swift; sourceTree = "<group>"; };
 		84A4B9BB242CE42C00516F3B /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
+		84A5C1D02489596400B002E2 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		84A5C1D424896EFF00B002E2 /* WhatAreAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAreAlertsViewController.swift; sourceTree = "<group>"; };
+		84A5C1D524896EFF00B002E2 /* WhatAreAlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhatAreAlertsViewController.xib; sourceTree = "<group>"; };
 		84AC26D6247D3C6F00C93D29 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		84B48A9C245306E6001908E8 /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
 		84B48A9E24530AAA001908E8 /* RootNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNav.swift; sourceTree = "<group>"; };
@@ -906,6 +912,7 @@
 			children = (
 				84EE1C5C2441D72F0055E22B /* Sharer.swift */,
 				84EE1C5E2441DC200055E22B /* ConfirmationAlert.swift */,
+				84A5C1D02489596400B002E2 /* GradientView.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1002,6 +1009,8 @@
 				84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */,
 				84DE6A27243F9AA800CCF4A6 /* AlertView.xib */,
 				84D069682455E7C10004E8B6 /* AlertViewData.swift */,
+				84A5C1D424896EFF00B002E2 /* WhatAreAlertsViewController.swift */,
+				84A5C1D524896EFF00B002E2 /* WhatAreAlertsViewController.xib */,
 			);
 			path = alerts;
 			sourceTree = "<group>";
@@ -1182,6 +1191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8420169D244CA3F1000EE281 /* ActivityIndicatorView.xib in Resources */,
+				84A5C1D724896EFF00B002E2 /* WhatAreAlertsViewController.xib in Resources */,
 				622AC2EE245FD31800A6EB90 /* FeverDaysViewController.xib in Resources */,
 				849DFE752427D37A0008ED65 /* LaunchScreen.storyboard in Resources */,
 				622AC2CE245FC5EF00A6EB90 /* CoughDaysViewController.xib in Resources */,
@@ -1295,6 +1305,7 @@
 				84A1C0D22437C25B00875DAE /* ReceivedCenReport.swift in Sources */,
 				622AC2E6245FD2C300A6EB90 /* FeverDaysViewController.swift in Sources */,
 				848434662438E663006A5839 /* UINotification.swift in Sources */,
+				84A5C1D12489596400B002E2 /* GradientView.swift in Sources */,
 				CE6B7AB3243312FA00C42280 /* CENRepo.swift in Sources */,
 				84F186E624814E9100E7979B /* NSAttributedString+Convenience.swift in Sources */,
 				849327B82452D972009589E6 /* BackgroundTaskScheduler.swift in Sources */,
@@ -1367,6 +1378,7 @@
 				622AC2E4245FD29300A6EB90 /* FeverTempViewModel.swift in Sources */,
 				622AC2E8245FD2DA00A6EB90 /* FeverTodayViewController.swift in Sources */,
 				84A1C0D62437CBBF00875DAE /* RepoError.swift in Sources */,
+				84A5C1D624896EFF00B002E2 /* WhatAreAlertsViewController.swift in Sources */,
 				84FA01002427ED5E00318104 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

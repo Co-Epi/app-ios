@@ -207,6 +207,10 @@ internal enum L10n {
       }
     }
     internal enum Label {
+      /// Archive
+      internal static let archive = L10n.tr("Localizable", "alerts.label.archive")
+      /// Breathlessness
+      internal static let breathlessness = L10n.tr("Localizable", "alerts.label.breathlessness")
       /// No symptoms reported
       internal static let noSymptomsReported = L10n.tr("Localizable", "alerts.label.no_symptoms_reported")
         internal enum Fever {

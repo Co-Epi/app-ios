@@ -31,13 +31,15 @@ class AlertsViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background_white.png"))
+
         setupTableView()
 
         buttonlabel.setTitle(L10n.Alerts.buttonLabel, for: .normal)
         subtextLabel.text = L10n.Alerts.subtitle
         titleLabel.text = L10n.Alerts.header
 
-        viewModel.alerts
+        viewModel.alertCells
             .drive(contactAlerts.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
@@ -55,39 +57,79 @@ class AlertsViewController: UIViewController {
     }
 
     private func setupTableView() {
-        contactAlerts.rowHeight = UITableView.automaticDimension
-
-        contactAlerts.addSubview(refreshControl)
-        contactAlerts.estimatedRowHeight = 120
         contactAlerts.register(cellClass: AlertCell.self)
+
+        contactAlerts.rowHeight = UITableView.automaticDimension
+        contactAlerts.estimatedRowHeight = 20
+        
+        contactAlerts.addSubview(refreshControl)
+    }
+
+    @IBAction func onWhatAreAlertsPress(_ sender: Any) {
+        let viewController = WhatAreAlertsViewController()
+        present(viewController, animated: true, completion: nil)
     }
 }
 
 class AlertsDataSource: NSObject, RxTableViewDataSourceType {
-    private var alerts: [AlertViewData] = []
+    private(set) var sections: [AlertViewDataSection] = []
     public var onAcknowledged: ((AlertViewData) -> ())?
 
-    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[AlertViewData]>) {
-        if case let .next(alerts) = observedEvent {
-            self.alerts = alerts
+    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[AlertViewDataSection]>) {
+        if case let .next(sections) = observedEvent {
+            self.sections = sections
             tableView.reloadData()
         }
     }
 }
 
 extension AlertsDataSource: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        alerts.count
+        sections[section].alerts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeue(cellClass: AlertCell.self, forIndexPath: indexPath)
         guard let alertCell = cell as? AlertCell else { return cell }
 
-        let alert: AlertViewData = alerts[indexPath.row]
+        let alert: AlertViewData = sections[indexPath.section].alerts[indexPath.row]
         alertCell.setAlert(alert: alert)
         alertCell.onAcknowledged = onAcknowledged
 
         return alertCell
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        sections.count
+    }
+}
+
+extension AlertsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
+        let label = UILabel(frame: CGRect(x: 38, y: 5, width: 0, height: 0))
+        label.backgroundColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textColor = .coEpiPurple
+        label.text = dataSource.sections[section].header
+        label.sizeToFit()
+        view.addSubview(label)
+        view.backgroundColor = .clear
+        return view
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        30
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive,
+                                        title: L10n.Alerts.Label.archive) { [viewModel, dataSource]
+            (action, view, actionPerformed: (Bool) -> Void) in
+            viewModel.acknowledge(alert: dataSource.sections[indexPath.section].alerts[indexPath.row])
+        }
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }

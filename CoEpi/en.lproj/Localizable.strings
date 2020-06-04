@@ -23,6 +23,8 @@
 "alerts.label.cough.existing" = "Cough";
 "alerts.label.cough.wet" = "Wet Cough";
 "alerts.label.cough.none" = "No Cough";
+"alerts.label.breathlessness" = "Breathlessness";
+"alerts.label.archive" = "Archive";
 
 "healthquiz.submit" = "SUBMIT";
 "healthquiz.symptomQuestion" = "Are you experiencing any of the following symptoms?";

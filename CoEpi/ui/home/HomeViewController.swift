@@ -53,8 +53,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_purple.png")!)
+
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background_purple"))
         
         let paragraphStyle = NSMutableParagraphStyle()
 
