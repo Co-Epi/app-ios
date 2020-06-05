@@ -8,16 +8,15 @@ class DebugViewModel {
 
     private let disposeBag = DisposeBag()
 
-    init(bleAdapter: BleAdapter, cenKeyDao: CENKeyDao) {
+    init(bleAdapter: BleAdapter) {
         let combined = Observable.combineLatest(
-            cenKeyDao.generatedMyKey.distinctUntilChanged().asSequence(),
-            bleAdapter.myCen.distinctUntilChanged().asSequence(),
+            bleAdapter.myTcn.distinctUntilChanged().asSequence(),
             bleAdapter.discovered.distinctUntilChanged().asSequence().map { $0.distinct() }
         )
 
         debugEntries = combined
-            .map { myKey, myCen, discovered in
-                return generateItems(myKey: myKey, myCen: myCen, discovered: discovered)
+            .map { myTcn, discovered in
+                return generateItems(myTcn: myTcn, discovered: discovered)
             }
             .asDriver(onErrorJustReturn: [])
     }
@@ -28,9 +27,8 @@ enum DebugEntryViewData {
     case Item(String)
 }
 
-private func generateItems(myKey: [String], myCen: [String], discovered: [Data]) -> [DebugEntryViewData] {
-    return items(header: "My key", items: myKey)
-        + items(header: "My CEN", items: myCen)
+private func generateItems(myTcn: [String], discovered: [Data]) -> [DebugEntryViewData] {
+    items(header: "My TCN", items: myTcn)
         + items(header: "Discovered", items: discovered.map { $0.toHex() })
 }
 

@@ -1,4 +1,5 @@
 import Foundation
+import CryptoSwift
 
 protocol AlertsFetcher {
     func fetchNewAlerts() -> Result<[Alert], ServicesError>
@@ -31,6 +32,10 @@ protocol ServicesBootstrapper {
 
 protocol ObservedTcnsRecorder {
     func recordTcn(tcn: Data) -> Result<(), ServicesError>
+}
+
+protocol TcnGenerator {
+    func generateTcn() -> Result<Data, ServicesError>
 }
 
 extension NativeCore: ServicesBootstrapper {
@@ -310,6 +315,15 @@ extension NativeCore: SymptomsInputManager {
     }
 }
 
+extension NativeCore: TcnGenerator {
+    func generateTcn() -> Result<Data, ServicesError> {
+        guard let resultValue: Unmanaged<CFString> = generate_tcn() else {
+            return libraryFailure()
+        }
+        let tcnHex = resultValue.takeRetainedValue() as String
+        return .success(Data(hex: tcnHex))
+    }
+}
 
 private extension UserInput {
 

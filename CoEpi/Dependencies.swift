@@ -43,6 +43,8 @@ class Dependencies {
         container.register(.singleton) { nativeCore as AlertsFetcher }
         container.register(.singleton) { nativeCore as SymptomsInputManager }
         container.register(.singleton) { nativeCore as ObservedTcnsRecorder }
+        container.register(.singleton) { nativeCore as TcnGenerator }
+
     }
 
     private func registerViewModels(container: DependencyContainer) {
@@ -69,8 +71,7 @@ class Dependencies {
         container.register { AlertsViewModel(alertRepo: try container.resolve(),
                                              nav: try container.resolve()) }
 
-        container.register { DebugViewModel(bleAdapter: try container.resolve(),
-                                            cenKeyDao: try container.resolve()) }
+        container.register { DebugViewModel(bleAdapter: try container.resolve()) }
         container.register { AlertDetailsViewModel(alert: $0) }
     }
 
@@ -79,8 +80,6 @@ class Dependencies {
         container.register(.singleton) { RealmAlertDao(realmProvider: try container.resolve()) as AlertDao }
         container.register(.singleton) { RealmCENDao(realmProvider: try container.resolve()) as CENDao }
         container.register(.eagerSingleton) { RealmCENReportDao(realmProvider: try container.resolve()) as CENReportDao }
-        container.register(.singleton) { RealmCENKeyDao(realmProvider: try container.resolve(),
-                                                        cenLogic: try container.resolve()) as CENKeyDao }
     }
 
     private func registerRepos(container: DependencyContainer) {
@@ -88,12 +87,9 @@ class Dependencies {
         container.register(.singleton) { AlertRepoImpl(alertsFetcher: try container.resolve(),
                                                        alertDao: try container.resolve()) as AlertRepo }
         container.register(.singleton) { CENRepoImpl(cenDao: try container.resolve()) as CENRepo }
-        container.register(.singleton) { CENKeyRepoImpl(cenKeyDao: try container.resolve()) as CENKeyRepo }
     }
 
     private func registerServices(container: DependencyContainer) {
-        container.register(.singleton) { ContactReceivedHandler(cenKeyRepo: try container.resolve(),
-                                                                cenLogic: try container.resolve()) }
         container.register(.singleton) { AppBadgeUpdaterImpl() as AppBadgeUpdater }
         container.register(.singleton) { NotificationShowerImpl() as NotificationShower }
 
@@ -109,7 +105,6 @@ class Dependencies {
 
 
     private func registerLogic(container: DependencyContainer) {
-        container.register(.singleton) { CenLogic() }
 //        container.register(.eagerSingleton) { AlertNotificationsShower(alertsRepo: try container.resolve()) }
     }
 
@@ -117,8 +112,6 @@ class Dependencies {
         container.register(.eagerSingleton) { ScannedCensHandler(bleAdapter: try container.resolve(),
                                                                  tcnsRecorder: try container.resolve())}
         container.register(.eagerSingleton) { PeriodicAlertsFetcher(alertRepo: try container.resolve()) }
-        container.register(.singleton) { CenMatcherImpl(cenRepo: try container.resolve(),
-                                                        cenLogic: try container.resolve()) as CenMatcher }
         container.register(.singleton) { MatchingReportsHandlerImpl(reportsDao: try container.resolve(),
                                                                    notificationShower: try container.resolve(),
                                                                    appBadgeUpdater: try container.resolve())
@@ -132,7 +125,7 @@ class Dependencies {
     }
 
     private func registerBle(container: DependencyContainer) {
-        container.register(.eagerSingleton) { BleAdapter(cenReadHandler: try container.resolve()) }
+        container.register(.eagerSingleton) { BleAdapter(tcnGenerator: try container.resolve()) }
     }
 
     private func registerSystem(container: DependencyContainer) {
