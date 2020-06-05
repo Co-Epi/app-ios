@@ -14,10 +14,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSo-Tk-Lk4">
-                    <rect key="frame" x="0.0" y="37.5" width="414" height="42"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSo-Tk-Lk4">
+                    <rect key="frame" x="0.0" y="37" width="414" height="34"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="42" id="vtT-dI-Lg1"/>
+                        <constraint firstAttribute="height" constant="34" id="vtT-dI-Lg1"/>
                     </constraints>
                     <state key="normal" title="Button">
                         <color key="titleColor" name="CoEpiPurple"/>
@@ -33,8 +33,9 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="pSo-Tk-Lk4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Fal-zn-PKl"/>
+                <constraint firstAttribute="bottomMargin" secondItem="pSo-Tk-Lk4" secondAttribute="bottom" constant="5" id="W8a-Zs-pgA"/>
+                <constraint firstItem="pSo-Tk-Lk4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="5" id="i2n-D8-nK8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pSo-Tk-Lk4" secondAttribute="trailing" id="ofl-yK-POK"/>
-                <constraint firstItem="pSo-Tk-Lk4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wKd-K0-BiF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

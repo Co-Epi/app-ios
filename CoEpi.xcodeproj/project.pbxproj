@@ -63,6 +63,7 @@
 		62A334AD2476CED600CF4B25 /* SymptomRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A334AC2476CED600CF4B25 /* SymptomRouter.swift */; };
 		62A334AF2476CEEA00CF4B25 /* SymptomStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A334AE2476CEEA00CF4B25 /* SymptomStep.swift */; };
 		62B9A01F2434036A00885519 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugViewModel.swift */; };
+		700BA90C2489685400BE8F30 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BA90B2489685400BE8F30 /* ButtonStyles.swift */; };
 		841D39A0244E3EE200A9CD64 /* StartPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D399F244E3EE200A9CD64 /* StartPermissions.swift */; };
 		84201691244B21FF000EE281 /* UnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201690244B21FF000EE281 /* UnixTime.swift */; };
 		84201694244C901C000EE281 /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = 84201693244C901C000EE281 /* Action */; };
@@ -283,6 +284,7 @@
 		62A334AA2476CEC100CF4B25 /* SymptomInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomInputManager.swift; sourceTree = "<group>"; };
 		62A334AC2476CED600CF4B25 /* SymptomRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRouter.swift; sourceTree = "<group>"; };
 		62A334AE2476CEEA00CF4B25 /* SymptomStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStep.swift; sourceTree = "<group>"; };
+		700BA90B2489685400BE8F30 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		840405D6246C50C7008048BF /* Rust-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Rust-Bridging-Header.h"; sourceTree = "<group>"; };
 		841D399F244E3EE200A9CD64 /* StartPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPermissions.swift; sourceTree = "<group>"; };
 		84201690244B21FF000EE281 /* UnixTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTime.swift; sourceTree = "<group>"; };
@@ -590,6 +592,14 @@
 			);
 			name = Navigation;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		700BA90A2489682A00BE8F30 /* styles */ = {
+			isa = PBXGroup;
+			children = (
+				700BA90B2489685400BE8F30 /* ButtonStyles.swift */,
+			);
+			path = styles;
 			sourceTree = "<group>";
 		};
 		841D399E244E3EAF00A9CD64 /* permissions */ = {
@@ -919,6 +929,7 @@
 		84FA00F82427EC4300318104 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				700BA90A2489682A00BE8F30 /* styles */,
 				622AC2F5245FD9BD00A6EB90 /* symptomReport */,
 				8420169B244CA3D9000EE281 /* activity indicator */,
 				841D399E244E3EAF00A9CD64 /* permissions */,
@@ -1357,6 +1368,7 @@
 				84F93BF42451BF8900B5F54D /* BackgroundTask.swift in Sources */,
 				84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */,
 				84E2D480247EF67500D1E6BF /* AlertDao.swift in Sources */,
+				700BA90C2489685400BE8F30 /* ButtonStyles.swift in Sources */,
 				849327B12452D8EB009589E6 /* BackgroundTasksManager.swift in Sources */,
 				848434592438C28A006A5839 /* UIView+Autolayout.swift in Sources */,
 				8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */,

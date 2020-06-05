@@ -66,17 +66,8 @@ class HomeViewController: UIViewController {
         
         //setup button labels
         
-        reportButtonLabel.layer.cornerRadius = 15
-        reportButtonLabel.layer.shadowColor = UIColor.black.cgColor
-        reportButtonLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
-        reportButtonLabel.layer.shadowRadius = 4
-        reportButtonLabel.layer.shadowOpacity = 1.0
-        
-        alertButtonLabel.layer.cornerRadius = 15
-        alertButtonLabel.layer.shadowColor = UIColor.black.cgColor
-        alertButtonLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
-        alertButtonLabel.layer.shadowRadius = 4
-        alertButtonLabel.layer.shadowOpacity = 1.0
+        ButtonStyles.applyStyleHomeCard(to: reportButtonLabel)
+        ButtonStyles.applyStyleHomeCard(to: alertButtonLabel)
         
         howDataUsedLabel.setTitle(L10n.Ux.Home.how, for: .normal)
         

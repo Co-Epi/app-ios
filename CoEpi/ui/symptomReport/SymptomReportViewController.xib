@@ -30,13 +30,13 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIo-kZ-PQ7">
                     <rect key="frame" x="269" y="751" width="97" height="36"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="2qD-JH-d2f"/>
                         <constraint firstAttribute="width" constant="97" id="hMC-a6-EQs"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <state key="normal" title="SUBMIT" backgroundImage="smallOvalButton_Selected">
+                    <state key="normal" title="SUBMIT">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -83,7 +83,6 @@
         </view>
     </objects>
     <resources>
-        <image name="smallOvalButton_Selected" width="302" height="42"/>
         <namedColor name="CoEpiPurple">
             <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

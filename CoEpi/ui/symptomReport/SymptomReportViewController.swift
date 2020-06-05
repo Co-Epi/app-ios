@@ -54,13 +54,14 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
 
         // TODO clarify (global) button styles
         viewModel.submitButtonEnabled
-            .map { $0 ? .systemIndigo : .lightGray }
+            .map{ $0 ? .systemBlue : .lightGray }
             .drive(submitButton.rx.backgroundColor)
             .disposed(by: disposeBag)
 
         symptomQuestionHeader.text = L10n.Healthquiz.symptomQuestion
         subHeader.text = "Select all that apply" // TODO localize
         submitButton.setTitle(L10n.Healthquiz.submit, for: .normal)
+        ButtonStyles.applyStyleRoundedEnds(to: submitButton)
      }
 }
 

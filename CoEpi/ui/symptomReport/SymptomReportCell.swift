@@ -43,16 +43,11 @@ class SymptomView: UIView {
     public func setQuestion(question: SymptomViewData) {
         self.question = question
         button.setTitle(question.text, for: .normal)
-
-        let (imageName, fg): (String, UIColor) = {
-            if question.checked {
-                return ("smallOvalButton_Selected", .white)
-            } else {
-                return ("smallOvalButton", .coEpiPurple)
-            }
-        }()
-        button.setBackgroundImage(UIImage(named: imageName), for: .normal)
-        button.setTitleColor(fg, for: .normal)
+        if question.checked{
+            ButtonStyles.applyStyleSelectedButton(to: button)
+        } else {
+            ButtonStyles.applyStyleUnselectedButton(to: button)
+        }
     }
 
     @IBAction func onSymptomTap(_ sender: UIButton) {
