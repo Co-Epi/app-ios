@@ -46,7 +46,7 @@ class RootWireFrame {
         }
         
         let wireFrame: OnboardingWireframe = try! container.resolve()
-        wireFrame.showIfNeeded(parent: parent)
+        wireFrame.showOnboarding(parent: parent)
         onboardingWireframe = wireFrame
         keyValueStore.putBool(key: .seenOnboarding, value: true)
     }

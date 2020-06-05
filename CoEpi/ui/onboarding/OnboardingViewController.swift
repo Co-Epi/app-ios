@@ -1,13 +1,16 @@
 import UIKit
 import SafariServices
 
+// TODO refactor this file
+
 class OnboardingViewController: UIViewController {
     private let viewModel: OnboardingViewModel
     
     var state = 0
     
-    @IBOutlet weak var introCard: UIImageView!
-    
+    @IBOutlet weak var introCard: UIView!
+    @IBOutlet weak var introCardHeight: NSLayoutConstraint!
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
     
@@ -98,14 +101,15 @@ class OnboardingViewController: UIViewController {
         questionsButtonLabel.setTitle(L10n.Ux.Onboarding.questions, for: .normal)
         
         state = 1
+
         updateState(state: state)
-        
     }
-    
     
     func updateState(state: Int){
         if state == 1{
-            introCard.image = UIImage(named: "IntroCard.pdf")
+            introCard.layer.cornerRadius = 40
+            introCardHeight.constant = 384
+
             titleLabel.text = L10n.Ux.Onboarding.title1
             bodyLabel.text = L10n.Ux.Onboarding.body1
             
@@ -119,7 +123,8 @@ class OnboardingViewController: UIViewController {
             questionsButtonLabel.isHidden = true
         }
         else if state == 2{
-            introCard.image = UIImage(named: "IntroCard.pdf")
+            introCard.layer.cornerRadius = 40
+            introCardHeight.constant = 384
             titleLabel.text = L10n.Ux.Onboarding.title2
             bodyLabel.text = L10n.Ux.Onboarding.body2
             
@@ -133,7 +138,8 @@ class OnboardingViewController: UIViewController {
             questionsButtonLabel.isHidden = true
         }
         else if state == 3{
-            introCard.image = UIImage(named: "IntroCard.pdf")
+            introCard.layer.cornerRadius = 40
+            introCardHeight.constant = 384
             titleLabel.text = L10n.Ux.Onboarding.title3
             bodyLabel.text = L10n.Ux.Onboarding.body3
             
@@ -147,7 +153,9 @@ class OnboardingViewController: UIViewController {
             questionsButtonLabel.isHidden = true
         }
         else if state == 4{
-            introCard.image = UIImage(named: "IntroCardLarge.pdf")
+            introCard.layer.cornerRadius = 40
+            introCardHeight.constant = 549
+
             titleLabel.text = L10n.Ux.Onboarding.title4
             bodyLabel.text = L10n.Ux.Onboarding.body4
             

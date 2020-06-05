@@ -12,7 +12,7 @@ class OnboardingWireframe {
         self.container = container
     }
     
-    func showIfNeeded(parent: UIViewController) {
+    func showOnboarding(parent: UIViewController) {
         
         guard let viewModel: OnboardingViewModel = try? container.resolve() else { return }
 

@@ -12,7 +12,8 @@
             <connections>
                 <outlet property="bodyLabel" destination="VEa-7K-qHA" id="GKa-6S-csM"/>
                 <outlet property="howUsedButtonLabel" destination="mE0-zO-cXq" id="YJx-Ej-0U9"/>
-                <outlet property="introCard" destination="s1X-on-vhk" id="Jrf-ub-2Oo"/>
+                <outlet property="introCard" destination="mqJ-EG-pXH" id="UGc-8U-Fyu"/>
+                <outlet property="introCardHeight" destination="XkV-1U-CRc" id="N4l-N5-xqf"/>
                 <outlet property="joinButtonLabel" destination="eEK-TU-JXw" id="H8V-ce-gj6"/>
                 <outlet property="nextButtonLabel" destination="ZJU-0a-YmX" id="AmI-at-piE"/>
                 <outlet property="questionsButtonLabel" destination="3qA-FX-jYw" id="mLE-if-HLT"/>
@@ -37,9 +38,13 @@
                         <constraint firstAttribute="height" constant="60" id="Ynf-6A-xIN"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroCard" translatesAutoresizingMaskIntoConstraints="NO" id="s1X-on-vhk">
-                    <rect key="frame" x="0.0" y="562" width="414" height="334"/>
-                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqJ-EG-pXH">
+                    <rect key="frame" x="0.0" y="562" width="414" height="384"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="384" id="XkV-1U-CRc"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AIZ-9R-DYg">
                     <rect key="frame" x="20" y="812" width="128" height="20"/>
                     <subviews>
@@ -168,15 +173,15 @@
                 <constraint firstItem="Z0t-UF-4jK" firstAttribute="trailing" secondItem="xnb-Z9-ga8" secondAttribute="trailing" constant="20" id="3Yr-dK-TYx"/>
                 <constraint firstItem="5n3-jR-46C" firstAttribute="centerX" secondItem="iXh-Fy-kOz" secondAttribute="centerX" id="53L-ui-QIb"/>
                 <constraint firstItem="AIZ-9R-DYg" firstAttribute="leading" secondItem="Z0t-UF-4jK" secondAttribute="leading" constant="20" id="OgB-Bc-N35"/>
-                <constraint firstItem="s1X-on-vhk" firstAttribute="bottom" secondItem="iXh-Fy-kOz" secondAttribute="bottom" id="T9s-6j-cmj"/>
                 <constraint firstItem="Z0t-UF-4jK" firstAttribute="trailing" secondItem="ZJU-0a-YmX" secondAttribute="trailing" constant="20" id="Xaw-cx-z7k"/>
-                <constraint firstItem="s1X-on-vhk" firstAttribute="trailing" secondItem="iXh-Fy-kOz" secondAttribute="trailing" id="eBK-OT-Z78"/>
                 <constraint firstItem="AIZ-9R-DYg" firstAttribute="top" secondItem="mE0-zO-cXq" secondAttribute="bottom" constant="20" id="kbt-oR-nfm"/>
                 <constraint firstItem="mE0-zO-cXq" firstAttribute="leading" secondItem="Z0t-UF-4jK" secondAttribute="leading" constant="20" id="m6O-Xq-HzP"/>
+                <constraint firstAttribute="bottom" secondItem="mqJ-EG-pXH" secondAttribute="bottom" constant="-50" id="szU-QB-bAD"/>
+                <constraint firstItem="mqJ-EG-pXH" firstAttribute="leading" secondItem="iXh-Fy-kOz" secondAttribute="leading" id="t2K-g5-Pst"/>
                 <constraint firstItem="mE0-zO-cXq" firstAttribute="top" secondItem="xnb-Z9-ga8" secondAttribute="bottom" constant="30" id="t9n-Zf-v9F"/>
                 <constraint firstItem="Z0t-UF-4jK" firstAttribute="bottom" secondItem="AIZ-9R-DYg" secondAttribute="bottom" constant="30" id="tnF-oV-usf"/>
+                <constraint firstAttribute="trailing" secondItem="mqJ-EG-pXH" secondAttribute="trailing" id="uCK-6J-bKT"/>
                 <constraint firstItem="xnb-Z9-ga8" firstAttribute="leading" secondItem="Z0t-UF-4jK" secondAttribute="leading" constant="20" id="vQd-0G-Dkj"/>
-                <constraint firstItem="s1X-on-vhk" firstAttribute="leading" secondItem="iXh-Fy-kOz" secondAttribute="leading" id="vQe-Zd-NY6"/>
                 <constraint firstItem="5n3-jR-46C" firstAttribute="top" secondItem="Z0t-UF-4jK" secondAttribute="top" constant="20" id="vTX-Na-5Yi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Z0t-UF-4jK"/>
@@ -184,7 +189,6 @@
         </view>
     </objects>
     <resources>
-        <image name="IntroCard" width="375" height="334"/>
         <image name="SubmitButton_Selected" width="106" height="26"/>
         <image name="family icon" width="400" height="400"/>
         <image name="onboardingButton" width="321" height="35"/>
