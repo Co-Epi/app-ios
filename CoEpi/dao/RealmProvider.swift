@@ -5,7 +5,7 @@ class RealmProvider {
 
     init() {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 1, // Increase when schema changes
+            schemaVersion: 2, // Increase when schema changes
             migrationBlock: { migration, oldSchemaVersion in }
         )
     }

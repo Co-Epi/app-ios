@@ -134,6 +134,7 @@ class NativeCore: AlertsFetcher {
                     // UInt64 can be safely converted to Int64 for unix time.
                     // Consider using UInt64 here too, for consistency.
                     contactTime: UnixTime.init(value: Int64($0.contact_time)),
+                    reportTime: UnixTime.init(value: Int64($0.report_time)),
                     earliestSymptomTime: $0.report.earliest_symptom_time.toUserInput(),
                     feverSeverity: $0.report.fever_severity,
                     coughSeverity: $0.report.cough_severity,
@@ -333,6 +334,7 @@ private extension UserInput where T == Bool {
 private struct NativeAlert: Decodable {
     let id: String
     let report: CorePublicReport
+    let report_time: UInt64
     let contact_time: UInt64
 }
 

@@ -25,10 +25,7 @@ private extension Alert {
         AlertDetailsViewData(
             title: contactTime.toDate().formatMonthOrdinalDay(),
             contactTime: DateFormatters.hoursMins.string(from: contactTime.toDate()),
-
-            // TODO Rust: send report time
-            reportTime: formatReportTime(date: contactTime.toDate()),
-
+            reportTime: formatReportTime(date: reportTime.toDate()),
             symptoms: symptomListString(),
             alert: self
         )
