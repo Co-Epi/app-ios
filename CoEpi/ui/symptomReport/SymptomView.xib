@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SymptomView" customModule="CoEpi" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSo-Tk-Lk4">
-                    <rect key="frame" x="0.0" y="37" width="414" height="34"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSo-Tk-Lk4">
+                    <rect key="frame" x="10" y="12" width="394" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="vtT-dI-Lg1"/>
                     </constraints>
@@ -32,17 +32,17 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="pSo-Tk-Lk4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Fal-zn-PKl"/>
-                <constraint firstAttribute="bottomMargin" secondItem="pSo-Tk-Lk4" secondAttribute="bottom" constant="5" id="W8a-Zs-pgA"/>
-                <constraint firstItem="pSo-Tk-Lk4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="5" id="i2n-D8-nK8"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pSo-Tk-Lk4" secondAttribute="trailing" id="ofl-yK-POK"/>
+                <constraint firstItem="pSo-Tk-Lk4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="Fal-zn-PKl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pSo-Tk-Lk4" secondAttribute="bottom" constant="12" id="VgM-kW-uqp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pSo-Tk-Lk4" secondAttribute="trailing" constant="10" id="ofl-yK-POK"/>
+                <constraint firstItem="pSo-Tk-Lk4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="sOd-Vp-teD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="button" destination="pSo-Tk-Lk4" id="1jj-xb-gRe"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="-122.20982142857142"/>
+            <point key="canvasLocation" x="131.8840579710145" y="-113.83928571428571"/>
         </view>
     </objects>
     <resources>
