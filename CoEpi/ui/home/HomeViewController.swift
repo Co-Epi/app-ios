@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
 
         paragraphStyle.lineHeightMultiple = 1.07
         
-        let share = UIBarButtonItem(title: L10n.Home.share, style: .plain, target: self, action: #selector(share(sender:)))
+        let share = UIBarButtonItem(title: L10n.Ux.Home.share, style: .plain, target: self, action: #selector(share(sender:)))
         share.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = share
         
@@ -96,7 +96,7 @@ class HomeViewController: UIViewController {
         //debug
         versionLabel.text = getVersionNumber()
         buildLabel.text = getBuildNumber()
-        debugButton.setTitle(L10n.Home.Footer.debug, for: .normal)
+        debugButton.setTitle(L10n.Ux.Home.Footer.debug, for: .normal)
     }
     
     private func getVersionNumber() -> String{
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
             fatalError("Failed to read bundle version")
         }
         print("Version : \(version)");
-        return "\(L10n.Home.Footer.version): \(version)"
+        return "\(L10n.Ux.Home.Footer.version): \(version)"
     }
     
     private func getBuildNumber() -> String {
@@ -114,6 +114,6 @@ class HomeViewController: UIViewController {
             fatalError("Failed to read build number")
         }
         print("Build : \(build)")
-        return "\(L10n.Home.Footer.build): \(build)"
+        return "\(L10n.Ux.Home.Footer.build): \(build)"
     }
 }

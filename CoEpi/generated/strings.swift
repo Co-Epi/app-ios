@@ -96,43 +96,53 @@ internal enum L10n {
     internal enum Home {
       ///     Exposure Alerts\n\n
       internal static let alerts1 = L10n.tr("Localizable", "UX.home.alerts1")
-      ///     Find out reported alerts \n    around you
+      ///     Review your potential exposures
       internal static let alerts2 = L10n.tr("Localizable", "UX.home.alerts2")
       ///         new exposures detected\n\n
       internal static let detected = L10n.tr("Localizable", "UX.home.detected")
       /// How is my data being used?
       internal static let how = L10n.tr("Localizable", "UX.home.how")
-      ///     My Symptom Report\n\n
+      ///     Symptom Reporting\n\n
       internal static let report1 = L10n.tr("Localizable", "UX.home.report1")
-      ///     Track how you are feeling
+      ///     Share how you are feeling
       internal static let report2 = L10n.tr("Localizable", "UX.home.report2")
+      /// Share
+      internal static let share = L10n.tr("Localizable", "UX.home.share")
       /// CoEpi
       internal static let title = L10n.tr("Localizable", "UX.home.title")
+      internal enum Footer {
+        /// Build
+        internal static let build = L10n.tr("Localizable", "UX.home.footer.build")
+        /// Debug
+        internal static let debug = L10n.tr("Localizable", "UX.home.footer.debug")
+        /// Version
+        internal static let version = L10n.tr("Localizable", "UX.home.footer.version")
+      }
     }
     internal enum Onboarding {
-      /// Know if you’ve come in contact with others who may have been contagious based on proximity, arrival times, and departure times.
+      /// CoEpi will anonymously log interactions with other devices using compatible apps.
       internal static let body1 = L10n.tr("Localizable", "UX.onboarding.body1")
-      /// Along with your community, monitor your health, and if relevant, the health of your family. Help in keeping yourself and others safe!
+      /// Share any symptoms you may have, when you notice them.
       internal static let body2 = L10n.tr("Localizable", "UX.onboarding.body2")
-      /// Get contextualized alerts about exposure to transmissible illnesses, including locations and times, giving you time to seek medical attention.
+      /// You will get alerts about potential exposure to individuals with contagious illnesses.
       internal static let body3 = L10n.tr("Localizable", "UX.onboarding.body3")
-      /// Halt the spread of contagious illnesses. View screening tests and results, find the right advice, and above all, understand and stop the spread of disease.
+      /// Help prevent the spread of contagious illnesses. Together, we can make a difference.
       internal static let body4 = L10n.tr("Localizable", "UX.onboarding.body4")
       /// How is my data used?
       internal static let how = L10n.tr("Localizable", "UX.onboarding.how")
-      /// Join
+      /// Get started
       internal static let join = L10n.tr("Localizable", "UX.onboarding.join")
       /// NEXT
       internal static let next = L10n.tr("Localizable", "UX.onboarding.next")
       /// Frequently asked questions
       internal static let questions = L10n.tr("Localizable", "UX.onboarding.questions")
-      /// Track where you’ve been.
+      /// Log your interactions
       internal static let title1 = L10n.tr("Localizable", "UX.onboarding.title1")
       /// Monitor your health
       internal static let title2 = L10n.tr("Localizable", "UX.onboarding.title2")
       /// Stay informed
       internal static let title3 = L10n.tr("Localizable", "UX.onboarding.title3")
-      /// Collaborate. Inform. Protect.
+      /// Collaborate. Share. Protect.
       internal static let title4 = L10n.tr("Localizable", "UX.onboarding.title4")
     }
     internal enum Permissions {
@@ -162,7 +172,7 @@ internal enum L10n {
       internal static let nose = L10n.tr("Localizable", "UX.symptomReport.nose")
       /// I don't have any symptoms today
       internal static let noSymptoms = L10n.tr("Localizable", "UX.symptomReport.noSymptoms")
-      /// I have symptoms that are not on the list
+      /// Other
       internal static let other = L10n.tr("Localizable", "UX.symptomReport.other")
       /// Select all that apply
       internal static let subtitle = L10n.tr("Localizable", "UX.symptomReport.subtitle")
@@ -190,18 +200,22 @@ internal enum L10n {
   }
 
   internal enum Alerts {
-    /// Alerts
-    internal static let header = L10n.tr("Localizable", "alerts.header")
-    internal static let subtitle = L10n.tr("Localizable", "alerts.subtitle")
+    /// What are exposure alerts?
     internal static let buttonLabel = L10n.tr("Localizable", "alerts.buttonLabel")
+    /// Exposure Alerts
+    internal static let header = L10n.tr("Localizable", "alerts.header")
+    /// Exposure Alert
+    internal static let moreInfoTitle = L10n.tr("Localizable", "alerts.moreInfoTitle")
+    /// Click each alert to learn more
+    internal static let subtitle = L10n.tr("Localizable", "alerts.subtitle")
+    /// Alerts
     internal static let title = L10n.tr("Localizable", "alerts.title")
-    internal static let title2 = L10n.tr("Localizable", "alerts.moreInfoTitle")
     internal enum Count {
-      /// no new contact alerts
+      /// No new exposure alerts
       internal static let `none` = L10n.tr("Localizable", "alerts.count.none")
-      /// 1 new contact alert
+      /// 1 new exposure alert
       internal static let one = L10n.tr("Localizable", "alerts.count.one")
-      /// %d new contact alerts
+      /// %d new exposure alerts
       internal static func some(_ p1: Int) -> String {
         return L10n.tr("Localizable", "alerts.count.some", p1)
       }
@@ -225,114 +239,25 @@ internal enum L10n {
       internal static let breathlessness = L10n.tr("Localizable", "alerts.label.breathlessness")
       /// No symptoms reported
       internal static let noSymptomsReported = L10n.tr("Localizable", "alerts.label.no_symptoms_reported")
-        internal enum Fever {
-            internal static let mild = L10n.tr("Localizable", "alerts.label.fever.mild")
-            internal static let serious = L10n.tr("Localizable", "alerts.label.fever.serious")
-            internal static let none = L10n.tr("Localizable", "alerts.label.fever.none")
-        }
-        internal enum Cough {
-            internal static let dry = L10n.tr("Localizable", "alerts.label.cough.dry")
-            internal static let existing = L10n.tr("Localizable", "alerts.label.cough.existing")
-            internal static let wet = L10n.tr("Localizable", "alerts.label.cough.wet")
-            internal static let none = L10n.tr("Localizable", "alerts.label.cough.none")
-        }
+      internal enum Cough {
+        /// Dry Cough
+        internal static let dry = L10n.tr("Localizable", "alerts.label.cough.dry")
+        /// Cough
+        internal static let existing = L10n.tr("Localizable", "alerts.label.cough.existing")
+        /// No Cough
+        internal static let `none` = L10n.tr("Localizable", "alerts.label.cough.none")
+        /// Wet Cough
+        internal static let wet = L10n.tr("Localizable", "alerts.label.cough.wet")
+      }
+      internal enum Fever {
+        /// Mild Fever
+        internal static let mild = L10n.tr("Localizable", "alerts.label.fever.mild")
+        /// No Fever
+        internal static let `none` = L10n.tr("Localizable", "alerts.label.fever.none")
+        /// Serious Fever
+        internal static let serious = L10n.tr("Localizable", "alerts.label.fever.serious")
+      }
     }
-  }
-
-  internal enum Healthquiz {
-    /// SUBMIT
-    internal static let submit = L10n.tr("Localizable", "healthquiz.submit")
-    /// Are you experiencing any of the following symptoms?
-    internal static let symptomQuestion = L10n.tr("Localizable", "healthquiz.symptomQuestion")
-    /// My Health
-    internal static let title = L10n.tr("Localizable", "healthquiz.title")
-  }
-
-  internal enum Home {
-    /// Share
-    internal static let share = L10n.tr("Localizable", "home.share")
-    internal enum ContactAlerts {
-      /// SEE ALERTS
-      internal static let button = L10n.tr("Localizable", "home.contactAlerts.button")
-      /// Approximate times that you may have been exposed to a symptomatic individual
-      internal static let description = L10n.tr("Localizable", "home.contactAlerts.description")
-      /// Contact Alerts
-      internal static let title = L10n.tr("Localizable", "home.contactAlerts.title")
-    }
-    internal enum Footer {
-      /// Build
-      internal static let build = L10n.tr("Localizable", "home.footer.build")
-      /// Debug
-      internal static let debug = L10n.tr("Localizable", "home.footer.debug")
-      /// Version
-      internal static let version = L10n.tr("Localizable", "home.footer.version")
-    }
-    internal enum MyHealth {
-      /// CHECK-IN
-      internal static let button = L10n.tr("Localizable", "home.myHealth.button")
-      /// Monitor your health and report symptoms
-      internal static let description = L10n.tr("Localizable", "home.myHealth.description")
-      /// My Health
-      internal static let title = L10n.tr("Localizable", "home.myHealth.title")
-    }
-  }
-
-  internal enum Onboarding {
-    /// GET STARTED
-    internal static let getStarted = L10n.tr("Localizable", "onboarding.getStarted")
-    /// How your data is used
-    internal static let howDataUsed = L10n.tr("Localizable", "onboarding.howDataUsed")
-    /// Collaborate. Inform. Protect.
-    internal static let logo = L10n.tr("Localizable", "onboarding.logo")
-    internal enum Alerts {
-      ///  about possible exposure to infectious illness
-      internal static let afterBold = L10n.tr("Localizable", "onboarding.alerts.afterBold")
-      /// Get 
-      internal static let beforeBold = L10n.tr("Localizable", "onboarding.alerts.beforeBold")
-      /// contextualized alerts
-      internal static let bold = L10n.tr("Localizable", "onboarding.alerts.bold")
-    }
-    internal enum Monitor {
-      ///  your health
-      internal static let afterBold = L10n.tr("Localizable", "onboarding.monitor.afterBold")
-      /// 
-      internal static let beforeBold = L10n.tr("Localizable", "onboarding.monitor.beforeBold")
-      /// Monitor
-      internal static let bold = L10n.tr("Localizable", "onboarding.monitor.bold")
-    }
-    internal enum Track {
-      ///  where you've been
-      internal static let afterBold = L10n.tr("Localizable", "onboarding.track.afterBold")
-      /// 
-      internal static let beforeBold = L10n.tr("Localizable", "onboarding.track.beforeBold")
-      /// Track
-      internal static let bold = L10n.tr("Localizable", "onboarding.track.bold")
-    }
-  }
-
-  internal enum Symptom {
-    /// Diarrhea
-    internal static let diarrhea = L10n.tr("Localizable", "symptom.diarrhea")
-    /// Difficulty breathing
-    internal static let difficultyBreathing = L10n.tr("Localizable", "symptom.difficultyBreathing")
-    /// Dry cough
-    internal static let dryCough = L10n.tr("Localizable", "symptom.dryCough")
-    /// Fever
-    internal static let fever = L10n.tr("Localizable", "symptom.fever")
-    /// Loss of smell/taste
-    internal static let lossOfSmellTaste = L10n.tr("Localizable", "symptom.lossOfSmellTaste")
-    /// Muscle aches
-    internal static let muscleAches = L10n.tr("Localizable", "symptom.muscleAches")
-    /// Nasal congestion
-    internal static let nasalCongestion = L10n.tr("Localizable", "symptom.nasalCongestion")
-    /// None of the above
-    internal static let `none` = L10n.tr("Localizable", "symptom.none")
-    /// Runny nose
-    internal static let runnyNose = L10n.tr("Localizable", "symptom.runnyNose")
-    /// Sore throat
-    internal static let soreThroat = L10n.tr("Localizable", "symptom.soreThroat")
-    /// Tiredness
-    internal static let tiredness = L10n.tr("Localizable", "symptom.tiredness")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

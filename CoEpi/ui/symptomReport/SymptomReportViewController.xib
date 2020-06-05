@@ -22,61 +22,63 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vxs-PZ-b7s">
-                    <rect key="frame" x="38" y="181" width="338" height="574"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIo-kZ-PQ7">
-                    <rect key="frame" x="269" y="771" width="97" height="36"/>
+                    <rect key="frame" x="270" y="803" width="114" height="39"/>
                     <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="36" id="2qD-JH-d2f"/>
-                        <constraint firstAttribute="width" constant="97" id="hMC-a6-EQs"/>
+                        <constraint firstAttribute="height" constant="39" id="ccX-d1-E6v"/>
+                        <constraint firstAttribute="width" constant="114" id="wgR-Gx-9DU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title="SUBMIT">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" name="CoEpiPurple"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" name="CoEpiPurple"/>
                     </state>
                     <connections>
                         <action selector="submit:" destination="-1" eventType="touchUpInside" id="6zL-sY-JnH"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What symptoms do you have today?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foP-il-DcM">
-                    <rect key="frame" x="43.5" y="94" width="327" height="60"/>
+                    <rect key="frame" x="20" y="64" width="374" height="60"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="327" id="W5G-FY-NTx"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <color key="textColor" name="CoEpiPurple"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select all that apply" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xx-rV-NNu">
-                    <rect key="frame" x="43.5" y="159" width="327" height="17"/>
+                    <rect key="frame" x="20" y="129" width="374" height="17"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="327" id="19V-5k-r7Q"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" name="CoEpiPurple"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vxs-PZ-b7s">
+                    <rect key="frame" x="20" y="154" width="374" height="636"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="tIo-kZ-PQ7" firstAttribute="trailing" secondItem="Vxs-PZ-b7s" secondAttribute="trailing" constant="-10" id="3Fh-4A-2hG"/>
                 <constraint firstItem="5Xx-rV-NNu" firstAttribute="top" secondItem="foP-il-DcM" secondAttribute="bottom" constant="5" id="4fv-0b-pdx"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vxs-PZ-b7s" secondAttribute="trailing" constant="38" id="EZ0-4V-pGN"/>
-                <constraint firstItem="Vxs-PZ-b7s" firstAttribute="top" secondItem="5Xx-rV-NNu" secondAttribute="bottom" constant="5" id="VEv-up-brT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tIo-kZ-PQ7" secondAttribute="bottom" constant="55" id="Z8o-rA-fjF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vxs-PZ-b7s" secondAttribute="trailing" constant="20" id="EZ0-4V-pGN"/>
+                <constraint firstItem="Vxs-PZ-b7s" firstAttribute="top" secondItem="5Xx-rV-NNu" secondAttribute="bottom" constant="8" id="VEv-up-brT"/>
+                <constraint firstAttribute="trailing" secondItem="foP-il-DcM" secondAttribute="trailing" constant="20" id="XN9-mE-c7I"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tIo-kZ-PQ7" secondAttribute="bottom" constant="20" id="Z8o-rA-fjF"/>
                 <constraint firstItem="5Xx-rV-NNu" firstAttribute="leading" secondItem="foP-il-DcM" secondAttribute="leading" id="ZHP-2n-OvE"/>
                 <constraint firstItem="foP-il-DcM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cMT-KY-Xpz"/>
+                <constraint firstItem="foP-il-DcM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="eqG-Ta-dXg"/>
                 <constraint firstItem="5Xx-rV-NNu" firstAttribute="trailing" secondItem="foP-il-DcM" secondAttribute="trailing" id="lvD-V0-JS9"/>
-                <constraint firstItem="tIo-kZ-PQ7" firstAttribute="top" secondItem="Vxs-PZ-b7s" secondAttribute="bottom" constant="16" id="mNz-rt-Uni"/>
-                <constraint firstItem="Vxs-PZ-b7s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="38" id="n6h-vD-V4p"/>
-                <constraint firstItem="foP-il-DcM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="xgt-KG-mVb"/>
+                <constraint firstItem="tIo-kZ-PQ7" firstAttribute="top" secondItem="Vxs-PZ-b7s" secondAttribute="bottom" constant="13" id="mNz-rt-Uni"/>
+                <constraint firstItem="Vxs-PZ-b7s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="n6h-vD-V4p"/>
+                <constraint firstItem="foP-il-DcM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="xgt-KG-mVb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-126.08695652173914" y="95.758928571428569"/>

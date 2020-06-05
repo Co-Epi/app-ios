@@ -16,7 +16,7 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
     init(viewModel: SymptomReportViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
-        title = L10n.Healthquiz.title
+        title = L10n.Ux.SymptomReport.heading
 
         dataSource.onChecked = { question in
             viewModel.onChecked(question: question)
@@ -58,9 +58,9 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
             .drive(submitButton.rx.backgroundColor)
             .disposed(by: disposeBag)
 
-        symptomQuestionHeader.text = L10n.Healthquiz.symptomQuestion
-        subHeader.text = "Select all that apply" // TODO localize
-        submitButton.setTitle(L10n.Healthquiz.submit, for: .normal)
+        symptomQuestionHeader.text = L10n.Ux.SymptomReport.title
+        subHeader.text = L10n.Ux.SymptomReport.subtitle
+        submitButton.setTitle(L10n.Ux.submit, for: .normal)
         ButtonStyles.applyStyleRoundedEnds(to: submitButton)
      }
 }
