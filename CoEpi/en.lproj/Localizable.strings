@@ -80,12 +80,12 @@
 "UX.cough.title1" = "I would describe my cough as:";
 "UX.cough.title2" = "How many days have you been coughing?";
 "UX.cough.title3" = "Today my cough has:";
-"UX.cough.subtitle3" = "Select all that apply";
+"UX.cough.subtitle3" = "Select one option";
 "UX.cough.titleWet" = "Wet";
 "UX.cough.subtitleWet" = "\nIt feels like there is mucus \nin my throat and/or chest";
 "UX.cough.titleDry" = "Dry";
-"UX.cough.subtitleDry" = "\nMy throat feels 'tickly' or 'scratchy' without mucus";
-"UX.cough.better" = "Felt better and worse throughout the day";
+"UX.cough.subtitleDry" = "\nMy throat feels 'tickly' or \n'scratchy' without mucus";
+"UX.cough.better" = "Felt worse and better throughout the day";
 "UX.cough.worse" = "Felt worse when I am outside";
 "UX.cough.same" = "Stayed the same or felt steadily worse";
 
