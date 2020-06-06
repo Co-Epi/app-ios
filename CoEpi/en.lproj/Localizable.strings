@@ -131,5 +131,5 @@
 "UX.home.footer.version" = "Version";
 
     // symptom days
-"UX.symptomsdays.heading" = "Follow up: Symptoms Duration";
-"UX.symptomsdays.title" = "How many days have you had any symptoms?";
+"UX.symptomsdays.heading" = "Follow up: Earliest Symptoms";
+"UX.symptomsdays.title" = "How many days ago did the symptoms begin?";
