@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertsViewController" customModule="CoEpi" customModuleProvider="target">
+            <connections>
+                <outlet property="contactAlerts" destination="cC3-JH-DHS" id="Tly-gf-NqL"/>
+                <outlet property="titleLabel" destination="ots-QD-6oQ" id="58n-Nr-rog"/>
+                <outlet property="updateStatusLabel" destination="yUk-sg-amb" id="a6E-Ro-hPb"/>
+                <outlet property="view" destination="iN0-l3-epB" id="JhA-bB-T6Q"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=") new alerts" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ots-QD-6oQ">
+                    <rect key="frame" x="40" y="94" width="334" height="30.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="26"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cC3-JH-DHS">
+                    <rect key="frame" x="0.0" y="174.5" width="414" height="721.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUk-sg-amb">
+                    <rect key="frame" x="40" y="129.5" width="334" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="yUk-sg-amb" firstAttribute="top" secondItem="ots-QD-6oQ" secondAttribute="bottom" constant="5" id="8jP-bJ-bsT"/>
+                <constraint firstItem="cC3-JH-DHS" firstAttribute="top" secondItem="ots-QD-6oQ" secondAttribute="bottom" constant="50" id="9XE-w3-K20"/>
+                <constraint firstItem="ots-QD-6oQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="IWp-sR-5FO"/>
+                <constraint firstItem="cC3-JH-DHS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="VVP-tX-IdY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cC3-JH-DHS" secondAttribute="trailing" id="WDR-dR-f80"/>
+                <constraint firstItem="yUk-sg-amb" firstAttribute="trailing" secondItem="ots-QD-6oQ" secondAttribute="trailing" id="X3O-GF-H9V"/>
+                <constraint firstAttribute="bottom" secondItem="cC3-JH-DHS" secondAttribute="bottom" id="bmO-1E-KuC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ots-QD-6oQ" secondAttribute="trailing" constant="40" id="j2I-nw-NAB"/>
+                <constraint firstItem="yUk-sg-amb" firstAttribute="leading" secondItem="ots-QD-6oQ" secondAttribute="leading" id="pDk-GQ-Vsk"/>
+                <constraint firstItem="ots-QD-6oQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="rsb-Tw-gqK"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="155.07246376811597" y="177.45535714285714"/>
+        </view>
+    </objects>
+</document>

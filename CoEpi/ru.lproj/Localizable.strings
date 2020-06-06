@@ -1,0 +1,44 @@
+"alerts.count.none" = "нет новых контактов оповещений";
+"alerts.count.one" = "1 новое уведомление о контакте";
+"alerts.count.some" = "%d новых контактных оповещений";
+"alerts.title" = "Оповещения";
+
+"healthquiz.submit" = "ОТПРАВИТЬ";
+"healthquiz.symptomQuestion" = "Вы испытываете какие-либо из следующих симптомов?";
+"healthquiz.title" = "Мое здоровье";
+
+"home.contactAlerts.button" = "СМОТРЕТЬ ПРЕДУПРЕЖДЕНИЯ";
+"home.contactAlerts.description" = "Примерное время, когда вы могли быть подвержены симптоматической личности";
+"home.contactAlerts.title" = "Оповещения о контактах";
+"home.footer.build" = "Сложение";
+"home.footer.debug" = "отлаживать";
+"home.footer.version" = "Версия";
+"home.myHealth.button" = "РЕГИСТРИРОВАТЬСЯ";
+"home.myHealth.description" = "Следите за своим здоровьем и сообщайте о симптомах";
+"home.myHealth.title" = "Мое здоровье";
+"home.share" = "доля";
+
+"onboarding.alerts.beforeBold" = "Получайте ";
+"onboarding.alerts.bold" = "контекстные оповещения";
+"onboarding.alerts.afterBold" = " о возможной подверженности инфекционным заболеваниям";
+"onboarding.getStarted" = "НАЧАТЬ";
+"onboarding.howDataUsed" = "Как используются ваши данные";
+"onboarding.logo" = "Сотрудничать. Поставить в известность. Защита.";
+"onboarding.monitor.beforeBold" = "";
+"onboarding.monitor.bold" = "Следи";
+"onboarding.monitor.afterBold" = " за своим здоровьем";
+"onboarding.track.beforeBold" = "";
+"onboarding.track.bold" = "Отслеживайте";
+"onboarding.track.afterBold" = ", где вы были";
+
+"symptom.fever" = "Высокая температура";
+"symptom.tiredness" = "Усталость";
+"symptom.dryCough" = "Сухой кашель";
+"symptom.muscleAches" = "Боль в мышцах";
+"symptom.nasalCongestion" = "Заложенность носа";
+"symptom.runnyNose" = "Насморк";
+"symptom.soreThroat" = "Больное горло";
+"symptom.diarrhea" = "понос";
+"symptom.difficultyBreathing" = "Затрудненное дыхание";
+"symptom.lossOfSmellTaste" = "Потеря запаха или вкуса";
+"symptom.none" = "Ни один из вышеперечисленных";

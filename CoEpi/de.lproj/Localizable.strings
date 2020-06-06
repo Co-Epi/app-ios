@@ -1,0 +1,44 @@
+"alerts.count.none" = "Keine neuen Kontaktbenachrichtigungen";
+"alerts.count.one" = "1 neuer Kontaktalarm";
+"alerts.count.some" = "%d neue Kontaktbenachrichtigungen";
+"alerts.title" = "Warnungen";
+
+"healthquiz.submit" = "EINREICHEN";
+"healthquiz.symptomQuestion" = "Treten bei Ihnen folgende Symptome auf?";
+"healthquiz.title" = "Meine Gesundheit";
+
+"home.contactAlerts.button" = "SIEHE ALERTS";
+"home.contactAlerts.description" = "Ungefähre Zeiten, in denen Sie möglicherweise einer symptomatischen Person ausgesetzt waren";
+"home.contactAlerts.title" = "Kontaktbenachrichtigungen";
+"home.footer.build" = "Bauen";
+"home.footer.debug" = "Debuggen";
+"home.footer.version" = "Ausführung";
+"home.myHealth.button" = "CHECK-IN";
+"home.myHealth.description" = "Überwachen Sie Ihre Gesundheit und melden Sie Symptome";
+"home.myHealth.title" = "Meine Gesundheit";
+"home.share" = "Teilen";
+
+"onboarding.alerts.beforeBold" = "Erhalten Sie ";
+"onboarding.alerts.bold" = "kontextualisierte Benachrichtigungen";
+"onboarding.alerts.afterBold" = " über mögliche Exposition gegenüber Infektionskrankheiten";
+"onboarding.getStarted" = "LOSLEGEN";
+"onboarding.howDataUsed" = "Wie Ihre Daten verwendet werden";
+"onboarding.logo" = "Zusammenarbeiten. Informieren. Schützen.";
+"onboarding.monitor.beforeBold" = "";
+"onboarding.monitor.bold" = "Überwachen";
+"onboarding.monitor.afterBold" = " Sie Ihre Gesundheit";
+"onboarding.track.beforeBold" = "";
+"onboarding.track.bold" = "Verfolgen Sie";
+"onboarding.track.afterBold" = ", wo Sie gewesen sind";
+
+"symptom.fever" = "Fieber";
+"symptom.tiredness" = "Müdigkeit";
+"symptom.dryCough" = "Trockener Husten";
+"symptom.muscleAches" = "Muskelkater";
+"symptom.nasalCongestion" = "Verstopfte Nase";
+"symptom.runnyNose" = "Laufende Nase";
+"symptom.soreThroat" = "Halsentzündung";
+"symptom.diarrhea" = "Durchfall";
+"symptom.difficultyBreathing" = "Atembeschwerden";
+"symptom.lossOfSmellTaste" = "Geruchs- oder Geschmacksverlust";
+"symptom.none" = "Nichts des oben Genannten";

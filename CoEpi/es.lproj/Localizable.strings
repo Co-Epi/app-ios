@@ -1,0 +1,48 @@
+"alerts.count.none" = "no hay nuevas alertas de contacto";
+"alerts.count.one" = "1 nueva alerta de contacto";
+"alerts.count.some" = "%d nuevas alertas de contacto";
+"alerts.title" = "Alertas";
+
+"healthquiz.submit" = "ENVIAR";
+"healthquiz.symptomQuestion" = "¿Experimenta alguno de los siguientes síntomas?";
+"healthquiz.title" = "Mi Salud";
+
+"home.contactAlerts.description" = "Tiempos aproximados en los que puede haber estado expuesto a un individuo sintomático";
+"home.myHealth.description" = "Controle su salud e informe los síntomas";
+"home.share" = "Compartir";
+
+"home.contactAlerts.button" = "VER ALERTAS";
+"home.contactAlerts.description" = "Tiempos aproximados en los que puede haber estado expuesto a un individuo sintomático";
+"home.contactAlerts.title" = "Alertas de Contacto";
+"home.footer.build" = "Construir";
+"home.footer.debug" = "Depurar";
+"home.footer.version" = "Versión";
+"home.myHealth.button" = "REGISTRARSE";
+"home.myHealth.description" = "Controle su salud e informe los síntomas";
+"home.myHealth.title" = "Mi Salud";
+"home.share" = "Compartir";
+
+"onboarding.alerts.pre" = "Reciba ";
+"onboarding.alerts.main" = "alertas contextualizadas";
+"onboarding.alerts.post" = " sobre la posible exposición a enfermedades infecciosas";
+"onboarding.getStarted" = "EMPEZAR";
+"onboarding.howDataUsed" = "Cómo se usan tus datos";
+"onboarding.logo" = "Colaborar. Informar. Proteger.";
+"onboarding.monitor.pre" = "";
+"onboarding.monitor.main" = "Controla";
+"onboarding.monitor.post" = " tu salud";
+"onboarding.track.pre" = "";
+"onboarding.track.main" = "Rastrea";
+"onboarding.track.post" = " dónde has estado";
+
+"symptom.fever" = "Fiebre";
+"symptom.tiredness" = "Cansancio";
+"symptom.dryCough" = "Tos seca";
+"symptom.muscleAches" = "Dolores musculares";
+"symptom.nasalCongestion" = "Congestión nasal";
+"symptom.runnyNose" = "Nariz que moquea";
+"symptom.soreThroat" = "Dolor de garganta";
+"symptom.diarrhea" = "Diarrea";
+"symptom.difficultyBreathing" = "Respiración dificultosa";
+"symptom.lossOfSmellTaste" = "Pérdida de olfato / sabor";
+"symptom.none" = "Ninguna de las anteriores";

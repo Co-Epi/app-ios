@@ -1,0 +1,44 @@
+"alerts.count.none" = "새로운 연락처 알림이 없습니다.";
+"alerts.count.one" = "하나의 새로운 연락처 알림";
+"alerts.count.some" = "%d 개의 새로운 연락처 알림";
+"alerts.title" = "알림";
+
+"healthquiz.submit" = "제출";
+"healthquiz.symptomQuestion" = "다음과 같은 증상이 있습니까?";
+"healthquiz.title" = "나의 건강";
+
+"home.contactAlerts.button" = "알리미 참조";
+"home.contactAlerts.description" = "증상이있는 개인에게 노출 된 대략적인 시간";
+"home.contactAlerts.title" = "연락 알림";
+"home.footer.build" = "짓다";
+"home.footer.debug" = "디버그";
+"home.footer.version" = "버전";
+"home.myHealth.button" = "체크인";
+"home.myHealth.description" = "건강 모니터링 및 증상보고";
+"home.myHealth.title" = "나의 건강";
+"home.share" = "공유";
+
+"onboarding.alerts.beforeBold" = "전염병에 대한 가능한 노출에 대한 ";
+"onboarding.alerts.bold" = "상황에 맞는 경고를받습";
+"onboarding.alerts.afterBold" = " 니다.";
+"onboarding.getStarted" = "시작하다";
+"onboarding.howDataUsed" = "데이터 사용 방법";
+"onboarding.logo" = "공동 작업 알립니다. 보호.";
+"onboarding.monitor.beforeBold" = "건강 ";
+"onboarding.monitor.bold" = "모니터링";
+"onboarding.monitor.afterBold" = "";
+"onboarding.track.beforeBold" = "당신이 있었던 곳을 ";
+"onboarding.track.bold" = "추적하십";
+"onboarding.track.afterBold" = " 시오.";
+
+"symptom.fever" = "발열";
+"symptom.tiredness" = "피로";
+"symptom.dryCough" = "마른 기침";
+"symptom.muscleAches" = "근육통";
+"symptom.nasalCongestion" = "코 막힘";
+"symptom.runnyNose" = "콧물";
+"symptom.soreThroat" = "목 쓰림";
+"symptom.diarrhea" = "설사";
+"symptom.difficultyBreathing" = "호흡 곤란";
+"symptom.lossOfSmellTaste" = "냄새 / 맛의 상실";
+"symptom.none" = "위의 어느 것도";

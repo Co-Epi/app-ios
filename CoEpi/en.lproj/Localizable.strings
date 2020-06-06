@@ -1,0 +1,49 @@
+/* After any changes to this file, re-run swiftgen
+   to regenerate generate/strings.swift.
+ */
+
+"alerts.count.none" = "no new contact alerts";
+"alerts.count.one" = "1 new contact alert";
+"alerts.count.some" = "%d new contact alerts";
+"alerts.title" = "Alerts";
+"alerts.label.no_symptoms_reported" = "No symptoms reported";
+
+"healthquiz.submit" = "SUBMIT";
+"healthquiz.symptomQuestion" = "Are you experiencing any of the following symptoms?";
+"healthquiz.title" = "My Health";
+
+"home.contactAlerts.button" = "SEE ALERTS";
+"home.contactAlerts.description" = "Approximate times that you may have been exposed to a symptomatic individual";
+"home.contactAlerts.title" = "Contact Alerts";
+"home.footer.build" = "Build";
+"home.footer.debug" = "Debug";
+"home.footer.version" = "Version";
+"home.myHealth.button" = "CHECK-IN";
+"home.myHealth.description" = "Monitor your health and report symptoms";
+"home.myHealth.title" = "My Health";
+"home.share" = "Share";
+
+"onboarding.alerts.beforeBold" = "Get ";
+"onboarding.alerts.bold" = "contextualized alerts";
+"onboarding.alerts.afterBold" = " about possible exposure to infectious illness";
+"onboarding.getStarted" = "GET STARTED";
+"onboarding.howDataUsed" = "How your data is used";
+"onboarding.logo" = "Collaborate. Inform. Protect.";
+"onboarding.monitor.beforeBold" = "";
+"onboarding.monitor.bold" = "Monitor";
+"onboarding.monitor.afterBold" = " your health";
+"onboarding.track.beforeBold" = "";
+"onboarding.track.bold" = "Track";
+"onboarding.track.afterBold" = " where you've been";
+
+"symptom.fever" = "Fever";
+"symptom.tiredness" = "Tiredness";
+"symptom.dryCough" = "Dry cough";
+"symptom.muscleAches" = "Muscle aches";
+"symptom.nasalCongestion" = "Nasal congestion";
+"symptom.runnyNose" = "Runny nose";
+"symptom.soreThroat" = "Sore throat";
+"symptom.diarrhea" = "Diarrhea";
+"symptom.difficultyBreathing" = "Difficulty breathing";
+"symptom.lossOfSmellTaste" = "Loss of smell/taste";
+"symptom.none" = "None of the above";

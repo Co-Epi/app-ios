@@ -1,0 +1,44 @@
+"alerts.count.none" = "沒有新的聯繫人提醒";
+"alerts.count.one" = "1個新的聯繫人提醒";
+"alerts.count.some" = "%d個新的聯繫人警報";
+"alerts.title" = "警報";
+
+"healthquiz.submit" = "提交";
+"healthquiz.symptomQuestion" = "您是否遇到以下任何症狀？";
+"healthquiz.title" = "我的健康";
+
+"home.contactAlerts.button" = "查看警報";
+"home.contactAlerts.description" = "您可能與有症狀的人接觸的大概時間";
+"home.contactAlerts.title" = "聯繫提醒";
+"home.footer.build" = "建立";
+"home.footer.debug" = "除錯";
+"home.footer.version" = "版";
+"home.myHealth.button" = "報到";
+"home.myHealth.description" = "監控您的健康狀況並報告症狀";
+"home.myHealth.title" = "我的健康";
+"home.share" = "分享";
+
+"onboarding.alerts.beforeBold" = "獲取有關可能接觸傳染病的";
+"onboarding.alerts.bold" = "上下文警報";
+"onboarding.alerts.afterBold" = "";
+"onboarding.getStarted" = "開始使用";
+"onboarding.howDataUsed" = "如何使用您的數據";
+"onboarding.logo" = "合作。通知。保護。";
+"onboarding.monitor.beforeBold" = "";
+"onboarding.monitor.bold" = "監控";
+"onboarding.monitor.afterBold" = "健康";
+"onboarding.track.beforeBold" = "";
+"onboarding.track.bold" = "追踪";
+"onboarding.track.afterBold" = "您去過的地方";
+
+"symptom.fever" = "發熱";
+"symptom.tiredness" = "疲倦";
+"symptom.dryCough" = "乾咳";
+"symptom.muscleAches" = "肌肉疼痛";
+"symptom.nasalCongestion" = "鼻塞";
+"symptom.runnyNose" = "流鼻涕";
+"symptom.soreThroat" = "咽喉痛";
+"symptom.diarrhea" = "腹瀉";
+"symptom.difficultyBreathing" = "呼吸困難";
+"symptom.lossOfSmellTaste" = "氣味或味道的損失";
+"symptom.none" = "以上都不是";
