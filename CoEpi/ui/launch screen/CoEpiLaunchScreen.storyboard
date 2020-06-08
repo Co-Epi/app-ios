@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -13,22 +13,21 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background_purple" translatesAutoresizingMaskIntoConstraints="NO" id="fWF-iZ-XHk">
-                                <rect key="frame" x="-30" y="0.0" width="523" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_purple" translatesAutoresizingMaskIntoConstraints="NO" id="fWF-iZ-XHk">
+                                <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coepi_family" translatesAutoresizingMaskIntoConstraints="NO" id="Irt-Qq-2mX">
-                                <rect key="frame" x="158" y="372" width="98" height="152"/>
+                                <rect key="frame" x="368" y="521" width="98" height="152"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="152" id="QUo-0U-PaC"/>
                                     <constraint firstAttribute="width" constant="98" id="gXM-zx-Cuo"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2020 CoEpi. See MIT License." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Q9x-95-YRB">
-                                <rect key="frame" x="20" y="824" width="374" height="18"/>
+                                <rect key="frame" x="20" y="1136" width="794" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -36,11 +35,14 @@
                         </subviews>
                         <color key="backgroundColor" name="CoEpiPurple"/>
                         <constraints>
-                            <constraint firstItem="Irt-Qq-2mX" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="bottom" constant="-490" id="AWN-rx-g4f"/>
+                            <constraint firstItem="fWF-iZ-XHk" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="23q-ll-Os1"/>
+                            <constraint firstAttribute="trailing" secondItem="fWF-iZ-XHk" secondAttribute="trailing" id="79c-Va-N7g"/>
+                            <constraint firstAttribute="bottom" secondItem="fWF-iZ-XHk" secondAttribute="bottom" id="KDq-hv-dVM"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="Q9x-95-YRB" secondAttribute="bottom" constant="20" id="QV1-Iq-HEY"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Q9x-95-YRB" secondAttribute="trailing" constant="20" id="YFx-0W-Tab"/>
                             <constraint firstItem="Irt-Qq-2mX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZcN-eT-edw"/>
                             <constraint firstItem="Q9x-95-YRB" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" id="bpo-2q-1wf"/>
+                            <constraint firstItem="fWF-iZ-XHk" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dW4-wm-ayt"/>
                             <constraint firstItem="Irt-Qq-2mX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pJJ-y1-n7c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>

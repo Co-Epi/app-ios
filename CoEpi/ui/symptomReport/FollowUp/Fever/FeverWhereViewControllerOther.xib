@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,10 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLabel" translatesAutoresizingMaskIntoConstraints="NO" id="shF-Yl-DlS">
-                    <rect key="frame" x="0.0" y="-6" width="414" height="221"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="shF-Yl-DlS">
+                    <rect key="frame" x="0.0" y="44" width="414" height="130"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="shF-Yl-DlS" secondAttribute="height" multiplier="15:8" id="hJL-qw-2Cq"/>
+                        <constraint firstAttribute="height" constant="130" id="e7P-gz-IMD"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="zNx-pq-IEA">
@@ -51,7 +51,7 @@
                                             <fragment content="Skip">
                                                 <attributes>
                                                     <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                    <font key="NSFont" metaFont="system" size="15"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -95,7 +95,7 @@
             <constraints>
                 <constraint firstItem="bLy-2N-ji7" firstAttribute="trailing" secondItem="zNx-pq-IEA" secondAttribute="trailing" constant="50" id="1WG-l6-FdN"/>
                 <constraint firstItem="bLy-2N-ji7" firstAttribute="trailing" secondItem="shF-Yl-DlS" secondAttribute="trailing" id="3iO-qz-t9b"/>
-                <constraint firstItem="shF-Yl-DlS" firstAttribute="top" secondItem="bLy-2N-ji7" secondAttribute="top" constant="-50" id="7jw-YZ-EgZ"/>
+                <constraint firstItem="shF-Yl-DlS" firstAttribute="top" secondItem="bLy-2N-ji7" secondAttribute="top" id="7jw-YZ-EgZ"/>
                 <constraint firstItem="shF-Yl-DlS" firstAttribute="leading" secondItem="bLy-2N-ji7" secondAttribute="leading" id="I8e-r3-sR7"/>
                 <constraint firstItem="bLy-2N-ji7" firstAttribute="trailing" secondItem="I8k-Kb-dMZ" secondAttribute="trailing" constant="20" id="Kwe-2Q-CdP"/>
                 <constraint firstItem="zNx-pq-IEA" firstAttribute="leading" secondItem="bLy-2N-ji7" secondAttribute="leading" constant="50" id="Ndk-cb-HTq"/>
@@ -109,7 +109,6 @@
         </view>
     </objects>
     <resources>
-        <image name="HeaderLabel" width="375" height="109"/>
         <image name="SubmitButton_Selected" width="106" height="26"/>
     </resources>
 </document>

@@ -24,10 +24,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLabel" translatesAutoresizingMaskIntoConstraints="NO" id="ZKO-eq-kPq">
-                    <rect key="frame" x="0.0" y="-6" width="414" height="221"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKO-eq-kPq">
+                    <rect key="frame" x="0.0" y="44" width="414" height="130"/>
+                    <color key="backgroundColor" name="CoEpiPurple"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="ZKO-eq-kPq" secondAttribute="height" multiplier="15:8" id="fyG-Vd-K1y"/>
+                        <constraint firstAttribute="height" constant="130" id="ETl-I4-A6I"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="zD6-EK-daS">
@@ -116,7 +117,7 @@
                 <constraint firstItem="cHj-sf-pC7" firstAttribute="leading" secondItem="JOH-1S-udu" secondAttribute="leading" constant="50" id="DnG-LX-Z1V"/>
                 <constraint firstItem="zD6-EK-daS" firstAttribute="centerY" secondItem="Vxu-4b-axa" secondAttribute="centerY" id="K5t-y5-Nva"/>
                 <constraint firstItem="zD6-EK-daS" firstAttribute="centerX" secondItem="Vxu-4b-axa" secondAttribute="centerX" id="KWZ-Vb-TRs"/>
-                <constraint firstItem="ZKO-eq-kPq" firstAttribute="top" secondItem="JOH-1S-udu" secondAttribute="top" constant="-50" id="LVb-ri-9eD"/>
+                <constraint firstItem="ZKO-eq-kPq" firstAttribute="top" secondItem="JOH-1S-udu" secondAttribute="top" id="LVb-ri-9eD"/>
                 <constraint firstItem="ZKO-eq-kPq" firstAttribute="leading" secondItem="JOH-1S-udu" secondAttribute="leading" id="LiG-8R-mx4"/>
                 <constraint firstItem="a5u-Ye-Mi1" firstAttribute="leading" secondItem="JOH-1S-udu" secondAttribute="leading" constant="20" id="Sdo-YV-5wI"/>
                 <constraint firstItem="zD6-EK-daS" firstAttribute="leading" secondItem="JOH-1S-udu" secondAttribute="leading" constant="50" id="ei5-Hy-f80"/>
@@ -130,7 +131,6 @@
         </view>
     </objects>
     <resources>
-        <image name="HeaderLabel" width="375" height="109"/>
         <namedColor name="CoEpiPurple">
             <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

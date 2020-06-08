@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,9 +24,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLabel" translatesAutoresizingMaskIntoConstraints="NO" id="9ol-aO-EcB">
-                    <rect key="frame" x="0.0" y="-6" width="414" height="221"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="130"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="9ol-aO-EcB" secondAttribute="height" multiplier="414:221" id="065-rM-Pxm"/>
+                        <constraint firstAttribute="height" constant="130" id="eoh-8k-xn6"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4S4-cy-maM">
@@ -112,7 +112,7 @@
                 <constraint firstItem="TmR-mL-KlN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="JSv-r8-4Mi"/>
                 <constraint firstItem="9ol-aO-EcB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Nuv-G5-886"/>
                 <constraint firstItem="08N-4L-XSL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="VZp-jk-99N"/>
-                <constraint firstItem="9ol-aO-EcB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-50" id="ang-uy-FLG"/>
+                <constraint firstItem="9ol-aO-EcB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ang-uy-FLG"/>
                 <constraint firstItem="TmR-mL-KlN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="g9a-MR-AqY"/>
                 <constraint firstItem="4S4-cy-maM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ir5-GN-hUr"/>
                 <constraint firstItem="4S4-cy-maM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="jDk-iN-zch"/>
