@@ -9,9 +9,19 @@ class SymptomStartDaysViewModel {
     let title = L10n.Ux.Symptomsdays.heading
 
     let setActivityIndicatorVisible: Driver<Bool>
+    
+    private let daysIsEmpty: BehaviorRelay<Bool>
+    let submitButtonEnabled: Driver<Bool>
 
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
+        
+        daysIsEmpty = BehaviorRelay<Bool>(value: true)
+        
+        submitButtonEnabled = daysIsEmpty
+            .asObservable()
+            .map{!$0}
+            .asDriver(onErrorJustReturn: false)
 
         setActivityIndicatorVisible = symptomFlowManager.submitSymptomsState
             .map { $0.isProgress() }
@@ -29,6 +39,7 @@ class SymptomStartDaysViewModel {
                 os_log("Invalid input: %{public}@ TODO handle", log: servicesLog, type: .debug, "\(daysStr)")
             }
         }
+        daysIsEmpty.accept(daysStr.isEmpty)
     }
 
     func onSubmitTap() {

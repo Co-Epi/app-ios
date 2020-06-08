@@ -78,6 +78,19 @@ class FeverTempViewController: UIViewController {
     private func setupStyle() {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
         scaleButtonLabel.tintColor = .black
+        
+        ButtonStyles.applyUnselected(to: unknownButtonLabel)
+        ButtonStyles.applyRoundedEnds(to: submitButtonLabel)
+        ButtonStyles.applyShadows(to: submitButtonLabel)
+        
+        viewModel.submitButtonEnabled
+            .drive(submitButtonLabel.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        viewModel.submitButtonEnabled
+            .map{ $0 ? .systemBlue : .lightGray }
+            .drive(submitButtonLabel.rx.backgroundColor)
+            .disposed(by: disposeBag)
     }
 
     private func setupText() {

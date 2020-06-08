@@ -44,9 +44,9 @@ class SymptomView: UIView {
         self.question = question
         button.setTitle(question.text, for: .normal)
         if question.checked{
-            ButtonStyles.applyStyleSelectedButton(to: button)
+            ButtonStyles.applySelected(to: button)
         } else {
-            ButtonStyles.applyStyleUnselectedButton(to: button)
+            ButtonStyles.applyUnselected(to: button)
         }
     }
 

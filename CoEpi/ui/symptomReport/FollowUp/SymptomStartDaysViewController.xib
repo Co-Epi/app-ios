@@ -64,7 +64,7 @@
                                         <constraint firstAttribute="width" secondItem="HZT-j2-j3C" secondAttribute="height" multiplier="139:39" id="nXu-7y-gj5"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <state key="normal" backgroundImage="UnknownButton">
+                                    <state key="normal">
                                         <color key="titleColor" name="CoEpiPurple"/>
                                     </state>
                                     <connections>
@@ -77,7 +77,7 @@
                                         <constraint firstAttribute="width" secondItem="Bu4-pd-wN5" secondAttribute="height" multiplier="38:13" id="Agz-Xy-OnF"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" backgroundImage="SubmitButton_Selected">
+                                    <state key="normal">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
@@ -131,8 +131,6 @@
     </objects>
     <resources>
         <image name="HeaderLabel" width="375" height="109"/>
-        <image name="SubmitButton_Selected" width="106" height="26"/>
-        <image name="UnknownButton" width="131" height="31"/>
         <namedColor name="CoEpiPurple">
             <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

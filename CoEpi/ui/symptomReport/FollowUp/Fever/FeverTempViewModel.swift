@@ -10,6 +10,7 @@ class FeverTempViewModel {
 
     let temperatureText: Driver<String>
     let selectedTemperatureUnit: Driver<TemperatureUnit>
+    let submitButtonEnabled: Driver<Bool>
 
     private let temperatureTrigger: PublishRelay<UserInput<Temperature>> = PublishRelay()
     private let toggleTemperatureUnitTrigger: PublishRelay<()> = PublishRelay()
@@ -26,6 +27,11 @@ class FeverTempViewModel {
             .asDriver(onErrorJustReturn: .fahrenheit)
 
         let temperature = temperatureTrigger.asObservable()
+        
+        submitButtonEnabled = temperature
+            .map{$0.toUserString()}
+            .map{!$0.isEmpty}
+            .asDriver(onErrorJustReturn: false)
 
         temperatureText = temperature
             .map { $0.toUserString() }

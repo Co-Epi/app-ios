@@ -66,8 +66,8 @@ class HomeViewController: UIViewController {
         
         //setup button labels
         
-        ButtonStyles.applyStyleHomeCard(to: reportButtonLabel)
-        ButtonStyles.applyStyleHomeCard(to: alertButtonLabel)
+        ButtonStyles.applyHomeCard(to: reportButtonLabel)
+        ButtonStyles.applyHomeCard(to: alertButtonLabel)
         
         howDataUsedLabel.setTitle(L10n.Ux.Home.how, for: .normal)
         

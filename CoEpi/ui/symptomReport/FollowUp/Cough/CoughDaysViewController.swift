@@ -54,6 +54,19 @@ class CoughDaysViewController: UIViewController {
         
         unknownButtonLabel.setTitle(L10n.Ux.unknown, for: .normal)
         submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
+        
+        ButtonStyles.applyUnselected(to: unknownButtonLabel)
+        ButtonStyles.applyRoundedEnds(to: submitButtonLabel)
+        ButtonStyles.applyShadows(to: submitButtonLabel)
+        
+        viewModel.submitButtonEnabled
+            .drive(submitButtonLabel.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        viewModel.submitButtonEnabled
+            .map{ $0 ? .systemBlue : .lightGray }
+            .drive(submitButtonLabel.rx.backgroundColor)
+            .disposed(by: disposeBag)
 
         daysInput.rx.text
             .distinctUntilChanged()

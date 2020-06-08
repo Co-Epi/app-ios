@@ -40,9 +40,9 @@ class ThankYouViewController: UIViewController {
         viewExposuresButtonLabel.setTitle(L10n.Ux.Thankyou.viewExposures, for: .normal)
         homeButtonLabel.setTitle(L10n.Ux.Thankyou.home, for: .normal)
         
-        ButtonStyles.applyStyleUnselectedButton(to: moreButtonLabel)
-        ButtonStyles.applyStyleUnselectedButton(to: viewExposuresButtonLabel)
-        ButtonStyles.applyStyleUnselectedButton(to: homeButtonLabel)
+        ButtonStyles.applyUnselected(to: moreButtonLabel)
+        ButtonStyles.applyUnselected(to: viewExposuresButtonLabel)
+        ButtonStyles.applyUnselected(to: homeButtonLabel)
 
         navigationItem.hidesBackButton = true
      }

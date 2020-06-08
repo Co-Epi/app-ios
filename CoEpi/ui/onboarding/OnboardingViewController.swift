@@ -100,6 +100,10 @@ class OnboardingViewController: UIViewController {
         joinButtonLabel.setTitle(L10n.Ux.Onboarding.join, for: .normal)
         questionsButtonLabel.setTitle(L10n.Ux.Onboarding.questions, for: .normal)
         
+        ButtonStyles.applyUnselected(to: joinButtonLabel)
+        ButtonStyles.applyUnselected(to: questionsButtonLabel)
+        ButtonStyles.applySelected(to: nextButtonLabel)
+        
         state = 1
 
         updateState(state: state)

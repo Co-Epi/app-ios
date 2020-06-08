@@ -61,7 +61,8 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
         symptomQuestionHeader.text = L10n.Ux.SymptomReport.title
         subHeader.text = L10n.Ux.SymptomReport.subtitle
         submitButton.setTitle(L10n.Ux.submit, for: .normal)
-        ButtonStyles.applyStyleRoundedEnds(to: submitButton)
+        ButtonStyles.applyRoundedEnds(to: submitButton)
+        ButtonStyles.applyShadows(to: submitButton)
      }
 }
 

@@ -113,8 +113,12 @@
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJU-0a-YmX">
                     <rect key="frame" x="288" y="809" width="106" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="106" id="nNw-Z9-SCh"/>
+                        <constraint firstAttribute="height" constant="26" id="pGw-at-3WJ"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <state key="normal" backgroundImage="SubmitButton_Selected">
+                    <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -132,7 +136,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xnb-Z9-ga8">
-                    <rect key="frame" x="20" y="523" width="374" height="213"/>
+                    <rect key="frame" x="20" y="533" width="374" height="203"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-In-5b8">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="29"/>
@@ -147,8 +151,8 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-TU-JXw">
-                            <rect key="frame" x="0.0" y="113" width="374" height="35"/>
-                            <state key="normal" title="Button" backgroundImage="onboardingButton">
+                            <rect key="frame" x="0.0" y="113" width="374" height="30"/>
+                            <state key="normal" title="Button">
                                 <color key="titleColor" name="CoEpiPurple"/>
                             </state>
                             <connections>
@@ -156,8 +160,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qA-FX-jYw">
-                            <rect key="frame" x="0.0" y="178" width="374" height="35"/>
-                            <state key="normal" title="Button" backgroundImage="onboardingButton">
+                            <rect key="frame" x="0.0" y="173" width="374" height="30"/>
+                            <state key="normal" title="Button">
                                 <color key="titleColor" name="CoEpiPurple"/>
                             </state>
                             <connections>
@@ -189,9 +193,7 @@
         </view>
     </objects>
     <resources>
-        <image name="SubmitButton_Selected" width="106" height="26"/>
         <image name="family icon" width="400" height="400"/>
-        <image name="onboardingButton" width="321" height="35"/>
         <image name="stepper" width="20" height="20"/>
         <image name="stepperSelected" width="20" height="20"/>
         <namedColor name="CoEpiPurple">

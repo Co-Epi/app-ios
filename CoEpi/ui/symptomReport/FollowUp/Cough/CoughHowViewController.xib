@@ -35,8 +35,11 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRl-UE-BCP">
                             <rect key="frame" x="0.0" y="0.0" width="314" height="54"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" backgroundImage="largeOvalButton">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="dNc-c6-S7z"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal">
                                 <color key="titleColor" name="CoEpiPurple"/>
                             </state>
                             <state key="highlighted" backgroundImage="largeOvalButton_Selected">
@@ -48,8 +51,11 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ui-1B-6uO">
                             <rect key="frame" x="0.0" y="79" width="314" height="54"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" backgroundImage="largeOvalButton">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="EP6-bM-sPN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal">
                                 <color key="titleColor" name="CoEpiPurple"/>
                             </state>
                             <state key="highlighted" backgroundImage="largeOvalButton_Selected">
@@ -61,8 +67,11 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxT-rb-ljy">
                             <rect key="frame" x="0.0" y="158" width="314" height="54"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" backgroundImage="largeOvalButton">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="nR9-gC-5e9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal">
                                 <color key="titleColor" name="CoEpiPurple"/>
                             </state>
                             <state key="highlighted" backgroundImage="largeOvalButton_Selected">
@@ -119,7 +128,6 @@
     </objects>
     <resources>
         <image name="HeaderLabel" width="375" height="109"/>
-        <image name="largeOvalButton" width="294" height="54"/>
         <image name="largeOvalButton_Selected" width="294" height="54"/>
         <namedColor name="CoEpiPurple">
             <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

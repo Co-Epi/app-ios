@@ -52,6 +52,10 @@ class CoughHowViewController: UIViewController {
         subtitleLabel.text = L10n.Ux.Cough.subtitle3
         skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
         
+        ButtonStyles.applyUnselected(to: betterButtonLabel)
+        ButtonStyles.applyUnselected(to: worseButtonLabel)
+        ButtonStyles.applyUnselected(to: sameButtonLabel)
+        
         betterButtonLabel.setTitle(L10n.Ux.Cough.better, for: .normal)
         worseButtonLabel.setTitle(L10n.Ux.Cough.worse, for: .normal)
         sameButtonLabel.setTitle(L10n.Ux.Cough.same, for: .normal)
