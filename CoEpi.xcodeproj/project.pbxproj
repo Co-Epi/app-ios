@@ -114,6 +114,10 @@
 		849D1B0A2439F31D00804511 /* DaoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1B092439F31D00804511 /* DaoError.swift */; };
 		849D28F92444300B0034EC4C /* Observable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D28F82444300B0034EC4C /* Observable+Convenience.swift */; };
 		849D28FB244436280034EC4C /* Array+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D28FA244436280034EC4C /* Array+Convenience.swift */; };
+		849D7B2D248E69F400C9DDBD /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B2C248E69F400C9DDBD /* Log.swift */; };
+		849D7B2F248E6A1100C9DDBD /* CompositeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B2E248E6A1100C9DDBD /* CompositeLog.swift */; };
+		849D7B31248E6A2800C9DDBD /* CachingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B30248E6A2800C9DDBD /* CachingLog.swift */; };
+		849D7B33248E748300C9DDBD /* ConsoleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B32248E748300C9DDBD /* ConsoleLog.swift */; };
 		849D8AAE247FB8680041FCAB /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D8AAD247FB8680041FCAB /* UIColor+Theme.swift */; };
 		849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE652427D3750008ED65 /* AppDelegate.swift */; };
 		849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849DFE6E2427D3750008ED65 /* CoEpi.xcdatamodeld */; };
@@ -327,6 +331,10 @@
 		849D1B092439F31D00804511 /* DaoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoError.swift; sourceTree = "<group>"; };
 		849D28F82444300B0034EC4C /* Observable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Convenience.swift"; sourceTree = "<group>"; };
 		849D28FA244436280034EC4C /* Array+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Convenience.swift"; sourceTree = "<group>"; };
+		849D7B2C248E69F400C9DDBD /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		849D7B2E248E6A1100C9DDBD /* CompositeLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeLog.swift; sourceTree = "<group>"; };
+		849D7B30248E6A2800C9DDBD /* CachingLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingLog.swift; sourceTree = "<group>"; };
+		849D7B32248E748300C9DDBD /* ConsoleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLog.swift; sourceTree = "<group>"; };
 		849D8AAD247FB8680041FCAB /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
 		849DFE622427D3750008ED65 /* CoEpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoEpi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DFE652427D3750008ED65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -721,6 +729,17 @@
 			path = protocols;
 			sourceTree = "<group>";
 		};
+		849D7B2B248E69E600C9DDBD /* log */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B2C248E69F400C9DDBD /* Log.swift */,
+				849D7B2E248E6A1100C9DDBD /* CompositeLog.swift */,
+				849D7B30248E6A2800C9DDBD /* CachingLog.swift */,
+				849D7B32248E748300C9DDBD /* ConsoleLog.swift */,
+			);
+			path = log;
+			sourceTree = "<group>";
+		};
 		849DFE592427D3750008ED65 = {
 			isa = PBXGroup;
 			children = (
@@ -877,6 +896,7 @@
 		84D069622455A7510004E8B6 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				849D7B2B248E69E600C9DDBD /* log */,
 				84D069632455A7600004E8B6 /* OperationState.swift */,
 				84D069662455E6E40004E8B6 /* DateFormatters.swift */,
 				84AC26D6247D3C6F00C93D29 /* FileSystem.swift */,
@@ -1267,6 +1287,7 @@
 				6291BE7B246CB93E00984583 /* SymptomStartDaysViewModel.swift in Sources */,
 				84E2D482247EFF1F00D1E6BF /* SymptomReportCell.swift in Sources */,
 				622AC2E2245FD25900A6EB90 /* FeverWhereViewModel.swift in Sources */,
+				849D7B31248E6A2800C9DDBD /* CachingLog.swift in Sources */,
 				84F186E42481371500E7979B /* NumberFormatters.swift in Sources */,
 				845813DD247FE4470066A09F /* Collection+Convenience.swift in Sources */,
 				CE6B7AC9243327FF00C42280 /* RealmCENKey.swift in Sources */,
@@ -1284,6 +1305,7 @@
 				849D1B082439EAD200804511 /* UINotifier.swift in Sources */,
 				CE6B7AC1243325F200C42280 /* RealmCENReport.swift in Sources */,
 				622AC2DA245FC68700A6EB90 /* CoughDaysViewModel.swift in Sources */,
+				849D7B2F248E6A1100C9DDBD /* CompositeLog.swift in Sources */,
 				84A4B9BC242CE42C00516F3B /* Symptom.swift in Sources */,
 				8486BDE4242BF9F500A63DD5 /* UITableView+ReuseIdentifier.swift in Sources */,
 				622AC2DC245FC69600A6EB90 /* CoughHowViewModel.swift in Sources */,
@@ -1358,6 +1380,7 @@
 				6291BE7D246D17C100984583 /* OnboardingWireframe.swift in Sources */,
 				849D8AAE247FB8680041FCAB /* UIColor+Theme.swift in Sources */,
 				84A5C1E124897B5D00B002E2 /* Date+Convenience.swift in Sources */,
+				849D7B33248E748300C9DDBD /* ConsoleLog.swift in Sources */,
 				054A34FC244E691500282E17 /* strings.swift in Sources */,
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,
@@ -1369,6 +1392,7 @@
 				84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */,
 				84E2D480247EF67500D1E6BF /* AlertDao.swift in Sources */,
 				700BA90C2489685400BE8F30 /* ButtonStyles.swift in Sources */,
+				849D7B2D248E69F400C9DDBD /* Log.swift in Sources */,
 				849327B12452D8EB009589E6 /* BackgroundTasksManager.swift in Sources */,
 				848434592438C28A006A5839 /* UIView+Autolayout.swift in Sources */,
 				8486BDE6242BFAE700A63DD5 /* UITableCell+ReuseIdentifier.swift in Sources */,
