@@ -32,13 +32,13 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="ySF-OM-roc">
-                    <rect key="frame" x="50" y="370" width="314" height="156"/>
+                    <rect key="frame" x="50" y="375" width="314" height="146"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="stF-hn-LKy">
-                            <rect key="frame" x="0.0" y="0.0" width="314" height="61"/>
+                            <rect key="frame" x="0.0" y="0.0" width="314" height="60.5"/>
                             <subviews>
                                 <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" adjustsFontSizeToFit="NO" minimumFontSize="40" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="emU-zu-gep">
-                                    <rect key="frame" x="0.0" y="0.0" width="185" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="185" height="60.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="emU-zu-gep" secondAttribute="height" multiplier="73:24" id="PFF-0m-vbV"/>
                                     </constraints>
@@ -46,7 +46,7 @@
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBh-8e-16c">
-                                    <rect key="frame" x="210" y="0.0" width="104" height="61"/>
+                                    <rect key="frame" x="210" y="0.0" width="104" height="60.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="QBh-8e-16c" secondAttribute="height" multiplier="41:24" id="9Z6-wN-L6L"/>
                                     </constraints>
@@ -57,12 +57,12 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qLa-je-fON">
-                            <rect key="frame" x="0.0" y="111" width="314" height="45"/>
+                            <rect key="frame" x="0.0" y="110.5" width="314" height="35.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iky-2v-L9z">
-                                    <rect key="frame" x="0.0" y="0.0" width="161.5" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="149.5" height="35.5"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="iky-2v-L9z" secondAttribute="height" multiplier="139:39" id="cdg-Tl-8Lu"/>
+                                        <constraint firstAttribute="width" secondItem="iky-2v-L9z" secondAttribute="height" multiplier="131:31" id="cdg-Tl-8Lu"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal">
@@ -73,9 +73,9 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9z-cQ-12D">
-                                    <rect key="frame" x="181.5" y="0.0" width="132.5" height="45"/>
+                                    <rect key="frame" x="169.5" y="0.0" width="144.5" height="35.5"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="l9z-cQ-12D" secondAttribute="height" multiplier="38:13" id="KDe-Zp-ZbZ"/>
+                                        <constraint firstAttribute="width" secondItem="l9z-cQ-12D" secondAttribute="height" multiplier="106:26" id="KDe-Zp-ZbZ"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal">
@@ -96,7 +96,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xW-wJ-kXm">
-                    <rect key="frame" x="50" y="576" width="30" height="30"/>
+                    <rect key="frame" x="50" y="571" width="30" height="30"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>

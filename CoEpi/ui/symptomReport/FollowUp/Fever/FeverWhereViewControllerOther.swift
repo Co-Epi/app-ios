@@ -41,6 +41,8 @@ class FeverWhereViewControllerOther: UIViewController {
         skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
 
         submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
+        ButtonStyles.applyRoundedEnds(to: submitButtonLabel)
+        ButtonStyles.applyShadows(to: submitButtonLabel)
         
      }
 }

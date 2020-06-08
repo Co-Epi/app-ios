@@ -28,7 +28,7 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="zNx-pq-IEA">
-                    <rect key="frame" x="50" y="369" width="314" height="158"/>
+                    <rect key="frame" x="50" y="372.5" width="314" height="151"/>
                     <subviews>
                         <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" adjustsFontSizeToFit="NO" minimumFontSize="28" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d5w-Gj-HB2">
                             <rect key="frame" x="0.0" y="0.0" width="314" height="60"/>
@@ -39,10 +39,10 @@
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                         </textField>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uas-L8-Rrp">
-                            <rect key="frame" x="0.0" y="110" width="314" height="48"/>
+                            <rect key="frame" x="0.0" y="110" width="314" height="41"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KxY-Ac-Goq">
-                                    <rect key="frame" x="0.0" y="0.0" width="172.5" height="48"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="146.5" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="KxY-Ac-Goq" secondAttribute="height" multiplier="139:39" id="2jI-Ap-I49"/>
                                     </constraints>
@@ -62,12 +62,12 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T62-MY-cl5">
-                                    <rect key="frame" x="172.5" y="0.0" width="141.5" height="48"/>
+                                    <rect key="frame" x="146.5" y="0.0" width="167.5" height="41"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="T62-MY-cl5" secondAttribute="height" multiplier="38:13" id="YhM-Y5-lJ1"/>
+                                        <constraint firstAttribute="width" secondItem="T62-MY-cl5" secondAttribute="height" multiplier="106:26" id="YhM-Y5-lJ1"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" backgroundImage="SubmitButton_Selected">
+                                    <state key="normal">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
@@ -108,7 +108,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>
         </view>
     </objects>
-    <resources>
-        <image name="SubmitButton_Selected" width="106" height="26"/>
-    </resources>
 </document>
