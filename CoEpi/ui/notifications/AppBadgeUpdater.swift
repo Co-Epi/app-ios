@@ -1,6 +1,5 @@
 import Foundation
 import UserNotifications
-import os.log
 import UIKit
 
 protocol AppBadgeUpdater {
@@ -22,7 +21,7 @@ class AppBadgeUpdaterImpl: AppBadgeUpdater {
         else { return }
 
         DispatchQueue.main.async {
-            os_log("Updating app badge: %{public}@", log: servicesLog, type: .debug, "\(number)")
+            log.d("Updating app badge: \(number)")
             UIApplication.shared.applicationIconBadgeNumber = number
         }
     }

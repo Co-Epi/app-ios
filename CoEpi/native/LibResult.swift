@@ -1,5 +1,4 @@
 import Foundation
-import os.log
 
 struct LibResult<T: Decodable>: Decodable {
     let status: Int
@@ -43,8 +42,7 @@ extension Unmanaged where Instance == CFString {
         let resultValue: CFString = takeRetainedValue()
         let resultString = resultValue as String
 
-        os_log("Deserializing native core result: %{public}@", log: servicesLog,
-               type: .debug, "\(resultString)")
+        log.d("Deserializing native core result: \(resultString)")
 
         // TODO review safety of utf-8 force unwrap
         let data = resultString.data(using: .utf8)!

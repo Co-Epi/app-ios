@@ -1,7 +1,6 @@
 import Foundation
 import RealmSwift
 import RxSwift
-import os.log
 
 // TODO remove, move functionality to RawAlertDao
 protocol CENReportDao {
@@ -38,7 +37,7 @@ class RealmCENReportDao: CENReportDao, RealmDao {
     func insert(report: ReceivedCenReport) -> Bool {
         let result = realm.objects(RealmCENReport.self).filter("id = %@", report.report.id)
         if result.count == 0 {
-            os_log("Report didn't exist in db, inserting: %{public}@", type: .debug, report.description)
+            log.d("Report didn't exist in db, inserting: \(report.description)")
             let newCENReport = RealmCENReport(report)
             write {
                 realm.add(newCENReport)
@@ -46,16 +45,16 @@ class RealmCENReportDao: CENReportDao, RealmDao {
             return true
         } else {
             //duplicate entry: skipping
-            os_log("Report already in db, id = %{public}@", type: .debug, report.report.id)
+            log.d("Report already in db, id = \(report.report.id)")
             return false
         }
     }
 
     func delete(report: ReceivedCenReport) {
-        os_log("ACKing report: %{public}@", type: .debug, "\(report)")
+        log.d("ACKing report: \(report)")
 
         guard let realmReport = findReportBy(id: report.report.id) else {
-            os_log("Couldn't find report to delete: %{public}@", type: .error, "\(report)")
+            log.e("Couldn't find report to delete: \(report)")
             return
         }
 

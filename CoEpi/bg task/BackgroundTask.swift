@@ -1,6 +1,5 @@
 import Foundation
 import BackgroundTasks
-import os.log
 import RxSwift
 
 /// Long running background task

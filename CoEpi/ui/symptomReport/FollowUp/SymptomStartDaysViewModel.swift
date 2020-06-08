@@ -1,7 +1,6 @@
 import Dip
 import RxCocoa
 import RxSwift
-import os.log
 
 class SymptomStartDaysViewModel {
     private let symptomFlowManager: SymptomFlowManager
@@ -36,7 +35,7 @@ class SymptomStartDaysViewModel {
                 symptomFlowManager.setEarliestSymptomStartedDaysAgo(.some(days)).expect()
             } else {
                 // TODO handle
-                os_log("Invalid input: %{public}@ TODO handle", log: servicesLog, type: .debug, "\(daysStr)")
+                log.d("Invalid input: \(daysStr) TODO handle")
             }
         }
         daysIsEmpty.accept(daysStr.isEmpty)

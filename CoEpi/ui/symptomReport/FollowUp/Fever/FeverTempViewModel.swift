@@ -1,7 +1,6 @@
 import Dip
 import RxCocoa
 import RxSwift
-import os.log
 
 class FeverTempViewModel {
     private let symptomFlowManager: SymptomFlowManager
@@ -101,7 +100,7 @@ private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<
             case .fahrenheit: return .some(.fahrenheit(value: temp))
             }
         } else {
-            os_log("WARN: Not numeric temperature input: %{public}@", log: servicesLog, tempStr)
+            log.w("WARN: Not numeric temperature input: \(tempStr)")
             return .none
         }
     }

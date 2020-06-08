@@ -1,7 +1,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import os.log
 
 protocol StartPermissions {
     var granted: Observable<Bool> { get }
@@ -21,7 +20,7 @@ class StartPermissionsImpl: StartPermissions {
     func request() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if let error = error {
-                os_log("Error requesting permission: %{public}@", log: servicesLog, type: .debug, "\(error)")
+                log.e("Error requesting permission: \(error)")
             }
             self.grantedSubject.accept(granted)
         }

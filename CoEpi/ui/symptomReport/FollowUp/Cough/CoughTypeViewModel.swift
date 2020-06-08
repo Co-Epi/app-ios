@@ -1,7 +1,6 @@
 import Dip
 import RxCocoa
 import RxSwift
-import os.log
 
 class CoughTypeViewModel {
     private let symptomFlowManager: SymptomFlowManager

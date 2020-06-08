@@ -1,5 +1,4 @@
 import Foundation
-import os.log
 import RxSwift
 
 class ScannedCensHandler {
@@ -20,16 +19,16 @@ class ScannedCensHandler {
             .distinctUntilChanged()
 
             .subscribe(onNext: { [tcnsRecorder] data in
-                os_log("Observed CEN: %{public}@", log: bleLog, "\(data.toHex())")
+                log.d("Observed CEN: \(data.toHex())")
 
                 let res = tcnsRecorder.recordTcn(tcn: data)
 
                 if (!res.isSuccess()) {
-                    os_log("Error recording TCN: %{public}@", log: bleLog, type: .debug, "\(res)")
+                    log.e("Error recording TCN: \(res)")
                 }
 
             }, onError: { error in
-                os_log("Error in central cen observer: %{public}@", log: bleLog, error.localizedDescription)
+                log.e("Error in central cen observer: \(error.localizedDescription)")
             }).disposed(by: disposeBag)
     }
 

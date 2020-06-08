@@ -1,6 +1,5 @@
 import UIKit
 import BackgroundTasks
-import os.log
 
 /// Registers and schedules background processing tasks
 class BackgroundTaskScheduler {
@@ -26,7 +25,7 @@ class BackgroundTaskScheduler {
     }
 
     private func handleTask(task: BGProcessingTask) {
-        os_log("handleTask: ", log: servicesLog, type: .debug, "\(task)")
+        log.d("handleTask: \(task)")
 
         schedule(delay: self.task.scheduleInterval)
 
@@ -34,12 +33,12 @@ class BackgroundTaskScheduler {
 
         task.expirationHandler = {
             task.setTaskCompleted(success: false)
-            os_log("Background task expired", log: servicesLog, type: .debug)
+            log.d("Background task expired")
         }
     }
 
     private func schedule(delay: TimeInterval) {
-        os_log("Scheduling BG task. Delay: %{public}@", log: servicesLog, type: .debug, "\(delay)")
+        log.d("Scheduling BG task. Delay: \(delay)")
 
         let request = BGProcessingTaskRequest(identifier: task.identifier)
         request.earliestBeginDate = Date(timeIntervalSinceNow: delay)
@@ -49,7 +48,7 @@ class BackgroundTaskScheduler {
           // TODO flag to use bg thread. Or maybe just use always thread.
           try BGTaskScheduler.shared.submit(request)
         } catch let e {
-          os_log("Unable to submit task: %{public}@, error: %{public}@", log: servicesLog, type: .debug, "\(request)", "\(e)")
+            log.e("Unable to submit task: \(request), error: \(e)")
         }
     }
 }

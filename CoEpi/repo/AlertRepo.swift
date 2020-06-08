@@ -1,7 +1,6 @@
 import Foundation
 import RxCocoa
 import RxSwift
-import os.log
 
 protocol AlertRepo {
     var alerts: Observable<[Alert]> { get }
@@ -45,13 +44,13 @@ class AlertRepoImpl: AlertRepo {
                 // TODO so we have to update "last fetched time segment" only if alerts save was success
                 // TODO NOTE that storage will likely be moved to Rust. Let's wait until this is cleared.
                 if alertDao.insert(alert: alert) {
-                    os_log("Inserted new alert: %{alert}@", log: servicesLog, type: .debug, "\(alert)")
+                    log.d("Inserted new alert: \(alert)")
                 }
             }
             updateReportsStateSubject.accept(.success(data: ()))
 
         case .failure(let error):
-            os_log("Error fetching alerts: %{public}@", log: servicesLog, type: .debug, "\(error)")
+            log.e("Error fetching alerts: \(error)")
             updateReportsStateSubject.accept(OperationState.failure(error: error))
         }
 

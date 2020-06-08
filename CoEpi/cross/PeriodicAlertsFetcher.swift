@@ -1,6 +1,5 @@
 import Foundation
 import RxSwift
-import os.log
 
 class PeriodicAlertsFetcher {
     private let disposeBag = DisposeBag()

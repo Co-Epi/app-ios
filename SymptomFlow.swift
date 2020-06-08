@@ -1,5 +1,4 @@
 import Foundation
-import os.log
 import RxSwift
 
 class SymptomFlow {
@@ -34,13 +33,13 @@ class SymptomFlow {
 
     static func create(symptomIds: [SymptomId]) -> SymptomFlow? {
         if (symptomIds.isEmpty) {
-            os_log("Symptoms ids empty")
+            log.d("Symptoms ids empty")
             return nil
         }
 
         let steps = toSteps(symptomIds: symptomIds)
         if (steps.isEmpty) {
-            os_log("Symptoms have no steps. Not creating a flow.")
+            log.d("Symptoms have no steps. Not creating a flow.")
             return nil
         }
 

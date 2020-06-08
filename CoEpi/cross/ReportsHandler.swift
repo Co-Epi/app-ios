@@ -1,5 +1,4 @@
 import Foundation
-import os.log
 
 protocol MatchingReportsHandler {
     func handleMatchingReports(reports: [ReceivedCenReport])
@@ -25,7 +24,7 @@ class MatchingReportsHandlerImpl: MatchingReportsHandler {
             notifiyNewAlerts(count: insertedCount)
         }
 
-        os_log("Alerts update task finished. Saved new reports: %{public}d", log: servicesLog, type: .debug, insertedCount)
+        log.d("Alerts update task finished. Saved new reports: \(insertedCount)")
     }
 
     private func notifiyNewAlerts(count: Int) {

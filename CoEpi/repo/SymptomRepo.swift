@@ -1,6 +1,5 @@
 import Foundation
 import RxSwift
-import os.log
 
 protocol SymptomRepo {
     func symptoms() -> [Symptom]

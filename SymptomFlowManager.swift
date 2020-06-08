@@ -1,4 +1,3 @@
-import os.log
 import RxCocoa
 import RxSwift
 
@@ -38,7 +37,7 @@ class SymptomFlowManager {
 
     func startFlow(symptomIds: [SymptomId]) -> Bool {
         if (symptomIds.isEmpty) {
-            os_log("Symptoms ids is empty", log: servicesLog, type: .debug)
+            log.d("Symptoms ids is empty")
             return false
         }
 
@@ -64,7 +63,7 @@ class SymptomFlowManager {
 
     func updateNavigation() {
         guard let symptomFlow = symptomFlow else {
-            os_log("No symptom inputs. Showing thanks screen.", log: servicesLog, type: .debug)
+            log.d("No symptom inputs. Showing thanks screen.")
             finishFlowTrigger.accept(())
             return
         }
@@ -96,7 +95,7 @@ class SymptomFlowManager {
             return
         }
         if symptomFlow.previous() == nil {
-            os_log("No previous step.", log: servicesLog, type: .debug)
+            log.d("No previous step.")
         }
     }
 

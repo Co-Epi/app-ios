@@ -1,5 +1,4 @@
 import RxSwift
-import os.log
 
 class HomeViewModel {
     let title = L10n.Ux.Home.title
@@ -12,7 +11,7 @@ class HomeViewModel {
         self.rootNav = rootNav
 
         startPermissions.granted.subscribe(onNext: { granted in
-            os_log("Start permissions granted: %{public}@", log: servicesLog, type: .debug, "\(granted)")
+            log.d("Start permissions granted: \(granted)")
         }).disposed(by: disposeBag)
 
         startPermissions.request()

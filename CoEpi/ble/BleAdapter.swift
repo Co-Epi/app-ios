@@ -1,7 +1,6 @@
 import Foundation
 import TCNClient
 import RxSwift
-import os.log
 
 class BleAdapter {
     private let tcnService: TCNBluetoothService
@@ -12,7 +11,7 @@ class BleAdapter {
     init(tcnGenerator: TcnGenerator) {
         tcnService = TCNBluetoothService(tcnGenerator: { [myTcn] in
             let tcnResult = tcnGenerator.generateTcn()
-            os_log("Generated TCN: %{public}@", type: .error, "\(tcnResult)")
+            log.d("Generated TCN: \(tcnResult)")
 
             return {
                 switch tcnResult {
@@ -28,7 +27,7 @@ class BleAdapter {
             discovered.onNext(data)
         }) { error in
             // TODO What kind of errors? Should we notify the user?
-            os_log("TCN service error: %{public}@", type: .error, "\(error)")
+            log.e("TCN service error: \(error)")
         }
 
         tcnService.start()

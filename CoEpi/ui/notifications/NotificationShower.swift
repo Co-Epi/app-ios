@@ -1,5 +1,4 @@
 import UIKit
-import os.log
 
 protocol NotificationShower {
     func showNotification(data: NotificationData)
@@ -25,7 +24,7 @@ class NotificationShowerImpl: NotificationShower {
     }
 
     private func showNotification(data: NotificationData, canPlaySound: Bool) {
-        os_log("Showing notification", log: servicesLog, type: .debug)
+        log.d("Showing notification")
 
         let content = UNMutableNotificationContent()
         content.title = data.title

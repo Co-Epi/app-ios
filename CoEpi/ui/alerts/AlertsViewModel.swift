@@ -1,7 +1,6 @@
 import Dip
 import RxCocoa
 import RxSwift
-import os.log
 import Foundation
 
 class AlertsViewModel {
@@ -22,7 +21,7 @@ class AlertsViewModel {
 
         updateStatusText = alertRepo.updateReportsState
             .do(onNext: { result in
-                os_log("Got alerts result in view model: %{public}@", log: servicesLog, type: .debug, "\(result)")
+                log.d("Got alerts result in view model: \(result)")
             })
             .filter { $0.shouldShowText() }
             .map { $0.asText() }

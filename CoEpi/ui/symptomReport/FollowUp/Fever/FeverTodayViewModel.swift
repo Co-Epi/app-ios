@@ -1,7 +1,6 @@
 import Dip
 import RxCocoa
 import RxSwift
-import os.log
 
 class FeverTodayViewModel {
     private let symptomFlowManager: SymptomFlowManager

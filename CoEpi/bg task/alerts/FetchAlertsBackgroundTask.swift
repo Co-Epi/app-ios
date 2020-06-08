@@ -1,5 +1,4 @@
 import RxSwift
-import os.log
 import BackgroundTasks
 import Action
 
@@ -25,7 +24,7 @@ class FetchAlertsBackgroundTask: BackgroundTask {
     }
 
     func execute(task: BGProcessingTask) {
-        os_log("Starting fetch alerts bg task...", log: servicesLog, type: .debug)
+        log.d("Starting fetch alerts bg task...")
 
         fetchAlertsAction.execute()
     }

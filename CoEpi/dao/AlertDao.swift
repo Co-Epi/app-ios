@@ -1,5 +1,4 @@
 import Foundation
-import os.log
 import RealmSwift
 import RxSwift
 
@@ -54,10 +53,10 @@ class RealmAlertDao: AlertDao, RealmDao {
     }
 
     func delete(alert: Alert) {
-        os_log("ACKing alert: %{public}@", type: .debug, "\(alert)")
+        log.d("ACKing alert: \(alert)")
 
         guard let realmAlert = findAlertBy(id: alert.id) else {
-            os_log("Couldn't find alert to delete: %{public}@", type: .error, "\(alert)")
+            log.e("Couldn't find alert to delete: \(alert)")
             return
         }
 
