@@ -124,8 +124,7 @@ class RootWireFrame {
     }
 
     private func showDebug() {
-        let debugViewModel: DebugViewModel = try! container.resolve()
-        let debugViewController = DebugViewController(viewModel: debugViewModel)
+        let debugViewController = DebugViewController(container: container)
         rootNavigationController.pushViewController(debugViewController, animated: true)
     }
 

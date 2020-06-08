@@ -71,7 +71,9 @@ class Dependencies {
         container.register { AlertsViewModel(alertRepo: try container.resolve(),
                                              nav: try container.resolve()) }
 
-        container.register { DebugViewModel(bleAdapter: try container.resolve()) }
+        container.register { DebugBleViewModel(bleAdapter: try container.resolve()) }
+        container.register { LogsViewModel(log: cachingLog, clipboard: try container.resolve(),
+                                           envInfos: try container.resolve()) }
         container.register { AlertDetailsViewModel(alert: $0) }
     }
 
@@ -131,5 +133,7 @@ class Dependencies {
     private func registerSystem(container: DependencyContainer) {
         container.register(.singleton) { KeyValueStoreImpl() as KeyValueStore }
         container.register(.singleton) { StartPermissionsImpl() as StartPermissions }
+        container.register(.singleton) { Clipboard() }
+        container.register(.singleton) { EnvInfos() }
     }
 }

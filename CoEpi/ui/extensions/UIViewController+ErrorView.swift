@@ -9,13 +9,13 @@ protocol ErrorDisplayer {
 extension ErrorDisplayer where Self: UIViewController {
 
     func showNotification(notification: UINotification) {
-        let data: (title: String, message: String, color: UIColor) = {
+        let data: (message: String, color: UIColor) = {
             switch notification {
-            case .error(let message): return ("Error", message, .red)
-            case .success(let message): return ("Success", message, .systemGreen)
+            case .error(let message): return (message, .red)
+            case .success(let message): return (message, .systemGreen)
             }
         }()
-        SwiftEntryKit.display(entry: createView(title: data.title, message: data.message),
+        SwiftEntryKit.display(entry: createView(title: "", message: data.message),
                               using: attributes(backgroundColor: data.color))
     }
 

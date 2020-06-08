@@ -1,18 +1,16 @@
 import UIKit
-import RxSwift
-import RxCocoa
+import Dip
 
 class DebugViewController: UIViewController {
-    private let viewModel: DebugViewModel
+    private let container: DependencyContainer
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tabs: UISegmentedControl!
+    @IBOutlet weak var pagerContainer: UIView!
 
-    private let disposeBag = DisposeBag()
+    private var pagerViewController: DebugPageViewController?
 
-    private var dataSource = DebugListDataSource()
-
-    init(viewModel: DebugViewModel) {
-        self.viewModel = viewModel
+    init(container: DependencyContainer) {
+        self.container = container
         super.init(nibName: String(describing: Self.self), bundle: nil)
     }
 
@@ -21,44 +19,104 @@ class DebugViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        tableView.register(cellClass: UITableViewCell.self)
+        super.viewDidLoad()
+        addPager()
+    }
 
-        viewModel.debugEntries
-            .drive(tableView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
+    @IBAction func tabChanged(_ sender: UISegmentedControl) {
+        // quick & dirty switch between page 0 and 1
+        switch sender.selectedSegmentIndex {
+        case 0: pagerViewController?.goToPreviousPage()
+        case 1: pagerViewController?.goToNextPage()
+        default: fatalError("Not supported: \(sender.selectedSegmentIndex)")
+        }
+    }
+
+    private func addPager() {
+        let viewController = DebugPageViewController(container: container) { [weak self] pageIndex in
+            self?.tabs.selectedSegmentIndex = pageIndex
+        }
+        pagerContainer.addSubview(viewController.view)
+        viewController.view.pinAllEdgesToParent()
+        addChild(viewController)
+        viewController.didMove(toParent: self)
+        pagerViewController = viewController
     }
 }
 
-private class DebugListDataSource: NSObject, RxTableViewDataSourceType {
-    private var debugEntries: [DebugEntryViewData] = []
+class DebugPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[DebugEntryViewData]>) {
-        if case let .next(debugEntries) = observedEvent {
-            self.debugEntries = debugEntries
-            tableView.reloadData()
-        }
+    private let container: DependencyContainer!
+
+    var pages = [UIViewController]()
+    let pageControl = UIPageControl()
+
+    private var onPageChanged: ((Int) -> Void)
+
+    init(container: DependencyContainer, onPageChanged: @escaping ((Int) -> Void)) {
+        self.container = container
+        self.onPageChanged = onPageChanged
+
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
-}
 
-extension DebugListDataSource: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        debugEntries.count
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeue(cellClass: UITableViewCell.self, forIndexPath: indexPath)
-        let label = cell.textLabel
-        label?.font = .systemFont(ofSize: 14)
-
-        switch debugEntries[indexPath.row] {
-        case .Header(let text):
-            label?.text = text
-            cell.backgroundColor = .lightGray
-        case .Item(let text):
-            label?.text = text
-            cell.backgroundColor = .clear
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if let index = pages.firstIndex(of: viewController) {
+            if index > 0 {
+                return pages[index - 1]
+            }
         }
-        return cell
+        return nil
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if let index = pages.firstIndex(of: viewController) {
+            if index < pages.count - 1 {
+                return pages[index + 1]
+            }
+        }
+        return nil
+    }
+
+    func goToNextPage(animated: Bool = true) {
+        guard let current = self.viewControllers?.first else { return }
+        guard let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: current)
+            else { return }
+        setViewControllers([nextViewController], direction: .forward, animated: animated, completion: nil)
+    }
+
+    func goToPreviousPage(animated: Bool = true) {
+        guard let current = self.viewControllers?.first else { return }
+        guard let previousViewController = dataSource?.pageViewController(self, viewControllerBefore: current)
+            else { return }
+        setViewControllers([previousViewController], direction: .reverse, animated: animated, completion: nil)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        dataSource = self
+        delegate = self
+
+        let initialPage = 0
+
+        let debugBleViewModel: DebugBleViewModel = try! container.resolve()
+        let logsViewModel: LogsViewModel = try! container.resolve()
+
+        pages.append(DebugBleViewController(viewModel: debugBleViewModel))
+        pages.append(LogsViewController(viewModel: logsViewModel))
+
+        setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let viewControllers = viewControllers else { return }
+        if let index = pages.firstIndex(of: viewControllers[0]) {
+            onPageChanged(index)
+        }
     }
 }

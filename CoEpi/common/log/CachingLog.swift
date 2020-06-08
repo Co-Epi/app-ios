@@ -2,23 +2,23 @@ import RxSwift
 import Foundation
 
 struct LimitedSizeQueue<T> {
+    public private(set) var array: Array<T> = []
+
     private let maxSize: Int
 
     init(maxSize: Int) {
         self.maxSize = maxSize
     }
 
-    public private(set) var elements: Array<T> = []
-
     public mutating func add(value: T) {
-        elements.append(value)
+        array.append(value)
 
-        if elements.count > maxSize {
-            elements.removeSubrange(0..<(elements.count - maxSize - 1))
+        if array.count > maxSize {
+            array.removeSubrange(0..<(array.count - maxSize - 1))
         }
     }
 
-    public var isEmpty: Bool { return elements.isEmpty }
+    public var isEmpty: Bool { return array.isEmpty }
 }
 
 

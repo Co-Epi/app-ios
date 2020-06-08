@@ -2,9 +2,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class DebugViewModel {
+class DebugBleViewModel {
 
-    let debugEntries: Driver<[DebugEntryViewData]>
+    let debugEntries: Driver<[DebugBleEntryViewData]>
 
     private let disposeBag = DisposeBag()
 
@@ -22,16 +22,16 @@ class DebugViewModel {
     }
 }
 
-enum DebugEntryViewData {
+enum DebugBleEntryViewData {
     case Header(String)
     case Item(String)
 }
 
-private func generateItems(myTcn: [String], discovered: [Data]) -> [DebugEntryViewData] {
+private func generateItems(myTcn: [String], discovered: [Data]) -> [DebugBleEntryViewData] {
     items(header: "My TCN", items: myTcn)
         + items(header: "Discovered", items: discovered.map { $0.toHex() })
 }
 
-private func items(header: String, items: [String]) -> [DebugEntryViewData] {
+private func items(header: String, items: [String]) -> [DebugBleEntryViewData] {
     [.Header(header)] + items.map{ .Item($0) }
 }

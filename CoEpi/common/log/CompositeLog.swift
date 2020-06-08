@@ -23,31 +23,31 @@ class CompositeLog : Log {
 
     func v(_ message: String, tags: LogTag...) {
         for log in logs {
-            log.v(message: message, tags: tags)
+            log.v(message, tags: tags)
         }
     }
 
     func d(_ message: String, tags: LogTag...) {
         for log in logs {
-            log.d(message: message, tags: tags)
+            log.d(message, tags: tags)
         }
     }
 
     func i(_ message: String, tags: LogTag...) {
         for log in logs {
-            log.i(message: message, tags: tags)
+            log.i(message, tags: tags)
         }
     }
 
     func w(_ message: String, tags: LogTag...) {
         for log in logs {
-            log.w(message: message, tags: tags)
+            log.w(message, tags: tags)
         }
     }
 
     func e(_ message: String, tags: LogTag...) {
         for log in logs {
-            log.e(message: message, tags: tags)
+            log.e(message, tags: tags)
         }
     }
 }
