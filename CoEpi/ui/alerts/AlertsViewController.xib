@@ -57,9 +57,9 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pA5-HJ-GFL">
-                    <rect key="frame" x="41" y="837.5" width="332" height="38.5"/>
+                    <rect key="frame" x="41" y="842" width="332" height="34"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="pA5-HJ-GFL" secondAttribute="height" multiplier="147:17" id="B4Q-2t-u8O"/>
+                        <constraint firstAttribute="height" constant="34" id="wQW-yN-5im"/>
                     </constraints>
                     <state key="normal" title="" backgroundImage="smallOvalButton">
                         <color key="titleColor" name="CoEpiPurple"/>

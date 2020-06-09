@@ -66,11 +66,8 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZwQ-hd-n4h">
-                    <rect key="frame" x="20" y="312" width="335" height="184"/>
+                    <rect key="frame" x="20" y="288" width="335" height="168"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="ZwQ-hd-n4h" secondAttribute="height" multiplier="293:161" id="x4z-7m-l4K"/>
-                    </constraints>
                     <state key="normal" title="alerts">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -79,10 +76,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-CT-5e9">
-                    <rect key="frame" x="20" y="100" width="335" height="192"/>
+                    <rect key="frame" x="20" y="100" width="335" height="168"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="jWj-CT-5e9" secondAttribute="height" multiplier="293:168" id="Vdx-S3-x8l"/>
+                        <constraint firstAttribute="height" constant="168" id="gqb-hM-LR4"/>
                     </constraints>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                     <state key="normal" title="report">
@@ -93,14 +90,14 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redCircle" translatesAutoresizingMaskIntoConstraints="NO" id="1F1-on-5CS">
-                    <rect key="frame" x="10" y="302" width="40" height="40"/>
+                    <rect key="frame" x="10" y="278" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="bSy-b4-86E"/>
                         <constraint firstAttribute="width" constant="40" id="cSX-aN-QnH"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCZ-5X-qoz">
-                    <rect key="frame" x="164.5" y="506" width="46" height="30"/>
+                    <rect key="frame" x="164.5" y="466" width="46" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -120,6 +117,7 @@
                 <constraint firstItem="1F1-on-5CS" firstAttribute="top" secondItem="jWj-CT-5e9" secondAttribute="bottom" constant="10" id="KfR-ag-8Hw"/>
                 <constraint firstItem="1F1-on-5CS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="SnU-Ag-8za"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YJp-7I-Dhs" secondAttribute="bottom" constant="5" id="T2L-B6-cWL"/>
+                <constraint firstItem="ZwQ-hd-n4h" firstAttribute="height" secondItem="jWj-CT-5e9" secondAttribute="height" id="Vro-56-zk7"/>
                 <constraint firstItem="ZwQ-hd-n4h" firstAttribute="top" secondItem="jWj-CT-5e9" secondAttribute="bottom" constant="20" id="g89-Lv-oqc"/>
                 <constraint firstItem="jWj-CT-5e9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ggD-xW-PqT"/>
                 <constraint firstItem="ZwQ-hd-n4h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="iY9-YG-F6q"/>
