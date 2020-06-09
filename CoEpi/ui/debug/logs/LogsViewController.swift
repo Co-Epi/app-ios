@@ -20,7 +20,9 @@ class LogsViewController: UIViewController, ErrorDisplayer {
     }
 
     @objc func onLongPress(sender: UILongPressGestureRecognizer) {
-        viewModel.onLongPress()
+        if (sender.state == .began) {
+            viewModel.onLongPress()
+        }
     }
 
     required init?(coder: NSCoder) {
