@@ -38,7 +38,12 @@ class AlertsViewController: UIViewController {
         buttonlabel.setTitle(L10n.Alerts.buttonLabel, for: .normal)
         subtextLabel.text = L10n.Alerts.subtitle
         titleLabel.text = L10n.Alerts.header
-
+        
+        ButtonStyles.applyUnselected(to: buttonlabel)
+        buttonlabel.addTarget(self, action: #selector(onTouchDown(to:)), for:.touchDown)
+        buttonlabel.addTarget(self, action: #selector(onTouchUp), for:.touchUpInside)
+        buttonlabel.addTarget(self, action: #selector(onTouchUp(to:)), for:.touchUpOutside)
+        
         viewModel.alertCells
             .drive(contactAlerts.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -54,6 +59,14 @@ class AlertsViewController: UIViewController {
                 refreshControl.endRefreshing()
             })
             .disposed(by: disposeBag)
+    }
+    
+    @objc func onTouchDown(to button: UIButton){
+        ButtonStyles.applySelected(to: button)
+    }
+    
+    @objc func onTouchUp(to button: UIButton){
+        ButtonStyles.applyUnselected(to: button)
     }
 
     private func setupTableView() {

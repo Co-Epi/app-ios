@@ -56,15 +56,15 @@
                         <constraint firstAttribute="height" constant="100" id="fXp-vB-sEA"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pA5-HJ-GFL">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pA5-HJ-GFL">
                     <rect key="frame" x="41" y="842" width="332" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="wQW-yN-5im"/>
                     </constraints>
-                    <state key="normal" title="" backgroundImage="smallOvalButton">
+                    <state key="normal" title="">
                         <color key="titleColor" name="CoEpiPurple"/>
                     </state>
-                    <state key="selected" backgroundImage="smallOvalButton_Selected">
+                    <state key="selected">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <state key="highlighted" backgroundImage="smallOvalButton_Selected">
@@ -99,7 +99,6 @@
         </view>
     </objects>
     <resources>
-        <image name="smallOvalButton" width="302" height="42"/>
         <image name="smallOvalButton_Selected" width="302" height="42"/>
         <namedColor name="CoEpiPurple">
             <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
