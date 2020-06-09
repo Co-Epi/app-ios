@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import RxCocoa
 
 class BreathlessViewController: UIViewController {
     private let viewModel: BreathlessViewModel
@@ -10,7 +11,9 @@ class BreathlessViewController: UIViewController {
     @IBOutlet weak var subtitleLabel: UILabel!
     
     @IBOutlet weak var skipButtonLabel: UIButton!
-    
+
+    private var dataSource = BreathlessDataSource()
+
     @IBAction func skipButtonAction(_ sender: Any) {
         viewModel.onSkipTap()
     }
@@ -42,52 +45,54 @@ class BreathlessViewController: UIViewController {
         subtitleLabel.text = L10n.Ux.Breathless.subtitle
         skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
         
-        
         tableView.register(cellClass: UITableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 70.0
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
-        let images = ["house", "stop", "ground", "hill", "exercise"]
-        
-        Observable.just([L10n.Ux.Breathless.p0, L10n.Ux.Breathless.p1, L10n.Ux.Breathless.p2, L10n.Ux.Breathless.p3, L10n.Ux.Breathless.p4])
-            .bind(to: tableView.rx.items) { (tableView, row, element) in
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-                cell.textLabel?.text = "\(element)"
-                cell.textLabel?.font = .systemFont(ofSize: 14)
-                cell.textLabel?.numberOfLines = 0
-                cell.textLabel?.lineBreakMode = .byWordWrapping
-                cell.backgroundColor = .clear
-                cell.selectionStyle = UITableViewCell.SelectionStyle.none
-                cell.imageView?.image = UIImage(named: images[row])
-                return cell
-            }
+
+        viewModel.viewData
+            .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-        
+
         tableView.rx.itemSelected
-            .subscribe(onNext: {indexPath in
-                if indexPath[1] == 0{
-                    print ("0")
-                }
-                else if indexPath[1] == 1{
-                    print ("1")
-                }
-                else if indexPath[1] == 2{
-                    print ("2")
-                }
-                else if indexPath[1] == 3{
-                    print ("3")
-                }
-                else if indexPath[1] == 4{
-                    print ("4")
-                }
-                else{
-                    print ("Invalid Selection")
-                }
+            .subscribe(onNext: { [viewModel, dataSource] indexPath in
+                viewModel.onCauseSelected(viewData: dataSource.viewData[indexPath.row])
             })
             .disposed(by: disposeBag)
      }
 }
 
+private class BreathlessDataSource: NSObject, RxTableViewDataSourceType {
+    private(set) var viewData: [BreathlessItemViewData] = []
+
+    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[BreathlessItemViewData]>) {
+        if case let .next(viewData) = observedEvent {
+            self.viewData = viewData
+            tableView.reloadData()
+        }
+    }
+}
+
+extension BreathlessDataSource: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewData.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeue(cellClass: UITableViewCell.self, forIndexPath: indexPath)
+
+        let viewData = self.viewData[indexPath.row]
+
+        cell.textLabel?.text = viewData.text
+        cell.textLabel?.font = .systemFont(ofSize: 14)
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        cell.imageView?.image = UIImage(named: viewData.imageName)
+
+        return cell
+    }
+}
