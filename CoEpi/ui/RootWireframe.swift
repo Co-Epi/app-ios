@@ -76,7 +76,7 @@ class RootWireFrame {
         case .feverTemperatureSpotInput: showFeverWhereOther()
         case .feverHighestTemperature: showFeverTemp()
         case .symptomReport: showSymptomReport()
-        case .SymptomStartDays: showSymptomStartDays()
+        case .symptomStartDays: showSymptomStartDays()
         case .home: showHome()
         case .alertDetails(let alert): showAlertDetails(alert: alert)
         }
@@ -102,7 +102,7 @@ class RootWireFrame {
         case .feverTemperatureSpotInput: return FeverWhereViewControllerOther.self
         case .feverHighestTemperature: return FeverTempViewController.self
         case .symptomReport: return SymptomReportViewController.self
-        case .SymptomStartDays: return SymptomStartDaysViewController.self
+        case .symptomStartDays: return SymptomStartDaysViewController.self
         case .home: return HomeViewController.self
         case .alertDetails: return AlertDetailsViewController.self
         }

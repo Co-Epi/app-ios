@@ -48,16 +48,24 @@ class SymptomFlow {
 }
 
 private func toSteps(symptomIds: [SymptomId]) -> [SymptomStep] {
-    symptomIds.flatMap { $0.toSteps() } + [.earliest_symptom_date]
+    if (symptomIds.contains(.none) && symptomIds.count > 1) {
+        fatalError("There must be no other symptoms selected when .none is selected")
+    }
+
+    if (symptomIds != [.none]) {
+        return symptomIds.flatMap { $0.toSteps() } + [.earliestSymptomDate]
+    } else {
+        return []
+    }
 }
 
 private extension SymptomId {
     func toSteps() -> [SymptomStep] {
         switch self {
-        case .cough: return [.cough_type, .cough_days, .cough_description]
-        case .breathlessness: return [.breathlessness_description]
-        case .fever: return [.fever_days, .fever_temperature_taken_today, .fever_temperature_spot,
-                             .fever_highest_temperature]
+        case .cough: return [.coughType, .coughDays, .coughDescription]
+        case .breathlessness: return [.breathlessnessDescription]
+        case .fever: return [.feverDays, .feverTemperatureTakenToday, .feverTemperatureSpot,
+                             .feverHighestTemperature]
         case .muscle_aches: return []
         case .loss_smell_or_taste: return []
         case .diarrhea: return []

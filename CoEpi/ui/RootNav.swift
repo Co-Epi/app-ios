@@ -31,7 +31,7 @@ enum RootNavDestination {
     case feverTemperatureSpotInput
     case feverHighestTemperature
     case symptomReport
-    case SymptomStartDays
+    case symptomStartDays
     case home
     case alertDetails(alert: Alert)
 }
