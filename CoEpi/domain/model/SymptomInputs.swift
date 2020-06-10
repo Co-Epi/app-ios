@@ -109,7 +109,7 @@ enum Temperature {
     func toUserString() -> String {
         // Force unwrap since for particular formatter and inputs, there seem to be no cases where it can return nil.
         // TODO unit tests / confirm
-        NumberFormatters.decimalsMax2.string(from: value)!
+        NumberFormatters.temperatureFormatter.string(from: value)!
     }
 
     private var value: Float {

@@ -47,9 +47,6 @@
 		622AC2F7245FDA0300A6EB90 /* SymptomReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622AC2F6245FDA0300A6EB90 /* SymptomReportViewController.xib */; };
 		622AC2F9245FDA1300A6EB90 /* SymptomReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC2F8245FDA1300A6EB90 /* SymptomReportViewController.swift */; };
 		622AC2FB245FDA2000A6EB90 /* SymptomReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC2FA245FDA2000A6EB90 /* SymptomReportViewModel.swift */; };
-		622AC2FD2461DC1400A6EB90 /* FeverWhereViewModelOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC2FC2461DC1400A6EB90 /* FeverWhereViewModelOther.swift */; };
-		622AC2FF2461DC5400A6EB90 /* FeverWhereViewControllerOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC2FE2461DC5400A6EB90 /* FeverWhereViewControllerOther.swift */; };
-		622AC3012461DCD700A6EB90 /* FeverWhereViewControllerOther.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622AC3002461DCD700A6EB90 /* FeverWhereViewControllerOther.xib */; };
 		6291BE77246CB79300984583 /* SymptomStartDaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6291BE76246CB79300984583 /* SymptomStartDaysViewController.xib */; };
 		6291BE79246CB92E00984583 /* SymptomStartDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291BE78246CB92E00984583 /* SymptomStartDaysViewController.swift */; };
 		6291BE7B246CB93E00984583 /* SymptomStartDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291BE7A246CB93E00984583 /* SymptomStartDaysViewModel.swift */; };
@@ -282,9 +279,6 @@
 		622AC2F6245FDA0300A6EB90 /* SymptomReportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomReportViewController.xib; sourceTree = "<group>"; };
 		622AC2F8245FDA1300A6EB90 /* SymptomReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomReportViewController.swift; sourceTree = "<group>"; };
 		622AC2FA245FDA2000A6EB90 /* SymptomReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomReportViewModel.swift; sourceTree = "<group>"; };
-		622AC2FC2461DC1400A6EB90 /* FeverWhereViewModelOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverWhereViewModelOther.swift; sourceTree = "<group>"; };
-		622AC2FE2461DC5400A6EB90 /* FeverWhereViewControllerOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverWhereViewControllerOther.swift; sourceTree = "<group>"; };
-		622AC3002461DCD700A6EB90 /* FeverWhereViewControllerOther.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeverWhereViewControllerOther.xib; sourceTree = "<group>"; };
 		6291BE76246CB79300984583 /* SymptomStartDaysViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomStartDaysViewController.xib; sourceTree = "<group>"; };
 		6291BE78246CB92E00984583 /* SymptomStartDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartDaysViewController.swift; sourceTree = "<group>"; };
 		6291BE7A246CB93E00984583 /* SymptomStartDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartDaysViewModel.swift; sourceTree = "<group>"; };
@@ -547,17 +541,14 @@
 				622AC2DD245FD22400A6EB90 /* FeverDaysViewModel.swift */,
 				622AC2DF245FD23A00A6EB90 /* FeverTodayViewModel.swift */,
 				622AC2E1245FD25900A6EB90 /* FeverWhereViewModel.swift */,
-				622AC2FC2461DC1400A6EB90 /* FeverWhereViewModelOther.swift */,
 				622AC2E3245FD29300A6EB90 /* FeverTempViewModel.swift */,
 				622AC2E5245FD2C300A6EB90 /* FeverDaysViewController.swift */,
 				622AC2E7245FD2DA00A6EB90 /* FeverTodayViewController.swift */,
 				622AC2E9245FD2F400A6EB90 /* FeverWhereViewController.swift */,
-				622AC2FE2461DC5400A6EB90 /* FeverWhereViewControllerOther.swift */,
 				622AC2EB245FD30500A6EB90 /* FeverTempViewController.swift */,
 				622AC2ED245FD31800A6EB90 /* FeverDaysViewController.xib */,
 				622AC2EF245FD32700A6EB90 /* FeverTodayViewController.xib */,
 				622AC2F1245FD33200A6EB90 /* FeverWhereViewController.xib */,
-				622AC3002461DCD700A6EB90 /* FeverWhereViewControllerOther.xib */,
 				622AC2F3245FD34300A6EB90 /* FeverTempViewController.xib */,
 			);
 			path = Fever;
@@ -1260,7 +1251,6 @@
 				622AC2CE245FC5EF00A6EB90 /* CoughDaysViewController.xib in Resources */,
 				6291BE77246CB79300984583 /* SymptomStartDaysViewController.xib in Resources */,
 				849DFE722427D37A0008ED65 /* Assets.xcassets in Resources */,
-				622AC3012461DCD700A6EB90 /* FeverWhereViewControllerOther.xib in Resources */,
 				84A5C1DB2489728500B002E2 /* AlertDetailsViewController.xib in Resources */,
 				054A34F2244E61B600282E17 /* swiftgen.yml in Resources */,
 				622AC2F2245FD33200A6EB90 /* FeverWhereViewController.xib in Resources */,
@@ -1393,7 +1383,6 @@
 				849D1B0A2439F31D00804511 /* DaoError.swift in Sources */,
 				8491497B24366FF000975344 /* PeriodicAlertsFetcher.swift in Sources */,
 				622AC2C0245F65FB00A6EB90 /* ThankYouViewModel.swift in Sources */,
-				622AC2FF2461DC5400A6EB90 /* FeverWhereViewControllerOther.swift in Sources */,
 				62A334A92476CEAA00CF4B25 /* SymptomInput.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
@@ -1409,7 +1398,6 @@
 				84201698244CA18D000EE281 /* UIView+ActivityIndicator.swift in Sources */,
 				84A5C1E324897B9500B002E2 /* Alert+Strings.swift in Sources */,
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
-				622AC2FD2461DC1400A6EB90 /* FeverWhereViewModelOther.swift in Sources */,
 				CE6B7AC3243326FD00C42280 /* CENKey.swift in Sources */,
 				622AC2D2245FC64F00A6EB90 /* CoughTypeViewController.swift in Sources */,
 				84D069642455A7600004E8B6 /* OperationState.swift in Sources */,

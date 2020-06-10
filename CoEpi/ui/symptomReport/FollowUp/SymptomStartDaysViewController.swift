@@ -74,9 +74,25 @@ class SymptomStartDaysViewController: UIViewController {
                 viewModel.onDaysChanged(daysStr: text ?? "")
             })
             .disposed(by: disposeBag)
+        
+        daysInput.rx.controlEvent(.editingChanged).subscribe(onNext: { [unowned self] in
+            if let text = self.daysInput.text {
+                self.daysInput.text = String(text.prefix(2))
+            }
+        }).disposed(by: disposeBag)
 
         viewModel.setActivityIndicatorVisible
             .drive(view.rx.setActivityIndicatorVisible())
             .disposed(by: disposeBag)
      }
+}
+
+
+class CustomTextFieldStart: UITextField {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(UIResponderStandardEditActions.paste(_:)) {
+            return false
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
 }

@@ -23,7 +23,6 @@ class SymptomRouterImpl : SymptomRouter {
             case .feverDays: return(.feverDays)
             case .feverTemperatureTakenToday: return(.feverTemperatureTakenToday)
             case .feverTemperatureSpot: return(.feverTemperatureSpot)
-            case .feverTemperatureSpotInput: return(.feverTemperatureSpotInput)
             case .feverHighestTemperature: return(.feverHighestTemperature)
             case .earliestSymptomDate: return(.symptomStartDays)
         }

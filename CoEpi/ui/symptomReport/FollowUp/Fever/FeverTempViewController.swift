@@ -62,6 +62,12 @@ class FeverTempViewController: UIViewController {
                 viewModel.onTempChanged(tempStr: text ?? "")
             })
             .disposed(by: disposeBag)
+        
+        numberInput.rx.controlEvent(.editingChanged).subscribe(onNext: { [weak self] in
+        if let text = self?.numberInput.text {
+            self?.numberInput.text = String(text.prefix(5))
+         }
+         }).disposed(by: disposeBag)
     }
 
     private func bindOutputs() {
@@ -119,4 +125,13 @@ private func toButtonText(unit: TemperatureUnit) -> NSAttributedString {
 
 private func attrString(string: String, size: CGFloat) -> NSAttributedString {
     NSAttributedString(string: string, attributes: [.font: UIFont.systemFont(ofSize: size)])
+}
+
+class CustomTextFieldFeverTemp: UITextField {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(UIResponderStandardEditActions.paste(_:)) {
+            return false
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
 }

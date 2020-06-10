@@ -37,7 +37,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="VCq-l6-TA3">
                             <rect key="frame" x="0.0" y="0.0" width="257" height="47"/>
                             <subviews>
-                                <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" adjustsFontSizeToFit="NO" minimumFontSize="40" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UnH-FU-AjW">
+                                <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="UnH-FU-AjW" customClass="CustomTextFieldFeverTemp" customModule="CoEpi" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="142" height="47"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="UnH-FU-AjW" secondAttribute="height" multiplier="73:24" id="BgN-AY-sMx"/>

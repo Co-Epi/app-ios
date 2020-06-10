@@ -74,5 +74,23 @@ class CoughDaysViewController: UIViewController {
                 viewModel.onDaysChanged(daysStr: text ?? "")
             })
             .disposed(by: disposeBag)
+        
+        
+        daysInput.rx.controlEvent(.editingChanged).subscribe(onNext: { [weak self] in
+             if let text = self?.daysInput.text {
+                 self?.daysInput.text = String(text.prefix(2))
+              }
+          }).disposed(by: disposeBag)
+        
      }
+}
+
+
+class CustomTextFieldCough: UITextField {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(UIResponderStandardEditActions.paste(_:)) {
+            return false
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
 }

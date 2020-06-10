@@ -59,7 +59,6 @@ class Dependencies {
         container.register { FeverDaysViewModel(symptomFlowManager: try container.resolve()) }
         container.register { FeverTodayViewModel(symptomFlowManager: try container.resolve()) }
         container.register { FeverWhereViewModel(symptomFlowManager: try container.resolve()) }
-        container.register { FeverWhereViewModelOther() }
         container.register { FeverTempViewModel(symptomFlowManager: try container.resolve()) }
         container.register { SymptomReportViewModel(symptomRepo: try container.resolve(),
                                                     rootNav: try container.resolve(),

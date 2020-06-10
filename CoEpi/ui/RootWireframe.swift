@@ -73,7 +73,6 @@ class RootWireFrame {
         case .feverDays: showFeverDays()
         case .feverTemperatureTakenToday: showFeverToday()
         case .feverTemperatureSpot: showFeverWhere()
-        case .feverTemperatureSpotInput: showFeverWhereOther()
         case .feverHighestTemperature: showFeverTemp()
         case .symptomReport: showSymptomReport()
         case .symptomStartDays: showSymptomStartDays()
@@ -99,7 +98,6 @@ class RootWireFrame {
         case .feverDays: return FeverDaysViewController.self
         case .feverTemperatureTakenToday: return FeverTodayViewController.self
         case .feverTemperatureSpot: return FeverWhereViewController.self
-        case .feverTemperatureSpotInput: return FeverWhereViewControllerOther.self
         case .feverHighestTemperature: return FeverTempViewController.self
         case .symptomReport: return SymptomReportViewController.self
         case .symptomStartDays: return SymptomStartDaysViewController.self
@@ -180,12 +178,6 @@ class RootWireFrame {
         let viewModel: FeverWhereViewModel = try! container.resolve()
         let feverWhereViewController = FeverWhereViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(feverWhereViewController, animated: true)
-    }
-    
-    private func showFeverWhereOther() {
-        let viewModel: FeverWhereViewModelOther = try! container.resolve()
-        let feverWhereViewControllerOther = FeverWhereViewControllerOther(viewModel: viewModel)
-        rootNavigationController.pushViewController(feverWhereViewControllerOther, animated: true)
     }
     
     private func showFeverTemp() {

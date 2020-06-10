@@ -94,7 +94,7 @@ private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<
     switch tempStr {
     case "": return .none
     default:
-        if let temp: Float = NumberFormatters.decimalsMax2.number(from: tempStr)?.floatValue {
+        if let temp: Float = NumberFormatters.temperatureFormatter.number(from: tempStr)?.floatValue {
             switch unit {
             case .celsius: return .some(.celsius(value: temp))
             case .fahrenheit: return .some(.fahrenheit(value: temp))

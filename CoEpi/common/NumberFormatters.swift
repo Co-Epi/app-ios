@@ -1,18 +1,17 @@
 import Foundation
 
 class NumberFormatters {
-    static let decimalsMax2 = Number2MaxDecimalsFormatter()
+    static let temperatureFormatter = TemperatureFormatter()
     static let ordinal = OrdinalFormatter()
 }
 
-final class Number2MaxDecimalsFormatter: NumberFormatter {
+final class TemperatureFormatter: NumberFormatter {
 
     override init() {
         super.init()
-        numberStyle = .decimal
-        minimumFractionDigits = 0
-        maximumFractionDigits = 2
-        roundingMode = .halfUp
+        numberStyle = .none
+        roundingMode = .down
+        roundingIncrement = 0.0
     }
 
     required init?(coder aDecoder: NSCoder) {
