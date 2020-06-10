@@ -136,7 +136,7 @@
 
     // what are exposure alerts
 "whatExposure.title" = "What are exposure alerts?";
-"whatExposure.HTMLbody" = "<body><p><font color='black' face='-apple-system' size='5'><b>Exposure alerts</b> indicate that you have been in close proximity (e.g. within several feet) to someone with symptoms also using a compatible app. <br /><br /><b>How does CoEpi work?</b> <br /><br /> CoEpi generates exposure alerts if your device has flagged another tracing app user who may have been infectious during your contact. <br /><br /> Based on the symptom report in the exposure alert, you can: <br /><br /> <b>• Monitor</b> yourself for symptoms in the days following the potential exposure<br /><br /> <b>• Self-isolate</b> within your household to reduce the risk of transmitting to others <br /><br /> <b>• Talk with a healthcare provider</b> about your exposure</font</p><body>";
+"whatExposure.html_body" = "<body><p><font color='black' face='-apple-system' size='5'><b>Exposure alerts</b> indicate that you have been in close proximity (e.g. within several feet) to someone with symptoms also using a compatible app. <br /><br /><b>How does CoEpi work?</b> <br /><br /> CoEpi generates exposure alerts if your device has flagged another tracing app user who may have been infectious during your contact. <br /><br /> Based on the symptom report in the exposure alert, you can: <br /><br /> <b>• Monitor</b> yourself for symptoms in the days following the potential exposure<br /><br /> <b>• Self-isolate</b> within your household to reduce the risk of transmitting to others <br /><br /> <b>• Talk with a healthcare provider</b> about your exposure</font</p><body>";
 
 
 

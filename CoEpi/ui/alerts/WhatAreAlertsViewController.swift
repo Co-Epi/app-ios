@@ -20,23 +20,27 @@ class WhatAreAlertsViewController: UIViewController {
         
         titleLabel.text = L10n.WhatExposure.title
         
-        bodyLabel.attributedText = L10n.WhatExposure.htmLbody.htmlToAttributedString
+        bodyLabel.attributedText = L10n.WhatExposure.htmlBody.htmlToAttributedString
     }
 }
 
-extension String {
+private extension String {
     var htmlToAttributedString: NSAttributedString? {
-        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        guard let data = data(using: .utf8) else {
+            log.e("Couldn't encode string: \(self)")
+            return NSAttributedString()
+        }
+
         do {
             return try NSAttributedString(
                 data: data,
-                options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue],
+                options: [.documentType: NSAttributedString.DocumentType.html,
+                          .characterEncoding: String.Encoding.utf8.rawValue],
                 documentAttributes: nil)
-        } catch {
+
+        } catch let e {
+            log.e("Couldn't create attributed string with: \(self), e: \(e)")
             return NSAttributedString()
         }
-    }
-    var htmlToString: String {
-        return htmlToAttributedString?.string ?? ""
     }
 }

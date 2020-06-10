@@ -261,8 +261,8 @@ internal enum L10n {
   }
 
   internal enum WhatExposure {
-    /// <p><b>Exposure alerts</b> indicate that you have been in close proximity (e.g. within several feet) to someone with symptoms also using a compatible app. <br /><br /><b>How does CoEpi work?</b> <br /><br /> CoEpi generates exposure alerts if your device has flagged another tracing app user who may have been infectious during your contact. <br /><br /> Based on the symptom report in the exposure alert, you can: <br /><br /> <b>• Monitor</b> yourself for symptoms in the days following the potential exposure<br /><br /> <b>• Self-isolate</b> within your household to reduce the risk of transmitting to others <br /><br /> <b>• Talk with a healthcare provider</b> about your exposure</p>
-    internal static let htmLbody = L10n.tr("Localizable", "whatExposure.HTMLbody")
+    /// <body><p><font color='black' face='-apple-system' size='5'><b>Exposure alerts</b> indicate that you have been in close proximity (e.g. within several feet) to someone with symptoms also using a compatible app. <br /><br /><b>How does CoEpi work?</b> <br /><br /> CoEpi generates exposure alerts if your device has flagged another tracing app user who may have been infectious during your contact. <br /><br /> Based on the symptom report in the exposure alert, you can: <br /><br /> <b>• Monitor</b> yourself for symptoms in the days following the potential exposure<br /><br /> <b>• Self-isolate</b> within your household to reduce the risk of transmitting to others <br /><br /> <b>• Talk with a healthcare provider</b> about your exposure</font</p><body>
+    internal static let htmlBody = L10n.tr("Localizable", "whatExposure.html_body")
     /// What are exposure alerts?
     internal static let title = L10n.tr("Localizable", "whatExposure.title")
   }
