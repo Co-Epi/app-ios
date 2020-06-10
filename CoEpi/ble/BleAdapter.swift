@@ -9,8 +9,16 @@ class BleAdapter {
     let myTcn: ReplaySubject<String> = .create(bufferSize: 1)
 
     init(tcnGenerator: TcnGenerator) {
+        // Temporary guard to filter repeated TCNs,
+        // since we don't do anything meaningful with them in v0.3, and this overloads db/logs
+        var lastObserverdTcns = LimitedSizeQueue<Data>(maxSize: 500)
 
-        var latestTcns = LimitedSizeQueue<Data>(maxSize: 500)
+        // Sometimes the device appears to observe its own TCN
+        // This is a quick fix to alleviate this
+        // (It does not handle multiple devices reading simultaneously, in which case the device still could
+        // observe its own TCN)
+        // TODO investigate why it happens.
+        var lastGeneratedTcn: Data?
 
         tcnService = TCNBluetoothService(tcnGenerator: { [myTcn] in
             let tcnResult = tcnGenerator.generateTcn()
@@ -20,6 +28,7 @@ class BleAdapter {
                 switch tcnResult {
                 case .success(let data):
                     myTcn.onNext(data.toHex())
+                    lastGeneratedTcn = data
                     return data
                 case .failure(let error):
                     fatalError("Couldn't generate TCN: \(error)")
@@ -27,11 +36,9 @@ class BleAdapter {
             }()
 
         }, tcnFinder: { [discovered] (data, _) in
-            // Temporary guard to filter repeated TCNs,
-            // since we don't do anything meaningful with them in v0.3, and this overloads db/logs
-            if !latestTcns.array.contains(data) {
+            if !lastObserverdTcns.array.contains(data) && lastGeneratedTcn != data {
                 discovered.onNext(data)
-                latestTcns.add(value: data)
+                lastObserverdTcns.add(value: data)
             }
         }) { error in
             // TODO What kind of errors? Should we notify the user?
