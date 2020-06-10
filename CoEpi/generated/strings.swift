@@ -44,15 +44,15 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "UX.breathless.title")
     }
     internal enum Cough {
-      /// Felt better and worse throughout the day
+      /// Felt worse and better throughout the day
       internal static let better = L10n.tr("Localizable", "UX.cough.better")
       /// Follow up: Cough
       internal static let heading = L10n.tr("Localizable", "UX.cough.heading")
       /// Stayed the same or felt steadily worse
       internal static let same = L10n.tr("Localizable", "UX.cough.same")
-      /// Select all that apply
+      /// Select one option
       internal static let subtitle3 = L10n.tr("Localizable", "UX.cough.subtitle3")
-      /// \nMy throat feels 'tickly' or 'scratchy' without mucus
+      /// \nMy throat feels 'tickly' or \n'scratchy' without mucus
       internal static let subtitleDry = L10n.tr("Localizable", "UX.cough.subtitleDry")
       /// \nIt feels like there is mucus \nin my throat and/or chest
       internal static let subtitleWet = L10n.tr("Localizable", "UX.cough.subtitleWet")
@@ -180,9 +180,9 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "UX.symptomReport.title")
     }
     internal enum Symptomsdays {
-      /// Follow up: Symptoms Duration
+      /// Follow up: Earliest Symptoms
       internal static let heading = L10n.tr("Localizable", "UX.symptomsdays.heading")
-      /// How many days have you had any symptoms?
+      /// How many days ago did the symptoms begin?
       internal static let title = L10n.tr("Localizable", "UX.symptomsdays.title")
     }
     internal enum Thankyou {
@@ -258,6 +258,13 @@ internal enum L10n {
         internal static let serious = L10n.tr("Localizable", "alerts.label.fever.serious")
       }
     }
+  }
+
+  internal enum WhatExposure {
+    /// <p><b>Exposure alerts</b> indicate that you have been in close proximity (e.g. within several feet) to someone with symptoms also using a compatible app. <br /><br /><b>How does CoEpi work?</b> <br /><br /> CoEpi generates exposure alerts if your device has flagged another tracing app user who may have been infectious during your contact. <br /><br /> Based on the symptom report in the exposure alert, you can: <br /><br /> <b>• Monitor</b> yourself for symptoms in the days following the potential exposure<br /><br /> <b>• Self-isolate</b> within your household to reduce the risk of transmitting to others <br /><br /> <b>• Talk with a healthcare provider</b> about your exposure</p>
+    internal static let htmLbody = L10n.tr("Localizable", "whatExposure.HTMLbody")
+    /// What are exposure alerts?
+    internal static let title = L10n.tr("Localizable", "whatExposure.title")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

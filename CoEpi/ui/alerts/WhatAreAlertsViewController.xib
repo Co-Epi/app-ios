@@ -3,12 +3,15 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WhatAreAlertsViewController" customModule="CoEpi" customModuleProvider="target">
             <connections>
+                <outlet property="bodyLabel" destination="sI3-eG-FRj" id="Ivx-Rv-fZs"/>
+                <outlet property="titleLabel" destination="vPi-ep-xut" id="5Ce-y0-73M"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,8 +20,21 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aa-wg-eXy">
-                    <rect key="frame" x="183" y="437.5" width="48" height="21"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aiD-ip-RgJ">
+                    <rect key="frame" x="0.0" y="44" width="414" height="121"/>
+                    <color key="backgroundColor" name="CoEpiPurple"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="aiD-ip-RgJ" secondAttribute="height" multiplier="414:121" id="art-GV-n3a"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPi-ep-xut">
+                    <rect key="frame" x="20" y="74" width="374" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sI3-eG-FRj">
+                    <rect key="frame" x="20" y="185" width="374" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -26,11 +42,23 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="8aa-wg-eXy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="W3g-m6-JgM"/>
-                <constraint firstItem="8aa-wg-eXy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="W5Y-eD-0Xc"/>
+                <constraint firstItem="aiD-ip-RgJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="A1x-v6-c7F"/>
+                <constraint firstItem="sI3-eG-FRj" firstAttribute="top" secondItem="aiD-ip-RgJ" secondAttribute="bottom" constant="20" id="Cxo-De-ce3"/>
+                <constraint firstItem="aiD-ip-RgJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="HmU-lc-7pn"/>
+                <constraint firstItem="vPi-ep-xut" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="TNK-8e-LOG"/>
+                <constraint firstItem="aiD-ip-RgJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZlZ-Cj-3gu"/>
+                <constraint firstItem="sI3-eG-FRj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="guc-O8-QeZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sI3-eG-FRj" secondAttribute="trailing" constant="20" id="hIO-5W-twl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vPi-ep-xut" secondAttribute="trailing" constant="20" id="r8V-Ud-8pl"/>
+                <constraint firstItem="vPi-ep-xut" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="sH1-gc-iRo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="132" y="90"/>
+            <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="CoEpiPurple">
+            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>
