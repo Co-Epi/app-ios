@@ -34,18 +34,12 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Jh3-AA-7SI">
                     <rect key="frame" x="50" y="342" width="314" height="212"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRl-UE-BCP">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BRl-UE-BCP">
                             <rect key="frame" x="0.0" y="0.0" width="314" height="54"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="54" id="dNc-c6-S7z"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal">
-                                <color key="titleColor" name="CoEpiPurple"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
                             <connections>
                                 <action selector="betterButtonAction:" destination="-1" eventType="touchUpInside" id="bKO-18-6tn"/>
                             </connections>

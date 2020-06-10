@@ -69,8 +69,14 @@ class CoughHowViewController: UIViewController {
         sameButtonLabel.addTarget(self, action: #selector(onTouchUp(to:)), for:.touchUpOutside)
         
         betterButtonLabel.setTitle(L10n.Ux.Cough.better, for: .normal)
+        betterButtonLabel.titleLabel?.textAlignment = .center
+        betterButtonLabel.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         worseButtonLabel.setTitle(L10n.Ux.Cough.worse, for: .normal)
+        worseButtonLabel.titleLabel?.textAlignment = .center
+        worseButtonLabel.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         sameButtonLabel.setTitle(L10n.Ux.Cough.same, for: .normal)
+        sameButtonLabel.titleLabel?.textAlignment = .center
+        sameButtonLabel.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
      }
     
     @objc func onTouchDown(to button: UIButton){
