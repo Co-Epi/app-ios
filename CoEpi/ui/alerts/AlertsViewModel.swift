@@ -44,23 +44,17 @@ class AlertsViewModel {
 private extension Array where Element == Alert {
     
     func toSections() -> [AlertViewDataSection] {
-        let grouped: Dictionary<HeaderData, [Alert]> = Dictionary(grouping: self, by: { alert in
-            HeaderData(
-                text: alert.contactTime.toDate().formatMonthOrdinalDay(),
-                time: alert.contactTime.value
-            )
-        })
-
-        let sorted: [(HeaderData, [Alert])] = grouped.sorted { (data1, data2) -> Bool in
-            data1.key.time > data2.key.time
-        }
-
-        return sorted.map { headerData, alerts in
-            AlertViewDataSection(
-                header: headerData.text,
-                alerts: alerts.map { $0.toViewData() }
-            )
-        }
+        return
+            sorted { (alert1, alert2) -> Bool in
+                alert1.contactTime.value > alert2.contactTime.value
+            }.groupByOrdered {
+                $0.contactTime.toDate().formatMonthOrdinalDay()
+            }.map { headerText, alerts in
+                AlertViewDataSection(
+                    header: headerText,
+                    alerts: alerts.map { $0.toViewData() }
+                )
+            }
     }
 
     private struct HeaderData: Hashable {
