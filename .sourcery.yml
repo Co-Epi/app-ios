@@ -1,0 +1,5 @@
+sources:
+    - CoEpi
+templates:
+    - templates
+output: CoEpi/Generated

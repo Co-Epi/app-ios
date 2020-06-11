@@ -104,6 +104,7 @@
 		8493283D2452F983009589E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493283C2452F983009589E6 /* SceneDelegate.swift */; };
 		8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498115C243630E500EBD1DA /* ScannedCensHandler.swift */; };
 		849B3F7D247F00F7003CCE4B /* SymptomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B3F7C247F00F7003CCE4B /* SymptomView.xib */; };
+		849C6A46249253790047BC10 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C6A45249253790047BC10 /* AutoEquatable.swift */; };
 		849CEFA3242FEE23003F9284 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */; };
 		849D1AFC2439D7B300804511 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = 849D1AFB2439D7B300804511 /* RxSwiftExt */; };
 		849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1AFE2439D90C00804511 /* Completable+Convenience.swift */; };
@@ -327,6 +328,7 @@
 		8493283C2452F983009589E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		849B3F7C247F00F7003CCE4B /* SymptomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomView.xib; sourceTree = "<group>"; };
+		849C6A45249253790047BC10 /* AutoEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.swift; sourceTree = "<group>"; };
 		849D1AFE2439D90C00804511 /* Completable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Completable+Convenience.swift"; sourceTree = "<group>"; };
 		849D1B072439EAD200804511 /* UINotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINotifier.swift; sourceTree = "<group>"; };
 		849D1B092439F31D00804511 /* DaoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoError.swift; sourceTree = "<group>"; };
@@ -929,6 +931,7 @@
 				84F186E32481371500E7979B /* NumberFormatters.swift */,
 				849D7B42248EB0B100C9DDBD /* Clipboard.swift */,
 				849D7B44248EB14500C9DDBD /* EnvInfos.swift */,
+				849C6A45249253790047BC10 /* AutoEquatable.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1418,6 +1421,7 @@
 				8486BDD9242BBCE700A63DD5 /* DebugBleViewController.swift in Sources */,
 				622AC2D4245FC65A00A6EB90 /* CoughDaysViewController.swift in Sources */,
 				84D069672455E6E40004E8B6 /* DateFormatters.swift in Sources */,
+				849C6A46249253790047BC10 /* AutoEquatable.swift in Sources */,
 				622AC2FB245FDA2000A6EB90 /* SymptomReportViewModel.swift in Sources */,
 				84F93BF42451BF8900B5F54D /* BackgroundTask.swift in Sources */,
 				84EE1C5D2441D72F0055E22B /* Sharer.swift in Sources */,
