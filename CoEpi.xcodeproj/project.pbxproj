@@ -105,6 +105,9 @@
 		8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498115C243630E500EBD1DA /* ScannedCensHandler.swift */; };
 		849B3F7D247F00F7003CCE4B /* SymptomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B3F7C247F00F7003CCE4B /* SymptomView.xib */; };
 		849C6A46249253790047BC10 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C6A45249253790047BC10 /* AutoEquatable.swift */; };
+		849C6A5224925B5C0047BC10 /* Equatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C6A5124925B5C0047BC10 /* Equatable.generated.swift */; };
+		849C6A55249260A00047BC10 /* HomeItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C6A53249260A00047BC10 /* HomeItemCell.swift */; };
+		849C6A5A24927C340047BC10 /* HomeItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C6A5924927C340047BC10 /* HomeItemView.xib */; };
 		849CEFA3242FEE23003F9284 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B0D16242F5A2A00A50447 /* UIColor+Hex.swift */; };
 		849D1AFC2439D7B300804511 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = 849D1AFB2439D7B300804511 /* RxSwiftExt */; };
 		849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D1AFE2439D90C00804511 /* Completable+Convenience.swift */; };
@@ -329,6 +332,9 @@
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		849B3F7C247F00F7003CCE4B /* SymptomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomView.xib; sourceTree = "<group>"; };
 		849C6A45249253790047BC10 /* AutoEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.swift; sourceTree = "<group>"; };
+		849C6A5124925B5C0047BC10 /* Equatable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.generated.swift; sourceTree = "<group>"; };
+		849C6A53249260A00047BC10 /* HomeItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemCell.swift; sourceTree = "<group>"; };
+		849C6A5924927C340047BC10 /* HomeItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeItemView.xib; sourceTree = "<group>"; };
 		849D1AFE2439D90C00804511 /* Completable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Completable+Convenience.swift"; sourceTree = "<group>"; };
 		849D1B072439EAD200804511 /* UINotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINotifier.swift; sourceTree = "<group>"; };
 		849D1B092439F31D00804511 /* DaoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoError.swift; sourceTree = "<group>"; };
@@ -481,6 +487,7 @@
 		054A34FA244E68F700282E17 /* generated */ = {
 			isa = PBXGroup;
 			children = (
+				849C6A5124925B5C0047BC10 /* Equatable.generated.swift */,
 				054A34FB244E691500282E17 /* strings.swift */,
 			);
 			path = generated;
@@ -1040,6 +1047,8 @@
 				84FA00FE2427ED5E00318104 /* HomeViewController.swift */,
 				84FA00FF2427ED5E00318104 /* HomeViewController.xib */,
 				8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */,
+				849C6A53249260A00047BC10 /* HomeItemCell.swift */,
+				849C6A5924927C340047BC10 /* HomeItemView.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1266,6 +1275,7 @@
 				849D7B3A248E8E8600C9DDBD /* LogsViewController.xib in Resources */,
 				622AC2F4245FD34300A6EB90 /* FeverTempViewController.xib in Resources */,
 				84DE6A24243F99A200CCF4A6 /* AlertsViewController.xib in Resources */,
+				849C6A5A24927C340047BC10 /* HomeItemView.xib in Resources */,
 				30EF957A24379E01007D61C7 /* CoEpiLaunchScreen.storyboard in Resources */,
 				848434572438C046006A5839 /* ErrorView.xib in Resources */,
 				622AC2CC245FC5E000A6EB90 /* CoughTypeViewController.xib in Resources */,
@@ -1419,6 +1429,7 @@
 				849DFE702427D3750008ED65 /* CoEpi.xcdatamodeld in Sources */,
 				30EF94FB242CFC9F007D61C7 /* AlertsViewController.swift in Sources */,
 				8486BDD9242BBCE700A63DD5 /* DebugBleViewController.swift in Sources */,
+				849C6A55249260A00047BC10 /* HomeItemCell.swift in Sources */,
 				622AC2D4245FC65A00A6EB90 /* CoughDaysViewController.swift in Sources */,
 				84D069672455E6E40004E8B6 /* DateFormatters.swift in Sources */,
 				849C6A46249253790047BC10 /* AutoEquatable.swift in Sources */,
@@ -1438,6 +1449,7 @@
 				84FA00F22427E13000318104 /* Dependencies.swift in Sources */,
 				841D39A0244E3EE200A9CD64 /* StartPermissions.swift in Sources */,
 				84B48A9F24530AAB001908E8 /* RootNav.swift in Sources */,
+				849C6A5224925B5C0047BC10 /* Equatable.generated.swift in Sources */,
 				848434642438C71F006A5839 /* UIViewController+Rx.swift in Sources */,
 				849327B42452D92C009589E6 /* FetchAlertsBackgroundRegisterer.swift in Sources */,
 				8420169A244CA1AC000EE281 /* ActivityIndicatorView.swift in Sources */,

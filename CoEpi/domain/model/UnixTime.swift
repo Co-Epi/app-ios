@@ -1,6 +1,6 @@
 import Foundation
 
-struct UnixTime: Codable {
+struct UnixTime: Codable, AutoEquatable {
     let value: Int64
 
     static func minTimestamp() -> UnixTime {

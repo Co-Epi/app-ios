@@ -48,7 +48,10 @@ class Dependencies {
     }
 
     private func registerViewModels(container: DependencyContainer) {
-        container.register { HomeViewModel(startPermissions: try container.resolve(), rootNav: try container.resolve()) }
+        container.register { HomeViewModel(startPermissions: try container.resolve(),
+                                           rootNav: try container.resolve(),
+                                           alertRepo: try container.resolve(),
+                                           envInfos: try container.resolve()) }
         container.register { OnboardingViewModel() }
         
         container.register { ThankYouViewModel(rootNav: try container.resolve()) }

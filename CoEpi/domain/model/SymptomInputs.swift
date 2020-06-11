@@ -52,7 +52,7 @@ struct SymptomInputs {
 }
 
 
-enum UserInput<T> {
+enum UserInput<T>: AutoEquatable {
     case none, some(_ value: T)
 
     func map<U>(f: (T) -> U) -> UserInput<U> {

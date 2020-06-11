@@ -9,12 +9,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CoEpi" customModuleProvider="target">
             <connections>
-                <outlet property="alertButtonLabel" destination="ZwQ-hd-n4h" id="uOj-gE-Uuc"/>
                 <outlet property="buildLabel" destination="0sB-oG-nLH" id="Wjb-OL-Chd"/>
-                <outlet property="debugButton" destination="sbH-Ss-34p" id="ws3-3x-x8X"/>
                 <outlet property="howDataUsedLabel" destination="TCZ-5X-qoz" id="Bwc-n1-hMb"/>
-                <outlet property="redCircle" destination="1F1-on-5CS" id="jux-Iv-aer"/>
-                <outlet property="reportButtonLabel" destination="jWj-CT-5e9" id="acM-nG-8Nu"/>
+                <outlet property="tableView" destination="A4g-ps-ITL" id="iB1-oP-euc"/>
                 <outlet property="versionLabel" destination="wxx-IU-WaY" id="QOS-7g-sz2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -65,39 +62,8 @@
                         <constraint firstAttribute="width" secondItem="H49-Q0-6Wh" secondAttribute="height" multiplier="1:1" id="Jpr-up-Lti"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZwQ-hd-n4h">
-                    <rect key="frame" x="20" y="288" width="335" height="168"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="alerts">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="alertButtonAction:" destination="-1" eventType="touchUpInside" id="YhV-iR-UoT"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-CT-5e9">
-                    <rect key="frame" x="20" y="100" width="335" height="168"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="168" id="gqb-hM-LR4"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
-                    <state key="normal" title="report">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="reportButtonAction:" destination="-1" eventType="touchUpInside" id="mO3-y3-9Qg"/>
-                    </connections>
-                </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redCircle" translatesAutoresizingMaskIntoConstraints="NO" id="1F1-on-5CS">
-                    <rect key="frame" x="10" y="278" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="bSy-b4-86E"/>
-                        <constraint firstAttribute="width" constant="40" id="cSX-aN-QnH"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCZ-5X-qoz">
-                    <rect key="frame" x="164.5" y="466" width="46" height="30"/>
+                    <rect key="frame" x="40" y="555" width="46" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -105,34 +71,34 @@
                         <action selector="howDataUsedButton:" destination="-1" eventType="touchUpInside" id="xoH-cg-eCe"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A4g-ps-ITL">
+                    <rect key="frame" x="0.0" y="100" width="375" height="435"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="NoO-2l-4db"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="A4g-ps-ITL" firstAttribute="top" secondItem="H49-Q0-6Wh" secondAttribute="bottom" constant="20" id="0TS-xt-73w"/>
                 <constraint firstItem="YJp-7I-Dhs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="11z-PS-XEb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A4g-ps-ITL" secondAttribute="trailing" id="2pr-xo-qSP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YJp-7I-Dhs" secondAttribute="trailing" constant="5" id="43H-c4-5NP"/>
                 <constraint firstItem="H49-Q0-6Wh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6pD-J7-dqy"/>
-                <constraint firstItem="TCZ-5X-qoz" firstAttribute="top" secondItem="ZwQ-hd-n4h" secondAttribute="bottom" constant="10" id="D89-gT-yg9"/>
-                <constraint firstItem="ZwQ-hd-n4h" firstAttribute="top" secondItem="jWj-CT-5e9" secondAttribute="bottom" constant="20" id="Djl-RR-uDy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jWj-CT-5e9" secondAttribute="trailing" constant="20" id="HMu-ah-XRc"/>
-                <constraint firstItem="1F1-on-5CS" firstAttribute="top" secondItem="jWj-CT-5e9" secondAttribute="bottom" constant="10" id="KfR-ag-8Hw"/>
-                <constraint firstItem="1F1-on-5CS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="SnU-Ag-8za"/>
+                <constraint firstItem="TCZ-5X-qoz" firstAttribute="top" secondItem="A4g-ps-ITL" secondAttribute="bottom" constant="20" id="8m5-nl-w6P"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YJp-7I-Dhs" secondAttribute="bottom" constant="5" id="T2L-B6-cWL"/>
-                <constraint firstItem="ZwQ-hd-n4h" firstAttribute="height" secondItem="jWj-CT-5e9" secondAttribute="height" id="Vro-56-zk7"/>
-                <constraint firstItem="ZwQ-hd-n4h" firstAttribute="top" secondItem="jWj-CT-5e9" secondAttribute="bottom" constant="20" id="g89-Lv-oqc"/>
-                <constraint firstItem="jWj-CT-5e9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ggD-xW-PqT"/>
-                <constraint firstItem="ZwQ-hd-n4h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="iY9-YG-F6q"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZwQ-hd-n4h" secondAttribute="trailing" constant="20" id="lDI-tC-eoZ"/>
+                <constraint firstItem="A4g-ps-ITL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XwX-cK-qGb"/>
+                <constraint firstItem="YJp-7I-Dhs" firstAttribute="top" secondItem="TCZ-5X-qoz" secondAttribute="bottom" constant="40" id="Yuj-y0-3u0"/>
+                <constraint firstItem="TCZ-5X-qoz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="ZtZ-2t-N8I"/>
                 <constraint firstItem="H49-Q0-6Wh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="nXs-cY-oeQ"/>
-                <constraint firstItem="TCZ-5X-qoz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ocX-Tv-v7b"/>
                 <constraint firstItem="H49-Q0-6Wh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qFu-Zf-Tcs"/>
-                <constraint firstItem="jWj-CT-5e9" firstAttribute="top" secondItem="H49-Q0-6Wh" secondAttribute="bottom" constant="20" id="sa3-mo-wEm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="131.25" y="140.49295774647888"/>
+            <point key="canvasLocation" x="130.40000000000001" y="139.880059970015"/>
         </view>
     </objects>
     <resources>
         <image name="family icon" width="400" height="400"/>
-        <image name="redCircle" width="40" height="40"/>
     </resources>
 </document>

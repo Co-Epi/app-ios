@@ -11,9 +11,6 @@
 "alerts.subtitle" = "Click each alert to learn more";
 "alerts.buttonLabel" = "What are exposure alerts?";
 "alerts.moreInfoTitle" = "Exposure Alert";
-"alerts.count.none" = "No new exposure alerts";
-"alerts.count.one" = "1 new exposure alert";
-"alerts.count.some" = "%d new exposure alerts";
 "alerts.title" = "Alerts";
 "alerts.label.no_symptoms_reported" = "No symptoms reported";
 "alerts.label.fever.mild" = "Mild Fever";
@@ -119,16 +116,18 @@
 
     //homescreen
 "UX.home.title" = "CoEpi";
-"UX.home.report1" = "    Symptom Reporting\n\n";
-"UX.home.report2" = "    Share how you are feeling";
-"UX.home.alerts1" = "    Exposure Alerts\n\n";
-"UX.home.alerts2" = "    Review your potential exposures";
-"UX.home.detected" = "        new exposures detected\n\n";
+"UX.home.report1" = "Symptom Reporting";
+"UX.home.report2" = "Share how you are feeling";
+"UX.home.alerts1" = "Exposure Alerts";
+"UX.home.alerts2" = "Review your potential exposures";
+"UX.home.detected" = "new exposures detected";
 "UX.home.how" = "How is my data being used?";
 "UX.home.share" = "Share";
 "UX.home.footer.build" = "Build";
 "UX.home.footer.debug" = "Debug";
 "UX.home.footer.version" = "Version";
+"home.items.alerts.notification.one" = "1 new exposure alert";
+"home.items.alerts.notification.some" = "%d new exposure alerts";
 
     // symptom days
 "UX.symptomsdays.heading" = "Follow up: Earliest Symptoms";

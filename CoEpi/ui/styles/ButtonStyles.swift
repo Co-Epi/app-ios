@@ -4,12 +4,7 @@ import UIKit
 struct ButtonStyles{
     
     private init(){}
-    
-    static func applyHomeCard(to button: UIButton){
-        button.layer.cornerRadius = 15
-        applyShadows(to: button)
-    }
-    
+
     static func applySelected(to button : UIButton){
         button.backgroundColor = .coEpiPurple
         button.setTitleColor(.white, for:.normal)

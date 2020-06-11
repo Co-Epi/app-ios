@@ -1,23 +1,18 @@
 import UIKit
 import SafariServices
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController {
     private let viewModel: HomeViewModel
-    
-    @IBOutlet weak var redCircle: UIImageView!
-    
-    @IBOutlet weak var reportButtonLabel: UIButton!
-    @IBOutlet weak var alertButtonLabel: UIButton!
+
     @IBOutlet weak var howDataUsedLabel: UIButton!
-    
-    @IBAction func reportButtonAction(_ sender: Any) {
-        viewModel.quizTapped()
-    }
-    
-    @IBAction func alertButtonAction(_ sender: Any) {
-        viewModel.seeAlertsTapped()
-    }
-    
+
+    @IBOutlet weak var tableView: UITableView!
+    private var dataSource = HomeItemsDataSource()
+
+    private let disposeBag = DisposeBag()
+
     @IBAction func howDataUsedButton(_ sender: Any) {
         if let url = URL(string: "https://www.coepi.org/privacy/") {
             let config = SFSafariViewController.Configuration()
@@ -30,9 +25,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var buildLabel: UILabel!
-    @IBOutlet weak var debugButton: UIButton!
-    
-    
+
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
@@ -55,65 +48,51 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background_purple"))
-        
-        let paragraphStyle = NSMutableParagraphStyle()
 
-        paragraphStyle.lineHeightMultiple = 1.07
-        
-        let share = UIBarButtonItem(title: L10n.Ux.Home.share, style: .plain, target: self, action: #selector(share(sender:)))
-        share.tintColor = UIColor.black
-        navigationItem.rightBarButtonItem = share
-        
-        //setup button labels
-        
-        ButtonStyles.applyHomeCard(to: reportButtonLabel)
-        ButtonStyles.applyHomeCard(to: alertButtonLabel)
-        
         howDataUsedLabel.setTitle(L10n.Ux.Home.how, for: .normal)
-        
-        let attributedTextReport = NSMutableAttributedString(string: L10n.Ux.Home.report1, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)])
-        attributedTextReport.append(NSMutableAttributedString(string: L10n.Ux.Home.report2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
-        reportButtonLabel.setAttributedTitle(attributedTextReport, for: .normal)
-        
-        let tempNumbnerOfNotifications = 0 //temp for testing will need to be replaced with checking if new alerts are available
-        
-        if tempNumbnerOfNotifications == 0{
-            redCircle.isHidden = true
-            let attributedTextAlert = NSMutableAttributedString(string: L10n.Ux.Home.alerts1, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)])
-            attributedTextAlert.append(NSMutableAttributedString(string: L10n.Ux.Home.alerts2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
-            alertButtonLabel.setAttributedTitle(attributedTextAlert, for: .normal)
-        }
-        else{
-            redCircle.isHidden = false
-            let attributedTextAlert = NSMutableAttributedString(string: L10n.Ux.Home.detected, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20), .foregroundColor: UIColor.red])
-            attributedTextAlert.append(NSMutableAttributedString(string: L10n.Ux.Home.alerts1, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)]))
-            
-            attributedTextAlert.append(NSMutableAttributedString(string: L10n.Ux.Home.alerts2, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
-            
-            alertButtonLabel.setAttributedTitle(attributedTextAlert, for: .normal)
-        }
-        
-        //debug
-        versionLabel.text = getVersionNumber()
-        buildLabel.text = getBuildNumber()
-        debugButton.setTitle(L10n.Ux.Home.Footer.debug, for: .normal)
+
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 200
+
+        versionLabel.text = viewModel.versionNameString
+        buildLabel.text = viewModel.buildString
+
+        tableView.register(cellClass: HomeItemCell.self)
+
+        viewModel.items
+            .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
-    
-    private func getVersionNumber() -> String{
-        
-        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-         else{
-            fatalError("Failed to read bundle version")
+}
+
+private class HomeItemsDataSource: NSObject, RxTableViewDataSourceType {
+    private(set) var items: [HomeItemViewData] = []
+
+    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[HomeItemViewData]>) {
+        if case let .next(items) = observedEvent {
+            self.items = items
+            tableView.reloadData()
         }
-        print("Version : \(version)");
-        return "\(L10n.Ux.Home.Footer.version): \(version)"
     }
-    
-    private func getBuildNumber() -> String {
-        guard let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else {
-            fatalError("Failed to read build number")
-        }
-        print("Build : \(build)")
-        return "\(L10n.Ux.Home.Footer.build): \(build)"
+}
+
+extension HomeItemsDataSource: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        items.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: HomeItemCell = tableView.dequeue(cellClass: HomeItemCell.self, forIndexPath: indexPath)
+        cell.setup(viewData: items[indexPath.row])
+        return cell
+    }
+}
+
+
+extension HomeViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.onClick(item: dataSource.items[indexPath.row])
     }
 }

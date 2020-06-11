@@ -211,14 +211,12 @@ internal enum L10n {
     /// Alerts
     internal static let title = L10n.tr("Localizable", "alerts.title")
     internal enum Count {
-      /// No new exposure alerts
+      /// No new contact alerts
       internal static let `none` = L10n.tr("Localizable", "alerts.count.none")
-      /// 1 new exposure alert
+      /// Click the alert to learn more
       internal static let one = L10n.tr("Localizable", "alerts.count.one")
-      /// %d new exposure alerts
-      internal static func some(_ p1: Int) -> String {
-        return L10n.tr("Localizable", "alerts.count.some", p1)
-      }
+      /// Click each alert to learn more
+      internal static let some = L10n.tr("Localizable", "alerts.count.some")
     }
     internal enum Details {
       /// Exposure Alert
@@ -256,6 +254,21 @@ internal enum L10n {
         internal static let `none` = L10n.tr("Localizable", "alerts.label.fever.none")
         /// Serious Fever
         internal static let serious = L10n.tr("Localizable", "alerts.label.fever.serious")
+      }
+    }
+  }
+
+  internal enum Home {
+    internal enum Items {
+      internal enum Alerts {
+        internal enum Notification {
+          /// 1 new exposure alert
+          internal static let one = L10n.tr("Localizable", "home.items.alerts.notification.one")
+          /// %d new exposure alerts
+          internal static func some(_ p1: Int) -> String {
+            return L10n.tr("Localizable", "home.items.alerts.notification.some", p1)
+          }
+        }
       }
     }
   }

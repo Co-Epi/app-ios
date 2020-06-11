@@ -1,4 +1,4 @@
-struct Alert {
+struct Alert: AutoEquatable {
     let id: String
     let contactTime: UnixTime
     let reportTime: UnixTime

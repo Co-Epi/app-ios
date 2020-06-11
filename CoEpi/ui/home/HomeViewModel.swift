@@ -1,20 +1,75 @@
 import RxSwift
+import RxCocoa
+
+enum HomeItemId {
+    case reportSymptoms, alerts
+}
+
+struct HomeItemNotification {
+    let text: String
+}
+
+struct HomeItemViewData {
+    let id: HomeItemId
+    let title: String
+    let descr: String
+    var notification: HomeItemNotification? = nil
+}
 
 class HomeViewModel {
+    private let rootNav: RootNav
+    private let alertRepo: AlertRepo
+    private let envInfos: EnvInfos
+
     let title = L10n.Ux.Home.title
+
+    private let itemSelectTrigger = PublishRelay<HomeItemViewData>()
+
+    private static let items = [
+        HomeItemViewData(
+            id: .reportSymptoms,
+            title: L10n.Ux.Home.report1,
+            descr: L10n.Ux.Home.report2
+        ),
+        HomeItemViewData(
+            id: .alerts,
+            title: L10n.Ux.Home.alerts1,
+            descr: L10n.Ux.Home.alerts2
+        )
+    ]
+
+    lazy var items: Driver<[HomeItemViewData]> = alertRepo.alerts
+        .startWith([])
+        .distinctUntilChanged()
+        .map { alerts in
+            Self.items.updateNotifications(with: alerts)
+        }
+        .observeOn(MainScheduler.instance)
+        .asDriver(onErrorJustReturn: [])
+
+    lazy var versionNameString = L10n.Ux.Home.Footer.version + ": " + envInfos.appVersionName
+    lazy var buildString = L10n.Ux.Home.Footer.build + ": " + envInfos.appVersionCode
 
     private let disposeBag = DisposeBag()
 
-    private let rootNav: RootNav
-
-    init(startPermissions: StartPermissions, rootNav: RootNav) {
+    init(startPermissions: StartPermissions, rootNav: RootNav, alertRepo: AlertRepo, envInfos: EnvInfos) {
         self.rootNav = rootNav
+        self.alertRepo = alertRepo
+        self.envInfos = envInfos
 
         startPermissions.granted.subscribe(onNext: { granted in
             log.d("Start permissions granted: \(granted)")
         }).disposed(by: disposeBag)
 
         startPermissions.request()
+
+        itemSelectTrigger
+            .subscribe(onNext: { item in
+                switch item.id {
+                case .reportSymptoms: rootNav.navigate(command: .to(destination: .symptomReport))
+                case .alerts: rootNav.navigate(command: .to(destination: .alerts))
+                }
+            }).disposed(by: disposeBag)
     }
 
     func debugTapped() {
@@ -22,11 +77,41 @@ class HomeViewModel {
     }
 
     func quizTapped() {
-//        rootNav.navigate(command: .to(destination: .quiz))
         rootNav.navigate(command: .to(destination: .symptomReport))
     }
 
     func seeAlertsTapped() {
         rootNav.navigate(command: .to(destination: .alerts))
+    }
+
+    func onClick(item: HomeItemViewData) {
+        itemSelectTrigger.accept(item)
+    }
+}
+
+private extension Array where Element == HomeItemViewData {
+
+    func updateNotifications(with alerts: [Alert]) -> [HomeItemViewData] {
+        map { item in
+            if (item.id == .alerts) {
+                if alerts.isEmpty {
+                    return item
+                } else {
+                    var item = item
+                    item.notification = HomeItemNotification(text: alertsNotificationTitle(alertsCount: alerts.count))
+                    return item
+                }
+            } else {
+                return item
+            }
+        }
+    }
+}
+
+private func alertsNotificationTitle(alertsCount: Int) -> String {
+    if alertsCount == 1 {
+        return L10n.Home.Items.Alerts.Notification.one
+    } else {
+        return L10n.Home.Items.Alerts.Notification.some(alertsCount)
     }
 }
