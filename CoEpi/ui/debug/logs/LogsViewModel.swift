@@ -76,7 +76,7 @@ private extension LogLevel {
         case .v: return .black
         case .d: return UIColor(hex: "228C22")
         case .i: return .blue
-        case .w: return .yellow
+        case .w: return .orange
         case .e: return .red
         }
     }
