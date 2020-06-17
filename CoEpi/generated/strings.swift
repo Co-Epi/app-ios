@@ -26,7 +26,7 @@ internal enum L10n {
     /// Yes
     internal static let yes = L10n.tr("Localizable", "UX.yes")
     internal enum Breathless {
-      /// Follow up: Breathlessness
+      /// Follow up: Shortness of breath
       internal static let heading = L10n.tr("Localizable", "UX.breathless.heading")
       /// I am too breathless to leave the house or I am breathless when dressing
       internal static let p0 = L10n.tr("Localizable", "UX.breathless.p0")
@@ -94,17 +94,17 @@ internal enum L10n {
       internal static let title4 = L10n.tr("Localizable", "UX.fever.title4")
     }
     internal enum Home {
-      ///     Exposure Alerts\n\n
+      /// Exposure Alerts
       internal static let alerts1 = L10n.tr("Localizable", "UX.home.alerts1")
-      ///     Review your potential exposures
+      /// Review your potential exposures
       internal static let alerts2 = L10n.tr("Localizable", "UX.home.alerts2")
-      ///         new exposures detected\n\n
+      /// new exposures detected
       internal static let detected = L10n.tr("Localizable", "UX.home.detected")
       /// How is my data being used?
       internal static let how = L10n.tr("Localizable", "UX.home.how")
-      ///     Symptom Reporting\n\n
+      /// Symptom Reporting
       internal static let report1 = L10n.tr("Localizable", "UX.home.report1")
-      ///     Share how you are feeling
+      /// Share how you are feeling
       internal static let report2 = L10n.tr("Localizable", "UX.home.report2")
       /// Share
       internal static let share = L10n.tr("Localizable", "UX.home.share")
@@ -156,7 +156,7 @@ internal enum L10n {
     internal enum SymptomReport {
       /// Muscle aches
       internal static let ache = L10n.tr("Localizable", "UX.symptomReport.ache")
-      /// Breathlessness
+      /// Shortness of breath
       internal static let breathless = L10n.tr("Localizable", "UX.symptomReport.breathless")
       /// Cough
       internal static let cough = L10n.tr("Localizable", "UX.symptomReport.cough")
@@ -233,27 +233,35 @@ internal enum L10n {
     internal enum Label {
       /// Archive
       internal static let archive = L10n.tr("Localizable", "alerts.label.archive")
-      /// Breathlessness
-      internal static let breathlessness = L10n.tr("Localizable", "alerts.label.breathlessness")
-      /// No symptoms reported
-      internal static let noSymptomsReported = L10n.tr("Localizable", "alerts.label.no_symptoms_reported")
-      internal enum Cough {
-        /// Dry Cough
-        internal static let dry = L10n.tr("Localizable", "alerts.label.cough.dry")
-        /// Cough
-        internal static let existing = L10n.tr("Localizable", "alerts.label.cough.existing")
-        /// No Cough
-        internal static let `none` = L10n.tr("Localizable", "alerts.label.cough.none")
-        /// Wet Cough
-        internal static let wet = L10n.tr("Localizable", "alerts.label.cough.wet")
-      }
-      internal enum Fever {
-        /// Mild Fever
-        internal static let mild = L10n.tr("Localizable", "alerts.label.fever.mild")
-        /// No Fever
-        internal static let `none` = L10n.tr("Localizable", "alerts.label.fever.none")
-        /// Serious Fever
-        internal static let serious = L10n.tr("Localizable", "alerts.label.fever.serious")
+      internal enum Symptom {
+        /// Shortness of breath
+        internal static let breathlessness = L10n.tr("Localizable", "alerts.label.symptom.breathlessness")
+        /// Diarrhea
+        internal static let diarrhea = L10n.tr("Localizable", "alerts.label.symptom.diarrhea")
+        /// Loss of smell or taste
+        internal static let lossSmellOrTaste = L10n.tr("Localizable", "alerts.label.symptom.lossSmellOrTaste")
+        /// Muscle aches
+        internal static let muscleAches = L10n.tr("Localizable", "alerts.label.symptom.muscleAches")
+        /// No symptoms reported
+        internal static let noSymptomsReported = L10n.tr("Localizable", "alerts.label.symptom.no_symptoms_reported")
+        /// Other symptoms
+        internal static let other = L10n.tr("Localizable", "alerts.label.symptom.other")
+        /// Runny nose
+        internal static let runnyNose = L10n.tr("Localizable", "alerts.label.symptom.runnyNose")
+        internal enum Cough {
+          /// Dry Cough
+          internal static let dry = L10n.tr("Localizable", "alerts.label.symptom.cough.dry")
+          /// Cough
+          internal static let existing = L10n.tr("Localizable", "alerts.label.symptom.cough.existing")
+          /// Wet Cough
+          internal static let wet = L10n.tr("Localizable", "alerts.label.symptom.cough.wet")
+        }
+        internal enum Fever {
+          /// Fever
+          internal static let mild = L10n.tr("Localizable", "alerts.label.symptom.fever.mild")
+          /// Fever
+          internal static let serious = L10n.tr("Localizable", "alerts.label.symptom.fever.serious")
+        }
       }
     }
   }

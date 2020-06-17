@@ -10,23 +10,14 @@ class AlertDetailsViewModel {
 
 private extension Alert {
 
-    func symptomListString() -> String {
-        [
-            coughSeverity.toSymptomUIString(),
-            breathlessnessUIString(),
-            feverSeverity.toSymptomUIString()
-        ]
-            .compactMap { $0 }
-            .map { "• \($0)" }
-            .joined(separator: "\n")
-    }
-
     func toViewData() -> AlertDetailsViewData {
         AlertDetailsViewData(
             title: contactTime.toDate().formatMonthOrdinalDay(),
             contactTime: DateFormatters.hoursMins.string(from: contactTime.toDate()),
             reportTime: formatReportTime(date: reportTime.toDate()),
-            symptoms: symptomListString(),
+            symptoms: symptomUIStrings()
+                .map { "• \($0)" }
+                .joined(separator: "\n"),
             alert: self
         )
     }

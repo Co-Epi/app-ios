@@ -7,4 +7,9 @@ struct Alert: AutoEquatable {
     let feverSeverity: FeverSeverity
     let coughSeverity: CoughSeverity
     let breathlessness: Bool
+    let muscleAches: Bool
+    let lossSmellOrTaste: Bool
+    let diarrhea: Bool
+    let runnyNose: Bool
+    let other: Bool
 }

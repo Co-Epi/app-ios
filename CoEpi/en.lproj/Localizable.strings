@@ -12,15 +12,20 @@
 "alerts.buttonLabel" = "What are exposure alerts?";
 "alerts.moreInfoTitle" = "Exposure Alert";
 "alerts.title" = "Alerts";
-"alerts.label.no_symptoms_reported" = "No symptoms reported";
-"alerts.label.fever.mild" = "Mild Fever";
-"alerts.label.fever.serious" = "Serious Fever";
-"alerts.label.fever.none" = "No Fever";
-"alerts.label.cough.dry" = "Dry Cough";
-"alerts.label.cough.existing" = "Cough";
-"alerts.label.cough.wet" = "Wet Cough";
-"alerts.label.cough.none" = "No Cough";
-"alerts.label.breathlessness" = "Breathlessness";
+
+"alerts.label.symptom.no_symptoms_reported" = "No symptoms reported";
+"alerts.label.symptom.fever.mild" = "Fever";
+"alerts.label.symptom.fever.serious" = "Fever";
+"alerts.label.symptom.cough.dry" = "Dry Cough";
+"alerts.label.symptom.cough.existing" = "Cough";
+"alerts.label.symptom.cough.wet" = "Wet Cough";
+"alerts.label.symptom.breathlessness" = "Shortness of breath";
+"alerts.label.symptom.muscleAches" = "Muscle aches";
+"alerts.label.symptom.lossSmellOrTaste" = "Loss of smell or taste";
+"alerts.label.symptom.diarrhea" = "Diarrhea";
+"alerts.label.symptom.runnyNose" = "Runny nose";
+"alerts.label.symptom.other" = "Other symptoms";
+
 "alerts.label.archive" = "Archive";
 
 "alerts.details.title" = "Exposure Alert";
@@ -47,7 +52,7 @@
 "UX.symptomReport.subtitle" = "Select all that apply";
 "UX.symptomReport.noSymptoms" = "I don't have any symptoms today";
 "UX.symptomReport.cough" = "Cough";
-"UX.symptomReport.breathless" = "Breathlessness";
+"UX.symptomReport.breathless" = "Shortness of breath";
 "UX.symptomReport.fever" = "Fever";
 "UX.symptomReport.ache" = "Muscle aches";
 "UX.symptomReport.loss" = "Loss of smell or taste";
@@ -63,7 +68,7 @@
 "UX.thankyou.home" = "Return to home screen";
 
     // breathless
-"UX.breathless.heading" = "Follow up: Breathlessness";
+"UX.breathless.heading" = "Follow up: Shortness of breath";
 "UX.breathless.title" = "I feel breathless when:";
 "UX.breathless.subtitle" = "Select one option";
 "UX.breathless.p0" = "I am too breathless to leave the house or I am breathless when dressing";

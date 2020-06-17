@@ -66,17 +66,9 @@ private extension Array where Element == Alert {
 
 private extension Alert {
 
-    func symptomListString() -> String {
-        [
-            coughSeverity.toSymptomUIString(),
-            breathlessnessUIString(),
-            feverSeverity.toSymptomUIString()
-        ].compactMap { $0 }.joined(separator: "\n")
-    }
-
     func toViewData() -> AlertViewData {
         AlertViewData(
-            symptoms: symptomListString(),
+            symptoms: symptomUIStrings().joined(separator: "\n"),
             contactTime: DateFormatters.hoursMins.string(from: contactTime.toDate()),
             alert: self
         )

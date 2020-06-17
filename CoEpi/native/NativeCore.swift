@@ -90,6 +90,11 @@ struct CorePublicReport: Decodable {
     let fever_severity: FeverSeverity
     let cough_severity: CoughSeverity
     let breathlessness: Bool
+    let muscle_aches: Bool
+    let loss_smell_or_taste: Bool
+    let diarrhea: Bool
+    let runny_nose: Bool
+    let other: Bool
 }
 
 
@@ -173,7 +178,12 @@ class NativeCore: AlertsFetcher {
                     earliestSymptomTime: $0.report.earliest_symptom_time.toUserInput(),
                     feverSeverity: $0.report.fever_severity,
                     coughSeverity: $0.report.cough_severity,
-                    breathlessness: $0.report.breathlessness
+                    breathlessness: $0.report.breathlessness,
+                    muscleAches: $0.report.muscle_aches,
+                    lossSmellOrTaste: $0.report.loss_smell_or_taste,
+                    diarrhea: $0.report.diarrhea,
+                    runnyNose: $0.report.runny_nose,
+                    other: $0.report.other
                 )
             }
         }

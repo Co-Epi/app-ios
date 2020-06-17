@@ -10,6 +10,11 @@ final class RealmAlert : Object {
     @objc dynamic var feverSeverity: String = ""
     @objc dynamic var coughSeverity: String = ""
     @objc dynamic var breathlessness: Bool = false
+    @objc dynamic var muscleAches: Bool = false
+    @objc dynamic var lossSmellOrTaste: Bool = false
+    @objc dynamic var diarrhea: Bool = false
+    @objc dynamic var runnyNose: Bool = false
+    @objc dynamic var other: Bool = false
 
     @objc dynamic var deleted: Bool = false
 
@@ -40,7 +45,12 @@ final class RealmAlert : Object {
             earliestSymptomTime: earliestSymptomTime.value.map { UserInput.some(UnixTime(value: $0)) } ?? UserInput.none,
             feverSeverity: FeverSeverity(rawValue: feverSeverity)!,
             coughSeverity: CoughSeverity(rawValue: coughSeverity)!,
-            breathlessness: breathlessness
+            breathlessness: breathlessness,
+            muscleAches: muscleAches,
+            lossSmellOrTaste: lossSmellOrTaste,
+            diarrhea: diarrhea,
+            runnyNose: runnyNose,
+            other: other
         )
     }
 }
