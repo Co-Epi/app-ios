@@ -41,12 +41,13 @@ protocol TcnGenerator {
 extension NativeCore: ServicesBootstrapper {
 
     // WARN: Must not run long operations. Currently executed synchronously during startup.
-    func bootstrap(dbPath: String) -> Result<(), ServicesError> {        
+    func bootstrap(dbPath: String) -> Result<(), ServicesError> {
         let registrationStatus = register_log_callback{ (logMessage) in
             logToiOS(logMessage: logMessage)
         }
         NSLog("register_callback returned : %d", registrationStatus );
-        let libResult: LibResult<ArbitraryType>? = bootstrap_core(dbPath)?.toLibResult()
+         //CoreLogLevel: 0 -> Trace, ... 4 -> Error; coepi_only logs -> true/false
+        let libResult: LibResult<ArbitraryType>? = bootstrap_core(dbPath, CoreLogLevel.init(0), true)?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
 }
@@ -63,7 +64,7 @@ func logToiOS(logMessage: CoreLogMessage){
     case 1:
         log.d(text, tags: LogTag.core)
     case 2:
-        log.i(text, tags:LogTag.core)
+        log.i(text, tags: LogTag.core)
     case 3:
         log.w(text, tags: LogTag.core)
     case 4:

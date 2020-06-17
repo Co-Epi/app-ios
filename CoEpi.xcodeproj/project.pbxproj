@@ -11,6 +11,9 @@
 		054A34FC244E691500282E17 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054A34FB244E691500282E17 /* strings.swift */; };
 		055A9D78243A892800A12285 /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A9D77243A892800A12285 /* KeyValueStore.swift */; };
 		05E0E4C8244403FE00D27F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05E0E4CA244403FE00D27F9A /* Localizable.strings */; };
+		30C3D5AD2495412B00A77F76 /* FFIStandaloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C3D5AC2495412B00A77F76 /* FFIStandaloneTests.swift */; };
+		30C3D5B22495415300A77F76 /* CoEpiCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843131522470A2B200DE475B /* CoEpiCore.framework */; };
+		30C3D5B32495415600A77F76 /* CoEpiCore.framework in Resources */ = {isa = PBXBuildFile; fileRef = 843131522470A2B200DE475B /* CoEpiCore.framework */; };
 		30DDD30D24587D4A0016FF25 /* CoEpiNetworkingV4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDD30B24587D4A0016FF25 /* CoEpiNetworkingV4Tests.swift */; };
 		30DDD30F24587E230016FF25 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 30DDD30E24587E230016FF25 /* Alamofire */; };
 		30DDD313246099390016FF25 /* TCNClient in Frameworks */ = {isa = PBXBuildFile; productRef = 30DDD312246099390016FF25 /* TCNClient */; };
@@ -246,6 +249,9 @@
 		055B63572454716C00E2558E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05E0E4C9244403FE00D27F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05E0E4CC2444056F00D27F9A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30C3D5AA2495412B00A77F76 /* FFIStandaloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFIStandaloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30C3D5AC2495412B00A77F76 /* FFIStandaloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFIStandaloneTests.swift; sourceTree = "<group>"; };
+		30C3D5AE2495412B00A77F76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30DDD30A24587D4A0016FF25 /* CoEpiNetworkingV3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoEpiNetworkingV3Tests.swift; sourceTree = "<group>"; };
 		30DDD30B24587D4A0016FF25 /* CoEpiNetworkingV4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoEpiNetworkingV4Tests.swift; sourceTree = "<group>"; };
 		30EF94F9242CFC9F007D61C7 /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +440,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30C3D5A72495412B00A77F76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30C3D5B22495415300A77F76 /* CoEpiCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30EF956724363115007D61C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -491,6 +505,15 @@
 				054A34FB244E691500282E17 /* strings.swift */,
 			);
 			path = generated;
+			sourceTree = "<group>";
+		};
+		30C3D5AB2495412B00A77F76 /* FFIStandaloneTests */ = {
+			isa = PBXGroup;
+			children = (
+				30C3D5AC2495412B00A77F76 /* FFIStandaloneTests.swift */,
+				30C3D5AE2495412B00A77F76 /* Info.plist */,
+			);
+			path = FFIStandaloneTests;
 			sourceTree = "<group>";
 		};
 		30EF956B24363115007D61C7 /* CoEpiNetworkingTests */ = {
@@ -782,6 +805,7 @@
 				849DFE7E2427D37A0008ED65 /* CoEpiTests */,
 				849DFE892427D37A0008ED65 /* CoEpiUITests */,
 				30EF956B24363115007D61C7 /* CoEpiNetworkingTests */,
+				30C3D5AB2495412B00A77F76 /* FFIStandaloneTests */,
 				849DFE632427D3750008ED65 /* Products */,
 				44CF83504F0FD8582FEC242D /* Pods */,
 				84E76D6A2470445F009C1D97 /* Frameworks */,
@@ -795,6 +819,7 @@
 				849DFE7B2427D37A0008ED65 /* CoEpiTests.xctest */,
 				849DFE862427D37A0008ED65 /* CoEpiUITests.xctest */,
 				30EF956A24363115007D61C7 /* CoEpiNetworkingTests.xctest */,
+				30C3D5AA2495412B00A77F76 /* FFIStandaloneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1084,6 +1109,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		30C3D5A92495412B00A77F76 /* FFIStandaloneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30C3D5B12495412B00A77F76 /* Build configuration list for PBXNativeTarget "FFIStandaloneTests" */;
+			buildPhases = (
+				30C3D5A62495412B00A77F76 /* Sources */,
+				30C3D5A72495412B00A77F76 /* Frameworks */,
+				30C3D5A82495412B00A77F76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FFIStandaloneTests;
+			productName = FFIStandaloneTests;
+			productReference = 30C3D5AA2495412B00A77F76 /* FFIStandaloneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		30EF956924363115007D61C7 /* CoEpiNetworkingTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30EF956F24363115007D61C7 /* Build configuration list for PBXNativeTarget "CoEpiNetworkingTests" */;
@@ -1180,10 +1222,13 @@
 		849DFE5A2427D3750008ED65 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = org.coepi;
 				TargetAttributes = {
+					30C3D5A92495412B00A77F76 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					30EF956924363115007D61C7 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -1240,11 +1285,20 @@
 				849DFE7A2427D37A0008ED65 /* CoEpiTests */,
 				849DFE852427D37A0008ED65 /* CoEpiUITests */,
 				30EF956924363115007D61C7 /* CoEpiNetworkingTests */,
+				30C3D5A92495412B00A77F76 /* FFIStandaloneTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		30C3D5A82495412B00A77F76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30C3D5B32495415600A77F76 /* CoEpiCore.framework in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30EF956824363115007D61C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1308,6 +1362,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		30C3D5A62495412B00A77F76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30C3D5AD2495412B00A77F76 /* FFIStandaloneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30EF956624363115007D61C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1535,6 +1597,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		30C3D5AF2495412B00A77F76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SQAPAYXXBX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = FFIStandaloneTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.FFIStandaloneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoEpi/Rust-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30C3D5B02495412B00A77F76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SQAPAYXXBX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = FFIStandaloneTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.FFIStandaloneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoEpi/Rust-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		30EF957024363115007D61C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1857,6 +1967,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30C3D5B12495412B00A77F76 /* Build configuration list for PBXNativeTarget "FFIStandaloneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30C3D5AF2495412B00A77F76 /* Debug */,
+				30C3D5B02495412B00A77F76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		30EF956F24363115007D61C7 /* Build configuration list for PBXNativeTarget "CoEpiNetworkingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
