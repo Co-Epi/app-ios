@@ -12,4 +12,5 @@ struct Alert: AutoEquatable {
     let diarrhea: Bool
     let runnyNose: Bool
     let other: Bool
+    let noSymptoms: Bool
 }

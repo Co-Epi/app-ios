@@ -95,6 +95,7 @@ struct CorePublicReport: Decodable {
     let diarrhea: Bool
     let runny_nose: Bool
     let other: Bool
+    let no_symptoms: Bool
 }
 
 
@@ -183,7 +184,8 @@ class NativeCore: AlertsFetcher {
                     lossSmellOrTaste: $0.report.loss_smell_or_taste,
                     diarrhea: $0.report.diarrhea,
                     runnyNose: $0.report.runny_nose,
-                    other: $0.report.other
+                    other: $0.report.other,
+                    noSymptoms: $0.report.no_symptoms
                 )
             }
         }
