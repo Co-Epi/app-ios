@@ -16,7 +16,7 @@ class RealmAlertDao: AlertDao, RealmDao {
 
     let realmProvider: RealmProvider
 
-    var notificationToken: NotificationToken? = nil
+    var notificationToken: NotificationToken?
 
     private let alertsResults: Results<RealmAlert>
 
@@ -35,13 +35,16 @@ class RealmAlertDao: AlertDao, RealmDao {
     }
 
     func all() -> [Alert]? {
-        let realmAlerts = realm.objects(RealmAlert.self).sorted(byKeyPath: "contactTime", ascending: true)
+        let realmAlerts =
+            realm
+                .objects(RealmAlert.self)
+                .sorted(byKeyPath: "contactTime", ascending: true)
         return realmAlerts.map { $0.toAlert() }
     }
 
     func insert(alert: Alert) -> Bool {
         let dbAlerts = realm.objects(RealmAlert.self).filter("id = %@", alert.id)
-        if dbAlerts.count == 0 {
+        if dbAlerts.isEmpty {
             let newCEN = RealmAlert(alert)
             write {
                 realm.add(newCEN)
@@ -68,7 +71,7 @@ class RealmAlertDao: AlertDao, RealmDao {
     private func findAlertBy(id: String) -> RealmAlert? {
         let results = realm.objects(RealmAlert.self).filter("id = %@", id)
 
-        if (results.count > 1) {
+        if results.count > 1 {
             // Searching by id which is primary key, so can't have multiple results.
             fatalError("Multiple results for alert id: \(id)")
         } else {

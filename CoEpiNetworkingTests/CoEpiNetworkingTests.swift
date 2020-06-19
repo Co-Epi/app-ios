@@ -12,8 +12,7 @@ class CoEpiNetworkingTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
-    
+
     /**
      Test Case '-[CoEpiNetworkingTests.CoEpiNetworkingTests testGetCoEpiCenKeys]' started.
      curl -X GET
@@ -51,14 +50,14 @@ class CoEpiNetworkingTests: XCTestCase {
      )
      Test Case '-[CoEpiNetworkingTests.CoEpiNetworkingTests testGetCoEpiCenKeys]' passed (0.805 seconds).
      */
-    func testGetCoEpiCenKeys(){
+    func testGetCoEpiCenKeys() {
         let stringURL = "https://coepi.wolk.com:8080/cenkeys"
         let session = URLSession.shared
         do {
             if let x = try session.rx
                 .json(.get, stringURL).toBlocking().first() {
                 print(x)
-            } else{
+            } else {
                 assert(false)
             }
             assert(true)
@@ -66,8 +65,7 @@ class CoEpiNetworkingTests: XCTestCase {
             XCTFail("\(error)")
         }
     }
-    
-    
+
     /**
     Test Case '-[CoEpiNetworkingTests.CoEpiNetworkingTests testGetCoEpiCenReportForCenKey]' started.
     curl -X GET
@@ -92,7 +90,7 @@ class CoEpiNetworkingTests: XCTestCase {
     )
     Test Case '-[CoEpiNetworkingTests.CoEpiNetworkingTests testGetCoEpiCenReportForCenKey]' passed (0.637 seconds).
     */
-    func testGetCoEpiCenReportForCenKey(){
+    func testGetCoEpiCenReportForCenKey() {
         let cenKey = "17FA287EBE6B42A3859A60C12CF71394"
         let stringURL = "https://coepi.wolk.com:8080/cenreport/\(cenKey)"
                let session = URLSession.shared
@@ -100,7 +98,7 @@ class CoEpiNetworkingTests: XCTestCase {
                    if let x = try session.rx
                        .json(.get, stringURL).toBlocking().first() {
                        print(x)
-                   } else{
+                   } else {
                        assert(false)
                    }
                    assert(true)
@@ -108,11 +106,10 @@ class CoEpiNetworkingTests: XCTestCase {
                    XCTFail("\(error)")
                }
     }
-    
-    
+
     /**
      Test Case '-[CoEpiNetworkingTests.CoEpiNetworkingTests testPostCoEpiCenReport]' started.
-     reportPayload(reportID: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140", report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==", cenKeys: "b85c4b373adde4c66651ba63aef40f48", reportTimestamp: 1585622040)
+     ReportPayload(reportID: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140", report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==", cenKeys: "b85c4b373adde4c66651ba63aef40f48", reportTimestamp: 1585622040)
      {"reportTimestamp":1585622040,"cenKeys":"b85c4b373adde4c66651ba63aef40f48","report":"c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==","reportID":"80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140"}
      2020-04-02 16:57:40.613: CoEpiNetworkingTests.swift:178 (testPostCoEpiCenReport()) -> subscribed
      2020-04-02 16:57:40.614: CoEpiNetworkingTests.swift:178 (testPostCoEpiCenReport()) -> subscribed
@@ -132,32 +129,33 @@ class CoEpiNetworkingTests: XCTestCase {
          );
      } }, "OK"))
      */
-    func testPostCoEpiCenReport(){
-        
-        struct reportPayload : Encodable{
+    func testPostCoEpiCenReport() {
+
+        struct ReportPayload: Encodable {
             let reportID: String
             let report: String
             let cenKeys: String
             let reportTimestamp: UInt64
         }
-        
+
         let cenKey = "b85c4b373adde4c66651ba63aef40f48"
-        let payload: reportPayload = reportPayload(reportID: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140",
-                                                   report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==",
-                                                   cenKeys: cenKey,
-                                                   reportTimestamp: 1585622040
+        let payload: ReportPayload = ReportPayload(
+            reportID: "80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3140",
+            report: "c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==",
+            cenKeys: cenKey,
+            reportTimestamp: 1585622040
         )
         print(payload)
-        
-        guard let jsonData = try? JSONEncoder().encode(payload) else{
+
+        guard let jsonData = try? JSONEncoder().encode(payload) else {
             XCTFail("decoding error")
             return
         }
-        
+
         if let jsonString = String(data: jsonData, encoding: .utf8) {
             print(jsonString)
         }
-        
+
         let stringURL = "https://coepi.wolk.com:8080/cenreport/" + cenKey
         var request = URLRequest(url: URL(string: stringURL)!)
         //Following code to pass post json
@@ -165,12 +163,18 @@ class CoEpiNetworkingTests: XCTestCase {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
-            let x = try RxAlamofire.request(request).debug().responseString().debug().toBlocking().first()
+            let x = try RxAlamofire
+                .request(request)
+                .debug()
+                .responseString()
+                .debug()
+                .toBlocking()
+                .first()
             print(x.debugDescription)
-        }catch{
+        } catch {
              XCTFail("\(error)")
         }
-        
+
     }
 
 }

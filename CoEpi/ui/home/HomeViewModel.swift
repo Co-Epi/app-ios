@@ -13,7 +13,7 @@ struct HomeItemViewData {
     let id: HomeItemId
     let title: String
     let descr: String
-    var notification: HomeItemNotification? = nil
+    var notification: HomeItemNotification?
 }
 
 class HomeViewModel {
@@ -52,7 +52,12 @@ class HomeViewModel {
 
     private let disposeBag = DisposeBag()
 
-    init(startPermissions: StartPermissions, rootNav: RootNav, alertRepo: AlertRepo, envInfos: EnvInfos) {
+    init(
+        startPermissions: StartPermissions,
+        rootNav: RootNav,
+        alertRepo: AlertRepo,
+        envInfos: EnvInfos) {
+
         self.rootNav = rootNav
         self.alertRepo = alertRepo
         self.envInfos = envInfos
@@ -93,12 +98,13 @@ private extension Array where Element == HomeItemViewData {
 
     func updateNotifications(with alerts: [Alert]) -> [HomeItemViewData] {
         map { item in
-            if (item.id == .alerts) {
+            if item.id == .alerts {
                 if alerts.isEmpty {
                     return item
                 } else {
                     var item = item
-                    item.notification = HomeItemNotification(text: alertsNotificationTitle(alertsCount: alerts.count))
+                    let alertTitle = alertsNotificationTitle(alertsCount: alerts.count)
+                    item.notification = HomeItemNotification(text: alertTitle)
                     return item
                 }
             } else {

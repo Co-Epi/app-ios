@@ -12,7 +12,7 @@ class LogsViewModel {
 
     let clipboard: Clipboard
     let envInfos: EnvInfos
-    
+
     private let longTapTrigger: PublishSubject<()> = PublishSubject()
 
     private let disposeBag = DisposeBag()
@@ -31,7 +31,9 @@ class LogsViewModel {
         notificationSubject.accept(.success(message: "Logs copied to clipboard"))
 
         notification = notificationSubject
-            .asDriver(onErrorJustReturn: UINotification.error(message: "Unknown error with notification"))
+            .asDriver(
+                onErrorJustReturn: UINotification.error(
+                    message: "Unknown error with notification"))
 
         longTapTrigger.withLatestFrom(logsObservable)
             .map { logViewData in
@@ -96,8 +98,11 @@ private extension Array where Element == LogMessage {
 
     func toClipboardText() -> String {
         map { logMessage in
-            DateFormatters.hoursMinsSecs.string(from: logMessage.time) + " " + logMessage.level.text() +
-                " " + logMessage.text
+            DateFormatters
+                .hoursMinsSecs
+                .string(from: logMessage.time)
+                + " " + logMessage.level.text()
+                + " " + logMessage.text
         }.joined(separator: "\n")
     }
 }

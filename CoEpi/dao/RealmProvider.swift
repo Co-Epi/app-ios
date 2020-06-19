@@ -9,7 +9,7 @@ class RealmProvider {
             migrationBlock: { migration, oldSchemaVersion in }
         )
     }
-    
+
     var realm: Realm {
         // TODO handle error
         try! Realm()

@@ -14,8 +14,10 @@ class AlertRepoImpl: AlertRepo {
     private let alertsFetcher: AlertsFetcher
     private let alertDao: AlertDao
 
-    private let updateReportsStateSubject: BehaviorRelay<VoidOperationState> = BehaviorRelay(value: .notStarted)
-    lazy var updateReportsState: Observable<VoidOperationState> = updateReportsStateSubject.asObservable()
+    private let updateReportsStateSubject: BehaviorRelay<VoidOperationState> = BehaviorRelay(value:
+        .notStarted)
+    lazy var updateReportsState: Observable<VoidOperationState> = updateReportsStateSubject
+        .asObservable()
 
     lazy private(set) var alerts: Observable<[Alert]> = alertDao.alerts
 
@@ -57,4 +59,3 @@ class AlertRepoImpl: AlertRepo {
         updateReportsStateSubject.accept(.notStarted)
     }
 }
-

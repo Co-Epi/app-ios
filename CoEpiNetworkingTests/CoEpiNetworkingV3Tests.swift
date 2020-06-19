@@ -19,7 +19,7 @@ import Alamofire
 //    }
 //}
 
-struct ReportPayloadV3 : Codable{
+struct ReportPayloadV3: Codable {
     let report: String
     let cenKeys: [String]
 }
@@ -44,7 +44,7 @@ class CoEpiNetworkingV3Tests: XCTestCase {
          TO DO
          */
     }
-    
+
     /**
      Test Case '-[CoEpiNetworkingTests.CoEpiNetworkingV3Tests testV3getCenReport]' started.
      2020-04-07 19:03:10.734795+0200 xctest[18155:13774196] ⚡️ Request Started: GET https://q69c4m2myb.execute-api.us-west-2.amazonaws.com/v3/cenreport
@@ -64,14 +64,14 @@ class CoEpiNetworkingV3Tests: XCTestCase {
      )
      Test Case '-[CoEpiNetworkingTests.CoEpiNetworkingV3Tests testV3getCenReport]' passed (22.335 seconds).
      */
-    
+
     func testV3getCenReport() {
-        
+
         let url: String = "https://q69c4m2myb.execute-api.us-west-2.amazonaws.com/v3/cenreport"
         let expect = expectation(description: "request complete")
         let session = Session(eventMonitors: [ AlamofireLogger() ])
-        
-        let _ = session.request(url).responseJSON { response in
+
+        _ = session.request(url).responseJSON { response in
             expect.fulfill()
             switch response.result {
             case .success(let JSON):
@@ -80,17 +80,17 @@ class CoEpiNetworkingV3Tests: XCTestCase {
 
             case .failure(let error):
                 print("\n\n Request failed with error: \(error)")
-                XCTFail()
+                XCTFail("\n\n Request failed with error: \(error)")
             }
-            
+
         }
-        
+
         waitForExpectations(timeout: 5)
 
                // Then
 //               XCTAssertNotNil(data)
     }
-    
+
     func testV3postCenReport() {
         let url: String = "https://q69c4m2myb.execute-api.us-west-2.amazonaws.com/v3/cenreport"
         let expect = expectation(description: "request complete")
@@ -110,52 +110,61 @@ class CoEpiNetworkingV3Tests: XCTestCase {
          Test Case '-[CoEpiNetworkingTests.CoEpiNetworkingV3Tests testV3postCenReport]' passed (0.583 seconds).
          
          */
-        
-        if let key1 = makeRandomCENKey(), let key2 = makeRandomCENKey(){
-            let params : ReportPayloadV3 = ReportPayloadV3(report: "dWlyZSBhdXRob3JgdsF0aW9uLgo=", cenKeys: [key1.cenKey, key2.cenKey])
-            
+
+        if let key1 = makeRandomCENKey(), let key2 = makeRandomCENKey() {
+            let reportStr = "dWlyZSBhdXRob3JgdsF0aW9uLgo="
+            let cenKeys = [key1.cenKey, key2.cenKey]
+            let params: ReportPayloadV3 = ReportPayloadV3(report: reportStr, cenKeys: cenKeys)
+
             do {
-                let _ = session.request(url, method: HTTPMethod.post, parameters: params, encoder: JSONParameterEncoder.prettyPrinted).response { response in
+                _ = session.request(
+                    url,
+                    method: HTTPMethod.post,
+                    parameters: params,
+                    encoder: JSONParameterEncoder.prettyPrinted)
+                    .response { response in
                     switch response.result {
                     case .success:
                         expect.fulfill()
                     case .failure(let error):
                         print("\n\n Request failed with error: \(error)")
-                        XCTFail()
+                        XCTFail("\n\n Request failed with error: \(error)")
                     }
-                    
+
                 }
             }
         }
-        
+
         waitForExpectations(timeout: 15)
-        
+
     }
-    
-    func testCenLogic(){
+
+    func testCenLogic() {
         let cenLogic = CenLogic()
-        
+
         switch cenLogic.generateCenKey(curTimestamp: Date().coEpiTimestamp) {
-            case .success(let key):
-                let payload = ReportPayloadV3(report: "dWlyZSBhdXRob3JgdsF0aW9uLgo=", cenKeys: [key.cenKey])
-                print(payload)
-                XCTAssert(true)
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
+        case .success(let key):
+            let cenKeys = [key.cenKey]
+            let report = "dWlyZSBhdXRob3JgdsF0aW9uLgo="
+            let payload = ReportPayloadV3(report: report, cenKeys: cenKeys)
+            print(payload)
+            XCTAssert(true)
+        case .failure(let error):
+            XCTFail(error.localizedDescription)
         }
-        
+
     }
-    
+
     private func makeRandomCENKey() -> CENKey? {
         let cenLogic = CenLogic()
-        var generatedKey : CENKey?
-       switch cenLogic.generateCenKey(curTimestamp: Date().coEpiTimestamp) {
-           case .success(let key):
-               generatedKey = key
-           case .failure(let error):
+        var generatedKey: CENKey?
+        switch cenLogic.generateCenKey(curTimestamp: Date().coEpiTimestamp) {
+        case .success(let key):
+            generatedKey = key
+        case .failure(let error):
             fatalError(error.localizedDescription)
        }
-        
+
         return generatedKey
     }
 
@@ -167,4 +176,3 @@ class CoEpiNetworkingV3Tests: XCTestCase {
     }
 
 }
-

@@ -83,11 +83,10 @@ class SymptomReportViewModel: UINotifier {
     }
 }
 
-
 extension Set {
 
     func toggle(element: Element) -> Set<Element> {
-        if (contains(element)) {
+        if contains(element) {
             return filter { $0 != element }
         } else {
             return union([element])
@@ -99,7 +98,7 @@ extension Set where Element == SymptomId {
     func solveConflicts(selectedId: SymptomId, wasChecked: Bool) -> Set<Element> {
         if !wasChecked {
             return self
-        } else if selectedId == .none  {
+        } else if selectedId == .none {
             return Set([selectedId])
         } else if contains(.none) {
             return filter { $0 != .none }

@@ -1,7 +1,7 @@
 import Foundation
 import RealmSwift
 
-final class RealmAlert : Object {
+final class RealmAlert: Object {
     @objc dynamic var id: String = ""
 
     @objc dynamic var contactTime: Int64 = 0
@@ -29,6 +29,9 @@ final class RealmAlert : Object {
 
         self.contactTime = alert.contactTime.value
         self.reportTime = alert.reportTime.value
+
+        self.contactTime = alert.contactTime.value
+        self.reportTime = alert.reportTime.value
         if let time = alert.earliestSymptomTime.toOptional() {
             self.earliestSymptomTime.value = time.value
         }
@@ -51,7 +54,8 @@ final class RealmAlert : Object {
             id: id,
             contactTime: UnixTime(value: contactTime),
             reportTime: UnixTime(value: reportTime),
-            earliestSymptomTime: earliestSymptomTime.value.map { UserInput.some(UnixTime(value: $0)) } ?? UserInput.none,
+            earliestSymptomTime: earliestSymptomTime.value.map {
+                UserInput.some(UnixTime(value: $0)) } ?? UserInput.none,
             feverSeverity: FeverSeverity(rawValue: feverSeverity)!,
             coughSeverity: CoughSeverity(rawValue: coughSeverity)!,
             breathlessness: breathlessness,

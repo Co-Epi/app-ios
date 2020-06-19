@@ -8,18 +8,18 @@ class SymptomStartDaysViewModel {
     let title = L10n.Ux.Symptomsdays.heading
 
     let setActivityIndicatorVisible: Driver<Bool>
-    
+
     private let daysIsEmpty: BehaviorRelay<Bool>
     let submitButtonEnabled: Driver<Bool>
 
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
-        
+
         daysIsEmpty = BehaviorRelay<Bool>(value: true)
-        
+
         submitButtonEnabled = daysIsEmpty
             .asObservable()
-            .map{!$0}
+            .map {!$0}
             .asDriver(onErrorJustReturn: false)
 
         setActivityIndicatorVisible = symptomFlowManager.submitSymptomsState
@@ -28,7 +28,7 @@ class SymptomStartDaysViewModel {
     }
 
     func onDaysChanged(daysStr: String) {
-        if (daysStr.isEmpty) {
+        if daysStr.isEmpty {
             symptomFlowManager.setEarliestSymptomStartedDaysAgo(.none).expect()
         } else {
             if let days: Int = Int(daysStr) {

@@ -5,25 +5,24 @@ import RxSwift
 class FeverDaysViewModel {
     private let symptomFlowManager: SymptomFlowManager
 
-    
     private let daysIsEmpty: BehaviorRelay<Bool>
     let submitButtonEnabled: Driver<Bool>
-    
+
     let title = L10n.Ux.Fever.heading
 
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
-        
+
         daysIsEmpty = BehaviorRelay<Bool>(value: true)
-               
+
         submitButtonEnabled = daysIsEmpty
             .asObservable()
-            .map{!$0}
+            .map {!$0}
             .asDriver(onErrorJustReturn: false)
     }
 
     func onDaysChanged(daysStr: String) {
-        if (daysStr.isEmpty) {
+        if daysStr.isEmpty {
             symptomFlowManager.setFeverDays(.none).expect()
         } else {
             if let days: Int = Int(daysStr) {

@@ -1,18 +1,18 @@
 import XCTest
 
 class FFIStandaloneTests: XCTestCase {
-    
+
     func testLoggerSetup() {
         //First call will set the log level to 0/Trace. Remaining calls will have no effect.
-        for i:Int32 in 0...4 {
+        for i: Int32 in 0...4 {
             loggerSetupWithLevel(levelInt: i)
         }
     }
-    
+
     func loggerSetupWithLevel(levelInt: Int32) {
         let level = CoreLogLevel(levelInt)
         print("iOS : Logger level : \(level)")
-        let ret = setup_logger(level, false);
+        let ret = setup_logger(level, false)
         /*
          fn from_usize(u: usize) -> Option<LevelFilter> {
              match u {
@@ -26,7 +26,7 @@ class FFIStandaloneTests: XCTestCase {
              }
          }
          */
-        XCTAssertEqual(5, ret);
+        XCTAssertEqual(5, ret)
     }
 
 }

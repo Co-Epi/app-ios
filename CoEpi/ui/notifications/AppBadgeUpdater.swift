@@ -16,7 +16,9 @@ class AppBadgeUpdaterImpl: AppBadgeUpdater {
 
     private func updateAppBadge(number: Int, settings: UNNotificationSettings) {
         guard
-            settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional,
+            settings.authorizationStatus ==
+                .authorized ||
+                settings.authorizationStatus == .provisional,
             settings.badgeSetting == .enabled
         else { return }
 

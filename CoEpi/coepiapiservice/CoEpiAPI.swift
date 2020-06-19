@@ -3,11 +3,11 @@ import Foundation
 class CoEpiAPI {
   let server = "coepi.wolk.com"
   let httpport = "8080"
-  
+
     private func generateEndpoint(action: String) -> String {
         return "https://" + self.server + ":" + httpport + "/" + action
     }
-    
+
     func postCENReport(cenreport: CENReport) {
         let endpoint = generateEndpoint(action: "cenreport")
         let method = "POST"
@@ -21,7 +21,7 @@ class CoEpiAPI {
         let encodedEAS = try! JSONEncoder().encode(eas)
         makeAPICall(endpoint: endpoint, method: method, body: encodedEAS)
     }
-      
+
     func sendExposureCheck(ec: ExposureCheck) {
         let endpoint = generateEndpoint(action: "exposurecheck")
         let method = "POST"
@@ -41,7 +41,7 @@ class CoEpiAPI {
          var req = URLRequest(url: URLObject)
          req.httpMethod = method
          req.httpBody = body
-         
+
          URLSession(configuration: config).dataTask(with: req) { data, response, error in
              if let error = error {
                  print(error.localizedDescription)
@@ -60,7 +60,7 @@ class CoEpiAPI {
                  //TODO: self.handleServerError(response)
                  return
              }
-             
+
              //TODO: determine where/when this should / can be called
              //successHandler(data, httpResponse)
          }.resume()

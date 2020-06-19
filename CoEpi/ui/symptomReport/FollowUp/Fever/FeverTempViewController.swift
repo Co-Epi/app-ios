@@ -18,25 +18,24 @@ class FeverTempViewController: UIViewController {
     @IBAction func unknownButtonAction(_ sender: UIButton) {
         viewModel.onUnknownTap()
     }
-    
+
     @IBAction func submitButtonAction(_ sender: UIButton) {
         viewModel.onSubmitTap()
     }
-    
+
     @IBAction func skipButtonAction(_ sender: UIButton) {
         viewModel.onSkipTap()
     }
-    
+
     @IBAction func scaleButtonAction(_ sender: UIButton) {
         viewModel.onTemperatureUnitPress()
     }
-    
 
     init(viewModel: FeverTempViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -47,7 +46,7 @@ class FeverTempViewController: UIViewController {
             viewModel.onBack()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStyle()
@@ -62,7 +61,7 @@ class FeverTempViewController: UIViewController {
                 viewModel.onTempChanged(tempStr: text ?? "")
             })
             .disposed(by: disposeBag)
-        
+
         numberInput.rx.controlEvent(.editingChanged).subscribe(onNext: { [weak self] in
         if let text = self?.numberInput.text {
             self?.numberInput.text = String(text.prefix(5))
@@ -84,17 +83,17 @@ class FeverTempViewController: UIViewController {
     private func setupStyle() {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
         scaleButtonLabel.tintColor = .black
-        
+
         ButtonStyles.applyUnselected(to: unknownButtonLabel)
         ButtonStyles.applyRoundedEnds(to: submitButtonLabel)
         ButtonStyles.applyShadows(to: submitButtonLabel)
-        
+
         viewModel.submitButtonEnabled
             .drive(submitButtonLabel.rx.isEnabled)
             .disposed(by: disposeBag)
 
         viewModel.submitButtonEnabled
-            .map{ $0 ? .systemBlue : .lightGray }
+            .map { $0 ? .systemBlue : .lightGray }
             .drive(submitButtonLabel.rx.backgroundColor)
             .disposed(by: disposeBag)
     }
@@ -119,7 +118,9 @@ private func toButtonText(unit: TemperatureUnit) -> NSAttributedString {
         }
     }()
 
-    return attrString(string: L10n.Ux.Fever.f, size: fahrenheitSize) + attrString(string: "/", size: 40)
+    return attrString(
+        string: L10n.Ux.Fever.f, size: fahrenheitSize)
+        + attrString(string: "/", size: 40)
         + attrString(string: L10n.Ux.Fever.c, size: celsiusSize)
 }
 

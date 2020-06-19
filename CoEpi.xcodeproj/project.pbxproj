@@ -58,11 +58,10 @@
 		62983D91243CE60600B0294C /* RealmDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4B9B7242CC97600516F3B /* RealmDao.swift */; };
 		62A334A52476CE6600CF4B25 /* SymptomFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A334A42476CE6600CF4B25 /* SymptomFlow.swift */; };
 		62A334A72476CE8500CF4B25 /* SymptomFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A334A62476CE8500CF4B25 /* SymptomFlowManager.swift */; };
-		62A334A92476CEAA00CF4B25 /* SymptomInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A334A82476CEAA00CF4B25 /* SymptomInput.swift */; };
-		62A334AB2476CEC100CF4B25 /* SymptomInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A334AA2476CEC100CF4B25 /* SymptomInputManager.swift */; };
 		62A334AD2476CED600CF4B25 /* SymptomRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A334AC2476CED600CF4B25 /* SymptomRouter.swift */; };
 		62A334AF2476CEEA00CF4B25 /* SymptomStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A334AE2476CEEA00CF4B25 /* SymptomStep.swift */; };
 		62B9A01F2434036A00885519 /* DebugBleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BDD5242BA28C00A63DD5 /* DebugBleViewModel.swift */; };
+		62CE509B249BB496003F2ECE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 62CE509A249BB496003F2ECE /* .swiftlint.yml */; };
 		700BA90C2489685400BE8F30 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BA90B2489685400BE8F30 /* ButtonStyles.swift */; };
 		841D39A0244E3EE200A9CD64 /* StartPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D399F244E3EE200A9CD64 /* StartPermissions.swift */; };
 		84201691244B21FF000EE281 /* UnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201690244B21FF000EE281 /* UnixTime.swift */; };
@@ -295,10 +294,9 @@
 		6291BE7C246D17C100984583 /* OnboardingWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWireframe.swift; sourceTree = "<group>"; };
 		62A334A42476CE6600CF4B25 /* SymptomFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomFlow.swift; sourceTree = "<group>"; };
 		62A334A62476CE8500CF4B25 /* SymptomFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomFlowManager.swift; sourceTree = "<group>"; };
-		62A334A82476CEAA00CF4B25 /* SymptomInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomInput.swift; sourceTree = "<group>"; };
-		62A334AA2476CEC100CF4B25 /* SymptomInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomInputManager.swift; sourceTree = "<group>"; };
 		62A334AC2476CED600CF4B25 /* SymptomRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRouter.swift; sourceTree = "<group>"; };
 		62A334AE2476CEEA00CF4B25 /* SymptomStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStep.swift; sourceTree = "<group>"; };
+		62CE509A249BB496003F2ECE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		700BA90B2489685400BE8F30 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		840405D6246C50C7008048BF /* Rust-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Rust-Bridging-Header.h"; sourceTree = "<group>"; };
 		841D399F244E3EE200A9CD64 /* StartPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPermissions.swift; sourceTree = "<group>"; };
@@ -535,13 +533,6 @@
 			path = "launch screen";
 			sourceTree = "<group>";
 		};
-		44CF83504F0FD8582FEC242D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		622AC2BA245CB93B00A6EB90 /* thankYou */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,8 +621,6 @@
 			children = (
 				62A334A42476CE6600CF4B25 /* SymptomFlow.swift */,
 				62A334A62476CE8500CF4B25 /* SymptomFlowManager.swift */,
-				62A334A82476CEAA00CF4B25 /* SymptomInput.swift */,
-				62A334AA2476CEC100CF4B25 /* SymptomInputManager.swift */,
 				62A334AC2476CED600CF4B25 /* SymptomRouter.swift */,
 				62A334AE2476CEEA00CF4B25 /* SymptomStep.swift */,
 			);
@@ -801,13 +790,13 @@
 		849DFE592427D3750008ED65 = {
 			isa = PBXGroup;
 			children = (
+				62CE509A249BB496003F2ECE /* .swiftlint.yml */,
 				849DFE642427D3750008ED65 /* CoEpi */,
 				849DFE7E2427D37A0008ED65 /* CoEpiTests */,
 				849DFE892427D37A0008ED65 /* CoEpiUITests */,
 				30EF956B24363115007D61C7 /* CoEpiNetworkingTests */,
 				30C3D5AB2495412B00A77F76 /* FFIStandaloneTests */,
 				849DFE632427D3750008ED65 /* Products */,
-				44CF83504F0FD8582FEC242D /* Pods */,
 				84E76D6A2470445F009C1D97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -1154,6 +1143,7 @@
 				849DFE5E2427D3750008ED65 /* Sources */,
 				849DFE5F2427D3750008ED65 /* Frameworks */,
 				849DFE602427D3750008ED65 /* Resources */,
+				6275D334249BA1A200600458 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1333,6 +1323,7 @@
 				30EF957A24379E01007D61C7 /* CoEpiLaunchScreen.storyboard in Resources */,
 				848434572438C046006A5839 /* ErrorView.xib in Resources */,
 				622AC2CC245FC5E000A6EB90 /* CoughTypeViewController.xib in Resources */,
+				62CE509B249BB496003F2ECE /* .swiftlint.yml in Resources */,
 				05E0E4C8244403FE00D27F9A /* Localizable.strings in Resources */,
 				849D7B3F248EA0BB00C9DDBD /* DebugViewController.xib in Resources */,
 				84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */,
@@ -1360,6 +1351,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6275D334249BA1A200600458 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		30C3D5A62495412B00A77F76 /* Sources */ = {
@@ -1421,7 +1432,6 @@
 				849D7B43248EB0B100C9DDBD /* Clipboard.swift in Sources */,
 				622AC2EA245FD2F400A6EB90 /* FeverWhereViewController.swift in Sources */,
 				622AC2BE245CC2F900A6EB90 /* ThankYouViewController.swift in Sources */,
-				62A334AB2476CEC100CF4B25 /* SymptomInputManager.swift in Sources */,
 				84D069692455E7C10004E8B6 /* AlertViewData.swift in Sources */,
 				622AC2E0245FD23A00A6EB90 /* FeverTodayViewModel.swift in Sources */,
 				622AC2D6245FC66800A6EB90 /* CoughHowViewController.swift in Sources */,
@@ -1458,7 +1468,6 @@
 				849D1B0A2439F31D00804511 /* DaoError.swift in Sources */,
 				8491497B24366FF000975344 /* PeriodicAlertsFetcher.swift in Sources */,
 				622AC2C0245F65FB00A6EB90 /* ThankYouViewModel.swift in Sources */,
-				62A334A92476CEAA00CF4B25 /* SymptomInput.swift in Sources */,
 				84BF972E24281082001ADD6B /* uuids.swift in Sources */,
 				84BF973024281082001ADD6B /* DataRepresentable.swift in Sources */,
 				84F93BF92451C32100B5F54D /* NotificationShower.swift in Sources */,

@@ -1,11 +1,11 @@
 import UIKit
 
 class WhatAreAlertsViewController: UIViewController {
-    
+
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     @IBOutlet weak var bodyLabel: UILabel!
-    
+
     init() {
         super.init(nibName: String(describing: Self.self), bundle: nil)
     }
@@ -13,13 +13,13 @@ class WhatAreAlertsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
-        
+
         titleLabel.text = L10n.WhatExposure.title
-        
+
         bodyLabel.attributedText = L10n.WhatExposure.htmlBody.htmlToAttributedString
     }
 }

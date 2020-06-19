@@ -9,7 +9,10 @@ class MatchingReportsHandlerImpl: MatchingReportsHandler {
     private let notificationShower: NotificationShower
     private let appBadgeUpdater: AppBadgeUpdater
 
-    init(reportsDao: CENReportDao, notificationShower: NotificationShower, appBadgeUpdater: AppBadgeUpdater) {
+    init(
+        reportsDao: CENReportDao,
+        notificationShower: NotificationShower,
+        appBadgeUpdater: AppBadgeUpdater) {
         self.reportsDao = reportsDao
         self.notificationShower = notificationShower
         self.appBadgeUpdater = appBadgeUpdater

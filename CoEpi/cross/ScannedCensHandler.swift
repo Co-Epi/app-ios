@@ -23,7 +23,7 @@ class ScannedCensHandler {
 
                 let res = tcnsRecorder.recordTcn(tcn: data)
 
-                if (!res.isSuccess()) {
+                if !res.isSuccess() {
                     log.e("Error recording TCN: \(res)")
                 }
 

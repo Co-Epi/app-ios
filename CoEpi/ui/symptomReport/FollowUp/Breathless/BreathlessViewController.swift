@@ -4,12 +4,12 @@ import RxCocoa
 
 class BreathlessViewController: UIViewController {
     private let viewModel: BreathlessViewModel
-    
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    
+
     @IBOutlet weak var skipButtonLabel: UIButton!
 
     private var dataSource = BreathlessDataSource()
@@ -17,15 +17,15 @@ class BreathlessViewController: UIViewController {
     @IBAction func skipButtonAction(_ sender: Any) {
         viewModel.onSkipTap()
     }
-    
+
     private let disposeBag = DisposeBag()
-    
+
     init(viewModel: BreathlessViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
         title = viewModel.title
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -40,15 +40,15 @@ class BreathlessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
-        
+
         titleLabel.text = L10n.Ux.Breathless.title
         subtitleLabel.text = L10n.Ux.Breathless.subtitle
         skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
-        
+
         tableView.register(cellClass: UITableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 70.0
-        
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
         viewModel.viewData
@@ -66,7 +66,9 @@ class BreathlessViewController: UIViewController {
 private class BreathlessDataSource: NSObject, RxTableViewDataSourceType {
     private(set) var viewData: [BreathlessItemViewData] = []
 
-    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[BreathlessItemViewData]>) {
+    func tableView(
+        _ tableView: UITableView,
+        observedEvent: RxSwift.Event<[BreathlessItemViewData]>) {
         if case let .next(viewData) = observedEvent {
             self.viewData = viewData
             tableView.reloadData()
@@ -80,8 +82,12 @@ extension BreathlessDataSource: UITableViewDataSource {
         viewData.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeue(cellClass: UITableViewCell.self, forIndexPath: indexPath)
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeue(
+            cellClass: UITableViewCell.self,
+            forIndexPath: indexPath)
 
         let viewData = self.viewData[indexPath.row]
 

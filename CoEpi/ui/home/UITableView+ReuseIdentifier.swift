@@ -10,11 +10,13 @@ extension UITableView {
          return dequeueReusableCell(withIdentifier: cellClass.reuseIdentifier) as? T
      }
 
-     public func dequeue<T: UITableViewCell>(cellClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
+     public func dequeue<T: UITableViewCell>(
+        cellClass: T.Type,
+        forIndexPath indexPath: IndexPath) -> T {
          guard let cell = dequeueReusableCell(
              withIdentifier: cellClass.reuseIdentifier, for: indexPath) as? T else {
-                 fatalError(
-                    "Cell with id: \(cellClass.reuseIdentifier) for indexPath: \(indexPath) is not: \(T.self)")
+                fatalError(
+                "Cell id \(cellClass.reuseIdentifier) for indexPath \(indexPath) is not \(T.self)")
             }
          return cell
      }

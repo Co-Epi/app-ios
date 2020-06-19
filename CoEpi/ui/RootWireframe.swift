@@ -22,7 +22,7 @@ class RootWireFrame {
 
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         rootNavigationController.setViewControllers([homeViewController], animated: false)
-        
+
         window.rootViewController = rootNavigationController
         window.makeKeyAndVisible()
 
@@ -44,7 +44,7 @@ class RootWireFrame {
         guard !keyValueStore.getBool(key: .seenOnboarding) else {
             return
         }
-        
+
         let wireFrame: OnboardingWireframe = try! container.resolve()
         wireFrame.showOnboarding(parent: parent)
         onboardingWireframe = wireFrame
@@ -56,8 +56,8 @@ class RootWireFrame {
         case .to(let destination): navigate(to: destination)
         case .back: rootNavigationController.popViewController(animated: true)
         case .backTo(let destination): navigateBack(to: destination)
-        case .backToAndTo(let backDestination, let toDestination): navigateBackAndTo(backDestination: backDestination,
-                                                                                     toDestination: toDestination)
+        case .backToAndTo(let backDestination, let toDestination):
+            navigateBackAndTo(backDestination: backDestination, toDestination: toDestination)
         }
     }
 
@@ -110,7 +110,9 @@ class RootWireFrame {
         rootNavigationController.backToViewController(type: viewControllerTypeFor(destination: to))
     }
 
-    private func navigateBackAndTo(backDestination: RootNavDestination, toDestination: RootNavDestination) {
+    private func navigateBackAndTo(
+        backDestination: RootNavDestination,
+        toDestination: RootNavDestination) {
         navigateBack(to: backDestination)
         navigate(to: toDestination)
     }
@@ -131,19 +133,19 @@ class RootWireFrame {
         let alertsViewController = AlertsViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(alertsViewController, animated: true)
     }
-    
+
     private func showThankYou() {
         let viewModel: ThankYouViewModel = try! container.resolve()
         let thankYouViewController = ThankYouViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(thankYouViewController, animated: true)
     }
-    
+
     private func showBreathless() {
         let viewModel: BreathlessViewModel = try! container.resolve()
         let breathlessViewController = BreathlessViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(breathlessViewController, animated: true)
     }
-    
+
     private func showCoughType() {
         let viewModel: CoughTypeViewModel = try! container.resolve()
         let coughTypeViewController = CoughTypeViewController(viewModel: viewModel)
@@ -155,43 +157,43 @@ class RootWireFrame {
         let coughDaysViewController = CoughDaysViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(coughDaysViewController, animated: true)
     }
-    
+
     private func showCoughHow() {
         let viewModel: CoughHowViewModel = try! container.resolve()
         let coughHowViewController = CoughHowViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(coughHowViewController, animated: true)
     }
-    
+
     private func showFeverDays() {
         let viewModel: FeverDaysViewModel = try! container.resolve()
         let feverDaysViewController = FeverDaysViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(feverDaysViewController, animated: true)
     }
-    
+
     private func showFeverToday() {
         let viewModel: FeverTodayViewModel = try! container.resolve()
         let feverTodayViewController = FeverTodayViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(feverTodayViewController, animated: true)
     }
-    
+
     private func showFeverWhere() {
         let viewModel: FeverWhereViewModel = try! container.resolve()
         let feverWhereViewController = FeverWhereViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(feverWhereViewController, animated: true)
     }
-    
+
     private func showFeverTemp() {
         let viewModel: FeverTempViewModel = try! container.resolve()
         let feverTempViewController = FeverTempViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(feverTempViewController, animated: true)
     }
-    
+
     private func showSymptomReport() {
         let viewModel: SymptomReportViewModel = try! container.resolve()
         let symptomReportViewController = SymptomReportViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(symptomReportViewController, animated: true)
     }
-    
+
     private func showSymptomStartDays() {
         let viewModel: SymptomStartDaysViewModel = try! container.resolve()
         let symptomStartDaysViewController = SymptomStartDaysViewController(viewModel: viewModel)
@@ -208,11 +210,9 @@ class RootWireFrame {
 extension UINavigationController {
 
     func backToViewController<T: UIViewController>(type: T.Type) {
-        for element in viewControllers as Array {
-            if element is T {
-                popToViewController(element, animated: true)
-                break
-            }
+        for element in viewControllers as Array where element is T {
+            popToViewController(element, animated: true)
+            break
         }
     }
 

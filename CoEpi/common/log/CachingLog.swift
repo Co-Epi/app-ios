@@ -2,7 +2,7 @@ import RxSwift
 import Foundation
 
 struct LimitedSizeQueue<T> {
-    public private(set) var array: Array<T> = []
+    public private(set) var array: [T] = []
 
     private let maxSize: Int
 
@@ -21,8 +21,7 @@ struct LimitedSizeQueue<T> {
     public var isEmpty: Bool { return array.isEmpty }
 }
 
-
-class CachingLog : LogNonVariadicTags {
+class CachingLog: LogNonVariadicTags {
 
     let logs = BehaviorSubject(value: LimitedSizeQueue<LogMessage>(maxSize: 1000))
 

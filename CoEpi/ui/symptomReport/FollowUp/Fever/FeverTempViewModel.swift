@@ -14,7 +14,7 @@ class FeverTempViewModel {
     private let temperatureTrigger: PublishRelay<UserInput<Temperature>> = PublishRelay()
     private let toggleTemperatureUnitTrigger: PublishRelay<()> = PublishRelay()
     private let temperatureTextTrigger: PublishRelay<String> = PublishRelay()
-    private let selectedTemperatureUnitTrigger: BehaviorRelay<TemperatureUnit> = BehaviorRelay(value: .fahrenheit)
+    private let tempUnitTrigger: BehaviorRelay<TemperatureUnit> = BehaviorRelay(value: .fahrenheit)
     private let submitTrigger: PublishRelay<()> = PublishRelay()
 
     private let disposeBag = DisposeBag()
@@ -22,14 +22,14 @@ class FeverTempViewModel {
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
 
-        selectedTemperatureUnit = selectedTemperatureUnitTrigger
+        selectedTemperatureUnit = tempUnitTrigger
             .asDriver(onErrorJustReturn: .fahrenheit)
 
         let temperature = temperatureTrigger.asObservable()
-        
+
         submitButtonEnabled = temperature
-            .map{$0.toUserString()}
-            .map{!$0.isEmpty}
+            .map {$0.toUserString()}
+            .map {!$0.isEmpty}
             .asDriver(onErrorJustReturn: false)
 
         temperatureText = temperature
@@ -43,21 +43,23 @@ class FeverTempViewModel {
                 symptomFlowManager.navigateForward()
             }).disposed(by: disposeBag)
 
-        toggleTemperatureUnitTrigger.withLatestFrom(selectedTemperatureUnitTrigger)
+        toggleTemperatureUnitTrigger.withLatestFrom(tempUnitTrigger)
             .map { $0.toggle() }
-            .subscribe(onNext: { [selectedTemperatureUnitTrigger] unit in
-                selectedTemperatureUnitTrigger.accept(unit)
+            .subscribe(onNext: { [tempUnitTrigger] unit in
+                tempUnitTrigger.accept(unit)
             }).disposed(by: disposeBag)
 
-        selectedTemperatureUnitTrigger.withLatestFrom(temperature,
-                                                      resultSelector: { selectedUnit, currentTemp in
-                                                        toTemperature(newUnit: selectedUnit, currentInput: currentTemp)
+        tempUnitTrigger.withLatestFrom(
+            temperature, resultSelector: { selectedUnit, currentTemp in
+            toTemperature(newUnit: selectedUnit, currentInput: currentTemp)
         })
         .subscribe(onNext: { [temperatureTrigger] newTemp in
             temperatureTrigger.accept(newTemp)
         }).disposed(by: disposeBag)
 
-        temperatureTextTrigger.withLatestFrom(selectedTemperatureUnitTrigger.asObservable(), resultSelector: { text, unit in
+        temperatureTextTrigger.withLatestFrom(
+            tempUnitTrigger.asObservable(),
+            resultSelector: { text, unit in
             toTemperature(unit: unit, tempStr: text)
         })
         .subscribe(onNext: { [temperatureTrigger] newTemp in
@@ -94,7 +96,7 @@ private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<
     switch tempStr {
     case "": return .none
     default:
-        if let temp: Float = NumberFormatters.temperatureFormatter.number(from: tempStr)?.floatValue {
+        if let temp: Float = NumberFormatters.tempFormatter.number(from: tempStr)?.floatValue {
             switch unit {
             case .celsius: return .some(.celsius(value: temp))
             case .fahrenheit: return .some(.fahrenheit(value: temp))
@@ -106,7 +108,9 @@ private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<
     }
 }
 
-private func toTemperature(newUnit: TemperatureUnit, currentInput: UserInput<Temperature>) -> UserInput<Temperature> {
+private func toTemperature(
+    newUnit: TemperatureUnit,
+    currentInput: UserInput<Temperature>) -> UserInput<Temperature> {
     switch currentInput {
     case .none: return .none
     case .some(let temp): return .some(toTemperature(newUnit: newUnit, currentTemp: temp))

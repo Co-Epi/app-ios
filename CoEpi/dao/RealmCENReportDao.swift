@@ -14,7 +14,7 @@ class RealmCENReportDao: CENReportDao, RealmDao {
     lazy var reports = reportsSubject.asObservable()
     private let reportsSubject: BehaviorSubject<[ReceivedCenReport]> = BehaviorSubject(value: [])
 
-    var notificationToken: NotificationToken? = nil
+    var notificationToken: NotificationToken?
 
     private let reportsResults: Results<RealmCENReport>
 
@@ -36,7 +36,7 @@ class RealmCENReportDao: CENReportDao, RealmDao {
 
     func insert(report: ReceivedCenReport) -> Bool {
         let result = realm.objects(RealmCENReport.self).filter("id = %@", report.report.id)
-        if result.count == 0 {
+        if result.isEmpty {
             log.d("Report didn't exist in db, inserting: \(report.description)")
             let newCENReport = RealmCENReport(report)
             write {
@@ -66,7 +66,7 @@ class RealmCENReportDao: CENReportDao, RealmDao {
     private func findReportBy(id: String) -> RealmCENReport? {
         let results = realm.objects(RealmCENReport.self).filter("id = %@", id)
 
-        if (results.count > 1) {
+        if results.count > 1 {
             // Searching by id which is primary key, so can't have multiple results.
             fatalError("Multiple results for report id: \(id)")
         } else {

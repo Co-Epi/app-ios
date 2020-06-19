@@ -1,6 +1,6 @@
 import Foundation
 
-class ConsoleLog : LogNonVariadicTags {
+class ConsoleLog: LogNonVariadicTags {
     func setup() {}
 
     func v(_ message: String, tags: [LogTag]) {

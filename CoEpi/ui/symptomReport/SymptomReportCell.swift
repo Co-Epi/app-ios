@@ -3,7 +3,7 @@ import UIKit
 class SymptomReportCell: UITableViewCell {
     private var symptomView: SymptomView!
 
-    var onChecked: ((SymptomViewData) -> ())? {
+    var onChecked: ((SymptomViewData) -> Void)? {
         didSet {
             symptomView.onChecked = onChecked
         }
@@ -36,14 +36,14 @@ class SymptomView: UIView {
 
     @IBOutlet weak var button: UIButton!
 
-    public var onChecked: ((SymptomViewData) -> ())?
+    public var onChecked: ((SymptomViewData) -> Void)?
 
     private var question: SymptomViewData?
 
     public func setQuestion(question: SymptomViewData) {
         self.question = question
         button.setTitle(question.text, for: .normal)
-        if question.checked{
+        if question.checked {
             ButtonStyles.applySelected(to: button)
         } else {
             ButtonStyles.applyUnselected(to: button)

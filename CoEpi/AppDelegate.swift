@@ -9,10 +9,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let container: DependencyContainer = Dependencies().createContainer()
 
     internal var window: UIWindow?
-    
+
     private var rootWireframe: RootWireFrame?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
+        -> Bool {
         MSAppCenter.start("2581ac81-eb5b-423a-83e6-65cab9d64dd8", withServices: [MSDistribute.self])
 
         let bgManager: BackgroundTasksManager = try! container.resolve()
@@ -28,8 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: UISceneSession Lifecycle
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    func application(
+        _ application: UIApplication,
+        configurationForConnecting connectingSceneSession: UISceneSession,
+        options: UIScene.ConnectionOptions)
+        -> UISceneConfiguration {
+        UISceneConfiguration(
+            name: "Default Configuration",
+            sessionRole: connectingSceneSession.role)
     }
 
     // MARK: - Core Data stack
@@ -46,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -69,8 +78,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//                fatalError()
+//                Replace this implementation with code to handle the error appropriately.
+//                causes the application to generate a crash log and terminate.
+//                You should not use this function in a shipping application,
+//                although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }

@@ -42,7 +42,7 @@ class AlertsViewModel {
 }
 
 private extension Array where Element == Alert {
-    
+
     func toSections() -> [AlertViewDataSection] {
         return
             sorted { (alert1, alert2) -> Bool in
@@ -62,7 +62,6 @@ private extension Array where Element == Alert {
         let time: Int64
     }
 }
-
 
 private extension Alert {
 
