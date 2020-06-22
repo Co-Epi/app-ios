@@ -15,6 +15,12 @@ carthage bootstrap
 ```
 \* This project uses primarily SPM as dependecy manager. Carthage is used temporarily as [fallback for some dependencies](https://github.com/Co-Epi/app-ios/wiki/Architecture) 
 
+- Install [swiftLint](https://github.com/realm/SwiftLint/releases)
+- Brew install available
+``` ruby
+brew install swiftlint
+```
+
 ## Core
 
 The core (domain logic, networking, etc.) of this app is written in Rust and can be found [here](https://github.com/Co-Epi/app-backend-rust). It's used as a normal dependency, via Carthage, so you don't need additional setup.
