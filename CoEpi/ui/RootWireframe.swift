@@ -68,9 +68,7 @@ class RootWireFrame {
         case .thankYou: showThankYou()
         case .breathless: showBreathless()
         case .coughType: showCoughType()
-        case .coughDays: showCoughDays()
         case .coughDescription: showCoughHow()
-        case .feverDays: showFeverDays()
         case .feverTemperatureTakenToday: showFeverToday()
         case .feverTemperatureSpot: showFeverWhere()
         case .feverHighestTemperature: showFeverTemp()
@@ -93,9 +91,7 @@ class RootWireFrame {
         case .thankYou: return ThankYouViewController.self
         case .breathless: return BreathlessViewController.self
         case .coughType: return CoughTypeViewController.self
-        case .coughDays: return CoughDaysViewController.self
         case .coughDescription: return CoughHowViewController.self
-        case .feverDays: return FeverDaysViewController.self
         case .feverTemperatureTakenToday: return FeverTodayViewController.self
         case .feverTemperatureSpot: return FeverWhereViewController.self
         case .feverHighestTemperature: return FeverTempViewController.self

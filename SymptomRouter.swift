@@ -16,10 +16,8 @@ class SymptomRouterImpl: SymptomRouter {
     internal func destination(step to: SymptomStep) -> RootNavDestination {
         switch to {
         case .coughType: return(.coughType)
-        case .coughDays: return(.coughDays)
         case .coughDescription: return(.coughDescription)
         case .breathlessnessDescription: return(.breathless)
-        case .feverDays: return(.feverDays)
         case .feverTemperatureTakenToday: return(.feverTemperatureTakenToday)
         case .feverTemperatureSpot: return(.feverTemperatureSpot)
         case .feverHighestTemperature: return(.feverHighestTemperature)
