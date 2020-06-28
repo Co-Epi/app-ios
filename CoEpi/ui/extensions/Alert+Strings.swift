@@ -20,9 +20,9 @@ extension Alert {
 extension FeverSeverity {
     func toSymptomUIString() -> String? {
         switch self {
-        case .mild: return L10n.Alerts.Label.Symptom.Fever.mild
-        case .serious: return L10n.Alerts.Label.Symptom.Fever.serious
-        case .none: return nil
+        case .Mild: return L10n.Alerts.Label.Symptom.Fever.mild
+        case .Serious: return L10n.Alerts.Label.Symptom.Fever.serious
+        case .None: return nil
         }
     }
 }
@@ -30,10 +30,10 @@ extension FeverSeverity {
 extension CoughSeverity {
     func toSymptomUIString() -> String? {
         switch self {
-        case .dry: return L10n.Alerts.Label.Symptom.Cough.dry
-        case .existing: return L10n.Alerts.Label.Symptom.Cough.existing
-        case .wet: return L10n.Alerts.Label.Symptom.Cough.wet
-        case .none: return nil
+        case .Dry: return L10n.Alerts.Label.Symptom.Cough.dry
+        case .Existing: return L10n.Alerts.Label.Symptom.Cough.existing
+        case .Wet: return L10n.Alerts.Label.Symptom.Cough.wet
+        case .None: return nil
         }
     }
 }

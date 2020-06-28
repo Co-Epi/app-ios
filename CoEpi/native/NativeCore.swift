@@ -109,28 +109,31 @@ extension NativeCore: ObservedTcnsRecorder {
     }
 }
 
+// swiftlint:disable identifier_name
 struct CorePublicReport: Decodable {
-    let reportTime: UnixTime
-    let earliestSymptomTime: CoreUserInput<UnixTime>
-    let feverSeverity: FeverSeverity
-    let coughSeverity: CoughSeverity
+    let report_time: UnixTime
+    let earliest_symptom_time: CoreUserInput<UnixTime>
+    let fever_severity: FeverSeverity
+    let cough_severity: CoughSeverity
     let breathlessness: Bool
-    let muscleAches: Bool
-    let lossSmellOrTaste: Bool
+    let muscle_aches: Bool
+    let loss_smell_or_taste: Bool
     let diarrhea: Bool
-    let runnyNose: Bool
+    let runny_nose: Bool
     let other: Bool
-    let noSymptoms: Bool
+    let no_symptoms: Bool
 }
 
+// swiftlint:disable identifier_name
 enum FeverSeverity: String, Decodable {
   // TODO decoding configuration to map capitalized to lower case
-  case none, mild, serious
+  case None, Mild, Serious
 }
 
+// swiftlint:disable identifier_name
 enum CoughSeverity: String, Decodable {
 // TODO decoding configuration to map capitalized to lower case
-  case none, existing, wet, dry
+  case None, Existing, Wet, Dry
 }
 
 enum CoreUserInput<T: Decodable>: Decodable {
@@ -204,18 +207,18 @@ class NativeCore: AlertsFetcher {
                     // Using UInt64 for time in Rust, as stylistic preference, as we can't have a negative timestamp.
                     // UInt64 can be safely converted to Int64 for unix time.
                     // Consider using UInt64 here too, for consistency.
-                    contactTime: UnixTime.init(value: Int64($0.contactTime)),
-                    reportTime: $0.report.reportTime,
-                    earliestSymptomTime: $0.report.earliestSymptomTime.toUserInput(),
-                    feverSeverity: $0.report.feverSeverity,
-                    coughSeverity: $0.report.coughSeverity,
+                    contactTime: UnixTime.init(value: Int64($0.contact_time)),
+                    reportTime: $0.report.report_time,
+                    earliestSymptomTime: $0.report.earliest_symptom_time.toUserInput(),
+                    feverSeverity: $0.report.fever_severity,
+                    coughSeverity: $0.report.cough_severity,
                     breathlessness: $0.report.breathlessness,
-                    muscleAches: $0.report.muscleAches,
-                    lossSmellOrTaste: $0.report.lossSmellOrTaste,
+                    muscleAches: $0.report.muscle_aches,
+                    lossSmellOrTaste: $0.report.loss_smell_or_taste,
                     diarrhea: $0.report.diarrhea,
-                    runnyNose: $0.report.runnyNose,
+                    runnyNose: $0.report.runny_nose,
                     other: $0.report.other,
-                    noSymptoms: $0.report.noSymptoms
+                    noSymptoms: $0.report.no_symptoms
                 )
             }
         }
@@ -443,10 +446,11 @@ private extension UserInput where T == Bool {
     }
 }
 
+// swiftlint:disable identifier_name
 private struct NativeAlert: Decodable {
     let id: String
     let report: CorePublicReport
-    let contactTime: UInt64
+    let contact_time: UInt64
 }
 
 extension Result where Failure == CoreError {
