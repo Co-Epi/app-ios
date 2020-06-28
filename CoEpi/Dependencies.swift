@@ -139,7 +139,8 @@ class Dependencies {
         container
             .register(.singleton) { AlertRepoImpl(
                 alertsFetcher: try container.resolve(),
-                alertDao: try container.resolve()) as AlertRepo }
+                alertDao: try container.resolve(),
+                notificationShower: try container.resolve()) as AlertRepo }
         container
             .register(.singleton) { CENRepoImpl(
                 cenDao: try container.resolve()) as CENRepo }
@@ -157,12 +158,6 @@ class Dependencies {
             .register(.eagerSingleton) { FetchAlertsBackgroundRegisterer(
                 tasksManager: try container.resolve(),
                 alertRepo: try container.resolve()) }
-        container
-            .register(.singleton) { MatchingReportsHandlerImpl(
-                reportsDao: try container.resolve(),
-                notificationShower: try container.resolve(),
-                appBadgeUpdater: try container.resolve())
-            as MatchingReportsHandler }
         container.register(.eagerSingleton) { NotificationsDelegate(
             rootNav: try container.resolve()) }
     }
@@ -179,12 +174,6 @@ class Dependencies {
         container
             .register(.eagerSingleton) { PeriodicAlertsFetcher(
                 alertRepo: try container.resolve()) }
-        container
-            .register(.singleton) { MatchingReportsHandlerImpl(
-                reportsDao: try container.resolve(),
-                notificationShower: try container.resolve(),
-                appBadgeUpdater: try container.resolve())
-            as MatchingReportsHandler }
         container
             .register(.eagerSingleton) { RootNav() }
 

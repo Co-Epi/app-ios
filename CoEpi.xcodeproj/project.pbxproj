@@ -102,7 +102,6 @@
 		849327B42452D92C009589E6 /* FetchAlertsBackgroundRegisterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849327B32452D92C009589E6 /* FetchAlertsBackgroundRegisterer.swift */; };
 		849327B62452D947009589E6 /* FetchAlertsBackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849327B52452D947009589E6 /* FetchAlertsBackgroundTask.swift */; };
 		849327B82452D972009589E6 /* BackgroundTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849327B72452D972009589E6 /* BackgroundTaskScheduler.swift */; };
-		849327BD2452ED45009589E6 /* ReportsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849327BC2452ED45009589E6 /* ReportsHandler.swift */; };
 		8493283D2452F983009589E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493283C2452F983009589E6 /* SceneDelegate.swift */; };
 		8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498115C243630E500EBD1DA /* ScannedCensHandler.swift */; };
 		849B3F7D247F00F7003CCE4B /* SymptomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B3F7C247F00F7003CCE4B /* SymptomView.xib */; };
@@ -331,7 +330,6 @@
 		849327B32452D92C009589E6 /* FetchAlertsBackgroundRegisterer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAlertsBackgroundRegisterer.swift; sourceTree = "<group>"; };
 		849327B52452D947009589E6 /* FetchAlertsBackgroundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAlertsBackgroundTask.swift; sourceTree = "<group>"; };
 		849327B72452D972009589E6 /* BackgroundTaskScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskScheduler.swift; sourceTree = "<group>"; };
-		849327BC2452ED45009589E6 /* ReportsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsHandler.swift; sourceTree = "<group>"; };
 		8493283C2452F983009589E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		849B3F7C247F00F7003CCE4B /* SymptomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomView.xib; sourceTree = "<group>"; };
@@ -734,7 +732,6 @@
 			children = (
 				8498115C243630E500EBD1DA /* ScannedCensHandler.swift */,
 				8491497A24366FF000975344 /* PeriodicAlertsFetcher.swift */,
-				849327BC2452ED45009589E6 /* ReportsHandler.swift */,
 			);
 			path = cross;
 			sourceTree = "<group>";
@@ -1456,7 +1453,6 @@
 				84F186E624814E9100E7979B /* NSAttributedString+Convenience.swift in Sources */,
 				849327B82452D972009589E6 /* BackgroundTaskScheduler.swift in Sources */,
 				8491497D2436881400975344 /* Data+StringFormatting.swift in Sources */,
-				849327BD2452ED45009589E6 /* ReportsHandler.swift in Sources */,
 				84B492222476F7E900FF69AD /* Alert.swift in Sources */,
 				CE6B7AB72433166600C42280 /* RealmCEN.swift in Sources */,
 				84A5C1DF2489739900B002E2 /* AlertDetailsViewData.swift in Sources */,
