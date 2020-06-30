@@ -28,6 +28,8 @@ class CachingLog: LogNonVariadicTags {
     private let addLogTrigger: PublishSubject<LogMessage> = PublishSubject()
     private let disposeBag = DisposeBag()
 
+    private let loggerSerialQueue = DispatchQueue(label: "org.coepi.logger")
+
     init() {
         addLogTrigger.withLatestFrom(logs, resultSelector: {(message, logs) in
             (message, logs)
@@ -62,7 +64,9 @@ class CachingLog: LogNonVariadicTags {
     }
 
     private func log(_ message: LogMessage) {
-        addLogTrigger.onNext(message)
+        loggerSerialQueue.async { [weak self] in
+            self?.addLogTrigger.onNext(message)
+        }
     }
 
     private func addTag(tags: [LogTag], message: String) -> String {
