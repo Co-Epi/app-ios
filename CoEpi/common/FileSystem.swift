@@ -7,11 +7,7 @@ protocol FileSystem {
 class FileSystemImpl: FileSystem {
 
     func coreDatabasePath() -> Result<String, ServicesError> {
-        documentsFolderPath().map { url in
-            let foo = url.appendingPathComponent("core").path
-            print("foo: \(foo)")
-            return url.appendingPathComponent("core").path
-        }
+        documentsFolderPath().map { $0.path }
     }
 
     private func documentsFolderPath() -> Result<URL, ServicesError> {
