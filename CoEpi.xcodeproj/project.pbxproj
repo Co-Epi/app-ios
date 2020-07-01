@@ -1829,7 +1829,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.ios.ci;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CoEpi/Rust-Bridging-Header.h";
@@ -1860,7 +1860,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = org.coepi.ios.ci;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CoEpi/Rust-Bridging-Header.h";
