@@ -163,13 +163,13 @@ enum CoreUserInput<T: Decodable>: Decodable {
 
 extension CoreUserInput {
     enum CodingError: Error { case decoding(String) }
-    enum CodableKeys: String, CodingKey { case some }
+    enum CodableKeys: String, CodingKey { case Some }
 
     init(from decoder: Decoder) throws {
         do {
             self = .some(value: try decoder
                 .container(keyedBy: CodableKeys.self)
-                .decode(T.self, forKey: .some))
+                .decode(T.self, forKey: .Some))
         } catch let decodingSomeError {
             do {
                 let value = try decoder.singleValueContainer().decode(String.self)
