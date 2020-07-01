@@ -24,7 +24,7 @@ class FeverWhereViewController: UIViewController {
     }
 
     @IBAction func otherButtonAction(_ sender: UIButton) {
-        viewModel.onWhereSelected(spot: .armpit)
+        viewModel.onWhereSelected(spot: .other)
     }
 
     @IBAction func skipButtonAction(_ sender: UIButton) {
