@@ -6,7 +6,8 @@ opt_in_rules:
 excluded:
 - Carthage
 - Pods
-- SwiftLint/Common/3rdPartyLib
+#- SwiftLint/Common/3rdPartyLib
+- DerivedData
 cyclomatic_complexity:
     warning: 20
     error: 25
