@@ -25,20 +25,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKO-eq-kPq">
-                    <rect key="frame" x="0.0" y="44" width="357" height="130"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="130"/>
                     <color key="backgroundColor" name="CoEpiPurple"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="130" id="ETl-I4-A6I"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="zD6-EK-daS">
-                    <rect key="frame" x="50" y="383" width="257" height="130"/>
+                    <rect key="frame" x="50" y="377" width="314" height="142"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="XUk-GK-gmb">
-                            <rect key="frame" x="0.0" y="0.0" width="257" height="49"/>
+                            <rect key="frame" x="0.0" y="0.0" width="314" height="61"/>
                             <subviews>
                                 <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="L2C-Or-J68" customClass="CustomTextFieldStart" customModule="CoEpi" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="148.5" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="185" height="61"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="L2C-Or-J68" secondAttribute="height" multiplier="73:24" id="Sb1-cR-t41"/>
                                     </constraints>
@@ -46,7 +46,7 @@
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUr-0R-wQK">
-                                    <rect key="frame" x="173.5" y="0.0" width="83.5" height="49"/>
+                                    <rect key="frame" x="210" y="0.0" width="104" height="61"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="fUr-0R-wQK" secondAttribute="height" multiplier="41:24" id="0Hf-VH-76i"/>
                                     </constraints>
@@ -57,13 +57,13 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qun-In-1VR">
-                            <rect key="frame" x="0.0" y="99" width="257" height="31"/>
+                            <rect key="frame" x="0.0" y="111" width="314" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZT-j2-j3C">
-                                    <rect key="frame" x="0.0" y="0.0" width="131" height="31"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="188" height="31"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="31" id="nHo-bq-meh"/>
-                                        <constraint firstAttribute="width" constant="131" id="oVM-vF-SHf"/>
+                                        <constraint firstAttribute="width" priority="750" constant="131" id="oVM-vF-SHf"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal">
@@ -74,7 +74,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu4-pd-wN5">
-                                    <rect key="frame" x="151" y="0.0" width="106" height="31"/>
+                                    <rect key="frame" x="208" y="0.0" width="106" height="31"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="31" id="DaQ-99-Vdk"/>
                                         <constraint firstAttribute="width" constant="106" id="SYE-hH-iMG"/>
@@ -98,7 +98,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHj-sf-pC7">
-                    <rect key="frame" x="50" y="563" width="30" height="30"/>
+                    <rect key="frame" x="50" y="569" width="30" height="30"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -107,7 +107,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5u-Ye-Mi1">
-                    <rect key="frame" x="20" y="74" width="317" height="29"/>
+                    <rect key="frame" x="20" y="74" width="374" height="29"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
