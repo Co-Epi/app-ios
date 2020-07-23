@@ -44,3 +44,9 @@ Fork and create a branch in the fork
 
 Any text visible to the user should be translated into the phone's preferred language.
 See the [Internationalization wiki page](https://github.com/Co-Epi/app-ios/wiki/Internationalization) for details on how to do that.
+
+### Autogeneration of Swift code (e.g. Equatable)
+
+- Install [Sourcery](https://github.com/krzysztofzablocki/Sourcery#installation)
+- Run `sourcery` in the project's root.
+
