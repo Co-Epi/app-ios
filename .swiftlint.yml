@@ -1,5 +1,6 @@
 disabled_rules:
 - nesting
+- unused_closure_parameter # are ok as documentation
 opt_in_rules:
 - empty_count
 - empty_string
