@@ -29,9 +29,13 @@
 "alerts.label.archive" = "Archive";
 
 "alerts.details.title" = "Exposure Alert";
-"alerts.details.label.symptoms_title" = "Symptoms";
 "alerts.details.label.reported_on" = "Reported on %@ at %@";
 
+"alerts.details.duration.hours_minutes" = "%i hours and %i minutes exposure";
+"alerts.details.duration.minutes" = "%i minutes exposure";
+"alerts.details.duration.seconds" = "%i seconds exposure";
+"alerts.details.distance.avg" = "Approx. %1$s %2$s away from you";
+"alerts.details.distance.unit.feet" = "Feet";
 
 //NewUX
     //general

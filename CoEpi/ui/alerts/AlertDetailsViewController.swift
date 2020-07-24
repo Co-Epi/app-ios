@@ -1,17 +1,13 @@
 import UIKit
+import SwiftUI
 
 class AlertDetailsViewController: UIViewController {
     private let viewModel: AlertDetailsViewModel
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var contactTimeLabel: UILabel!
-    @IBOutlet weak var symptomsTitleLabel: UILabel!
-    @IBOutlet weak var reportedOnLabel: UILabel!
-    @IBOutlet weak var symptomsLabel: UILabel!
-
     init(viewModel: AlertDetailsViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: String(describing: Self.self), bundle: nil)
+        super.init(nibName: nil, bundle: nil)
+        title = L10n.Alerts.Details.title
     }
 
     required init?(coder: NSCoder) {
@@ -20,11 +16,53 @@ class AlertDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setRootSwiftUIView(view: AlertDetailsView(viewModel: viewModel))
+    }
+}
 
-        titleLabel.text = viewModel.viewData.title
-        contactTimeLabel.text = viewModel.viewData.contactTime
-        symptomsTitleLabel.text = L10n.Alerts.Details.Label.symptomsTitle
-        reportedOnLabel.text = viewModel.viewData.reportTime
-        symptomsLabel.text = viewModel.viewData.symptoms
+struct AlertDetailsView: View {
+    @ObservedObject var viewModel: AlertDetailsViewModel
+
+    private var alertViewData: AlertDetailsViewData { viewModel.viewData }
+
+    init(viewModel: AlertDetailsViewModel) {
+        self.viewModel = viewModel
+    }
+
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 4) {
+
+                Text(alertViewData.title)
+                    .font(.system(size: 28))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(UIColor.coEpiPurple))
+
+                Text(alertViewData.reportTime)
+                    .font(.system(size: 13))
+                    .fontWeight(.light)
+
+                Text(alertViewData.contactDuration)
+                    .font(.system(size: 17))
+                    .fontWeight(.semibold)
+                    .padding(.top, 4)
+
+                Text(alertViewData.avgDistance)
+                    .font(.system(size: 17))
+                    .fontWeight(.semibold)
+
+                Text(alertViewData.minDistance)
+                    .font(.system(size: 17))
+                    .fontWeight(.semibold)
+
+                Text(alertViewData.symptoms)
+                    .font(.system(size: 13))
+                    .fontWeight(.medium)
+                    .padding(.top, 4)
+
+            }
+            .padding(EdgeInsets(top: 20, leading: 38, bottom: 20, trailing: 38))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        }
     }
 }

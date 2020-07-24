@@ -46,9 +46,9 @@ private extension Array where Element == Alert {
     func toSections() -> [AlertViewDataSection] {
         return
             sorted { (alert1, alert2) -> Bool in
-                alert1.contactTime.value > alert2.contactTime.value
+                alert1.start.value > alert2.start.value
             }.groupByOrdered {
-                $0.contactTime.toDate().formatMonthOrdinalDay()
+                $0.start.toDate().formatMonthOrdinalDay()
             }.map { headerText, alerts in
                 AlertViewDataSection(
                     header: headerText,
@@ -68,7 +68,7 @@ private extension Alert {
     func toViewData() -> AlertViewData {
         AlertViewData(
             symptoms: symptomUIStrings().joined(separator: "\n"),
-            contactTime: DateFormatters.hoursMins.string(from: contactTime.toDate()),
+            contactTime: DateFormatters.hoursMins.string(from: start.toDate()),
             alert: self
         )
     }

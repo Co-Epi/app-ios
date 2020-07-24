@@ -16,12 +16,8 @@ class ScannedCensHandler {
 
     private func forwardScannedCensToCoEpiRepo() {
         bleAdapter.discovered
-            .distinctUntilChanged()
-
-            .subscribe(onNext: { [tcnsRecorder] data in
-                log.d("Observed CEN: \(data.toHex())")
-
-                let res = tcnsRecorder.recordTcn(tcn: data)
+            .subscribe(onNext: { [tcnsRecorder] data, distance in
+                let res = tcnsRecorder.recordTcn(tcn: data, distance: distance)
 
                 if !res.isSuccess() {
                     log.e("Error recording TCN: \(res)")
@@ -31,5 +27,4 @@ class ScannedCensHandler {
                 log.e("Error in central cen observer: \(error.localizedDescription)")
             }).disposed(by: disposeBag)
     }
-
 }

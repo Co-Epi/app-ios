@@ -1,6 +1,13 @@
+import Foundation
+
+// TODO rename in exposure
 struct Alert: AutoEquatable {
     let id: String
-    let contactTime: UnixTime
+    
+    let start: UnixTime
+    let end: UnixTime
+    let minDistance: Measurement<UnitLength>
+    let avgDistance: Measurement<UnitLength>
     let reportTime: UnixTime
 
     let earliestSymptomTime: UserInput<UnixTime>
@@ -13,4 +20,8 @@ struct Alert: AutoEquatable {
     let runnyNose: Bool
     let other: Bool
     let noSymptoms: Bool
+
+    var durationSeconds: Int {
+        Int(end.value - start.value)
+    }
 }

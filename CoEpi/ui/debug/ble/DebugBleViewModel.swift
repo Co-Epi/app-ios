@@ -11,7 +11,7 @@ class DebugBleViewModel {
     init(bleAdapter: BleAdapter) {
         let combined = Observable.combineLatest(
             bleAdapter.myTcn.distinctUntilChanged().asSequence(),
-            bleAdapter.discovered.distinctUntilChanged().asSequence().map { $0.distinct() }
+            bleAdapter.discovered.map { $0.0 }.distinctUntilChanged().asSequence().map { $0.distinct() }
         )
 
         debugEntries = combined

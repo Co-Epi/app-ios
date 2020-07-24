@@ -5,13 +5,10 @@ import RxSwift
 class BleAdapter {
     private let tcnService: TCNBluetoothService
 
-    let discovered: ReplaySubject<Data> = .create(bufferSize: 1)
+    let discovered: ReplaySubject<(Data, Float)> = .create(bufferSize: 1)
     let myTcn: ReplaySubject<String> = .create(bufferSize: 1)
 
     init(tcnGenerator: TcnGenerator) {
-        // Temporary guard to filter repeated TCNs,
-        // since we don't do anything meaningful with them in v0.3, and this overloads db/logs
-        var lastObserverdTcns = LimitedSizeQueue<Data>(maxSize: 500)
 
         // Sometimes the device appears to observe its own TCN
         // This is a quick fix to alleviate this
@@ -35,10 +32,9 @@ class BleAdapter {
                 }
             }()
 
-        }, tcnFinder: { [discovered] (data, _) in
-            if !lastObserverdTcns.array.contains(data) && lastGeneratedTcn != data {
-                discovered.onNext(data)
-                lastObserverdTcns.add(value: data)
+        }, tcnFinder: { [discovered] (data, distance) in
+            if lastGeneratedTcn != data {
+                discovered.onNext((data, Float(distance ?? 0)))
             }
         }) { error in
             // TODO What kind of errors? Should we notify the user?

@@ -113,9 +113,8 @@ class Dependencies {
             .register { LogsViewModel(
                 log: cachingLog, clipboard: try container.resolve(),
                                            envInfos: try container.resolve()) }
-        container
-            .register { AlertDetailsViewModel(
-                alert: $0) }
+
+        container.register { AlertDetailsViewModel(alert: $0) }
     }
 
     private func registerDaos(container: DependencyContainer) {

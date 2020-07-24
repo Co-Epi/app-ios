@@ -28,7 +28,7 @@ internal enum L10n {
     internal enum Breathless {
       /// Follow up: Shortness of breath
       internal static let heading = L10n.tr("Localizable", "UX.breathless.heading")
-      /// I am too breathless to leave the house or I am breathless when dressing
+      /// I am too short of breath to leave the house or I am short of breath when dressing
       internal static let p0 = L10n.tr("Localizable", "UX.breathless.p0")
       /// I stop for breath after walking about 100 yards or after a few minutes on level ground
       internal static let p1 = L10n.tr("Localizable", "UX.breathless.p1")
@@ -36,11 +36,11 @@ internal enum L10n {
       internal static let p2 = L10n.tr("Localizable", "UX.breathless.p2")
       /// I get short of breath when hurrying on level ground or walking up a slight hill
       internal static let p3 = L10n.tr("Localizable", "UX.breathless.p3")
-      /// I only get breathless with strenuous exercise
+      /// I only get short of breath with strenuous exercise
       internal static let p4 = L10n.tr("Localizable", "UX.breathless.p4")
       /// Select one option
       internal static let subtitle = L10n.tr("Localizable", "UX.breathless.subtitle")
-      /// I feel breathless when:
+      /// I feel short of breath when:
       internal static let title = L10n.tr("Localizable", "UX.breathless.title")
     }
     internal enum Cough {
@@ -142,7 +142,7 @@ internal enum L10n {
       internal static let title2 = L10n.tr("Localizable", "UX.onboarding.title2")
       /// Stay informed
       internal static let title3 = L10n.tr("Localizable", "UX.onboarding.title3")
-      /// Collaborate. Share. Protect.
+      /// Collaborate. Inform. Protect.
       internal static let title4 = L10n.tr("Localizable", "UX.onboarding.title4")
     }
     internal enum Permissions {
@@ -192,7 +192,7 @@ internal enum L10n {
       internal static let home = L10n.tr("Localizable", "UX.thankyou.home")
       /// Log more symptoms
       internal static let more = L10n.tr("Localizable", "UX.thankyou.more")
-      /// Thank you for saving your symptoms! We will keep you notified about exposures this week.
+      /// Thank you for logging your symptoms! We will alert if you have any relevant exposures to review.
       internal static let title = L10n.tr("Localizable", "UX.thankyou.title")
       /// View exposures
       internal static let viewExposures = L10n.tr("Localizable", "UX.thankyou.viewExposures")
@@ -221,13 +221,35 @@ internal enum L10n {
     internal enum Details {
       /// Exposure Alert
       internal static let title = L10n.tr("Localizable", "alerts.details.title")
+      internal enum Distance {
+        /// Approx. %1$s %2$s away from you
+        internal static func avg(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+          return L10n.tr("Localizable", "alerts.details.distance.avg", p1, p2)
+        }
+        internal enum Unit {
+          /// Feet
+          internal static let feet = L10n.tr("Localizable", "alerts.details.distance.unit.feet")
+        }
+      }
+      internal enum Duration {
+        /// %i hours and %i minutes exposure
+        internal static func hoursMinutes(_ p1: Int, _ p2: Int) -> String {
+          return L10n.tr("Localizable", "alerts.details.duration.hours_minutes", p1, p2)
+        }
+        /// %i minutes exposure
+        internal static func minutes(_ p1: Int) -> String {
+          return L10n.tr("Localizable", "alerts.details.duration.minutes", p1)
+        }
+        /// %i seconds exposure
+        internal static func seconds(_ p1: Int) -> String {
+          return L10n.tr("Localizable", "alerts.details.duration.seconds", p1)
+        }
+      }
       internal enum Label {
         /// Reported on %@ at %@
         internal static func reportedOn(_ p1: String, _ p2: String) -> String {
           return L10n.tr("Localizable", "alerts.details.label.reported_on", p1, p2)
         }
-        /// Symptoms
-        internal static let symptomsTitle = L10n.tr("Localizable", "alerts.details.label.symptoms_title")
       }
     }
     internal enum Label {

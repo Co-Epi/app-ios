@@ -4,7 +4,11 @@ import RealmSwift
 final class RealmAlert: Object {
     @objc dynamic var id: String = ""
 
-    @objc dynamic var contactTime: Int64 = 0
+    @objc dynamic var start: Int64 = 0
+    @objc dynamic var end: Int64 = 0
+    @objc dynamic var minDistance: Float = 0
+    @objc dynamic var avgDistance: Float = 0
+
     @objc dynamic var reportTime: Int64 = 0
     let earliestSymptomTime: RealmOptional<Int64> = RealmOptional()
 
@@ -27,10 +31,11 @@ final class RealmAlert: Object {
 
         self.id = alert.id
 
-        self.contactTime = alert.contactTime.value
-        self.reportTime = alert.reportTime.value
+        self.start = alert.start.value
+        self.end = alert.end.value
+        self.minDistance = Float(alert.minDistance.converted(to: .meters).value)
+        self.avgDistance = Float(alert.avgDistance.converted(to: .meters).value)
 
-        self.contactTime = alert.contactTime.value
         self.reportTime = alert.reportTime.value
         if let time = alert.earliestSymptomTime.toOptional() {
             self.earliestSymptomTime.value = time.value
@@ -52,10 +57,16 @@ final class RealmAlert: Object {
     func toAlert() -> Alert {
         Alert(
             id: id,
-            contactTime: UnixTime(value: contactTime),
+
+            start: UnixTime(value: start),
+            end: UnixTime(value: end),
+            minDistance: Measurement(value: Double(minDistance), unit: .meters),
+            avgDistance: Measurement(value: Double(avgDistance), unit: .meters),
+
             reportTime: UnixTime(value: reportTime),
             earliestSymptomTime: earliestSymptomTime.value.map {
                 UserInput.some(UnixTime(value: $0)) } ?? UserInput.none,
+
             feverSeverity: FeverSeverity(rawValue: feverSeverity)!,
             coughSeverity: CoughSeverity(rawValue: coughSeverity)!,
             breathlessness: breathlessness,

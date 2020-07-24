@@ -51,7 +51,7 @@ protocol ServicesBootstrapper {
 }
 
 protocol ObservedTcnsRecorder {
-    func recordTcn(tcn: Data) -> Result<(), ServicesError>
+    func recordTcn(tcn: Data, distance: Float) -> Result<(), ServicesError>
 }
 
 protocol TcnGenerator {
@@ -100,9 +100,9 @@ func logToiOS(logMessage: CoreLogMessage) {
 }
 
 extension NativeCore: ObservedTcnsRecorder {
-    func recordTcn(tcn: Data) -> Result<(), ServicesError> {
+    func recordTcn(tcn: Data, distance: Float) -> Result<(), ServicesError> {
         let tcnStr = tcn.toHex()
-        let libResult: LibResult<ArbitraryType>? = record_tcn(tcnStr)?.toLibResult()
+        let libResult: LibResult<ArbitraryType>? = record_tcn(tcnStr, distance)?.toLibResult()
         return libResult?
             .toVoidResult()
             .mapErrorToServicesError() ?? libraryFailure()
@@ -200,16 +200,18 @@ class NativeCore: AlertsFetcher {
         return libResult
             .toResult()
             .mapErrorToServicesError()
-            .map { nativeAlerts in
-            return nativeAlerts.map {
+            .map { nativeAlerts in nativeAlerts.map {
                 Alert(
                     id: $0.id,
-                    // Using UInt64 for time in Rust, as stylistic preference, as we can't have a negative timestamp.
-                    // UInt64 can be safely converted to Int64 for unix time.
-                    // Consider using UInt64 here too, for consistency.
-                    contactTime: UnixTime.init(value: Int64($0.contact_time)),
+
+                    start: UnixTime.init(value: Int64($0.contact_start)),
+                    end: UnixTime.init(value: Int64($0.contact_end)),
+                    minDistance: Measurement(value: Double($0.min_distance), unit: .meters),
+                    avgDistance: Measurement(value: Double($0.avg_distance), unit: .meters),
+
                     reportTime: $0.report.report_time,
                     earliestSymptomTime: $0.report.earliest_symptom_time.toUserInput(),
+
                     feverSeverity: $0.report.fever_severity,
                     coughSeverity: $0.report.cough_severity,
                     breathlessness: $0.report.breathlessness,
@@ -450,7 +452,10 @@ private extension UserInput where T == Bool {
 private struct NativeAlert: Decodable {
     let id: String
     let report: CorePublicReport
-    let contact_time: UInt64
+    let contact_start: UInt64
+    let contact_end: UInt64
+    let min_distance: Float32
+    let avg_distance: Float32
 }
 
 extension Result where Failure == CoreError {
