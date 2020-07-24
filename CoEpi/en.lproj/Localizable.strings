@@ -12,15 +12,20 @@
 "alerts.buttonLabel" = "What are exposure alerts?";
 "alerts.moreInfoTitle" = "Exposure Alert";
 "alerts.title" = "Alerts";
-"alerts.label.no_symptoms_reported" = "No symptoms reported";
-"alerts.label.fever.mild" = "Mild Fever";
-"alerts.label.fever.serious" = "Serious Fever";
-"alerts.label.fever.none" = "No Fever";
-"alerts.label.cough.dry" = "Dry Cough";
-"alerts.label.cough.existing" = "Cough";
-"alerts.label.cough.wet" = "Wet Cough";
-"alerts.label.cough.none" = "No Cough";
-"alerts.label.breathlessness" = "Breathlessness";
+
+"alerts.label.symptom.no_symptoms_reported" = "No symptoms reported";
+"alerts.label.symptom.fever.mild" = "Fever";
+"alerts.label.symptom.fever.serious" = "Fever";
+"alerts.label.symptom.cough.dry" = "Dry Cough";
+"alerts.label.symptom.cough.existing" = "Cough";
+"alerts.label.symptom.cough.wet" = "Wet Cough";
+"alerts.label.symptom.breathlessness" = "Shortness of breath";
+"alerts.label.symptom.muscleAches" = "Muscle aches";
+"alerts.label.symptom.lossSmellOrTaste" = "Loss of smell or taste";
+"alerts.label.symptom.diarrhea" = "Diarrhea";
+"alerts.label.symptom.runnyNose" = "Runny nose";
+"alerts.label.symptom.other" = "Other symptoms";
+
 "alerts.label.archive" = "Archive";
 
 "alerts.details.title" = "Exposure Alert";
@@ -47,7 +52,7 @@
 "UX.symptomReport.subtitle" = "Select all that apply";
 "UX.symptomReport.noSymptoms" = "I don't have any symptoms today";
 "UX.symptomReport.cough" = "Cough";
-"UX.symptomReport.breathless" = "Breathlessness";
+"UX.symptomReport.breathless" = "Shortness of breath";
 "UX.symptomReport.fever" = "Fever";
 "UX.symptomReport.ache" = "Muscle aches";
 "UX.symptomReport.loss" = "Loss of smell or taste";
@@ -57,20 +62,20 @@
 
     //thankyou
 "UX.thankyou.heading" = "Thank you";
-"UX.thankyou.title" = "Thank you for saving your symptoms! We will keep you notified about exposures this week.";
+"UX.thankyou.title" = "Thank you for logging your symptoms! We will alert if you have any relevant exposures to review.";
 "UX.thankyou.more" = "Log more symptoms";
 "UX.thankyou.viewExposures" = "View exposures";
 "UX.thankyou.home" = "Return to home screen";
 
     // breathless
-"UX.breathless.heading" = "Follow up: Breathlessness";
-"UX.breathless.title" = "I feel breathless when:";
+"UX.breathless.heading" = "Follow up: Shortness of breath";
+"UX.breathless.title" = "I feel short of breath when:";
 "UX.breathless.subtitle" = "Select one option";
-"UX.breathless.p0" = "I am too breathless to leave the house or I am breathless when dressing";
+"UX.breathless.p0" = "I am too short of breath to leave the house or I am short of breath when dressing";
 "UX.breathless.p1" = "I stop for breath after walking about 100 yards or after a few minutes on level ground";
 "UX.breathless.p2" = "On level ground, I have to stop for breath when walking at my own pace";
 "UX.breathless.p3" = "I get short of breath when hurrying on level ground or walking up a slight hill";
-"UX.breathless.p4" = "I only get breathless with strenuous exercise";
+"UX.breathless.p4" = "I only get short of breath with strenuous exercise";
 
     //cough
 "UX.cough.heading" = "Follow up: Cough";
@@ -106,7 +111,7 @@
 "UX.onboarding.body2" = "Share any symptoms you may have, when you notice them.";
 "UX.onboarding.title3" = "Stay informed";
 "UX.onboarding.body3" = "You will get alerts about potential exposure to individuals with contagious illnesses.";
-"UX.onboarding.title4" = "Collaborate. Share. Protect.";
+"UX.onboarding.title4" = "Collaborate. Inform. Protect.";
 "UX.onboarding.body4" = "Help prevent the spread of contagious illnesses. Together, we can make a difference.";
 "UX.onboarding.how" = "How is my data used?";
 "UX.onboarding.next" = "NEXT";

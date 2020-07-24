@@ -15,11 +15,17 @@ carthage bootstrap
 ```
 \* This project uses primarily SPM as dependecy manager. Carthage is used temporarily as [fallback for some dependencies](https://github.com/Co-Epi/app-ios/wiki/Architecture) 
 
+- Install [swiftLint](https://github.com/realm/SwiftLint/releases)
+- Brew install available
+``` ruby
+brew install swiftlint
+```
+
 ## Core
 
-The core (domain logic, networking, etc.) of this app is written in Rust and can be found [here](https://github.com/Co-Epi/app-backend-rust). It's used as a normal dependency, via Carthage, so you don't need additional setup.
+The [core](https://github.com/Co-Epi/app-backend-rust) (domain logic, networking, etc.) of this app is written in Rust. It's used as a normal dependency, via Carthage, so you don't need additional setup.
 
-If you want to contribute to core, just create a PR in its [repo](https://github.com/Co-Epi/app-backend-rust)! The documentation to set it up for iOS is in the [wiki](https://github.com/Co-Epi/app-backend-rust/wiki/Building-library-for-iOS). Don't worry about lack of Rust skill. We are all learning.
+If you want to contribute to core, create a PR in its [repo](https://github.com/Co-Epi/app-backend-rust). The documentation to set it up for iOS is in its [wiki](https://github.com/Co-Epi/app-backend-rust/wiki/Building-library-for-iOS).
 
 ## Contribute
 
@@ -38,3 +44,9 @@ Fork and create a branch in the fork
 
 Any text visible to the user should be translated into the phone's preferred language.
 See the [Internationalization wiki page](https://github.com/Co-Epi/app-ios/wiki/Internationalization) for details on how to do that.
+
+### Autogeneration of Swift code (e.g. Equatable)
+
+- Install [Sourcery](https://github.com/krzysztofzablocki/Sourcery#installation)
+- Run `sourcery` in the project's root.
+

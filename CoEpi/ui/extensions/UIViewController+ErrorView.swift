@@ -21,10 +21,12 @@ extension ErrorDisplayer where Self: UIViewController {
 
     private func createView(title: String, message: String) -> UIView {
 
-        let title = EKProperty.LabelContent(text: title,
-                                            style: .init(font: .systemFont(ofSize: 18), color: .white))
-        let description = EKProperty.LabelContent(text: message,
-                                                  style: .init(font: .systemFont(ofSize: 18), color: .white))
+        let title = EKProperty.LabelContent(
+            text: title,
+            style: .init(font: .systemFont(ofSize: 18), color: .white))
+        let description = EKProperty.LabelContent(
+            text: message,
+            style: .init(font: .systemFont(ofSize: 18), color: .white))
         let simpleMessage = EKSimpleMessage(image: nil, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
 

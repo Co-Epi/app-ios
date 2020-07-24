@@ -5,7 +5,7 @@ class SymptomFlow {
     private var steps: [SymptomStep]
 
     init(steps: [SymptomStep]) {
-        if (steps.isEmpty) {
+        if steps.isEmpty {
             fatalError("Symptoms steps must not be empty")
         }
         self.steps = steps
@@ -32,13 +32,13 @@ class SymptomFlow {
     }
 
     static func create(symptomIds: [SymptomId]) -> SymptomFlow? {
-        if (symptomIds.isEmpty) {
+        if symptomIds.isEmpty {
             log.d("Symptoms ids empty")
             return nil
         }
 
         let steps = toSteps(symptomIds: symptomIds)
-        if (steps.isEmpty) {
+        if steps.isEmpty {
             log.d("Symptoms have no steps. Not creating a flow.")
             return nil
         }
@@ -48,12 +48,13 @@ class SymptomFlow {
 }
 
 private func toSteps(symptomIds: [SymptomId]) -> [SymptomStep] {
-    if (symptomIds.contains(.none) && symptomIds.count > 1) {
+    if symptomIds.contains(.none) && symptomIds.count > 1 {
         fatalError("There must be no other symptoms selected when .none is selected")
     }
 
-    if (symptomIds != [.none]) {
+    if symptomIds != [.none] {
         return symptomIds.flatMap { $0.toSteps() } + [.earliestSymptomDate]
+
     } else {
         return []
     }
@@ -62,14 +63,19 @@ private func toSteps(symptomIds: [SymptomId]) -> [SymptomStep] {
 private extension SymptomId {
     func toSteps() -> [SymptomStep] {
         switch self {
-        case .cough: return [.coughType, .coughDays, .coughDescription]
-        case .breathlessness: return [.breathlessnessDescription]
-        case .fever: return [.feverDays, .feverTemperatureTakenToday, .feverTemperatureSpot,
-                             .feverHighestTemperature]
-        case .muscle_aches: return []
-        case .loss_smell_or_taste: return []
+        case .cough: return [
+            .coughType,
+            .coughDescription]
+        case .breathlessness: return [
+            .breathlessnessDescription]
+        case .fever: return [
+            .feverTemperatureTakenToday,
+            .feverTemperatureSpot,
+            .feverHighestTemperature]
+        case .muscleAches: return []
+        case .lossSmellOrTaste: return []
         case .diarrhea: return []
-        case .runny_nose: return []
+        case .runnyNose: return []
         case .other: return []
         case .none: return []
         }

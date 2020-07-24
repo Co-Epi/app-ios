@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
             present(vc, animated: true)
         }
     }
-    
+
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var buildLabel: UILabel!
 
@@ -39,11 +39,11 @@ class HomeViewController: UIViewController {
     @IBAction func debugTapped(_: UIButton) {
         viewModel.debugTapped()
     }
-    
+
     @objc func share(sender: UIView) {
         Sharer().share(viewController: self, sourceView: sender)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,21 +78,28 @@ private class HomeItemsDataSource: NSObject, RxTableViewDataSourceType {
 
 extension HomeItemsDataSource: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
         items.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HomeItemCell = tableView.dequeue(cellClass: HomeItemCell.self, forIndexPath: indexPath)
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: HomeItemCell = tableView.dequeue(
+            cellClass: HomeItemCell.self,
+            forIndexPath: indexPath)
         cell.setup(viewData: items[indexPath.row])
         return cell
     }
 }
 
-
 extension HomeViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath) {
         viewModel.onClick(item: dataSource.items[indexPath.row])
     }
 }

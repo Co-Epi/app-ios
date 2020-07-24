@@ -19,7 +19,7 @@ class AlertsViewController: UIViewController {
     init(viewModel: AlertsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
-        
+
         title = L10n.Alerts.title
         dataSource.onAcknowledged = { alert in
             viewModel.acknowledge(alert: alert)
@@ -38,12 +38,12 @@ class AlertsViewController: UIViewController {
         buttonlabel.setTitle(L10n.Alerts.buttonLabel, for: .normal)
         subtextLabel.text = L10n.Alerts.subtitle
         titleLabel.text = L10n.Alerts.header
-        
+
         ButtonStyles.applyUnselected(to: buttonlabel)
-        buttonlabel.addTarget(self, action: #selector(onTouchDown(to:)), for:.touchDown)
-        buttonlabel.addTarget(self, action: #selector(onTouchUp), for:.touchUpInside)
-        buttonlabel.addTarget(self, action: #selector(onTouchUp(to:)), for:.touchUpOutside)
-        
+        buttonlabel.addTarget(self, action: #selector(onTouchDown(to:)), for: .touchDown)
+        buttonlabel.addTarget(self, action: #selector(onTouchUp), for: .touchUpInside)
+        buttonlabel.addTarget(self, action: #selector(onTouchUp(to:)), for: .touchUpOutside)
+
         viewModel.alertCells
             .drive(contactAlerts.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -60,12 +60,12 @@ class AlertsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
-    
-    @objc func onTouchDown(to button: UIButton){
+
+    @objc func onTouchDown(to button: UIButton) {
         ButtonStyles.applySelected(to: button)
     }
-    
-    @objc func onTouchUp(to button: UIButton){
+
+    @objc func onTouchUp(to button: UIButton) {
         ButtonStyles.applyUnselected(to: button)
     }
 
@@ -74,7 +74,7 @@ class AlertsViewController: UIViewController {
 
         contactAlerts.rowHeight = UITableView.automaticDimension
         contactAlerts.estimatedRowHeight = 20
-        
+
         contactAlerts.addSubview(refreshControl)
     }
 
@@ -86,7 +86,7 @@ class AlertsViewController: UIViewController {
 
 class AlertsDataSource: NSObject, RxTableViewDataSourceType {
     private(set) var sections: [AlertViewDataSection] = []
-    public var onAcknowledged: ((AlertViewData) -> ())?
+    public var onAcknowledged: ((AlertViewData) -> Void)?
 
     func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[AlertViewDataSection]>) {
         if case let .next(sections) = observedEvent {
@@ -102,8 +102,12 @@ extension AlertsDataSource: UITableViewDataSource {
         sections[section].alerts.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeue(cellClass: AlertCell.self, forIndexPath: indexPath)
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeue(
+            cellClass: AlertCell.self,
+            forIndexPath: indexPath)
         guard let alertCell = cell as? AlertCell else { return cell }
 
         let alert: AlertViewData = sections[indexPath.section].alerts[indexPath.row]
@@ -120,7 +124,10 @@ extension AlertsDataSource: UITableViewDataSource {
 
 extension AlertsViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int)
+        -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
         let label = UILabel(frame: CGRect(x: 38, y: 5, width: 0, height: 0))
         label.backgroundColor = .white
@@ -133,15 +140,24 @@ extension AlertsViewController: UITableViewDelegate {
         return view
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForHeaderInSection section: Int)
+        -> CGFloat {
         30
     }
 
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive,
-                                        title: L10n.Alerts.Label.archive) { [viewModel, dataSource]
-            (action, view, actionPerformed: (Bool) -> Void) in
-            viewModel.acknowledge(alert: dataSource.sections[indexPath.section].alerts[indexPath.row])
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+        -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(
+        style: .destructive,
+        title: L10n.Alerts.Label
+            .archive) { [viewModel, dataSource] (action, view, actionPerformed: (Bool)
+            -> Void) in
+            viewModel.acknowledge(
+                alert: dataSource.sections[indexPath.section].alerts[indexPath.row])
         }
         return UISwipeActionsConfiguration(actions: [delete])
     }

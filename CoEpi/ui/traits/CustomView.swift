@@ -6,7 +6,6 @@ protocol CustomView {
     func attach()
 }
 
-
 extension CustomView where Self: UIView {
 
     func attach() {

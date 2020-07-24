@@ -2,7 +2,7 @@ import RxSwift
 import Foundation
 
 struct LimitedSizeQueue<T> {
-    public private(set) var array: Array<T> = []
+    public private(set) var array: [T] = []
 
     private let maxSize: Int
 
@@ -21,13 +21,14 @@ struct LimitedSizeQueue<T> {
     public var isEmpty: Bool { return array.isEmpty }
 }
 
-
-class CachingLog : LogNonVariadicTags {
+class CachingLog: LogNonVariadicTags {
 
     let logs = BehaviorSubject(value: LimitedSizeQueue<LogMessage>(maxSize: 1000))
 
     private let addLogTrigger: PublishSubject<LogMessage> = PublishSubject()
     private let disposeBag = DisposeBag()
+
+    private let loggerSerialQueue = DispatchQueue(label: "org.coepi.logger")
 
     init() {
         addLogTrigger.withLatestFrom(logs, resultSelector: {(message, logs) in
@@ -63,7 +64,9 @@ class CachingLog : LogNonVariadicTags {
     }
 
     private func log(_ message: LogMessage) {
-        addLogTrigger.onNext(message)
+        loggerSerialQueue.async { [weak self] in
+            self?.addLogTrigger.onNext(message)
+        }
     }
 
     private func addTag(tags: [LogTag], message: String) -> String {

@@ -15,12 +15,14 @@ class LogsViewController: UIViewController, ErrorDisplayer {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
 
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(onLongPress))
+        let longPressRecognizer = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(onLongPress))
         self.view.addGestureRecognizer(longPressRecognizer)
     }
 
     @objc func onLongPress(sender: UILongPressGestureRecognizer) {
-        if (sender.state == .began) {
+        if sender.state == .began {
             viewModel.onLongPress()
         }
     }
@@ -65,8 +67,13 @@ extension LogsTableViewDataSource: UITableViewDataSource {
         debugEntries.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeue(cellClass: UITableViewCell.self, forIndexPath: indexPath)
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeue(
+            cellClass: UITableViewCell.self,
+            forIndexPath: indexPath)
 
         cell.selectionStyle = .none
 

@@ -1,7 +1,7 @@
 import UIKit
 
 class AlertCell: UITableViewCell {
-    public var onAcknowledged: ((AlertViewData) ->())?
+    public var onAcknowledged: ((AlertViewData) -> Void)?
 
     private var alert: AlertViewData?
     var alertView: AlertView?
@@ -39,7 +39,7 @@ class AlertCell: UITableViewCell {
 }
 
 class AlertView: UIView {
-    public var onAcknowledged: (() ->())?
+    public var onAcknowledged: (() -> Void)?
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var symptomsLabel: UILabel!

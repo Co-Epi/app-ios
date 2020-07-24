@@ -19,7 +19,7 @@ class FeverWhereViewModel {
     func onSkipTap() {
         symptomFlowManager.navigateForward()
     }
-    
+
     func onBack() {
         symptomFlowManager.onBack()
     }

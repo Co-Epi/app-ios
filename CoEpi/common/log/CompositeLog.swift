@@ -5,7 +5,7 @@ let log: Log = CompositeLog(
     logs: cachingLog, ConsoleLog()
 )
 
-class CompositeLog : Log {
+class CompositeLog: Log {
     private let logs: [LogNonVariadicTags]
 
     init(logs: LogNonVariadicTags...) {

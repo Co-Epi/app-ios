@@ -3,9 +3,16 @@ import RealmSwift
 
 protocol CENDao {
     func insert(cen: CEN) -> Bool
-    func loadAllCENRecords() -> [CEN]?
-    func match(start: UnixTime, end: UnixTime, hexEncodedCENs: [String]) -> [CEN]
-    func loadCensForTimeInterval(start: UnixTime, end: UnixTime) -> [CEN]
+    func loadAllCENRecords()
+        -> [CEN]?
+    func match(
+        start: UnixTime,
+        end: UnixTime,
+        hexEncodedCENs: [String])
+        -> [CEN]
+    func loadCensForTimeInterval(
+        start: UnixTime,
+        end: UnixTime) -> [CEN]
 }
 
 class RealmCENDao: CENDao, RealmDao {
@@ -16,8 +23,10 @@ class RealmCENDao: CENDao, RealmDao {
     }
 
     func insert(cen: CEN) -> Bool {
-        let DBCENObject = realm.objects(RealmCEN.self).filter("CEN = %@", cen.CEN)
-        if DBCENObject.count == 0 {
+        let DBCENObject = realm
+            .objects(RealmCEN.self)
+            .filter("CEN = %@", cen.CEN)
+        if DBCENObject.isEmpty {
             let newCEN = RealmCEN(cen)
             write {
                 realm.add(newCEN)
@@ -38,10 +47,15 @@ class RealmCENDao: CENDao, RealmDao {
     }
 
     func loadAllCENRecords() -> [CEN]? {
-        let DBCENObject = realm.objects(RealmCEN.self).sorted(byKeyPath: "timestamp", ascending: false)
-        return DBCENObject.map { CEN(CEN: $0.CEN, timestamp: UnixTime(value: $0.timestamp)) }
+        let DBCENObject = realm
+            .objects(RealmCEN.self)
+            .sorted(byKeyPath: "timestamp", ascending: false)
+        return DBCENObject.map { CEN(
+            CEN: $0.CEN,
+            timestamp: UnixTime(
+                value: $0.timestamp)) }
     }
-    
+
     func loadCensForTimeInterval(start: UnixTime, end: UnixTime) -> [CEN] {
         realm.objects(RealmCEN.self)
             .filter("timestamp >= %d", start.value)

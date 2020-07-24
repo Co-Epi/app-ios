@@ -2,7 +2,7 @@ import RealmSwift
 import Foundation
 
 // TODO rename in RealmReceivedCENReport, after migration implemented, otherwise this crashes when updating the app
-final class RealmCENReport : Object {
+final class RealmCENReport: Object {
 
     // CENReportID is a local internal attribute only
     @objc dynamic var id: String = ""

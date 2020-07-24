@@ -3,11 +3,17 @@ import UIKit
 
 class Sharer {
 
-    func share(viewController: UIViewController, sourceView: UIView? = nil, completion: (() -> Void)? = nil) {
+    func share(
+        viewController: UIViewController,
+        sourceView: UIView? = nil,
+        completion: (()
+        -> Void)? = nil) {
 
         if let myWebsite = URL(string: "https://CoEpi.org") { // Enter iOS app link here
             let activityVC = createActivityViewController(
+                // swiftlint:disable line_length
                 textToShare: "Help us test CoEpi: together we can protect each other and our loved ones from the spread of contagious illnesses by anonymously letting others know if we develop symptoms",
+                // swiftlint:enable line_length
                 websiteUrl: myWebsite // Enter iOS app link here
             )
 
@@ -19,11 +25,21 @@ class Sharer {
         }
     }
 
-    private func createActivityViewController(textToShare: String, websiteUrl: URL) -> UIActivityViewController {
+    private func createActivityViewController(
+        textToShare: String,
+        websiteUrl: URL)
+        -> UIActivityViewController {
+
         let objectsToShare = [textToShare, websiteUrl] as [Any]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.excludedActivityTypes = [.airDrop, .addToReadingList, .assignToContact, .openInIBooks,
-                                            .saveToCameraRoll]
+        let activityVC = UIActivityViewController(
+            activityItems: objectsToShare,
+            applicationActivities: nil)
+        activityVC.excludedActivityTypes = [
+            .airDrop,
+            .addToReadingList,
+            .assignToContact,
+            .openInIBooks,
+            .saveToCameraRoll]
         return activityVC
     }
 }

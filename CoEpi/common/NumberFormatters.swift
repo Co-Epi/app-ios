@@ -1,7 +1,7 @@
 import Foundation
 
 class NumberFormatters {
-    static let temperatureFormatter = TemperatureFormatter()
+    static let tempFormatter = TemperatureFormatter()
     static let ordinal = OrdinalFormatter()
 }
 

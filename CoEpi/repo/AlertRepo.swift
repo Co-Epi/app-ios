@@ -13,15 +13,19 @@ protocol AlertRepo {
 class AlertRepoImpl: AlertRepo {
     private let alertsFetcher: AlertsFetcher
     private let alertDao: AlertDao
+    private let notificationShower: NotificationShower
 
-    private let updateReportsStateSubject: BehaviorRelay<VoidOperationState> = BehaviorRelay(value: .notStarted)
-    lazy var updateReportsState: Observable<VoidOperationState> = updateReportsStateSubject.asObservable()
+    private let updateReportsStateSubject: BehaviorRelay<VoidOperationState> = BehaviorRelay(value:
+        .notStarted)
+    lazy var updateReportsState: Observable<VoidOperationState> = updateReportsStateSubject
+        .asObservable()
 
     lazy private(set) var alerts: Observable<[Alert]> = alertDao.alerts
 
-    init(alertsFetcher: AlertsFetcher, alertDao: AlertDao) {
+    init(alertsFetcher: AlertsFetcher, alertDao: AlertDao, notificationShower: NotificationShower) {
         self.alertsFetcher = alertsFetcher
         self.alertDao = alertDao
+        self.notificationShower = notificationShower
     }
 
     func removeAlert(alert: Alert) {
@@ -37,18 +41,8 @@ class AlertRepoImpl: AlertRepo {
         updateReportsStateSubject.accept(.progress)
 
         switch alertsFetcher.fetchNewAlerts() {
-        case .success(let rawAlerts):
-            for alert in rawAlerts {
-                // TODO improve error handling. If inserting alerts fails, these alerts are lost forever as
-                // TODO core will only fetch newer time segments.
-                // TODO so we have to update "last fetched time segment" only if alerts save was success
-                // TODO NOTE that storage will likely be moved to Rust. Let's wait until this is cleared.
-                if alertDao.insert(alert: alert) {
-                    log.d("Inserted new alert: \(alert)")
-                }
-            }
-            updateReportsStateSubject.accept(.success(data: ()))
-
+        case .success(let alerts):
+            onFetchedReportsSuccess(alerts: alerts)
         case .failure(let error):
             log.e("Error fetching alerts: \(error)")
             updateReportsStateSubject.accept(OperationState.failure(error: error))
@@ -56,5 +50,31 @@ class AlertRepoImpl: AlertRepo {
 
         updateReportsStateSubject.accept(.notStarted)
     }
-}
 
+    private func onFetchedReportsSuccess(alerts: [Alert]) {
+        // TODO improve error handling. If inserting alerts fails, these alerts can disappear
+        // TODO as core may fetch only newer time segments.
+        // TODO solution: persist the alerts in Rust too, make the operation transactional.
+        let insertedCount = storeAlerts(alerts: alerts)
+        if insertedCount > 0 {
+            notificationShower.showNotification(data: NotificationData(
+                id: .alerts,
+                title: "New Contact Alerts",
+                body: "New contact alerts have been detected. Tap for details."
+            ))
+        }
+        updateReportsStateSubject.accept(.success(data: ()))
+    }
+
+    private func storeAlerts(alerts: [Alert]) -> Int {
+        let insertedCount: Int = alerts.map {
+            self.alertDao.insert(alert: $0)
+        }.filter { $0 }.count
+
+        if (insertedCount >= 0) {
+            log.d("Added \(insertedCount) new alerts")
+        }
+
+        return insertedCount
+    }
+}

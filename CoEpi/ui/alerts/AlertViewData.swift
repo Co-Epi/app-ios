@@ -10,7 +10,7 @@ enum AlertCellViewData {
 
     func asAlertViewData() -> AlertViewData? {
         switch self {
-        case .header(_): return nil
+        case .header: return nil
         case .alert(let viewData): return viewData
         }
     }

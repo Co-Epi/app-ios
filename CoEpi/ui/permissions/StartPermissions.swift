@@ -18,7 +18,13 @@ class StartPermissionsImpl: StartPermissions {
     }
 
     func request() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+        UNUserNotificationCenter
+            .current()
+            .requestAuthorization(options: [
+                .alert,
+                .badge,
+                .sound]
+            ) { (granted, error) in
             if let error = error {
                 log.e("Error requesting permission: \(error)")
             }

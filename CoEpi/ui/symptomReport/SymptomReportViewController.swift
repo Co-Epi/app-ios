@@ -54,7 +54,7 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
 
         // TODO clarify (global) button styles
         viewModel.submitButtonEnabled
-            .map{ $0 ? .systemBlue : .lightGray }
+            .map { $0 ? .systemBlue : .lightGray }
             .drive(submitButton.rx.backgroundColor)
             .disposed(by: disposeBag)
 
@@ -69,7 +69,7 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
 class HealthQuizQuestionsDataSource: NSObject, RxTableViewDataSourceType {
     private var questions: [SymptomViewData] = []
 
-    public var onChecked: ((SymptomViewData) -> ())?
+    public var onChecked: ((SymptomViewData) -> Void)?
 
     func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[SymptomViewData]>) {
         if case let .next(questions) = observedEvent {
@@ -85,7 +85,9 @@ extension HealthQuizQuestionsDataSource: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SymptomReportCell = tableView.dequeue(cellClass: SymptomReportCell.self, forIndexPath: indexPath)
+        let cell: SymptomReportCell = tableView.dequeue(
+            cellClass: SymptomReportCell.self,
+            forIndexPath: indexPath)
 
         let question: SymptomViewData = questions[indexPath.row]
         cell.setQuestion(question: question)

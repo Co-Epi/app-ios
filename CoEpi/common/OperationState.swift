@@ -31,7 +31,7 @@ enum OperationState<T> {
 
 extension OperationState: Equatable where T: Equatable {
 
-    static func ==(lhs: OperationState, rhs: OperationState) -> Bool {
+    static func == (lhs: OperationState, rhs: OperationState) -> Bool {
         switch (lhs, rhs) {
         case (let .success(data1), let .success(data2)):
             return data1 == data2

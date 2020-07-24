@@ -4,7 +4,7 @@ import RxSwift
 
 class CoughDaysViewModel {
     private let symptomFlowManager: SymptomFlowManager
-    
+
     private let daysIsEmpty: BehaviorRelay<Bool>
     let submitButtonEnabled: Driver<Bool>
 
@@ -12,17 +12,17 @@ class CoughDaysViewModel {
 
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
-        
+
         daysIsEmpty = BehaviorRelay<Bool>(value: true)
-        
+
         submitButtonEnabled = daysIsEmpty
             .asObservable()
-            .map{!$0}
+            .map {!$0}
             .asDriver(onErrorJustReturn: false)
     }
 
     func onDaysChanged(daysStr: String) {
-        if (daysStr.isEmpty) {
+        if daysStr.isEmpty {
             symptomFlowManager.setCoughDays(.none).expect()
         } else {
             if let days: Int = Int(daysStr) {

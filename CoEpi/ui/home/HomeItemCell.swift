@@ -31,9 +31,8 @@ class HomeItemCell: UITableViewCell {
     }
 }
 
-
 class HomeItemView: UIView {
-    public var onAcknowledged: (() ->())?
+    public var onAcknowledged: (() -> Void)?
 
     @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var notificationLabel: UILabel!

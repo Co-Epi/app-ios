@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
+
     func pinLeadingToParent() {
         guard let superview = requireSuperview else { return }
         translatesAutoresizingMaskIntoConstraints = false
@@ -42,4 +42,3 @@ extension UIView {
         return superview
     }
 }
-

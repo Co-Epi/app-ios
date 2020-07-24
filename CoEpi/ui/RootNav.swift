@@ -23,9 +23,7 @@ enum RootNavDestination {
     case thankYou
     case breathless
     case coughType
-    case coughDays
     case coughDescription
-    case feverDays
     case feverTemperatureTakenToday
     case feverTemperatureSpot
     case feverHighestTemperature

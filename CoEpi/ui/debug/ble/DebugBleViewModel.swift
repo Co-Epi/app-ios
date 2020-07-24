@@ -23,8 +23,8 @@ class DebugBleViewModel {
 }
 
 enum DebugBleEntryViewData {
-    case Header(String)
-    case Item(String)
+    case header(String)
+    case item(String)
 }
 
 private func generateItems(myTcn: [String], discovered: [Data]) -> [DebugBleEntryViewData] {
@@ -33,5 +33,5 @@ private func generateItems(myTcn: [String], discovered: [Data]) -> [DebugBleEntr
 }
 
 private func items(header: String, items: [String]) -> [DebugBleEntryViewData] {
-    [.Header(header)] + items.map{ .Item($0) }
+    [.header(header)] + items.map { .item($0) }
 }

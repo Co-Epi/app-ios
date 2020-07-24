@@ -7,13 +7,19 @@ protocol NotificationShower {
 class NotificationShowerImpl: NotificationShower {
 
     func showNotification(data: NotificationData) {
-        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+        UNUserNotificationCenter
+            .current()
+            .getNotificationSettings { [weak self] settings in
             self?.showNotification(data: data, settings: settings)
         }
     }
 
-    private func showNotification(data: NotificationData, settings: UNNotificationSettings) {
-        guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional else {
+    private func showNotification(
+        data: NotificationData,
+        settings: UNNotificationSettings) {
+        guard settings.authorizationStatus == .authorized ||
+            settings.authorizationStatus == .provisional
+            else {
             return
         }
 
@@ -30,9 +36,11 @@ class NotificationShowerImpl: NotificationShower {
         content.title = data.title
         content.body = data.body
         content.sound = canPlaySound ? .default : nil
-        let request = UNNotificationRequest(identifier: data.id.rawValue, content: content,
-                                            trigger: UNTimeIntervalNotificationTrigger(timeInterval: 1,
-                                                                                       repeats: false))
+        let request = UNNotificationRequest(
+            identifier: data.id.rawValue,
+            content: content,
+            trigger: UNTimeIntervalNotificationTrigger(timeInterval: 1,
+            repeats: false))
         UNUserNotificationCenter.current().add(request)
     }
 }

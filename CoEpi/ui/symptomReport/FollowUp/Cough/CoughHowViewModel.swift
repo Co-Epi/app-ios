@@ -12,7 +12,9 @@ class CoughHowViewModel {
     }
 
     func onStatusSelected(status: SymptomInputs.Cough.Status) {
-        symptomFlowManager.setCoughStatus(.some(status)).expect()
+        symptomFlowManager.setCoughStatus(
+            .some(status))
+            .expect()
         symptomFlowManager.navigateForward()
     }
 

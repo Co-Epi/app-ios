@@ -20,7 +20,7 @@ class CoughTypeViewModel {
         symptomFlowManager.setCoughType(.some(.dry)).expect()
         symptomFlowManager.navigateForward()
     }
-    
+
     func onSkipTap() {
         symptomFlowManager.navigateForward()
     }

@@ -33,7 +33,8 @@ class DebugViewController: UIViewController {
     }
 
     private func addPager() {
-        let viewController = DebugPageViewController(container: container) { [weak self] pageIndex in
+        let viewController = DebugPageViewController(
+        container: container) { [weak self] pageIndex in
             self?.tabs.selectedSegmentIndex = pageIndex
         }
         pagerContainer.addSubview(viewController.view)
@@ -44,7 +45,10 @@ class DebugViewController: UIViewController {
     }
 }
 
-class DebugPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class DebugPageViewController:
+UIPageViewController,
+UIPageViewControllerDataSource,
+UIPageViewControllerDelegate {
 
     private let container: DependencyContainer!
 
@@ -53,18 +57,27 @@ class DebugPageViewController: UIPageViewController, UIPageViewControllerDataSou
 
     private var onPageChanged: ((Int) -> Void)
 
-    init(container: DependencyContainer, onPageChanged: @escaping ((Int) -> Void)) {
+    init(
+        container: DependencyContainer,
+        onPageChanged: @escaping ((Int)
+        -> Void)) {
         self.container = container
         self.onPageChanged = onPageChanged
 
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        super.init(
+            transitionStyle: .scroll,
+            navigationOrientation: .horizontal,
+            options: nil)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController)
+        -> UIViewController? {
         if let index = pages.firstIndex(of: viewController) {
             if index > 0 {
                 return pages[index - 1]
@@ -73,7 +86,10 @@ class DebugPageViewController: UIPageViewController, UIPageViewControllerDataSou
         return nil
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController)
+        -> UIViewController? {
         if let index = pages.firstIndex(of: viewController) {
             if index < pages.count - 1 {
                 return pages[index + 1]
@@ -84,16 +100,28 @@ class DebugPageViewController: UIPageViewController, UIPageViewControllerDataSou
 
     func goToNextPage(animated: Bool = true) {
         guard let current = self.viewControllers?.first else { return }
-        guard let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: current)
+        guard let nextViewController = dataSource?.pageViewController(
+            self,
+            viewControllerAfter: current)
             else { return }
-        setViewControllers([nextViewController], direction: .forward, animated: animated, completion: nil)
+        setViewControllers(
+            [nextViewController],
+            direction: .forward,
+            animated: animated,
+            completion: nil)
     }
 
     func goToPreviousPage(animated: Bool = true) {
         guard let current = self.viewControllers?.first else { return }
-        guard let previousViewController = dataSource?.pageViewController(self, viewControllerBefore: current)
+        guard let previousViewController = dataSource?.pageViewController(
+            self,
+            viewControllerBefore: current)
             else { return }
-        setViewControllers([previousViewController], direction: .reverse, animated: animated, completion: nil)
+        setViewControllers(
+            [previousViewController],
+            direction: .reverse,
+            animated: animated,
+            completion: nil)
     }
 
     override func viewDidLoad() {
@@ -110,10 +138,18 @@ class DebugPageViewController: UIPageViewController, UIPageViewControllerDataSou
         pages.append(DebugBleViewController(viewModel: debugBleViewModel))
         pages.append(LogsViewController(viewModel: logsViewModel))
 
-        setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
+        setViewControllers(
+            [pages[initialPage]],
+            direction: .forward,
+            animated: true,
+            completion: nil)
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool) {
         guard let viewControllers = viewControllers else { return }
         if let index = pages.firstIndex(of: viewControllers[0]) {
             onPageChanged(index)

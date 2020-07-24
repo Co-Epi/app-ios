@@ -3,7 +3,7 @@ import Foundation
 struct LibResult<T: Decodable>: Decodable {
     let status: Int
     let data: T?
-    let error_message: String?
+    let errorMessage: String?
 
     func isSuccess() -> Bool {
         (200...299).contains(status)
@@ -20,7 +20,8 @@ extension LibResult {
             if let data = data {
                 return .success(data)
             } else {
-                return .failure(.error(message: "Unexpected: Library result success but no data: \(self)"))
+                return .failure(.error(
+                    message: "Unexpected: Library result success but no data: \(self)"))
             }
         } else {
             return .failure(.error(message: "Lib error result: \(self)"))
@@ -53,7 +54,7 @@ extension Unmanaged where Instance == CFString {
         } catch let e {
             // Bad gateway (502): "The server, while acting as a gateway or proxy, received an invalid response from the upstream server"
             // Using HTTP status codes for library communication probably temporary. For now it seems suitable.
-            return LibResult(status: 502, data: nil, error_message: "Invalid library result: \(e)")
+            return LibResult(status: 502, data: nil, errorMessage: "Invalid library result: \(e)")
         }
     }
 }

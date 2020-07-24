@@ -11,7 +11,6 @@ extension Result {
         !isSuccess()
     }
 
-
     @discardableResult
     func expect(_ message: String? = nil) -> Success {
         switch self {

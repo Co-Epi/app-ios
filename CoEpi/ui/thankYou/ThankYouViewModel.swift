@@ -12,7 +12,10 @@ class ThankYouViewModel {
     }
 
     func onCheckInClick() {
-        rootNav.navigate(command: .backToAndTo(backDestination: .home, toDestination: .symptomReport))
+        rootNav.navigate(
+            command: .backToAndTo(
+                backDestination: .home,
+                toDestination: .symptomReport))
     }
 
     func onSeeAlertsClick() {

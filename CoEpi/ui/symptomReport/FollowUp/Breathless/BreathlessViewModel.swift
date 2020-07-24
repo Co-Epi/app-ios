@@ -17,12 +17,29 @@ class BreathlessViewModel {
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
 
+        let breath = L10n.Ux.Breathless.self
+
         viewData = Observable.just([
-            BreathlessItemViewData(imageName: "house", text: L10n.Ux.Breathless.p0, cause: .leavingHouseOrDressing),
-            BreathlessItemViewData(imageName: "stop", text: L10n.Ux.Breathless.p1, cause:  .walkingYardsOrMinsOnGround),
-            BreathlessItemViewData(imageName: "ground", text: L10n.Ux.Breathless.p2, cause: .groundOwnPace),
-            BreathlessItemViewData(imageName: "hill", text: L10n.Ux.Breathless.p3, cause: .hurryOrHill),
-            BreathlessItemViewData(imageName: "exercise", text: L10n.Ux.Breathless.p4, cause: .exercise)
+            BreathlessItemViewData(
+                imageName: "house",
+                text: breath.p0,
+                cause: .leavingHouseOrDressing),
+            BreathlessItemViewData(
+                imageName: "stop",
+                text: breath.p1,
+                cause: .walkingYardsOrMinsOnGround),
+            BreathlessItemViewData(
+                imageName: "ground",
+                text: breath.p2,
+                cause: .groundOwnPace),
+            BreathlessItemViewData(
+                imageName: "hill",
+                text: breath.p3,
+                cause: .hurryOrHill),
+            BreathlessItemViewData(
+                imageName: "exercise",
+                text: breath.p4,
+                cause: .exercise)
        ]).asDriver(onErrorJustReturn: [])
     }
 

@@ -32,7 +32,9 @@ class DebugBleViewController: UIViewController {
 private class DebugListDataSource: NSObject, RxTableViewDataSourceType {
     private var debugEntries: [DebugBleEntryViewData] = []
 
-    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[DebugBleEntryViewData]>) {
+    func tableView(
+        _ tableView: UITableView,
+        observedEvent: RxSwift.Event<[DebugBleEntryViewData]>) {
         if case let .next(debugEntries) = observedEvent {
             self.debugEntries = debugEntries
             tableView.reloadData()
@@ -47,15 +49,17 @@ extension DebugListDataSource: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeue(cellClass: UITableViewCell.self, forIndexPath: indexPath)
+        let cell: UITableViewCell = tableView.dequeue(
+            cellClass: UITableViewCell.self,
+            forIndexPath: indexPath)
         let label = cell.textLabel
         label?.font = .systemFont(ofSize: 14)
 
         switch debugEntries[indexPath.row] {
-        case .Header(let text):
+        case .header(let text):
             label?.text = text
             cell.backgroundColor = .lightGray
-        case .Item(let text):
+        case .item(let text):
             label?.text = text
             cell.backgroundColor = .clear
         }

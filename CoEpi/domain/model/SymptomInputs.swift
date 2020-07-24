@@ -1,7 +1,16 @@
 import Foundation
 
 enum SymptomId: String, Encodable {
-    case cough, breathlessness, fever, muscle_aches, loss_smell_or_taste, diarrhea, runny_nose, other, none
+    case
+    cough,
+    breathlessness,
+    fever,
+    muscleAches,
+    lossSmellOrTaste,
+    diarrhea,
+    runnyNose,
+    other,
+    none
 }
 
 struct SymptomInputs {
@@ -17,11 +26,16 @@ struct SymptomInputs {
         let status: UserInput<Status> = .none
 
         enum CoughType: String, Encodable {
-            case wet, dry
+            case
+            wet,
+            dry
         }
 
         enum Status: String, Encodable {
-            case betterAndWorseThroughDay, worseWhenOutside, sameOrSteadilyWorse
+            case
+            betterAndWorseThroughDay,
+            worseWhenOutside,
+            sameOrSteadilyWorse
         }
     }
 
@@ -29,7 +43,12 @@ struct SymptomInputs {
         let cause: UserInput<Cause> = .none
 
         enum Cause: String, Encodable {
-            case leavingHouseOrDressing, walkingYardsOrMinsOnGround, groundOwnPace, hurryOrHill, exercise
+            case
+            leavingHouseOrDressing,
+            walkingYardsOrMinsOnGround,
+            groundOwnPace,
+            hurryOrHill,
+            exercise
         }
     }
 
@@ -40,7 +59,11 @@ struct SymptomInputs {
         let highestTemperature: UserInput<Temperature> = .none
 
         enum TemperatureSpot: String, Encodable {
-            case mouth, ear, armpit, other
+            case
+            mouth,
+            ear,
+            armpit,
+            other
         }
     }
 
@@ -50,7 +73,6 @@ struct SymptomInputs {
 
     struct Days: Encodable { let value: Int }
 }
-
 
 enum UserInput<T>: AutoEquatable {
     case none, some(_ value: T)
@@ -109,7 +131,7 @@ enum Temperature {
     func toUserString() -> String {
         // Force unwrap since for particular formatter and inputs, there seem to be no cases where it can return nil.
         // TODO unit tests / confirm
-        NumberFormatters.temperatureFormatter.string(from: value)!
+        NumberFormatters.tempFormatter.string(from: value)!
     }
 
     private var value: Float {
@@ -120,10 +142,9 @@ enum Temperature {
     }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Experimental: This is to send the final inputs as JSON to Rust.
-/// For now setting each input individually. If we decide to keep this approach long term, this section can be removed.
+// Experimental: This is to send the final inputs as JSON to Rust.
+// For now setting each input individually. If we decide to keep this approach long term, this section can be removed.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //private enum CoreUserInput<T: Encodable>: Encodable {
