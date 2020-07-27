@@ -14,12 +14,18 @@ class AlertsViewModel {
         self.alertRepo = alertRepo
         self.nav = nav
 
-        alertCells = alertRepo.alerts
+        alertCells = alertRepo.alertState
+            .compactMap { state -> [Alert]? in
+                switch state {
+                case .success(let data): return data
+                default: return nil
+                }
+            }
             .map { alerts in alerts.toSections() }
             .observeOn(MainScheduler.instance)
             .asDriver(onErrorJustReturn: [])
 
-        updateStatusText = alertRepo.updateReportsState
+        updateStatusText = alertRepo.alertState
             .do(onNext: { result in
                 log.d("Got alerts result in view model: \(result)")
             })
@@ -33,7 +39,10 @@ class AlertsViewModel {
     }
 
     func acknowledge(alert: AlertViewData) {
-        alertRepo.removeAlert(alert: alert.alert)
+        switch alertRepo.removeAlert(alert: alert.alert) {
+        case .success: log.i("Alert: \(alert.alert.id) was removed.")
+        case .failure(let e): log.e("Alert: \(alert.alert.id) couldn't be removed: \(e)")
+        }
     }
 
     func onAlertTap(alert: AlertViewData) {

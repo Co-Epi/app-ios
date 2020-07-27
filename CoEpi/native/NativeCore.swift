@@ -1,8 +1,9 @@
 import Foundation
 import CryptoSwift
 
-protocol AlertsFetcher {
+protocol AlertsApi {
     func fetchNewAlerts() -> Result<[Alert], ServicesError>
+    func deleteAlert(id: String) -> Result<(), ServicesError>
 }
 
 // For now discontinuing this approach and submitting each symptom individually.
@@ -186,7 +187,7 @@ extension CoreUserInput {
     }
 }
 
-class NativeCore: AlertsFetcher {
+class NativeCore: AlertsApi {
 
     func fetchNewAlerts()
         -> Result<[Alert],
@@ -224,6 +225,11 @@ class NativeCore: AlertsFetcher {
                 )
             }
         }
+    }
+
+    func deleteAlert(id: String) -> Result<(), ServicesError> {
+        let libResult: LibResult<ArbitraryType>? = delete_alert(id)?.toLibResult()
+        return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
 
     private func libraryFailure<T>() -> Result<T, ServicesError> {

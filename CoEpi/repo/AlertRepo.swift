@@ -3,78 +3,61 @@ import RxCocoa
 import RxSwift
 
 protocol AlertRepo {
-    var alerts: Observable<[Alert]> { get }
-    var updateReportsState: Observable<VoidOperationState> { get }
+    var alertState: Observable<OperationState<[Alert]>> { get }
 
-    func removeAlert(alert: Alert)
+    func removeAlert(alert: Alert) -> Result<(), ServicesError>
     func updateReports()
 }
 
 class AlertRepoImpl: AlertRepo {
-    private let alertsFetcher: AlertsFetcher
-    private let alertDao: AlertDao
+
+    private let alertsApi: AlertsApi
     private let notificationShower: NotificationShower
 
-    private let updateReportsStateSubject: BehaviorRelay<VoidOperationState> = BehaviorRelay(value:
-        .notStarted)
-    lazy var updateReportsState: Observable<VoidOperationState> = updateReportsStateSubject
+    private let alertsStateSubject: BehaviorRelay<OperationState<[Alert]>> =
+        BehaviorRelay(value: .notStarted)
+    lazy var alertState: Observable<OperationState<[Alert]>> = alertsStateSubject
         .asObservable()
 
-    lazy private(set) var alerts: Observable<[Alert]> = alertDao.alerts
-
-    init(alertsFetcher: AlertsFetcher, alertDao: AlertDao, notificationShower: NotificationShower) {
-        self.alertsFetcher = alertsFetcher
-        self.alertDao = alertDao
+    init(alertsApi: AlertsApi, notificationShower: NotificationShower) {
+        self.alertsApi = alertsApi
         self.notificationShower = notificationShower
     }
 
-    func removeAlert(alert: Alert) {
-        alertDao.delete(alert: alert)
+    func removeAlert(alert: Alert) -> Result<(), ServicesError> {
+        let result = alertsApi.deleteAlert(id: alert.id)
+        switch result {
+        case .success:
+            // Note that alternatively we could return from Rust the updated alerts (from the local database)
+            // but we're animating and we probably would have to perform this in the background
+            removeAlertLocally(alert: alert)
+        default: break
+        }
+        return result
     }
 
-    // TODO review thread safety with FFI/Rust: What happens if background task and foreground update
-    // TODO (e.g. pull to refresh) enter at the same time? Do we need to enqueue/lock?
-    func updateReports() {
-        if updateReportsStateSubject.value.isProgress() {
-            return
-        }
-        updateReportsStateSubject.accept(.progress)
-
-        switch alertsFetcher.fetchNewAlerts() {
+    private func removeAlertLocally(alert: Alert) {
+        let alertsState = alertsStateSubject.value
+        switch alertsState {
         case .success(let alerts):
-            onFetchedReportsSuccess(alerts: alerts)
+            let newAlerts = alerts.deleteFirst(element: alert)
+            alertsStateSubject.accept(.success(data: newAlerts))
+        default: break
+        }
+    }
+
+    func updateReports() {
+        if alertsStateSubject.value.isProgress() { return }
+        alertsStateSubject.accept(.progress)
+
+        switch alertsApi.fetchNewAlerts() {
+        case .success(let alerts):
+            log.w("Setting the alerts in subject: \(alerts)", tags: .ui)
+            alertsStateSubject.accept(.success(data: alerts))
+
         case .failure(let error):
             log.e("Error fetching alerts: \(error)")
-            updateReportsStateSubject.accept(OperationState.failure(error: error))
+            alertsStateSubject.accept(OperationState.failure(error: error))
         }
-
-        updateReportsStateSubject.accept(.notStarted)
-    }
-
-    private func onFetchedReportsSuccess(alerts: [Alert]) {
-        // TODO improve error handling. If inserting alerts fails, these alerts can disappear
-        // TODO as core may fetch only newer time segments.
-        // TODO solution: persist the alerts in Rust too, make the operation transactional.
-        let insertedCount = storeAlerts(alerts: alerts)
-        if insertedCount > 0 {
-            notificationShower.showNotification(data: NotificationData(
-                id: .alerts,
-                title: "New Contact Alerts",
-                body: "New contact alerts have been detected. Tap for details."
-            ))
-        }
-        updateReportsStateSubject.accept(.success(data: ()))
-    }
-
-    private func storeAlerts(alerts: [Alert]) -> Int {
-        let insertedCount: Int = alerts.map {
-            self.alertDao.insert(alert: $0)
-        }.filter { $0 }.count
-
-        if (insertedCount >= 0) {
-            log.d("Added \(insertedCount) new alerts")
-        }
-
-        return insertedCount
     }
 }

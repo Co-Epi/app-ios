@@ -18,7 +18,6 @@ class Dependencies {
         registerLogic(container: container)
         registerWiring(container: container)
         registerViewModels(container: container)
-        registerDaos(container: container)
         registerRepos(container: container)
         registerServices(container: container)
         registerBle(container: container)
@@ -45,7 +44,7 @@ class Dependencies {
         container
             .register(.singleton) { nativeCore as ServicesBootstrapper }
         container
-            .register(.singleton) { nativeCore as AlertsFetcher }
+            .register(.singleton) { nativeCore as AlertsApi }
         container
             .register(.singleton) { nativeCore as SymptomsInputManager }
         container
@@ -117,32 +116,14 @@ class Dependencies {
         container.register { AlertDetailsViewModel(alert: $0) }
     }
 
-    private func registerDaos(container: DependencyContainer) {
-        container
-            .register(.singleton) { RealmProvider() }
-        container
-            .register(.singleton) { RealmAlertDao(
-                realmProvider: try container.resolve()) as AlertDao }
-        container
-            .register(.singleton) { RealmCENDao(
-                realmProvider: try container.resolve()) as CENDao }
-        container
-            .register(.eagerSingleton) { RealmCENReportDao(
-                realmProvider: try container.resolve()) as CENReportDao }
-    }
-
     private func registerRepos(container: DependencyContainer) {
         container
             .register(.singleton) { SymptomRepoImpl(
                 inputManager: try container.resolve()) as SymptomRepo }
         container
             .register(.singleton) { AlertRepoImpl(
-                alertsFetcher: try container.resolve(),
-                alertDao: try container.resolve(),
+                alertsApi: try container.resolve(),
                 notificationShower: try container.resolve()) as AlertRepo }
-        container
-            .register(.singleton) { CENRepoImpl(
-                cenDao: try container.resolve()) as CENRepo }
     }
 
     private func registerServices(container: DependencyContainer) {

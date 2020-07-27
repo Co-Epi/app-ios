@@ -38,7 +38,13 @@ class HomeViewModel {
         )
     ]
 
-    lazy var items: Driver<[HomeItemViewData]> = alertRepo.alerts
+    lazy var items: Driver<[HomeItemViewData]> = alertRepo.alertState
+        .compactMap { state -> [Alert]? in
+            switch state {
+            case .success(let data): return data
+            default: return nil
+            }
+        }
         .startWith([])
         .distinctUntilChanged()
         .map { alerts in

@@ -11,4 +11,11 @@ extension Array where Element: Equatable {
         }
         return uniqueValues
     }
+
+    func deleteFirst(element: Element) -> [Element] {
+        guard let index = firstIndex(of: element) else { return self }
+        var mutSelf = self
+        mutSelf.remove(at: index)
+        return mutSelf
+    }
 }
