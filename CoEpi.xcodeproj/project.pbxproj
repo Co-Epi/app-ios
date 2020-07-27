@@ -2027,7 +2027,7 @@
 			repositoryURL = "https://github.com/TCNCoalition/tcn-client-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.2;
+				minimumVersion = 0.4.3;
 			};
 		};
 		84FA00F32427E83000318104 /* XCRemoteSwiftPackageReference "Dip" */ = {
