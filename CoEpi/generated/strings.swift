@@ -286,6 +286,14 @@ internal enum L10n {
         }
       }
     }
+    internal enum Notification {
+      internal enum New {
+        /// New contact alerts have been detected. Tap for details.
+        internal static let body = L10n.tr("Localizable", "alerts.notification.new.body")
+        /// New Contact Alerts
+        internal static let title = L10n.tr("Localizable", "alerts.notification.new.title")
+      }
+    }
   }
 
   internal enum Home {

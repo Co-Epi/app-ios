@@ -52,8 +52,15 @@ class AlertRepoImpl: AlertRepo {
 
         switch alertsApi.fetchNewAlerts() {
         case .success(let alerts):
-            log.w("Setting the alerts in subject: \(alerts)", tags: .ui)
+            log.w("Received new alerts in app: \(alerts)", tags: .ui)
             alertsStateSubject.accept(.success(data: alerts))
+            if !alerts.isEmpty {
+                notificationShower.showNotification(data: NotificationData(
+                    id: .alerts,
+                    title: L10n.Alerts.Notification.New.title,
+                    body: L10n.Alerts.Notification.New.body
+                ))
+            }
 
         case .failure(let error):
             log.e("Error fetching alerts: \(error)")

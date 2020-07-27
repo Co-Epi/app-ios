@@ -12,6 +12,8 @@
 "alerts.buttonLabel" = "What are exposure alerts?";
 "alerts.moreInfoTitle" = "Exposure Alert";
 "alerts.title" = "Alerts";
+"alerts.notification.new.title" = "New Contact Alerts";
+"alerts.notification.new.body" = "New contact alerts have been detected. Tap for details.";
 
 "alerts.label.symptom.no_symptoms_reported" = "No symptoms reported";
 "alerts.label.symptom.fever.mild" = "Fever";
@@ -36,6 +38,7 @@
 "alerts.details.duration.seconds" = "%i seconds exposure";
 "alerts.details.distance.avg" = "Approx. %1$s %2$s away from you";
 "alerts.details.distance.unit.feet" = "Feet";
+
 
 //NewUX
     //general
