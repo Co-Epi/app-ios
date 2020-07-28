@@ -2,10 +2,38 @@ import Foundation
 import SwiftUI
 
 class AlertDetailsViewModel: ObservableObject {
+    private let alertRepo: AlertRepo
+    private let nav: RootNav
+    private var email: Email
+
     let viewData: AlertDetailsViewData
 
-    init(alert: Alert) {
+    @Published var showingActionSheet = false
+
+    init(alert: Alert, alertRepo: AlertRepo, nav: RootNav, email: Email) {
+        self.alertRepo = alertRepo
+        self.nav = nav
+        self.email = email
+
         viewData = alert.toViewData()
+    }
+
+    func delete() {
+        switch alertRepo.removeAlert(alert: viewData.alert) {
+        case .success:
+            log.i("Alert: \(viewData.alert.id) was removed.")
+            nav.navigate(command: .back)
+        case .failure(let e):
+            log.e("Alert: \(viewData.alert.id) couldn't be removed: \(e)")
+        }
+    }
+
+    func showActionSheet() {
+        showingActionSheet = true
+    }
+
+    func reportProblemTapped() {
+        email.openEmail(address: "TODO@TODO.TODO", subject: "TODO")
     }
 }
 
@@ -28,7 +56,7 @@ private extension Alert {
             avgDistance: L10n.Alerts.Details.Distance.avg(formattedAvgDistance,
                                                           L10n.Alerts.Details.Distance.Unit.feet),
             minDistance: "[DEBUG] Min distance: \(formattedMinDistance) " +
-            "\(L10n.Alerts.Details.Distance.Unit.feet)", // Temporary, for testing
+                "\(L10n.Alerts.Details.Distance.Unit.feet)", // Temporary, for testing
             reportTime: formatReportTime(date: reportTime.toDate()),
             symptoms: symptomUIStrings().joined(separator: "\n"),
             alert: self

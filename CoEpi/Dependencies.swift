@@ -113,7 +113,10 @@ class Dependencies {
                 log: cachingLog, clipboard: try container.resolve(),
                                            envInfos: try container.resolve()) }
 
-        container.register { AlertDetailsViewModel(alert: $0) }
+        container.register { AlertDetailsViewModel(alert: $0,
+                                                   alertRepo: try container.resolve(),
+                                                   nav: try container.resolve(),
+                                                   email: try container.resolve()) }
     }
 
     private func registerRepos(container: DependencyContainer) {
@@ -182,5 +185,7 @@ class Dependencies {
             .register(.singleton) { Clipboard() }
         container
             .register(.singleton) { EnvInfos() }
+        container
+            .register(.singleton) { EmailImpl() as Email }
     }
 }

@@ -251,6 +251,14 @@ internal enum L10n {
           return L10n.tr("Localizable", "alerts.details.label.reported_on", p1, p2)
         }
       }
+      internal enum More {
+        /// Delete
+        internal static let delete = L10n.tr("Localizable", "alerts.details.more.delete")
+        /// Report a problem
+        internal static let reportProblem = L10n.tr("Localizable", "alerts.details.more.report_problem")
+        /// Select an action
+        internal static let title = L10n.tr("Localizable", "alerts.details.more.title")
+      }
     }
     internal enum Label {
       /// Archive

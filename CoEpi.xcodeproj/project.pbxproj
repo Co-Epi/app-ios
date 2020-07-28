@@ -63,6 +63,7 @@
 		62CE509B249BB496003F2ECE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 62CE509A249BB496003F2ECE /* .swiftlint.yml */; };
 		700BA90C2489685400BE8F30 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BA90B2489685400BE8F30 /* ButtonStyles.swift */; };
 		8403C21E24C8984F00EDAC60 /* UIViewController+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8403C21D24C8984F00EDAC60 /* UIViewController+SwiftUI.swift */; };
+		840EC1FC24CF31130043C751 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EC1FB24CF31130043C751 /* Email.swift */; };
 		841D39A0244E3EE200A9CD64 /* StartPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D399F244E3EE200A9CD64 /* StartPermissions.swift */; };
 		84201691244B21FF000EE281 /* UnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201690244B21FF000EE281 /* UnixTime.swift */; };
 		84201694244C901C000EE281 /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = 84201693244C901C000EE281 /* Action */; };
@@ -287,6 +288,7 @@
 		700BA90B2489685400BE8F30 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		8403C21D24C8984F00EDAC60 /* UIViewController+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SwiftUI.swift"; sourceTree = "<group>"; };
 		840405D6246C50C7008048BF /* Rust-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Rust-Bridging-Header.h"; sourceTree = "<group>"; };
+		840EC1FB24CF31130043C751 /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		841D399F244E3EE200A9CD64 /* StartPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPermissions.swift; sourceTree = "<group>"; };
 		84201690244B21FF000EE281 /* UnixTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTime.swift; sourceTree = "<group>"; };
 		84201695244CA14D000EE281 /* UIView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rx.swift"; sourceTree = "<group>"; };
@@ -930,6 +932,7 @@
 				84EE1C5C2441D72F0055E22B /* Sharer.swift */,
 				84EE1C5E2441DC200055E22B /* ConfirmationAlert.swift */,
 				84A5C1D02489596400B002E2 /* GradientView.swift */,
+				840EC1FB24CF31130043C751 /* Email.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1380,6 +1383,7 @@
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */,
 				84E2D47F247EF5A900D1E6BF /* Result+Convenience.swift in Sources */,
+				840EC1FC24CF31130043C751 /* Email.swift in Sources */,
 				622AC2C6245FBE5900A6EB90 /* BreathlessViewController.swift in Sources */,
 				848434552438C03C006A5839 /* ErrorView.swift in Sources */,
 				849DFE662427D3750008ED65 /* AppDelegate.swift in Sources */,

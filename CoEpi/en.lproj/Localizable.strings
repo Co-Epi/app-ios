@@ -38,7 +38,9 @@
 "alerts.details.duration.seconds" = "%i seconds exposure";
 "alerts.details.distance.avg" = "Approx. %1$s %2$s away from you";
 "alerts.details.distance.unit.feet" = "Feet";
-
+"alerts.details.more.title" = "Select an action";
+"alerts.details.more.delete" = "Delete";
+"alerts.details.more.report_problem" = "Report a problem";
 
 //NewUX
     //general
