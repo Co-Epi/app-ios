@@ -7,6 +7,7 @@ protocol AlertRepo {
 
     func removeAlert(alert: Alert) -> Result<(), ServicesError>
     func linkedAlerts(alert: Alert) -> Result<[Alert], ServicesError>
+    func updateIsRead(alert: Alert, isRead: Bool) -> Result<(), ServicesError>
 
     func updateReports()
 }
@@ -33,7 +34,7 @@ class AlertRepoImpl: AlertRepo {
             // Note that alternatively we could return from Rust the updated alerts (from the local database)
             // but we're animating and we probably would have to perform this in the background
             removeAlertLocally(alert: alert)
-        default: break
+        case .failure: break
         }
         return result
     }
@@ -52,11 +53,32 @@ class AlertRepoImpl: AlertRepo {
         }
     }
 
+    func updateIsRead(alert: Alert, isRead: Bool) -> Result<(), ServicesError> {
+        let result = alertsApi.updateIsRead(id: alert.id, isRead: isRead)
+        switch result {
+        case .success: updateIsReadLocally(alert: alert)
+        case .failure: break
+        }
+        return result
+    }
+
     private func removeAlertLocally(alert: Alert) {
         let alertsState = alertsStateSubject.value
         switch alertsState {
         case .success(let alerts):
             let newAlerts = alerts.deleteFirst(element: alert)
+            alertsStateSubject.accept(.success(data: newAlerts))
+        default: break
+        }
+    }
+
+    private func updateIsReadLocally(alert: Alert) {
+        let alertsState = alertsStateSubject.value
+        switch alertsState {
+        case .success(let alerts):
+            var updatedAlert = alert
+            updatedAlert.isRead = true
+            let newAlerts = alerts.replace(alert, with: updatedAlert)
             alertsStateSubject.accept(.success(data: newAlerts))
         default: break
         }

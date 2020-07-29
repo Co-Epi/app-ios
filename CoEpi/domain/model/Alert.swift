@@ -1,6 +1,5 @@
 import Foundation
 
-// TODO rename in exposure
 struct Alert: AutoEquatable {
     let id: String
     let reportId: String
@@ -22,7 +21,15 @@ struct Alert: AutoEquatable {
     let other: Bool
     let noSymptoms: Bool
 
+    var isRead: Bool
+
     var durationSeconds: Int {
         Int(end.value - start.value)
+    }
+
+    func changing(change: (inout Alert) -> Void) -> Alert {
+        var a = self
+        change(&a)
+        return a
     }
 }

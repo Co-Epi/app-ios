@@ -4,6 +4,7 @@ import CryptoSwift
 protocol AlertsApi {
     func fetchNewAlerts() -> Result<[Alert], ServicesError>
     func deleteAlert(id: String) -> Result<(), ServicesError>
+    func updateIsRead(id: String, isRead: Bool) -> Result<(), ServicesError>
 }
 
 // For now discontinuing this approach and submitting each symptom individually.
@@ -220,7 +221,9 @@ class NativeCore: AlertsApi {
                     diarrhea: $0.report.diarrhea,
                     runnyNose: $0.report.runny_nose,
                     other: $0.report.other,
-                    noSymptoms: $0.report.no_symptoms
+                    noSymptoms: $0.report.no_symptoms,
+
+                    isRead: $0.is_read
                 )
             }
         }
@@ -228,6 +231,12 @@ class NativeCore: AlertsApi {
 
     func deleteAlert(id: String) -> Result<(), ServicesError> {
         let libResult: LibResult<ArbitraryType>? = delete_alert(id)?.toLibResult()
+        return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
+    }
+
+    func updateIsRead(id: String, isRead: Bool) -> Result<(), ServicesError> {
+        let libResult: LibResult<ArbitraryType>? =
+            update_alert_is_read(id, isRead ? 1 : 0)?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
 
@@ -462,6 +471,7 @@ private struct NativeAlert: Decodable {
     let contact_end: UInt64
     let min_distance: Float32
     let avg_distance: Float32
+    let is_read: Bool
 }
 
 extension Result where Failure == CoreError {

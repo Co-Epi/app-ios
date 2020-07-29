@@ -111,8 +111,17 @@ extension AlertsDataSource: UITableViewDataSource {
         guard let alertCell = cell as? AlertCell else { return cell }
 
         let alert: AlertViewData = sections[indexPath.section].alerts[indexPath.row]
-        alertCell.setAlert(alert: alert)
-        alertCell.onAcknowledged = onAcknowledged
+
+        alertCell.setup(alert: alert,
+                        onAcknowledged: { [weak self] alert in
+                            self?.onAcknowledged?(alert)
+                        },
+                        onReadDotAnimated: { [weak self] in
+                            self?
+                                .sections[indexPath.section]
+                                .alerts[indexPath.row]
+                                .animateUnreadDot = false
+        })
 
         return alertCell
     }

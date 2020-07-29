@@ -1,6 +1,8 @@
 struct AlertViewData {
     let symptoms: String
     let contactTime: String
+    let showUnreadDot: Bool
+    var animateUnreadDot: Bool
     let alert: Alert
 }
 
@@ -18,5 +20,5 @@ enum AlertCellViewData {
 
 struct AlertViewDataSection {
     let header: String
-    let alerts: [AlertViewData]
+    var alerts: [AlertViewData]
 }

@@ -46,6 +46,10 @@ class AlertsViewModel {
     }
 
     func onAlertTap(alert: AlertViewData) {
+        switch alertRepo.updateIsRead(alert: alert.alert, isRead: true) {
+        case .success: log.i("Alert: \(alert.alert.id) was marked as read.")
+        case .failure(let e): log.e("Alert: \(alert.alert.id) couldn't be marked as read: \(e)")
+        }
         nav.navigate(command: .to(destination: .alertDetails(alert: alert.alert)))
     }
 }
@@ -78,6 +82,8 @@ private extension Alert {
         AlertViewData(
             symptoms: symptomUIStrings().joined(separator: "\n"),
             contactTime: DateFormatters.hoursMins.string(from: start.toDate()),
+            showUnreadDot: !isRead,
+            animateUnreadDot: true,
             alert: self
         )
     }
