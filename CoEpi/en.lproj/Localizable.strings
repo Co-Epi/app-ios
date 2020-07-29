@@ -41,6 +41,7 @@
 "alerts.details.more.title" = "Select an action";
 "alerts.details.more.delete" = "Delete";
 "alerts.details.more.report_problem" = "Report a problem";
+"alerts.details.header.other_exposures" = "Other exposures with this person";
 
 //NewUX
     //general

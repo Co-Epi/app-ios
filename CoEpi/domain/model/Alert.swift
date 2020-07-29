@@ -3,6 +3,7 @@ import Foundation
 // TODO rename in exposure
 struct Alert: AutoEquatable {
     let id: String
+    let reportId: String
     
     let start: UnixTime
     let end: UnixTime

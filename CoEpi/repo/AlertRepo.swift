@@ -6,6 +6,8 @@ protocol AlertRepo {
     var alertState: Observable<OperationState<[Alert]>> { get }
 
     func removeAlert(alert: Alert) -> Result<(), ServicesError>
+    func linkedAlerts(alert: Alert) -> Result<[Alert], ServicesError>
+
     func updateReports()
 }
 
@@ -34,6 +36,20 @@ class AlertRepoImpl: AlertRepo {
         default: break
         }
         return result
+    }
+
+    func linkedAlerts(alert: Alert) -> Result<[Alert], ServicesError> {
+        let alertsState = alertsStateSubject.value
+        switch alertsState {
+        case .success(let alerts):
+            let linkedAlerts = alerts
+                .filter { $0.reportId == alert.reportId && $0.id != alert.id }
+                .sorted { (alert1, alert2) -> Bool in
+                    alert1.start.value > alert2.start.value
+                }
+            return .success(linkedAlerts)
+        default: return .failure(.error(message: "No alerts to filter"))
+        }
     }
 
     private func removeAlertLocally(alert: Alert) {

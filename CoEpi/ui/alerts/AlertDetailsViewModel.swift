@@ -7,6 +7,7 @@ class AlertDetailsViewModel: ObservableObject {
     private var email: Email
 
     let viewData: AlertDetailsViewData
+    let linkedAlertsViewData: [LinkedAlertViewData]
 
     @Published var showingActionSheet = false
 
@@ -16,6 +17,16 @@ class AlertDetailsViewModel: ObservableObject {
         self.email = email
 
         viewData = alert.toViewData()
+
+        let linkedAlerts = alertRepo
+            .linkedAlerts(alert: alert)
+            .expect("Couldn't retrieve linked alerts")
+        linkedAlertsViewData = linkedAlerts
+            .enumerated()
+            .map { index, alert in alert.toLinkedAlertViewData(
+                image: .from(alertIndex: index, alertsCount: linkedAlerts.count),
+                bottomLine: index < linkedAlerts.count - 1
+            )}
     }
 
     func delete() {
@@ -41,29 +52,76 @@ private extension Alert {
 
     func toViewData() -> AlertDetailsViewData {
         let distanceUnit = UnitLength.feet
-
         guard
-            let formattedAvgDistance = NumberFormatters.oneDecimal.string(
-                from: Float(avgDistance.converted(to: distanceUnit).value)),
-            let formattedMinDistance = NumberFormatters.oneDecimal.string(
-                from: Float(minDistance.converted(to: distanceUnit).value))
-            else { fatalError("Couldn't format distance: \(avgDistance)") }
+            let formattedAvgDistance = formatterdAvgDistance(unit: distanceUnit),
+            let formattedMinDistance = formatterdMinDistance(unit: distanceUnit)
+        else { fatalError("Format error: \(self)") }
 
         return AlertDetailsViewData(
-            title: start.toDate().formatMonthOrdinalDay(),
-            contactStart: DateFormatters.hoursMins.string(from: start.toDate()),
-            contactDuration: durationForUI.toLocalizedString(),
-            avgDistance: L10n.Alerts.Details.Distance.avg(formattedAvgDistance,
-                                                          L10n.Alerts.Details.Distance.Unit.feet),
-            minDistance: "[DEBUG] Min distance: \(formattedMinDistance) " +
-                "\(L10n.Alerts.Details.Distance.Unit.feet)", // Temporary, for testing
+            title: formattedStartDate(),
+            contactStart: formattedContactStart(),
+            contactDuration: formattedContactDuration(),
+            avgDistance: formattedAvgDistance,
+            minDistance: formattedMinDistance, // Temporary, for testing
             reportTime: formatReportTime(date: reportTime.toDate()),
-            symptoms: symptomUIStrings().joined(separator: "\n"),
+            symptoms: formattedSymptoms(),
             alert: self
         )
     }
 
-    func formatReportTime(date: Date) -> String {
+    func toLinkedAlertViewData(image: LinkedAlertViewDataConnectionImage,
+                               bottomLine: Bool) -> LinkedAlertViewData {
+        LinkedAlertViewData(
+            date: formattedStartDate(),
+            contactStart: formattedContactStart(),
+            contactDuration: formattedContactDuration(),
+            symptoms: formattedSymptoms(),
+            alert: self,
+            image: image,
+            bottomLine: bottomLine
+        )
+    }
+
+    private func formattedStartDate() -> String {
+        start.toDate().formatMonthOrdinalDay()
+    }
+
+    private func formattedContactStart() -> String {
+        DateFormatters.hoursMins.string(from: start.toDate())
+    }
+
+    private func formattedContactDuration() -> String {
+        durationForUI.toLocalizedString()
+    }
+
+    private func formattedSymptoms() -> String {
+        symptomUIStrings().joined(separator: "\n")
+    }
+
+    private func formatterdAvgDistance(unit: UnitLength) -> String? {
+        guard
+            let formatted = formattedDistance(unit: unit, distance: minDistance)
+        else { fatalError("Couldn't format distance: \(avgDistance)") }
+
+        return L10n.Alerts.Details.Distance.avg(formatted,
+                                                L10n.Alerts.Details.Distance.Unit.feet)
+    }
+
+    private func formatterdMinDistance(unit: UnitLength) -> String? {
+        guard
+            let formatted = formattedDistance(unit: unit, distance: minDistance)
+        else { fatalError("Couldn't format distance: \(avgDistance)") }
+
+        return "[DEBUG] Min distance: \(formatted) " +
+            "\(L10n.Alerts.Details.Distance.Unit.feet)" // Temporary, for testing
+    }
+
+    private func formattedDistance(unit: UnitLength, distance: Measurement<UnitLength>) -> String? {
+        NumberFormatters.oneDecimal.string(
+            from: Float(distance.converted(to: unit).value))
+    }
+
+    private func formatReportTime(date: Date) -> String {
         let monthDay = DateFormatters.monthDay.string(from: date)
         let time = DateFormatters.hoursMins.string(from: date)
 

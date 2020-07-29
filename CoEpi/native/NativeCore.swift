@@ -196,14 +196,13 @@ class NativeCore: AlertsApi {
             return libraryFailure()
         }
 
-        // TODO id (see Rust)
-
         return libResult
             .toResult()
             .mapErrorToServicesError()
             .map { nativeAlerts in nativeAlerts.map {
                 Alert(
                     id: $0.id,
+                    reportId: $0.report_id,
 
                     start: UnixTime.init(value: Int64($0.contact_start)),
                     end: UnixTime.init(value: Int64($0.contact_end)),
@@ -457,6 +456,7 @@ private extension UserInput where T == Bool {
 // swiftlint:disable identifier_name
 private struct NativeAlert: Decodable {
     let id: String
+    let report_id: String
     let report: CorePublicReport
     let contact_start: UInt64
     let contact_end: UInt64

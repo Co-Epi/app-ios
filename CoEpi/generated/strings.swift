@@ -245,6 +245,10 @@ internal enum L10n {
           return L10n.tr("Localizable", "alerts.details.duration.seconds", p1)
         }
       }
+      internal enum Header {
+        /// Other exposures with this person
+        internal static let otherExposures = L10n.tr("Localizable", "alerts.details.header.other_exposures")
+      }
       internal enum Label {
         /// Reported on %@ at %@
         internal static func reportedOn(_ p1: String, _ p2: String) -> String {
