@@ -72,7 +72,7 @@ class AlertView: UIView {
             unreadView.transform = CGAffineTransform(scaleX: 0, y: 0)
             unreadView.alpha = 0
             onReadDotAnimated()
-            UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping:
+            UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping:
                 0.6, initialSpringVelocity: 0.6, options: .curveEaseOut, animations: {
                     self.unreadView.transform = CGAffineTransform(scaleX: 1, y: 1)
                     self.unreadView.alpha = 1

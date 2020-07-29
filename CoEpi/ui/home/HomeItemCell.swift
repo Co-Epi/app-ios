@@ -42,7 +42,7 @@ class HomeItemView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        notificationView.layer.cornerRadius = 20
+        notificationView.layer.cornerRadius = 25
 
         backgroundView.layer.cornerRadius = 15
         backgroundView.layer.shadowColor = UIColor.black.cgColor
@@ -61,7 +61,7 @@ class HomeItemView: UIView {
         if item.notification != nil {
             notificationView.transform = CGAffineTransform(scaleX: 0, y: 0)
             notificationLabel.alpha = 0
-            UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping:
+            UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping:
                 0.6, initialSpringVelocity: 0.6, options: .curveEaseOut, animations: {
                     self.notificationView.transform = CGAffineTransform(scaleX: 1, y: 1)
                     self.notificationLabel.alpha = 1

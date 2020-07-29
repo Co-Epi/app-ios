@@ -104,21 +104,12 @@ private extension Array where Element == HomeItemViewData {
                     return item
                 } else {
                     var item = item
-                    let alertTitle = alertsNotificationTitle(alertsCount: alerts.count)
-                    item.notification = HomeItemNotification(text: alertTitle)
+                    item.notification = HomeItemNotification(text: "\(alerts.count)")
                     return item
                 }
             } else {
                 return item
             }
         }
-    }
-}
-
-private func alertsNotificationTitle(alertsCount: Int) -> String {
-    if alertsCount == 1 {
-        return L10n.Home.Items.Alerts.Notification.one
-    } else {
-        return L10n.Home.Items.Alerts.Notification.some(alertsCount)
     }
 }
