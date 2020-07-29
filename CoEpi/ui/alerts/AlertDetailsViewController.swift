@@ -72,13 +72,16 @@ struct AlertDetailsView: View {
                         .font(.system(size: 13))
                         .fontWeight(.medium)
                         .padding(.top, 8).padding(.leading, 38).padding(.trailing, 38)
-                    Text(L10n.Alerts.Details.Header.otherExposures)
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color(.coEpiPurple))
-                        .padding(.top, 14).padding(.leading, 38).padding(.trailing, 38)
-                        .padding(.bottom, 4)
-                        .padding(.bottom, -6)
+
+                    if !viewModel.linkedAlertsViewData.isEmpty {
+                        Text(L10n.Alerts.Details.Header.otherExposures)
+                            .font(.system(size: 17))
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color(.coEpiPurple))
+                            .padding(.top, 14).padding(.leading, 38).padding(.trailing, 38)
+                            .padding(.bottom, 4)
+                            .padding(.bottom, -6)
+                    }
                     ForEach(viewModel.linkedAlertsViewData, id: \.alert.id) { alert in
                         linkedAlertRow(linkedAlert: alert)
                         if alert.bottomLine {
