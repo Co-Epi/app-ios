@@ -1,6 +1,11 @@
 import Foundation
 import SwiftUI
 
+struct AlertDetailsViewModelParams {
+    let alert: Alert
+    let linkedAlerts: [Alert]
+}
+
 class AlertDetailsViewModel: ObservableObject {
     private let alertRepo: AlertRepo
     private let nav: RootNav
@@ -11,21 +16,17 @@ class AlertDetailsViewModel: ObservableObject {
 
     @Published var showingActionSheet = false
 
-    init(alert: Alert, alertRepo: AlertRepo, nav: RootNav, email: Email) {
+    init(pars: AlertDetailsViewModelParams, alertRepo: AlertRepo, nav: RootNav, email: Email) {
         self.alertRepo = alertRepo
         self.nav = nav
         self.email = email
 
-        viewData = alert.toViewData()
-
-        let linkedAlerts = alertRepo
-            .linkedAlerts(alert: alert)
-            .expect("Couldn't retrieve linked alerts")
-        linkedAlertsViewData = linkedAlerts
+        viewData = pars.alert.toViewData()
+        linkedAlertsViewData = pars.linkedAlerts
             .enumerated()
             .map { index, alert in alert.toLinkedAlertViewData(
-                image: .from(alertIndex: index, alertsCount: linkedAlerts.count),
-                bottomLine: index < linkedAlerts.count - 1
+                image: .from(alertIndex: index, alertsCount: pars.linkedAlerts.count),
+                bottomLine: index < pars.linkedAlerts.count - 1
             )}
     }
 

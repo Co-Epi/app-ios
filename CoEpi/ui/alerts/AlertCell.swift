@@ -39,6 +39,8 @@ class AlertView: UIView {
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var unreadView: UIView!
+    @IBOutlet weak var repeatedInteractionView: UIView!
+    @IBOutlet weak var repeatedInteractionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,6 +64,9 @@ class AlertView: UIView {
         timeLabel.text = alert.contactTime
         symptomsLabel.text = alert.symptoms
         unreadView.isHidden = !alert.showUnreadDot
+        repeatedInteractionView.isHidden = !alert.showRepeatedInteraction
+
+        repeatedInteractionLabel.text = L10n.Alerts.Overview.Cell.hasRepeatedInteraction
 
         if alert.animateUnreadDot {
             unreadView.transform = CGAffineTransform(scaleX: 0, y: 0)

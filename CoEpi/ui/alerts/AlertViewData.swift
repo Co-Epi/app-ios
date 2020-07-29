@@ -3,6 +3,7 @@ struct AlertViewData {
     let contactTime: String
     let showUnreadDot: Bool
     var animateUnreadDot: Bool
+    let showRepeatedInteraction: Bool
     let alert: Alert
 }
 

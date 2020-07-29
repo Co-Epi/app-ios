@@ -306,6 +306,12 @@ internal enum L10n {
         internal static let title = L10n.tr("Localizable", "alerts.notification.new.title")
       }
     }
+    internal enum Overview {
+      internal enum Cell {
+        /// Repeated\ninteraction
+        internal static let hasRepeatedInteraction = L10n.tr("Localizable", "alerts.overview.cell.has_repeated_interaction")
+      }
+    }
   }
 
   internal enum Home {

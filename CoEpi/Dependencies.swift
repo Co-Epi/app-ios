@@ -113,7 +113,7 @@ class Dependencies {
                 log: cachingLog, clipboard: try container.resolve(),
                                            envInfos: try container.resolve()) }
 
-        container.register { AlertDetailsViewModel(alert: $0,
+        container.register { AlertDetailsViewModel(pars: $0,
                                                    alertRepo: try container.resolve(),
                                                    nav: try container.resolve(),
                                                    email: try container.resolve()) }

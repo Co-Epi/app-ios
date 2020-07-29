@@ -10,18 +10,18 @@ class AlertsViewModel {
     let alertCells: Driver<[AlertViewDataSection]>
     let updateStatusText: Driver<String>
 
+    private let selectAlertTrigger: PublishSubject<Alert> = PublishSubject()
+
+    private let disposeBag = DisposeBag()
+
     init(alertRepo: AlertRepo, nav: RootNav) {
         self.alertRepo = alertRepo
         self.nav = nav
 
-        alertCells = alertRepo.alertState
-            .compactMap { state -> [Alert]? in
-                switch state {
-                case .success(let data): return data
-                default: return nil
-                }
+        alertCells = alertRepo.alerts
+            .map { alerts in
+                alerts.toSections(allAlerts: alerts)
             }
-            .map { alerts in alerts.toSections() }
             .observeOn(MainScheduler.instance)
             .asDriver(onErrorJustReturn: [])
 
@@ -32,6 +32,18 @@ class AlertsViewModel {
             .filter { $0.shouldShowText() }
             .map { $0.asText() }
             .asDriver(onErrorJustReturn: "Unknown error")
+
+        selectAlertTrigger.withLatestFrom(alertRepo.alerts,
+                                          resultSelector: {(alert, alerts) in
+            AlertDetailsViewModelParams(
+                alert: alert,
+                linkedAlerts: linkedAlerts(alert: alert, alerts: alerts)
+            )
+        })
+        .subscribe(onNext: { pars in
+            nav.navigate(command: .to(destination: .alertDetails(pars: pars)))
+        })
+        .disposed(by: disposeBag)
     }
 
     func updateReports() {
@@ -50,13 +62,13 @@ class AlertsViewModel {
         case .success: log.i("Alert: \(alert.alert.id) was marked as read.")
         case .failure(let e): log.e("Alert: \(alert.alert.id) couldn't be marked as read: \(e)")
         }
-        nav.navigate(command: .to(destination: .alertDetails(alert: alert.alert)))
+        selectAlertTrigger.onNext(alert.alert)
     }
 }
 
 private extension Array where Element == Alert {
 
-    func toSections() -> [AlertViewDataSection] {
+    func toSections(allAlerts: [Alert]) -> [AlertViewDataSection] {
         return
             sorted { (alert1, alert2) -> Bool in
                 alert1.start.value > alert2.start.value
@@ -65,7 +77,9 @@ private extension Array where Element == Alert {
             }.map { headerText, alerts in
                 AlertViewDataSection(
                     header: headerText,
-                    alerts: alerts.map { $0.toViewData() }
+                    alerts: alerts.map {
+                        $0.toViewData(allAlerts: allAlerts)
+                    }
                 )
             }
     }
@@ -77,13 +91,15 @@ private extension Array where Element == Alert {
 }
 
 private extension Alert {
-
-    func toViewData() -> AlertViewData {
+    func toViewData(allAlerts: [Alert]) -> AlertViewData {
         AlertViewData(
-            symptoms: symptomUIStrings().joined(separator: "\n"),
+            symptoms: symptomUIStrings().joined(separator: ", ")
+                .lowercased().capitalizingFirstLetter(),
             contactTime: DateFormatters.hoursMins.string(from: start.toDate()),
             showUnreadDot: !isRead,
             animateUnreadDot: true,
+            showRepeatedInteraction: hasLinkedAlerts(alert: self,
+                                                     alerts: allAlerts),
             alert: self
         )
     }
@@ -106,4 +122,21 @@ private extension OperationState {
         case .failure(let error): return "Error updating: \(error)"
         }
     }
+}
+
+private func hasLinkedAlerts(alert: Alert, alerts: [Alert]) -> Bool {
+    alerts.contains { linkedAlertsPredicate(alert: alert)($0) }
+}
+
+
+private func linkedAlerts(alert: Alert, alerts: [Alert]) -> [Alert] {
+    alerts
+        .filter(linkedAlertsPredicate(alert: alert))
+        .sorted { (alert1, alert2) -> Bool in
+            alert1.start.value > alert2.start.value
+        }
+}
+
+private func linkedAlertsPredicate(alert: Alert) -> (Alert) -> Bool {
+    { $0.reportId == alert.reportId && $0.id != alert.id }
 }

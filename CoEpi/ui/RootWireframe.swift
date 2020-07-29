@@ -75,7 +75,7 @@ class RootWireFrame {
         case .symptomReport: showSymptomReport()
         case .symptomStartDays: showSymptomStartDays()
         case .home: showHome()
-        case .alertDetails(let alert): showAlertDetails(alert: alert)
+        case .alertDetails(let pars): showAlertDetails(pars: pars)
         }
     }
 
@@ -196,8 +196,8 @@ class RootWireFrame {
         rootNavigationController.pushViewController(symptomStartDaysViewController, animated: true)
     }
 
-    private func showAlertDetails(alert: Alert) {
-        let viewModel: AlertDetailsViewModel = try! container.resolve(arguments: alert)
+    private func showAlertDetails(pars: AlertDetailsViewModelParams) {
+        let viewModel: AlertDetailsViewModel = try! container.resolve(arguments: pars)
         let viewController = AlertDetailsViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(viewController, animated: true)
     }

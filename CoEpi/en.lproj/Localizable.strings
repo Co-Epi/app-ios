@@ -8,7 +8,7 @@
 "alerts.count.some" = "Click each alert to learn more";
 "alerts.title" = "";
 "alerts.header" = "Exposure Alerts";
-"alerts.subtitle" = "Click each alert to learn more";
+"alerts.subtitle" = "Notifications that someone you've been in close proximity to has symptoms";
 "alerts.buttonLabel" = "What are exposure alerts?";
 "alerts.moreInfoTitle" = "Exposure Alert";
 "alerts.title" = "Alerts";
@@ -27,6 +27,7 @@
 "alerts.label.symptom.diarrhea" = "Diarrhea";
 "alerts.label.symptom.runnyNose" = "Runny nose";
 "alerts.label.symptom.other" = "Other symptoms";
+"alerts.overview.cell.has_repeated_interaction" = "Repeated\ninteraction";
 
 "alerts.label.archive" = "Archive";
 

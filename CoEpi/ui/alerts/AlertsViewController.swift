@@ -138,7 +138,7 @@ extension AlertsViewController: UITableViewDelegate {
         viewForHeaderInSection section: Int)
         -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
-        let label = UILabel(frame: CGRect(x: 38, y: 5, width: 0, height: 0))
+        let label = UILabel(frame: CGRect(x: 24, y: 5, width: 0, height: 0))
         label.backgroundColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textColor = .coEpiPurple
@@ -153,7 +153,7 @@ extension AlertsViewController: UITableViewDelegate {
         _ tableView: UITableView,
         heightForHeaderInSection section: Int)
         -> CGFloat {
-        30
+        20
     }
 
     func tableView(

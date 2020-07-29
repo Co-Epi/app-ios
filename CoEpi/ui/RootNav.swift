@@ -30,5 +30,5 @@ enum RootNavDestination {
     case symptomReport
     case symptomStartDays
     case home
-    case alertDetails(alert: Alert)
+    case alertDetails(pars: AlertDetailsViewModelParams)
 }
