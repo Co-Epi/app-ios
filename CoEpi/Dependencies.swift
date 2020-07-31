@@ -15,9 +15,14 @@ class Dependencies {
         // TODO consider initializing dependencies asynchronously.
         registerAndInitNativeCore(container: container, fileSystem: fileSystem)
 
+        let alertFilterSettings = AlertFilterSettings(
+            durationSecondsLargerThan: 300,
+            distanceFeetShorterThan: 10
+        )
+
         registerLogic(container: container)
-        registerWiring(container: container)
-        registerViewModels(container: container)
+        registerWiring(container: container, alertFilterSettings: alertFilterSettings)
+        registerViewModels(container: container, alertFilterSettings: alertFilterSettings)
         registerRepos(container: container)
         registerServices(container: container)
         registerBle(container: container)
@@ -54,7 +59,8 @@ class Dependencies {
 
     }
 
-    private func registerViewModels(container: DependencyContainer) {
+    private func registerViewModels(container: DependencyContainer,
+                                    alertFilterSettings: AlertFilterSettings) {
         container.register { HomeViewModel(startPermissions: try container.resolve(),
                                            rootNav: try container.resolve(),
                                            alertRepo: try container.resolve(),
@@ -117,6 +123,11 @@ class Dependencies {
                                                    alertRepo: try container.resolve(),
                                                    nav: try container.resolve(),
                                                    email: try container.resolve()) }
+
+        container.register { UserSettingsViewModel(kvStore: try container.resolve(),
+                                                   alertFilterSettings: alertFilterSettings,
+                                                   envInfos: try container.resolve(),
+                                                   email: try container.resolve()) }
     }
 
     private func registerRepos(container: DependencyContainer) {
@@ -126,7 +137,9 @@ class Dependencies {
         container
             .register(.singleton) { AlertRepoImpl(
                 alertsApi: try container.resolve(),
-                notificationShower: try container.resolve()) as AlertRepo }
+                notificationShower: try container.resolve(),
+                alertFilters: try container.resolve()) as AlertRepo
+            }
     }
 
     private func registerServices(container: DependencyContainer) {
@@ -149,7 +162,10 @@ class Dependencies {
 //        container.register(.eagerSingleton) { AlertNotificationsShower(alertsRepo: try container.resolve()) }
     }
 
-    private func registerWiring(container: DependencyContainer) {
+    private func registerWiring(
+        container: DependencyContainer,
+        alertFilterSettings: AlertFilterSettings
+    ) {
         container
             .register(.eagerSingleton) { ScannedCensHandler(
                 bleAdapter: try container.resolve(),
@@ -168,6 +184,12 @@ class Dependencies {
                 symptomRouter: try container.resolve(),
                 rootNavigation: try container.resolve(),
                 inputsManager: try container.resolve()) }
+        container.register {
+            ObservableAlertFiltersImpl(
+                kvStore: try container.resolve(),
+                filterSettings: alertFilterSettings
+            ) as ObservableAlertFilters
+        }
     }
 
     private func registerBle(container: DependencyContainer) {
@@ -187,5 +209,8 @@ class Dependencies {
             .register(.singleton) { EnvInfos() }
         container
             .register(.singleton) { EmailImpl() as Email }
+        container.register(.singleton) { ObservableKeyValueStoreImpl(
+            keyValueStore: try container.resolve()) as ObservableKeyValueStore
+        }
     }
 }

@@ -206,7 +206,7 @@ internal enum L10n {
     internal static let header = L10n.tr("Localizable", "alerts.header")
     /// Exposure Alert
     internal static let moreInfoTitle = L10n.tr("Localizable", "alerts.moreInfoTitle")
-    /// Click each alert to learn more
+    /// Notifications that someone you've been in close proximity to has symptoms
     internal static let subtitle = L10n.tr("Localizable", "alerts.subtitle")
     /// Alerts
     internal static let title = L10n.tr("Localizable", "alerts.title")
@@ -325,6 +325,41 @@ internal enum L10n {
             return L10n.tr("Localizable", "home.items.alerts.notification.some", p1)
           }
         }
+      }
+    }
+  }
+
+  internal enum Settings {
+    /// Settings
+    internal static let title = L10n.tr("Localizable", "settings.title")
+    internal enum Header {
+      internal enum Alerts {
+        /// What information do you want to see on reported exposures around you?
+        internal static let descr = L10n.tr("Localizable", "settings.header.alerts.descr")
+        /// Exposure alerts
+        internal static let title = L10n.tr("Localizable", "settings.header.alerts.title")
+      }
+    }
+    internal enum Item {
+      /// Show me all reports,\nincluding "I don't have any symptoms"
+      internal static let allReports = L10n.tr("Localizable", "settings.item.all_reports")
+      /// Only notify me for interactions that occured <%1$d %2$s away
+      internal static func distanceShorterThan(_ p1: Int, _ p2: UnsafePointer<CChar>) -> String {
+        return L10n.tr("Localizable", "settings.item.distance_shorter_than", p1, p2)
+      }
+      /// feet
+      internal static let distanceShorterThanUnitFeet = L10n.tr("Localizable", "settings.item.distance_shorter_than_unit_feet")
+      /// Only show alerts >%d min of interaction
+      internal static func durationLongerThanMins(_ p1: Int) -> String {
+        return L10n.tr("Localizable", "settings.item.duration_longer_than_mins", p1)
+      }
+      /// Privacy statement
+      internal static let privacyStatement = L10n.tr("Localizable", "settings.item.privacy_statement")
+      /// Report a problem
+      internal static let reportProblem = L10n.tr("Localizable", "settings.item.report_problem")
+      /// Version %@
+      internal static func version(_ p1: String) -> String {
+        return L10n.tr("Localizable", "settings.item.version", p1)
       }
     }
   }

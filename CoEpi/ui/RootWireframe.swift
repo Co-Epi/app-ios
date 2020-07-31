@@ -76,6 +76,7 @@ class RootWireFrame {
         case .symptomStartDays: showSymptomStartDays()
         case .home: showHome()
         case .alertDetails(let pars): showAlertDetails(pars: pars)
+        case .settings: showSettings()
         }
     }
 
@@ -99,6 +100,7 @@ class RootWireFrame {
         case .symptomStartDays: return SymptomStartDaysViewController.self
         case .home: return HomeViewController.self
         case .alertDetails: return AlertDetailsViewController.self
+        case .settings: return UserSettingsViewController.self
         }
     }
 
@@ -199,6 +201,12 @@ class RootWireFrame {
     private func showAlertDetails(pars: AlertDetailsViewModelParams) {
         let viewModel: AlertDetailsViewModel = try! container.resolve(arguments: pars)
         let viewController = AlertDetailsViewController(viewModel: viewModel)
+        rootNavigationController.pushViewController(viewController, animated: true)
+    }
+
+    private func showSettings() {
+        let viewModel: UserSettingsViewModel = try! container.resolve()
+        let viewController = UserSettingsViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(viewController, animated: true)
     }
 }

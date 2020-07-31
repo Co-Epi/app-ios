@@ -153,6 +153,13 @@
 "whatExposure.title" = "What are exposure alerts?";
 "whatExposure.html_body" = "<body><p><font color='black' face='-apple-system' size='5'><b>Exposure alerts</b> indicate that you have been in close proximity (e.g. within several feet) to someone with symptoms also using a compatible app. <br /><br /><b>How does CoEpi work?</b> <br /><br /> CoEpi generates exposure alerts if your device has flagged another tracing app user who may have been infectious during your contact. <br /><br /> Based on the symptom report in the exposure alert, you can: <br /><br /> <b>• Monitor</b> yourself for symptoms in the days following the potential exposure<br /><br /> <b>• Self-isolate</b> within your household to reduce the risk of transmitting to others <br /><br /> <b>• Talk with a healthcare provider</b> about your exposure</font</p><body>";
 
-
-
-
+"settings.title" = "Settings";
+"settings.header.alerts.title" = "Exposure alerts";
+"settings.header.alerts.descr" = "What information do you want to see on reported exposures around you?";
+"settings.item.all_reports" = "Show me all reports,\nincluding \"I don't have any symptoms\"";
+"settings.item.duration_longer_than_mins" = "Only show alerts >%d min\nof interaction";
+"settings.item.distance_shorter_than" = "Only notify me for\ninteractions that occured\n<%1$d %2$s away";
+"settings.item.distance_shorter_than_unit_feet" = "feet";
+"settings.item.privacy_statement" = "Privacy statement";
+"settings.item.report_problem" = "Report a problem";
+"settings.item.version" = "Version %@";

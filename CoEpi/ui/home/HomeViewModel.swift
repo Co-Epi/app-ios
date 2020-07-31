@@ -90,6 +90,10 @@ class HomeViewModel {
         rootNav.navigate(command: .to(destination: .alerts))
     }
 
+    func onSettingsTap() {
+        rootNav.navigate(command: .to(destination: .settings))
+    }
+
     func onClick(item: HomeItemViewData) {
         itemSelectTrigger.accept(item)
     }

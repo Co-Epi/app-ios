@@ -16,11 +16,10 @@ enum LinkedAlertViewDataConnectionImage {
 }
 
 extension LinkedAlertViewDataConnectionImage {
-
     static func from(alertIndex: Int, alertsCount: Int) -> LinkedAlertViewDataConnectionImage {
         switch alertIndex {
-        case _ where alertIndex == 0: return .top
-        case _ where alertIndex == alertsCount - 1: return .bottom
+        case 0: return .top
+        case alertsCount - 1: return .bottom
         default: return .body
         }
     }

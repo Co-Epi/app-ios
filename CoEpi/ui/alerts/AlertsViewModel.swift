@@ -128,7 +128,6 @@ private func hasLinkedAlerts(alert: Alert, alerts: [Alert]) -> Bool {
     alerts.contains { linkedAlertsPredicate(alert: alert)($0) }
 }
 
-
 private func linkedAlerts(alert: Alert, alerts: [Alert]) -> [Alert] {
     alerts
         .filter(linkedAlertsPredicate(alert: alert))

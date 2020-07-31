@@ -151,6 +151,11 @@
 		84A5C1E324897B9500B002E2 /* Alert+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1E224897B9500B002E2 /* Alert+Strings.swift */; };
 		84AA306824D1AA46002E5F57 /* RangeReplaceableCollection+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA306724D1AA46002E5F57 /* RangeReplaceableCollection+Convenience.swift */; };
 		84AC26D7247D3C6F00C93D29 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26D6247D3C6F00C93D29 /* FileSystem.swift */; };
+		84AE1FF224D409B4009CB57D /* ObservableKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE1FF124D409B4009CB57D /* ObservableKeyStore.swift */; };
+		84AE1FF524D41343009CB57D /* AlertFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE1FF424D41343009CB57D /* AlertFilters.swift */; };
+		84AE1FF724D43798009CB57D /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE1FF624D43798009CB57D /* UserSettingsViewController.swift */; };
+		84AE1FF924D437A5009CB57D /* UserSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE1FF824D437A5009CB57D /* UserSettingsViewModel.swift */; };
+		84AE1FFC24D45A2A009CB57D /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 84AE1FFB24D45A2A009CB57D /* Introspect */; };
 		84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9C245306E6001908E8 /* NotificationsDelegate.swift */; };
 		84B48A9F24530AAB001908E8 /* RootNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B48A9E24530AAA001908E8 /* RootNav.swift */; };
 		84B492182476E0B800FF69AD /* LibResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B492172476E0B800FF69AD /* LibResult.swift */; };
@@ -374,6 +379,10 @@
 		84A5C1E224897B9500B002E2 /* Alert+Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Strings.swift"; sourceTree = "<group>"; };
 		84AA306724D1AA46002E5F57 /* RangeReplaceableCollection+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection+Convenience.swift"; sourceTree = "<group>"; };
 		84AC26D6247D3C6F00C93D29 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
+		84AE1FF124D409B4009CB57D /* ObservableKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableKeyStore.swift; sourceTree = "<group>"; };
+		84AE1FF424D41343009CB57D /* AlertFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFilters.swift; sourceTree = "<group>"; };
+		84AE1FF624D43798009CB57D /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
+		84AE1FF824D437A5009CB57D /* UserSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewModel.swift; sourceTree = "<group>"; };
 		84B48A9C245306E6001908E8 /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
 		84B48A9E24530AAA001908E8 /* RootNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNav.swift; sourceTree = "<group>"; };
 		84B492172476E0B800FF69AD /* LibResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibResult.swift; sourceTree = "<group>"; };
@@ -444,6 +453,7 @@
 				84F93C012451D95300B5F54D /* TCNClient in Frameworks */,
 				84E76D75247044B6009C1D97 /* AppCenterDistribute.framework in Frameworks */,
 				843131532470A2B200DE475B /* CoEpiCore.framework in Frameworks */,
+				84AE1FFC24D45A2A009CB57D /* Introspect in Frameworks */,
 				30EF955B2432E009007D61C7 /* CryptoSwift in Frameworks */,
 				8486BDCD242B9AC900A63DD5 /* RxCocoa in Frameworks */,
 				84201694244C901C000EE281 /* Action in Frameworks */,
@@ -844,6 +854,7 @@
 				84A4B9B9242CE3AF00516F3B /* SymptomRepo.swift */,
 				CE626E112430F348000DB8E7 /* AlertRepo.swift */,
 				84A1C0D52437CBBF00875DAE /* RepoError.swift */,
+				84AE1FF424D41343009CB57D /* AlertFilters.swift */,
 			);
 			path = repo;
 			sourceTree = "<group>";
@@ -869,8 +880,18 @@
 				84201690244B21FF000EE281 /* UnixTime.swift */,
 				84B492212476F7E900FF69AD /* Alert.swift */,
 				84E10812247AD84E00D65E85 /* SymptomInputs.swift */,
+				84AE1FF124D409B4009CB57D /* ObservableKeyStore.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		84AE1FF324D41318009CB57D /* userSettings */ = {
+			isa = PBXGroup;
+			children = (
+				84AE1FF624D43798009CB57D /* UserSettingsViewController.swift */,
+				84AE1FF824D437A5009CB57D /* UserSettingsViewModel.swift */,
+			);
+			path = userSettings;
 			sourceTree = "<group>";
 		};
 		84B492162476E09600FF69AD /* native */ = {
@@ -968,6 +989,7 @@
 				84FA01432427F05500318104 /* home */,
 				84FA01422427F04E00318104 /* onboarding */,
 				CE626E072430A787000DB8E7 /* alerts */,
+				84AE1FF324D41318009CB57D /* userSettings */,
 				84BF972324280ABA001ADD6B /* RootWireframe.swift */,
 				848434652438E663006A5839 /* UINotification.swift */,
 				84B48A9E24530AAA001908E8 /* RootNav.swift */,
@@ -1116,6 +1138,7 @@
 				849D1AFB2439D7B300804511 /* RxSwiftExt */,
 				84201693244C901C000EE281 /* Action */,
 				84F93C002451D95300B5F54D /* TCNClient */,
+				84AE1FFB24D45A2A009CB57D /* Introspect */,
 			);
 			productName = CoEpi;
 			productReference = 849DFE622427D3750008ED65 /* CoEpi.app */;
@@ -1216,6 +1239,7 @@
 				849D1AFA2439D7B300804511 /* XCRemoteSwiftPackageReference "RxSwiftExt" */,
 				84201692244C901B000EE281 /* XCRemoteSwiftPackageReference "Action" */,
 				84F93BFF2451D95300B5F54D /* XCRemoteSwiftPackageReference "tcn-client-ios" */,
+				84AE1FFA24D45A2A009CB57D /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 849DFE632427D3750008ED65 /* Products */;
 			projectDirPath = "";
@@ -1351,11 +1375,13 @@
 				849D7B39248E8E8600C9DDBD /* LogsViewController.swift in Sources */,
 				84E2D482247EFF1F00D1E6BF /* SymptomReportCell.swift in Sources */,
 				622AC2E2245FD25900A6EB90 /* FeverWhereViewModel.swift in Sources */,
+				84AE1FF724D43798009CB57D /* UserSettingsViewController.swift in Sources */,
 				849D7B31248E6A2800C9DDBD /* CachingLog.swift in Sources */,
 				84F186E42481371500E7979B /* NumberFormatters.swift in Sources */,
 				845813DD247FE4470066A09F /* Collection+Convenience.swift in Sources */,
 				849D7B3E248EA0BB00C9DDBD /* DebugViewController.swift in Sources */,
 				848434622438C622006A5839 /* UIViewController+ErrorView.swift in Sources */,
+				84AE1FF224D409B4009CB57D /* ObservableKeyStore.swift in Sources */,
 				8486BDE0242BC8B600A63DD5 /* HomeViewModel.swift in Sources */,
 				84B4921A2476F54700FF69AD /* NativeCore.swift in Sources */,
 				62A334AF2476CEEA00CF4B25 /* SymptomStep.swift in Sources */,
@@ -1383,6 +1409,7 @@
 				8484346E2438F441006A5839 /* ApiParamsCenReport.swift in Sources */,
 				84A5C1DA2489728500B002E2 /* AlertDetailsViewController.swift in Sources */,
 				8485025924562353006C7C62 /* AlamofireLogger.swift in Sources */,
+				84AE1FF524D41343009CB57D /* AlertFilters.swift in Sources */,
 				84A4B9BA242CE3AF00516F3B /* SymptomRepo.swift in Sources */,
 				84B48A9D245306E6001908E8 /* NotificationsDelegate.swift in Sources */,
 				84E2D47F247EF5A900D1E6BF /* Result+Convenience.swift in Sources */,
@@ -1429,6 +1456,7 @@
 				CE6B7AB9243316B800C42280 /* CEN.swift in Sources */,
 				CE6B7AC3243326FD00C42280 /* CENKey.swift in Sources */,
 				622AC2D2245FC64F00A6EB90 /* CoughTypeViewController.swift in Sources */,
+				84AE1FF924D437A5009CB57D /* UserSettingsViewModel.swift in Sources */,
 				84D069642455A7600004E8B6 /* OperationState.swift in Sources */,
 				62A334A72476CE8500CF4B25 /* SymptomFlowManager.swift in Sources */,
 				84A1C0D42437C34400875DAE /* CenReport.swift in Sources */,
@@ -2030,6 +2058,14 @@
 				minimumVersion = 5.2.0;
 			};
 		};
+		84AE1FFA24D45A2A009CB57D /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		84F93BFF2451D95300B5F54D /* XCRemoteSwiftPackageReference "tcn-client-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TCNCoalition/tcn-client-ios";
@@ -2108,6 +2144,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 849D1AFA2439D7B300804511 /* XCRemoteSwiftPackageReference "RxSwiftExt" */;
 			productName = RxSwiftExt;
+		};
+		84AE1FFB24D45A2A009CB57D /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84AE1FFA24D45A2A009CB57D /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		84F93C002451D95300B5F54D /* TCNClient */ = {
 			isa = XCSwiftPackageProductDependency;

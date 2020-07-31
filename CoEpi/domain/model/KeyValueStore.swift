@@ -1,4 +1,5 @@
 import Foundation
+import RxSwift
 
 protocol KeyValueStore {
     func putBool(key: KVKey, value: Bool)
@@ -7,6 +8,9 @@ protocol KeyValueStore {
 
 enum KVKey: String {
     case seenOnboarding
+    case filterAlertsWithSymptoms
+    case filterAlertsWithLongDuration
+    case filterAlertsWithShortDistance
 }
 
 class KeyValueStoreImpl: KeyValueStore {

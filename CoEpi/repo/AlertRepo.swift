@@ -24,21 +24,26 @@ class AlertRepoImpl: AlertRepo {
     private let updateIsReadTrigger: PublishSubject<(alert: Alert, isRead: Bool)> =
         PublishSubject()
 
-    lazy var alertState: Observable<OperationState<[Alert]>> = alertsStateSubject
-        .asObservable()
-
-    lazy var alerts = alertState.compactMap { state -> [Alert]? in
-        switch state {
-        case .success(let data): return data
-        default: return nil
-        }
-    }
+    let alertState: Observable<OperationState<[Alert]>>
+    let alerts: Observable<[Alert]>
 
     private let disposeBag = DisposeBag()
 
-    init(alertsApi: AlertsApi, notificationShower: NotificationShower) {
+    init(alertsApi: AlertsApi, notificationShower: NotificationShower,
+         alertFilters: ObservableAlertFilters) {
         self.alertsApi = alertsApi
         self.notificationShower = notificationShower
+
+        alertState = alertsStateSubject.asObservable()
+        let alerts = alertState.compactMap { state -> [Alert]? in
+            switch state {
+            case .success(let data): return data
+            default: return nil
+            }
+        }
+        self.alerts = Observable.combineLatest(alerts, alertFilters.filters) { alerts, filters in
+            filters.apply(to: alerts)
+        }
 
         removeAlertTrigger.withLatestFrom(alerts, resultSelector: {(alert, alerts) in
             alerts.deleteFirst(element: alert)

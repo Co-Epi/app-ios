@@ -40,6 +40,10 @@ class HomeViewController: UIViewController {
         viewModel.debugTapped()
     }
 
+    @IBAction func onSettingsTap() {
+        viewModel.onSettingsTap()
+    }
+
     @objc func share(sender: UIView) {
         Sharer().share(viewController: self, sourceView: sender)
     }
