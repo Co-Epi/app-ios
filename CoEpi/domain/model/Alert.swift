@@ -3,7 +3,7 @@ import Foundation
 struct Alert: AutoEquatable {
     let id: String
     let reportId: String
-    
+
     let start: UnixTime
     let end: UnixTime
     let minDistance: Measurement<UnitLength>
@@ -25,11 +25,5 @@ struct Alert: AutoEquatable {
 
     var durationSeconds: Int {
         Int(end.value - start.value)
-    }
-
-    func changing(change: (inout Alert) -> Void) -> Alert {
-        var a = self
-        change(&a)
-        return a
     }
 }
