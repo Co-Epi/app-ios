@@ -47,6 +47,5 @@ class FeverTodayViewController: UIViewController {
 
         noButtonLabel.setTitle(L10n.Ux.no, for: .normal)
         yesButtonLabel.setTitle(L10n.Ux.yes, for: .normal)
-
      }
 }

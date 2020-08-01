@@ -18,13 +18,19 @@ extension UIView {
     func pinTopToParent() {
         guard let superview = requireSuperview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: superview.topAnchor, constant: 0).isActive = true
+        topAnchor.constraint(
+            equalTo: superview.safeAreaLayoutGuide.topAnchor,
+            constant: 0.0
+        ).isActive = true
     }
 
     func pinBottomToParent() {
         guard let superview = requireSuperview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0).isActive = true
+        bottomAnchor.constraint(
+            equalTo: superview.safeAreaLayoutGuide.bottomAnchor,
+            constant: 0.0
+        ).isActive = true
     }
 
     func pinAllEdgesToParent() {

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,45 +30,9 @@
                         <constraint firstAttribute="height" constant="130" id="jdq-xW-Dp5"/>
                     </constraints>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="254-kF-X3f">
-                    <rect key="frame" x="10" y="352" width="394" height="192"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgv-nK-1cg">
-                            <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="Rgv-nK-1cg" secondAttribute="height" multiplier="1:1" id="tv0-zK-SGy"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                            <state key="normal" backgroundImage="largeCircleButton">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <state key="highlighted" backgroundImage="largeCircleButton_Selected">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="yesButtonAction:" destination="-1" eventType="touchUpInside" id="OTS-ky-Ya4"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmj-hv-Hof">
-                            <rect key="frame" x="202" y="0.0" width="192" height="192"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="cmj-hv-Hof" secondAttribute="height" multiplier="1:1" id="xYv-pZ-RMz"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                            <state key="normal" backgroundImage="largeCircleButton">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <state key="highlighted" backgroundImage="largeCircleButton_Selected">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="noButtonAction:" destination="-1" eventType="touchUpInside" id="c5P-WX-5e1"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="771-7N-LM0">
-                    <rect key="frame" x="50" y="594" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="771-7N-LM0">
+                    <rect key="frame" x="50" y="489.5" width="30" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -76,36 +41,70 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbg-nd-3lC">
-                    <rect key="frame" x="20" y="74" width="374" height="29"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <rect key="frame" x="20" y="74" width="374" height="33.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgv-nK-1cg" customClass="RoundButton" customModule="CoEpi" customModuleProvider="target">
+                    <rect key="frame" x="26" y="274" width="165.5" height="165.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Rgv-nK-1cg" secondAttribute="height" multiplier="1:1" id="tv0-zK-SGy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="yesButtonAction:" destination="-1" eventType="touchUpInside" id="OTS-ky-Ya4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmj-hv-Hof" customClass="RoundButton" customModule="CoEpi" customModuleProvider="target">
+                    <rect key="frame" x="222.5" y="274" width="165.5" height="165.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="cmj-hv-Hof" secondAttribute="height" multiplier="1:1" id="xYv-pZ-RMz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="noButtonAction:" destination="-1" eventType="touchUpInside" id="c5P-WX-5e1"/>
+                    </connections>
+                </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="qJd-k4-NRR"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xbg-nd-3lC" firstAttribute="top" secondItem="qJd-k4-NRR" secondAttribute="top" constant="30" id="0Fe-pT-njI"/>
-                <constraint firstItem="qJd-k4-NRR" firstAttribute="trailing" secondItem="254-kF-X3f" secondAttribute="trailing" constant="10" id="B4n-Rj-e9t"/>
+                <constraint firstItem="cmj-hv-Hof" firstAttribute="top" secondItem="Rgv-nK-1cg" secondAttribute="top" id="5fZ-fP-v49"/>
+                <constraint firstItem="qJd-k4-NRR" firstAttribute="trailing" secondItem="cmj-hv-Hof" secondAttribute="trailing" constant="26" id="6eb-Cx-7gG"/>
+                <constraint firstItem="771-7N-LM0" firstAttribute="top" secondItem="Rgv-nK-1cg" secondAttribute="bottom" constant="50" id="ANO-jJ-elF"/>
+                <constraint firstItem="cmj-hv-Hof" firstAttribute="bottom" secondItem="Rgv-nK-1cg" secondAttribute="bottom" id="B1a-Ex-2iS"/>
+                <constraint firstItem="Rgv-nK-1cg" firstAttribute="width" secondItem="fqk-7Y-tsn" secondAttribute="width" multiplier="0.4" id="Hqw-8D-OA4"/>
                 <constraint firstItem="nUQ-XD-nKz" firstAttribute="top" secondItem="qJd-k4-NRR" secondAttribute="top" id="Qc3-W0-cbL"/>
                 <constraint firstItem="nUQ-XD-nKz" firstAttribute="leading" secondItem="qJd-k4-NRR" secondAttribute="leading" id="Tgr-Qu-B3i"/>
                 <constraint firstItem="qJd-k4-NRR" firstAttribute="trailing" secondItem="nUQ-XD-nKz" secondAttribute="trailing" id="Vh7-u8-Fmx"/>
                 <constraint firstItem="771-7N-LM0" firstAttribute="leading" secondItem="qJd-k4-NRR" secondAttribute="leading" constant="50" id="bgb-6z-Boi"/>
                 <constraint firstItem="xbg-nd-3lC" firstAttribute="leading" secondItem="qJd-k4-NRR" secondAttribute="leading" constant="20" id="gbM-ZY-2FG"/>
-                <constraint firstItem="254-kF-X3f" firstAttribute="leading" secondItem="qJd-k4-NRR" secondAttribute="leading" constant="10" id="iCF-Z9-0fS"/>
-                <constraint firstItem="771-7N-LM0" firstAttribute="top" secondItem="254-kF-X3f" secondAttribute="bottom" constant="50" id="nWS-eW-hBT"/>
                 <constraint firstItem="qJd-k4-NRR" firstAttribute="trailing" secondItem="xbg-nd-3lC" secondAttribute="trailing" constant="20" id="oYR-yD-2TL"/>
-                <constraint firstItem="254-kF-X3f" firstAttribute="centerY" secondItem="fqk-7Y-tsn" secondAttribute="centerY" id="rMV-oK-rrF"/>
-                <constraint firstItem="254-kF-X3f" firstAttribute="centerX" secondItem="fqk-7Y-tsn" secondAttribute="centerX" id="w6t-Qc-8Bt"/>
+                <constraint firstItem="cmj-hv-Hof" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rgv-nK-1cg" secondAttribute="trailing" constant="10" id="v7d-mQ-tGk"/>
+                <constraint firstItem="Rgv-nK-1cg" firstAttribute="leading" secondItem="qJd-k4-NRR" secondAttribute="leading" constant="26" id="vFi-nu-mrg"/>
+                <constraint firstItem="Rgv-nK-1cg" firstAttribute="top" secondItem="nUQ-XD-nKz" secondAttribute="bottom" constant="100" id="vgG-dS-RAM"/>
+                <constraint firstItem="cmj-hv-Hof" firstAttribute="width" secondItem="Rgv-nK-1cg" secondAttribute="width" id="vlS-kO-rBf"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="qJd-k4-NRR"/>
             <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>
         </view>
     </objects>
     <resources>
-        <image name="largeCircleButton" width="159" height="159"/>
-        <image name="largeCircleButton_Selected" width="159" height="159"/>
         <namedColor name="CoEpiPurple">
-            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.32199999690055847" green="0.28999999165534973" blue="0.56099998950958252" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

@@ -25,7 +25,6 @@
 		622AC2C0245F65FB00A6EB90 /* ThankYouViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC2BF245F65FB00A6EB90 /* ThankYouViewModel.swift */; };
 		622AC2C6245FBE5900A6EB90 /* BreathlessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC2C5245FBE5900A6EB90 /* BreathlessViewController.swift */; };
 		622AC2C8245FBE7400A6EB90 /* BreathlessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC2C7245FBE7400A6EB90 /* BreathlessViewModel.swift */; };
-		622AC2CA245FBE8500A6EB90 /* BreathlessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622AC2C9245FBE8500A6EB90 /* BreathlessViewController.xib */; };
 		622AC2CC245FC5E000A6EB90 /* CoughTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622AC2CB245FC5E000A6EB90 /* CoughTypeViewController.xib */; };
 		622AC2CE245FC5EF00A6EB90 /* CoughDaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622AC2CD245FC5EF00A6EB90 /* CoughDaysViewController.xib */; };
 		622AC2D0245FC5FC00A6EB90 /* CoughHowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622AC2CF245FC5FC00A6EB90 /* CoughHowViewController.xib */; };
@@ -172,6 +171,7 @@
 		84D069642455A7600004E8B6 /* OperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D069632455A7600004E8B6 /* OperationState.swift */; };
 		84D069672455E6E40004E8B6 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D069662455E6E40004E8B6 /* DateFormatters.swift */; };
 		84D069692455E7C10004E8B6 /* AlertViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D069682455E7C10004E8B6 /* AlertViewData.swift */; };
+		84D7EF0524D5A24700ABDFE4 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7EF0424D5A24700ABDFE4 /* RoundButton.swift */; };
 		84DE6A24243F99A200CCF4A6 /* AlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */; };
 		84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE6A27243F9AA800CCF4A6 /* AlertView.xib */; };
 		84E10813247AD84E00D65E85 /* SymptomInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E10812247AD84E00D65E85 /* SymptomInputs.swift */; };
@@ -258,7 +258,6 @@
 		622AC2BF245F65FB00A6EB90 /* ThankYouViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThankYouViewModel.swift; path = CoEpi/ui/thankYou/ThankYouViewModel.swift; sourceTree = "<group>"; };
 		622AC2C5245FBE5900A6EB90 /* BreathlessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathlessViewController.swift; sourceTree = "<group>"; };
 		622AC2C7245FBE7400A6EB90 /* BreathlessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathlessViewModel.swift; sourceTree = "<group>"; };
-		622AC2C9245FBE8500A6EB90 /* BreathlessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreathlessViewController.xib; sourceTree = "<group>"; };
 		622AC2CB245FC5E000A6EB90 /* CoughTypeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoughTypeViewController.xib; sourceTree = "<group>"; };
 		622AC2CD245FC5EF00A6EB90 /* CoughDaysViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoughDaysViewController.xib; sourceTree = "<group>"; };
 		622AC2CF245FC5FC00A6EB90 /* CoughHowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoughHowViewController.xib; sourceTree = "<group>"; };
@@ -399,6 +398,7 @@
 		84D069632455A7600004E8B6 /* OperationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationState.swift; sourceTree = "<group>"; };
 		84D069662455E6E40004E8B6 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		84D069682455E7C10004E8B6 /* AlertViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewData.swift; sourceTree = "<group>"; };
+		84D7EF0424D5A24700ABDFE4 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		84DE6A23243F99A200CCF4A6 /* AlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
 		84DE6A27243F9AA800CCF4A6 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		84E10812247AD84E00D65E85 /* SymptomInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomInputs.swift; sourceTree = "<group>"; };
@@ -588,7 +588,6 @@
 			children = (
 				622AC2C5245FBE5900A6EB90 /* BreathlessViewController.swift */,
 				622AC2C7245FBE7400A6EB90 /* BreathlessViewModel.swift */,
-				622AC2C9245FBE8500A6EB90 /* BreathlessViewController.xib */,
 			);
 			path = Breathless;
 			sourceTree = "<group>";
@@ -995,6 +994,7 @@
 				84BF972324280ABA001ADD6B /* RootWireframe.swift */,
 				848434652438E663006A5839 /* UINotification.swift */,
 				84B48A9E24530AAA001908E8 /* RootNav.swift */,
+				84D7EF0424D5A24700ABDFE4 /* RoundButton.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -1305,7 +1305,6 @@
 				849D7B3F248EA0BB00C9DDBD /* DebugViewController.xib in Resources */,
 				84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */,
 				622AC2D0245FC5FC00A6EB90 /* CoughHowViewController.xib in Resources */,
-				622AC2CA245FBE8500A6EB90 /* BreathlessViewController.xib in Resources */,
 				8486BDDA242BBCE700A63DD5 /* DebugBleViewController.xib in Resources */,
 				622AC2BC245CBD5F00A6EB90 /* ThankYouViewController.xib in Resources */,
 			);
@@ -1451,6 +1450,7 @@
 				84F93BFB2451C4D700B5F54D /* AppBadgeUpdater.swift in Sources */,
 				849F50CD243E08B6008EC9E8 /* String+Convenience.swift in Sources */,
 				849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */,
+				84D7EF0524D5A24700ABDFE4 /* RoundButton.swift in Sources */,
 				84201691244B21FF000EE281 /* UnixTime.swift in Sources */,
 				849D28F92444300B0034EC4C /* Observable+Convenience.swift in Sources */,
 				622AC2D8245FC67C00A6EB90 /* CoughTypeViewModel.swift in Sources */,

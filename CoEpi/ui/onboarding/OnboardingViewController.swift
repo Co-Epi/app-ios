@@ -170,3 +170,21 @@ class OnboardingViewController: UIViewController {
 }
 
 private extension OnboardingViewController {}
+
+class StepperView: UIButton {
+    override var isSelected: Bool {
+        didSet {
+            layer.backgroundColor = isSelected ?
+                UIColor.coEpiPurple.cgColor : UIColor(hex: "d6d6d6").cgColor
+        }
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = bounds.width / 2
+    }
+}

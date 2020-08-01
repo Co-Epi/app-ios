@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,6 +25,16 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cj-d5-tAQ" customClass="RoundButton" customModule="CoEpi" customModuleProvider="target">
+                    <rect key="frame" x="26" y="471.5" width="165.5" height="165.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="armpitButtonAction:" destination="-1" eventType="touchUpInside" id="dRl-Ac-m5u"/>
+                    </connections>
+                </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ol-aO-EcB">
                     <rect key="frame" x="0.0" y="44" width="414" height="130"/>
                     <color key="backgroundColor" name="CoEpiPurple"/>
@@ -31,67 +42,8 @@
                         <constraint firstAttribute="height" constant="130" id="eoh-8k-xn6"/>
                     </constraints>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4S4-cy-maM">
-                    <rect key="frame" x="68" y="404" width="278" height="278"/>
-                    <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bAq-h3-rX1">
-                            <rect key="frame" x="0.0" y="0.0" width="278" height="134"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCv-EJ-6PA">
-                                    <rect key="frame" x="0.0" y="0.0" width="134" height="134"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                    <state key="normal" backgroundImage="smallCircleButton">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <state key="highlighted" backgroundImage="smallCircleButton_Selected"/>
-                                    <connections>
-                                        <action selector="mouthButtonAction:" destination="-1" eventType="touchUpInside" id="5ix-tW-zvz"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3j-aY-bbE">
-                                    <rect key="frame" x="144" y="0.0" width="134" height="134"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                    <state key="normal" backgroundImage="smallCircleButton">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <state key="highlighted" backgroundImage="smallCircleButton_Selected"/>
-                                    <connections>
-                                        <action selector="earButtonAction:" destination="-1" eventType="touchUpInside" id="GON-Xf-BKE"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ysv-Xa-xtm">
-                            <rect key="frame" x="0.0" y="144" width="278" height="134"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cj-d5-tAQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="134" height="134"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                    <state key="normal" backgroundImage="smallCircleButton">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <state key="highlighted" backgroundImage="smallCircleButton_Selected"/>
-                                    <connections>
-                                        <action selector="armpitButtonAction:" destination="-1" eventType="touchUpInside" id="dRl-Ac-m5u"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKa-nE-5Ko">
-                                    <rect key="frame" x="144" y="0.0" width="134" height="134"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                    <state key="normal" backgroundImage="smallCircleButton">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <state key="highlighted" backgroundImage="smallCircleButton_Selected"/>
-                                    <connections>
-                                        <action selector="otherButtonAction:" destination="-1" eventType="touchUpInside" id="J0U-Cb-H3g"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
-                    </subviews>
-                </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08N-4L-XSL">
-                    <rect key="frame" x="50" y="732" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08N-4L-XSL">
+                    <rect key="frame" x="50" y="687" width="30" height="30"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -100,36 +52,80 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmR-mL-KlN">
-                    <rect key="frame" x="20" y="74" width="374" height="29"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <rect key="frame" x="20" y="74" width="374" height="33.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3j-aY-bbE" customClass="RoundButton" customModule="CoEpi" customModuleProvider="target">
+                    <rect key="frame" x="222.5" y="274" width="165.5" height="165.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="earButtonAction:" destination="-1" eventType="touchUpInside" id="GON-Xf-BKE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCv-EJ-6PA" customClass="RoundButton" customModule="CoEpi" customModuleProvider="target">
+                    <rect key="frame" x="26" y="274" width="165.5" height="165.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="HCv-EJ-6PA" secondAttribute="height" multiplier="1:1" id="KLd-fQ-1eY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="mouthButtonAction:" destination="-1" eventType="touchUpInside" id="5ix-tW-zvz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKa-nE-5Ko" customClass="RoundButton" customModule="CoEpi" customModuleProvider="target">
+                    <rect key="frame" x="222.5" y="471.5" width="165.5" height="165.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="otherButtonAction:" destination="-1" eventType="touchUpInside" id="J0U-Cb-H3g"/>
+                    </connections>
+                </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="08N-4L-XSL" secondAttribute="bottom" constant="100" id="99J-ty-22Z"/>
-                <constraint firstItem="08N-4L-XSL" firstAttribute="top" secondItem="4S4-cy-maM" secondAttribute="bottom" constant="50" id="C3N-MU-c7F"/>
+                <constraint firstItem="VKa-nE-5Ko" firstAttribute="top" secondItem="0Cj-d5-tAQ" secondAttribute="top" id="0BH-xi-x8S"/>
+                <constraint firstItem="08N-4L-XSL" firstAttribute="top" secondItem="0Cj-d5-tAQ" secondAttribute="bottom" constant="50" id="5mf-cw-6QS"/>
+                <constraint firstItem="HCv-EJ-6PA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="26" id="6FK-YN-iwF"/>
+                <constraint firstItem="0Cj-d5-tAQ" firstAttribute="leading" secondItem="HCv-EJ-6PA" secondAttribute="leading" id="9UU-pO-Z8p"/>
+                <constraint firstItem="0Cj-d5-tAQ" firstAttribute="height" secondItem="HCv-EJ-6PA" secondAttribute="height" id="Cmf-rg-xOa"/>
+                <constraint firstItem="Z3j-aY-bbE" firstAttribute="top" secondItem="HCv-EJ-6PA" secondAttribute="top" id="FSw-Rj-tjf"/>
+                <constraint firstItem="Z3j-aY-bbE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HCv-EJ-6PA" secondAttribute="trailing" constant="10" id="FgQ-lI-e1V"/>
                 <constraint firstItem="08N-4L-XSL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="Hdj-ry-c2F"/>
                 <constraint firstItem="TmR-mL-KlN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="JSv-r8-4Mi"/>
+                <constraint firstItem="HCv-EJ-6PA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="K5s-53-QTo"/>
+                <constraint firstItem="0Cj-d5-tAQ" firstAttribute="top" secondItem="HCv-EJ-6PA" secondAttribute="bottom" constant="32" id="L2b-au-dMU"/>
                 <constraint firstItem="9ol-aO-EcB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Nuv-G5-886"/>
+                <constraint firstItem="Z3j-aY-bbE" firstAttribute="height" secondItem="HCv-EJ-6PA" secondAttribute="height" id="SNj-Et-UUe"/>
                 <constraint firstItem="08N-4L-XSL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="VZp-jk-99N"/>
                 <constraint firstItem="9ol-aO-EcB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ang-uy-FLG"/>
-                <constraint firstItem="4S4-cy-maM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="caf-X4-esK"/>
+                <constraint firstItem="VKa-nE-5Ko" firstAttribute="leading" secondItem="Z3j-aY-bbE" secondAttribute="leading" id="fKT-iG-Iz7"/>
                 <constraint firstItem="TmR-mL-KlN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="g9a-MR-AqY"/>
+                <constraint firstItem="Z3j-aY-bbE" firstAttribute="width" secondItem="HCv-EJ-6PA" secondAttribute="width" id="hqN-03-HCe"/>
+                <constraint firstItem="VKa-nE-5Ko" firstAttribute="trailing" secondItem="Z3j-aY-bbE" secondAttribute="trailing" id="k6M-um-TFs"/>
+                <constraint firstItem="HCv-EJ-6PA" firstAttribute="top" secondItem="9ol-aO-EcB" secondAttribute="bottom" constant="100" id="l6x-TY-oOx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TmR-mL-KlN" secondAttribute="trailing" constant="20" id="mcJ-E9-tSg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Z3j-aY-bbE" secondAttribute="trailing" constant="26" id="pF5-pW-gvy"/>
                 <constraint firstItem="9ol-aO-EcB" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ppI-Zx-tFr"/>
-                <constraint firstItem="08N-4L-XSL" firstAttribute="top" secondItem="4S4-cy-maM" secondAttribute="bottom" constant="50" id="xna-Ot-aR2"/>
+                <constraint firstItem="VKa-nE-5Ko" firstAttribute="bottom" secondItem="0Cj-d5-tAQ" secondAttribute="bottom" id="rie-Zj-3uP"/>
+                <constraint firstItem="0Cj-d5-tAQ" firstAttribute="trailing" secondItem="HCv-EJ-6PA" secondAttribute="trailing" id="uUI-2Q-O5L"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="92"/>
         </view>
     </objects>
     <resources>
-        <image name="smallCircleButton" width="134" height="134"/>
-        <image name="smallCircleButton_Selected" width="134" height="134"/>
         <namedColor name="CoEpiPurple">
-            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.32199999690055847" green="0.28999999165534973" blue="0.56099998950958252" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

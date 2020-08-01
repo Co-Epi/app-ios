@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,39 +14,47 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_purple" translatesAutoresizingMaskIntoConstraints="NO" id="fWF-iZ-XHk">
-                                <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coepi_family" translatesAutoresizingMaskIntoConstraints="NO" id="Irt-Qq-2mX">
-                                <rect key="frame" x="368" y="521" width="98" height="152"/>
+                                <rect key="frame" x="158" y="398" width="98" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="152" id="QUo-0U-PaC"/>
+                                    <constraint firstAttribute="height" constant="100" id="QUo-0U-PaC"/>
                                     <constraint firstAttribute="width" constant="98" id="gXM-zx-Cuo"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2020 CoEpi. See MIT License." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Q9x-95-YRB">
-                                <rect key="frame" x="20" y="1136" width="794" height="18"/>
+                                <rect key="frame" x="20" y="824" width="374" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CoEpi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejf-gj-pzK">
+                                <rect key="frame" x="175.5" y="504" width="63.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" name="CoEpiPurple"/>
                         <constraints>
                             <constraint firstItem="fWF-iZ-XHk" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="23q-ll-Os1"/>
                             <constraint firstAttribute="trailing" secondItem="fWF-iZ-XHk" secondAttribute="trailing" id="79c-Va-N7g"/>
+                            <constraint firstItem="ejf-gj-pzK" firstAttribute="centerX" secondItem="Irt-Qq-2mX" secondAttribute="centerX" id="JfM-cN-TPv"/>
                             <constraint firstAttribute="bottom" secondItem="fWF-iZ-XHk" secondAttribute="bottom" id="KDq-hv-dVM"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="Q9x-95-YRB" secondAttribute="bottom" constant="20" id="QV1-Iq-HEY"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Q9x-95-YRB" secondAttribute="trailing" constant="20" id="YFx-0W-Tab"/>
                             <constraint firstItem="Irt-Qq-2mX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZcN-eT-edw"/>
+                            <constraint firstItem="ejf-gj-pzK" firstAttribute="top" secondItem="Irt-Qq-2mX" secondAttribute="bottom" constant="6" id="bZb-Mf-y6M"/>
                             <constraint firstItem="Q9x-95-YRB" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" id="bpo-2q-1wf"/>
                             <constraint firstItem="fWF-iZ-XHk" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dW4-wm-ayt"/>
                             <constraint firstItem="Irt-Qq-2mX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pJJ-y1-n7c"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -55,9 +64,9 @@
     </scenes>
     <resources>
         <image name="Background_purple" width="375" height="667"/>
-        <image name="coepi_family" width="49" height="76"/>
+        <image name="coepi_family" width="49" height="49"/>
         <namedColor name="CoEpiPurple">
-            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.32199999690055847" green="0.28999999165534973" blue="0.56099998950958252" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

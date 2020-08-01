@@ -71,36 +71,36 @@
 "UX.symptomReport.nose" = "Runny nose";
 "UX.symptomReport.other" = "Other";
 
-    //thankyou
 "UX.thankyou.heading" = "Thank you";
-"UX.thankyou.title" = "Thank you for logging your symptoms! We will alert if you have any relevant exposures to review.";
+"thankyou.title" = "Thank you for logging your symptoms!";
+"thankyou.subtitle" = "We will alert if you have any new exposures.";
 "UX.thankyou.more" = "Log more symptoms";
-"UX.thankyou.viewExposures" = "View exposures";
+"UX.thankyou.viewExposures" = "View exposure alerts";
 "UX.thankyou.home" = "Return to home screen";
 
     // breathless
 "UX.breathless.heading" = "Follow up: Shortness of breath";
 "UX.breathless.title" = "I feel short of breath when:";
 "UX.breathless.subtitle" = "Select one option";
-"UX.breathless.p0" = "I am too short of breath to leave the house or I am short of breath when dressing";
-"UX.breathless.p1" = "I stop for breath after walking about 100 yards or after a few minutes on level ground";
-"UX.breathless.p2" = "On level ground, I have to stop for breath when walking at my own pace";
-"UX.breathless.p3" = "I get short of breath when hurrying on level ground or walking up a slight hill";
-"UX.breathless.p4" = "I only get short of breath with strenuous exercise";
+"UX.breathless.p0" = "getting dressed to leave the house";
+"UX.breathless.p1" = "after walking 100 yards";
+"UX.breathless.p2" = "after walking for a few minutes on level ground at my own pace";
+"UX.breathless.p3" = "walking fast on level ground or going up a slight hill";
+"UX.breathless.p4" = "only during strenuous exercise";
 
     //cough
 "UX.cough.heading" = "Follow up: Cough";
 "UX.cough.title1" = "I would describe my cough as:";
 "UX.cough.title2" = "How many days have you been coughing?";
-"UX.cough.title3" = "Today my cough has:";
+"UX.cough.title3" = "Today my cough feels:";
 "UX.cough.subtitle3" = "Select one option";
 "UX.cough.titleWet" = "Wet";
-"UX.cough.subtitleWet" = "\nIt feels like there is mucus \nin my throat and/or chest";
+"UX.cough.subtitleWet" = "It feels like there is mucus in my throat and/or chest";
 "UX.cough.titleDry" = "Dry";
-"UX.cough.subtitleDry" = "\nMy throat feels 'tickly' or \n'scratchy' without mucus";
-"UX.cough.better" = "Felt worse and better throughout the day";
-"UX.cough.worse" = "Felt worse when I am outside";
-"UX.cough.same" = "Stayed the same or felt steadily worse";
+"UX.cough.subtitleDry" = "My throat feels 'tickly' or 'scratchy' without mucus";
+"UX.cough.better" = "Better";
+"UX.cough.worse" = "Worse";
+"UX.cough.same" = "Same";
 
     //fever
 "UX.fever.heading" = "Follow up: Fever";
@@ -132,10 +132,10 @@
 
     //homescreen
 "UX.home.title" = "CoEpi";
-"UX.home.report1" = "Symptom Reporting";
-"UX.home.report2" = "Share how you are feeling";
+"UX.home.report1" = "My Symptoms";
+"UX.home.report2" = "Report and track any\nsymptoms you have.";
 "UX.home.alerts1" = "Exposure Alerts";
-"UX.home.alerts2" = "Review your potential exposures";
+"UX.home.alerts2" = "Find out if you’ve interacted with someone who has symptoms.";
 "UX.home.detected" = "new exposures detected";
 "UX.home.how" = "How is my data being used?";
 "UX.home.share" = "Share";

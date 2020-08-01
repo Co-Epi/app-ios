@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftUI
 
 class BreathlessViewController: UIViewController {
     private let viewModel: BreathlessViewModel
@@ -12,8 +13,6 @@ class BreathlessViewController: UIViewController {
 
     @IBOutlet weak var skipButtonLabel: UIButton!
 
-    private var dataSource = BreathlessDataSource()
-
     @IBAction func skipButtonAction(_ sender: Any) {
         viewModel.onSkipTap()
     }
@@ -22,7 +21,7 @@ class BreathlessViewController: UIViewController {
 
     init(viewModel: BreathlessViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: String(describing: Self.self), bundle: nil)
+        super.init(nibName: nil, bundle: nil)
         title = viewModel.title
     }
 
@@ -39,66 +38,80 @@ class BreathlessViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
+        setRootSwiftUIView(view: BreathlessView(viewModel: viewModel))
+    }
 
-        titleLabel.text = L10n.Ux.Breathless.title
-        subtitleLabel.text = L10n.Ux.Breathless.subtitle
-        skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
-
-        tableView.register(cellClass: UITableViewCell.self)
-        tableView.tableFooterView = UIView()
-        tableView.rowHeight = 70.0
-
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-
-        viewModel.viewData
-            .drive(tableView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-
-        tableView.rx.itemSelected
-            .subscribe(onNext: { [viewModel, dataSource] indexPath in
-                viewModel.onCauseSelected(viewData: dataSource.viewData[indexPath.row])
-            })
-            .disposed(by: disposeBag)
-     }
+    func setFoo(hostView: UIView) {
+        hostView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(hostView)
+        hostView.pinAllEdgesToParent()
+    }
 }
 
-private class BreathlessDataSource: NSObject, RxTableViewDataSourceType {
-    private(set) var viewData: [BreathlessItemViewData] = []
+struct BreathlessView: View {
+    @ObservedObject var viewModel: BreathlessViewModel
 
-    func tableView(
-        _ tableView: UITableView,
-        observedEvent: RxSwift.Event<[BreathlessItemViewData]>) {
-        if case let .next(viewData) = observedEvent {
-            self.viewData = viewData
-            tableView.reloadData()
+    init(viewModel: BreathlessViewModel) {
+        self.viewModel = viewModel
+    }
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                header()
+                VStack(alignment: .leading, spacing: 20) {
+                    ForEach(viewModel.viewData, id: \.cause) { item in
+                        itemRow(item: item)
+                    }
+                    .padding(.top, 30)
+                    .padding(.leading, 30).padding(.trailing, 30)
+
+                    Button(action: {
+                        viewModel.onSkipTap()
+                    }, label: {
+                        Text(L10n.Ux.skip)
+                            .font(.system(size: 13))
+                            .foregroundColor(Color.black)
+                    })
+                    .padding(.top, 30).padding(.leading, 30).padding(.trailing, 30)
+                    Spacer()
+                }
+                Spacer()
+            }
+            .padding(.top, 0)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         }
     }
-}
 
-extension BreathlessDataSource: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewData.count
+    private func header() -> some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text(L10n.Ux.Breathless.title)
+                .font(.system(size: 28))
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+            Text(L10n.Ux.Breathless.subtitle)
+                .font(.system(size: 13))
+                .foregroundColor(.white)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100,
+               maxHeight: 100, alignment: .topLeading)
+        .padding(.top, 20).padding(.leading, 20).padding(.trailing, 20)
+        .background(Color(UIColor.coEpiPurple))
     }
 
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeue(
-            cellClass: UITableViewCell.self,
-            forIndexPath: indexPath)
-
-        let viewData = self.viewData[indexPath.row]
-
-        cell.textLabel?.text = viewData.text
-        cell.textLabel?.font = .systemFont(ofSize: 14)
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = .byWordWrapping
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
-        cell.imageView?.image = UIImage(named: viewData.imageName)
-
-        return cell
+    private func itemRow(item: BreathlessItemViewData) -> some View {
+        HStack(spacing: 16) {
+            Image(item.imageName)
+                .frame(minWidth: 40, maxWidth: 40, minHeight: 40, maxHeight: 40)
+                .overlay(RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(UIColor.coEpiPurpleHighlighted), lineWidth: 1))
+            Text(item.text)
+                .font(.system(size: 17))
+                .fontWeight(.semibold)
+        }
+        .onTapGesture {
+            viewModel.onCauseSelected(viewData: item)
+        }
     }
 }

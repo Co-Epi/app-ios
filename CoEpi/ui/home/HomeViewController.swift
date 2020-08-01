@@ -6,22 +6,10 @@ import RxCocoa
 class HomeViewController: UIViewController {
     private let viewModel: HomeViewModel
 
-    @IBOutlet weak var howDataUsedLabel: UIButton!
-
     @IBOutlet weak var tableView: UITableView!
     private var dataSource = HomeItemsDataSource()
 
     private let disposeBag = DisposeBag()
-
-    @IBAction func howDataUsedButton(_ sender: Any) {
-        if let url = URL(string: "https://www.coepi.org/privacy/") {
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = false
-
-            let vc = SFSafariViewController(url: url, configuration: config)
-            present(vc, animated: true)
-        }
-    }
 
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var buildLabel: UILabel!
@@ -52,8 +40,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background_purple"))
-
-        howDataUsedLabel.setTitle(L10n.Ux.Home.how, for: .normal)
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200

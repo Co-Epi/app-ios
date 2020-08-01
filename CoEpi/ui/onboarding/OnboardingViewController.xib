@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,7 +31,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="family icon" translatesAutoresizingMaskIntoConstraints="NO" id="5n3-jR-46C">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coepi_family" translatesAutoresizingMaskIntoConstraints="NO" id="5n3-jR-46C">
                     <rect key="frame" x="177" y="64" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5n3-jR-46C" secondAttribute="height" multiplier="1:1" id="12r-20-T5u"/>
@@ -40,7 +41,7 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqJ-EG-pXH">
                     <rect key="frame" x="0.0" y="562" width="414" height="384"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="384" id="XkV-1U-CRc"/>
                     </constraints>
@@ -48,13 +49,13 @@
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AIZ-9R-DYg">
                     <rect key="frame" x="20" y="812" width="128" height="20"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-7d-msc">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-7d-msc" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="ACX-G8-wD8"/>
                                 <constraint firstAttribute="height" constant="20" id="wbL-XM-d5a"/>
                             </constraints>
-                            <state key="normal" backgroundImage="stepper">
+                            <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -64,13 +65,13 @@
                                 <action selector="state1ButtonAction:" destination="-1" eventType="touchUpInside" id="z8S-ow-MrX"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqk-5B-EK5">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqk-5B-EK5" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
                             <rect key="frame" x="36" y="0.0" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="qr5-Gv-P9r"/>
                                 <constraint firstAttribute="width" constant="20" id="zmi-Y9-vzB"/>
                             </constraints>
-                            <state key="normal" backgroundImage="stepper">
+                            <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <state key="selected" backgroundImage="stepperSelected"/>
@@ -79,13 +80,13 @@
                                 <action selector="state2ButtonAction:" destination="-1" eventType="touchUpInside" id="ENE-HD-xd2"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyO-Nr-xEd">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyO-Nr-xEd" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
                             <rect key="frame" x="72" y="0.0" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="QrB-2g-5i3"/>
                                 <constraint firstAttribute="height" constant="20" id="kv5-LP-i9G"/>
                             </constraints>
-                            <state key="normal" backgroundImage="stepper">
+                            <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <state key="selected" backgroundImage="stepperSelected"/>
@@ -94,13 +95,13 @@
                                 <action selector="state3ButtonAction:" destination="-1" eventType="touchUpInside" id="jZc-z9-PYB"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-8x-4h7">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-8x-4h7" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
                             <rect key="frame" x="108" y="0.0" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="HWM-or-sMl"/>
                                 <constraint firstAttribute="width" constant="20" id="KWo-ua-Jqc"/>
                             </constraints>
-                            <state key="normal" backgroundImage="stepper">
+                            <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <state key="selected" backgroundImage="stepperSelected"/>
@@ -111,7 +112,7 @@
                         </button>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJU-0a-YmX">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJU-0a-YmX">
                     <rect key="frame" x="288" y="809" width="106" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="106" id="nNw-Z9-SCh"/>
@@ -125,7 +126,7 @@
                         <action selector="nextButtonAction:" destination="-1" eventType="touchUpInside" id="1Sv-HY-D9B"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mE0-zO-cXq">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mE0-zO-cXq">
                     <rect key="frame" x="20" y="766" width="35" height="26"/>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
                     <state key="normal" title="Button">
@@ -150,7 +151,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-TU-JXw">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-TU-JXw">
                             <rect key="frame" x="0.0" y="113" width="374" height="30"/>
                             <state key="normal" title="Button">
                                 <color key="titleColor" name="CoEpiPurple"/>
@@ -159,7 +160,7 @@
                                 <action selector="joinButtonAction:" destination="-1" eventType="touchUpInside" id="Yg3-VK-9xM"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qA-FX-jYw">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qA-FX-jYw">
                             <rect key="frame" x="0.0" y="173" width="374" height="30"/>
                             <state key="normal" title="Button">
                                 <color key="titleColor" name="CoEpiPurple"/>
@@ -171,6 +172,7 @@
                     </subviews>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="Z0t-UF-4jK"/>
             <color key="backgroundColor" name="CoEpiPurple"/>
             <constraints>
                 <constraint firstItem="Z0t-UF-4jK" firstAttribute="bottom" secondItem="ZJU-0a-YmX" secondAttribute="bottom" constant="27" id="0w2-ai-Zel"/>
@@ -188,16 +190,17 @@
                 <constraint firstItem="xnb-Z9-ga8" firstAttribute="leading" secondItem="Z0t-UF-4jK" secondAttribute="leading" constant="20" id="vQd-0G-Dkj"/>
                 <constraint firstItem="5n3-jR-46C" firstAttribute="top" secondItem="Z0t-UF-4jK" secondAttribute="top" constant="20" id="vTX-Na-5Yi"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Z0t-UF-4jK"/>
             <point key="canvasLocation" x="127.53623188405798" y="786.16071428571422"/>
         </view>
     </objects>
     <resources>
-        <image name="family icon" width="400" height="400"/>
-        <image name="stepper" width="20" height="20"/>
+        <image name="coepi_family" width="49" height="49"/>
         <image name="stepperSelected" width="20" height="20"/>
         <namedColor name="CoEpiPurple">
-            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.32199999690055847" green="0.28999999165534973" blue="0.56099998950958252" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

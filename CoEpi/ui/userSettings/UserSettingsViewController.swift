@@ -42,18 +42,16 @@ struct UserSettingsView: View {
     }
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(viewModel.settingsViewData) { setting in
-                    view(setting: setting.data)
-                }
+        List {
+            ForEach(viewModel.settingsViewData) { setting in
+                view(setting: setting.data)
             }
-            .introspectTableView { tableView in
-                // TODO not working
-                tableView.separatorStyle = .none
-            }
-            .padding(.leading, 20).padding(.trailing, 20).padding(.top, 8)
         }
+        .introspectTableView { tableView in
+            // TODO not working
+            tableView.separatorStyle = .none
+        }
+        .padding(.leading, 20).padding(.trailing, 20).padding(.top, 8)
     }
 
     private func view(setting: UserSettingViewData) -> some View {

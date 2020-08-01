@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CoEpi" customModuleProvider="target">
             <connections>
                 <outlet property="buildLabel" destination="0sB-oG-nLH" id="Wjb-OL-Chd"/>
-                <outlet property="howDataUsedLabel" destination="TCZ-5X-qoz" id="Bwc-n1-hMb"/>
                 <outlet property="tableView" destination="A4g-ps-ITL" id="iB1-oP-euc"/>
                 <outlet property="versionLabel" destination="wxx-IU-WaY" id="QOS-7g-sz2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -56,7 +55,7 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="family icon" translatesAutoresizingMaskIntoConstraints="NO" id="H49-Q0-6Wh">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coepi_family" translatesAutoresizingMaskIntoConstraints="NO" id="H49-Q0-6Wh">
                     <rect key="frame" x="157.5" y="20" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="4dB-Lj-DYB"/>
@@ -64,17 +63,8 @@
                         <constraint firstAttribute="width" secondItem="H49-Q0-6Wh" secondAttribute="height" multiplier="1:1" id="Jpr-up-Lti"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCZ-5X-qoz">
-                    <rect key="frame" x="40" y="555" width="46" height="30"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="howDataUsedButton:" destination="-1" eventType="touchUpInside" id="xoH-cg-eCe"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A4g-ps-ITL">
-                    <rect key="frame" x="0.0" y="100" width="375" height="435"/>
+                    <rect key="frame" x="0.0" y="116" width="375" height="499"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="NoO-2l-4db"/>
@@ -87,21 +77,27 @@
                         <action selector="onSettingsTap" destination="-1" eventType="touchUpInside" id="dda-wc-6st"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CoEpi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSO-ol-FBd">
+                    <rect key="frame" x="164.5" y="86" width="46.5" height="20"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="CoEpiPurple"/>
             <constraints>
-                <constraint firstItem="A4g-ps-ITL" firstAttribute="top" secondItem="H49-Q0-6Wh" secondAttribute="bottom" constant="20" id="0TS-xt-73w"/>
                 <constraint firstItem="YJp-7I-Dhs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="11z-PS-XEb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A4g-ps-ITL" secondAttribute="trailing" id="2pr-xo-qSP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YJp-7I-Dhs" secondAttribute="trailing" constant="5" id="43H-c4-5NP"/>
+                <constraint firstItem="cSO-ol-FBd" firstAttribute="top" secondItem="H49-Q0-6Wh" secondAttribute="bottom" constant="6" id="53O-49-gkG"/>
+                <constraint firstItem="cSO-ol-FBd" firstAttribute="centerX" secondItem="H49-Q0-6Wh" secondAttribute="centerX" id="6p3-h7-0Xd"/>
                 <constraint firstItem="H49-Q0-6Wh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6pD-J7-dqy"/>
-                <constraint firstItem="TCZ-5X-qoz" firstAttribute="top" secondItem="A4g-ps-ITL" secondAttribute="bottom" constant="20" id="8m5-nl-w6P"/>
+                <constraint firstItem="A4g-ps-ITL" firstAttribute="top" secondItem="cSO-ol-FBd" secondAttribute="bottom" constant="10" id="Nnm-hH-YWa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YJp-7I-Dhs" secondAttribute="bottom" constant="5" id="T2L-B6-cWL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bYC-xK-PRS" secondAttribute="trailing" constant="30" id="UZk-UO-2pf"/>
                 <constraint firstItem="A4g-ps-ITL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XwX-cK-qGb"/>
-                <constraint firstItem="YJp-7I-Dhs" firstAttribute="top" secondItem="TCZ-5X-qoz" secondAttribute="bottom" constant="40" id="Yuj-y0-3u0"/>
-                <constraint firstItem="TCZ-5X-qoz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="ZtZ-2t-N8I"/>
+                <constraint firstItem="YJp-7I-Dhs" firstAttribute="top" secondItem="A4g-ps-ITL" secondAttribute="bottom" constant="10" id="h57-Vc-NTD"/>
                 <constraint firstItem="bYC-xK-PRS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="48" id="jgQ-gp-jdZ"/>
                 <constraint firstItem="H49-Q0-6Wh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="nXs-cY-oeQ"/>
                 <constraint firstItem="H49-Q0-6Wh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qFu-Zf-Tcs"/>
@@ -110,10 +106,10 @@
         </view>
     </objects>
     <resources>
-        <image name="family icon" width="400" height="400"/>
+        <image name="coepi_family" width="49" height="49"/>
         <image name="home_settings" width="25" height="25"/>
         <namedColor name="CoEpiPurple">
-            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.32199999690055847" green="0.28999999165534973" blue="0.56099998950958252" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

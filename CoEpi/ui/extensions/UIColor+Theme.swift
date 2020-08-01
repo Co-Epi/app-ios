@@ -6,7 +6,11 @@ extension UIColor {
         if let color = UIColor(named: "CoEpiPurple") {
             return color
         }
-        fatalError("Could not find CoEpiPurple")
+        fatalError("Could not find coEpiPurple")
+    }
+
+    class var coEpiPurpleHighlighted: UIColor {
+        UIColor(hex: "8702D4")
     }
 
     class var coEpiLightGray: UIColor {

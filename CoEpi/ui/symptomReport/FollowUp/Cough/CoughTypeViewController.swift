@@ -48,18 +48,20 @@ class CoughTypeViewController: UIViewController {
         let bold24 = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)]
         let system11 = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)]
 
-        let titleWet = L10n.Ux.Cough.titleWet
-        let subtitleWet = L10n.Ux.Cough.subtitleWet
-        let textWet = NSMutableAttributedString(string: titleWet, attributes: bold24)
-        textWet.append(NSMutableAttributedString(string: subtitleWet, attributes: system11))
+        let textWet = NSMutableAttributedString(
+            string: L10n.Ux.Cough.titleWet,
+            attributes: bold24)
+        textWet.append(NSMutableAttributedString(
+                        string: L10n.Ux.Cough.subtitleWet,
+                        attributes: system11))
         wetButtonLabel.setAttributedTitle(textWet, for: .normal)
-        wetButtonLabel.titleLabel?.textAlignment = .center
 
-        let titleDry = L10n.Ux.Cough.titleDry
-        let subtitleDry = L10n.Ux.Cough.subtitleDry
-        let textDry = NSMutableAttributedString(string: titleDry, attributes: bold24)
-        textDry.append(NSMutableAttributedString(string: subtitleDry, attributes: system11))
+        let textDry = NSMutableAttributedString(
+            string: L10n.Ux.Cough.titleDry,
+            attributes: bold24)
+        textDry.append(NSMutableAttributedString(
+                        string: L10n.Ux.Cough.subtitleDry,
+                        attributes: system11))
         dryButtonLabel.setAttributedTitle(textDry, for: .normal)
-        dryButtonLabel.titleLabel?.textAlignment = .center
      }
 }

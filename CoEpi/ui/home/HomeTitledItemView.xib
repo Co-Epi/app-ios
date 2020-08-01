@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBX-xl-VVY">
-                    <rect key="frame" x="40" y="20" width="240" height="119"/>
+                    <rect key="frame" x="40" y="20" width="240" height="135"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="[title]" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1x6-FL-N2m">
                             <rect key="frame" x="28" y="20" width="184" height="33.5"/>
@@ -25,13 +25,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[description]" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcw-TW-9i2">
-                            <rect key="frame" x="28" y="64" width="184" height="20.5"/>
+                            <rect key="frame" x="28" y="65.5" width="184" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBB-3S-lC9">
-                            <rect key="frame" x="-20" y="-20" width="50" height="50"/>
+                            <rect key="frame" x="-16" y="-16" width="50" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[1]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBI-Pf-djx">
                                     <rect key="frame" x="9.5" y="10.5" width="31" height="29"/>
@@ -49,7 +49,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdf-Ta-jAE">
-                            <rect key="frame" x="28" y="53.5" width="72" height="10.5"/>
+                            <rect key="frame" x="28" y="53.5" width="72" height="12"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="72" id="Ckb-yV-Fd2"/>
@@ -60,16 +60,16 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Lcw-TW-9i2" firstAttribute="top" secondItem="Jdf-Ta-jAE" secondAttribute="bottom" id="3oW-cz-IEs"/>
-                        <constraint firstItem="wBB-3S-lC9" firstAttribute="top" secondItem="LBX-xl-VVY" secondAttribute="top" constant="-20" id="Fyj-6H-s4d"/>
+                        <constraint firstItem="wBB-3S-lC9" firstAttribute="top" secondItem="LBX-xl-VVY" secondAttribute="top" constant="-16" id="Fyj-6H-s4d"/>
                         <constraint firstItem="1x6-FL-N2m" firstAttribute="top" secondItem="LBX-xl-VVY" secondAttribute="top" constant="20" id="Hbn-kX-nsD"/>
                         <constraint firstAttribute="width" secondItem="LBX-xl-VVY" secondAttribute="height" multiplier="240:119" priority="750" id="HkQ-VO-JcE"/>
                         <constraint firstItem="Jdf-Ta-jAE" firstAttribute="leading" secondItem="1x6-FL-N2m" secondAttribute="leading" id="SEb-IW-HOx"/>
                         <constraint firstItem="Jdf-Ta-jAE" firstAttribute="top" secondItem="1x6-FL-N2m" secondAttribute="bottom" id="Sre-m4-VbL"/>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="168" id="U8v-OF-3vo"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="148" id="U8v-OF-3vo"/>
                         <constraint firstItem="1x6-FL-N2m" firstAttribute="leading" secondItem="LBX-xl-VVY" secondAttribute="leading" constant="28" id="WES-mS-FYY"/>
                         <constraint firstAttribute="trailing" secondItem="1x6-FL-N2m" secondAttribute="trailing" constant="28" id="ZOU-PF-FoL"/>
                         <constraint firstItem="Lcw-TW-9i2" firstAttribute="trailing" secondItem="1x6-FL-N2m" secondAttribute="trailing" id="bS5-gm-Px0"/>
-                        <constraint firstItem="wBB-3S-lC9" firstAttribute="leading" secondItem="LBX-xl-VVY" secondAttribute="leading" constant="-20" id="gxB-KV-8Y4"/>
+                        <constraint firstItem="wBB-3S-lC9" firstAttribute="leading" secondItem="LBX-xl-VVY" secondAttribute="leading" constant="-16" id="gxB-KV-8Y4"/>
                         <constraint firstItem="Lcw-TW-9i2" firstAttribute="leading" secondItem="1x6-FL-N2m" secondAttribute="leading" id="wzm-1f-Be4"/>
                         <constraint firstItem="Jdf-Ta-jAE" firstAttribute="height" secondItem="LBX-xl-VVY" secondAttribute="height" multiplier="0.09" priority="750" id="x9X-or-POd"/>
                     </constraints>
@@ -81,7 +81,7 @@
                 <constraint firstItem="LBX-xl-VVY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="PJr-e2-tdT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LBX-xl-VVY" secondAttribute="trailing" constant="40" id="hnc-UK-GEG"/>
                 <constraint firstItem="LBX-xl-VVY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="iqW-bj-WCu"/>
-                <constraint firstAttribute="bottom" secondItem="LBX-xl-VVY" secondAttribute="bottom" constant="20" id="wcH-1W-fEG"/>
+                <constraint firstAttribute="bottom" secondItem="LBX-xl-VVY" secondAttribute="bottom" constant="4" id="wcH-1W-fEG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

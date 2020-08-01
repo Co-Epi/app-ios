@@ -14,7 +14,7 @@ struct ButtonStyles {
 
     static func applyUnselected(to button: UIButton) {
         button.backgroundColor = .white
-        button.setTitleColor(.coEpiPurple, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.layer.borderColor = UIColor.coEpiPurple.cgColor
         button.layer.borderWidth = 1
         applyShadows(to: button)

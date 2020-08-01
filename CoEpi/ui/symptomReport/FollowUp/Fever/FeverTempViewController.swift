@@ -93,7 +93,7 @@ class FeverTempViewController: UIViewController {
             .disposed(by: disposeBag)
 
         viewModel.submitButtonEnabled
-            .map { $0 ? .systemBlue : .lightGray }
+            .map { $0 ? .coEpiPurple : .lightGray }
             .drive(submitButtonLabel.rx.backgroundColor)
             .disposed(by: disposeBag)
     }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,20 +26,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A8h-nP-Yxg">
-                    <rect key="frame" x="0.0" y="44" width="357" height="130"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="130"/>
                     <color key="backgroundColor" name="CoEpiPurple"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="130" id="sfQ-9J-8Bt"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="0Bb-Lr-D2i">
-                    <rect key="frame" x="50" y="383" width="257" height="130"/>
+                    <rect key="frame" x="50" y="377" width="314" height="142"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ad6-EP-G9u">
-                            <rect key="frame" x="0.0" y="0.0" width="257" height="49"/>
+                            <rect key="frame" x="0.0" y="0.0" width="314" height="61"/>
                             <subviews>
                                 <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="0Ao-xA-I4m" customClass="CustomTextFieldCough" customModule="CoEpi" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="148.5" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="185" height="61"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="0Ao-xA-I4m" secondAttribute="height" multiplier="73:24" id="vFU-j4-dYF"/>
                                     </constraints>
@@ -46,7 +47,7 @@
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTV-8R-TrN">
-                                    <rect key="frame" x="173.5" y="0.0" width="83.5" height="49"/>
+                                    <rect key="frame" x="210" y="0.0" width="104" height="61"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="QTV-8R-TrN" secondAttribute="height" multiplier="41:24" id="qL5-hf-DZF"/>
                                     </constraints>
@@ -57,10 +58,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NFT-QM-gCK">
-                            <rect key="frame" x="0.0" y="99" width="257" height="31"/>
+                            <rect key="frame" x="0.0" y="111" width="314" height="31"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8o-zr-cck">
-                                    <rect key="frame" x="0.0" y="0.0" width="131" height="31"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8o-zr-cck">
+                                    <rect key="frame" x="0.0" y="0.0" width="188" height="31"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="31" id="1WI-mA-PvT"/>
                                         <constraint firstAttribute="width" constant="131" id="QUJ-IG-Cy1"/>
@@ -73,8 +74,8 @@
                                         <action selector="unknownButtonAction:" destination="-1" eventType="touchUpInside" id="bfu-aF-Rwp"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhT-mO-Llb">
-                                    <rect key="frame" x="151" y="0.0" width="106" height="31"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhT-mO-Llb">
+                                    <rect key="frame" x="208" y="0.0" width="106" height="31"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="106" id="F1u-zZ-hzU"/>
                                         <constraint firstAttribute="height" constant="31" id="lYc-Sz-3eb"/>
@@ -97,8 +98,9 @@
                         <constraint firstAttribute="trailing" secondItem="NFT-QM-gCK" secondAttribute="trailing" id="vIK-sF-ard"/>
                     </constraints>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY1-7k-Cio">
-                    <rect key="frame" x="50" y="563" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY1-7k-Cio">
+                    <rect key="frame" x="50" y="569" width="30" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -107,12 +109,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdI-6i-dZV">
-                    <rect key="frame" x="20" y="74" width="317" height="29"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <rect key="frame" x="20" y="74" width="374" height="33.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="0Bb-Lr-D2i" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6dD-Tf-hTj"/>
@@ -128,13 +131,12 @@
                 <constraint firstItem="A8h-nP-Yxg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qYk-yw-WuF"/>
                 <constraint firstItem="0Bb-Lr-D2i" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="vlh-Qb-ReD"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>
         </view>
     </objects>
     <resources>
         <namedColor name="CoEpiPurple">
-            <color red="0.52899998426437378" green="0.0080000003799796104" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.32199999690055847" green="0.28999999165534973" blue="0.56099998950958252" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

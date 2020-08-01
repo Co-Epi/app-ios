@@ -52,9 +52,8 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
             .drive(submitButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
-        // TODO clarify (global) button styles
         viewModel.submitButtonEnabled
-            .map { $0 ? .systemBlue : .lightGray }
+            .map { $0 ? .coEpiPurple : .lightGray }
             .drive(submitButton.rx.backgroundColor)
             .disposed(by: disposeBag)
 

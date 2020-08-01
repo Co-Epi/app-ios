@@ -4,14 +4,10 @@ class ThankYouViewController: UIViewController {
     private let viewModel: ThankYouViewModel
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
 
-    @IBOutlet weak var moreButtonLabel: UIButton!
     @IBOutlet weak var viewExposuresButtonLabel: UIButton!
     @IBOutlet weak var homeButtonLabel: UIButton!
-
-    @IBAction func moreButtonAction(_ sender: UIButton) {
-        viewModel.onCheckInClick()
-    }
 
     @IBAction func viewExposuresButtonAction(_ sender: UIButton) {
         viewModel.onSeeAlertsClick()
@@ -35,12 +31,11 @@ class ThankYouViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_purple.png")!)
 
-        titleLabel.text = L10n.Ux.Thankyou.title
-        moreButtonLabel.setTitle(L10n.Ux.Thankyou.more, for: .normal)
+        titleLabel.text = L10n.Thankyou.title
+        subtitleLabel.text = L10n.Thankyou.subtitle
         viewExposuresButtonLabel.setTitle(L10n.Ux.Thankyou.viewExposures, for: .normal)
         homeButtonLabel.setTitle(L10n.Ux.Thankyou.home, for: .normal)
 
-        ButtonStyles.applyUnselected(to: moreButtonLabel)
         ButtonStyles.applyUnselected(to: viewExposuresButtonLabel)
         ButtonStyles.applyUnselected(to: homeButtonLabel)
 

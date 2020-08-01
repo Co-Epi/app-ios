@@ -28,15 +28,15 @@ internal enum L10n {
     internal enum Breathless {
       /// Follow up: Shortness of breath
       internal static let heading = L10n.tr("Localizable", "UX.breathless.heading")
-      /// I am too short of breath to leave the house or I am short of breath when dressing
+      /// getting dressed to leave the house
       internal static let p0 = L10n.tr("Localizable", "UX.breathless.p0")
-      /// I stop for breath after walking about 100 yards or after a few minutes on level ground
+      /// after walking 100 yards
       internal static let p1 = L10n.tr("Localizable", "UX.breathless.p1")
-      /// On level ground, I have to stop for breath when walking at my own pace
+      /// after walking for a few minutes on level ground at my own pace
       internal static let p2 = L10n.tr("Localizable", "UX.breathless.p2")
-      /// I get short of breath when hurrying on level ground or walking up a slight hill
+      /// walking fast on level ground or going up a slight hill
       internal static let p3 = L10n.tr("Localizable", "UX.breathless.p3")
-      /// I only get short of breath with strenuous exercise
+      /// only during strenuous exercise
       internal static let p4 = L10n.tr("Localizable", "UX.breathless.p4")
       /// Select one option
       internal static let subtitle = L10n.tr("Localizable", "UX.breathless.subtitle")
@@ -44,29 +44,29 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "UX.breathless.title")
     }
     internal enum Cough {
-      /// Felt worse and better throughout the day
+      /// Better
       internal static let better = L10n.tr("Localizable", "UX.cough.better")
       /// Follow up: Cough
       internal static let heading = L10n.tr("Localizable", "UX.cough.heading")
-      /// Stayed the same or felt steadily worse
+      /// Same
       internal static let same = L10n.tr("Localizable", "UX.cough.same")
       /// Select one option
       internal static let subtitle3 = L10n.tr("Localizable", "UX.cough.subtitle3")
-      /// \nMy throat feels 'tickly' or \n'scratchy' without mucus
+      /// My throat feels 'tickly' or 'scratchy' without mucus
       internal static let subtitleDry = L10n.tr("Localizable", "UX.cough.subtitleDry")
-      /// \nIt feels like there is mucus \nin my throat and/or chest
+      /// It feels like there is mucus in my throat and/or chest
       internal static let subtitleWet = L10n.tr("Localizable", "UX.cough.subtitleWet")
       /// I would describe my cough as:
       internal static let title1 = L10n.tr("Localizable", "UX.cough.title1")
       /// How many days have you been coughing?
       internal static let title2 = L10n.tr("Localizable", "UX.cough.title2")
-      /// Today my cough has:
+      /// Today my cough feels:
       internal static let title3 = L10n.tr("Localizable", "UX.cough.title3")
       /// Dry
       internal static let titleDry = L10n.tr("Localizable", "UX.cough.titleDry")
       /// Wet
       internal static let titleWet = L10n.tr("Localizable", "UX.cough.titleWet")
-      /// Felt worse when I am outside
+      /// Worse
       internal static let worse = L10n.tr("Localizable", "UX.cough.worse")
     }
     internal enum Fever {
@@ -96,15 +96,15 @@ internal enum L10n {
     internal enum Home {
       /// Exposure Alerts
       internal static let alerts1 = L10n.tr("Localizable", "UX.home.alerts1")
-      /// Review your potential exposures
+      /// Find out if you’ve interacted with someone who has symptoms.
       internal static let alerts2 = L10n.tr("Localizable", "UX.home.alerts2")
       /// new exposures detected
       internal static let detected = L10n.tr("Localizable", "UX.home.detected")
       /// How is my data being used?
       internal static let how = L10n.tr("Localizable", "UX.home.how")
-      /// Symptom Reporting
+      /// My Symptoms
       internal static let report1 = L10n.tr("Localizable", "UX.home.report1")
-      /// Share how you are feeling
+      /// Report and track any symptoms you have.
       internal static let report2 = L10n.tr("Localizable", "UX.home.report2")
       /// Share
       internal static let share = L10n.tr("Localizable", "UX.home.share")
@@ -192,8 +192,6 @@ internal enum L10n {
       internal static let home = L10n.tr("Localizable", "UX.thankyou.home")
       /// Log more symptoms
       internal static let more = L10n.tr("Localizable", "UX.thankyou.more")
-      /// Thank you for logging your symptoms! We will alert if you have any relevant exposures to review.
-      internal static let title = L10n.tr("Localizable", "UX.thankyou.title")
       /// View exposures
       internal static let viewExposures = L10n.tr("Localizable", "UX.thankyou.viewExposures")
     }
@@ -366,6 +364,13 @@ internal enum L10n {
         return L10n.tr("Localizable", "settings.item.version", p1)
       }
     }
+  }
+
+  internal enum Thankyou {
+    /// We will alert if you have any new exposures.
+    internal static let subtitle = L10n.tr("Localizable", "thankyou.subtitle")
+    /// Thank you for logging your symptoms!
+    internal static let title = L10n.tr("Localizable", "thankyou.title")
   }
 
   internal enum WhatExposure {

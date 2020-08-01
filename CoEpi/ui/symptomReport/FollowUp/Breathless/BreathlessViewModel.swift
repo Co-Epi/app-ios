@@ -1,5 +1,6 @@
 import RxSwift
 import RxCocoa
+import SwiftUI
 
 struct BreathlessItemViewData {
     let imageName: String
@@ -7,19 +8,19 @@ struct BreathlessItemViewData {
     let cause: SymptomInputs.Breathlessness.Cause
 }
 
-class BreathlessViewModel {
+class BreathlessViewModel: ObservableObject {
     private let symptomFlowManager: SymptomFlowManager
 
     let title = L10n.Ux.Breathless.heading
 
-    let viewData: Driver<[BreathlessItemViewData]>
+    let viewData: [BreathlessItemViewData]
 
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
 
         let breath = L10n.Ux.Breathless.self
 
-        viewData = Observable.just([
+        viewData = [
             BreathlessItemViewData(
                 imageName: "house",
                 text: breath.p0,
@@ -40,7 +41,7 @@ class BreathlessViewModel {
                 imageName: "exercise",
                 text: breath.p4,
                 cause: .exercise)
-       ]).asDriver(onErrorJustReturn: [])
+       ]
     }
 
     func onCauseSelected(viewData: BreathlessItemViewData) {

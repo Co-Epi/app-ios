@@ -18,7 +18,7 @@
                     <rect key="frame" x="40" y="20" width="240" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[description]" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcw-TW-9i2">
-                            <rect key="frame" x="28" y="20" width="184" height="20"/>
+                            <rect key="frame" x="28" y="14" width="184" height="32"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -45,8 +45,8 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="wBB-3S-lC9" firstAttribute="top" secondItem="LBX-xl-VVY" secondAttribute="top" constant="-20" id="Fyj-6H-s4d"/>
-                        <constraint firstItem="Lcw-TW-9i2" firstAttribute="top" secondItem="LBX-xl-VVY" secondAttribute="top" constant="20" id="Ll2-52-3fF"/>
-                        <constraint firstAttribute="bottom" secondItem="Lcw-TW-9i2" secondAttribute="bottom" constant="20" id="N6F-Z9-MLV"/>
+                        <constraint firstItem="Lcw-TW-9i2" firstAttribute="top" secondItem="LBX-xl-VVY" secondAttribute="top" constant="14" id="Ll2-52-3fF"/>
+                        <constraint firstAttribute="bottom" secondItem="Lcw-TW-9i2" secondAttribute="bottom" constant="14" id="N6F-Z9-MLV"/>
                         <constraint firstItem="Lcw-TW-9i2" firstAttribute="leading" secondItem="LBX-xl-VVY" secondAttribute="leading" constant="28" id="XyQ-DX-aJP"/>
                         <constraint firstItem="wBB-3S-lC9" firstAttribute="leading" secondItem="LBX-xl-VVY" secondAttribute="leading" constant="-20" id="gxB-KV-8Y4"/>
                         <constraint firstAttribute="trailing" secondItem="Lcw-TW-9i2" secondAttribute="trailing" constant="28" id="p39-co-lRI"/>
