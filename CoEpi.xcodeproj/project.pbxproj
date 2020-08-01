@@ -104,6 +104,7 @@
 		849327B62452D947009589E6 /* FetchAlertsBackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849327B52452D947009589E6 /* FetchAlertsBackgroundTask.swift */; };
 		849327B82452D972009589E6 /* BackgroundTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849327B72452D972009589E6 /* BackgroundTaskScheduler.swift */; };
 		8493283D2452F983009589E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493283C2452F983009589E6 /* SceneDelegate.swift */; };
+		8495481E24D5874A00074028 /* HomeTitledItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8495481D24D5874A00074028 /* HomeTitledItemView.xib */; };
 		8498115D243630E500EBD1DA /* ScannedCensHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498115C243630E500EBD1DA /* ScannedCensHandler.swift */; };
 		8499EB6724C987B500591039 /* Alert+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499EB6624C987B500591039 /* Alert+UI.swift */; };
 		849B3F7D247F00F7003CCE4B /* SymptomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B3F7C247F00F7003CCE4B /* SymptomView.xib */; };
@@ -328,6 +329,7 @@
 		849327B52452D947009589E6 /* FetchAlertsBackgroundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAlertsBackgroundTask.swift; sourceTree = "<group>"; };
 		849327B72452D972009589E6 /* BackgroundTaskScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskScheduler.swift; sourceTree = "<group>"; };
 		8493283C2452F983009589E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8495481D24D5874A00074028 /* HomeTitledItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTitledItemView.xib; sourceTree = "<group>"; };
 		8498115C243630E500EBD1DA /* ScannedCensHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedCensHandler.swift; sourceTree = "<group>"; };
 		8499EB6624C987B500591039 /* Alert+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+UI.swift"; sourceTree = "<group>"; };
 		849B3F7C247F00F7003CCE4B /* SymptomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomView.xib; sourceTree = "<group>"; };
@@ -1038,6 +1040,7 @@
 				84FA00FF2427ED5E00318104 /* HomeViewController.xib */,
 				8486BDDF242BC8B600A63DD5 /* HomeViewModel.swift */,
 				849C6A53249260A00047BC10 /* HomeItemCell.swift */,
+				8495481D24D5874A00074028 /* HomeTitledItemView.xib */,
 				849C6A5924927C340047BC10 /* HomeItemView.xib */,
 			);
 			path = home;
@@ -1298,6 +1301,7 @@
 				622AC2CC245FC5E000A6EB90 /* CoughTypeViewController.xib in Resources */,
 				62CE509B249BB496003F2ECE /* .swiftlint.yml in Resources */,
 				05E0E4C8244403FE00D27F9A /* Localizable.strings in Resources */,
+				8495481E24D5874A00074028 /* HomeTitledItemView.xib in Resources */,
 				849D7B3F248EA0BB00C9DDBD /* DebugViewController.xib in Resources */,
 				84DE6A28243F9AA800CCF4A6 /* AlertView.xib in Resources */,
 				622AC2D0245FC5FC00A6EB90 /* CoughHowViewController.xib in Resources */,

@@ -10,8 +10,12 @@ class RootNav {
     }
 }
 
+enum NavPresentation {
+    case push, modal
+}
+
 enum RootNavCommand {
-    case to(destination: RootNavDestination)
+    case to(destination: RootNavDestination, mode: NavPresentation = .push)
     case back
     case backTo(destination: RootNavDestination)
     case backToAndTo(backDestination: RootNavDestination, toDestination: RootNavDestination)
@@ -32,4 +36,5 @@ enum RootNavDestination {
     case home
     case alertDetails(pars: AlertDetailsViewModelParams)
     case settings
+    case howItWorks
 }

@@ -144,6 +144,7 @@
 "UX.home.footer.version" = "Version";
 "home.items.alerts.notification.one" = "1 new exposure alert";
 "home.items.alerts.notification.some" = "%d new exposure alerts";
+"home.items.how_coepi_works.description" = "How does CoEpi work?";
 
     // symptom days
 "UX.symptomsdays.heading" = "Follow up: Earliest Symptoms";

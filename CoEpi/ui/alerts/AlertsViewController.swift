@@ -10,7 +10,6 @@ class AlertsViewController: UIViewController {
     @IBOutlet weak var contactAlerts: UITableView!
     @IBOutlet weak var updateStatusLabel: UILabel!
     @IBOutlet weak var subtextLabel: UILabel!
-    @IBOutlet weak var buttonlabel: UIButton!
 
     private let disposeBag = DisposeBag()
 
@@ -35,14 +34,8 @@ class AlertsViewController: UIViewController {
 
         setupTableView()
 
-        buttonlabel.setTitle(L10n.Alerts.buttonLabel, for: .normal)
         subtextLabel.text = L10n.Alerts.subtitle
         titleLabel.text = L10n.Alerts.header
-
-        ButtonStyles.applyUnselected(to: buttonlabel)
-        buttonlabel.addTarget(self, action: #selector(onTouchDown(to:)), for: .touchDown)
-        buttonlabel.addTarget(self, action: #selector(onTouchUp), for: .touchUpInside)
-        buttonlabel.addTarget(self, action: #selector(onTouchUp(to:)), for: .touchUpOutside)
 
         viewModel.alertCells
             .drive(contactAlerts.rx.items(dataSource: dataSource))
@@ -61,14 +54,6 @@ class AlertsViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
-    @objc func onTouchDown(to button: UIButton) {
-        ButtonStyles.applySelected(to: button)
-    }
-
-    @objc func onTouchUp(to button: UIButton) {
-        ButtonStyles.applyUnselected(to: button)
-    }
-
     private func setupTableView() {
         contactAlerts.register(cellClass: AlertCell.self)
 
@@ -76,11 +61,6 @@ class AlertsViewController: UIViewController {
         contactAlerts.estimatedRowHeight = 20
 
         contactAlerts.addSubview(refreshControl)
-    }
-
-    @IBAction func onWhatAreAlertsPress(_ sender: Any) {
-        let viewController = WhatAreAlertsViewController()
-        present(viewController, animated: true, completion: nil)
     }
 }
 

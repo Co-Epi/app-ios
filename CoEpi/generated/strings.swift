@@ -326,6 +326,10 @@ internal enum L10n {
           }
         }
       }
+      internal enum HowCoepiWorks {
+        /// How does CoEpi work?
+        internal static let description = L10n.tr("Localizable", "home.items.how_coepi_works.description")
+      }
     }
   }
 
@@ -343,13 +347,13 @@ internal enum L10n {
     internal enum Item {
       /// Show me all reports,\nincluding "I don't have any symptoms"
       internal static let allReports = L10n.tr("Localizable", "settings.item.all_reports")
-      /// Only notify me for interactions that occured <%1$d %2$s away
+      /// Only notify me for\ninteractions that occured\n<%1$d %2$s away
       internal static func distanceShorterThan(_ p1: Int, _ p2: UnsafePointer<CChar>) -> String {
         return L10n.tr("Localizable", "settings.item.distance_shorter_than", p1, p2)
       }
       /// feet
       internal static let distanceShorterThanUnitFeet = L10n.tr("Localizable", "settings.item.distance_shorter_than_unit_feet")
-      /// Only show alerts >%d min of interaction
+      /// Only show alerts >%d min\nof interaction
       internal static func durationLongerThanMins(_ p1: Int) -> String {
         return L10n.tr("Localizable", "settings.item.duration_longer_than_mins", p1)
       }

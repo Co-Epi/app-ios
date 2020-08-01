@@ -1,7 +1,6 @@
 import UIKit
 
 class HomeItemCell: UITableViewCell {
-
     private var homeItemView: HomeItemView?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,12 +30,41 @@ class HomeItemCell: UITableViewCell {
     }
 }
 
+class HomeTitledItemCell: UITableViewCell {
+    private var homeItemView: HomeTitledItemView?
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupUI() {
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+
+        selectionStyle = .none
+
+        let view: HomeTitledItemView = HomeTitledItemView.fromNib()
+        contentView.addSubview(view)
+        view.pinAllEdgesToParent()
+        self.homeItemView = view
+    }
+
+    public func setup(viewData: HomeTitledItemViewData) {
+        homeItemView?.setup(item: viewData)
+    }
+}
+
 class HomeItemView: UIView {
     public var onAcknowledged: (() -> Void)?
 
     @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var notificationLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descrLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
 
@@ -55,7 +83,6 @@ class HomeItemView: UIView {
         notificationView.isHidden = item.notification == nil
         notificationLabel.isHidden = item.notification == nil
         notificationLabel.text = item.notification?.text
-        titleLabel.text = item.title
         descrLabel.text = item.descr
 
         if item.notification != nil {
@@ -82,5 +109,14 @@ class HomeItemView: UIView {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
         backgroundView.backgroundColor = .white
+    }
+}
+
+class HomeTitledItemView: HomeItemView {
+    @IBOutlet weak var titleLabel: UILabel!
+
+    func setup(item: HomeTitledItemViewData) {
+        titleLabel.text = item.title
+        super.setup(item: item)
     }
 }

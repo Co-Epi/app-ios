@@ -2,18 +2,31 @@ import RxSwift
 import RxCocoa
 
 enum HomeItemId {
-    case reportSymptoms, alerts
+    case reportSymptoms, alerts, howItWorks
 }
 
 struct HomeItemNotification {
     let text: String
 }
 
-struct HomeItemViewData {
+class HomeItemViewData {
     let id: HomeItemId
-    let title: String
     let descr: String
     var notification: HomeItemNotification?
+
+    init(id: HomeItemId, descr: String, notification: HomeItemNotification? = nil) {
+        self.id = id
+        self.descr = descr
+        self.notification = notification
+    }
+}
+
+class HomeTitledItemViewData: HomeItemViewData {
+    let title: String
+    init(id: HomeItemId, title: String, descr: String, notification: HomeItemNotification? = nil) {
+        self.title = title
+        super.init(id: id, descr: descr, notification: notification)
+    }
 }
 
 class HomeViewModel {
@@ -26,15 +39,19 @@ class HomeViewModel {
     private let itemSelectTrigger = PublishRelay<HomeItemViewData>()
 
     private static let items = [
-        HomeItemViewData(
+        HomeTitledItemViewData(
             id: .reportSymptoms,
             title: L10n.Ux.Home.report1,
             descr: L10n.Ux.Home.report2
         ),
-        HomeItemViewData(
+        HomeTitledItemViewData(
             id: .alerts,
             title: L10n.Ux.Home.alerts1,
             descr: L10n.Ux.Home.alerts2
+        ),
+        HomeItemViewData(
+            id: .howItWorks,
+            descr: L10n.Home.Items.HowCoepiWorks.description
         )
     ]
 
@@ -74,6 +91,8 @@ class HomeViewModel {
                 switch item.id {
                 case .reportSymptoms: rootNav.navigate(command: .to(destination: .symptomReport))
                 case .alerts: rootNav.navigate(command: .to(destination: .alerts))
+                case .howItWorks: rootNav.navigate(command: .to(destination: .howItWorks,
+                                                                mode: .modal))
                 }
             }).disposed(by: disposeBag)
     }

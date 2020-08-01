@@ -62,6 +62,7 @@ class HomeViewController: UIViewController {
         buildLabel.text = viewModel.buildString
 
         tableView.register(cellClass: HomeItemCell.self)
+        tableView.register(cellClass: HomeTitledItemCell.self)
 
         viewModel.items
             .drive(tableView.rx.items(dataSource: dataSource))
@@ -88,14 +89,22 @@ extension HomeItemsDataSource: UITableViewDataSource {
         items.count
     }
 
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HomeItemCell = tableView.dequeue(
-            cellClass: HomeItemCell.self,
-            forIndexPath: indexPath)
-        cell.setup(viewData: items[indexPath.row])
-        return cell
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = items[indexPath.row]
+
+        switch item {
+        case let item as HomeTitledItemViewData:
+            let cell = tableView.dequeue(cellClass: HomeTitledItemCell.self,
+                                         forIndexPath: indexPath)
+            cell.setup(viewData: item)
+            return cell
+        default:
+            let cell = tableView.dequeue(cellClass: HomeItemCell.self,
+                                         forIndexPath: indexPath)
+            cell.setup(viewData: items[indexPath.row])
+            return cell
+        }
     }
 }
 
