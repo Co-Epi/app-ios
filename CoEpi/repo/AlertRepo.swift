@@ -99,7 +99,6 @@ class AlertRepoImpl: AlertRepo {
 
         switch alertsApi.fetchNewAlerts() {
         case let .success(alerts):
-            log.w("Received new alerts in app: \(alerts)", tags: .ui)
             alertsStateSubject.accept(.success(data: alerts))
             if !alerts.isEmpty {
                 notificationShower.showNotification(data: NotificationData(

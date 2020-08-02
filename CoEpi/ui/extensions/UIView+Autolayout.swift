@@ -14,29 +14,33 @@ extension UIView {
         trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0).isActive = true
     }
 
-    func pinTopToParent() {
+    func pinTopToParent(useSafeArea: Bool) {
         guard let superview = requireSuperview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         topAnchor.constraint(
-            equalTo: superview.safeAreaLayoutGuide.topAnchor,
+            equalTo: useSafeArea ?
+                superview.safeAreaLayoutGuide.topAnchor : superview.topAnchor,
             constant: 0.0
         ).isActive = true
     }
 
-    func pinBottomToParent() {
+    func pinBottomToParent(useSafeArea: Bool) {
         guard let superview = requireSuperview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         bottomAnchor.constraint(
-            equalTo: superview.safeAreaLayoutGuide.bottomAnchor,
+            equalTo: useSafeArea ?
+                superview.safeAreaLayoutGuide.bottomAnchor : superview.bottomAnchor,
             constant: 0.0
         ).isActive = true
     }
 
-    func pinAllEdgesToParent() {
+    func pinAllEdgesToParent(useTopSafeArea: Bool = false,
+                             useBottomSafeArea: Bool = false)
+    {
         pinLeadingToParent()
         pinTrailingToParent()
-        pinTopToParent()
-        pinBottomToParent()
+        pinTopToParent(useSafeArea: useTopSafeArea)
+        pinBottomToParent(useSafeArea: useBottomSafeArea)
     }
 
     private var requireSuperview: UIView? {

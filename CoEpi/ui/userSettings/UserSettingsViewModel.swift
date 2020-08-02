@@ -37,7 +37,8 @@ class UserSettingsViewModel: ObservableObject {
     func onToggle(id: UserSettingToggleId, value: Bool) {
         switch id {
         case .filterAlertsWithSymptoms:
-            kvStore.setFilterAlertsWithSymptoms(value: value)
+            // The text says "show all reports" -> negate for filter
+            kvStore.setFilterAlertsWithSymptoms(value: !value)
         case .filterAlertsWithShortDistance:
             kvStore.setFilterAlertsWithShortDistance(value: value)
         case .filterAlertsWithLongDuration:

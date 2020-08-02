@@ -7,7 +7,11 @@ extension UIViewController {
         let host = UIHostingController(rootView: view)
         guard let hostView = host.view else { return }
         hostView.translatesAutoresizingMaskIntoConstraints = false
+
         self.view.addSubview(hostView)
-        hostView.pinAllEdgesToParent()
+        // Space beyond safe areas should have default color
+        self.view.backgroundColor = UIColor.white
+
+        hostView.pinAllEdgesToParent(useTopSafeArea: true, useBottomSafeArea: false)
     }
 }

@@ -36,6 +36,8 @@ struct UserSettingsView: View {
 
     weak var viewController: UserSettingsViewController?
 
+    private let greyBGColor = UIColor(hex: "C4C4C4").withAlphaComponent(0.5)
+
     init(viewModel: UserSettingsViewModel, viewController: UserSettingsViewController) {
         self.viewModel = viewModel
         self.viewController = viewController
@@ -50,8 +52,9 @@ struct UserSettingsView: View {
         .introspectTableView { tableView in
             // TODO: not working
             tableView.separatorStyle = .none
+
+            tableView.backgroundColor = greyBGColor
         }
-        .padding(.leading, 20).padding(.trailing, 20).padding(.top, 8)
     }
 
     private func view(setting: UserSettingViewData) -> some View {
@@ -82,49 +85,80 @@ struct UserSettingsView: View {
                 .padding(.bottom, 16)
         }
         .background(Color.white)
+        .padding(.leading, 20).padding(.trailing, 20)
+        .padding(.top, 8)
     }
 
-    private func toggleView(text: String, value: Bool,
+    private func toggleView(text: String, value _: Bool,
                             id: UserSettingToggleId,
                             hasBottomLine: Bool) -> some View
     {
         VStack {
-            Toggle(isOn: Binding(
-                get: { value },
-                set: { viewModel.onToggle(id: id, value: $0) }
-            )) {
-                Text(text)
-                    .font(.system(size: 17))
-                    .fontWeight(.semibold)
-            }
-            .padding(.bottom, hasBottomLine ? 16 : 24).padding(.top, 16)
+            SettingsToggle(text: text, onChange: { [viewModel] isOn in
+                viewModel.onToggle(id: id, value: isOn)
+            })
+                .padding(.bottom, hasBottomLine ? 16 : 24).padding(.top, 16)
             if hasBottomLine {
                 // TODO: use this when possible to hide default separators
 //                Divider().background(Color.black)
             }
         }
+        .padding(.leading, 20).padding(.trailing, 20)
     }
 
     private func linkView(text: String, url: URL) -> some View {
         Button(action: {
             viewController?.openWeb(url: url)
-        }) {
+        }, label: {
             Text(text)
                 .font(.system(size: 13))
-        }
+        })
+        .listRowBackground(Color(greyBGColor))
+        .padding(.leading, 20).padding(.trailing, 20)
     }
 
     private func actionTextView(text: String, action: UserSettingActionId) -> some View {
         Button(action: {
             viewModel.onAction(id: action)
-        }) {
+        }, label: {
             Text(text)
                 .font(.system(size: 13))
-        }
+        })
+        .listRowBackground(Color(greyBGColor))
+        .padding(.leading, 20).padding(.trailing, 20)
     }
 
     private func textView(text: String) -> some View {
         Text(text)
             .font(.system(size: 13))
+            .listRowBackground(Color(greyBGColor))
+            .padding(.leading, 20).padding(.trailing, 20)
+    }
+}
+
+// TODO: generic
+struct SettingsToggle: View {
+    let text: String
+    let onChange: (Bool) -> Void
+
+    @State private var isToggled = false
+
+    init(text: String, onChange: @escaping (Bool) -> Void) {
+        self.text = text
+        self.onChange = onChange
+    }
+
+    var body: some View {
+        Toggle(isOn: Binding(
+            get: { isToggled },
+            set: {
+                isToggled = $0
+                onChange($0)
+            }
+        )) {
+            Text(text)
+                .font(.system(size: 17))
+                .fontWeight(.semibold)
+        }
     }
 }

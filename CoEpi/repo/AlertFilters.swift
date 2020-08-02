@@ -21,7 +21,9 @@ class ObservableAlertFiltersImpl: ObservableAlertFilters {
                 withShortDistance: withShortDistance,
                 settings: filterSettings
             )
-        }
+        }.do(onNext: { alertFilters in
+            log.d("Alert filters updated: \(alertFilters)", tags: .ui)
+        })
     }
 }
 
