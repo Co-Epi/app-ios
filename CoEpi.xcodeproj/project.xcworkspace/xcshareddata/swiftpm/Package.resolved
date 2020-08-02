@@ -11,42 +11,6 @@
         }
       },
       {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire",
-        "state": {
-          "branch": null,
-          "revision": "fca036f7aeca07124067cb6e0c12b0ad6359e3d4",
-          "version": "5.1.0"
-        }
-      },
-      {
-        "package": "BerkananCompression",
-        "repositoryURL": "https://github.com/zssz/BerkananCompression",
-        "state": {
-          "branch": null,
-          "revision": "8c1b9ac74a6f54fd87a2c365ec52b5afc6e0c14b",
-          "version": "1.0.3"
-        }
-      },
-      {
-        "package": "BerkananFoundation",
-        "repositoryURL": "https://github.com/zssz/BerkananFoundation",
-        "state": {
-          "branch": null,
-          "revision": "fdc3d368825be15810195113b4275970bdda6b3a",
-          "version": "1.0.0"
-        }
-      },
-      {
-        "package": "BerkananSDK",
-        "repositoryURL": "https://github.com/zssz/BerkananSDK",
-        "state": {
-          "branch": null,
-          "revision": "3ea4e8ca0eb038c789c4be7ead0de0bd7954dec6",
-          "version": "2.2.8"
-        }
-      },
-      {
         "package": "CryptoSwift",
         "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift",
         "state": {
@@ -89,15 +53,6 @@
           "branch": null,
           "revision": "9620cd55a58c1cf3370375140c45379c40049f55",
           "version": "5.2.0"
-        }
-      },
-      {
-        "package": "SwiftProtobuf",
-        "repositoryURL": "https://github.com/apple/swift-protobuf.git",
-        "state": {
-          "branch": null,
-          "revision": "7790acf0a81d08429cb20375bf42a8c7d279c5fe",
-          "version": "1.8.0"
         }
       },
       {

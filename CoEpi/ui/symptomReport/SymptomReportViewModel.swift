@@ -1,7 +1,6 @@
 import Dip
 import RxCocoa
 import RxSwift
-import RxSwiftExt
 import Foundation
 
 class SymptomReportViewModel: UINotifier {
