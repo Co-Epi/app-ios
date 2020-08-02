@@ -39,57 +39,55 @@ struct AlertDetailsView: View {
     }
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                // Use LazyVStack in iOS 14
-                VStack(alignment: .leading, spacing: 0) {
-                    Text(alertViewData.title)
-                        .font(.system(size: 28))
-                        .fontWeight(.bold)
-                        .foregroundColor(Color(UIColor.coEpiPurple))
-                        .padding(.leading, 38).padding(.trailing, 38)
-                    Text(alertViewData.reportTime)
-                        .font(.system(size: 13))
-                        .fontWeight(.light)
-                        .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
-                    Text(alertViewData.contactStart)
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                        .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
-                    Text(alertViewData.contactDuration)
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                        .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
-                    Text(alertViewData.avgDistance)
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                        .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
-                    Text(alertViewData.minDistance)
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                        .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
-                    Text(alertViewData.symptoms)
-                        .font(.system(size: 13))
-                        .fontWeight(.medium)
-                        .padding(.top, 8).padding(.leading, 38).padding(.trailing, 38)
+        ScrollView {
+            // Use LazyVStack in iOS 14
+            VStack(alignment: .leading, spacing: 0) {
+                Text(alertViewData.title)
+                    .font(.system(size: 28))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(UIColor.coEpiPurple))
+                    .padding(.leading, 38).padding(.trailing, 38)
+                Text(alertViewData.reportTime)
+                    .font(.system(size: 13))
+                    .fontWeight(.light)
+                    .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
+                Text(alertViewData.contactStart)
+                    .font(.system(size: 17))
+                    .fontWeight(.semibold)
+                    .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
+                Text(alertViewData.contactDuration)
+                    .font(.system(size: 17))
+                    .fontWeight(.semibold)
+                    .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
+                Text(alertViewData.avgDistance)
+                    .font(.system(size: 17))
+                    .fontWeight(.semibold)
+                    .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
+                Text(alertViewData.minDistance)
+                    .font(.system(size: 17))
+                    .fontWeight(.semibold)
+                    .padding(.top, 4).padding(.leading, 38).padding(.trailing, 38)
+                Text(alertViewData.symptoms)
+                    .font(.system(size: 13))
+                    .fontWeight(.medium)
+                    .padding(.top, 8).padding(.leading, 38).padding(.trailing, 38)
 
-                    if !viewModel.linkedAlertsViewData.isEmpty {
-                        Text(L10n.Alerts.Details.Header.otherExposures)
-                            .font(.system(size: 17))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color(.coEpiPurple))
-                            .padding(.top, 14).padding(.leading, 38).padding(.trailing, 38)
-                            .padding(.bottom, 4)
-                            .padding(.bottom, -6)
-                    }
-                    ForEach(viewModel.linkedAlertsViewData, id: \.alert.id) { alert in
-                        linkedAlertRow(linkedAlert: alert)
-                        if alert.bottomLine {
-                            Divider().background(Color.black)
-                        }
+                if !viewModel.linkedAlertsViewData.isEmpty {
+                    Text(L10n.Alerts.Details.Header.otherExposures)
+                        .font(.system(size: 17))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(.coEpiPurple))
+                        .padding(.top, 14).padding(.leading, 38).padding(.trailing, 38)
+                        .padding(.bottom, 4)
+                        .padding(.bottom, -6)
+                }
+                ForEach(viewModel.linkedAlertsViewData, id: \.alert.id) { alert in
+                    linkedAlertRow(linkedAlert: alert)
+                    if alert.bottomLine {
+                        Divider().background(Color.black)
                     }
                 }
-            }
+            }.padding(.top, 20)
         }
         .actionSheet(isPresented: $viewModel.showingActionSheet) {
             ActionSheet(
