@@ -22,5 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         let badgeUpdater: AppBadgeUpdater = try! container.resolve()
         badgeUpdater.updateAppBadge(number: 0)
+
+        let localeProvider: LocaleProvider = try! container.resolve()
+        localeProvider.update()
     }
 }

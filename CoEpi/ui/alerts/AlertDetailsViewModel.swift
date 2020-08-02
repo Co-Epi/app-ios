@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import RxSwift
 
 struct AlertDetailsViewModelParams {
     let alert: Alert
@@ -11,23 +12,32 @@ class AlertDetailsViewModel: ObservableObject {
     private let nav: RootNav
     private var email: Email
 
-    let viewData: AlertDetailsViewData
+    @Published var viewData: AlertDetailsViewData = .empty()
+
     let linkedAlertsViewData: [LinkedAlertViewData]
 
     @Published var showingActionSheet = false
 
-    init(pars: AlertDetailsViewModelParams, alertRepo: AlertRepo, nav: RootNav, email: Email) {
+    private let disposeBag = DisposeBag()
+
+    init(pars: AlertDetailsViewModelParams, alertRepo: AlertRepo, nav: RootNav, email: Email,
+         unitsFormatter: UnitsFormatter) {
         self.alertRepo = alertRepo
         self.nav = nav
         self.email = email
 
-        viewData = pars.alert.toViewData()
         linkedAlertsViewData = pars.linkedAlerts
             .enumerated()
             .map { index, alert in alert.toLinkedAlertViewData(
                 image: .from(alertIndex: index, alertsCount: pars.linkedAlerts.count),
                 bottomLine: index < pars.linkedAlerts.count - 1
             )}
+
+        unitsFormatter.formatter.map {
+            pars.alert.toViewData(measurementFormatter: $0)
+        }.subscribe(onNext: { [weak self] in
+            self?.viewData = $0
+        }).disposed(by: disposeBag)
     }
 
     func delete() {
@@ -51,11 +61,12 @@ class AlertDetailsViewModel: ObservableObject {
 
 private extension Alert {
 
-    func toViewData() -> AlertDetailsViewData {
-        let distanceUnit = UnitLength.feet
+    func toViewData(measurementFormatter: MeasurementFormatter) -> AlertDetailsViewData {
         guard
-            let formattedAvgDistance = formatterdAvgDistance(unit: distanceUnit),
-            let formattedMinDistance = formatterdMinDistance(unit: distanceUnit)
+            let formattedAvgDistance = formatterdAvgDistance(
+                measurementFormatter: measurementFormatter),
+            let formattedMinDistance = formatterdMinDistance(
+                measurementFormatter: measurementFormatter)
         else { fatalError("Format error: \(self)") }
 
         return AlertDetailsViewData(
@@ -99,22 +110,14 @@ private extension Alert {
         symptomUIStrings().joined(separator: "\n")
     }
 
-    private func formatterdAvgDistance(unit: UnitLength) -> String? {
-        guard
-            let formatted = formattedDistance(unit: unit, distance: minDistance)
-        else { fatalError("Couldn't format distance: \(avgDistance)") }
-
-        return L10n.Alerts.Details.Distance.avg(formatted,
-                                                L10n.Alerts.Details.Distance.Unit.feet)
+    private func formatterdAvgDistance(measurementFormatter: MeasurementFormatter) -> String? {
+        let formatted = measurementFormatter.string(from: minDistance)
+        return L10n.Alerts.Details.Distance.avg(formatted)
     }
 
-    private func formatterdMinDistance(unit: UnitLength) -> String? {
-        guard
-            let formatted = formattedDistance(unit: unit, distance: minDistance)
-        else { fatalError("Couldn't format distance: \(avgDistance)") }
-
-        return "[DEBUG] Min distance: \(formatted) " +
-            "\(L10n.Alerts.Details.Distance.Unit.feet)" // Temporary, for testing
+    private func formatterdMinDistance(measurementFormatter: MeasurementFormatter) -> String? {
+        let formatted = measurementFormatter.string(from: minDistance)
+        return "[DEBUG] Min distance: \(formatted)" // Temporary, for testing
     }
 
     private func formattedDistance(unit: UnitLength, distance: Measurement<UnitLength>) -> String? {

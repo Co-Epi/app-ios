@@ -27,7 +27,7 @@ class ObservableAlertFiltersImpl: ObservableAlertFilters {
 
 struct AlertFilterSettings {
     let durationSecondsLargerThan: Int
-    let distanceFeetShorterThan: Int
+    let distanceShorterThan: Measurement<UnitLength>
 }
 
 struct AlertFilters {
@@ -51,7 +51,8 @@ extension AlertFilters {
             apply(
                 filter: withShortDistance,
                 meetsCondition: {
-                    alert.avgDistance.converted(to: .feet).value < Double(settings.distanceFeetShorterThan) })
+                    alert.avgDistance.converted(to: .feet).value <
+                        Double(settings.distanceShorterThan.converted(to: .feet).value) })
         }
     }
 

@@ -17,7 +17,7 @@ class Dependencies {
 
         let alertFilterSettings = AlertFilterSettings(
             durationSecondsLargerThan: 300,
-            distanceFeetShorterThan: 10
+            distanceShorterThan: Measurement(value: 10, unit: .feet)
         )
 
         registerLogic(container: container)
@@ -122,12 +122,14 @@ class Dependencies {
         container.register { AlertDetailsViewModel(pars: $0,
                                                    alertRepo: try container.resolve(),
                                                    nav: try container.resolve(),
-                                                   email: try container.resolve()) }
+                                                   email: try container.resolve(),
+                                                   unitsFormatter: try container.resolve()) }
 
         container.register { UserSettingsViewModel(kvStore: try container.resolve(),
                                                    alertFilterSettings: alertFilterSettings,
                                                    envInfos: try container.resolve(),
-                                                   email: try container.resolve()) }
+                                                   email: try container.resolve(),
+                                                   unitsFormatter: try container.resolve()) }
     }
 
     private func registerRepos(container: DependencyContainer) {
@@ -211,6 +213,10 @@ class Dependencies {
             .register(.singleton) { EmailImpl() as Email }
         container.register(.singleton) { ObservableKeyValueStoreImpl(
             keyValueStore: try container.resolve()) as ObservableKeyValueStore
+        }
+        container.register(.eagerSingleton) { LocaleProviderImpl() as LocaleProvider }
+        container.register(.eagerSingleton) {
+            UnitsFormatterImpl(localeProvider: try container.resolve()) as UnitsFormatter
         }
     }
 }

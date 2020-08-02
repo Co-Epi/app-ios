@@ -34,3 +34,19 @@ struct LinkedAlertViewData {
     let image: LinkedAlertViewDataConnectionImage
     let bottomLine: Bool
 }
+
+extension AlertDetailsViewData {
+    static func empty() -> AlertDetailsViewData {
+        AlertDetailsViewData(
+            title: "", contactStart: "", contactDuration: "", avgDistance: "",
+            minDistance: "", reportTime: "", symptoms: "", alert:
+                Alert(id: "", reportId: "",
+                      start: UnixTime.minTimestamp(), end: UnixTime.minTimestamp(),
+                      minDistance: Measurement(value: 0, unit: .meters),
+                      avgDistance: Measurement(value: 0, unit: .meters),
+                      reportTime: UnixTime.minTimestamp(), earliestSymptomTime: .none,
+                      feverSeverity: .None, coughSeverity: .None, breathlessness: false,
+                      muscleAches: false, lossSmellOrTaste: false, diarrhea: false,
+                      runnyNose: false, other: false, noSymptoms: false, isRead: false))
+    }
+}

@@ -104,7 +104,7 @@ internal enum L10n {
       internal static let how = L10n.tr("Localizable", "UX.home.how")
       /// My Symptoms
       internal static let report1 = L10n.tr("Localizable", "UX.home.report1")
-      /// Report and track any symptoms you have.
+      /// Report and track any\nsymptoms you have.
       internal static let report2 = L10n.tr("Localizable", "UX.home.report2")
       /// Share
       internal static let share = L10n.tr("Localizable", "UX.home.share")
@@ -120,11 +120,11 @@ internal enum L10n {
       }
     }
     internal enum Onboarding {
-      /// CoEpi will anonymously log interactions with other devices using compatible apps.
+      /// Share your symptoms to inform and help protect your community.
       internal static let body1 = L10n.tr("Localizable", "UX.onboarding.body1")
-      /// Share any symptoms you may have, when you notice them.
+      /// You will get alerts about potential exposure to individuals with reported symptoms.
       internal static let body2 = L10n.tr("Localizable", "UX.onboarding.body2")
-      /// You will get alerts about potential exposure to individuals with contagious illnesses.
+      /// CoEpi uses Bluetooth to anonymously record interactions.\n\nYour privacy is protected: there is no profile tied to your identity, and location is not tracked.
       internal static let body3 = L10n.tr("Localizable", "UX.onboarding.body3")
       /// Help prevent the spread of contagious illnesses. Together, we can make a difference.
       internal static let body4 = L10n.tr("Localizable", "UX.onboarding.body4")
@@ -136,13 +136,13 @@ internal enum L10n {
       internal static let next = L10n.tr("Localizable", "UX.onboarding.next")
       /// Frequently asked questions
       internal static let questions = L10n.tr("Localizable", "UX.onboarding.questions")
-      /// Log your interactions
+      /// Report your symptoms
       internal static let title1 = L10n.tr("Localizable", "UX.onboarding.title1")
-      /// Monitor your health
-      internal static let title2 = L10n.tr("Localizable", "UX.onboarding.title2")
       /// Stay informed
+      internal static let title2 = L10n.tr("Localizable", "UX.onboarding.title2")
+      /// Ensure your privacy
       internal static let title3 = L10n.tr("Localizable", "UX.onboarding.title3")
-      /// Collaborate. Inform. Protect.
+      /// Collaborate.\nInform.\nProtect.
       internal static let title4 = L10n.tr("Localizable", "UX.onboarding.title4")
     }
     internal enum Permissions {
@@ -192,7 +192,7 @@ internal enum L10n {
       internal static let home = L10n.tr("Localizable", "UX.thankyou.home")
       /// Log more symptoms
       internal static let more = L10n.tr("Localizable", "UX.thankyou.more")
-      /// View exposures
+      /// View exposure alerts
       internal static let viewExposures = L10n.tr("Localizable", "UX.thankyou.viewExposures")
     }
   }
@@ -220,9 +220,9 @@ internal enum L10n {
       /// Exposure Alert
       internal static let title = L10n.tr("Localizable", "alerts.details.title")
       internal enum Distance {
-        /// Approx. %1$s %2$s away from you
-        internal static func avg(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
-          return L10n.tr("Localizable", "alerts.details.distance.avg", p1, p2)
+        /// Approx. %@ away from you
+        internal static func avg(_ p1: String) -> String {
+          return L10n.tr("Localizable", "alerts.details.distance.avg", p1)
         }
         internal enum Unit {
           /// Feet
@@ -345,12 +345,10 @@ internal enum L10n {
     internal enum Item {
       /// Show me all reports,\nincluding "I don't have any symptoms"
       internal static let allReports = L10n.tr("Localizable", "settings.item.all_reports")
-      /// Only notify me for\ninteractions that occured\n<%1$d %2$s away
-      internal static func distanceShorterThan(_ p1: Int, _ p2: UnsafePointer<CChar>) -> String {
-        return L10n.tr("Localizable", "settings.item.distance_shorter_than", p1, p2)
+      /// Only notify me for\ninteractions that occured\n<%@ away
+      internal static func distanceShorterThan(_ p1: String) -> String {
+        return L10n.tr("Localizable", "settings.item.distance_shorter_than", p1)
       }
-      /// feet
-      internal static let distanceShorterThanUnitFeet = L10n.tr("Localizable", "settings.item.distance_shorter_than_unit_feet")
       /// Only show alerts >%d min\nof interaction
       internal static func durationLongerThanMins(_ p1: Int) -> String {
         return L10n.tr("Localizable", "settings.item.duration_longer_than_mins", p1)

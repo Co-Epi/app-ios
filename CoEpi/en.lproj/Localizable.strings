@@ -37,7 +37,7 @@
 "alerts.details.duration.hours_minutes" = "%i hours and %i minutes exposure";
 "alerts.details.duration.minutes" = "%i minutes exposure";
 "alerts.details.duration.seconds" = "%i seconds exposure";
-"alerts.details.distance.avg" = "Approx. %1$s %2$s away from you";
+"alerts.details.distance.avg" = "Approx. %@ away from you";
 "alerts.details.distance.unit.feet" = "Feet";
 "alerts.details.more.title" = "Select an action";
 "alerts.details.more.delete" = "Delete";
@@ -159,8 +159,7 @@
 "settings.header.alerts.descr" = "What information do you want to see on reported exposures around you?";
 "settings.item.all_reports" = "Show me all reports,\nincluding \"I don't have any symptoms\"";
 "settings.item.duration_longer_than_mins" = "Only show alerts >%d min\nof interaction";
-"settings.item.distance_shorter_than" = "Only notify me for\ninteractions that occured\n<%1$d %2$s away";
-"settings.item.distance_shorter_than_unit_feet" = "feet";
+"settings.item.distance_shorter_than" = "Only notify me for\ninteractions that occured\n<%@ away";
 "settings.item.privacy_statement" = "Privacy statement";
 "settings.item.report_problem" = "Report a problem";
 "settings.item.version" = "Version %@";
