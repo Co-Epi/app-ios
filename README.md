@@ -50,3 +50,7 @@ See the [Internationalization wiki page](https://github.com/Co-Epi/app-ios/wiki/
 - Install [Sourcery](https://github.com/krzysztofzablocki/Sourcery#installation)
 - Run `sourcery` in the project's root.
 
+### Autoformat
+
+This project uses [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) to format code. After installing it, you can format from the [terminal](https://github.com/nicklockwood/SwiftFormat#command-line-tool) or using an [Xcode extension](https://github.com/nicklockwood/SwiftFormat#xcode-source-editor-extension) (you can assign a shortcut to it). For now not integrated in the build process, as it [clears the undo history](https://github.com/nicklockwood/SwiftFormat#xcode-build-phase). 
+
