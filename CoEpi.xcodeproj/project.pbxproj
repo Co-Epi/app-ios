@@ -680,13 +680,13 @@
 		849DFE592427D3750008ED65 = {
 			isa = PBXGroup;
 			children = (
-				62CE509A249BB496003F2ECE /* .swiftlint.yml */,
 				849DFE642427D3750008ED65 /* CoEpi */,
 				849DFE7E2427D37A0008ED65 /* CoEpiTests */,
 				849DFE892427D37A0008ED65 /* CoEpiUITests */,
 				30C3D5AB2495412B00A77F76 /* FFIStandaloneTests */,
 				849DFE632427D3750008ED65 /* Products */,
 				84E76D6A2470445F009C1D97 /* Frameworks */,
+				62CE509A249BB496003F2ECE /* .swiftlint.yml */,
 			);
 			sourceTree = "<group>";
 		};
