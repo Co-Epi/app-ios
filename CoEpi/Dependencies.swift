@@ -69,7 +69,10 @@ class Dependencies {
         container.register { FeverDaysViewModel(symptomFlowManager: try container.resolve()) }
         container.register { FeverTodayViewModel(symptomFlowManager: try container.resolve()) }
         container.register { FeverWhereViewModel(symptomFlowManager: try container.resolve()) }
-        container.register { FeverTempViewModel(symptomFlowManager: try container.resolve()) }
+        container.register { FeverTempViewModel(
+            symptomFlowManager: try container.resolve(),
+            unitsProvider: try container.resolve()
+        ) }
         container.register { SymptomReportViewModel(
             symptomRepo: try container.resolve(),
             rootNav: try container.resolve(),
@@ -98,7 +101,7 @@ class Dependencies {
             alertRepo: try container.resolve(),
             nav: try container.resolve(),
             email: try container.resolve(),
-            unitsFormatter: try container.resolve()
+            unitsProvider: try container.resolve()
         ) }
 
         container.register { UserSettingsViewModel(
@@ -106,7 +109,7 @@ class Dependencies {
             alertFilterSettings: alertFilterSettings,
             envInfos: try container.resolve(),
             email: try container.resolve(),
-            unitsFormatter: try container.resolve()
+            unitsProvider: try container.resolve()
         ) }
     }
 
@@ -178,7 +181,7 @@ class Dependencies {
         }
         container.register(.eagerSingleton) { LocaleProviderImpl() as LocaleProvider }
         container.register(.eagerSingleton) {
-            UnitsFormatterImpl(localeProvider: try container.resolve()) as UnitsFormatter
+            UnitsProviderImpl(localeProvider: try container.resolve()) as UnitsProvider
         }
     }
 }

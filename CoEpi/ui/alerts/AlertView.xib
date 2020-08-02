@@ -22,13 +22,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igT-Ag-qcw">
                     <rect key="frame" x="26" y="20" width="434" height="93"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="[time]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE1-mN-cIy">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="[time]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE1-mN-cIy">
                             <rect key="frame" x="12" y="36.5" width="48.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[symptom1, symptom2, symptom3]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBY-Lt-xKo">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[symptom1, symptom2, symptom3]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBY-Lt-xKo">
                             <rect key="frame" x="76.5" y="12" width="241.5" height="69"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -60,6 +60,7 @@
                         <constraint firstItem="rrZ-JT-HXg" firstAttribute="top" secondItem="igT-Ag-qcw" secondAttribute="top" constant="-9" id="28f-Y7-cAV"/>
                         <constraint firstItem="8Lb-Fy-Rcg" firstAttribute="leading" secondItem="aBY-Lt-xKo" secondAttribute="trailing" constant="16" id="62A-dP-4z0"/>
                         <constraint firstItem="8Lb-Fy-Rcg" firstAttribute="top" secondItem="onr-Ru-oFy" secondAttribute="top" constant="-4" id="B7L-Ew-eqg"/>
+                        <constraint firstAttribute="trailing" secondItem="aBY-Lt-xKo" secondAttribute="trailing" priority="500" constant="16" id="Ev1-nE-aIk"/>
                         <constraint firstAttribute="trailing" secondItem="8Lb-Fy-Rcg" secondAttribute="trailing" constant="16" id="IHC-DY-uV5"/>
                         <constraint firstItem="RE1-mN-cIy" firstAttribute="leading" secondItem="igT-Ag-qcw" secondAttribute="leading" constant="12" id="Mah-Fm-AXe"/>
                         <constraint firstItem="aBY-Lt-xKo" firstAttribute="centerY" secondItem="RE1-mN-cIy" secondAttribute="centerY" id="Pai-Uo-7vp"/>
@@ -90,6 +91,8 @@
             <connections>
                 <outlet property="borderView" destination="sr0-JU-cdH" id="9Y0-FF-Wn3"/>
                 <outlet property="containerView" destination="igT-Ag-qcw" id="Foa-9U-e3n"/>
+                <outlet property="labelTrailingToRepeatedViewConstraint" destination="62A-dP-4z0" id="N1c-ZG-k4p"/>
+                <outlet property="labelTrailingToSuperViewConstraint" destination="Ev1-nE-aIk" id="Q6c-xD-2KD"/>
                 <outlet property="repeatedInteractionLabel" destination="onr-Ru-oFy" id="0wH-RO-hhE"/>
                 <outlet property="repeatedInteractionView" destination="8Lb-Fy-Rcg" id="6Iy-42-AhW"/>
                 <outlet property="symptomsLabel" destination="aBY-Lt-xKo" id="XSO-et-3jQ"/>

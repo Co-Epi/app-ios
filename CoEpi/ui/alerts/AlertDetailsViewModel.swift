@@ -21,7 +21,7 @@ class AlertDetailsViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
 
     init(pars: AlertDetailsViewModelParams, alertRepo: AlertRepo, nav: RootNav, email: Email,
-         unitsFormatter: UnitsFormatter)
+         unitsProvider: UnitsProvider)
     {
         self.alertRepo = alertRepo
         self.nav = nav
@@ -34,7 +34,7 @@ class AlertDetailsViewModel: ObservableObject {
                 bottomLine: index < pars.linkedAlerts.count - 1
             ) }
 
-        unitsFormatter.formatter.map {
+        unitsProvider.formatter.map {
             pars.alert.toViewData(measurementFormatter: $0)
         }.subscribe(onNext: { [weak self] in
             self?.viewData = $0

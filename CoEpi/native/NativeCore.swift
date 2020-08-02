@@ -111,7 +111,7 @@ extension NativeCore: ObservedTcnsRecorder {
 }
 
 // swiftlint:disable identifier_name
-struct CorePublicReport: Decodable {
+struct CorePublicSymptoms: Decodable {
     let report_time: UnixTime
     let earliest_symptom_time: CoreUserInput<UnixTime>
     let fever_severity: FeverSeverity
@@ -209,18 +209,18 @@ class NativeCore: AlertsApi {
                     minDistance: Measurement(value: Double($0.min_distance), unit: .meters),
                     avgDistance: Measurement(value: Double($0.avg_distance), unit: .meters),
 
-                    reportTime: $0.report.report_time,
-                    earliestSymptomTime: $0.report.earliest_symptom_time.toUserInput(),
+                    reportTime: $0.symptoms.report_time,
+                    earliestSymptomTime: $0.symptoms.earliest_symptom_time.toUserInput(),
 
-                    feverSeverity: $0.report.fever_severity,
-                    coughSeverity: $0.report.cough_severity,
-                    breathlessness: $0.report.breathlessness,
-                    muscleAches: $0.report.muscle_aches,
-                    lossSmellOrTaste: $0.report.loss_smell_or_taste,
-                    diarrhea: $0.report.diarrhea,
-                    runnyNose: $0.report.runny_nose,
-                    other: $0.report.other,
-                    noSymptoms: $0.report.no_symptoms,
+                    feverSeverity: $0.symptoms.fever_severity,
+                    coughSeverity: $0.symptoms.cough_severity,
+                    breathlessness: $0.symptoms.breathlessness,
+                    muscleAches: $0.symptoms.muscle_aches,
+                    lossSmellOrTaste: $0.symptoms.loss_smell_or_taste,
+                    diarrhea: $0.symptoms.diarrhea,
+                    runnyNose: $0.symptoms.runny_nose,
+                    other: $0.symptoms.other,
+                    noSymptoms: $0.symptoms.no_symptoms,
 
                     isRead: $0.is_read
                 )
@@ -474,7 +474,7 @@ private extension UserInput where T == Bool {
 private struct NativeAlert: Decodable {
     let id: String
     let report_id: String
-    let report: CorePublicReport
+    let symptoms: CorePublicSymptoms
     let contact_start: UInt64
     let contact_end: UInt64
     let min_distance: Float32

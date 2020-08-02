@@ -12,10 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeverTempViewController">
             <connections>
                 <outlet property="numberInput" destination="UnH-FU-AjW" id="U9j-Nn-efN"/>
-                <outlet property="scaleButtonLabel" destination="Ex1-Mg-7F1" id="ULf-uQ-9GB"/>
                 <outlet property="skipButtonLabel" destination="HGK-F4-EBs" id="mcL-Zn-TKM"/>
                 <outlet property="submitButtonLabel" destination="4yN-a8-TVz" id="8g4-Xr-0qs"/>
                 <outlet property="titleLabel" destination="Qbd-WU-dpa" id="INn-TC-bvc"/>
+                <outlet property="unitLabel" destination="mB5-XS-q4q" id="SSZ-fH-vlg"/>
                 <outlet property="unknownButtonLabel" destination="0RD-uN-jJj" id="VsN-ZJ-UiN"/>
                 <outlet property="view" destination="OOO-VI-Kw9" id="3cj-um-KTS"/>
             </connections>
@@ -33,33 +33,29 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-IZ-Bes">
-                    <rect key="frame" x="50" y="226" width="220" height="116"/>
+                    <rect key="frame" x="50" y="220.5" width="220" height="127"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="VCq-l6-TA3">
-                            <rect key="frame" x="0.0" y="0.0" width="220" height="35"/>
+                            <rect key="frame" x="0.0" y="0.0" width="220" height="46"/>
                             <subviews>
                                 <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="UnH-FU-AjW" customClass="CustomTextFieldFeverTemp" customModule="CoEpi" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="105" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="46"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="UnH-FU-AjW" secondAttribute="height" multiplier="73:24" id="BgN-AY-sMx"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex1-Mg-7F1">
-                                    <rect key="frame" x="130" y="0.0" width="90" height="35"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                    <state key="normal" title="Cº/Fº">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="scaleButtonAction:" destination="-1" eventType="touchUpInside" id="6bL-Jc-WvU"/>
-                                    </connections>
-                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[unit]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB5-XS-q4q">
+                                    <rect key="frame" x="165" y="0.0" width="55" height="46"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tqv-QC-mkI">
-                            <rect key="frame" x="0.0" y="85" width="220" height="31"/>
+                            <rect key="frame" x="0.0" y="96" width="220" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RD-uN-jJj">
                                     <rect key="frame" x="0.0" y="0.0" width="94" height="31"/>
@@ -100,7 +96,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGK-F4-EBs">
-                    <rect key="frame" x="50" y="392" width="30" height="28"/>
+                    <rect key="frame" x="50" y="397.5" width="30" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,7 +106,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbd-WU-dpa">
-                    <rect key="frame" x="20" y="30" width="280" height="33.5"/>
+                    <rect key="frame" x="20" y="48.5" width="280" height="33.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -127,9 +123,9 @@
                 <constraint firstItem="2bj-IZ-Bes" firstAttribute="centerX" secondItem="OOO-VI-Kw9" secondAttribute="centerX" id="Aj8-JS-jpj"/>
                 <constraint firstItem="OSw-q9-ned" firstAttribute="leading" secondItem="c89-m1-m5s" secondAttribute="leading" id="KgN-aG-bMU"/>
                 <constraint firstItem="2bj-IZ-Bes" firstAttribute="leading" secondItem="c89-m1-m5s" secondAttribute="leading" constant="50" id="L8B-iB-IJT"/>
-                <constraint firstItem="Qbd-WU-dpa" firstAttribute="top" secondItem="c89-m1-m5s" secondAttribute="top" constant="30" id="TqD-xa-C8K"/>
                 <constraint firstItem="OSw-q9-ned" firstAttribute="top" secondItem="c89-m1-m5s" secondAttribute="top" id="ZYQ-rI-x6N"/>
                 <constraint firstItem="c89-m1-m5s" firstAttribute="trailing" secondItem="Qbd-WU-dpa" secondAttribute="trailing" constant="20" id="epI-c4-a6C"/>
+                <constraint firstItem="Qbd-WU-dpa" firstAttribute="centerY" secondItem="OSw-q9-ned" secondAttribute="centerY" id="meL-GF-VqF"/>
                 <constraint firstItem="HGK-F4-EBs" firstAttribute="top" secondItem="2bj-IZ-Bes" secondAttribute="bottom" constant="50" id="nD3-Xx-h1x"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>

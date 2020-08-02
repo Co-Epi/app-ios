@@ -54,7 +54,7 @@ class RootWireFrame {
     private func onNavigationCommand(navCommand: RootNavCommand) {
         switch navCommand {
         case let .to(destination, mode):
-            let viewController = navigate(to: destination)
+            let viewController = self.viewController(for: destination)
             switch mode {
             case .push: rootNavigationController.pushViewController(
                 viewController, animated: true
@@ -70,23 +70,23 @@ class RootWireFrame {
         }
     }
 
-    private func navigate(to: RootNavDestination) -> UIViewController {
-        switch to {
-        case .debug: return showDebug()
-        case .alerts: return showAlerts()
-        case .thankYou: return showThankYou()
-        case .breathless: return showBreathless()
-        case .coughType: return showCoughType()
-        case .coughDescription: return showCoughHow()
-        case .feverTemperatureTakenToday: return showFeverToday()
-        case .feverTemperatureSpot: return showFeverWhere()
-        case .feverHighestTemperature: return showFeverTemp()
-        case .symptomReport: return showSymptomReport()
-        case .symptomStartDays: return showSymptomStartDays()
-        case .home: return showHome()
-        case let .alertDetails(pars): return showAlertDetails(pars: pars)
-        case .settings: return showSettings()
-        case .howItWorks: return showHowItWorks()
+    private func viewController(for destination: RootNavDestination) -> UIViewController {
+        switch destination {
+        case .debug: return debug()
+        case .alerts: return alerts()
+        case .thankYou: return thankYou()
+        case .breathless: return breathless()
+        case .coughType: return coughType()
+        case .coughDescription: return coughHow()
+        case .feverTemperatureTakenToday: return feverToday()
+        case .feverTemperatureSpot: return feverWhere()
+        case .feverHighestTemperature: return feverTemp()
+        case .symptomReport: return symptomReport()
+        case .symptomStartDays: return symptomStartDays()
+        case .home: return home()
+        case let .alertDetails(pars): return alertDetails(pars: pars)
+        case .settings: return settings()
+        case .howItWorks: return howItWorks()
         }
     }
 
@@ -115,8 +115,14 @@ class RootWireFrame {
         }
     }
 
-    private func navigateBack(to: RootNavDestination) {
-        rootNavigationController.backToViewController(type: viewControllerTypeFor(destination: to))
+    private func navigateBack(to destination: RootNavDestination) {
+        rootNavigationController.backToViewController(
+            type: viewControllerTypeFor(destination: destination))
+    }
+
+    private func navigate(to destination: RootNavDestination) {
+        rootNavigationController.pushViewController(
+            viewController(for: destination), animated: true)
     }
 
     private func navigateBackAndTo(
@@ -127,86 +133,86 @@ class RootWireFrame {
         navigate(to: toDestination)
     }
 
-    private func showHome() -> UIViewController {
+    private func home() -> UIViewController {
         let viewModel: HomeViewModel = try! container.resolve()
         return HomeViewController(viewModel: viewModel)
     }
 
-    private func showDebug() -> UIViewController {
+    private func debug() -> UIViewController {
         DebugViewController(container: container)
     }
 
-    private func showAlerts() -> UIViewController {
+    private func alerts() -> UIViewController {
         let viewModel: AlertsViewModel = try! container.resolve()
         return AlertsViewController(viewModel: viewModel)
     }
 
-    private func showThankYou() -> UIViewController {
+    private func thankYou() -> UIViewController {
         let viewModel: ThankYouViewModel = try! container.resolve()
         return ThankYouViewController(viewModel: viewModel)
     }
 
-    private func showBreathless() -> UIViewController {
+    private func breathless() -> UIViewController {
         let viewModel: BreathlessViewModel = try! container.resolve()
         return BreathlessViewController(viewModel: viewModel)
     }
 
-    private func showCoughType() -> UIViewController {
+    private func coughType() -> UIViewController {
         let viewModel: CoughTypeViewModel = try! container.resolve()
         return CoughTypeViewController(viewModel: viewModel)
     }
 
-    private func showCoughDays() -> UIViewController {
+    private func coughDays() -> UIViewController {
         let viewModel: CoughDaysViewModel = try! container.resolve()
         return CoughDaysViewController(viewModel: viewModel)
     }
 
-    private func showCoughHow() -> UIViewController {
+    private func coughHow() -> UIViewController {
         let viewModel: CoughHowViewModel = try! container.resolve()
         return CoughHowViewController(viewModel: viewModel)
     }
 
-    private func showFeverDays() -> UIViewController {
+    private func feverDays() -> UIViewController {
         let viewModel: FeverDaysViewModel = try! container.resolve()
         return FeverDaysViewController(viewModel: viewModel)
     }
 
-    private func showFeverToday() -> UIViewController {
+    private func feverToday() -> UIViewController {
         let viewModel: FeverTodayViewModel = try! container.resolve()
         return FeverTodayViewController(viewModel: viewModel)
     }
 
-    private func showFeverWhere() -> UIViewController {
+    private func feverWhere() -> UIViewController {
         let viewModel: FeverWhereViewModel = try! container.resolve()
         return FeverWhereViewController(viewModel: viewModel)
     }
 
-    private func showFeverTemp() -> UIViewController {
+    private func feverTemp() -> UIViewController {
         let viewModel: FeverTempViewModel = try! container.resolve()
         return FeverTempViewController(viewModel: viewModel)
     }
 
-    private func showSymptomReport() -> UIViewController {
+    private func symptomReport() -> UIViewController {
         let viewModel: SymptomReportViewModel = try! container.resolve()
         return SymptomReportViewController(viewModel: viewModel)
     }
 
-    private func showSymptomStartDays() -> UIViewController {
+    private func symptomStartDays() -> UIViewController {
         let viewModel: SymptomStartDaysViewModel = try! container.resolve()
         return SymptomStartDaysViewController(viewModel: viewModel)
     }
 
-    private func showAlertDetails(pars: AlertDetailsViewModelParams) -> UIViewController {
+    private func alertDetails(pars: AlertDetailsViewModelParams) -> UIViewController {
         let viewModel: AlertDetailsViewModel = try! container.resolve(arguments: pars)
         return AlertDetailsViewController(viewModel: viewModel)
     }
 
-    private func showSettings() -> UIViewController {
+    private func settings() -> UIViewController {
         let viewModel: UserSettingsViewModel = try! container.resolve()
         return UserSettingsViewController(viewModel: viewModel)
     }
 
-    private func showHowItWorks() -> UIViewController {
+    private func howItWorks() -> UIViewController {
         WhatAreAlertsViewController()
     }
 }

@@ -18,8 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
         }
     }
-
-    func sceneDidBecomeActive(_: UIScene) {
+    
+    func sceneWillEnterForeground(_ scene: UIScene) {
         let badgeUpdater: AppBadgeUpdater = try! container.resolve()
         badgeUpdater.updateAppBadge(number: 0)
 

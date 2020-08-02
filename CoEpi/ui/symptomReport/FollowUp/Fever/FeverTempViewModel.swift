@@ -1,6 +1,7 @@
 import Dip
 import RxCocoa
 import RxSwift
+import Foundation
 
 class FeverTempViewModel {
     private let symptomFlowManager: SymptomFlowManager
@@ -8,22 +9,22 @@ class FeverTempViewModel {
     let title = L10n.Ux.Fever.heading
 
     let temperatureText: Driver<String>
-    let selectedTemperatureUnit: Driver<TemperatureUnit>
+    let selectedTemperatureUnit: Driver<String>
     let submitButtonEnabled: Driver<Bool>
 
     private let temperatureTrigger: PublishRelay<UserInput<Temperature>> = PublishRelay()
-    private let toggleTemperatureUnitTrigger: PublishRelay<Void> = PublishRelay()
     private let temperatureTextTrigger: PublishRelay<String> = PublishRelay()
     private let tempUnitTrigger: BehaviorRelay<TemperatureUnit> = BehaviorRelay(value: .fahrenheit)
     private let submitTrigger: PublishRelay<Void> = PublishRelay()
 
     private let disposeBag = DisposeBag()
 
-    init(symptomFlowManager: SymptomFlowManager) {
+    init(symptomFlowManager: SymptomFlowManager, unitsProvider: UnitsProvider) {
         self.symptomFlowManager = symptomFlowManager
 
         selectedTemperatureUnit = tempUnitTrigger
-            .asDriver(onErrorJustReturn: .fahrenheit)
+            .map { $0.toText() }
+            .asDriver(onErrorJustReturn: "")
 
         let temperature = temperatureTrigger.asObservable()
 
@@ -43,13 +44,7 @@ class FeverTempViewModel {
                 symptomFlowManager.navigateForward()
             }).disposed(by: disposeBag)
 
-        toggleTemperatureUnitTrigger.withLatestFrom(tempUnitTrigger)
-            .map { $0.toggle() }
-            .subscribe(onNext: { [tempUnitTrigger] unit in
-                tempUnitTrigger.accept(unit)
-            }).disposed(by: disposeBag)
-
-        tempUnitTrigger.withLatestFrom(
+        unitsProvider.temperatureUnit.withLatestFrom(
             temperature, resultSelector: { selectedUnit, currentTemp in
                 toTemperature(newUnit: selectedUnit, currentInput: currentTemp)
             }
@@ -88,10 +83,6 @@ class FeverTempViewModel {
     func onBack() {
         symptomFlowManager.onBack()
     }
-
-    func onTemperatureUnitPress() {
-        toggleTemperatureUnitTrigger.accept(())
-    }
 }
 
 private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<Temperature> {
@@ -111,7 +102,7 @@ private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<
 }
 
 private func toTemperature(
-    newUnit: TemperatureUnit,
+    newUnit: UnitTemperature,
     currentInput: UserInput<Temperature>
 ) -> UserInput<Temperature> {
     switch currentInput {
@@ -120,12 +111,29 @@ private func toTemperature(
     }
 }
 
-private func toTemperature(newUnit: TemperatureUnit, currentTemp: Temperature) -> Temperature {
+private func toTemperature(newUnit: UnitTemperature, currentTemp: Temperature) -> Temperature {
     switch newUnit {
     case .celsius:
         return .celsius(value: currentTemp.asCelsius())
     case .fahrenheit:
         return .fahrenheit(value: currentTemp.asFarenheit())
+    default:
+        // See TODO in UnitsProvider.determineTemperatureUnit
+        fatalError("Not supported temperature unit: \(newUnit)")
+    }
+}
+
+private extension TemperatureUnit {
+    func toText() -> String {
+        switch self {
+        case .celsius:
+            return L10n.Ux.Fever.c
+        case .fahrenheit:
+            return L10n.Ux.Fever.f
+        default:
+            // See TODO in UnitsProvider.determineTemperatureUnit
+            fatalError("Not supported temperature unit: \(self)")
+        }
     }
 }
 
@@ -134,15 +142,6 @@ private extension UserInput where T == Temperature {
         switch self {
         case .none: return ""
         case let .some(temp): return temp.toUserString()
-        }
-    }
-}
-
-private extension TemperatureUnit {
-    func toggle() -> TemperatureUnit {
-        switch self {
-        case .celsius: return .fahrenheit
-        case .fahrenheit: return .celsius
         }
     }
 }

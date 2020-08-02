@@ -89,12 +89,12 @@ struct UserSettingsView: View {
         .padding(.top, 8)
     }
 
-    private func toggleView(text: String, value _: Bool,
+    private func toggleView(text: String, value: Bool,
                             id: UserSettingToggleId,
                             hasBottomLine: Bool) -> some View
     {
         VStack {
-            SettingsToggle(text: text, onChange: { [viewModel] isOn in
+            SettingsToggle(text: text, isToggled: value, onChange: { [viewModel] isOn in
                 viewModel.onToggle(id: id, value: isOn)
             })
                 .padding(.bottom, hasBottomLine ? 16 : 24).padding(.top, 16)
@@ -113,8 +113,8 @@ struct UserSettingsView: View {
             Text(text)
                 .font(.system(size: 13))
         })
-        .listRowBackground(Color(greyBGColor))
-        .padding(.leading, 20).padding(.trailing, 20)
+            .listRowBackground(Color(greyBGColor))
+            .padding(.leading, 20).padding(.trailing, 20)
     }
 
     private func actionTextView(text: String, action: UserSettingActionId) -> some View {
@@ -124,8 +124,8 @@ struct UserSettingsView: View {
             Text(text)
                 .font(.system(size: 13))
         })
-        .listRowBackground(Color(greyBGColor))
-        .padding(.leading, 20).padding(.trailing, 20)
+            .listRowBackground(Color(greyBGColor))
+            .padding(.leading, 20).padding(.trailing, 20)
     }
 
     private func textView(text: String) -> some View {
@@ -141,11 +141,12 @@ struct SettingsToggle: View {
     let text: String
     let onChange: (Bool) -> Void
 
-    @State private var isToggled = false
+    @State private var isToggled: Bool
 
-    init(text: String, onChange: @escaping (Bool) -> Void) {
+    init(text: String, isToggled: Bool, onChange: @escaping (Bool) -> Void) {
         self.text = text
         self.onChange = onChange
+        _isToggled = State(initialValue: isToggled)
     }
 
     var body: some View {

@@ -11,7 +11,7 @@ class UserSettingsViewModel: ObservableObject {
     private let email: Email
 
     init(kvStore: ObservableKeyValueStore, alertFilterSettings: AlertFilterSettings,
-         envInfos: EnvInfos, email: Email, unitsFormatter: UnitsFormatter)
+         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider)
     {
         self.kvStore = kvStore
         self.email = email
@@ -19,19 +19,23 @@ class UserSettingsViewModel: ObservableObject {
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
                                  kvStore.filterAlertsWithLongDuration,
                                  kvStore.filterAlertsWithShortDistance,
-                                 unitsFormatter.formatter).subscribe(onNext: { [weak self] filterAlertsWithSymptoms,
-                filterAlertsWithLongDuration,
-                filterAlertsWithShortDistance,
-                measurementFormatter in
+                                 unitsProvider.formatter)
+            .map { filterAlertsWithSymptoms,
+                   filterAlertsWithLongDuration,
+                   filterAlertsWithShortDistance,
+                   measurementFormatter in
 
-            self?.settingsViewData =
                 buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
                               filterAlertsWithLongDuration: filterAlertsWithLongDuration,
                               filterAlertsWithShortDistance: filterAlertsWithShortDistance,
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
                               measurementFormatter: measurementFormatter)
-        }).disposed(by: disposeBag)
+            }
+            .subscribe(onNext: { [weak self] viewData in
+                self?.settingsViewData = viewData
+            })
+            .disposed(by: disposeBag)
     }
 
     func onToggle(id: UserSettingToggleId, value: Bool) {
@@ -91,7 +95,7 @@ private func buildSettings(
         ),
         UserSettingViewData.toggle(
             text: L10n.Settings.Item.allReports,
-            value: filterAlertsWithSymptoms,
+            value: !filterAlertsWithSymptoms,
             id: .filterAlertsWithSymptoms,
             hasBottomLine: true
         ),

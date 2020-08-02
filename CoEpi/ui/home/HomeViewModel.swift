@@ -52,7 +52,7 @@ class HomeViewModel {
         HomeItemViewData(
             id: .howItWorks,
             descr: L10n.Home.Items.HowCoepiWorks.description
-        ),
+        )
     ]
 
     lazy var items: Driver<[HomeItemViewData]> = alertRepo.alerts
@@ -60,6 +60,7 @@ class HomeViewModel {
         .map { alerts in alerts.filter { !$0.isRead }}
         .distinctUntilChanged()
         .map { alerts in
+            // TODO generate items here, don't manipulate variable
             Self.items.updateNotifications(with: alerts)
         }
         .observeOn(MainScheduler.instance)
@@ -123,6 +124,7 @@ private extension Array where Element == HomeItemViewData {
         map { item in
             if item.id == .alerts {
                 if alerts.isEmpty {
+                    item.notification = nil
                     return item
                 } else {
                     var item = item

@@ -43,6 +43,9 @@ class AlertView: UIView {
     @IBOutlet var repeatedInteractionView: UIView!
     @IBOutlet var repeatedInteractionLabel: UILabel!
 
+    @IBOutlet var labelTrailingToRepeatedViewConstraint: NSLayoutConstraint!
+    @IBOutlet var labelTrailingToSuperViewConstraint: NSLayoutConstraint!
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -66,8 +69,18 @@ class AlertView: UIView {
         timeLabel.text = alert.contactTime
         symptomsLabel.text = alert.symptoms
         unreadView.isHidden = !alert.showUnreadDot
-        repeatedInteractionView.isHidden = !alert.showRepeatedInteraction
 
+        repeatedInteractionView.isHidden = !alert.showRepeatedInteraction
+        repeatedInteractionLabel.isHidden = !alert.showRepeatedInteraction
+        let highPrio = UILayoutPriority(1000)
+        let lowPrio = UILayoutPriority(500)
+        if alert.showRepeatedInteraction {
+            labelTrailingToRepeatedViewConstraint.priority = highPrio
+            labelTrailingToSuperViewConstraint.priority = lowPrio
+        } else {
+            labelTrailingToRepeatedViewConstraint.priority = lowPrio
+            labelTrailingToSuperViewConstraint.priority = highPrio
+        }
         repeatedInteractionLabel.text = L10n.Alerts.Overview.Cell.hasRepeatedInteraction
 
         if alert.animateUnreadDot {

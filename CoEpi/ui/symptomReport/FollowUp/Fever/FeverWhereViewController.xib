@@ -52,7 +52,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmR-mL-KlN">
-                    <rect key="frame" x="20" y="74" width="374" height="33.5"/>
+                    <rect key="frame" x="20" y="92.5" width="374" height="33.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -95,6 +95,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="VKa-nE-5Ko" firstAttribute="top" secondItem="0Cj-d5-tAQ" secondAttribute="top" id="0BH-xi-x8S"/>
+                <constraint firstItem="TmR-mL-KlN" firstAttribute="centerY" secondItem="9ol-aO-EcB" secondAttribute="centerY" id="42n-A6-N1w"/>
                 <constraint firstItem="08N-4L-XSL" firstAttribute="top" secondItem="0Cj-d5-tAQ" secondAttribute="bottom" constant="50" id="5mf-cw-6QS"/>
                 <constraint firstItem="HCv-EJ-6PA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="26" id="6FK-YN-iwF"/>
                 <constraint firstItem="0Cj-d5-tAQ" firstAttribute="leading" secondItem="HCv-EJ-6PA" secondAttribute="leading" id="9UU-pO-Z8p"/>
@@ -110,7 +111,6 @@
                 <constraint firstItem="08N-4L-XSL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="VZp-jk-99N"/>
                 <constraint firstItem="9ol-aO-EcB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ang-uy-FLG"/>
                 <constraint firstItem="VKa-nE-5Ko" firstAttribute="leading" secondItem="Z3j-aY-bbE" secondAttribute="leading" id="fKT-iG-Iz7"/>
-                <constraint firstItem="TmR-mL-KlN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="g9a-MR-AqY"/>
                 <constraint firstItem="Z3j-aY-bbE" firstAttribute="width" secondItem="HCv-EJ-6PA" secondAttribute="width" id="hqN-03-HCe"/>
                 <constraint firstItem="VKa-nE-5Ko" firstAttribute="trailing" secondItem="Z3j-aY-bbE" secondAttribute="trailing" id="k6M-um-TFs"/>
                 <constraint firstItem="HCv-EJ-6PA" firstAttribute="top" secondItem="9ol-aO-EcB" secondAttribute="bottom" constant="100" id="l6x-TY-oOx"/>

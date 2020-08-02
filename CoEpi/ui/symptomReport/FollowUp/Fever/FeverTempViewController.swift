@@ -11,7 +11,7 @@ class FeverTempViewController: UIViewController {
     @IBOutlet var unknownButtonLabel: UIButton!
     @IBOutlet var submitButtonLabel: UIButton!
     @IBOutlet var skipButtonLabel: UIButton!
-    @IBOutlet var scaleButtonLabel: UIButton!
+    @IBOutlet var unitLabel: UILabel!
 
     private let disposeBag = DisposeBag()
 
@@ -25,10 +25,6 @@ class FeverTempViewController: UIViewController {
 
     @IBAction func skipButtonAction(_: UIButton) {
         viewModel.onSkipTap()
-    }
-
-    @IBAction func scaleButtonAction(_: UIButton) {
-        viewModel.onTemperatureUnitPress()
     }
 
     init(viewModel: FeverTempViewModel) {
@@ -71,8 +67,7 @@ class FeverTempViewController: UIViewController {
 
     private func bindOutputs() {
         viewModel.selectedTemperatureUnit
-            .map { toButtonText(unit: $0) }
-            .drive(scaleButtonLabel.rx.attributedTitle())
+            .drive(unitLabel.rx.text)
             .disposed(by: disposeBag)
 
         viewModel.temperatureText
@@ -82,7 +77,6 @@ class FeverTempViewController: UIViewController {
 
     private func setupStyle() {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
-        scaleButtonLabel.tintColor = .black
 
         ButtonStyles.applyUnselected(to: unknownButtonLabel)
         ButtonStyles.applyRoundedEnds(to: submitButtonLabel)
@@ -105,28 +99,6 @@ class FeverTempViewController: UIViewController {
         unknownButtonLabel.setTitle(L10n.Ux.unknown, for: .normal)
         submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
     }
-}
-
-private func toButtonText(unit: TemperatureUnit) -> NSAttributedString {
-    let selectedSize: CGFloat = 40
-    let unSelectedSize: CGFloat = 35
-
-    let (celsiusSize, fahrenheitSize): (CGFloat, CGFloat) = {
-        switch unit {
-        case .celsius: return (selectedSize, unSelectedSize)
-        case .fahrenheit: return (unSelectedSize, selectedSize)
-        }
-    }()
-
-    return attrString(
-        string: L10n.Ux.Fever.f, size: fahrenheitSize
-    )
-        + attrString(string: "/", size: 40)
-        + attrString(string: L10n.Ux.Fever.c, size: celsiusSize)
-}
-
-private func attrString(string: String, size: CGFloat) -> NSAttributedString {
-    NSAttributedString(string: string, attributes: [.font: UIFont.systemFont(ofSize: size)])
 }
 
 class CustomTextFieldFeverTemp: UITextField {

@@ -21,14 +21,14 @@ class FFISanityTests: XCTestCase {
 
     func testReceiveStruct() {
         let returnedStruct = return_struct()
-        XCTAssertEqual(returned_struct.my_int, 123)
+        XCTAssertEqual(returnedStruct.my_int, 123)
 
         let unmanagedString: Unmanaged<CFString> = returnedStruct.my_str
         let cfStr: CFString = unmanagedString.takeRetainedValue()
         let str = cfStr as String
 
         XCTAssertEqual(str, "hi!")
-        XCTAssertEqual(returned_struct.my_nested.my_u8, 255)
+        XCTAssertEqual(returnedStruct.my_nested.my_u8, 255)
     }
 
     func testSendAndReceiveStruct() {
@@ -43,14 +43,14 @@ class FFISanityTests: XCTestCase {
             UnsafeMutablePointer<FFIParameterStruct>($0)
         }
         let returnedStruct = pass_and_return_struct(pointer)
-        XCTAssertEqual(returned_struct.my_int, myStruct.my_int)
+        XCTAssertEqual(returnedStruct.my_int, myStruct.my_int)
 
         let unmanagedString: Unmanaged<CFString> = returnedStruct.my_str
         let cfStr: CFString = unmanagedString.takeRetainedValue()
         let returnedStr = cfStr as String
 
         XCTAssertEqual(returnedStr, str)
-        XCTAssertEqual(returned_struct.my_nested.my_u8, myStruct.my_nested.my_u8)
+        XCTAssertEqual(returnedStruct.my_nested.my_u8, myStruct.my_nested.my_u8)
     }
 
     func testCallback() {

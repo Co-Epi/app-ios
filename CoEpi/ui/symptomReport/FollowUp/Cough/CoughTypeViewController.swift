@@ -5,8 +5,12 @@ class CoughTypeViewController: UIViewController {
 
     @IBOutlet var titleLabel: UILabel!
 
-    @IBOutlet var wetButtonLabel: UIButton!
-    @IBOutlet var dryButtonLabel: UIButton!
+    @IBOutlet var wetTitleButtonLabel: UILabel!
+    @IBOutlet var wetDescriptionButtonLabel: UILabel!
+
+    @IBOutlet var dryTitleButtonLabel: UILabel!
+    @IBOutlet var dryDescriptionButtonLabel: UILabel!
+
     @IBOutlet var skipButtonLabel: UIButton!
 
     @IBAction func wetButtonAction(_: UIButton) {
@@ -45,27 +49,10 @@ class CoughTypeViewController: UIViewController {
         titleLabel.text = L10n.Ux.Cough.title1
         skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
 
-        let bold24 = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)]
-        let system11 = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)]
+        wetTitleButtonLabel.text = L10n.Ux.Cough.titleWet
+        wetDescriptionButtonLabel.text = L10n.Ux.Cough.subtitleWet
 
-        let textWet = NSMutableAttributedString(
-            string: L10n.Ux.Cough.titleWet,
-            attributes: bold24
-        )
-        textWet.append(NSMutableAttributedString(
-            string: L10n.Ux.Cough.subtitleWet,
-            attributes: system11
-        ))
-        wetButtonLabel.setAttributedTitle(textWet, for: .normal)
-
-        let textDry = NSMutableAttributedString(
-            string: L10n.Ux.Cough.titleDry,
-            attributes: bold24
-        )
-        textDry.append(NSMutableAttributedString(
-            string: L10n.Ux.Cough.subtitleDry,
-            attributes: system11
-        ))
-        dryButtonLabel.setAttributedTitle(textDry, for: .normal)
+        dryTitleButtonLabel.text = L10n.Ux.Cough.titleDry
+        dryDescriptionButtonLabel.text = L10n.Ux.Cough.subtitleDry
     }
 }
