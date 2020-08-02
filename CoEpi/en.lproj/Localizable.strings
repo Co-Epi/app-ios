@@ -116,13 +116,13 @@
 "UX.fever.F" = "Fº";
 
     //onboarding
-"UX.onboarding.title1" = "Log your interactions";
-"UX.onboarding.body1" = "CoEpi will anonymously log interactions with other devices using compatible apps.";
-"UX.onboarding.title2" = "Monitor your health";
-"UX.onboarding.body2" = "Share any symptoms you may have, when you notice them.";
-"UX.onboarding.title3" = "Stay informed";
-"UX.onboarding.body3" = "You will get alerts about potential exposure to individuals with contagious illnesses.";
-"UX.onboarding.title4" = "Collaborate. Inform. Protect.";
+"UX.onboarding.title1" = "Report your symptoms";
+"UX.onboarding.body1" = "Share your symptoms to inform and help protect your community.";
+"UX.onboarding.title2" = "Stay informed";
+"UX.onboarding.body2" = "You will get alerts about potential exposure to individuals with reported symptoms.";
+"UX.onboarding.title3" = "Ensure your privacy";
+"UX.onboarding.body3" = "CoEpi uses Bluetooth to anonymously record interactions.\n\nYour privacy is protected: there is no profile tied to your identity, and location is not tracked.";
+"UX.onboarding.title4" = "Collaborate.\nInform.\nProtect.";
 "UX.onboarding.body4" = "Help prevent the spread of contagious illnesses. Together, we can make a difference.";
 "UX.onboarding.how" = "How is my data used?";
 "UX.onboarding.next" = "NEXT";

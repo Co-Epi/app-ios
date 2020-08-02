@@ -23,7 +23,11 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var state4ButtonLabel: UIButton!
 
     @IBOutlet weak var joinButtonLabel: UIButton!
-    @IBOutlet weak var questionsButtonLabel: UIButton!
+
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleSubtitleConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
 
     @IBAction func howUsedButtonAction(_ sender: Any) {
         if let url = URL(string: "https://www.coepi.org/privacy/") {
@@ -64,16 +68,6 @@ class OnboardingViewController: UIViewController {
         viewModel.onCloseClick()
     }
 
-    @IBAction func questionsButtonAction(_ sender: Any) {
-        if let url = URL(string: "https://www.coepi.org/faq/") {
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = false
-
-            let vc = SFSafariViewController(url: url, configuration: config)
-            present(vc, animated: true)
-        }
-    }
-
     init(viewModel: OnboardingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
@@ -92,10 +86,8 @@ class OnboardingViewController: UIViewController {
         nextButtonLabel.setTitle(L10n.Ux.Onboarding.next, for: .normal)
 
         joinButtonLabel.setTitle(L10n.Ux.Onboarding.join, for: .normal)
-        questionsButtonLabel.setTitle(L10n.Ux.Onboarding.questions, for: .normal)
 
         ButtonStyles.applyUnselected(to: joinButtonLabel)
-        ButtonStyles.applyUnselected(to: questionsButtonLabel)
         ButtonStyles.applySelected(to: nextButtonLabel)
 
         state = 1
@@ -118,7 +110,12 @@ class OnboardingViewController: UIViewController {
 
             nextButtonLabel.isHidden = false
             joinButtonLabel.isHidden = true
-            questionsButtonLabel.isHidden = true
+
+            imageView.image = #imageLiteral(resourceName: "slide1")
+            imageViewBottomConstraint.constant = -40
+            titleTopConstraint.constant = 34
+            titleSubtitleConstraint.constant = 20
+
         } else if state == 2 {
             introCard.layer.cornerRadius = 40
             introCardHeight.constant = 384
@@ -132,7 +129,12 @@ class OnboardingViewController: UIViewController {
 
             nextButtonLabel.isHidden = false
             joinButtonLabel.isHidden = true
-            questionsButtonLabel.isHidden = true
+
+            imageView.image = #imageLiteral(resourceName: "slide2")
+            imageViewBottomConstraint.constant = -40
+            titleTopConstraint.constant = 34
+            titleSubtitleConstraint.constant = 20
+
         } else if state == 3 {
             introCard.layer.cornerRadius = 40
             introCardHeight.constant = 384
@@ -146,7 +148,16 @@ class OnboardingViewController: UIViewController {
 
             nextButtonLabel.isHidden = false
             joinButtonLabel.isHidden = true
-            questionsButtonLabel.isHidden = true
+
+            // TODO: hack: ask for correctly cut images
+            let imageBottom: CGFloat =
+                UIScreen.main.bounds.height > 800 ? -135 : -100
+
+            imageView.image = #imageLiteral(resourceName: "slide3")
+            imageViewBottomConstraint.constant = imageBottom
+            titleTopConstraint.constant = 34
+            titleSubtitleConstraint.constant = 20
+
         } else if state == 4 {
             introCard.layer.cornerRadius = 40
             introCardHeight.constant = 549
@@ -161,12 +172,16 @@ class OnboardingViewController: UIViewController {
 
             nextButtonLabel.isHidden = true
             joinButtonLabel.isHidden = false
-            questionsButtonLabel.isHidden = false
+            titleTopConstraint.constant = 65
+            titleSubtitleConstraint.constant = 45
+
+            imageView.image = nil
+            imageViewBottomConstraint.constant = 0
+
         } else {
             print("Done")
         }
     }
-
 }
 
 private extension OnboardingViewController {}

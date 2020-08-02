@@ -13,16 +13,19 @@
             <connections>
                 <outlet property="bodyLabel" destination="VEa-7K-qHA" id="GKa-6S-csM"/>
                 <outlet property="howUsedButtonLabel" destination="mE0-zO-cXq" id="YJx-Ej-0U9"/>
+                <outlet property="imageView" destination="jpz-aa-DK8" id="RA5-N9-VW6"/>
+                <outlet property="imageViewBottomConstraint" destination="JYw-Gy-QR8" id="OOk-6K-NaE"/>
                 <outlet property="introCard" destination="mqJ-EG-pXH" id="UGc-8U-Fyu"/>
                 <outlet property="introCardHeight" destination="XkV-1U-CRc" id="N4l-N5-xqf"/>
                 <outlet property="joinButtonLabel" destination="eEK-TU-JXw" id="H8V-ce-gj6"/>
                 <outlet property="nextButtonLabel" destination="ZJU-0a-YmX" id="AmI-at-piE"/>
-                <outlet property="questionsButtonLabel" destination="3qA-FX-jYw" id="mLE-if-HLT"/>
                 <outlet property="state1ButtonLabel" destination="ivr-7d-msc" id="jCZ-zK-nWO"/>
                 <outlet property="state2ButtonLabel" destination="xqk-5B-EK5" id="MY7-tJ-vVc"/>
                 <outlet property="state3ButtonLabel" destination="qyO-Nr-xEd" id="9Fo-mi-fZc"/>
                 <outlet property="state4ButtonLabel" destination="8dF-8x-4h7" id="gQ8-SR-hnb"/>
                 <outlet property="titleLabel" destination="pSa-In-5b8" id="Obk-9Y-ALn"/>
+                <outlet property="titleSubtitleConstraint" destination="qMF-OA-OxB" id="AE8-n3-5bf"/>
+                <outlet property="titleTopConstraint" destination="4oc-jU-wNQ" id="gmk-Md-W0m"/>
                 <outlet property="view" destination="iXh-Fy-kOz" id="Cs1-cS-Tpe"/>
             </connections>
         </placeholder>
@@ -31,6 +34,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="jpz-aa-DK8">
+                    <rect key="frame" x="0.0" y="262" width="414" height="300"/>
+                </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coepi_family" translatesAutoresizingMaskIntoConstraints="NO" id="5n3-jR-46C">
                     <rect key="frame" x="177" y="64" width="60" height="60"/>
                     <constraints>
@@ -41,154 +47,156 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqJ-EG-pXH">
                     <rect key="frame" x="0.0" y="562" width="414" height="384"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="384" id="XkV-1U-CRc"/>
-                    </constraints>
-                </view>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AIZ-9R-DYg">
-                    <rect key="frame" x="20" y="812" width="128" height="20"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-7d-msc" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="20" id="ACX-G8-wD8"/>
-                                <constraint firstAttribute="height" constant="20" id="wbL-XM-d5a"/>
-                            </constraints>
-                            <state key="normal">
-                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <state key="selected" backgroundImage="stepperSelected"/>
-                            <state key="highlighted" backgroundImage="stepperSelected"/>
-                            <connections>
-                                <action selector="state1ButtonAction:" destination="-1" eventType="touchUpInside" id="z8S-ow-MrX"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqk-5B-EK5" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
-                            <rect key="frame" x="36" y="0.0" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="qr5-Gv-P9r"/>
-                                <constraint firstAttribute="width" constant="20" id="zmi-Y9-vzB"/>
-                            </constraints>
-                            <state key="normal">
-                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <state key="selected" backgroundImage="stepperSelected"/>
-                            <state key="highlighted" backgroundImage="stepperSelected"/>
-                            <connections>
-                                <action selector="state2ButtonAction:" destination="-1" eventType="touchUpInside" id="ENE-HD-xd2"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyO-Nr-xEd" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
-                            <rect key="frame" x="72" y="0.0" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="20" id="QrB-2g-5i3"/>
-                                <constraint firstAttribute="height" constant="20" id="kv5-LP-i9G"/>
-                            </constraints>
-                            <state key="normal">
-                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <state key="selected" backgroundImage="stepperSelected"/>
-                            <state key="highlighted" backgroundImage="stepperSelected"/>
-                            <connections>
-                                <action selector="state3ButtonAction:" destination="-1" eventType="touchUpInside" id="jZc-z9-PYB"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-8x-4h7" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
-                            <rect key="frame" x="108" y="0.0" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="HWM-or-sMl"/>
-                                <constraint firstAttribute="width" constant="20" id="KWo-ua-Jqc"/>
-                            </constraints>
-                            <state key="normal">
-                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <state key="selected" backgroundImage="stepperSelected"/>
-                            <state key="highlighted" backgroundImage="stepperSelected"/>
-                            <connections>
-                                <action selector="state4ButtonAction:" destination="-1" eventType="touchUpInside" id="TP4-Fb-5eP"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJU-0a-YmX">
-                    <rect key="frame" x="288" y="809" width="106" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="106" id="nNw-Z9-SCh"/>
-                        <constraint firstAttribute="height" constant="26" id="pGw-at-3WJ"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <state key="normal">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="nextButtonAction:" destination="-1" eventType="touchUpInside" id="1Sv-HY-D9B"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mE0-zO-cXq">
-                    <rect key="frame" x="20" y="766" width="35" height="26"/>
-                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" name="CoEpiPurple"/>
-                    </state>
-                    <connections>
-                        <action selector="howUsedButtonAction:" destination="-1" eventType="touchUpInside" id="RVM-mv-kzj"/>
-                    </connections>
-                </button>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xnb-Z9-ga8">
-                    <rect key="frame" x="20" y="533" width="374" height="203"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-In-5b8">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="29"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-In-5b8">
+                            <rect key="frame" x="24" y="34" width="366" height="33.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEa-7K-qHA">
-                            <rect key="frame" x="0.0" y="59" width="374" height="24"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEa-7K-qHA">
+                            <rect key="frame" x="24" y="87.5" width="366" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-TU-JXw">
-                            <rect key="frame" x="0.0" y="113" width="374" height="30"/>
+                            <rect key="frame" x="24" y="148" width="366" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="9lh-Ch-qaQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <state key="normal" title="Button">
-                                <color key="titleColor" name="CoEpiPurple"/>
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
                                 <action selector="joinButtonAction:" destination="-1" eventType="touchUpInside" id="Yg3-VK-9xM"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qA-FX-jYw">
-                            <rect key="frame" x="0.0" y="173" width="374" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJU-0a-YmX">
+                            <rect key="frame" x="284" y="258" width="106" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="106" id="nNw-Z9-SCh"/>
+                                <constraint firstAttribute="height" constant="26" id="pGw-at-3WJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="nextButtonAction:" destination="-1" eventType="touchUpInside" id="1Sv-HY-D9B"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mE0-zO-cXq">
+                            <rect key="frame" x="24" y="217" width="41" height="28"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
                             <state key="normal" title="Button">
                                 <color key="titleColor" name="CoEpiPurple"/>
                             </state>
                             <connections>
-                                <action selector="questionsButtonAction:" destination="-1" eventType="touchUpInside" id="Di8-kT-KaC"/>
+                                <action selector="howUsedButtonAction:" destination="-1" eventType="touchUpInside" id="RVM-mv-kzj"/>
                             </connections>
                         </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AIZ-9R-DYg">
+                            <rect key="frame" x="24" y="261" width="128" height="20"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-7d-msc" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="ACX-G8-wD8"/>
+                                        <constraint firstAttribute="height" constant="20" id="wbL-XM-d5a"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected" backgroundImage="stepperSelected"/>
+                                    <state key="highlighted" backgroundImage="stepperSelected"/>
+                                    <connections>
+                                        <action selector="state1ButtonAction:" destination="-1" eventType="touchUpInside" id="z8S-ow-MrX"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqk-5B-EK5" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
+                                    <rect key="frame" x="36" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="qr5-Gv-P9r"/>
+                                        <constraint firstAttribute="width" constant="20" id="zmi-Y9-vzB"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected" backgroundImage="stepperSelected"/>
+                                    <state key="highlighted" backgroundImage="stepperSelected"/>
+                                    <connections>
+                                        <action selector="state2ButtonAction:" destination="-1" eventType="touchUpInside" id="ENE-HD-xd2"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyO-Nr-xEd" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
+                                    <rect key="frame" x="72" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="QrB-2g-5i3"/>
+                                        <constraint firstAttribute="height" constant="20" id="kv5-LP-i9G"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected" backgroundImage="stepperSelected"/>
+                                    <state key="highlighted" backgroundImage="stepperSelected"/>
+                                    <connections>
+                                        <action selector="state3ButtonAction:" destination="-1" eventType="touchUpInside" id="jZc-z9-PYB"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-8x-4h7" customClass="StepperView" customModule="CoEpi" customModuleProvider="target">
+                                    <rect key="frame" x="108" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="HWM-or-sMl"/>
+                                        <constraint firstAttribute="width" constant="20" id="KWo-ua-Jqc"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected" backgroundImage="stepperSelected"/>
+                                    <state key="highlighted" backgroundImage="stepperSelected"/>
+                                    <connections>
+                                        <action selector="state4ButtonAction:" destination="-1" eventType="touchUpInside" id="TP4-Fb-5eP"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
-                </stackView>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="mE0-zO-cXq" firstAttribute="leading" secondItem="pSa-In-5b8" secondAttribute="leading" id="2Fi-YF-P1h"/>
+                        <constraint firstItem="eEK-TU-JXw" firstAttribute="top" secondItem="VEa-7K-qHA" secondAttribute="bottom" constant="40" id="2kB-lb-kYg"/>
+                        <constraint firstItem="ZJU-0a-YmX" firstAttribute="centerY" secondItem="AIZ-9R-DYg" secondAttribute="centerY" id="4gE-zA-mEh"/>
+                        <constraint firstItem="pSa-In-5b8" firstAttribute="top" secondItem="mqJ-EG-pXH" secondAttribute="top" constant="34" id="4oc-jU-wNQ"/>
+                        <constraint firstItem="VEa-7K-qHA" firstAttribute="trailing" secondItem="pSa-In-5b8" secondAttribute="trailing" id="C0R-qo-DBb"/>
+                        <constraint firstItem="AIZ-9R-DYg" firstAttribute="leading" secondItem="pSa-In-5b8" secondAttribute="leading" id="GvZ-tI-sJw"/>
+                        <constraint firstItem="eEK-TU-JXw" firstAttribute="leading" secondItem="pSa-In-5b8" secondAttribute="leading" id="Hkd-yI-BI7"/>
+                        <constraint firstAttribute="height" constant="384" id="XkV-1U-CRc"/>
+                        <constraint firstItem="eEK-TU-JXw" firstAttribute="trailing" secondItem="pSa-In-5b8" secondAttribute="trailing" id="aOk-6K-jcS"/>
+                        <constraint firstItem="AIZ-9R-DYg" firstAttribute="top" secondItem="mE0-zO-cXq" secondAttribute="bottom" constant="16" id="bQi-Gg-ReB"/>
+                        <constraint firstItem="VEa-7K-qHA" firstAttribute="leading" secondItem="pSa-In-5b8" secondAttribute="leading" id="ixU-iO-dWW"/>
+                        <constraint firstItem="pSa-In-5b8" firstAttribute="leading" secondItem="mqJ-EG-pXH" secondAttribute="leading" constant="24" id="l2g-wY-Os7"/>
+                        <constraint firstItem="ZJU-0a-YmX" firstAttribute="trailing" secondItem="pSa-In-5b8" secondAttribute="trailing" id="qCZ-iP-J27"/>
+                        <constraint firstItem="VEa-7K-qHA" firstAttribute="top" secondItem="pSa-In-5b8" secondAttribute="bottom" constant="20" id="qMF-OA-OxB"/>
+                        <constraint firstAttribute="bottom" secondItem="ZJU-0a-YmX" secondAttribute="bottom" constant="100" id="tK2-Ti-r8b"/>
+                        <constraint firstAttribute="trailing" secondItem="pSa-In-5b8" secondAttribute="trailing" constant="24" id="zDj-yF-g12"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Z0t-UF-4jK"/>
             <color key="backgroundColor" name="CoEpiPurple"/>
             <constraints>
-                <constraint firstItem="Z0t-UF-4jK" firstAttribute="bottom" secondItem="ZJU-0a-YmX" secondAttribute="bottom" constant="27" id="0w2-ai-Zel"/>
-                <constraint firstItem="Z0t-UF-4jK" firstAttribute="trailing" secondItem="xnb-Z9-ga8" secondAttribute="trailing" constant="20" id="3Yr-dK-TYx"/>
                 <constraint firstItem="5n3-jR-46C" firstAttribute="centerX" secondItem="iXh-Fy-kOz" secondAttribute="centerX" id="53L-ui-QIb"/>
-                <constraint firstItem="AIZ-9R-DYg" firstAttribute="leading" secondItem="Z0t-UF-4jK" secondAttribute="leading" constant="20" id="OgB-Bc-N35"/>
-                <constraint firstItem="Z0t-UF-4jK" firstAttribute="trailing" secondItem="ZJU-0a-YmX" secondAttribute="trailing" constant="20" id="Xaw-cx-z7k"/>
-                <constraint firstItem="AIZ-9R-DYg" firstAttribute="top" secondItem="mE0-zO-cXq" secondAttribute="bottom" constant="20" id="kbt-oR-nfm"/>
-                <constraint firstItem="mE0-zO-cXq" firstAttribute="leading" secondItem="Z0t-UF-4jK" secondAttribute="leading" constant="20" id="m6O-Xq-HzP"/>
+                <constraint firstItem="jpz-aa-DK8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5n3-jR-46C" secondAttribute="bottom" constant="10" id="HXL-HF-b6p"/>
+                <constraint firstItem="mqJ-EG-pXH" firstAttribute="top" secondItem="jpz-aa-DK8" secondAttribute="bottom" id="JYw-Gy-QR8"/>
+                <constraint firstItem="Z0t-UF-4jK" firstAttribute="trailing" secondItem="jpz-aa-DK8" secondAttribute="trailing" id="TJT-QE-CIs"/>
                 <constraint firstAttribute="bottom" secondItem="mqJ-EG-pXH" secondAttribute="bottom" constant="-50" id="szU-QB-bAD"/>
                 <constraint firstItem="mqJ-EG-pXH" firstAttribute="leading" secondItem="iXh-Fy-kOz" secondAttribute="leading" id="t2K-g5-Pst"/>
-                <constraint firstItem="mE0-zO-cXq" firstAttribute="top" secondItem="xnb-Z9-ga8" secondAttribute="bottom" constant="30" id="t9n-Zf-v9F"/>
-                <constraint firstItem="Z0t-UF-4jK" firstAttribute="bottom" secondItem="AIZ-9R-DYg" secondAttribute="bottom" constant="30" id="tnF-oV-usf"/>
                 <constraint firstAttribute="trailing" secondItem="mqJ-EG-pXH" secondAttribute="trailing" id="uCK-6J-bKT"/>
-                <constraint firstItem="xnb-Z9-ga8" firstAttribute="leading" secondItem="Z0t-UF-4jK" secondAttribute="leading" constant="20" id="vQd-0G-Dkj"/>
                 <constraint firstItem="5n3-jR-46C" firstAttribute="top" secondItem="Z0t-UF-4jK" secondAttribute="top" constant="20" id="vTX-Na-5Yi"/>
+                <constraint firstItem="jpz-aa-DK8" firstAttribute="leading" secondItem="Z0t-UF-4jK" secondAttribute="leading" id="x6W-sG-AVb"/>
             </constraints>
             <point key="canvasLocation" x="127.53623188405798" y="786.16071428571422"/>
         </view>
