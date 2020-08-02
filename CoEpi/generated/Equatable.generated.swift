@@ -1,10 +1,10 @@
 // Generated using Sourcery 0.18.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-
 // MARK: Alert Equatable
+
 extension Alert: Equatable {
-    static func ==(lhs: Alert, rhs: Alert) -> Bool {
+    static func == (lhs: Alert, rhs: Alert) -> Bool {
         guard lhs.id == rhs.id else { return false }
         guard lhs.start == rhs.start else { return false }
         guard lhs.end == rhs.end else { return false }
@@ -24,16 +24,20 @@ extension Alert: Equatable {
         return true
     }
 }
+
 // MARK: UnixTime Equatable
+
 extension UnixTime: Equatable {
-    static func ==(lhs: UnixTime, rhs: UnixTime) -> Bool {
+    static func == (lhs: UnixTime, rhs: UnixTime) -> Bool {
         guard lhs.value == rhs.value else { return false }
         return true
     }
 }
+
 // MARK: UserInput Equatable
+
 extension UserInput: Equatable {
-    static func ==(lhs: UserInput, rhs: UserInput) -> Bool {
+    static func == (_: UserInput, _: UserInput) -> Bool {
         return true
     }
 }

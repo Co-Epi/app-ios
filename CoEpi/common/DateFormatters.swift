@@ -8,7 +8,6 @@ class DateFormatters {
 }
 
 final class HoursMinsFormatter: DateFormatter {
-
     override init() {
         super.init()
 
@@ -25,7 +24,6 @@ final class HoursMinsFormatter: DateFormatter {
 }
 
 final class HoursMinsSecsFormatter: DateFormatter {
-
     override init() {
         super.init()
         dateFormat = "h:mm:ss"
@@ -37,7 +35,6 @@ final class HoursMinsSecsFormatter: DateFormatter {
 }
 
 final class MonthFormatter: DateFormatter {
-
     override init() {
         super.init()
         dateFormat = "MMM"
@@ -49,7 +46,6 @@ final class MonthFormatter: DateFormatter {
 }
 
 final class MonthDayFormatter: DateFormatter {
-
     override init() {
         super.init()
         dateFormat = "MMM d"

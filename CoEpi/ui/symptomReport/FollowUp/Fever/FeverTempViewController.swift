@@ -1,33 +1,33 @@
-import UIKit
 import RxSwift
+import UIKit
 
 class FeverTempViewController: UIViewController {
     private let viewModel: FeverTempViewModel
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
 
-    @IBOutlet weak var numberInput: UITextField!
+    @IBOutlet var numberInput: UITextField!
 
-    @IBOutlet weak var unknownButtonLabel: UIButton!
-    @IBOutlet weak var submitButtonLabel: UIButton!
-    @IBOutlet weak var skipButtonLabel: UIButton!
-    @IBOutlet weak var scaleButtonLabel: UIButton!
+    @IBOutlet var unknownButtonLabel: UIButton!
+    @IBOutlet var submitButtonLabel: UIButton!
+    @IBOutlet var skipButtonLabel: UIButton!
+    @IBOutlet var scaleButtonLabel: UIButton!
 
     private let disposeBag = DisposeBag()
 
-    @IBAction func unknownButtonAction(_ sender: UIButton) {
+    @IBAction func unknownButtonAction(_: UIButton) {
         viewModel.onUnknownTap()
     }
 
-    @IBAction func submitButtonAction(_ sender: UIButton) {
+    @IBAction func submitButtonAction(_: UIButton) {
         viewModel.onSubmitTap()
     }
 
-    @IBAction func skipButtonAction(_ sender: UIButton) {
+    @IBAction func skipButtonAction(_: UIButton) {
         viewModel.onSkipTap()
     }
 
-    @IBAction func scaleButtonAction(_ sender: UIButton) {
+    @IBAction func scaleButtonAction(_: UIButton) {
         viewModel.onTemperatureUnitPress()
     }
 
@@ -36,7 +36,7 @@ class FeverTempViewController: UIViewController {
         super.init(nibName: String(describing: Self.self), bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -53,7 +53,7 @@ class FeverTempViewController: UIViewController {
         setupText()
         bindInputs()
         bindOutputs()
-     }
+    }
 
     private func bindInputs() {
         numberInput.rx.text
@@ -63,10 +63,10 @@ class FeverTempViewController: UIViewController {
             .disposed(by: disposeBag)
 
         numberInput.rx.controlEvent(.editingChanged).subscribe(onNext: { [weak self] in
-        if let text = self?.numberInput.text {
-            self?.numberInput.text = String(text.prefix(5))
-         }
-         }).disposed(by: disposeBag)
+            if let text = self?.numberInput.text {
+                self?.numberInput.text = String(text.prefix(5))
+            }
+        }).disposed(by: disposeBag)
     }
 
     private func bindOutputs() {
@@ -119,7 +119,8 @@ private func toButtonText(unit: TemperatureUnit) -> NSAttributedString {
     }()
 
     return attrString(
-        string: L10n.Ux.Fever.f, size: fahrenheitSize)
+        string: L10n.Ux.Fever.f, size: fahrenheitSize
+    )
         + attrString(string: "/", size: 40)
         + attrString(string: L10n.Ux.Fever.c, size: celsiusSize)
 }

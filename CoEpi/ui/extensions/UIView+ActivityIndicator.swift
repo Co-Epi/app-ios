@@ -1,7 +1,6 @@
 import UIKit
 
 extension UIView {
-
     func setActivityIndicatorVisible(_ visible: Bool) {
         if visible {
             show()

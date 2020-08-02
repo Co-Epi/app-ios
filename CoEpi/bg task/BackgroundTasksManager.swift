@@ -1,7 +1,6 @@
 import BackgroundTasks
 
 class BackgroundTasksManager {
-
     private var tasks: [BackgroundTaskScheduler] = []
 
     func register(task: BackgroundTask) {

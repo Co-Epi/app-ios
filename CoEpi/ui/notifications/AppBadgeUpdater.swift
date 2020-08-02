@@ -1,13 +1,12 @@
 import Foundation
-import UserNotifications
 import UIKit
+import UserNotifications
 
 protocol AppBadgeUpdater {
     func updateAppBadge(number: Int)
 }
 
 class AppBadgeUpdaterImpl: AppBadgeUpdater {
-
     func updateAppBadge(number: Int) {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             self?.updateAppBadge(number: number, settings: settings)
@@ -17,8 +16,8 @@ class AppBadgeUpdaterImpl: AppBadgeUpdater {
     private func updateAppBadge(number: Int, settings: UNNotificationSettings) {
         guard
             settings.authorizationStatus ==
-                .authorized ||
-                settings.authorizationStatus == .provisional,
+            .authorized ||
+            settings.authorizationStatus == .provisional,
             settings.badgeSetting == .enabled
         else { return }
 

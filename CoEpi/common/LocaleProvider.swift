@@ -7,7 +7,6 @@ protocol LocaleProvider {
 }
 
 class LocaleProviderImpl: LocaleProvider {
-
     private let localeSubject: BehaviorSubject<Locale> =
         BehaviorSubject(value: getLocale())
 

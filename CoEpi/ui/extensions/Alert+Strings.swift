@@ -1,7 +1,6 @@
 import Foundation
 
 extension Alert {
-
     func symptomUIStrings() -> [String] {
         [
             coughSeverity.toSymptomUIString(),
@@ -12,7 +11,7 @@ extension Alert {
             diarrhea ? L10n.Alerts.Label.Symptom.diarrhea : nil,
             runnyNose ? L10n.Alerts.Label.Symptom.runnyNose : nil,
             other ? L10n.Alerts.Label.Symptom.other : nil,
-            noSymptoms ? L10n.Alerts.Label.Symptom.noSymptomsReported : nil
+            noSymptoms ? L10n.Alerts.Label.Symptom.noSymptomsReported : nil,
         ].compactMap { $0 }
     }
 }

@@ -1,6 +1,6 @@
 import Dip
-import UIKit
 import RxSwift
+import UIKit
 
 class RootWireFrame {
     private let container: DependencyContainer
@@ -53,17 +53,19 @@ class RootWireFrame {
 
     private func onNavigationCommand(navCommand: RootNavCommand) {
         switch navCommand {
-        case .to(let destination, let mode):
+        case let .to(destination, mode):
             let viewController = navigate(to: destination)
             switch mode {
             case .push: rootNavigationController.pushViewController(
-                viewController, animated: true)
+                viewController, animated: true
+            )
             case .modal: rootNavigationController.present(
-                viewController, animated: true, completion: nil)
+                viewController, animated: true, completion: nil
+            )
             }
         case .back: rootNavigationController.popViewController(animated: true)
-        case .backTo(let destination): navigateBack(to: destination)
-        case .backToAndTo(let backDestination, let toDestination):
+        case let .backTo(destination): navigateBack(to: destination)
+        case let .backToAndTo(backDestination, toDestination):
             navigateBackAndTo(backDestination: backDestination, toDestination: toDestination)
         }
     }
@@ -82,13 +84,13 @@ class RootWireFrame {
         case .symptomReport: return showSymptomReport()
         case .symptomStartDays: return showSymptomStartDays()
         case .home: return showHome()
-        case .alertDetails(let pars): return showAlertDetails(pars: pars)
+        case let .alertDetails(pars): return showAlertDetails(pars: pars)
         case .settings: return showSettings()
         case .howItWorks: return showHowItWorks()
         }
     }
 
-    private func clear(until: RootNavDestination) {
+    private func clear(until _: RootNavDestination) {
         let type = HomeViewController.self
         rootNavigationController.clearNavigationUntil(type: type)
     }
@@ -119,7 +121,8 @@ class RootWireFrame {
 
     private func navigateBackAndTo(
         backDestination: RootNavDestination,
-        toDestination: RootNavDestination) {
+        toDestination: RootNavDestination
+    ) {
         navigateBack(to: backDestination)
         navigate(to: toDestination)
     }
@@ -209,20 +212,19 @@ class RootWireFrame {
 }
 
 extension UINavigationController {
-
-    func backToViewController<T: UIViewController>(type: T.Type) {
+    func backToViewController<T: UIViewController>(type _: T.Type) {
         for element in viewControllers as Array where element is T {
             popToViewController(element, animated: true)
             break
         }
     }
 
-    func clearNavigationUntil<T: UIViewController>(type: T.Type) {
-        for i in (0..<viewControllers.count).reversed() {
-            if self.viewControllers[i] is T {
+    func clearNavigationUntil<T: UIViewController>(type _: T.Type) {
+        for i in (0 ..< viewControllers.count).reversed() {
+            if viewControllers[i] is T {
                 return
             }
-            self.viewControllers.remove(at: i)
+            viewControllers.remove(at: i)
         }
     }
 }

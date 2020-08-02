@@ -1,17 +1,17 @@
-import XCTest
 @testable import CoEpi
+import XCTest
 
 // See note in test
 var expectationWorkaroundGlobal: XCTestExpectation?
 
 class FFISanityTests: XCTestCase {
-
     func testSendStruct() {
         let strPointer: UnsafePointer<Int8>? = NSString(string: "hi from iOS").utf8String
         var myStruct = FFIParameterStruct(
             my_int: 123,
             my_str: strPointer,
-            my_nested: FFINestedParameterStruct(my_u8: 250))
+            my_nested: FFINestedParameterStruct(my_u8: 250)
+        )
         let pointer = withUnsafeMutablePointer(to: &myStruct) {
             UnsafeMutablePointer<FFIParameterStruct>($0)
         }
@@ -37,7 +37,8 @@ class FFISanityTests: XCTestCase {
         var myStruct = FFIParameterStruct(
             my_int: 123,
             my_str: strPointer,
-            my_nested: FFINestedParameterStruct(my_u8: 250))
+            my_nested: FFINestedParameterStruct(my_u8: 250)
+        )
         let pointer = withUnsafeMutablePointer(to: &myStruct) {
             UnsafeMutablePointer<FFIParameterStruct>($0)
         }
@@ -53,8 +54,8 @@ class FFISanityTests: XCTestCase {
     }
 
     func testCallback() {
-        let ret = call_callback { (myInt, myBool, myCFString) in
-            // TODO why CFString? here while in the struct it's Unmanaged<CFString>
+        let ret = call_callback { myInt, myBool, myCFString in
+            // TODO: why CFString? here while in the struct it's Unmanaged<CFString>
             let cfStr: CFString = myCFString!
             let str = cfStr as String
 
@@ -66,10 +67,10 @@ class FFISanityTests: XCTestCase {
     }
 
     func testRegisterCallback() {
-        expectationWorkaroundGlobal = self.expectation(description: #function)
+        expectationWorkaroundGlobal = expectation(description: #function)
 
-        let ret = register_callback { (myInt, myBool, myCFString) in
-            // TODO why CFString? here while in the struct it's Unmanaged<CFString>
+        let ret = register_callback { myInt, myBool, myCFString in
+            // TODO: why CFString? here while in the struct it's Unmanaged<CFString>
             let cfStr: CFString = myCFString!
             let str = cfStr as String
 
@@ -84,7 +85,7 @@ class FFISanityTests: XCTestCase {
             // "A C function pointer cannot be formed from a closure that captures context"
             // It only accepts global variables.
             // There's a better workaround IIRC, but more complex. For now letting it like this.
-            // TODO better workaround.
+            // TODO: better workaround.
             expectationWorkaroundGlobal?.fulfill()
         }
         XCTAssertEqual(ret, 1)
@@ -96,7 +97,7 @@ class FFISanityTests: XCTestCase {
     }
 
     func testRegisterCallbackForStructuredLogging() {
-        let ret = register_log_callback { (logMessage) in
+        let ret = register_log_callback { logMessage in
             logToiOS(logMessage: logMessage)
         }
         XCTAssertEqual(ret, 2)
@@ -104,5 +105,4 @@ class FFISanityTests: XCTestCase {
         XCTAssertEqual(x, 1)
         sleep(1)
     }
-
 }

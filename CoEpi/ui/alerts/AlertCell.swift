@@ -9,7 +9,7 @@ class AlertCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -18,12 +18,13 @@ class AlertCell: UITableViewCell {
         let view: AlertView = AlertView.fromNib()
         contentView.addSubview(view)
         view.pinAllEdgesToParent()
-        self.alertView = view
+        alertView = view
     }
 
     public func setup(alert: AlertViewData,
                       onAcknowledged: (AlertViewData) -> Void,
-                      onReadDotAnimated: () -> Void) {
+                      onReadDotAnimated: () -> Void)
+    {
         guard let view = alertView else { return }
         view.setup(alert: alert, onAcknowledged: onAcknowledged,
                    onReadDotAnimated: onReadDotAnimated)
@@ -34,13 +35,13 @@ class AlertView: UIView {
     private var alert: AlertViewData?
     private var onAcknowledged: ((AlertViewData) -> Void)?
 
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var symptomsLabel: UILabel!
-    @IBOutlet weak var borderView: UIView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var unreadView: UIView!
-    @IBOutlet weak var repeatedInteractionView: UIView!
-    @IBOutlet weak var repeatedInteractionLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var symptomsLabel: UILabel!
+    @IBOutlet var borderView: UIView!
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var unreadView: UIView!
+    @IBOutlet var repeatedInteractionView: UIView!
+    @IBOutlet var repeatedInteractionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,8 +58,9 @@ class AlertView: UIView {
     }
 
     func setup(alert: AlertViewData,
-               onAcknowledged: (AlertViewData) -> Void,
-               onReadDotAnimated: () -> Void) {
+               onAcknowledged _: (AlertViewData) -> Void,
+               onReadDotAnimated: () -> Void)
+    {
         self.alert = alert
 
         timeLabel.text = alert.contactTime
@@ -80,7 +82,7 @@ class AlertView: UIView {
         }
     }
 
-    @IBAction func acknowledge(_ sender: UIButton) {
+    @IBAction func acknowledge(_: UIButton) {
         guard let alert = alert else {
             log.e("Alert must be set in setup")
             return

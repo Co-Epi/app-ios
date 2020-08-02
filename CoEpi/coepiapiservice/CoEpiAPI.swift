@@ -1,11 +1,11 @@
 import Foundation
 
 class CoEpiAPI {
-  let server = "coepi.wolk.com"
-  let httpport = "8080"
+    let server = "coepi.wolk.com"
+    let httpport = "8080"
 
     private func generateEndpoint(action: String) -> String {
-        return "https://" + self.server + ":" + httpport + "/" + action
+        return "https://" + server + ":" + httpport + "/" + action
     }
 
     func postCENReport(cenreport: CENReport) {
@@ -30,39 +30,38 @@ class CoEpiAPI {
     }
 
     private func makeAPICall(endpoint: String, method: String, body: Data) {
+        // var error: Unmanaged<CFError>?
+        let config = URLSessionConfiguration.default
+        config.waitsForConnectivity = true
+        guard let URLObject = URL(string: endpoint) else {
+            return
+        }
+        var req = URLRequest(url: URLObject)
+        req.httpMethod = method
+        req.httpBody = body
 
-         //var error: Unmanaged<CFError>?
-         let config = URLSessionConfiguration.default
-         config.waitsForConnectivity = true
-         guard let URLObject = URL(string: endpoint) else {
+        URLSession(configuration: config).dataTask(with: req) { _, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
 
-             return
-         }
-         var req = URLRequest(url: URLObject)
-         req.httpMethod = method
-         req.httpBody = body
+            // TODO: on Wait, use a long timeout, but not for all the others!
 
-         URLSession(configuration: config).dataTask(with: req) { data, response, error in
-             if let error = error {
-                 print(error.localizedDescription)
-             }
+            if let error = error {
+                // TODO: self.handleClientError(error)
+                print("ERROR: \(error)")
+                // errorHandler(error)
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse,
+                (200 ... 299).contains(httpResponse.statusCode)
+            else {
+                // TODO: self.handleServerError(response)
+                return
+            }
 
-             // TODO: on Wait, use a long timeout, but not for all the others!
-
-             if let error = error {
-                 //TODO: self.handleClientError(error)
-                 print("ERROR: \(error)")
-                 //errorHandler(error)
-                 return
-             }
-             guard let httpResponse = response as? HTTPURLResponse,
-                 (200...299).contains(httpResponse.statusCode) else {
-                 //TODO: self.handleServerError(response)
-                 return
-             }
-
-             //TODO: determine where/when this should / can be called
-             //successHandler(data, httpResponse)
-         }.resume()
-  }
+            // TODO: determine where/when this should / can be called
+            // successHandler(data, httpResponse)
+        }.resume()
+    }
 }

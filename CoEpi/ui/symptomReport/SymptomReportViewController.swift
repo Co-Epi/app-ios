@@ -1,15 +1,15 @@
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class SymptomReportViewController: UIViewController, ErrorDisplayer {
     private let viewModel: SymptomReportViewModel
     private let dataSource: HealthQuizQuestionsDataSource = .init()
 
-    @IBOutlet weak var symptomQuestionHeader: UILabel!
-    @IBOutlet weak var subHeader: UILabel!
-    @IBOutlet weak var questionList: UITableView!
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet var symptomQuestionHeader: UILabel!
+    @IBOutlet var subHeader: UILabel!
+    @IBOutlet var questionList: UITableView!
+    @IBOutlet var submitButton: UIButton!
 
     private let disposeBag = DisposeBag()
 
@@ -23,7 +23,7 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -33,7 +33,7 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
         })
     }
 
-    @IBAction func submit(_ sender: UIButton) {
+    @IBAction func submit(_: UIButton) {
         viewModel.onTapSubmit()
     }
 
@@ -62,7 +62,7 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
         submitButton.setTitle(L10n.Ux.submit, for: .normal)
         ButtonStyles.applyRoundedEnds(to: submitButton)
         ButtonStyles.applyShadows(to: submitButton)
-     }
+    }
 }
 
 class HealthQuizQuestionsDataSource: NSObject, RxTableViewDataSourceType {
@@ -79,14 +79,15 @@ class HealthQuizQuestionsDataSource: NSObject, RxTableViewDataSourceType {
 }
 
 extension HealthQuizQuestionsDataSource: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         questions.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SymptomReportCell = tableView.dequeue(
             cellClass: SymptomReportCell.self,
-            forIndexPath: indexPath)
+            forIndexPath: indexPath
+        )
 
         let question: SymptomViewData = questions[indexPath.row]
         cell.setQuestion(question: question)

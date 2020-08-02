@@ -2,7 +2,6 @@ import UIKit
 import UserNotifications
 
 class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
-
     private let rootNav: RootNav
 
     init(rootNav: RootNav) {
@@ -13,25 +12,26 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
     }
 
     func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
-        willPresent notification: UNNotification,
+        _: UNUserNotificationCenter,
+        willPresent _: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
-        -> Void) {
-
+            -> Void
+    ) {
         // Used to display notification while app is in FG
-        // TODO maybe in-app notification/popup?
+        // TODO: maybe in-app notification/popup?
         completionHandler([
             .badge,
             .alert,
-            .sound])
+            .sound,
+        ])
     }
 
     func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
+        _: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
-        withCompletionHandler completionHandler: @escaping ()
-        -> Void) {
-
+        withCompletionHandler _: @escaping ()
+            -> Void
+    ) {
         let identifierStr = response.notification.request.identifier
 
         guard let identifier = NotificationId(rawValue: identifierStr) else {

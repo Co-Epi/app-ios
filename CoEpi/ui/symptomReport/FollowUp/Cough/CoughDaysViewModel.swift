@@ -17,7 +17,7 @@ class CoughDaysViewModel {
 
         submitButtonEnabled = daysIsEmpty
             .asObservable()
-            .map {!$0}
+            .map { !$0 }
             .asDriver(onErrorJustReturn: false)
     }
 
@@ -28,7 +28,7 @@ class CoughDaysViewModel {
             if let days: Int = Int(daysStr) {
                 symptomFlowManager.setCoughDays(.some(SymptomInputs.Days(value: days))).expect()
             } else {
-                // TODO handle
+                // TODO: handle
                 log.d("Invalid input: \(daysStr) TODO handle")
             }
         }

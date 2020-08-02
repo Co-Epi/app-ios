@@ -1,9 +1,8 @@
-import RxSwift
-import BackgroundTasks
 import Action
+import BackgroundTasks
+import RxSwift
 
 class FetchAlertsBackgroundTask: BackgroundTask {
-
     let identifier: String = "org.coepi.tcn_matching"
 
     let scheduleInterval: TimeInterval = 60 * 60 // 1h
@@ -20,10 +19,9 @@ class FetchAlertsBackgroundTask: BackgroundTask {
                 .asVoidObservable()
         }
         self.fetchAlertsAction = fetchAlertsAction
-
     }
 
-    func execute(task: BGProcessingTask) {
+    func execute(task _: BGProcessingTask) {
         log.d("Starting fetch alerts bg task...")
 
         fetchAlertsAction.execute()

@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 struct ButtonStyles {
-
     private init() {}
 
     static func applySelected(to button: UIButton) {

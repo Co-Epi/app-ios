@@ -19,7 +19,7 @@ class SymptomStartDaysViewModel {
 
         submitButtonEnabled = daysIsEmpty
             .asObservable()
-            .map {!$0}
+            .map { !$0 }
             .asDriver(onErrorJustReturn: false)
 
         setActivityIndicatorVisible = symptomFlowManager.submitSymptomsState
@@ -34,7 +34,7 @@ class SymptomStartDaysViewModel {
             if let days: Int = Int(daysStr) {
                 symptomFlowManager.setEarliestSymptomStartedDaysAgo(.some(days)).expect()
             } else {
-                // TODO handle
+                // TODO: handle
                 log.d("Invalid input: \(daysStr) TODO handle")
             }
         }

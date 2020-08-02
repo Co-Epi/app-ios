@@ -4,6 +4,7 @@ import Foundation
 protocol OnboardingViewModelDelegate: class {
     func onClose()
 }
+
 class OnboardingViewModel {
     let title = L10n.Ux.Home.title
 
@@ -12,5 +13,4 @@ class OnboardingViewModel {
     func onCloseClick() {
         delegate?.onClose()
     }
-
 }

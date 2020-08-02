@@ -1,7 +1,7 @@
 import Dip
+import Foundation
 import RxCocoa
 import RxSwift
-import Foundation
 
 class AlertsViewModel {
     private let alertRepo: AlertRepo
@@ -34,16 +34,16 @@ class AlertsViewModel {
             .asDriver(onErrorJustReturn: "Unknown error")
 
         selectAlertTrigger.withLatestFrom(alertRepo.alerts,
-                                          resultSelector: {(alert, alerts) in
-            AlertDetailsViewModelParams(
-                alert: alert,
-                linkedAlerts: linkedAlerts(alert: alert, alerts: alerts)
-            )
-        })
-        .subscribe(onNext: { pars in
-            nav.navigate(command: .to(destination: .alertDetails(pars: pars)))
-        })
-        .disposed(by: disposeBag)
+                                          resultSelector: { alert, alerts in
+                                              AlertDetailsViewModelParams(
+                                                  alert: alert,
+                                                  linkedAlerts: linkedAlerts(alert: alert, alerts: alerts)
+                                              )
+                                          })
+            .subscribe(onNext: { pars in
+                nav.navigate(command: .to(destination: .alertDetails(pars: pars)))
+            })
+            .disposed(by: disposeBag)
     }
 
     func updateReports() {
@@ -53,21 +53,20 @@ class AlertsViewModel {
     func acknowledge(alert: AlertViewData) {
         switch alertRepo.removeAlert(alert: alert.alert) {
         case .success: log.i("Alert: \(alert.alert.id) was removed.")
-        case .failure(let e): log.e("Alert: \(alert.alert.id) couldn't be removed: \(e)")
+        case let .failure(e): log.e("Alert: \(alert.alert.id) couldn't be removed: \(e)")
         }
     }
 
     func onAlertTap(alert: AlertViewData) {
         switch alertRepo.updateIsRead(alert: alert.alert, isRead: true) {
         case .success: log.i("Alert: \(alert.alert.id) was marked as read.")
-        case .failure(let e): log.e("Alert: \(alert.alert.id) couldn't be marked as read: \(e)")
+        case let .failure(e): log.e("Alert: \(alert.alert.id) couldn't be marked as read: \(e)")
         }
         selectAlertTrigger.onNext(alert.alert)
     }
 }
 
 private extension Array where Element == Alert {
-
     func toSections(allAlerts: [Alert]) -> [AlertViewDataSection] {
         return
             sorted { (alert1, alert2) -> Bool in
@@ -106,7 +105,6 @@ private extension Alert {
 }
 
 private extension OperationState {
-
     func shouldShowText() -> Bool {
         switch self {
         case .progress, .failure, .success: return true
@@ -119,7 +117,7 @@ private extension OperationState {
         switch self {
         case .notStarted, .success: return ""
         case .progress: return "Updating..."
-        case .failure(let error): return "Error updating: \(error)"
+        case let .failure(error): return "Error updating: \(error)"
         }
     }
 }

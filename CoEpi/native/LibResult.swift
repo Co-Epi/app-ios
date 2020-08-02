@@ -6,15 +6,14 @@ struct LibResult<T: Decodable>: Decodable {
     let errorMessage: String?
 
     func isSuccess() -> Bool {
-        (200...299).contains(status)
+        (200 ... 299).contains(status)
     }
 }
 
-// TODO better way to decode LibResult when it doesn't have data. Maybe don't use Decodable.
+// TODO: better way to decode LibResult when it doesn't have data. Maybe don't use Decodable.
 typealias ArbitraryType = String
 
 extension LibResult {
-
     func toResult() -> Result<T, CoreError> {
         if isSuccess() {
             if let data = data {
@@ -28,7 +27,7 @@ extension LibResult {
         }
     }
 
-    func toVoidResult() -> Result<(), CoreError> {
+    func toVoidResult() -> Result<Void, CoreError> {
         if isSuccess() {
             return .success(())
         } else {
@@ -38,14 +37,13 @@ extension LibResult {
 }
 
 extension Unmanaged where Instance == CFString {
-
     func toLibResult<T>() -> LibResult<T> {
         let resultValue: CFString = takeRetainedValue()
         let resultString = resultValue as String
 
         log.d("Deserializing native core result: \(resultString)")
 
-        // TODO review safety of utf-8 force unwrap
+        // TODO: review safety of utf-8 force unwrap
         let data = resultString.data(using: .utf8)!
         let decoder = JSONDecoder()
 

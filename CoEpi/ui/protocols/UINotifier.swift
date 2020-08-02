@@ -1,5 +1,5 @@
-import RxSwift
 import RxCocoa
+import RxSwift
 import RxSwiftExt
 
 protocol UINotifier {
@@ -9,14 +9,13 @@ protocol UINotifier {
 }
 
 extension UINotifier {
-
     func bindSuccessErrorNotifier<T>(_ obs: Observable<Event<T>>, successMessage: String) {
         bindSuccessNotifier(obs.elements(), message: successMessage)
         bindErrorNotifier(obs.errors())
     }
 
     func bindSuccessNotifier<T>(_ obs: Observable<T>, message: String) {
-        obs.subscribe { [notificationSubject] error in
+        obs.subscribe { [notificationSubject] _ in
             notificationSubject.accept(.success(message: message))
         }.disposed(by: disposeBag)
     }

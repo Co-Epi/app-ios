@@ -1,7 +1,6 @@
 import Foundation
 
 extension Array where Element: Equatable {
-
     func distinct() -> [Element] {
         var uniqueValues: [Element] = []
         forEach { item in

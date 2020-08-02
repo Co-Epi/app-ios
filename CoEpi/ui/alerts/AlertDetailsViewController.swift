@@ -1,5 +1,5 @@
-import UIKit
 import SwiftUI
+import UIKit
 
 class AlertDetailsViewController: UIViewController, ObservableObject {
     private let viewModel: AlertDetailsViewModel
@@ -10,7 +10,7 @@ class AlertDetailsViewController: UIViewController, ObservableObject {
         title = L10n.Alerts.Details.title
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -99,8 +99,9 @@ struct AlertDetailsView: View {
                     .destructive(Text(L10n.Alerts.Details.More.reportProblem)) {
                         self.viewModel.reportProblemTapped()
                     },
-                    .cancel()
-            ])
+                    .cancel(),
+                ]
+            )
         }
     }
 
@@ -133,7 +134,6 @@ struct AlertDetailsView: View {
 }
 
 private struct ConnectionShape {
-
     func generate(image: LinkedAlertViewDataConnectionImage) -> some View {
         switch image {
         case .top: return AnyView(topImage())
@@ -151,8 +151,7 @@ private struct ConnectionShape {
         CGRect(x: lineLeft - lineWidth / 2,
                y: y,
                width: lineWidth,
-               height: height
-        )
+               height: height)
     }
 
     func circleRect(y: Int) -> CGRect {
@@ -189,7 +188,7 @@ private struct ConnectionShape {
     }
 
     private func bottomImage() -> some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             Path { path in
                 let height: Int = 14
                 path.addEllipse(in: circleRect(y: height))

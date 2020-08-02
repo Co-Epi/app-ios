@@ -2,15 +2,15 @@ import Foundation
 
 enum SymptomId: String, Encodable {
     case
-    cough,
-    breathlessness,
-    fever,
-    muscleAches,
-    lossSmellOrTaste,
-    diarrhea,
-    runnyNose,
-    other,
-    none
+        cough,
+        breathlessness,
+        fever,
+        muscleAches,
+        lossSmellOrTaste,
+        diarrhea,
+        runnyNose,
+        other,
+        none
 }
 
 struct SymptomInputs {
@@ -27,15 +27,15 @@ struct SymptomInputs {
 
         enum CoughType: String, Encodable {
             case
-            wet,
-            dry
+                wet,
+                dry
         }
 
         enum Status: String, Encodable {
             case
-            betterAndWorseThroughDay,
-            worseWhenOutside,
-            sameOrSteadilyWorse
+                betterAndWorseThroughDay,
+                worseWhenOutside,
+                sameOrSteadilyWorse
         }
     }
 
@@ -44,11 +44,11 @@ struct SymptomInputs {
 
         enum Cause: String, Encodable {
             case
-            leavingHouseOrDressing,
-            walkingYardsOrMinsOnGround,
-            groundOwnPace,
-            hurryOrHill,
-            exercise
+                leavingHouseOrDressing,
+                walkingYardsOrMinsOnGround,
+                groundOwnPace,
+                hurryOrHill,
+                exercise
         }
     }
 
@@ -60,10 +60,10 @@ struct SymptomInputs {
 
         enum TemperatureSpot: String, Encodable {
             case
-            mouth,
-            ear,
-            armpit,
-            other
+                mouth,
+                ear,
+                armpit,
+                other
         }
     }
 
@@ -80,14 +80,14 @@ enum UserInput<T>: AutoEquatable {
     func map<U>(f: (T) -> U) -> UserInput<U> {
         switch self {
         case .none: return .none
-        case .some(let value): return .some(f(value))
+        case let .some(value): return .some(f(value))
         }
     }
 
-    func flatMap<U> (f: (T) -> UserInput<U>) -> UserInput<U> {
+    func flatMap<U>(f: (T) -> UserInput<U>) -> UserInput<U> {
         switch self {
         case .none: return .none
-        case .some(let value): return f(value)
+        case let .some(value): return f(value)
         }
     }
 
@@ -101,7 +101,7 @@ enum UserInput<T>: AutoEquatable {
     func toOptional() -> T? {
         switch self {
         case .none: return nil
-        case .some(let value): return value
+        case let .some(value): return value
         }
     }
 }
@@ -116,28 +116,28 @@ enum Temperature {
 
     func asCelsius() -> Float {
         switch self {
-        case .celsius(let value): return value
-        case .fahrenheit(let value): return 5 / 9.0 * (value - 32)
+        case let .celsius(value): return value
+        case let .fahrenheit(value): return 5 / 9.0 * (value - 32)
         }
     }
 
     func asFarenheit() -> Float {
         switch self {
-        case .fahrenheit(let value): return value
-        case .celsius(let value): return 9 / 5.0 * value + 32
+        case let .fahrenheit(value): return value
+        case let .celsius(value): return 9 / 5.0 * value + 32
         }
     }
 
     func toUserString() -> String {
         // Force unwrap since for particular formatter and inputs, there seem to be no cases where it can return nil.
-        // TODO unit tests / confirm
+        // TODO: unit tests / confirm
         NumberFormatters.tempFormatter.string(from: value)!
     }
 
     private var value: Float {
         switch self {
-        case .celsius(let value): return value
-        case .fahrenheit(let value): return value
+        case let .celsius(value): return value
+        case let .fahrenheit(value): return value
         }
     }
 }
@@ -147,7 +147,7 @@ enum Temperature {
 // For now setting each input individually. If we decide to keep this approach long term, this section can be removed.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//private enum CoreUserInput<T: Encodable>: Encodable {
+// private enum CoreUserInput<T: Encodable>: Encodable {
 //    case none, some(value: T)
 //
 //    func map<U>(f: (T) -> U) -> UserInput<U> {
@@ -163,9 +163,9 @@ enum Temperature {
 //        case .some(let value): return f(value)
 //        }
 //    }
-//}
+// }
 //
-//private extension CoreUserInput {
+// private extension CoreUserInput {
 //    enum CodingError: Error { case decoding(String) }
 //    enum CodableKeys: String, CodingKey { case type, value }
 //
@@ -180,41 +180,41 @@ enum Temperature {
 //           try! container.encode(value, forKey: .value)
 //         }
 //    }
-//}
+// }
 //
-//private struct CoreCough: Encodable {
+// private struct CoreCough: Encodable {
 //    let type: CoreUserInput<SymptomInputs.Cough.CoughType>
 //    let days: CoreUserInput<SymptomInputs.Days>
 //    let status: CoreUserInput<SymptomInputs.Cough.Status>
-//}
+// }
 //
-//private struct CoreBreathlessness: Encodable {
+// private struct CoreBreathlessness: Encodable {
 //    let cause: CoreUserInput<SymptomInputs.Breathlessness.Cause>
-//}
+// }
 //
-//private struct CoreEarliestSymptom: Encodable {
+// private struct CoreEarliestSymptom: Encodable {
 //    let time: CoreUserInput<UnixTime>
-//}
+// }
 //
-//private extension SymptomInputs.Cough {
+// private extension SymptomInputs.Cough {
 //    func toCoreCough() -> CoreCough {
 //        CoreCough(type: type.toCoreUserInput(), days: days.toCoreUserInput(), status: status.toCoreUserInput())
 //    }
-//}
+// }
 //
-//private extension SymptomInputs.Breathlessness {
+// private extension SymptomInputs.Breathlessness {
 //    func toCoreBreathlessness() -> CoreBreathlessness {
 //        CoreBreathlessness(cause: cause.toCoreUserInput())
 //    }
-//}
+// }
 //
-//private extension SymptomInputs.EarliestSymptom {
+// private extension SymptomInputs.EarliestSymptom {
 //    func toCoreEarliestSymptom() -> CoreEarliestSymptom {
 //        CoreEarliestSymptom(time: time.toCoreUserInput())
 //    }
-//}
+// }
 //
-//private extension SymptomInputs {
+// private extension SymptomInputs {
 //
 //    func toCoreSymptomInputs() -> CoreSymptomInputs {
 //       CoreSymptomInputs(
@@ -232,35 +232,35 @@ enum Temperature {
 //           earliestSymptom: earliestSymptom.toCoreEarliestSymptom()
 //       )
 //    }
-//}
+// }
 //
-//private struct CoreSymptomInputs: Encodable {
+// private struct CoreSymptomInputs: Encodable {
 //    let ids: Set<SymptomId>
 //    let cough: CoreCough
 //    let breathlessness: CoreBreathlessness
 //    let fever: CoreFever
 //    let earliestSymptom: CoreEarliestSymptom
-//}
+// }
 //
-//private struct CoreFever: Encodable {
+// private struct CoreFever: Encodable {
 //    let days: CoreUserInput<SymptomInputs.Days>
 //    let takenTemperatureToday: CoreUserInput<Bool>
 //    let temperatureSpot: CoreUserInput<SymptomInputs.Fever.TemperatureSpot>
 //    let highestTemperature: CoreUserInput<FarenheitTemperature>
-//}
+// }
 //
-//private struct FarenheitTemperature: Encodable {
+// private struct FarenheitTemperature: Encodable {
 //    let value: Float
-//}
+// }
 //
-//private extension UserInput where T: Encodable {
+// private extension UserInput where T: Encodable {
 //    func toCoreUserInput() -> CoreUserInput<T> {
 //        switch self {
 //        case .none: return .none
 //        case .some(let value): return .some(value: value)
 //        }
 //    }
-//}
+// }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

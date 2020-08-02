@@ -1,11 +1,11 @@
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class LogsViewController: UIViewController, ErrorDisplayer {
     private let viewModel: LogsViewModel
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     private let disposeBag = DisposeBag()
 
@@ -17,8 +17,9 @@ class LogsViewController: UIViewController, ErrorDisplayer {
 
         let longPressRecognizer = UILongPressGestureRecognizer(
             target: self,
-            action: #selector(onLongPress))
-        self.view.addGestureRecognizer(longPressRecognizer)
+            action: #selector(onLongPress)
+        )
+        view.addGestureRecognizer(longPressRecognizer)
     }
 
     @objc func onLongPress(sender: UILongPressGestureRecognizer) {
@@ -27,7 +28,7 @@ class LogsViewController: UIViewController, ErrorDisplayer {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -62,18 +63,20 @@ private class LogsTableViewDataSource: NSObject, RxTableViewDataSourceType {
 }
 
 extension LogsTableViewDataSource: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         debugEntries.count
     }
 
     func tableView(
         _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath)
-        -> UITableViewCell {
+        cellForRowAt indexPath: IndexPath
+    )
+        -> UITableViewCell
+    {
         let cell: UITableViewCell = tableView.dequeue(
             cellClass: UITableViewCell.self,
-            forIndexPath: indexPath)
+            forIndexPath: indexPath
+        )
 
         cell.selectionStyle = .none
 

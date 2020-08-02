@@ -1,8 +1,7 @@
-import UIKit
 import SwiftUI
+import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
     private var rootWireframe: RootWireFrame?
 
@@ -10,8 +9,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(
         _ scene: UIScene,
-        willConnectTo session: UISceneSession,
-        options connectionOptions: UIScene.ConnectionOptions) {
+        willConnectTo _: UISceneSession,
+        options _: UIScene.ConnectionOptions
+    ) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             rootWireframe = RootWireFrame(container: container, window: window)
@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
+    func sceneDidBecomeActive(_: UIScene) {
         let badgeUpdater: AppBadgeUpdater = try! container.resolve()
         badgeUpdater.updateAppBadge(number: 0)
 

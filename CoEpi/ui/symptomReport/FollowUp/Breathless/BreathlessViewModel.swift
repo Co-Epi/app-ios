@@ -1,5 +1,5 @@
-import RxSwift
 import RxCocoa
+import RxSwift
 import SwiftUI
 
 struct BreathlessItemViewData {
@@ -24,24 +24,29 @@ class BreathlessViewModel: ObservableObject {
             BreathlessItemViewData(
                 imageName: "house",
                 text: breath.p0,
-                cause: .leavingHouseOrDressing),
+                cause: .leavingHouseOrDressing
+            ),
             BreathlessItemViewData(
                 imageName: "stop",
                 text: breath.p1,
-                cause: .walkingYardsOrMinsOnGround),
+                cause: .walkingYardsOrMinsOnGround
+            ),
             BreathlessItemViewData(
                 imageName: "ground",
                 text: breath.p2,
-                cause: .groundOwnPace),
+                cause: .groundOwnPace
+            ),
             BreathlessItemViewData(
                 imageName: "hill",
                 text: breath.p3,
-                cause: .hurryOrHill),
+                cause: .hurryOrHill
+            ),
             BreathlessItemViewData(
                 imageName: "exercise",
                 text: breath.p4,
-                cause: .exercise)
-       ]
+                cause: .exercise
+            ),
+        ]
     }
 
     func onCauseSelected(viewData: BreathlessItemViewData) {

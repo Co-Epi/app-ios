@@ -3,23 +3,23 @@ import UIKit
 class CoughTypeViewController: UIViewController {
     private let viewModel: CoughTypeViewModel
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
 
-    @IBOutlet weak var wetButtonLabel: UIButton!
-    @IBOutlet weak var dryButtonLabel: UIButton!
-    @IBOutlet weak var skipButtonLabel: UIButton!
+    @IBOutlet var wetButtonLabel: UIButton!
+    @IBOutlet var dryButtonLabel: UIButton!
+    @IBOutlet var skipButtonLabel: UIButton!
 
-    @IBAction func wetButtonAction(_ sender: UIButton) {
+    @IBAction func wetButtonAction(_: UIButton) {
         viewModel.onTapWet()
     }
 
-    @IBAction func dryButtonAction(_ sender: UIButton) {
+    @IBAction func dryButtonAction(_: UIButton) {
         viewModel.onTapDry()
-     }
+    }
 
-    @IBAction func skipButtonAction(_ sender: UIButton) {
+    @IBAction func skipButtonAction(_: UIButton) {
         viewModel.onSkipTap()
-     }
+    }
 
     init(viewModel: CoughTypeViewModel) {
         self.viewModel = viewModel
@@ -27,7 +27,7 @@ class CoughTypeViewController: UIViewController {
         title = viewModel.title
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -50,18 +50,22 @@ class CoughTypeViewController: UIViewController {
 
         let textWet = NSMutableAttributedString(
             string: L10n.Ux.Cough.titleWet,
-            attributes: bold24)
+            attributes: bold24
+        )
         textWet.append(NSMutableAttributedString(
-                        string: L10n.Ux.Cough.subtitleWet,
-                        attributes: system11))
+            string: L10n.Ux.Cough.subtitleWet,
+            attributes: system11
+        ))
         wetButtonLabel.setAttributedTitle(textWet, for: .normal)
 
         let textDry = NSMutableAttributedString(
             string: L10n.Ux.Cough.titleDry,
-            attributes: bold24)
+            attributes: bold24
+        )
         textDry.append(NSMutableAttributedString(
-                        string: L10n.Ux.Cough.subtitleDry,
-                        attributes: system11))
+            string: L10n.Ux.Cough.subtitleDry,
+            attributes: system11
+        ))
         dryButtonLabel.setAttributedTitle(textDry, for: .normal)
-     }
+    }
 }

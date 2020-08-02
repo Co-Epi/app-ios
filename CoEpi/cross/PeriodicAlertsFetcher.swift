@@ -9,7 +9,8 @@ class PeriodicAlertsFetcher {
             .timer(
                 .seconds(0),
                 period: .seconds(3600),
-                scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+                scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
+            )
             .subscribe(onNext: { _ in
                 alertRepo.updateReports()
             })

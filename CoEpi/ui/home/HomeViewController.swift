@@ -1,26 +1,26 @@
-import UIKit
-import SafariServices
-import RxSwift
 import RxCocoa
+import RxSwift
+import SafariServices
+import UIKit
 
 class HomeViewController: UIViewController {
     private let viewModel: HomeViewModel
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     private var dataSource = HomeItemsDataSource()
 
     private let disposeBag = DisposeBag()
 
-    @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var buildLabel: UILabel!
+    @IBOutlet var versionLabel: UILabel!
+    @IBOutlet var buildLabel: UILabel!
 
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
-        self.title = self.viewModel.title
+        title = self.viewModel.title
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -68,15 +68,16 @@ private class HomeItemsDataSource: NSObject, RxTableViewDataSourceType {
 }
 
 extension HomeItemsDataSource: UITableViewDataSource {
-
     func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
+        _: UITableView,
+        numberOfRowsInSection _: Int
+    ) -> Int {
         items.count
     }
 
     func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let item = items[indexPath.row]
 
         switch item {
@@ -95,10 +96,10 @@ extension HomeItemsDataSource: UITableViewDataSource {
 }
 
 extension HomeViewController: UITableViewDelegate {
-
     func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath) {
+        _: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         viewModel.onClick(item: dataSource.items[indexPath.row])
     }
 }

@@ -1,10 +1,8 @@
-import Foundation
 import Dip
+import Foundation
 
 class Dependencies {
-
     func createContainer() -> DependencyContainer {
-
         let container = DependencyContainer()
 
         let fileSystem: FileSystem = FileSystemImpl()
@@ -12,7 +10,7 @@ class Dependencies {
 
         // NOTE: Has to be initialized before everything else (besides FileSystem)
         // to ensure that core services are available to all dependencies.
-        // TODO consider initializing dependencies asynchronously.
+        // TODO: consider initializing dependencies asynchronously.
         registerAndInitNativeCore(container: container, fileSystem: fileSystem)
 
         let alertFilterSettings = AlertFilterSettings(
@@ -56,11 +54,11 @@ class Dependencies {
             .register(.singleton) { nativeCore as ObservedTcnsRecorder }
         container
             .register(.singleton) { nativeCore as TcnGenerator }
-
     }
 
     private func registerViewModels(container: DependencyContainer,
-                                    alertFilterSettings: AlertFilterSettings) {
+                                    alertFilterSettings: AlertFilterSettings)
+    {
         container.register { HomeViewModel(startPermissions: try container.resolve(),
                                            rootNav: try container.resolve(),
                                            alertRepo: try container.resolve(),
@@ -98,7 +96,8 @@ class Dependencies {
             .register { SymptomReportViewModel(
                 symptomRepo: try container.resolve(),
                 rootNav: try container.resolve(),
-                symptomFlowManager: try container.resolve())}
+                symptomFlowManager: try container.resolve()
+            ) }
 
         container
             .register { OnboardingWireframe(container: container) }
@@ -109,7 +108,8 @@ class Dependencies {
         container
             .register { AlertsViewModel(
                 alertRepo: try container.resolve(),
-                nav: try container.resolve()) }
+                nav: try container.resolve()
+            ) }
 
         container
             .register { DebugBleViewModel(
@@ -117,7 +117,8 @@ class Dependencies {
         container
             .register { LogsViewModel(
                 log: cachingLog, clipboard: try container.resolve(),
-                                           envInfos: try container.resolve()) }
+                envInfos: try container.resolve()
+            ) }
 
         container.register { AlertDetailsViewModel(pars: $0,
                                                    alertRepo: try container.resolve(),
@@ -140,7 +141,8 @@ class Dependencies {
             .register(.singleton) { AlertRepoImpl(
                 alertsApi: try container.resolve(),
                 notificationShower: try container.resolve(),
-                alertFilters: try container.resolve()) as AlertRepo
+                alertFilters: try container.resolve()
+            ) as AlertRepo
             }
     }
 
@@ -155,12 +157,13 @@ class Dependencies {
         container
             .register(.eagerSingleton) { FetchAlertsBackgroundRegisterer(
                 tasksManager: try container.resolve(),
-                alertRepo: try container.resolve()) }
+                alertRepo: try container.resolve()
+            ) }
         container.register(.eagerSingleton) { NotificationsDelegate(
             rootNav: try container.resolve()) }
     }
 
-    private func registerLogic(container: DependencyContainer) {
+    private func registerLogic(container _: DependencyContainer) {
 //        container.register(.eagerSingleton) { AlertNotificationsShower(alertsRepo: try container.resolve()) }
     }
 
@@ -171,7 +174,8 @@ class Dependencies {
         container
             .register(.eagerSingleton) { ScannedCensHandler(
                 bleAdapter: try container.resolve(),
-                tcnsRecorder: try container.resolve())}
+                tcnsRecorder: try container.resolve()
+            ) }
         container
             .register(.eagerSingleton) { PeriodicAlertsFetcher(
                 alertRepo: try container.resolve()) }
@@ -185,7 +189,8 @@ class Dependencies {
             .register(.singleton) { SymptomFlowManager(
                 symptomRouter: try container.resolve(),
                 rootNavigation: try container.resolve(),
-                inputsManager: try container.resolve()) }
+                inputsManager: try container.resolve()
+            ) }
         container.register {
             ObservableAlertFiltersImpl(
                 kvStore: try container.resolve(),

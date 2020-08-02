@@ -1,22 +1,21 @@
 import UIKit
 
 class WhatAreAlertsViewController: UIViewController {
+    @IBOutlet var titleLabel: UILabel!
 
-    @IBOutlet weak var titleLabel: UILabel!
-
-    @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet var bodyLabel: UILabel!
 
     init() {
         super.init(nibName: String(describing: Self.self), bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
 
         titleLabel.text = L10n.WhatExposure.title
 
@@ -36,7 +35,8 @@ private extension String {
                 data: data,
                 options: [.documentType: NSAttributedString.DocumentType.html,
                           .characterEncoding: String.Encoding.utf8.rawValue],
-                documentAttributes: nil)
+                documentAttributes: nil
+            )
 
         } catch let e {
             log.e("Couldn't create attributed string with: \(self), e: \(e)")

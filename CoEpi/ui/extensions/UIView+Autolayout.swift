@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 extension UIView {
-
     func pinLeadingToParent() {
         guard let superview = requireSuperview else { return }
         translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +40,7 @@ extension UIView {
     }
 
     private var requireSuperview: UIView? {
-         guard let superview = self.superview else {
+        guard let superview = self.superview else {
             print("Error! `superview` was nil. Ensure view is in the hierarchy.")
             return nil
         }

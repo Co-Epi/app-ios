@@ -7,7 +7,6 @@ protocol CustomView {
 }
 
 extension CustomView where Self: UIView {
-
     func attach() {
         Bundle.main.loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)
         addSubview(rootView)

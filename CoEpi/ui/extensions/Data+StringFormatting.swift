@@ -1,7 +1,6 @@
 import Foundation
 
 extension Data {
-
     func toHex() -> String {
         let hexDigits = Array("0123456789abcdef".utf16)
         var chars: [unichar] = []

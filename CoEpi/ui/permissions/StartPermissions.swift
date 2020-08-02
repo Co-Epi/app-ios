@@ -1,6 +1,6 @@
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 protocol StartPermissions {
     var granted: Observable<Bool> { get }
@@ -23,12 +23,13 @@ class StartPermissionsImpl: StartPermissions {
             .requestAuthorization(options: [
                 .alert,
                 .badge,
-                .sound]
-            ) { (granted, error) in
-            if let error = error {
-                log.e("Error requesting permission: \(error)")
+                .sound,
+            ]
+            ) { granted, error in
+                if let error = error {
+                    log.e("Error requesting permission: \(error)")
+                }
+                self.grantedSubject.accept(granted)
             }
-            self.grantedSubject.accept(granted)
-        }
     }
 }

@@ -1,15 +1,15 @@
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class AlertsViewController: UIViewController {
     private let viewModel: AlertsViewModel
     private let dataSource: AlertsDataSource = .init()
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var contactAlerts: UITableView!
-    @IBOutlet weak var updateStatusLabel: UILabel!
-    @IBOutlet weak var subtextLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var contactAlerts: UITableView!
+    @IBOutlet var updateStatusLabel: UILabel!
+    @IBOutlet var subtextLabel: UILabel!
 
     private let disposeBag = DisposeBag()
 
@@ -25,7 +25,7 @@ class AlertsViewController: UIViewController {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -77,17 +77,18 @@ class AlertsDataSource: NSObject, RxTableViewDataSourceType {
 }
 
 extension AlertsDataSource: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         sections[section].alerts.count
     }
 
     func tableView(
         _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeue(
             cellClass: AlertCell.self,
-            forIndexPath: indexPath)
+            forIndexPath: indexPath
+        )
         guard let alertCell = cell as? AlertCell else { return cell }
 
         let alert: AlertViewData = sections[indexPath.section].alerts[indexPath.row]
@@ -101,22 +102,23 @@ extension AlertsDataSource: UITableViewDataSource {
                                 .sections[indexPath.section]
                                 .alerts[indexPath.row]
                                 .animateUnreadDot = false
-        })
+                        })
 
         return alertCell
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         sections.count
     }
 }
 
 extension AlertsViewController: UITableViewDelegate {
-
     func tableView(
         _ tableView: UITableView,
-        viewForHeaderInSection section: Int)
-        -> UIView? {
+        viewForHeaderInSection section: Int
+    )
+        -> UIView?
+    {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
         let label = UILabel(frame: CGRect(x: 24, y: 5, width: 0, height: 0))
         label.backgroundColor = .white
@@ -130,28 +132,33 @@ extension AlertsViewController: UITableViewDelegate {
     }
 
     func tableView(
-        _ tableView: UITableView,
-        heightForHeaderInSection section: Int)
-        -> CGFloat {
+        _: UITableView,
+        heightForHeaderInSection _: Int
+    )
+        -> CGFloat
+    {
         20
     }
 
     func tableView(
-        _ tableView: UITableView,
-        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
-        -> UISwipeActionsConfiguration? {
+        _: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    )
+        -> UISwipeActionsConfiguration?
+    {
         let delete = UIContextualAction(
-        style: .destructive,
-        title: L10n.Alerts.Label
-            .archive) { [viewModel, dataSource] (action, view, actionPerformed: (Bool)
-            -> Void) in
-            viewModel.acknowledge(
-                alert: dataSource.sections[indexPath.section].alerts[indexPath.row])
+            style: .destructive,
+            title: L10n.Alerts.Label
+                .archive
+        ) { [viewModel, dataSource] (_, _, _: (Bool)
+                -> Void) in
+        viewModel.acknowledge(
+            alert: dataSource.sections[indexPath.section].alerts[indexPath.row])
         }
         return UISwipeActionsConfiguration(actions: [delete])
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = dataSource.sections[indexPath.section].alerts[indexPath.row]
         viewModel.onAlertTap(alert: alert)
     }

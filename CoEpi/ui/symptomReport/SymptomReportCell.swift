@@ -19,10 +19,10 @@ class SymptomReportCell: UITableViewCell {
         contentView.addSubview(view)
         view.pinAllEdgesToParent()
 
-        self.symptomView = view
+        symptomView = view
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -33,8 +33,7 @@ class SymptomReportCell: UITableViewCell {
 }
 
 class SymptomView: UIView {
-
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet var button: UIButton!
 
     public var onChecked: ((SymptomViewData) -> Void)?
 
@@ -50,7 +49,7 @@ class SymptomView: UIView {
         }
     }
 
-    @IBAction func onSymptomTap(_ sender: UIButton) {
+    @IBAction func onSymptomTap(_: UIButton) {
         if let question = question {
             onChecked?(question)
         }

@@ -1,11 +1,10 @@
 import UIKit
 
 class ErrorView: UIView, CustomView {
+    @IBOutlet var rootView: UIView!
+    @IBOutlet var messageLabel: UILabel!
 
-    @IBOutlet weak var rootView: UIView!
-    @IBOutlet weak var messageLabel: UILabel!
-
-    override init(frame: CGRect) {
+    override init(frame _: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
         attach()
     }

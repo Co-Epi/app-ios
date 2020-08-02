@@ -5,7 +5,6 @@ protocol FileSystem {
 }
 
 class FileSystemImpl: FileSystem {
-
     func coreDatabasePath() -> Result<String, ServicesError> {
         documentsFolderPath().map { $0.path }
     }
@@ -15,19 +14,19 @@ class FileSystemImpl: FileSystem {
             return .success(try FileManager
                 .default
                 .url(
-                for: FileManager
-                    .SearchPathDirectory
-                    .documentDirectory,
-                in: FileManager
-                    .SearchPathDomainMask
-                    .userDomainMask,
-                appropriateFor: nil,
-                create: true
-            ))
+                    for: FileManager
+                        .SearchPathDirectory
+                        .documentDirectory,
+                    in: FileManager
+                        .SearchPathDomainMask
+                        .userDomainMask,
+                    appropriateFor: nil,
+                    create: true
+                ))
         } catch let e {
             return
                 .failure(ServicesError
-                .error(message: "Couldn't get documents path: \(e)"))
+                    .error(message: "Couldn't get documents path: \(e)"))
         }
     }
 }

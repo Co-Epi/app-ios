@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 class UserSettingsViewModel: ObservableObject {
-
     private let kvStore: ObservableKeyValueStore
 
     @Published var settingsViewData: [IdentifiableUserSettingViewData] = []
@@ -12,18 +11,18 @@ class UserSettingsViewModel: ObservableObject {
     private let email: Email
 
     init(kvStore: ObservableKeyValueStore, alertFilterSettings: AlertFilterSettings,
-         envInfos: EnvInfos, email: Email, unitsFormatter: UnitsFormatter) {
+         envInfos: EnvInfos, email: Email, unitsFormatter: UnitsFormatter)
+    {
         self.kvStore = kvStore
         self.email = email
 
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
                                  kvStore.filterAlertsWithLongDuration,
                                  kvStore.filterAlertsWithShortDistance,
-                                 unitsFormatter.formatter
-        ).subscribe(onNext: { [weak self] filterAlertsWithSymptoms,
-                                          filterAlertsWithLongDuration,
-                                          filterAlertsWithShortDistance,
-                                          measurementFormatter in
+                                 unitsFormatter.formatter).subscribe(onNext: { [weak self] filterAlertsWithSymptoms,
+                filterAlertsWithLongDuration,
+                filterAlertsWithShortDistance,
+                measurementFormatter in
 
             self?.settingsViewData =
                 buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
@@ -31,8 +30,7 @@ class UserSettingsViewModel: ObservableObject {
                               filterAlertsWithShortDistance: filterAlertsWithShortDistance,
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
-                              measurementFormatter: measurementFormatter
-                )
+                              measurementFormatter: measurementFormatter)
         }).disposed(by: disposeBag)
     }
 
@@ -85,7 +83,6 @@ private func buildSettings(
     appVersionString: String,
     measurementFormatter: MeasurementFormatter
 ) -> [IdentifiableUserSettingViewData] {
-
     [
         UserSettingViewData.sectionHeader(
             title: L10n.Settings.Header.Alerts.title,
@@ -105,20 +102,20 @@ private func buildSettings(
             hasBottomLine: true
         ),
         UserSettingViewData.toggle(text: L10n.Settings.Item.distanceShorterThan(
-                                    measurementFormatter.string(
-                                        from: alertFilterSettings.distanceShorterThan)),
-                                   value: filterAlertsWithShortDistance,
-                                   id: .filterAlertsWithShortDistance,
-                                   hasBottomLine: false),
+            measurementFormatter.string(
+                from: alertFilterSettings.distanceShorterThan)),
+        value: filterAlertsWithShortDistance,
+        id: .filterAlertsWithShortDistance,
+        hasBottomLine: false),
 
         UserSettingViewData.link(text: L10n.Settings.Item.privacyStatement,
                                  url: URL(string: "https://www.coepi.org/privacy/")!),
 
         UserSettingViewData.textAction(text: L10n.Settings.Item.reportProblem,
-                                  id: .reportProblem),
+                                       id: .reportProblem),
 
-        UserSettingViewData.text(L10n.Settings.Item.version(appVersionString))
+        UserSettingViewData.text(L10n.Settings.Item.version(appVersionString)),
 
-    // Note: index as id assumes hardcoded settings list, as above
+        // Note: index as id assumes hardcoded settings list, as above
     ].enumerated().map { index, data in IdentifiableUserSettingViewData(id: index, data: data) }
 }

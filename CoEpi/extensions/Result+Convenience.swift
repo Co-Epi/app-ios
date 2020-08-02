@@ -1,5 +1,4 @@
 extension Result {
-
     func isSuccess() -> Bool {
         switch self {
         case .success: return true
@@ -14,8 +13,8 @@ extension Result {
     @discardableResult
     func expect(_ message: String? = nil) -> Success {
         switch self {
-        case .success(let success): return success
-        case .failure(let err):
+        case let .success(success): return success
+        case let .failure(err):
             let message = message.map { "\($0) " } ?? ""
             fatalError(message + err.localizedDescription)
         }

@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 extension Completable {
-
     func asVoidObservable() -> Observable<Void> {
         andThen(.just(()))
     }

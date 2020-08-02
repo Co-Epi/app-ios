@@ -1,59 +1,59 @@
-import Foundation
 import CryptoSwift
+import Foundation
 
 protocol AlertsApi {
     func fetchNewAlerts() -> Result<[Alert], ServicesError>
-    func deleteAlert(id: String) -> Result<(), ServicesError>
-    func updateIsRead(id: String, isRead: Bool) -> Result<(), ServicesError>
+    func deleteAlert(id: String) -> Result<Void, ServicesError>
+    func updateIsRead(id: String, isRead: Bool) -> Result<Void, ServicesError>
 }
 
 // For now discontinuing this approach and submitting each symptom individually.
-//protocol SymptomsReporter {
+// protocol SymptomsReporter {
 //    func submitSymptoms(inputs: SymptomInputs) -> Result<(), ServicesError>
-//}
+// }
 
 protocol SymptomsInputManager {
     func setSymptoms(
         _ input: Set<SymptomId>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setCoughType(
         _ input: UserInput<SymptomInputs.Cough.CoughType>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setCoughDays(
         _ input: UserInput<SymptomInputs.Days>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setCoughStatus(
         _ input: UserInput<SymptomInputs.Cough.Status>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setBreathlessnessCause(
         _ input: UserInput<SymptomInputs.Breathlessness.Cause>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setFeverDays(
         _ input: UserInput<SymptomInputs.Days>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setFeverTakenTemperatureToday(
         _ input: UserInput<Bool>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setFeverTakenTemperatureSpot(
         _ input: UserInput<SymptomInputs.Fever.TemperatureSpot>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setFeverHighestTemperatureTaken(
         _ input: UserInput<Temperature>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
     func setEarliestSymptomStartedDaysAgo(
         _ input: UserInput<Int>)
-        -> Result<(), ServicesError>
+        -> Result<Void, ServicesError>
 
-    func submit() -> Result<(), ServicesError>
-    func clear() -> Result<(), ServicesError>
+    func submit() -> Result<Void, ServicesError>
+    func clear() -> Result<Void, ServicesError>
 }
 
 protocol ServicesBootstrapper {
-    func bootstrap(dbPath: String) -> Result<(), ServicesError>
+    func bootstrap(dbPath: String) -> Result<Void, ServicesError>
 }
 
 protocol ObservedTcnsRecorder {
-    func recordTcn(tcn: Data, distance: Float) -> Result<(), ServicesError>
+    func recordTcn(tcn: Data, distance: Float) -> Result<Void, ServicesError>
 }
 
 protocol TcnGenerator {
@@ -61,19 +61,19 @@ protocol TcnGenerator {
 }
 
 extension NativeCore: ServicesBootstrapper {
-
     // WARN: Must not run long operations. Currently executed synchronously during startup.
-    func bootstrap(dbPath: String) -> Result<(), ServicesError> {
-        let registrationStatus = register_log_callback { (logMessage) in
+    func bootstrap(dbPath: String) -> Result<Void, ServicesError> {
+        let registrationStatus = register_log_callback { logMessage in
             logToiOS(logMessage: logMessage)
         }
-        NSLog("register_callback returned : %d", registrationStatus )
-         //CoreLogLevel: 0 -> Trace, ... 4 -> Error; coepi_only logs -> true/false
+        NSLog("register_callback returned : %d", registrationStatus)
+        // CoreLogLevel: 0 -> Trace, ... 4 -> Error; coepi_only logs -> true/false
         let libResult: LibResult<ArbitraryType>? =
             bootstrap_core(
-            dbPath,
-            CoreLogLevel.init(0),
-            true)?.toLibResult()
+                dbPath,
+                CoreLogLevel(0),
+                true
+            )?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
 }
@@ -98,11 +98,10 @@ func logToiOS(logMessage: CoreLogMessage) {
     default:
         log.i(text, tags: LogTag.core)
     }
-
 }
 
 extension NativeCore: ObservedTcnsRecorder {
-    func recordTcn(tcn: Data, distance: Float) -> Result<(), ServicesError> {
+    func recordTcn(tcn: Data, distance: Float) -> Result<Void, ServicesError> {
         let tcnStr = tcn.toHex()
         let libResult: LibResult<ArbitraryType>? = record_tcn(tcnStr, distance)?.toLibResult()
         return libResult?
@@ -128,14 +127,14 @@ struct CorePublicReport: Decodable {
 
 // swiftlint:disable identifier_name
 enum FeverSeverity: String, Decodable {
-  // TODO decoding configuration to map capitalized to lower case
-  case None, Mild, Serious
+    // TODO: decoding configuration to map capitalized to lower case
+    case None, Mild, Serious
 }
 
 // swiftlint:disable identifier_name
 enum CoughSeverity: String, Decodable {
-// TODO decoding configuration to map capitalized to lower case
-  case None, Existing, Wet, Dry
+    // TODO: decoding configuration to map capitalized to lower case
+    case None, Existing, Wet, Dry
 }
 
 enum CoreUserInput<T: Decodable>: Decodable {
@@ -144,21 +143,21 @@ enum CoreUserInput<T: Decodable>: Decodable {
     func map<U>(f: (T) -> U) -> UserInput<U> {
         switch self {
         case .none: return .none
-        case .some(let value): return .some(f(value))
+        case let .some(value): return .some(f(value))
         }
     }
 
-    func flatMap<U> (f: (T) -> UserInput<U>) -> UserInput<U> {
+    func flatMap<U>(f: (T) -> UserInput<U>) -> UserInput<U> {
         switch self {
         case .none: return .none
-        case .some(let value): return f(value)
+        case let .some(value): return f(value)
         }
     }
 
     func toUserInput() -> UserInput<T> {
         switch self {
         case .none: return .none
-        case .some(let value): return .some(value)
+        case let .some(value): return .some(value)
         }
     }
 }
@@ -189,10 +188,10 @@ extension CoreUserInput {
 }
 
 class NativeCore: AlertsApi {
-
     func fetchNewAlerts()
         -> Result<[Alert],
-        ServicesError> {
+            ServicesError>
+    {
         guard let libResult: LibResult<[NativeAlert]> = fetch_new_reports()?.toLibResult() else {
             return libraryFailure()
         }
@@ -205,8 +204,8 @@ class NativeCore: AlertsApi {
                     id: $0.id,
                     reportId: $0.report_id,
 
-                    start: UnixTime.init(value: Int64($0.contact_start)),
-                    end: UnixTime.init(value: Int64($0.contact_end)),
+                    start: UnixTime(value: Int64($0.contact_start)),
+                    end: UnixTime(value: Int64($0.contact_end)),
                     minDistance: Measurement(value: Double($0.min_distance), unit: .meters),
                     avgDistance: Measurement(value: Double($0.avg_distance), unit: .meters),
 
@@ -226,15 +225,15 @@ class NativeCore: AlertsApi {
                     isRead: $0.is_read
                 )
             }
-        }
+            }
     }
 
-    func deleteAlert(id: String) -> Result<(), ServicesError> {
+    func deleteAlert(id: String) -> Result<Void, ServicesError> {
         let libResult: LibResult<ArbitraryType>? = delete_alert(id)?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
 
-    func updateIsRead(id: String, isRead: Bool) -> Result<(), ServicesError> {
+    func updateIsRead(id: String, isRead: Bool) -> Result<Void, ServicesError> {
         let libResult: LibResult<ArbitraryType>? =
             update_alert_is_read(id, isRead ? 1 : 0)?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
@@ -246,18 +245,17 @@ class NativeCore: AlertsApi {
 }
 
 // For now discontinuing this approach and submitting each symptom individually.
-//extension NativeCore: SymptomsReporter {
+// extension NativeCore: SymptomsReporter {
 //    func submitSymptoms(inputs: SymptomInputs) -> Result<(), ServicesError> {
 //        return .success(())
 //    }
-//}
+// }
 
 extension NativeCore: SymptomsInputManager {
-
     func setSymptoms(
         _ input: Set<SymptomId>)
-        -> Result<(), ServicesError> {
-
+        -> Result<Void, ServicesError>
+    {
         func toStrId(id: SymptomId) -> String {
             switch id {
             case .cough: return "cough"
@@ -285,11 +283,12 @@ extension NativeCore: SymptomsInputManager {
 
     func setCoughType(
         _ input: UserInput<SymptomInputs.Cough.CoughType>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let identifier: String = {
             switch input {
             case .none: return "none"
-            case .some(let value): return {
+            case let .some(value): return {
                 switch value {
                 case .dry: return "dry"
                 case .wet: return "wet"
@@ -304,7 +303,8 @@ extension NativeCore: SymptomsInputManager {
 
     func setCoughDays(
         _ input: UserInput<SymptomInputs.Days>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let libResult: LibResult<ArbitraryType>? = set_cough_days(
             input.isSetInt,
             UInt32(input.toOptional()?.value ?? 0)
@@ -314,11 +314,12 @@ extension NativeCore: SymptomsInputManager {
 
     func setCoughStatus(
         _ input: UserInput<SymptomInputs.Cough.Status>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let identifier: String = {
             switch input {
             case .none: return "none"
-            case .some(let value): return {
+            case let .some(value): return {
                 switch value {
                 case .betterAndWorseThroughDay: return "better_and_worse"
                 case .worseWhenOutside: return "worse_outside"
@@ -334,11 +335,12 @@ extension NativeCore: SymptomsInputManager {
 
     func setBreathlessnessCause(
         _ input: UserInput<SymptomInputs.Breathlessness.Cause>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let identifier: String = {
             switch input {
             case .none: return "none"
-            case .some(let value): return {
+            case let .some(value): return {
                 switch value {
                 case .leavingHouseOrDressing: return "leaving_house_or_dressing"
                 case .walkingYardsOrMinsOnGround: return "walking_yards_or_mins_on_ground"
@@ -357,7 +359,8 @@ extension NativeCore: SymptomsInputManager {
 
     func setFeverDays(
         _ input: UserInput<SymptomInputs.Days>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let libResult: LibResult<ArbitraryType>? = set_fever_days(
             input.isSetInt,
             UInt32(input.toOptional()?.value ?? 0)
@@ -367,7 +370,8 @@ extension NativeCore: SymptomsInputManager {
 
     func setFeverTakenTemperatureToday(
         _ input: UserInput<Bool>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let libResult: LibResult<ArbitraryType>? = set_fever_taken_temperature_today(
             input.isSetInt,
             input.boolInt
@@ -377,11 +381,12 @@ extension NativeCore: SymptomsInputManager {
 
     func setFeverTakenTemperatureSpot(
         _ input: UserInput<SymptomInputs.Fever.TemperatureSpot>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let identifier: String = {
             switch input {
             case .none: return "none"
-            case .some(let value): return {
+            case let .some(value): return {
                 switch value {
                 case .mouth: return "mouth"
                 case .ear: return "ear"
@@ -399,7 +404,8 @@ extension NativeCore: SymptomsInputManager {
 
     func setFeverHighestTemperatureTaken(
         _ input: UserInput<Temperature>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let libResult: LibResult<ArbitraryType>? = set_fever_highest_temperature_taken(
             input.isSetInt,
             input.toOptional()?.asFarenheit() ?? 0
@@ -409,7 +415,8 @@ extension NativeCore: SymptomsInputManager {
 
     func setEarliestSymptomStartedDaysAgo(
         _ input: UserInput<Int>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let libResult: LibResult<ArbitraryType>? = set_earliest_symptom_started_days_ago(
             input.isSetInt,
             UInt32(input.toOptional() ?? 0)
@@ -418,14 +425,16 @@ extension NativeCore: SymptomsInputManager {
     }
 
     func submit()
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         let libResult: LibResult<ArbitraryType>? = submit_symptoms()?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
 
     func clear()
-        -> Result<(),
-        ServicesError> {
+        -> Result<Void,
+            ServicesError>
+    {
         let libResult: LibResult<ArbitraryType>? = clear_symptoms()?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
     }
@@ -433,7 +442,8 @@ extension NativeCore: SymptomsInputManager {
 
 extension NativeCore: TcnGenerator {
     func generateTcn()
-        -> Result<Data, ServicesError> {
+        -> Result<Data, ServicesError>
+    {
         guard let resultValue: Unmanaged<CFString> = generate_tcn() else {
             return libraryFailure()
         }
@@ -443,7 +453,6 @@ extension NativeCore: TcnGenerator {
 }
 
 private extension UserInput {
-
     var isSetInt: UInt8 {
         switch self {
         case .some: return 1
@@ -453,10 +462,9 @@ private extension UserInput {
 }
 
 private extension UserInput where T == Bool {
-
     var boolInt: UInt8 {
         switch self {
-        case .some(let b): return b ? 1 : 0
+        case let .some(b): return b ? 1 : 0
         case .none: return 0
         }
     }
@@ -478,7 +486,7 @@ extension Result where Failure == CoreError {
     func mapErrorToServicesError() -> Result<Success, ServicesError> {
         mapError {
             switch $0 {
-            case .error(let message): return .error(message: message)
+            case let .error(message): return .error(message: message)
             }
         }
     }

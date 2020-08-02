@@ -10,7 +10,7 @@ class SymptomFlow {
         }
         self.steps = steps
 
-        self.currentStep = self.steps.first!
+        currentStep = self.steps.first!
     }
 
     private(set) var currentStep: SymptomStep
@@ -26,7 +26,7 @@ class SymptomFlow {
     private func updateStep(incr: Int) -> SymptomStep? {
         let step = steps[safe: steps.firstIndex(of: currentStep)! + incr]
         if let step = step {
-            self.currentStep = step
+            currentStep = step
         }
         return step
     }
@@ -48,7 +48,7 @@ class SymptomFlow {
 }
 
 private func toSteps(symptomIds: [SymptomId]) -> [SymptomStep] {
-    if symptomIds.contains(.none) && symptomIds.count > 1 {
+    if symptomIds.contains(.none), symptomIds.count > 1 {
         fatalError("There must be no other symptoms selected when .none is selected")
     }
 
@@ -65,13 +65,16 @@ private extension SymptomId {
         switch self {
         case .cough: return [
             .coughType,
-            .coughDescription]
+            .coughDescription,
+        ]
         case .breathlessness: return [
-            .breathlessnessDescription]
+            .breathlessnessDescription,
+        ]
         case .fever: return [
             .feverTemperatureTakenToday,
             .feverTemperatureSpot,
-            .feverHighestTemperature]
+            .feverHighestTemperature,
+        ]
         case .muscleAches: return []
         case .lossSmellOrTaste: return []
         case .diarrhea: return []

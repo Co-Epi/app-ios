@@ -1,35 +1,35 @@
-import UIKit
 import SafariServices
+import UIKit
 
-// TODO refactor this file
+// TODO: refactor this file
 
 class OnboardingViewController: UIViewController {
     private let viewModel: OnboardingViewModel
 
     var state = 0
 
-    @IBOutlet weak var introCard: UIView!
-    @IBOutlet weak var introCardHeight: NSLayoutConstraint!
+    @IBOutlet var introCard: UIView!
+    @IBOutlet var introCardHeight: NSLayoutConstraint!
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var bodyLabel: UILabel!
 
-    @IBOutlet weak var howUsedButtonLabel: UIButton!
-    @IBOutlet weak var nextButtonLabel: UIButton!
+    @IBOutlet var howUsedButtonLabel: UIButton!
+    @IBOutlet var nextButtonLabel: UIButton!
 
-    @IBOutlet weak var state1ButtonLabel: UIButton!
-    @IBOutlet weak var state2ButtonLabel: UIButton!
-    @IBOutlet weak var state3ButtonLabel: UIButton!
-    @IBOutlet weak var state4ButtonLabel: UIButton!
+    @IBOutlet var state1ButtonLabel: UIButton!
+    @IBOutlet var state2ButtonLabel: UIButton!
+    @IBOutlet var state3ButtonLabel: UIButton!
+    @IBOutlet var state4ButtonLabel: UIButton!
 
-    @IBOutlet weak var joinButtonLabel: UIButton!
+    @IBOutlet var joinButtonLabel: UIButton!
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var titleSubtitleConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var titleTopConstraint: NSLayoutConstraint!
+    @IBOutlet var titleSubtitleConstraint: NSLayoutConstraint!
+    @IBOutlet var imageViewBottomConstraint: NSLayoutConstraint!
 
-    @IBAction func howUsedButtonAction(_ sender: Any) {
+    @IBAction func howUsedButtonAction(_: Any) {
         if let url = URL(string: "https://www.coepi.org/privacy/") {
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = false
@@ -39,32 +39,32 @@ class OnboardingViewController: UIViewController {
         }
     }
 
-    @IBAction func nextButtonAction(_ sender: Any) {
+    @IBAction func nextButtonAction(_: Any) {
         state += 1
         updateState(state: state)
     }
 
-    @IBAction func state1ButtonAction(_ sender: Any) {
+    @IBAction func state1ButtonAction(_: Any) {
         state = 1
         updateState(state: state)
     }
 
-    @IBAction func state2ButtonAction(_ sender: Any) {
+    @IBAction func state2ButtonAction(_: Any) {
         state = 2
         updateState(state: state)
     }
 
-    @IBAction func state3ButtonAction(_ sender: Any) {
+    @IBAction func state3ButtonAction(_: Any) {
         state = 3
         updateState(state: state)
     }
 
-    @IBAction func state4ButtonAction(_ sender: Any) {
+    @IBAction func state4ButtonAction(_: Any) {
         state = 4
         updateState(state: state)
     }
 
-    @IBAction func joinButtonAction(_ sender: Any) {
+    @IBAction func joinButtonAction(_: Any) {
         viewModel.onCloseClick()
     }
 
@@ -74,13 +74,13 @@ class OnboardingViewController: UIViewController {
         title = viewModel.title
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_purple.png")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_purple.png")!)
 
         howUsedButtonLabel.setTitle(L10n.Ux.Onboarding.how, for: .normal)
         nextButtonLabel.setTitle(L10n.Ux.Onboarding.next, for: .normal)

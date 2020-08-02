@@ -3,19 +3,19 @@ import UIKit
 class ThankYouViewController: UIViewController {
     private let viewModel: ThankYouViewModel
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var subtitleLabel: UILabel!
 
-    @IBOutlet weak var viewExposuresButtonLabel: UIButton!
-    @IBOutlet weak var homeButtonLabel: UIButton!
+    @IBOutlet var viewExposuresButtonLabel: UIButton!
+    @IBOutlet var homeButtonLabel: UIButton!
 
-    @IBAction func viewExposuresButtonAction(_ sender: UIButton) {
+    @IBAction func viewExposuresButtonAction(_: UIButton) {
         viewModel.onSeeAlertsClick()
-     }
+    }
 
-    @IBAction func homeButtonAction(_ sender: UIButton) {
+    @IBAction func homeButtonAction(_: UIButton) {
         viewModel.onCloseClick()
-     }
+    }
 
     init(viewModel: ThankYouViewModel) {
         self.viewModel = viewModel
@@ -23,13 +23,13 @@ class ThankYouViewController: UIViewController {
         title = viewModel.title
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_purple.png")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_purple.png")!)
 
         titleLabel.text = L10n.Thankyou.title
         subtitleLabel.text = L10n.Thankyou.subtitle
@@ -40,5 +40,5 @@ class ThankYouViewController: UIViewController {
         ButtonStyles.applyUnselected(to: homeButtonLabel)
 
         navigationItem.hidesBackButton = true
-     }
+    }
 }

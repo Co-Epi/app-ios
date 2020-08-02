@@ -1,6 +1,6 @@
 import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 import UIKit
 
 class LogsViewModel {
@@ -13,7 +13,7 @@ class LogsViewModel {
     let clipboard: Clipboard
     let envInfos: EnvInfos
 
-    private let longTapTrigger: PublishSubject<()> = PublishSubject()
+    private let longTapTrigger: PublishSubject<Void> = PublishSubject()
 
     private let disposeBag = DisposeBag()
 
@@ -72,7 +72,6 @@ private extension LogMessage {
 }
 
 private extension LogLevel {
-
     func color() -> UIColor {
         switch self {
         case .v: return .black
@@ -95,7 +94,6 @@ private extension LogLevel {
 }
 
 private extension Array where Element == LogMessage {
-
     func toClipboardText() -> String {
         map { logMessage in
             DateFormatters
@@ -110,7 +108,7 @@ private extension Array where Element == LogMessage {
 private extension EnvInfos {
     func clipboardString() -> String {
         "App version: \(appVersionName) (\(appVersionCode)), " +
-        "Device: \(deviceName), " +
-        "iOS version: \(osVersion)"
+            "Device: \(deviceName), " +
+            "iOS version: \(osVersion)"
     }
 }

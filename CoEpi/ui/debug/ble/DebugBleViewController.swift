@@ -1,11 +1,11 @@
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class DebugBleViewController: UIViewController {
     private let viewModel: DebugBleViewModel
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     private let disposeBag = DisposeBag()
 
@@ -16,7 +16,7 @@ class DebugBleViewController: UIViewController {
         super.init(nibName: String(describing: Self.self), bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -34,7 +34,8 @@ private class DebugListDataSource: NSObject, RxTableViewDataSourceType {
 
     func tableView(
         _ tableView: UITableView,
-        observedEvent: RxSwift.Event<[DebugBleEntryViewData]>) {
+        observedEvent: RxSwift.Event<[DebugBleEntryViewData]>
+    ) {
         if case let .next(debugEntries) = observedEvent {
             self.debugEntries = debugEntries
             tableView.reloadData()
@@ -43,23 +44,23 @@ private class DebugListDataSource: NSObject, RxTableViewDataSourceType {
 }
 
 extension DebugListDataSource: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         debugEntries.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeue(
             cellClass: UITableViewCell.self,
-            forIndexPath: indexPath)
+            forIndexPath: indexPath
+        )
         let label = cell.textLabel
         label?.font = .systemFont(ofSize: 14)
 
         switch debugEntries[indexPath.row] {
-        case .header(let text):
+        case let .header(text):
             label?.text = text
             cell.backgroundColor = .lightGray
-        case .item(let text):
+        case let .item(text):
             label?.text = text
             cell.backgroundColor = .clear
         }

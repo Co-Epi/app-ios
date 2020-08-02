@@ -1,5 +1,5 @@
-import RxSwift
 import Foundation
+import RxSwift
 
 struct LimitedSizeQueue<T> {
     public private(set) var array: [T] = []
@@ -14,7 +14,7 @@ struct LimitedSizeQueue<T> {
         array.append(value)
 
         if array.count > maxSize {
-            array.removeSubrange(0..<(array.count - maxSize - 1))
+            array.removeSubrange(0 ..< (array.count - maxSize - 1))
         }
     }
 
@@ -22,7 +22,6 @@ struct LimitedSizeQueue<T> {
 }
 
 class CachingLog: LogNonVariadicTags {
-
     let logs = BehaviorSubject(value: LimitedSizeQueue<LogMessage>(maxSize: 1000))
 
     private let addLogTrigger: PublishSubject<LogMessage> = PublishSubject()
@@ -31,14 +30,14 @@ class CachingLog: LogNonVariadicTags {
     private let loggerSerialQueue = DispatchQueue(label: "org.coepi.logger")
 
     init() {
-        addLogTrigger.withLatestFrom(logs, resultSelector: {(message, logs) in
+        addLogTrigger.withLatestFrom(logs, resultSelector: { message, logs in
             (message, logs)
         })
-        .subscribe(onNext: { [weak self] (message, logs) in
-            var mut = logs
-            mut.add(value: message)
-            self?.logs.onNext(mut)
-        }).disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] message, logs in
+                var mut = logs
+                mut.add(value: message)
+                self?.logs.onNext(mut)
+            }).disposed(by: disposeBag)
     }
 
     func setup() {}
@@ -70,7 +69,7 @@ class CachingLog: LogNonVariadicTags {
     }
 
     private func addTag(tags: [LogTag], message: String) -> String {
-        let tagsStr = tags.map { "[\($0)]"}.joined(separator: " ")
+        let tagsStr = tags.map { "[\($0)]" }.joined(separator: " ")
         let tagPart = tagsStr.isEmpty ? "" : tagsStr + " "
         return tagPart + message
     }

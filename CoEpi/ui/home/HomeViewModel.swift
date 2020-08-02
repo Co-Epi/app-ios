@@ -1,5 +1,5 @@
-import RxSwift
 import RxCocoa
+import RxSwift
 
 enum HomeItemId {
     case reportSymptoms, alerts, howItWorks
@@ -52,7 +52,7 @@ class HomeViewModel {
         HomeItemViewData(
             id: .howItWorks,
             descr: L10n.Home.Items.HowCoepiWorks.description
-        )
+        ),
     ]
 
     lazy var items: Driver<[HomeItemViewData]> = alertRepo.alerts
@@ -74,8 +74,8 @@ class HomeViewModel {
         startPermissions: StartPermissions,
         rootNav: RootNav,
         alertRepo: AlertRepo,
-        envInfos: EnvInfos) {
-
+        envInfos: EnvInfos
+    ) {
         self.rootNav = rootNav
         self.alertRepo = alertRepo
         self.envInfos = envInfos
@@ -119,7 +119,6 @@ class HomeViewModel {
 }
 
 private extension Array where Element == HomeItemViewData {
-
     func updateNotifications(with alerts: [Alert]) -> [HomeItemViewData] {
         map { item in
             if item.id == .alerts {

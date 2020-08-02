@@ -1,7 +1,7 @@
-import UIKit
-import SwiftUI
-import SafariServices
 import Introspect
+import SafariServices
+import SwiftUI
+import UIKit
 
 class UserSettingsViewController: UIViewController, ObservableObject {
     private let viewModel: UserSettingsViewModel
@@ -12,7 +12,7 @@ class UserSettingsViewController: UIViewController, ObservableObject {
         title = L10n.Settings.title
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -48,7 +48,7 @@ struct UserSettingsView: View {
             }
         }
         .introspectTableView { tableView in
-            // TODO not working
+            // TODO: not working
             tableView.separatorStyle = .none
         }
         .padding(.leading, 20).padding(.trailing, 20).padding(.top, 8)
@@ -56,16 +56,16 @@ struct UserSettingsView: View {
 
     private func view(setting: UserSettingViewData) -> some View {
         switch setting {
-        case .sectionHeader(let title, let text):
+        case let .sectionHeader(title, text):
             return AnyView(sectionHeaderView(title: title, text: text))
-        case .toggle(let text, let value, let id, let hasBottomLine):
+        case let .toggle(text, value, id, hasBottomLine):
             return AnyView(toggleView(text: text, value: value, id: id,
                                       hasBottomLine: hasBottomLine))
-        case .link(let text, let url):
+        case let .link(text, url):
             return AnyView(linkView(text: text, url: url))
-        case .textAction(let text, let action):
+        case let .textAction(text, action):
             return AnyView(actionTextView(text: text, action: action))
-        case .text(let text):
+        case let .text(text):
             return AnyView(textView(text: text))
         }
     }
@@ -86,7 +86,8 @@ struct UserSettingsView: View {
 
     private func toggleView(text: String, value: Bool,
                             id: UserSettingToggleId,
-                            hasBottomLine: Bool) -> some View {
+                            hasBottomLine: Bool) -> some View
+    {
         VStack {
             Toggle(isOn: Binding(
                 get: { value },
@@ -98,7 +99,7 @@ struct UserSettingsView: View {
             }
             .padding(.bottom, hasBottomLine ? 16 : 24).padding(.top, 16)
             if hasBottomLine {
-                // TODO use this when possible to hide default separators
+                // TODO: use this when possible to hide default separators
 //                Divider().background(Color.black)
             }
         }
@@ -107,19 +108,19 @@ struct UserSettingsView: View {
     private func linkView(text: String, url: URL) -> some View {
         Button(action: {
             viewController?.openWeb(url: url)
-         }) {
-             Text(text)
+        }) {
+            Text(text)
                 .font(.system(size: 13))
-         }
+        }
     }
 
     private func actionTextView(text: String, action: UserSettingActionId) -> some View {
         Button(action: {
             viewModel.onAction(id: action)
-         }) {
-             Text(text)
+        }) {
+            Text(text)
                 .font(.system(size: 13))
-         }
+        }
     }
 
     private func textView(text: String) -> some View {

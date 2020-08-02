@@ -1,29 +1,29 @@
-import UIKit
 import RxSwift
+import UIKit
 
 class SymptomStartDaysViewController: UIViewController {
     private let viewModel: SymptomStartDaysViewModel
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var daysLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var daysLabel: UILabel!
 
-    @IBOutlet weak var unknownButtonLabel: UIButton!
-    @IBOutlet weak var submitButtonLabel: UIButton!
-    @IBOutlet weak var skipButtonLabel: UIButton!
+    @IBOutlet var unknownButtonLabel: UIButton!
+    @IBOutlet var submitButtonLabel: UIButton!
+    @IBOutlet var skipButtonLabel: UIButton!
 
-    @IBOutlet weak var daysInput: UITextField!
+    @IBOutlet var daysInput: UITextField!
 
     private let disposeBag = DisposeBag()
 
-    @IBAction func unknownButtonAction(_ sender: Any) {
+    @IBAction func unknownButtonAction(_: Any) {
         viewModel.onUnknownTap()
     }
 
-    @IBAction func submitButtonAction(_ sender: Any) {
+    @IBAction func submitButtonAction(_: Any) {
         viewModel.onSubmitTap()
     }
 
-    @IBAction func skipButtonAction(_ sender: Any) {
+    @IBAction func skipButtonAction(_: Any) {
         viewModel.onSkipTap()
     }
 
@@ -33,7 +33,7 @@ class SymptomStartDaysViewController: UIViewController {
         title = viewModel.title
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -46,7 +46,7 @@ class SymptomStartDaysViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
 
         titleLabel.text = L10n.Ux.Symptomsdays.title
         skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
@@ -84,7 +84,7 @@ class SymptomStartDaysViewController: UIViewController {
         viewModel.setActivityIndicatorVisible
             .drive(view.rx.setActivityIndicatorVisible())
             .disposed(by: disposeBag)
-     }
+    }
 }
 
 class CustomTextFieldStart: UITextField {

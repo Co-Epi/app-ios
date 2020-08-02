@@ -7,7 +7,6 @@ class NumberFormatters {
 }
 
 final class TemperatureFormatter: NumberFormatter {
-
     override init() {
         super.init()
         numberStyle = .none
@@ -36,7 +35,6 @@ final class OrdinalFormatter: NumberFormatter {
 }
 
 final class OneDecimalFormatter: NumberFormatter {
-
     override init() {
         super.init()
         roundingMode = .down

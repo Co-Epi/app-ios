@@ -12,10 +12,10 @@ class FeverTempViewModel {
     let submitButtonEnabled: Driver<Bool>
 
     private let temperatureTrigger: PublishRelay<UserInput<Temperature>> = PublishRelay()
-    private let toggleTemperatureUnitTrigger: PublishRelay<()> = PublishRelay()
+    private let toggleTemperatureUnitTrigger: PublishRelay<Void> = PublishRelay()
     private let temperatureTextTrigger: PublishRelay<String> = PublishRelay()
     private let tempUnitTrigger: BehaviorRelay<TemperatureUnit> = BehaviorRelay(value: .fahrenheit)
-    private let submitTrigger: PublishRelay<()> = PublishRelay()
+    private let submitTrigger: PublishRelay<Void> = PublishRelay()
 
     private let disposeBag = DisposeBag()
 
@@ -28,8 +28,8 @@ class FeverTempViewModel {
         let temperature = temperatureTrigger.asObservable()
 
         submitButtonEnabled = temperature
-            .map {$0.toUserString()}
-            .map {!$0.isEmpty}
+            .map { $0.toUserString() }
+            .map { !$0.isEmpty }
             .asDriver(onErrorJustReturn: false)
 
         temperatureText = temperature
@@ -51,8 +51,9 @@ class FeverTempViewModel {
 
         tempUnitTrigger.withLatestFrom(
             temperature, resultSelector: { selectedUnit, currentTemp in
-            toTemperature(newUnit: selectedUnit, currentInput: currentTemp)
-        })
+                toTemperature(newUnit: selectedUnit, currentInput: currentTemp)
+            }
+        )
         .subscribe(onNext: { [temperatureTrigger] newTemp in
             temperatureTrigger.accept(newTemp)
         }).disposed(by: disposeBag)
@@ -60,8 +61,9 @@ class FeverTempViewModel {
         temperatureTextTrigger.withLatestFrom(
             tempUnitTrigger.asObservable(),
             resultSelector: { text, unit in
-            toTemperature(unit: unit, tempStr: text)
-        })
+                toTemperature(unit: unit, tempStr: text)
+            }
+        )
         .subscribe(onNext: { [temperatureTrigger] newTemp in
             temperatureTrigger.accept(newTemp)
         }).disposed(by: disposeBag)
@@ -110,10 +112,11 @@ private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<
 
 private func toTemperature(
     newUnit: TemperatureUnit,
-    currentInput: UserInput<Temperature>) -> UserInput<Temperature> {
+    currentInput: UserInput<Temperature>
+) -> UserInput<Temperature> {
     switch currentInput {
     case .none: return .none
-    case .some(let temp): return .some(toTemperature(newUnit: newUnit, currentTemp: temp))
+    case let .some(temp): return .some(toTemperature(newUnit: newUnit, currentTemp: temp))
     }
 }
 
@@ -122,8 +125,7 @@ private func toTemperature(newUnit: TemperatureUnit, currentTemp: Temperature) -
     case .celsius:
         return .celsius(value: currentTemp.asCelsius())
     case .fahrenheit:
-        return .fahrenheit(value:  currentTemp.asFarenheit())
-
+        return .fahrenheit(value: currentTemp.asFarenheit())
     }
 }
 
@@ -131,7 +133,7 @@ private extension UserInput where T == Temperature {
     func toUserString() -> String {
         switch self {
         case .none: return ""
-        case .some(let temp): return temp.toUserString()
+        case let .some(temp): return temp.toUserString()
         }
     }
 }

@@ -1,10 +1,9 @@
 import Dip
+import Foundation
 import RxCocoa
 import RxSwift
-import Foundation
 
 class SymptomReportViewModel: UINotifier {
-
     let notification: Driver<UINotification>
 
     let submitButtonEnabled: Driver<Bool>
@@ -18,7 +17,7 @@ class SymptomReportViewModel: UINotifier {
 
     let symptomsDriver: Driver<[SymptomViewData]>
 
-    private let submitTrigger: PublishRelay<()> = PublishRelay()
+    private let submitTrigger: PublishRelay<Void> = PublishRelay()
     private let selectSymptomTrigger: PublishRelay<SymptomViewData> = PublishRelay()
 
     let disposeBag = DisposeBag()
@@ -47,15 +46,15 @@ class SymptomReportViewModel: UINotifier {
 
         symptomsDriver = symptomsObservable.asDriver(onErrorJustReturn: [])
 
-        submitTrigger.withLatestFrom(selectedSymptoms, resultSelector: {(_, symptoms) in
+        submitTrigger.withLatestFrom(selectedSymptoms, resultSelector: { _, symptoms in
             symptoms.map { $0.id }
         })
-        .subscribe(onNext: { symptomIds in
-            if !symptomFlowManager.startFlow(symptomIds: symptomIds) {
-                fatalError("Couldn't start symptom flow for: \(symptomIds)")
-            }
-        })
-        .disposed(by: disposeBag)
+            .subscribe(onNext: { symptomIds in
+                if !symptomFlowManager.startFlow(symptomIds: symptomIds) {
+                    fatalError("Couldn't start symptom flow for: \(symptomIds)")
+                }
+            })
+            .disposed(by: disposeBag)
 
         submitButtonEnabled = selectedSymptoms
             .map { !$0.isEmpty }
@@ -66,7 +65,8 @@ class SymptomReportViewModel: UINotifier {
                 selectedSymptomIds.onNext(
                     selectedIds.toggle(element: selectedSymptom.id).solveConflicts(
                         selectedId: selectedSymptom.id,
-                        wasChecked: !selectedSymptom.checked)
+                        wasChecked: !selectedSymptom.checked
+                    )
                 )
             })
             .subscribe()
@@ -83,7 +83,6 @@ class SymptomReportViewModel: UINotifier {
 }
 
 extension Set {
-
     func toggle(element: Element) -> Set<Element> {
         if contains(element) {
             return filter { $0 != element }
@@ -119,15 +118,15 @@ struct SymptomViewData {
     }
 
     init(oldQuestion: SymptomViewData, newCheckedValue: Bool) {
-        self.id = oldQuestion.id
-        self.text = oldQuestion.text
-        self.checked = newCheckedValue
+        id = oldQuestion.id
+        text = oldQuestion.text
+        checked = newCheckedValue
     }
 
     init(symptom: Symptom) {
-        self.id = symptom.id
-        self.text = symptom.name
-        self.checked = false
+        id = symptom.id
+        text = symptom.name
+        checked = false
     }
 
     func toSymptom() -> Symptom {

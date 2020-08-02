@@ -1,9 +1,8 @@
 import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 
 class DebugBleViewModel {
-
     let debugEntries: Driver<[DebugBleEntryViewData]>
 
     private let disposeBag = DisposeBag()
@@ -16,7 +15,7 @@ class DebugBleViewModel {
 
         debugEntries = combined
             .map { myTcn, discovered in
-                return generateItems(myTcn: myTcn, discovered: discovered)
+                generateItems(myTcn: myTcn, discovered: discovered)
             }
             .asDriver(onErrorJustReturn: [])
     }

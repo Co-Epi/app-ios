@@ -1,6 +1,6 @@
 import Foundation
-import SwiftUI
 import RxSwift
+import SwiftUI
 
 struct AlertDetailsViewModelParams {
     let alert: Alert
@@ -21,7 +21,8 @@ class AlertDetailsViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
 
     init(pars: AlertDetailsViewModelParams, alertRepo: AlertRepo, nav: RootNav, email: Email,
-         unitsFormatter: UnitsFormatter) {
+         unitsFormatter: UnitsFormatter)
+    {
         self.alertRepo = alertRepo
         self.nav = nav
         self.email = email
@@ -31,7 +32,7 @@ class AlertDetailsViewModel: ObservableObject {
             .map { index, alert in alert.toLinkedAlertViewData(
                 image: .from(alertIndex: index, alertsCount: pars.linkedAlerts.count),
                 bottomLine: index < pars.linkedAlerts.count - 1
-            )}
+            ) }
 
         unitsFormatter.formatter.map {
             pars.alert.toViewData(measurementFormatter: $0)
@@ -45,7 +46,7 @@ class AlertDetailsViewModel: ObservableObject {
         case .success:
             log.i("Alert: \(viewData.alert.id) was removed.")
             nav.navigate(command: .back)
-        case .failure(let e):
+        case let .failure(e):
             log.e("Alert: \(viewData.alert.id) couldn't be removed: \(e)")
         }
     }
@@ -60,7 +61,6 @@ class AlertDetailsViewModel: ObservableObject {
 }
 
 private extension Alert {
-
     func toViewData(measurementFormatter: MeasurementFormatter) -> AlertDetailsViewData {
         guard
             let formattedAvgDistance = formatterdAvgDistance(
@@ -82,7 +82,8 @@ private extension Alert {
     }
 
     func toLinkedAlertViewData(image: LinkedAlertViewDataConnectionImage,
-                               bottomLine: Bool) -> LinkedAlertViewData {
+                               bottomLine: Bool) -> LinkedAlertViewData
+    {
         LinkedAlertViewData(
             date: formattedStartDate(),
             contactStart: formattedContactStart(),
@@ -136,11 +137,11 @@ private extension Alert {
 extension ExposureDurationForUI {
     func toLocalizedString() -> String {
         switch self {
-        case .hoursMinutes(let hours, let mins):
+        case let .hoursMinutes(hours, mins):
             return L10n.Alerts.Details.Duration.hoursMinutes(hours, mins)
-        case .minutes(let mins):
+        case let .minutes(mins):
             return L10n.Alerts.Details.Duration.minutes(mins)
-        case .seconds(let secs):
+        case let .seconds(secs):
             return L10n.Alerts.Details.Duration.seconds(secs)
         }
     }

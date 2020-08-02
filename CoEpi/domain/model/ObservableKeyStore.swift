@@ -11,7 +11,6 @@ protocol ObservableKeyValueStore {
 }
 
 class ObservableKeyValueStoreImpl: ObservableKeyValueStore {
-
     let filterAlertsWithSymptomsSubject: BehaviorSubject<Bool>
     let filterAlertsWithLongDurationSubject: BehaviorSubject<Bool>
     let filterAlertsWithShortDistanceSubject: BehaviorSubject<Bool>

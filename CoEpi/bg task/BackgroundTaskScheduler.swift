@@ -1,9 +1,8 @@
-import UIKit
 import BackgroundTasks
+import UIKit
 
 /// Registers and schedules background processing tasks
 class BackgroundTaskScheduler {
-
     private let task: BackgroundTask
 
     init(task: BackgroundTask) {
@@ -43,10 +42,10 @@ class BackgroundTaskScheduler {
         let request = BGProcessingTaskRequest(identifier: task.identifier)
         request.earliestBeginDate = Date(timeIntervalSinceNow: delay)
         do {
-          // NOTE: This has to be called on a bg thread if used while app is launched.
-          // Not needed if used when app is send to bg.
-          // TODO flag to use bg thread. Or maybe just use always thread.
-          try BGTaskScheduler.shared.submit(request)
+            // NOTE: This has to be called on a bg thread if used while app is launched.
+            // Not needed if used when app is send to bg.
+            // TODO: flag to use bg thread. Or maybe just use always thread.
+            try BGTaskScheduler.shared.submit(request)
         } catch let e {
             log.e("Unable to submit task: \(request), error: \(e)")
         }

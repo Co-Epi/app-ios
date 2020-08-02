@@ -4,7 +4,7 @@ import RxSwift
 protocol SymptomRepo {
     func symptoms() -> [Symptom]
 
-    func submitSymptoms() -> Result<(), ServicesError>
+    func submitSymptoms() -> Result<Void, ServicesError>
 }
 
 class SymptomRepoImpl: SymptomRepo {
@@ -17,39 +17,47 @@ class SymptomRepoImpl: SymptomRepo {
     private var symptomsData: [Symptom] = [
         Symptom(
             id: .none,
-            name: L10n.Ux.SymptomReport.noSymptoms),
+            name: L10n.Ux.SymptomReport.noSymptoms
+        ),
         Symptom(
             id: .cough,
-            name: L10n.Ux.SymptomReport.cough),
+            name: L10n.Ux.SymptomReport.cough
+        ),
         Symptom(
             id: .breathlessness,
-            name: L10n.Ux.SymptomReport.breathless),
+            name: L10n.Ux.SymptomReport.breathless
+        ),
         Symptom(
             id: .fever,
-            name: L10n.Ux.SymptomReport.fever),
+            name: L10n.Ux.SymptomReport.fever
+        ),
         Symptom(
             id: .muscleAches,
-            name: L10n.Ux.SymptomReport.ache),
+            name: L10n.Ux.SymptomReport.ache
+        ),
         Symptom(
             id: .lossSmellOrTaste,
-            name: L10n.Ux.SymptomReport.loss),
+            name: L10n.Ux.SymptomReport.loss
+        ),
         Symptom(
             id: .diarrhea,
-            name: L10n.Ux.SymptomReport.diarrhea),
+            name: L10n.Ux.SymptomReport.diarrhea
+        ),
         Symptom(
             id: .runnyNose,
-            name: L10n.Ux.SymptomReport.nose),
+            name: L10n.Ux.SymptomReport.nose
+        ),
         Symptom(
             id: .other,
-            name: L10n.Ux.SymptomReport.other)
-
+            name: L10n.Ux.SymptomReport.other
+        ),
     ]
 
     func symptoms() -> [Symptom] {
         symptomsData
     }
 
-    func submitSymptoms() -> Result<(), ServicesError> {
+    func submitSymptoms() -> Result<Void, ServicesError> {
         inputManager.submit()
     }
 }

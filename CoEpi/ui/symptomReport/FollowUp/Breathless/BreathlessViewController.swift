@@ -1,19 +1,19 @@
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
 import SwiftUI
+import UIKit
 
 class BreathlessViewController: UIViewController {
     private let viewModel: BreathlessViewModel
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var subtitleLabel: UILabel!
 
-    @IBOutlet weak var skipButtonLabel: UIButton!
+    @IBOutlet var skipButtonLabel: UIButton!
 
-    @IBAction func skipButtonAction(_ sender: Any) {
+    @IBAction func skipButtonAction(_: Any) {
         viewModel.onSkipTap()
     }
 
@@ -25,7 +25,7 @@ class BreathlessViewController: UIViewController {
         title = viewModel.title
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -44,7 +44,7 @@ class BreathlessViewController: UIViewController {
 
     func setFoo(hostView: UIView) {
         hostView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(hostView)
+        view.addSubview(hostView)
         hostView.pinAllEdgesToParent()
     }
 }
@@ -74,7 +74,7 @@ struct BreathlessView: View {
                             .font(.system(size: 13))
                             .foregroundColor(Color.black)
                     })
-                    .padding(.top, 30).padding(.leading, 30).padding(.trailing, 30)
+                        .padding(.top, 30).padding(.leading, 30).padding(.trailing, 30)
                     Spacer()
                 }
                 Spacer()
@@ -105,7 +105,7 @@ struct BreathlessView: View {
             Image(item.imageName)
                 .frame(minWidth: 40, maxWidth: 40, minHeight: 40, maxHeight: 40)
                 .overlay(RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color(UIColor.coEpiPurpleHighlighted), lineWidth: 1))
+                    .stroke(Color(UIColor.coEpiPurpleHighlighted), lineWidth: 1))
             Text(item.text)
                 .font(.system(size: 17))
                 .fontWeight(.semibold)

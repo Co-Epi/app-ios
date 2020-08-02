@@ -6,10 +6,9 @@ class HomeItemCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
-
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -22,7 +21,7 @@ class HomeItemCell: UITableViewCell {
         let view: HomeItemView = HomeItemView.fromNib()
         contentView.addSubview(view)
         view.pinAllEdgesToParent()
-        self.homeItemView = view
+        homeItemView = view
     }
 
     public func setup(viewData: HomeItemViewData) {
@@ -36,10 +35,9 @@ class HomeTitledItemCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
-
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -52,7 +50,7 @@ class HomeTitledItemCell: UITableViewCell {
         let view: HomeTitledItemView = HomeTitledItemView.fromNib()
         contentView.addSubview(view)
         view.pinAllEdgesToParent()
-        self.homeItemView = view
+        homeItemView = view
     }
 
     public func setup(viewData: HomeTitledItemViewData) {
@@ -63,10 +61,10 @@ class HomeTitledItemCell: UITableViewCell {
 class HomeItemView: UIView {
     public var onAcknowledged: (() -> Void)?
 
-    @IBOutlet weak var notificationView: UIView!
-    @IBOutlet weak var notificationLabel: UILabel!
-    @IBOutlet weak var descrLabel: UILabel!
-    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet var notificationView: UIView!
+    @IBOutlet var notificationLabel: UILabel!
+    @IBOutlet var descrLabel: UILabel!
+    @IBOutlet var backgroundView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -92,7 +90,7 @@ class HomeItemView: UIView {
                 0.6, initialSpringVelocity: 0.6, options: .curveEaseOut, animations: {
                     self.notificationView.transform = CGAffineTransform(scaleX: 1, y: 1)
                     self.notificationLabel.alpha = 1
-            }, completion: nil)
+                }, completion: nil)
         }
     }
 
@@ -113,7 +111,7 @@ class HomeItemView: UIView {
 }
 
 class HomeTitledItemView: HomeItemView {
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
 
     func setup(item: HomeTitledItemViewData) {
         titleLabel.text = item.title

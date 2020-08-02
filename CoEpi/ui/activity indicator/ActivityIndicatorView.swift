@@ -1,8 +1,8 @@
 import UIKit
 
 class ActivityIndicatorView: UIView, CustomView {
-    @IBOutlet weak var rootView: UIView!
-    @IBOutlet weak var uiActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet var rootView: UIView!
+    @IBOutlet var uiActivityIndicatorView: UIActivityIndicatorView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)

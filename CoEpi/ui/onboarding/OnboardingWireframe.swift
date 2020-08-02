@@ -1,9 +1,8 @@
+import Dip
 import Foundation
 import UIKit
-import Dip
 
 class OnboardingWireframe {
-
     private let container: DependencyContainer
     private var onboardingController: UIViewController?
     private var parent: UIViewController?
@@ -13,19 +12,17 @@ class OnboardingWireframe {
     }
 
     func showOnboarding(parent: UIViewController) {
-
         guard let viewModel: OnboardingViewModel = try? container.resolve() else { return }
 
         self.parent = parent
         viewModel.delegate = self
         let onboardingController = OnboardingViewController(viewModel: viewModel)
-        //Schedule presentation of the VC on the main queue (should be executed after HomeViewController is rendered completely, avoiding "Presenting view controllers on detached view controllers is discouraged" warning
-        DispatchQueue.main.async(execute: {
+        // Schedule presentation of the VC on the main queue (should be executed after HomeViewController is rendered completely, avoiding "Presenting view controllers on detached view controllers is discouraged" warning
+        DispatchQueue.main.async {
             parent.present(onboardingController, animated: true, completion: nil)
-        })
+        }
 
         self.onboardingController = onboardingController
-
     }
 }
 

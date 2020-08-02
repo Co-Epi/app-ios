@@ -42,17 +42,21 @@ extension AlertFilters {
         alerts.filter { alert -> Bool in
             apply(
                 filter: withSymptoms,
-                meetsCondition: { !alert.noSymptoms }) &&
-            apply(
-                filter: withLongDuration,
-                meetsCondition: {
-                    alert.durationSeconds > settings.durationSecondsLargerThan
-                }) &&
-            apply(
-                filter: withShortDistance,
-                meetsCondition: {
-                    alert.avgDistance.converted(to: .feet).value <
-                        Double(settings.distanceShorterThan.converted(to: .feet).value) })
+                meetsCondition: { !alert.noSymptoms }
+            ) &&
+                apply(
+                    filter: withLongDuration,
+                    meetsCondition: {
+                        alert.durationSeconds > settings.durationSecondsLargerThan
+                    }
+                ) &&
+                apply(
+                    filter: withShortDistance,
+                    meetsCondition: {
+                        alert.avgDistance.converted(to: .feet).value <
+                            Double(settings.distanceShorterThan.converted(to: .feet).value)
+                    }
+                )
         }
     }
 

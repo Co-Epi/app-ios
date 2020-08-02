@@ -1,18 +1,17 @@
 import Foundation
-import UIKit
 import SwiftEntryKit
+import UIKit
 
 protocol ErrorDisplayer {
     func showNotification(notification: UINotification)
 }
 
 extension ErrorDisplayer where Self: UIViewController {
-
     func showNotification(notification: UINotification) {
         let data: (message: String, color: UIColor) = {
             switch notification {
-            case .error(let message): return (message, .red)
-            case .success(let message): return (message, .systemGreen)
+            case let .error(message): return (message, .red)
+            case let .success(message): return (message, .systemGreen)
             }
         }()
         SwiftEntryKit.display(entry: createView(title: "", message: data.message),
@@ -20,13 +19,14 @@ extension ErrorDisplayer where Self: UIViewController {
     }
 
     private func createView(title: String, message: String) -> UIView {
-
         let title = EKProperty.LabelContent(
             text: title,
-            style: .init(font: .systemFont(ofSize: 18), color: .white))
+            style: .init(font: .systemFont(ofSize: 18), color: .white)
+        )
         let description = EKProperty.LabelContent(
             text: message,
-            style: .init(font: .systemFont(ofSize: 18), color: .white))
+            style: .init(font: .systemFont(ofSize: 18), color: .white)
+        )
         let simpleMessage = EKSimpleMessage(image: nil, title: title, description: description)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
 

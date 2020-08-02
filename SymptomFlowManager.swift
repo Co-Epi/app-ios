@@ -8,7 +8,7 @@ class SymptomFlowManager {
 
     var symptomFlow: SymptomFlow?
 
-    private let finishFlowTrigger: PublishRelay<()> = PublishRelay()
+    private let finishFlowTrigger: PublishRelay<Void> = PublishRelay()
 
     private let disposeBag = DisposeBag()
 
@@ -20,7 +20,8 @@ class SymptomFlowManager {
     init(
         symptomRouter: SymptomRouter,
         rootNavigation: RootNav,
-        inputsManager: SymptomsInputManager) {
+        inputsManager: SymptomsInputManager
+    ) {
         self.symptomRouter = symptomRouter
         self.rootNavigation = rootNavigation
         self.inputsManager = inputsManager
@@ -40,7 +41,8 @@ class SymptomFlowManager {
 
     func startFlow(
         symptomIds: [SymptomId])
-        -> Bool {
+        -> Bool
+    {
         if symptomIds.isEmpty {
             log.d("Symptoms ids is empty")
             return false
@@ -78,16 +80,17 @@ class SymptomFlowManager {
     }
 
     func handleSubmitReportResult(
-        _ result: Result<(),
-        ServicesError>) {
+        _ result: Result<Void,
+            ServicesError>)
+    {
         switch result {
         case .success:
             submitSymptomsStateSubject.accept(.success(data: ()))
             rootNavigation.navigate(command: .to(destination: .thankYou))
             clear()
-        case .failure(let e):
+        case let .failure(e):
             submitSymptomsStateSubject.accept(.failure(error: e))
-            // TODO user friendly / localized error message (and retry etc)
+            // TODO: user friendly / localized error message (and retry etc)
             print(e)
 //            uiNotifier.notify(Failure(it.message ?? "Unknown error"))
         }
@@ -114,66 +117,76 @@ class SymptomFlowManager {
 }
 
 extension SymptomFlowManager {
-    func setSymptoms(_ input: Set<SymptomId>) -> Result<(), ServicesError> {
+    func setSymptoms(_ input: Set<SymptomId>) -> Result<Void, ServicesError> {
         inputsManager.setSymptoms(input)
     }
 
     func setCoughType(
         _ input: UserInput<SymptomInputs.Cough.CoughType>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setCoughType(input)
     }
 
     func setCoughDays(
         _ input: UserInput<SymptomInputs.Days>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setCoughDays(input)
     }
 
     func setCoughStatus(
         _ input: UserInput<SymptomInputs.Cough.Status>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setCoughStatus(input)
     }
 
     func setBreathlessnessCause(
         _ input: UserInput<SymptomInputs.Breathlessness.Cause>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setBreathlessnessCause(input)
     }
 
     func setFeverDays(
         _ input: UserInput<SymptomInputs.Days>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setFeverDays(input)
     }
 
     func setFeverTakenTemperatureToday(
         _ input: UserInput<Bool>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setFeverTakenTemperatureToday(input)
     }
 
     func setFeverTakenTemperatureSpot(
         _ input: UserInput<SymptomInputs.Fever.TemperatureSpot>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setFeverTakenTemperatureSpot(input)
     }
 
     func setFeverHighestTemperatureTaken(
         _ input: UserInput<Temperature>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setFeverHighestTemperatureTaken(input)
     }
 
     func setEarliestSymptomStartedDaysAgo(
         _ input: UserInput<Int>)
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.setEarliestSymptomStartedDaysAgo(input)
     }
 
     func submit()
-        -> Result<(), ServicesError> {
+        -> Result<Void, ServicesError>
+    {
         inputsManager.submit()
     }
 }

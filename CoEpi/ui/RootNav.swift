@@ -1,6 +1,6 @@
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class RootNav {
     let navigationCommands: PublishRelay<RootNavCommand> = PublishRelay()

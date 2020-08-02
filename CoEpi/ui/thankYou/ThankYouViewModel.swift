@@ -15,7 +15,8 @@ class ThankYouViewModel {
         rootNav.navigate(
             command: .backToAndTo(
                 backDestination: .home,
-                toDestination: .symptomReport))
+                toDestination: .symptomReport
+            ))
     }
 
     func onSeeAlertsClick() {

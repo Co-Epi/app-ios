@@ -13,29 +13,28 @@ enum OperationState<T> {
     func map<U>(f: (T) -> U) -> OperationState<U> {
         switch self {
         case .notStarted: return .notStarted
-        case .success(let data): return .success(data: f(data))
+        case let .success(data): return .success(data: f(data))
         case .progress: return .progress
-        case .failure(let error): return .failure(error: error)
+        case let .failure(error): return .failure(error: error)
         }
     }
 
     func flatMap<U>(f: (T) -> OperationState<U>) -> OperationState<U> {
         switch self {
         case .notStarted: return .notStarted
-        case .success(let data): return f(data)
+        case let .success(data): return f(data)
         case .progress: return .progress
-        case .failure(let error): return .failure(error: error)
+        case let .failure(error): return .failure(error: error)
         }
     }
 }
 
 extension OperationState: Equatable where T: Equatable {
-
     static func == (lhs: OperationState, rhs: OperationState) -> Bool {
         switch (lhs, rhs) {
-        case (let .success(data1), let .success(data2)):
+        case let (.success(data1), .success(data2)):
             return data1 == data2
-        case (let .failure(error1), let .failure(error2)):
+        case let (.failure(error1), .failure(error2)):
             return error1.localizedDescription == error2.localizedDescription
         case (.notStarted, .notStarted):
             return true
@@ -46,10 +45,9 @@ extension OperationState: Equatable where T: Equatable {
     }
 }
 
-typealias VoidOperationState = OperationState<()>
+typealias VoidOperationState = OperationState<Void>
 
 extension OperationState {
-
     func isComplete() -> Bool {
         switch self {
         case .success, .failure: return true

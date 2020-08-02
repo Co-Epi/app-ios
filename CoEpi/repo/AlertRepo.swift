@@ -6,14 +6,13 @@ protocol AlertRepo {
     var alertState: Observable<OperationState<[Alert]>> { get }
     var alerts: Observable<[Alert]> { get }
 
-    func removeAlert(alert: Alert) -> Result<(), ServicesError>
-    func updateIsRead(alert: Alert, isRead: Bool) -> Result<(), ServicesError>
+    func removeAlert(alert: Alert) -> Result<Void, ServicesError>
+    func updateIsRead(alert: Alert, isRead: Bool) -> Result<Void, ServicesError>
 
     func updateReports()
 }
 
 class AlertRepoImpl: AlertRepo {
-
     private let alertsApi: AlertsApi
     private let notificationShower: NotificationShower
 
@@ -30,14 +29,15 @@ class AlertRepoImpl: AlertRepo {
     private let disposeBag = DisposeBag()
 
     init(alertsApi: AlertsApi, notificationShower: NotificationShower,
-         alertFilters: ObservableAlertFilters) {
+         alertFilters: ObservableAlertFilters)
+    {
         self.alertsApi = alertsApi
         self.notificationShower = notificationShower
 
         alertState = alertsStateSubject.asObservable()
         let alerts = alertState.compactMap { state -> [Alert]? in
             switch state {
-            case .success(let data): return data
+            case let .success(data): return data
             default: return nil
             }
         }
@@ -45,26 +45,26 @@ class AlertRepoImpl: AlertRepo {
             filters.apply(to: alerts)
         }
 
-        removeAlertTrigger.withLatestFrom(alerts, resultSelector: {(alert, alerts) in
+        removeAlertTrigger.withLatestFrom(alerts, resultSelector: { alert, alerts in
             alerts.deleteFirst(element: alert)
         })
-        .subscribe(onNext: { [weak self] updatedAlerts in
-            self?.alertsStateSubject.accept(.success(data: updatedAlerts))
-        })
-        .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] updatedAlerts in
+                self?.alertsStateSubject.accept(.success(data: updatedAlerts))
+            })
+            .disposed(by: disposeBag)
 
-        updateIsReadTrigger.withLatestFrom(alerts, resultSelector: {(tuple, alerts) in
+        updateIsReadTrigger.withLatestFrom(alerts, resultSelector: { tuple, alerts in
             var updatedAlert = tuple.alert
             updatedAlert.isRead = tuple.isRead
             return alerts.replace(tuple.alert, with: updatedAlert)
         })
-        .subscribe(onNext: { [weak self] updatedAlerts in
-            self?.alertsStateSubject.accept(.success(data: updatedAlerts))
-        })
-        .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] updatedAlerts in
+                self?.alertsStateSubject.accept(.success(data: updatedAlerts))
+            })
+            .disposed(by: disposeBag)
     }
 
-    func removeAlert(alert: Alert) -> Result<(), ServicesError> {
+    func removeAlert(alert: Alert) -> Result<Void, ServicesError> {
         let result = alertsApi.deleteAlert(id: alert.id)
         switch result {
         case .success:
@@ -76,7 +76,7 @@ class AlertRepoImpl: AlertRepo {
         return result
     }
 
-    func updateIsRead(alert: Alert, isRead: Bool) -> Result<(), ServicesError> {
+    func updateIsRead(alert: Alert, isRead: Bool) -> Result<Void, ServicesError> {
         let result = alertsApi.updateIsRead(id: alert.id, isRead: isRead)
         switch result {
         case .success: updateIsReadLocally(alert: alert, isRead: isRead)
@@ -98,7 +98,7 @@ class AlertRepoImpl: AlertRepo {
         alertsStateSubject.accept(.progress)
 
         switch alertsApi.fetchNewAlerts() {
-        case .success(let alerts):
+        case let .success(alerts):
             log.w("Received new alerts in app: \(alerts)", tags: .ui)
             alertsStateSubject.accept(.success(data: alerts))
             if !alerts.isEmpty {
@@ -109,7 +109,7 @@ class AlertRepoImpl: AlertRepo {
                 ))
             }
 
-        case .failure(let error):
+        case let .failure(error):
             log.e("Error fetching alerts: \(error)")
             alertsStateSubject.accept(OperationState.failure(error: error))
         }

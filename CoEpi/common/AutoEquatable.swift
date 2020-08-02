@@ -1,1 +1,1 @@
-protocol AutoEquatable { }
+protocol AutoEquatable {}
