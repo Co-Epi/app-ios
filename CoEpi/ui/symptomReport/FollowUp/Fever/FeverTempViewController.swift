@@ -83,8 +83,9 @@ class FeverTempViewController: UIViewController {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
 
         ButtonStyles.applyUnselected(to: unknownButtonLabel)
-        ButtonStyles.applyRoundedEnds(to: submitButtonLabel)
-        ButtonStyles.applyShadows(to: submitButtonLabel)
+        ViewStyles.applyRoundedEnds(to: submitButtonLabel)
+        ViewStyles.applyShadows(to: submitButtonLabel)
+        ViewStyles.applyShadows(to: numberInput)
 
         viewModel.submitButtonEnabled
             .drive(submitButtonLabel.rx.isEnabled)

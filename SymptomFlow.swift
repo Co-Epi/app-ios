@@ -53,7 +53,7 @@ private func toSteps(symptomIds: [SymptomId]) -> [SymptomStep] {
     }
 
     if symptomIds != [.none] {
-        return symptomIds.flatMap { $0.toSteps() }
+        return symptomIds.flatMap { $0.toSteps() } + [.earliestSymptomDate]
 
     } else {
         return []
@@ -73,6 +73,7 @@ private extension SymptomId {
         case .fever: return [
             .feverTemperatureTakenToday,
             .feverTemperatureSpot,
+            .feverHighestTemperature,
         ]
         case .muscleAches: return []
         case .lossSmellOrTaste: return []

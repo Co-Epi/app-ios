@@ -56,8 +56,9 @@ class SymptomStartDaysViewController: UIViewController {
         submitButtonLabel.setTitle(L10n.Ux.submit, for: .normal)
 
         ButtonStyles.applyUnselected(to: unknownButtonLabel)
-        ButtonStyles.applyRoundedEnds(to: submitButtonLabel)
-        ButtonStyles.applyShadows(to: submitButtonLabel)
+        ViewStyles.applyRoundedEnds(to: submitButtonLabel)
+        ViewStyles.applyShadows(to: submitButtonLabel)
+        ViewStyles.applyShadows(to: daysInput)
 
         viewModel.submitButtonEnabled
             .drive(submitButtonLabel.rx.isEnabled)

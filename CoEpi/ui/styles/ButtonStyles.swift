@@ -7,8 +7,8 @@ struct ButtonStyles {
     static func applySelected(to button: UIButton) {
         button.backgroundColor = .coEpiPurple
         button.setTitleColor(.white, for: .normal)
-        applyShadows(to: button)
-        applyRoundedEnds(to: button)
+        ViewStyles.applyShadows(to: button)
+        ViewStyles.applyRoundedEnds(to: button)
     }
 
     static func applyUnselected(to button: UIButton) {
@@ -16,18 +16,21 @@ struct ButtonStyles {
         button.setTitleColor(.black, for: .normal)
         button.layer.borderColor = UIColor.coEpiPurple.cgColor
         button.layer.borderWidth = 1
-        applyShadows(to: button)
-        applyRoundedEnds(to: button)
+        ViewStyles.applyShadows(to: button)
+        ViewStyles.applyRoundedEnds(to: button)
     }
 
-    static func applyRoundedEnds(to button: UIButton) {
-        button.layer.cornerRadius = button.frame.height * 0.50
+}
+
+struct ViewStyles {
+    static func applyRoundedEnds(to view: UIView) {
+        view.layer.cornerRadius = view.frame.height * 0.50
     }
 
-    static func applyShadows(to button: UIButton) {
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowRadius = 4
-        button.layer.shadowOpacity = 0.25
+    static func applyShadows(to view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 2, height: 2)
+        view.layer.shadowRadius = 2
+        view.layer.shadowOpacity = 0.35
     }
 }

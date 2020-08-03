@@ -13,6 +13,9 @@ class RoundButton: UIButton {
         titleLabel?.textAlignment = .center
         layer.borderWidth = 1
         layer.borderColor = UIColor.coEpiPurple.cgColor
+        layer.backgroundColor = UIColor.white.cgColor
+
+        ViewStyles.applyShadows(to: self)
     }
 
     override func layoutSubviews() {
