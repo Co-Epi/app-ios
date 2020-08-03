@@ -20,6 +20,8 @@ class SymptomReportViewModel: UINotifier {
     private let submitTrigger: PublishRelay<Void> = PublishRelay()
     private let selectSymptomTrigger: PublishRelay<SymptomViewData> = PublishRelay()
 
+    let setActivityIndicatorVisible: Driver<Bool>
+
     let disposeBag = DisposeBag()
 
     init(symptomRepo: SymptomRepo, rootNav: RootNav, symptomFlowManager: SymptomFlowManager) {
@@ -71,6 +73,10 @@ class SymptomReportViewModel: UINotifier {
             })
             .subscribe()
             .disposed(by: disposeBag)
+
+        setActivityIndicatorVisible = symptomFlowManager.submitSymptomsState
+            .map { $0.isProgress() }
+            .asDriver(onErrorJustReturn: false)
     }
 
     func onTapSubmit() {

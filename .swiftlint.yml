@@ -1,6 +1,7 @@
 disabled_rules:
 - nesting
 - unused_closure_parameter # are ok as documentation
+- trailing_comma # allow trailing comma in multiline arrays. swiftformat even adds this.
 opt_in_rules:
 - empty_count
 - empty_string

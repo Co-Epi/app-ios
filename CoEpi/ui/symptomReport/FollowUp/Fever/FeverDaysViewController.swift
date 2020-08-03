@@ -80,6 +80,10 @@ class FeverDaysViewController: UIViewController {
                 self?.daysInput.text = String(text.prefix(2))
             }
         }).disposed(by: disposeBag)
+
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
     }
 }
 

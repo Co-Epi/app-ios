@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 class FeverWhereViewController: UIViewController {
     private let viewModel: FeverWhereViewModel
@@ -10,6 +11,8 @@ class FeverWhereViewController: UIViewController {
     @IBOutlet var armpitButtonLabel: UIButton!
     @IBOutlet var otherButtonLabel: UIButton!
     @IBOutlet var skipButtonLabel: UIButton!
+
+    private let disposeBag = DisposeBag()
 
     @IBAction func mouthButtonAction(_: UIButton) {
         viewModel.onWhereSelected(spot: .mouth)
@@ -59,5 +62,9 @@ class FeverWhereViewController: UIViewController {
         armpitButtonLabel.setTitle(L10n.Ux.Fever.armpit, for: .normal)
         earButtonLabel.setTitle(L10n.Ux.Fever.ear, for: .normal)
         otherButtonLabel.setTitle(L10n.Ux.Fever.other, for: .normal)
+
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
     }
 }

@@ -93,14 +93,13 @@
 "UX.cough.title1" = "I would describe my cough as:";
 "UX.cough.title2" = "How many days have you been coughing?";
 "UX.cough.title3" = "Today my cough feels:";
-"UX.cough.subtitle3" = "Select one option";
 "UX.cough.titleWet" = "Wet";
 "UX.cough.subtitleWet" = "It feels like there is mucus in my throat and/or chest";
 "UX.cough.titleDry" = "Dry";
 "UX.cough.subtitleDry" = "My throat feels 'tickly' or 'scratchy' without mucus";
 "UX.cough.better" = "Better";
 "UX.cough.worse" = "Worse";
-"UX.cough.same" = "Same";
+"UX.cough.same" = "The same";
 
     //fever
 "UX.fever.heading" = "Follow up: Fever";

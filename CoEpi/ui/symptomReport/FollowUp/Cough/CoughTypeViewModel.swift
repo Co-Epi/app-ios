@@ -7,8 +7,14 @@ class CoughTypeViewModel {
 
     let title = L10n.Ux.Cough.heading
 
+    let setActivityIndicatorVisible: Driver<Bool>
+
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
+
+        setActivityIndicatorVisible = symptomFlowManager.submitSymptomsState
+            .map { $0.isProgress() }
+            .asDriver(onErrorJustReturn: false)
     }
 
     func onTapWet() {

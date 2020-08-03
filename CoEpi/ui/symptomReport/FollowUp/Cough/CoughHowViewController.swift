@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 class CoughHowViewController: UIViewController {
     private let viewModel: CoughHowViewModel
@@ -10,6 +11,8 @@ class CoughHowViewController: UIViewController {
     @IBOutlet var worseButtonLabel: UIButton!
     @IBOutlet var sameButtonLabel: UIButton!
     @IBOutlet var skipButtonLabel: UIButton!
+
+    private let disposeBag = DisposeBag()
 
     @IBAction func betterButtonAction(_: UIButton) {
         viewModel.onStatusSelected(status: .betterAndWorseThroughDay)
@@ -49,7 +52,6 @@ class CoughHowViewController: UIViewController {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "Background_white.png")!)
 
         titleLabel.text = L10n.Ux.Cough.title3
-        subtitleLabel.text = L10n.Ux.Cough.subtitle3
         skipButtonLabel.setTitle(L10n.Ux.skip, for: .normal)
 
         ButtonStyles.applyUnselected(to: betterButtonLabel)
@@ -77,6 +79,10 @@ class CoughHowViewController: UIViewController {
         sameButtonLabel.setTitle(L10n.Ux.Cough.same, for: .normal)
         sameButtonLabel.titleLabel?.textAlignment = .center
         sameButtonLabel.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
     }
 
     @objc func onTouchDown(to button: UIButton) {

@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 class FeverTodayViewController: UIViewController {
     private let viewModel: FeverTodayViewModel
@@ -8,6 +9,8 @@ class FeverTodayViewController: UIViewController {
     @IBOutlet var yesButtonLabel: UIButton!
     @IBOutlet var noButtonLabel: UIButton!
     @IBOutlet var skipButtonLabel: UIButton!
+
+    private let disposeBag = DisposeBag()
 
     @IBAction func yesButtonAction(_: UIButton) {
         viewModel.onYesTap()
@@ -47,5 +50,9 @@ class FeverTodayViewController: UIViewController {
 
         noButtonLabel.setTitle(L10n.Ux.no, for: .normal)
         yesButtonLabel.setTitle(L10n.Ux.yes, for: .normal)
+
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
     }
 }

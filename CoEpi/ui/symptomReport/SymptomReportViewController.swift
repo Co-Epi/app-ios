@@ -57,6 +57,10 @@ class SymptomReportViewController: UIViewController, ErrorDisplayer {
             .drive(submitButton.rx.backgroundColor)
             .disposed(by: disposeBag)
 
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
+
         symptomQuestionHeader.text = L10n.Ux.SymptomReport.title
         subHeader.text = L10n.Ux.SymptomReport.subtitle
         submitButton.setTitle(L10n.Ux.submit, for: .normal)

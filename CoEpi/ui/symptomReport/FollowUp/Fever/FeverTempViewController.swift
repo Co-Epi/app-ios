@@ -73,6 +73,10 @@ class FeverTempViewController: UIViewController {
         viewModel.temperatureText
             .drive(numberInput.rx.text)
             .disposed(by: disposeBag)
+
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
     }
 
     private func setupStyle() {

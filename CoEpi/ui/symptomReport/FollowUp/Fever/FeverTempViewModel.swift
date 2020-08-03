@@ -17,6 +17,8 @@ class FeverTempViewModel {
     private let tempUnitTrigger: BehaviorRelay<TemperatureUnit> = BehaviorRelay(value: .fahrenheit)
     private let submitTrigger: PublishRelay<Void> = PublishRelay()
 
+    let setActivityIndicatorVisible: Driver<Bool>
+
     private let disposeBag = DisposeBag()
 
     init(symptomFlowManager: SymptomFlowManager, unitsProvider: UnitsProvider) {
@@ -61,6 +63,10 @@ class FeverTempViewModel {
                 symptomFlowManager.navigateForward()
             })
             .disposed(by: disposeBag)
+
+        setActivityIndicatorVisible = symptomFlowManager.submitSymptomsState
+            .map { $0.isProgress() }
+            .asDriver(onErrorJustReturn: false)
     }
 
     func onTempChanged(tempStr: String) {

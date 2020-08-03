@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 class CoughTypeViewController: UIViewController {
     private let viewModel: CoughTypeViewModel
@@ -12,6 +13,8 @@ class CoughTypeViewController: UIViewController {
     @IBOutlet var dryDescriptionButtonLabel: UILabel!
 
     @IBOutlet var skipButtonLabel: UIButton!
+
+    private let disposeBag = DisposeBag()
 
     @IBAction func wetButtonAction(_: UIButton) {
         viewModel.onTapWet()
@@ -54,5 +57,9 @@ class CoughTypeViewController: UIViewController {
 
         dryTitleButtonLabel.text = L10n.Ux.Cough.titleDry
         dryDescriptionButtonLabel.text = L10n.Ux.Cough.subtitleDry
+
+        viewModel.setActivityIndicatorVisible
+            .drive(view.rx.setActivityIndicatorVisible())
+            .disposed(by: disposeBag)
     }
 }

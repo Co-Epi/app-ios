@@ -14,7 +14,6 @@
                 <outlet property="betterButtonLabel" destination="BRl-UE-BCP" id="4Kw-rT-vY6"/>
                 <outlet property="sameButtonLabel" destination="VxT-rb-ljy" id="XVi-iC-GdY"/>
                 <outlet property="skipButtonLabel" destination="487-Y9-TrA" id="wLy-BZ-X2z"/>
-                <outlet property="subtitleLabel" destination="6by-V3-lSP" id="jhD-Ka-q5h"/>
                 <outlet property="titleLabel" destination="JeL-hi-Tam" id="ebn-Dv-MhT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hhO-XG-WGQ"/>
                 <outlet property="worseButtonLabel" destination="1Ui-1B-6uO" id="SBg-zS-m3d"/>
@@ -93,14 +92,8 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeL-hi-Tam">
-                    <rect key="frame" x="20" y="64" width="374" height="33.5"/>
+                    <rect key="frame" x="20" y="92.5" width="374" height="33.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6by-V3-lSP">
-                    <rect key="frame" x="20" y="117.5" width="33" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -108,12 +101,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="6by-V3-lSP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="2QW-Xq-PWu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JeL-hi-Tam" secondAttribute="trailing" constant="20" id="DiV-xE-Npw"/>
                 <constraint firstItem="gWz-1A-4PQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JkH-cb-ynP"/>
                 <constraint firstItem="Jh3-AA-7SI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="O6J-H8-phY"/>
-                <constraint firstItem="6by-V3-lSP" firstAttribute="top" secondItem="JeL-hi-Tam" secondAttribute="bottom" constant="20" id="UMr-ZC-jJu"/>
-                <constraint firstItem="JeL-hi-Tam" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="UkY-Rs-swo"/>
+                <constraint firstItem="JeL-hi-Tam" firstAttribute="centerY" secondItem="gWz-1A-4PQ" secondAttribute="centerY" id="R0n-vg-vBh"/>
                 <constraint firstItem="487-Y9-TrA" firstAttribute="top" secondItem="Jh3-AA-7SI" secondAttribute="bottom" constant="50" id="Xyz-sX-NtB"/>
                 <constraint firstItem="487-Y9-TrA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="acw-NU-Okx"/>
                 <constraint firstItem="gWz-1A-4PQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="bRI-he-WJC"/>

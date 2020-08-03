@@ -10,6 +10,10 @@ class FeverDaysViewModel {
 
     let title = L10n.Ux.Fever.heading
 
+    let setActivityIndicatorVisible: Driver<Bool>
+
+    private let disposeBag = DisposeBag()
+
     init(symptomFlowManager: SymptomFlowManager) {
         self.symptomFlowManager = symptomFlowManager
 
@@ -18,6 +22,10 @@ class FeverDaysViewModel {
         submitButtonEnabled = daysIsEmpty
             .asObservable()
             .map { !$0 }
+            .asDriver(onErrorJustReturn: false)
+
+        setActivityIndicatorVisible = symptomFlowManager.submitSymptomsState
+            .map { $0.isProgress() }
             .asDriver(onErrorJustReturn: false)
     }
 
