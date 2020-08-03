@@ -49,15 +49,16 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="L2C-Or-J68" customClass="CustomTextFieldStart" customModule="CoEpi" customModuleProvider="target">
-                    <rect key="frame" x="30" y="194" width="175" height="57.5"/>
+                    <rect key="frame" x="30" y="194" width="167" height="70"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="L2C-Or-J68" secondAttribute="height" multiplier="73:24" id="Sb1-cR-t41"/>
+                        <constraint firstAttribute="height" constant="70" id="XDs-op-AF7"/>
+                        <constraint firstAttribute="width" constant="167" id="kdP-Ev-XKQ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUr-0R-wQK">
-                    <rect key="frame" x="235" y="208.5" width="49.5" height="29"/>
+                    <rect key="frame" x="227" y="214.5" width="49.5" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="fUr-0R-wQK" secondAttribute="height" multiplier="41:24" id="0Hf-VH-76i"/>
                     </constraints>
@@ -66,7 +67,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZT-j2-j3C">
-                    <rect key="frame" x="30" y="281.5" width="60" height="31"/>
+                    <rect key="frame" x="30" y="294" width="60" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="31" id="nHo-bq-meh"/>
                     </constraints>
@@ -80,7 +81,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu4-pd-wN5">
-                    <rect key="frame" x="324" y="281.5" width="60" height="31"/>
+                    <rect key="frame" x="324" y="294" width="60" height="31"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                     <state key="normal">
