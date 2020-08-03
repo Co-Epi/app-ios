@@ -22,11 +22,12 @@ class AlertCell: UITableViewCell {
     }
 
     public func setup(alert: AlertViewData,
+                      animateRedDot: Bool,
                       onAcknowledged: (AlertViewData) -> Void,
-                      onReadDotAnimated: () -> Void)
+                      onReadDotAnimated: @escaping () -> Void)
     {
         guard let view = alertView else { return }
-        view.setup(alert: alert, onAcknowledged: onAcknowledged,
+        view.setup(alert: alert, animateRedDot: animateRedDot, onAcknowledged: onAcknowledged,
                    onReadDotAnimated: onReadDotAnimated)
     }
 }
@@ -61,8 +62,9 @@ class AlertView: UIView {
     }
 
     func setup(alert: AlertViewData,
+               animateRedDot: Bool,
                onAcknowledged _: (AlertViewData) -> Void,
-               onReadDotAnimated: () -> Void)
+               onReadDotAnimated: @escaping () -> Void)
     {
         self.alert = alert
 
@@ -83,15 +85,17 @@ class AlertView: UIView {
         }
         repeatedInteractionLabel.text = L10n.Alerts.Overview.Cell.hasRepeatedInteraction
 
-        if alert.animateUnreadDot {
+        if animateRedDot {
             unreadView.transform = CGAffineTransform(scaleX: 0, y: 0)
             unreadView.alpha = 0
-            onReadDotAnimated()
+
             UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping:
                 0.6, initialSpringVelocity: 0.6, options: .curveEaseOut, animations: {
                     self.unreadView.transform = CGAffineTransform(scaleX: 1, y: 1)
                     self.unreadView.alpha = 1
-                }, completion: nil)
+                }, completion: { _ in
+                    onReadDotAnimated()
+                })
         }
     }
 

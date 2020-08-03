@@ -4,7 +4,6 @@ import UIKit
 
 class AlertsViewController: UIViewController {
     private let viewModel: AlertsViewModel
-    private let dataSource: AlertsDataSource = .init()
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var contactAlerts: UITableView!
@@ -15,14 +14,20 @@ class AlertsViewController: UIViewController {
 
     private let refreshControl = UIRefreshControl()
 
+    private lazy var dataSource = makeDataSource(
+        tableView: contactAlerts, onAcknowledged: { [weak self] viewData in
+            self?.viewModel.acknowledge(alert: viewData)
+        }
+    )
+
+    // Items for which the dot animation ran already, to not run it again
+    private var dotAnimatedCells = Set<AlertViewData>()
+
     init(viewModel: AlertsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: Self.self), bundle: nil)
 
         title = L10n.Alerts.title
-        dataSource.onAcknowledged = { alert in
-            viewModel.acknowledge(alert: alert)
-        }
     }
 
     required init?(coder _: NSCoder) {
@@ -38,7 +43,10 @@ class AlertsViewController: UIViewController {
         titleLabel.text = L10n.Alerts.header
 
         viewModel.alertCells
-            .drive(contactAlerts.rx.items(dataSource: dataSource))
+            .asObservable().subscribe(onNext: { [dataSource] in
+                dataSource.applySnapshot(sections: $0.sections,
+                                         animatingDifferences: $0.animate)
+            })
             .disposed(by: disposeBag)
 
         viewModel.updateStatusText
@@ -62,63 +70,56 @@ class AlertsViewController: UIViewController {
 
         contactAlerts.addSubview(refreshControl)
     }
-}
 
-class AlertsDataSource: NSObject, RxTableViewDataSourceType {
-    private(set) var sections: [AlertViewDataSection] = []
-    public var onAcknowledged: ((AlertViewData) -> Void)?
+    func makeDataSource(
+        tableView: UITableView,
+        onAcknowledged: ((AlertViewData) -> Void)?
+    ) -> AlertsDataSource {
+        AlertsDataSource(
+            tableView: tableView,
+            cellProvider: { [weak self] tableView, indexPath, alert -> AlertCell? in
+                let cell: AlertCell = tableView.dequeue(
+                    cellClass: AlertCell.self,
+                    forIndexPath: indexPath
+                )
+                guard let self = self else { return cell }
 
-    func tableView(_ tableView: UITableView, observedEvent: RxSwift.Event<[AlertViewDataSection]>) {
-        if case let .next(sections) = observedEvent {
-            self.sections = sections
-            tableView.reloadData()
-        }
-    }
-}
-
-extension AlertsDataSource: UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sections[section].alerts.count
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeue(
-            cellClass: AlertCell.self,
-            forIndexPath: indexPath
+                cell.setup(alert: alert,
+                           animateRedDot: !self.dotAnimatedCells.contains(alert),
+                           onAcknowledged: { alert in
+                               onAcknowledged?(alert)
+                           },
+                           onReadDotAnimated: { [weak self] in
+                               self?.dotAnimatedCells.insert(alert)
+                           })
+                return cell
+            }
         )
-        guard let alertCell = cell as? AlertCell else { return cell }
+    }
+}
 
-        let alert: AlertViewData = sections[indexPath.section].alerts[indexPath.row]
+class AlertsDataSource: UITableViewDiffableDataSource<AlertViewDataSection, AlertViewData> {
+    var sections: [AlertViewDataSection] = []
 
-        alertCell.setup(alert: alert,
-                        onAcknowledged: { [weak self] alert in
-                            self?.onAcknowledged?(alert)
-                        },
-                        onReadDotAnimated: { [weak self] in
-                            self?
-                                .sections[indexPath.section]
-                                .alerts[indexPath.row]
-                                .animateUnreadDot = false
-                        })
+    func applySnapshot(sections: [AlertViewDataSection], animatingDifferences: Bool = true) {
+        self.sections = sections
 
-        return alertCell
+        var snapshot = NSDiffableDataSourceSnapshot<AlertViewDataSection, AlertViewData>()
+        snapshot.appendSections(sections)
+        sections.forEach { section in
+            snapshot.appendItems(section.alerts, toSection: section)
+        }
+        apply(snapshot, animatingDifferences: animatingDifferences)
     }
 
-    func numberOfSections(in _: UITableView) -> Int {
-        sections.count
+    override func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
+        true
     }
 }
 
 extension AlertsViewController: UITableViewDelegate {
-    func tableView(
-        _ tableView: UITableView,
-        viewForHeaderInSection section: Int
-    )
-        -> UIView?
-    {
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
         let label = UILabel(frame: CGRect(x: 24, y: 5, width: 0, height: 0))
         label.backgroundColor = .white
@@ -131,29 +132,20 @@ extension AlertsViewController: UITableViewDelegate {
         return view
     }
 
-    func tableView(
-        _: UITableView,
-        heightForHeaderInSection _: Int
-    )
-        -> CGFloat
-    {
+    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         20
     }
 
-    func tableView(
-        _: UITableView,
-        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-    )
-        -> UISwipeActionsConfiguration?
-    {
+    func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+    -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(
             style: .destructive,
             title: L10n.Alerts.Label
                 .archive
-        ) { [viewModel, dataSource] (_, _, _: (Bool)
-                -> Void) in
-        viewModel.acknowledge(
-            alert: dataSource.sections[indexPath.section].alerts[indexPath.row])
+        ) { [viewModel, dataSource] (_, _, completionHandler: (Bool) -> Void) in
+            viewModel.acknowledge(
+                alert: dataSource.sections[indexPath.section].alerts[indexPath.row])
+            completionHandler(true)
         }
         return UISwipeActionsConfiguration(actions: [delete])
     }

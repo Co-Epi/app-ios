@@ -1,10 +1,13 @@
-struct AlertViewData {
+struct AlertViewData: Hashable, AutoEquatable {
     let symptoms: String
     let contactTime: String
     let showUnreadDot: Bool
-    var animateUnreadDot: Bool
     let showRepeatedInteraction: Bool
     let alert: Alert
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(alert.id)
+    }
 }
 
 enum AlertCellViewData {
@@ -19,7 +22,18 @@ enum AlertCellViewData {
     }
 }
 
-struct AlertViewDataSection {
+struct AlertViewDataSection: Hashable {
     let header: String
     var alerts: [AlertViewData]
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(header)
+    }
+
+    // Here we don't use AutoEquatable / compare the alerts,
+    // because that causes a change in the alerts
+    // to animate the whole section, which looks weird.
+    static func == (lhs: AlertViewDataSection, rhs: AlertViewDataSection) -> Bool {
+        lhs.header == rhs.header
+    }
 }

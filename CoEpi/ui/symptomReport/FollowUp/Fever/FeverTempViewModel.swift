@@ -1,7 +1,7 @@
 import Dip
+import Foundation
 import RxCocoa
 import RxSwift
-import Foundation
 
 class FeverTempViewModel {
     private let symptomFlowManager: SymptomFlowManager
@@ -22,7 +22,8 @@ class FeverTempViewModel {
     init(symptomFlowManager: SymptomFlowManager, unitsProvider: UnitsProvider) {
         self.symptomFlowManager = symptomFlowManager
 
-        selectedTemperatureUnit = tempUnitTrigger
+        // Update unit text
+        selectedTemperatureUnit = unitsProvider.temperatureUnit
             .map { $0.toText() }
             .asDriver(onErrorJustReturn: "")
 
@@ -33,35 +34,33 @@ class FeverTempViewModel {
             .map { !$0.isEmpty }
             .asDriver(onErrorJustReturn: false)
 
+        // Update temperature text when temperature changes
+        // (temperature can change because of input or unit change)
         temperatureText = temperature
             .map { $0.toUserString() }
             .distinctUntilChanged()
             .asDriver(onErrorJustReturn: "")
 
+        // Update temperature when text or unit changes
+        Observable.combineLatest(
+            temperatureTextTrigger,
+            unitsProvider.temperatureUnit.asObservable()
+        )
+        .map { input, unit in
+            toTemperature(unit: unit, tempStr: input)
+        }
+        .subscribe(onNext: { [temperatureTrigger] updatedTemp in
+            temperatureTrigger.accept(updatedTemp)
+        })
+        .disposed(by: disposeBag)
+
+        // Submit temperature when pressing button
         submitTrigger.withLatestFrom(temperature)
             .subscribe(onNext: { temperature in
                 symptomFlowManager.setFeverHighestTemperatureTaken(temperature).expect()
                 symptomFlowManager.navigateForward()
-            }).disposed(by: disposeBag)
-
-        unitsProvider.temperatureUnit.withLatestFrom(
-            temperature, resultSelector: { selectedUnit, currentTemp in
-                toTemperature(newUnit: selectedUnit, currentInput: currentTemp)
-            }
-        )
-        .subscribe(onNext: { [temperatureTrigger] newTemp in
-            temperatureTrigger.accept(newTemp)
-        }).disposed(by: disposeBag)
-
-        temperatureTextTrigger.withLatestFrom(
-            tempUnitTrigger.asObservable(),
-            resultSelector: { text, unit in
-                toTemperature(unit: unit, tempStr: text)
-            }
-        )
-        .subscribe(onNext: { [temperatureTrigger] newTemp in
-            temperatureTrigger.accept(newTemp)
-        }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
 
     func onTempChanged(tempStr: String) {
@@ -85,7 +84,7 @@ class FeverTempViewModel {
     }
 }
 
-private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<Temperature> {
+private func toTemperature(unit: UnitTemperature, tempStr: String) -> UserInput<Temperature> {
     switch tempStr {
     case "": return .none
     default:
@@ -93,6 +92,9 @@ private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<
             switch unit {
             case .celsius: return .some(.celsius(value: temp))
             case .fahrenheit: return .some(.fahrenheit(value: temp))
+            default:
+                // See TODO in UnitsProvider.determineTemperatureUnit
+                fatalError("Not supported temperature unit: \(unit)")
             }
         } else {
             log.w("WARN: Not numeric temperature input: \(tempStr)")
@@ -101,29 +103,7 @@ private func toTemperature(unit: TemperatureUnit, tempStr: String) -> UserInput<
     }
 }
 
-private func toTemperature(
-    newUnit: UnitTemperature,
-    currentInput: UserInput<Temperature>
-) -> UserInput<Temperature> {
-    switch currentInput {
-    case .none: return .none
-    case let .some(temp): return .some(toTemperature(newUnit: newUnit, currentTemp: temp))
-    }
-}
-
-private func toTemperature(newUnit: UnitTemperature, currentTemp: Temperature) -> Temperature {
-    switch newUnit {
-    case .celsius:
-        return .celsius(value: currentTemp.asCelsius())
-    case .fahrenheit:
-        return .fahrenheit(value: currentTemp.asFarenheit())
-    default:
-        // See TODO in UnitsProvider.determineTemperatureUnit
-        fatalError("Not supported temperature unit: \(newUnit)")
-    }
-}
-
-private extension TemperatureUnit {
+private extension UnitTemperature {
     func toText() -> String {
         switch self {
         case .celsius:

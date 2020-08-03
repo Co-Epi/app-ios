@@ -7,7 +7,7 @@ class AlertsViewModel {
     private let alertRepo: AlertRepo
     private let nav: RootNav
 
-    let alertCells: Driver<[AlertViewDataSection]>
+    let alertCells: Driver<(sections: [AlertViewDataSection], animate: Bool)>
     let updateStatusText: Driver<String>
 
     private let selectAlertTrigger: PublishSubject<Alert> = PublishSubject()
@@ -19,11 +19,19 @@ class AlertsViewModel {
         self.nav = nav
 
         alertCells = alertRepo.alerts
-            .map { alerts in
-                alerts.toSections(allAlerts: alerts)
+            .startWith([])
+            .enumerated()
+            .pairwise()
+            .map { prev, curr in
+                // Animate only deletion (or insert, but we don't use this)
+                // i.e. not when loaded the first time or when updating read status
+                (curr.element, curr.index > 1 && curr.element.count != prev.element.count)
+            }
+            .map { alerts, animate in
+                (sections: alerts.toSections(allAlerts: alerts), animate: animate)
             }
             .observeOn(MainScheduler.instance)
-            .asDriver(onErrorJustReturn: [])
+            .asDriver(onErrorJustReturn: (sections: [], animate: false))
 
         updateStatusText = alertRepo.alertState
             .do(onNext: { result in
@@ -33,17 +41,19 @@ class AlertsViewModel {
             .map { $0.asText() }
             .asDriver(onErrorJustReturn: "Unknown error")
 
-        selectAlertTrigger.withLatestFrom(alertRepo.alerts,
-                                          resultSelector: { alert, alerts in
-                                              AlertDetailsViewModelParams(
-                                                  alert: alert,
-                                                  linkedAlerts: linkedAlerts(alert: alert, alerts: alerts)
-                                              )
-                                          })
-            .subscribe(onNext: { pars in
-                nav.navigate(command: .to(destination: .alertDetails(pars: pars)))
-            })
-            .disposed(by: disposeBag)
+        selectAlertTrigger.withLatestFrom(
+            alertRepo.alerts,
+            resultSelector: { alert, alerts in
+                AlertDetailsViewModelParams(
+                    alert: alert,
+                    linkedAlerts: linkedAlerts(alert: alert, alerts: alerts)
+                )
+            }
+        )
+        .subscribe(onNext: { pars in
+            nav.navigate(command: .to(destination: .alertDetails(pars: pars)))
+        })
+        .disposed(by: disposeBag)
     }
 
     func updateReports() {
@@ -96,7 +106,6 @@ private extension Alert {
                 .lowercased().capitalizingFirstLetter(),
             contactTime: DateFormatters.hoursMins.string(from: start.toDate()),
             showUnreadDot: !isRead,
-            animateUnreadDot: true,
             showRepeatedInteraction: hasLinkedAlerts(alert: self,
                                                      alerts: allAlerts),
             alert: self
