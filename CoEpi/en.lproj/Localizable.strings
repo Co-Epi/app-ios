@@ -162,3 +162,6 @@
 "settings.item.privacy_statement" = "Privacy statement";
 "settings.item.report_problem" = "Report a problem";
 "settings.item.version" = "Version %@";
+
+"units.meters" = "%@ meters";
+"units.feet" = "%@ feet";

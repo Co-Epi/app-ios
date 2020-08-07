@@ -141,6 +141,8 @@
 		84A5C1E324897B9500B002E2 /* Alert+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C1E224897B9500B002E2 /* Alert+Strings.swift */; };
 		84AA306824D1AA46002E5F57 /* RangeReplaceableCollection+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA306724D1AA46002E5F57 /* RangeReplaceableCollection+Convenience.swift */; };
 		84AC26D7247D3C6F00C93D29 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26D6247D3C6F00C93D29 /* FileSystem.swift */; };
+		84AC403624DD2F8A00F2509B /* LengthMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC403524DD2F8A00F2509B /* LengthMeasurement.swift */; };
+		84AC403824DD32E200F2509B /* MeasurementFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC403724DD32E200F2509B /* MeasurementFormatter.swift */; };
 		84AD9F5F24D6E528001170E3 /* UnitsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD9F5E24D6E528001170E3 /* UnitsProvider.swift */; };
 		84AD9F6124D6E7C0001170E3 /* LocaleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD9F6024D6E7C0001170E3 /* LocaleProvider.swift */; };
 		84AE1FF224D409B4009CB57D /* ObservableKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE1FF124D409B4009CB57D /* ObservableKeyStore.swift */; };
@@ -349,6 +351,8 @@
 		84A5C1E224897B9500B002E2 /* Alert+Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Strings.swift"; sourceTree = "<group>"; };
 		84AA306724D1AA46002E5F57 /* RangeReplaceableCollection+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection+Convenience.swift"; sourceTree = "<group>"; };
 		84AC26D6247D3C6F00C93D29 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
+		84AC403524DD2F8A00F2509B /* LengthMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthMeasurement.swift; sourceTree = "<group>"; };
+		84AC403724DD32E200F2509B /* MeasurementFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementFormatter.swift; sourceTree = "<group>"; };
 		84AD9F5E24D6E528001170E3 /* UnitsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsProvider.swift; sourceTree = "<group>"; };
 		84AD9F6024D6E7C0001170E3 /* LocaleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleProvider.swift; sourceTree = "<group>"; };
 		84AE1FF124D409B4009CB57D /* ObservableKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableKeyStore.swift; sourceTree = "<group>"; };
@@ -792,6 +796,7 @@
 				84B492212476F7E900FF69AD /* Alert.swift */,
 				84E10812247AD84E00D65E85 /* SymptomInputs.swift */,
 				84AE1FF124D409B4009CB57D /* ObservableKeyStore.swift */,
+				84AC403524DD2F8A00F2509B /* LengthMeasurement.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				849C6A45249253790047BC10 /* AutoEquatable.swift */,
 				84AD9F5E24D6E528001170E3 /* UnitsProvider.swift */,
 				84AD9F6024D6E7C0001170E3 /* LocaleProvider.swift */,
+				84AC403724DD32E200F2509B /* MeasurementFormatter.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1293,6 +1299,7 @@
 				849D1AFF2439D90C00804511 /* Completable+Convenience.swift in Sources */,
 				84D7EF0524D5A24700ABDFE4 /* RoundButton.swift in Sources */,
 				84201691244B21FF000EE281 /* UnixTime.swift in Sources */,
+				84AC403824DD32E200F2509B /* MeasurementFormatter.swift in Sources */,
 				849D28F92444300B0034EC4C /* Observable+Convenience.swift in Sources */,
 				622AC2D8245FC67C00A6EB90 /* CoughTypeViewModel.swift in Sources */,
 				84B492182476E0B800FF69AD /* LibResult.swift in Sources */,
@@ -1304,6 +1311,7 @@
 				62A334A72476CE8500CF4B25 /* SymptomFlowManager.swift in Sources */,
 				849327B62452D947009589E6 /* FetchAlertsBackgroundTask.swift in Sources */,
 				8484345E2438C3F4006A5839 /* CustomView.swift in Sources */,
+				84AC403624DD2F8A00F2509B /* LengthMeasurement.swift in Sources */,
 				6291BE7D246D17C100984583 /* OnboardingWireframe.swift in Sources */,
 				849D8AAE247FB8680041FCAB /* UIColor+Theme.swift in Sources */,
 				84A5C1E124897B5D00B002E2 /* Date+Convenience.swift in Sources */,

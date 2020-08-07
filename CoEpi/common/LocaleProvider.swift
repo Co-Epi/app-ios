@@ -25,7 +25,7 @@ class LocaleProviderImpl: LocaleProvider {
 
     func update() {
         let locale = LocaleProviderImpl.getLocale()
-        log.d("Updating locale: \(locale)")
+        log.d("Updating locale: \(locale)", tags: .locale)
         localeSubject.onNext(locale)
     }
 }

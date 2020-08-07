@@ -29,8 +29,7 @@ class AlertRepoImpl: AlertRepo {
     private let disposeBag = DisposeBag()
 
     init(alertsApi: AlertsApi, notificationShower: NotificationShower,
-         alertFilters: ObservableAlertFilters)
-    {
+         alertFilters: ObservableAlertFilters) {
         self.alertsApi = alertsApi
         self.notificationShower = notificationShower
 

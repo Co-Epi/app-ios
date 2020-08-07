@@ -37,6 +37,14 @@ extension AlertViewData: Equatable {
         return true
     }
 }
+// MARK: Length Equatable
+extension Length: Equatable {
+    static func ==(lhs: Length, rhs: Length) -> Bool {
+        guard lhs.value == rhs.value else { return false }
+        guard lhs.unit == rhs.unit else { return false }
+        return true
+    }
+}
 // MARK: UnixTime Equatable
 extension UnixTime: Equatable {
     static func ==(lhs: UnixTime, rhs: UnixTime) -> Bool {

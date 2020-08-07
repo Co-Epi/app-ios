@@ -11,26 +11,24 @@ class UserSettingsViewModel: ObservableObject {
     private let email: Email
 
     init(kvStore: ObservableKeyValueStore, alertFilterSettings: AlertFilterSettings,
-         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider)
+         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter)
     {
         self.kvStore = kvStore
         self.email = email
 
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
                                  kvStore.filterAlertsWithLongDuration,
-                                 kvStore.filterAlertsWithShortDistance,
-                                 unitsProvider.formatter)
+                                 kvStore.filterAlertsWithShortDistance)
             .map { filterAlertsWithSymptoms,
                    filterAlertsWithLongDuration,
-                   filterAlertsWithShortDistance,
-                   measurementFormatter in
+                   filterAlertsWithShortDistance in
 
                 buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
                               filterAlertsWithLongDuration: filterAlertsWithLongDuration,
                               filterAlertsWithShortDistance: filterAlertsWithShortDistance,
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
-                              measurementFormatter: measurementFormatter)
+                              lengthFormatter: lengthFormatter)
             }
             .subscribe(onNext: { [weak self] viewData in
                 self?.settingsViewData = viewData
@@ -86,7 +84,7 @@ private func buildSettings(
     filterAlertsWithShortDistance: Bool,
     alertFilterSettings: AlertFilterSettings,
     appVersionString: String,
-    measurementFormatter: MeasurementFormatter
+    lengthFormatter: LengthFormatter
 ) -> [IdentifiableUserSettingViewData] {
     [
         UserSettingViewData.sectionHeader(
@@ -107,8 +105,7 @@ private func buildSettings(
             hasBottomLine: true
         ),
         UserSettingViewData.toggle(text: L10n.Settings.Item.distanceShorterThan(
-            measurementFormatter.string(
-                from: alertFilterSettings.distanceShorterThan)),
+            lengthFormatter.format(length: alertFilterSettings.distanceShorterThan)),
         value: filterAlertsWithShortDistance,
         id: .filterAlertsWithShortDistance,
         hasBottomLine: false),

@@ -206,8 +206,8 @@ class NativeCore: AlertsApi {
 
                     start: UnixTime(value: Int64($0.contact_start)),
                     end: UnixTime(value: Int64($0.contact_end)),
-                    minDistance: Measurement(value: Double($0.min_distance), unit: .meters),
-                    avgDistance: Measurement(value: Double($0.avg_distance), unit: .meters),
+                    minDistance: Length(value: $0.min_distance, unit: .meters),
+                    avgDistance: Length(value: $0.avg_distance, unit: .meters),
 
                     reportTime: $0.symptoms.report_time,
                     earliestSymptomTime: $0.symptoms.earliest_symptom_time.toUserInput(),

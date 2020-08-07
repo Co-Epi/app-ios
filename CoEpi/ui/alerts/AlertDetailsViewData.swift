@@ -42,8 +42,8 @@ extension AlertDetailsViewData {
             minDistance: "", reportTime: "", symptoms: "", alert:
             Alert(id: "", reportId: "",
                   start: UnixTime.minTimestamp(), end: UnixTime.minTimestamp(),
-                  minDistance: Measurement(value: 0, unit: .meters),
-                  avgDistance: Measurement(value: 0, unit: .meters),
+                  minDistance: Length(value: 0, unit: .meters),
+                  avgDistance: Length(value: 0, unit: .meters),
                   reportTime: UnixTime.minTimestamp(), earliestSymptomTime: .none,
                   feverSeverity: .None, coughSeverity: .None, breathlessness: false,
                   muscleAches: false, lossSmellOrTaste: false, diarrhea: false,

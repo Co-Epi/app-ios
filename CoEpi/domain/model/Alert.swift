@@ -6,8 +6,8 @@ struct Alert: AutoEquatable {
 
     let start: UnixTime
     let end: UnixTime
-    let minDistance: Measurement<UnitLength>
-    let avgDistance: Measurement<UnitLength>
+    let minDistance: Length
+    let avgDistance: Length
     let reportTime: UnixTime
 
     let earliestSymptomTime: UserInput<UnixTime>

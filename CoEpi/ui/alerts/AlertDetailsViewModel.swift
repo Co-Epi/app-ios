@@ -21,7 +21,7 @@ class AlertDetailsViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
 
     init(pars: AlertDetailsViewModelParams, alertRepo: AlertRepo, nav: RootNav, email: Email,
-         unitsProvider: UnitsProvider)
+         unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter)
     {
         self.alertRepo = alertRepo
         self.nav = nav
@@ -34,8 +34,8 @@ class AlertDetailsViewModel: ObservableObject {
                 bottomLine: index < pars.linkedAlerts.count - 1
             ) }
 
-        unitsProvider.formatter.map {
-            pars.alert.toViewData(measurementFormatter: $0)
+        unitsProvider.lengthUnit.map {
+            pars.alert.toViewData(unit: $0, lengthFormatter: lengthFormatter)
         }.subscribe(onNext: { [weak self] in
             self?.viewData = $0
         }).disposed(by: disposeBag)
@@ -61,20 +61,16 @@ class AlertDetailsViewModel: ObservableObject {
 }
 
 private extension Alert {
-    func toViewData(measurementFormatter: MeasurementFormatter) -> AlertDetailsViewData {
-        guard
-            let formattedAvgDistance = formatterdAvgDistance(
-                measurementFormatter: measurementFormatter),
-            let formattedMinDistance = formatterdMinDistance(
-                measurementFormatter: measurementFormatter)
-        else { fatalError("Format error: \(self)") }
-
-        return AlertDetailsViewData(
+    func toViewData(unit: LengthUnit, lengthFormatter: LengthFormatter) -> AlertDetailsViewData {
+        AlertDetailsViewData(
             title: formattedStartDate(),
             contactStart: formattedContactStart(),
             contactDuration: formattedContactDuration(),
-            avgDistance: formattedAvgDistance,
-            minDistance: formattedMinDistance, // Temporary, for testing
+            avgDistance: L10n.Alerts.Details.Distance.avg(
+                avgDistance.formatted(lengthFormatter: lengthFormatter, unit: unit)
+            ),
+            minDistance: "[DEBUG] Min distance: " +
+                minDistance.formatted(lengthFormatter: lengthFormatter, unit: unit), // Temporary, for testing
             reportTime: formatReportTime(date: reportTime.toDate()),
             symptoms: formattedSymptoms(),
             alert: self
@@ -111,16 +107,6 @@ private extension Alert {
         symptomUIStrings().joined(separator: "\n")
     }
 
-    private func formatterdAvgDistance(measurementFormatter: MeasurementFormatter) -> String? {
-        let formatted = measurementFormatter.string(from: minDistance)
-        return L10n.Alerts.Details.Distance.avg(formatted)
-    }
-
-    private func formatterdMinDistance(measurementFormatter: MeasurementFormatter) -> String? {
-        let formatted = measurementFormatter.string(from: minDistance)
-        return "[DEBUG] Min distance: \(formatted)" // Temporary, for testing
-    }
-
     private func formattedDistance(unit: UnitLength, distance: Measurement<UnitLength>) -> String? {
         NumberFormatters.oneDecimal.string(
             from: Float(distance.converted(to: unit).value))
@@ -134,7 +120,13 @@ private extension Alert {
     }
 }
 
-extension ExposureDurationForUI {
+private extension Length {
+    func formatted(lengthFormatter: LengthFormatter, unit: LengthUnit) -> String {
+        lengthFormatter.format(length: self.to(unit))
+    }
+}
+
+private extension ExposureDurationForUI {
     func toLocalizedString() -> String {
         switch self {
         case let .hoursMinutes(hours, mins):

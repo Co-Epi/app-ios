@@ -15,7 +15,7 @@ class Dependencies {
 
         let alertFilterSettings = AlertFilterSettings(
             durationSecondsLargerThan: 300,
-            distanceShorterThan: Measurement(value: 10, unit: .feet)
+            distanceShorterThan: Length(value: 10, unit: .feet)
         )
 
         registerWiring(container: container, alertFilterSettings: alertFilterSettings)
@@ -101,7 +101,8 @@ class Dependencies {
             alertRepo: try container.resolve(),
             nav: try container.resolve(),
             email: try container.resolve(),
-            unitsProvider: try container.resolve()
+            unitsProvider: try container.resolve(),
+            lengthFormatter: try container.resolve()
         ) }
 
         container.register { UserSettingsViewModel(
@@ -109,7 +110,8 @@ class Dependencies {
             alertFilterSettings: alertFilterSettings,
             envInfos: try container.resolve(),
             email: try container.resolve(),
-            unitsProvider: try container.resolve()
+            unitsProvider: try container.resolve(),
+            lengthFormatter: try container.resolve()
         ) }
     }
 
@@ -183,5 +185,6 @@ class Dependencies {
         container.register(.eagerSingleton) {
             UnitsProviderImpl(localeProvider: try container.resolve()) as UnitsProvider
         }
+        container.register(.singleton) { LengthFormatterImpl() as LengthFormatter }
     }
 }

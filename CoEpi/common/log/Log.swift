@@ -1,5 +1,5 @@
 enum LogTag {
-    case db, ui, core
+    case db, ui, core, locale
 }
 
 protocol Log {
