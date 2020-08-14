@@ -100,11 +100,14 @@ class AlertRepoImpl: AlertRepo {
         case let .success(alerts):
             alertsStateSubject.accept(.success(data: alerts))
             if !alerts.isEmpty {
-                notificationShower.showNotification(data: NotificationData(
-                    id: .alerts,
-                    title: L10n.Alerts.Notification.New.title,
-                    body: L10n.Alerts.Notification.New.body
-                ))
+                log.d("App got \(alerts.count) new alerts")
+                if let _ = alerts.first(where: { false == $0.isRead}) {
+                    notificationShower.showNotification(data: NotificationData(
+                        id: .alerts,
+                        title: L10n.Alerts.Notification.New.title,
+                        body: L10n.Alerts.Notification.New.body
+                    ))
+                }
             }
 
         case let .failure(error):
