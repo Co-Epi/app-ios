@@ -17,15 +17,12 @@ class UserSettingsViewModel: ObservableObject {
         self.email = email
 
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
-                                 kvStore.filterAlertsWithLongDuration,
-                                 kvStore.filterAlertsWithShortDistance)
+                                 kvStore.filterAlertsWithLongDuration)
             .map { filterAlertsWithSymptoms,
-                   filterAlertsWithLongDuration,
-                   filterAlertsWithShortDistance in
-
-                buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
+                   filterAlertsWithLongDuration in
+                
+                    buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
                               filterAlertsWithLongDuration: filterAlertsWithLongDuration,
-                              filterAlertsWithShortDistance: filterAlertsWithShortDistance,
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
                               lengthFormatter: lengthFormatter)
@@ -41,8 +38,6 @@ class UserSettingsViewModel: ObservableObject {
         case .filterAlertsWithSymptoms:
             // The text says "show all reports" -> negate for filter
             kvStore.setFilterAlertsWithSymptoms(value: !value)
-        case .filterAlertsWithShortDistance:
-            kvStore.setFilterAlertsWithShortDistance(value: value)
         case .filterAlertsWithLongDuration:
             kvStore.setFilterAlertsWithLongDuration(value: value)
         }
@@ -71,7 +66,6 @@ enum UserSettingViewData {
 enum UserSettingToggleId {
     case filterAlertsWithSymptoms
     case filterAlertsWithLongDuration
-    case filterAlertsWithShortDistance
 }
 
 enum UserSettingActionId {
@@ -81,7 +75,6 @@ enum UserSettingActionId {
 private func buildSettings(
     filterAlertsWithSymptoms: Bool,
     filterAlertsWithLongDuration: Bool,
-    filterAlertsWithShortDistance: Bool,
     alertFilterSettings: AlertFilterSettings,
     appVersionString: String,
     lengthFormatter: LengthFormatter
@@ -104,11 +97,6 @@ private func buildSettings(
             id: .filterAlertsWithLongDuration,
             hasBottomLine: true
         ),
-        UserSettingViewData.toggle(text: L10n.Settings.Item.distanceShorterThan(
-            lengthFormatter.format(length: alertFilterSettings.distanceShorterThan)),
-        value: filterAlertsWithShortDistance,
-        id: .filterAlertsWithShortDistance,
-        hasBottomLine: false),
 
         UserSettingViewData.link(text: L10n.Settings.Item.privacyStatement,
                                  url: URL(string: "https://www.coepi.org/privacy/")!),

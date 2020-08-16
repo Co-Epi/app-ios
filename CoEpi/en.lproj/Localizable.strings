@@ -156,7 +156,7 @@
 "settings.title" = "Settings";
 "settings.header.alerts.title" = "Exposure alerts";
 "settings.header.alerts.descr" = "What information do you want to see on reported exposures around you?";
-"settings.item.all_reports" = "Show me all reports,\nincluding \"I don't have any symptoms\"";
+"settings.item.all_reports" = "Show me \"I don't have any symptoms\" reports";
 "settings.item.duration_longer_than_mins" = "Only show alerts >%d min\nof interaction";
 "settings.item.distance_shorter_than" = "Only notify me for\ninteractions that occured\n<%@ away";
 "settings.item.privacy_statement" = "Privacy statement";
