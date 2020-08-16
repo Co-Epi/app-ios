@@ -53,7 +53,7 @@ private func toSteps(symptomIds: [SymptomId]) -> [SymptomStep] {
     }
 
     if symptomIds != [.none] {
-        return symptomIds.flatMap { $0.toSteps() } + [.earliestSymptomDate]
+        return symptomIds.flatMap { $0.toSteps() } // + [.earliestSymptomDate]
 
     } else {
         return []
