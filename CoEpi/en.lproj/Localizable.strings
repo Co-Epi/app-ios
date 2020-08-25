@@ -3,7 +3,7 @@
  */
 
 
-"alerts.count.none" = "No new contact alerts";
+"alerts.count.none" = "No new exposure alerts";
 "alerts.count.one" = "Click the alert to learn more";
 "alerts.count.some" = "Click each alert to learn more";
 "alerts.title" = "";
@@ -12,8 +12,8 @@
 "alerts.buttonLabel" = "What are exposure alerts?";
 "alerts.moreInfoTitle" = "Exposure Alert";
 "alerts.title" = "Alerts";
-"alerts.notification.new.title" = "New Contact Alerts";
-"alerts.notification.new.body" = "New contact alerts have been detected. Tap for details.";
+"alerts.notification.new.title" = "New Exposure Alerts";
+"alerts.notification.new.body" = "New exposure alerts have been detected. Tap for details.";
 
 "alerts.label.symptom.no_symptoms_reported" = "No symptoms reported";
 "alerts.label.symptom.fever.mild" = "Fever";
