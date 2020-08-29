@@ -15,6 +15,7 @@ protocol AlertRepo {
 class AlertRepoImpl: AlertRepo {
     private let alertsApi: AlertsApi
     private let notificationShower: NotificationShower
+    private var alertFilters: AlertFilters?
 
     private let alertsStateSubject: BehaviorRelay<OperationState<[Alert]>> =
         BehaviorRelay(value: .notStarted)
@@ -32,7 +33,6 @@ class AlertRepoImpl: AlertRepo {
          alertFilters: ObservableAlertFilters) {
         self.alertsApi = alertsApi
         self.notificationShower = notificationShower
-
         alertState = alertsStateSubject.asObservable()
         let alerts = alertState.compactMap { state -> [Alert]? in
             switch state {
@@ -43,6 +43,10 @@ class AlertRepoImpl: AlertRepo {
         self.alerts = Observable.combineLatest(alerts, alertFilters.filters) { alerts, filters in
             filters.apply(to: alerts)
         }
+        alertFilters.filters.subscribe( onNext: { [weak self] alertFilters in
+            self?.alertFilters = alertFilters}
+        )
+        .disposed(by: disposeBag)
 
         removeAlertTrigger.withLatestFrom(alerts, resultSelector: { alert, alerts in
             alerts.deleteFirst(element: alert)
@@ -100,13 +104,17 @@ class AlertRepoImpl: AlertRepo {
         case let .success(alerts):
             alertsStateSubject.accept(.success(data: alerts))
             if !alerts.isEmpty {
-                log.d("App got \(alerts.count) new alerts")
-                if let _ = alerts.first(where: { false == $0.isRead}) {
-                    notificationShower.showNotification(data: NotificationData(
-                        id: .alerts,
-                        title: L10n.Alerts.Notification.New.title,
-                        body: L10n.Alerts.Notification.New.body
-                    ))
+                log.d("New alerts count: [\(alerts.count)]")
+                if let filters = self.alertFilters {
+                    let filteredAlerts = filters.apply(to: alerts)
+                    log.d("Filtered alerts count: [\(filteredAlerts.count)]")
+                    if  nil != filteredAlerts.first(where: { false == $0.isRead }) {
+                        notificationShower.showNotification(data: NotificationData(
+                            id: .alerts,
+                            title: L10n.Alerts.Notification.New.title,
+                            body: L10n.Alerts.Notification.New.body
+                        ))
+                    }
                 }
             }
 
