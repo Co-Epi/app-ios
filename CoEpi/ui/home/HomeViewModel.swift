@@ -127,7 +127,7 @@ private extension Array where Element == HomeItemViewData {
                     item.notification = nil
                     return item
                 } else {
-                    var item = item
+                    let item = item
                     item.notification = HomeItemNotification(text: "\(alerts.count)")
                     return item
                 }
