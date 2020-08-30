@@ -11,17 +11,14 @@ class UserSettingsViewModel: ObservableObject {
     private let email: Email
 
     init(kvStore: ObservableKeyValueStore, alertFilterSettings: AlertFilterSettings,
-         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter)
-    {
+         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter) {
         self.kvStore = kvStore
         self.email = email
 
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
                                  kvStore.filterAlertsWithLongDuration)
-            .map { filterAlertsWithSymptoms,
-                   filterAlertsWithLongDuration in
-                
-                    buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
+            .map { filterAlertsWithSymptoms, filterAlertsWithLongDuration in
+                buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
                               filterAlertsWithLongDuration: filterAlertsWithLongDuration,
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
