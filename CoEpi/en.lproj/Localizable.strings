@@ -159,6 +159,7 @@
 "settings.item.all_reports" = "Show me \"I don't have any symptoms\" reports";
 "settings.item.duration_longer_than_mins" = "Only show alerts >%d min\nof interaction";
 "settings.item.distance_shorter_than" = "Only notify me for\ninteractions that occured\n<%@ away";
+"settings.item.reminder_notifications_enabled" = "Enable reminder notifications";
 "settings.item.privacy_statement" = "Privacy statement";
 "settings.item.report_problem" = "Report a problem";
 "settings.item.version" = "Version %@";

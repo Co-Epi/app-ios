@@ -4,6 +4,7 @@ protocol ObservableKeyValueStore {
     var filterAlertsWithSymptoms: Observable<Bool> { get }
     var filterAlertsWithLongDuration: Observable<Bool> { get }
     var filterAlertsWithShortDistance: Observable<Bool> { get }
+    var reminderNotificationsEnabled: Observable<Bool> {get}
 
     func setFilterAlertsWithSymptoms(value: Bool)
     func setFilterAlertsWithLongDuration(value: Bool)
@@ -14,6 +15,7 @@ class ObservableKeyValueStoreImpl: ObservableKeyValueStore {
     let filterAlertsWithSymptomsSubject: BehaviorSubject<Bool>
     let filterAlertsWithLongDurationSubject: BehaviorSubject<Bool>
     let filterAlertsWithShortDistanceSubject: BehaviorSubject<Bool>
+    var reminderNotificationsEnabledSubject: BehaviorSubject<Bool>
 
     lazy var filterAlertsWithSymptoms: Observable<Bool> =
         filterAlertsWithSymptomsSubject.asObservable()
@@ -21,6 +23,8 @@ class ObservableKeyValueStoreImpl: ObservableKeyValueStore {
         filterAlertsWithLongDurationSubject.asObservable()
     lazy var filterAlertsWithShortDistance: Observable<Bool> =
         filterAlertsWithShortDistanceSubject.asObservable()
+    lazy var reminderNotificationsEnabled: Observable<Bool> =
+        reminderNotificationsEnabledSubject.asObservable()
 
     private let keyValueStore: KeyValueStore
 
@@ -33,6 +37,8 @@ class ObservableKeyValueStoreImpl: ObservableKeyValueStore {
             BehaviorSubject(value: keyValueStore.getBool(key: .filterAlertsWithLongDuration))
         filterAlertsWithShortDistanceSubject =
             BehaviorSubject(value: keyValueStore.getBool(key: .filterAlertsWithShortDistance))
+        reminderNotificationsEnabledSubject =
+            BehaviorSubject(value: keyValueStore.getBool(key: .reminderNotificationsEnabled))
     }
 
     func setFilterAlertsWithSymptoms(value: Bool) {

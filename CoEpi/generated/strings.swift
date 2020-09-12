@@ -347,6 +347,9 @@ internal enum L10n {
       internal static func distanceShorterThan(_ p1: String) -> String {
         return L10n.tr("Localizable", "settings.item.distance_shorter_than", p1)
       }
+      internal static func reminderNotificationsEnabled() -> String {
+        return L10n.tr("Localizable", "settings.item.reminder_notifications_enabled")
+      }
       /// Only show alerts >%d min\nof interaction
       internal static func durationLongerThanMins(_ p1: Int) -> String {
         return L10n.tr("Localizable", "settings.item.duration_longer_than_mins", p1)

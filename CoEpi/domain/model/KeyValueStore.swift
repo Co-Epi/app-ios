@@ -11,6 +11,7 @@ enum KVKey: String {
     case filterAlertsWithSymptoms
     case filterAlertsWithLongDuration
     case filterAlertsWithShortDistance
+    case reminderNotificationsEnabled
 }
 
 class KeyValueStoreImpl: KeyValueStore {

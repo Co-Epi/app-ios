@@ -16,10 +16,12 @@ class UserSettingsViewModel: ObservableObject {
         self.email = email
 
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
-                                 kvStore.filterAlertsWithLongDuration)
-            .map { filterAlertsWithSymptoms, filterAlertsWithLongDuration in
+                                 kvStore.filterAlertsWithLongDuration,
+                                 kvStore.filterAlertsWithShortDistance)
+            .map { filterAlertsWithSymptoms, filterAlertsWithLongDuration, filterAlertsWithShortDistance in
                 buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
                               filterAlertsWithLongDuration: filterAlertsWithLongDuration,
+                              reminderNotificationsEnabled: filterAlertsWithShortDistance,
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
                               lengthFormatter: lengthFormatter)
@@ -35,6 +37,8 @@ class UserSettingsViewModel: ObservableObject {
         case .filterAlertsWithSymptoms:
             // The text says "show all reports" -> negate for filter
             kvStore.setFilterAlertsWithSymptoms(value: !value)
+        case .remninderNotificationsEnabled:
+            kvStore.setFilterAlertsWithShortDistance(value: value)
         case .filterAlertsWithLongDuration:
             kvStore.setFilterAlertsWithLongDuration(value: value)
         }
@@ -63,6 +67,7 @@ enum UserSettingViewData {
 enum UserSettingToggleId {
     case filterAlertsWithSymptoms
     case filterAlertsWithLongDuration
+    case remninderNotificationsEnabled
 }
 
 enum UserSettingActionId {
@@ -72,6 +77,7 @@ enum UserSettingActionId {
 private func buildSettings(
     filterAlertsWithSymptoms: Bool,
     filterAlertsWithLongDuration: Bool,
+    reminderNotificationsEnabled: Bool,
     alertFilterSettings: AlertFilterSettings,
     appVersionString: String,
     lengthFormatter: LengthFormatter
@@ -94,6 +100,10 @@ private func buildSettings(
             id: .filterAlertsWithLongDuration,
             hasBottomLine: true
         ),
+        UserSettingViewData.toggle(text: L10n.Settings.Item.reminderNotificationsEnabled(),
+        value: reminderNotificationsEnabled,
+        id: .remninderNotificationsEnabled,
+        hasBottomLine: false),
 
         UserSettingViewData.link(text: L10n.Settings.Item.privacyStatement,
                                  url: URL(string: "https://www.coepi.org/privacy/")!),
