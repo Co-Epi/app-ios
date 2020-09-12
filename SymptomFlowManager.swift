@@ -41,8 +41,7 @@ class SymptomFlowManager {
 
     func startFlow(
         symptomIds: [SymptomId])
-        -> Bool
-    {
+        -> Bool {
         if symptomIds.isEmpty {
             log.d("Symptoms ids is empty")
             return false
@@ -81,8 +80,7 @@ class SymptomFlowManager {
 
     func handleSubmitReportResult(
         _ result: Result<Void,
-            ServicesError>)
-    {
+            ServicesError>) {
         switch result {
         case .success:
             submitSymptomsStateSubject.accept(.success(data: ()))
@@ -123,70 +121,60 @@ extension SymptomFlowManager {
 
     func setCoughType(
         _ input: UserInput<SymptomInputs.Cough.CoughType>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setCoughType(input)
     }
 
     func setCoughDays(
         _ input: UserInput<SymptomInputs.Days>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setCoughDays(input)
     }
 
     func setCoughStatus(
         _ input: UserInput<SymptomInputs.Cough.Status>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setCoughStatus(input)
     }
 
     func setBreathlessnessCause(
         _ input: UserInput<SymptomInputs.Breathlessness.Cause>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setBreathlessnessCause(input)
     }
 
     func setFeverDays(
         _ input: UserInput<SymptomInputs.Days>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setFeverDays(input)
     }
 
     func setFeverTakenTemperatureToday(
         _ input: UserInput<Bool>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setFeverTakenTemperatureToday(input)
     }
 
     func setFeverTakenTemperatureSpot(
         _ input: UserInput<SymptomInputs.Fever.TemperatureSpot>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setFeverTakenTemperatureSpot(input)
     }
 
     func setFeverHighestTemperatureTaken(
         _ input: UserInput<Temperature>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setFeverHighestTemperatureTaken(input)
     }
 
     func setEarliestSymptomStartedDaysAgo(
         _ input: UserInput<Int>)
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.setEarliestSymptomStartedDaysAgo(input)
     }
 
     func submit()
-        -> Result<Void, ServicesError>
-    {
+        -> Result<Void, ServicesError> {
         inputsManager.submit()
     }
 }
