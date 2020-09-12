@@ -45,11 +45,16 @@ class UserSettingsViewModel: ObservableObject {
             kvStore.setReminderNotificationsEnabled(value: value)
             //test notif
             log.d("toggling reminder", tags: .ui)
-            notificationShower.showNotification(data: NotificationData(
-                id: .reminders,
-                title: L10n.Reminder.Notification.title,
-                body: L10n.Reminder.Notification.body
-             ))
+            if value {
+                notificationShower.showNotification(data: NotificationData(
+                    id: .reminders,
+                    title: L10n.Reminder.Notification.title,
+                    body: L10n.Reminder.Notification.body
+                 ))
+            } else {
+              //clear scheduled reminder notifiations
+                notificationShower.clearScheduledNotifications()
+            }
         case .filterAlertsWithLongDuration:
             kvStore.setFilterAlertsWithLongDuration(value: value)
         }

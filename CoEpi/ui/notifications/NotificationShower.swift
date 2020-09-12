@@ -2,9 +2,15 @@ import UIKit
 
 protocol NotificationShower {
     func showNotification(data: NotificationData)
+    func clearScheduledNotifications()
 }
 
 class NotificationShowerImpl: NotificationShower {
+    func clearScheduledNotifications() {
+        log.d("Removing pending local notification requests...", tags: .ui)
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
+    
     func showNotification(data: NotificationData) {
         UNUserNotificationCenter
             .current()
@@ -36,13 +42,25 @@ class NotificationShowerImpl: NotificationShower {
         content.title = data.title
         content.body = data.body
         content.sound = canPlaySound ? .default : nil
-        let request = UNNotificationRequest(
-            identifier: data.id.rawValue,
-            content: content,
-            trigger: UNTimeIntervalNotificationTrigger(timeInterval: 1,
-                                                       repeats: false)
-        )
-        UNUserNotificationCenter.current().add(request)
+        switch data.id {
+        case .alerts:
+            let request = UNNotificationRequest(
+                identifier: data.id.rawValue,
+                content: content,
+                trigger: UNTimeIntervalNotificationTrigger(timeInterval: 1,
+                                                           repeats: false)
+            )
+            UNUserNotificationCenter.current().add(request)
+        case .reminders:
+            log.d("Scheduling reminder for 18", tags: .ui)
+            let timeAtWhichToTriggerNotification: DateComponents = DateComponents(hour: 18)
+            let request = UNNotificationRequest(
+                identifier: data.id.rawValue,
+                content: content,
+                trigger: UNCalendarNotificationTrigger(dateMatching: timeAtWhichToTriggerNotification, repeats: true)
+            )
+            UNUserNotificationCenter.current().add(request)
+        }
     }
 }
 
