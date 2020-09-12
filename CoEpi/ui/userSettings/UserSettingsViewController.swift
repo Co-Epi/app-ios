@@ -91,8 +91,7 @@ struct UserSettingsView: View {
 
     private func toggleView(text: String, value: Bool,
                             id: UserSettingToggleId,
-                            hasBottomLine: Bool) -> some View
-    {
+                            hasBottomLine: Bool) -> some View {
         VStack {
             SettingsToggle(text: text, isToggled: value, onChange: { [viewModel] isOn in
                 viewModel.onToggle(id: id, value: isOn)

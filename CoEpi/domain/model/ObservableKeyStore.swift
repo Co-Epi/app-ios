@@ -9,6 +9,7 @@ protocol ObservableKeyValueStore {
     func setFilterAlertsWithSymptoms(value: Bool)
     func setFilterAlertsWithLongDuration(value: Bool)
     func setFilterAlertsWithShortDistance(value: Bool)
+    func setReminderNotificationsEnabled(value: Bool)
 }
 
 class ObservableKeyValueStoreImpl: ObservableKeyValueStore {
@@ -54,5 +55,10 @@ class ObservableKeyValueStoreImpl: ObservableKeyValueStore {
     func setFilterAlertsWithShortDistance(value: Bool) {
         keyValueStore.putBool(key: .filterAlertsWithShortDistance, value: value)
         filterAlertsWithShortDistanceSubject.onNext(value)
+    }
+    
+    func setReminderNotificationsEnabled(value: Bool) {
+        keyValueStore.putBool(key: .reminderNotificationsEnabled, value: value)
+        reminderNotificationsEnabledSubject.onNext(value)
     }
 }

@@ -3,13 +3,12 @@
 
 import Foundation
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length implicit_return
 
 // MARK: - Strings
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
-// swiftlint:disable nesting type_body_length type_name
+// swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
 
   internal enum Ux {
@@ -207,7 +206,7 @@ internal enum L10n {
     /// Alerts
     internal static let title = L10n.tr("Localizable", "alerts.title")
     internal enum Count {
-      /// No new contact alerts
+      /// No new exposure alerts
       internal static let `none` = L10n.tr("Localizable", "alerts.count.none")
       /// Click the alert to learn more
       internal static let one = L10n.tr("Localizable", "alerts.count.one")
@@ -219,8 +218,8 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "alerts.details.title")
       internal enum Distance {
         /// Approx. %@ away from you
-        internal static func avg(_ p1: String) -> String {
-          return L10n.tr("Localizable", "alerts.details.distance.avg", p1)
+        internal static func avg(_ p1: Any) -> String {
+          return L10n.tr("Localizable", "alerts.details.distance.avg", String(describing: p1))
         }
         internal enum Unit {
           /// Feet
@@ -247,8 +246,8 @@ internal enum L10n {
       }
       internal enum Label {
         /// Reported on %@ at %@
-        internal static func reportedOn(_ p1: String, _ p2: String) -> String {
-          return L10n.tr("Localizable", "alerts.details.label.reported_on", p1, p2)
+        internal static func reportedOn(_ p1: Any, _ p2: Any) -> String {
+          return L10n.tr("Localizable", "alerts.details.label.reported_on", String(describing: p1), String(describing: p2))
         }
       }
       internal enum More {
@@ -296,9 +295,9 @@ internal enum L10n {
     }
     internal enum Notification {
       internal enum New {
-        /// New contact alerts have been detected. Tap for details.
+        /// New exposure alerts have been detected. Tap for details.
         internal static let body = L10n.tr("Localizable", "alerts.notification.new.body")
-        /// New Contact Alerts
+        /// New Exposure Alerts
         internal static let title = L10n.tr("Localizable", "alerts.notification.new.title")
       }
     }
@@ -329,6 +328,15 @@ internal enum L10n {
     }
   }
 
+  internal enum Reminder {
+    internal enum Notification {
+      /// Remember to report any symptoms you might be experiencing.
+      internal static let body = L10n.tr("Localizable", "reminder.notification.body")
+      /// Do you have any symptoms?
+      internal static let title = L10n.tr("Localizable", "reminder.notification.title")
+    }
+  }
+
   internal enum Settings {
     /// Settings
     internal static let title = L10n.tr("Localizable", "settings.title")
@@ -341,14 +349,11 @@ internal enum L10n {
       }
     }
     internal enum Item {
-      /// Show me all reports,\nincluding "I don't have any symptoms"
+      /// Show me "I don't have any symptoms" reports
       internal static let allReports = L10n.tr("Localizable", "settings.item.all_reports")
       /// Only notify me for\ninteractions that occured\n<%@ away
-      internal static func distanceShorterThan(_ p1: String) -> String {
-        return L10n.tr("Localizable", "settings.item.distance_shorter_than", p1)
-      }
-      internal static func reminderNotificationsEnabled() -> String {
-        return L10n.tr("Localizable", "settings.item.reminder_notifications_enabled")
+      internal static func distanceShorterThan(_ p1: Any) -> String {
+        return L10n.tr("Localizable", "settings.item.distance_shorter_than", String(describing: p1))
       }
       /// Only show alerts >%d min\nof interaction
       internal static func durationLongerThanMins(_ p1: Int) -> String {
@@ -356,11 +361,13 @@ internal enum L10n {
       }
       /// Privacy statement
       internal static let privacyStatement = L10n.tr("Localizable", "settings.item.privacy_statement")
+      /// Enable reminder notifications
+      internal static let reminderNotificationsEnabled = L10n.tr("Localizable", "settings.item.reminder_notifications_enabled")
       /// Report a problem
       internal static let reportProblem = L10n.tr("Localizable", "settings.item.report_problem")
       /// Version %@
-      internal static func version(_ p1: String) -> String {
-        return L10n.tr("Localizable", "settings.item.version", p1)
+      internal static func version(_ p1: Any) -> String {
+        return L10n.tr("Localizable", "settings.item.version", String(describing: p1))
       }
     }
   }
@@ -374,12 +381,12 @@ internal enum L10n {
 
   internal enum Units {
     /// %@ feet
-    internal static func feet(_ p1: String) -> String {
-      return L10n.tr("Localizable", "units.feet", p1)
+    internal static func feet(_ p1: Any) -> String {
+      return L10n.tr("Localizable", "units.feet", String(describing: p1))
     }
     /// %@ meters
-    internal static func meters(_ p1: String) -> String {
-      return L10n.tr("Localizable", "units.meters", p1)
+    internal static func meters(_ p1: Any) -> String {
+      return L10n.tr("Localizable", "units.meters", String(describing: p1))
     }
   }
 
@@ -391,16 +398,19 @@ internal enum L10n {
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
-// swiftlint:enable nesting type_body_length type_name
+// swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
 
 // MARK: - Implementation Details
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    // swiftlint:disable:next nslocalizedstring_key
-    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
+    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
 
-private final class BundleToken {}
+// swiftlint:disable convenience_type
+private final class BundleToken {
+  static let bundle = Bundle(for: BundleToken.self)
+}
+// swiftlint:enable convenience_type

@@ -166,3 +166,8 @@
 
 "units.meters" = "%@ meters";
 "units.feet" = "%@ feet";
+
+    // local notification reminder
+"reminder.notification.title" = "Do you have any symptoms?";
+"reminder.notification.body" = "Remember to report any symptoms you might be experiencing.";
+
