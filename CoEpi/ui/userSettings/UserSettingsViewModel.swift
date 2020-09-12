@@ -9,11 +9,15 @@ class UserSettingsViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
 
     private let email: Email
+    
+    private let notificationShower: NotificationShower
 
     init(kvStore: ObservableKeyValueStore, alertFilterSettings: AlertFilterSettings,
-         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter) {
+         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter,
+         notificationShower: NotificationShower) {
         self.kvStore = kvStore
         self.email = email
+        self.notificationShower = notificationShower
 
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
                                  kvStore.filterAlertsWithLongDuration,
@@ -41,7 +45,11 @@ class UserSettingsViewModel: ObservableObject {
             kvStore.setReminderNotificationsEnabled(value: value)
             //test notif
             log.d("toggling reminder", tags: .ui)
-            
+            notificationShower.showNotification(data: NotificationData(
+                id: .reminders,
+                title: L10n.Reminder.Notification.title,
+                body: L10n.Reminder.Notification.body
+             ))
         case .filterAlertsWithLongDuration:
             kvStore.setFilterAlertsWithLongDuration(value: value)
         }

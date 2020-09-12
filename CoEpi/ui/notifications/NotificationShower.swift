@@ -54,4 +54,5 @@ struct NotificationData {
 
 enum NotificationId: String {
     case alerts
+    case reminders
 }

@@ -111,7 +111,8 @@ class Dependencies {
             envInfos: try container.resolve(),
             email: try container.resolve(),
             unitsProvider: try container.resolve(),
-            lengthFormatter: try container.resolve()
+            lengthFormatter: try container.resolve(),
+            notificationShower: try container.resolve()
         ) }
     }
 
