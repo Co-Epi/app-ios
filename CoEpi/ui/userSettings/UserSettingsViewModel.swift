@@ -44,7 +44,7 @@ class UserSettingsViewModel: ObservableObject {
         case .remninderNotificationsEnabled:
             kvStore.setReminderNotificationsEnabled(value: value)
             //test notif
-            log.d("toggling reminder", tags: .ui)
+            log.d("Toggling reminder", tags: .ui)
             if value {
                 notificationShower.showNotification(data: NotificationData(
                     id: .reminders,
@@ -58,6 +58,8 @@ class UserSettingsViewModel: ObservableObject {
         case .filterAlertsWithLongDuration:
             kvStore.setFilterAlertsWithLongDuration(value: value)
         }
+//        sleep(1)
+//        notificationShower.listScheduledNotifications()
     }
 
     func onAction(id: UserSettingActionId) {

@@ -3,12 +3,27 @@ import UIKit
 protocol NotificationShower {
     func showNotification(data: NotificationData)
     func clearScheduledNotifications()
+    func listScheduledNotifications()
 }
 
 class NotificationShowerImpl: NotificationShower {
+    func listScheduledNotifications() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { pendingNotifications in
+            if 0 == pendingNotifications.count {
+                log.d("There are no pending notification requests", tags: .ui)
+            } else {
+                log.d("Pending local notification requests:", tags: .ui)
+                for notif in pendingNotifications {
+                    log.d(notif.description, tags: .ui)
+                }
+            }
+        })
+    }
+    
     func clearScheduledNotifications() {
         log.d("Removing pending local notification requests...", tags: .ui)
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
     }
     
     func showNotification(data: NotificationData) {
@@ -36,14 +51,13 @@ class NotificationShowerImpl: NotificationShower {
     }
 
     private func showNotification(data: NotificationData, canPlaySound: Bool) {
-        log.d("Showing notification")
-
         let content = UNMutableNotificationContent()
         content.title = data.title
         content.body = data.body
         content.sound = canPlaySound ? .default : nil
         switch data.id {
         case .alerts:
+            log.d("Showing notification in 1 sec")
             let request = UNNotificationRequest(
                 identifier: data.id.rawValue,
                 content: content,
@@ -52,14 +66,21 @@ class NotificationShowerImpl: NotificationShower {
             )
             UNUserNotificationCenter.current().add(request)
         case .reminders:
-            log.d("Scheduling reminder for 18", tags: .ui)
-            let timeAtWhichToTriggerNotification: DateComponents = DateComponents(hour: 18)
+            let hours = 18
+            let mins = 0
+            log.d("Scheduling reminder notification for \(hours) : \(mins)", tags: .ui)
+            let timeAtWhichToTriggerNotification: DateComponents = DateComponents(hour: hours, minute: mins)
             let request = UNNotificationRequest(
                 identifier: data.id.rawValue,
                 content: content,
                 trigger: UNCalendarNotificationTrigger(dateMatching: timeAtWhichToTriggerNotification, repeats: true)
             )
-            UNUserNotificationCenter.current().add(request)
+            log.d("Request: \(request)", tags: .ui)
+            UNUserNotificationCenter.current().add(request) { (error: Error?) in
+                if let e = error {
+                    log.e(e.localizedDescription, tags:.ui)
+                }
+            }
         }
     }
 }
