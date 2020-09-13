@@ -41,7 +41,7 @@ class UserSettingsViewModel: ObservableObject {
         case .filterAlertsWithSymptoms:
             // The text says "show all reports" -> negate for filter
             kvStore.setFilterAlertsWithSymptoms(value: !value)
-        case .remninderNotificationsEnabled:
+        case .reminderNotificationsEnabled:
             kvStore.setReminderNotificationsEnabled(value: value)
             log.d("Toggling reminder", tags: .ui)
             if value {
@@ -93,7 +93,7 @@ enum UserSettingViewData {
 enum UserSettingToggleId {
     case filterAlertsWithSymptoms
     case filterAlertsWithLongDuration
-    case remninderNotificationsEnabled
+    case reminderNotificationsEnabled
 }
 
 enum UserSettingActionId {
@@ -128,7 +128,7 @@ private func buildSettings(
         ),
         UserSettingViewData.toggle(text: L10n.Settings.Item.reminderNotificationsEnabled,
         value: reminderNotificationsEnabled,
-        id: .remninderNotificationsEnabled,
+        id: .reminderNotificationsEnabled,
         hasBottomLine: false),
 
         UserSettingViewData.link(text: L10n.Settings.Item.privacyStatement,
