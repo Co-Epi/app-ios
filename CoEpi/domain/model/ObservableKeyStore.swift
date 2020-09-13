@@ -10,6 +10,11 @@ protocol ObservableKeyValueStore {
     func setFilterAlertsWithLongDuration(value: Bool)
     func setFilterAlertsWithShortDistance(value: Bool)
     func setReminderNotificationsEnabled(value: Bool)
+    func setReminderHours(value: String)
+    func setReminderMinutes(value: String)
+    func getReminderHours() -> String
+    func getReminderMinutes() -> String
+    
 }
 
 class ObservableKeyValueStoreImpl: ObservableKeyValueStore {
@@ -60,5 +65,21 @@ class ObservableKeyValueStoreImpl: ObservableKeyValueStore {
     func setReminderNotificationsEnabled(value: Bool) {
         keyValueStore.putBool(key: .reminderNotificationsEnabled, value: value)
         reminderNotificationsEnabledSubject.onNext(value)
+    }
+    
+    func setReminderHours(value: String) {
+        keyValueStore.putString(key: .reminderHours, value: value)
+    }
+    
+    func getReminderHours() -> String {
+        keyValueStore.getString(key: .reminderHours)
+    }
+    
+    func setReminderMinutes(value: String) {
+        keyValueStore.putString(key: .reminderMinutes, value: value)
+    }
+    
+    func getReminderMinutes() -> String {
+        keyValueStore.getString(key: .reminderMinutes)
     }
 }

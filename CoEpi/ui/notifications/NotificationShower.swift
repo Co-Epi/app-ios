@@ -66,9 +66,15 @@ class NotificationShowerImpl: NotificationShower {
             )
             UNUserNotificationCenter.current().add(request)
         case .reminders:
-            let hours = 18
-            let mins = 0
-            log.d("Scheduling reminder notification for \(hours) : \(mins)", tags: .ui)
+            var hours = 18
+            if let hoursString = data.hours, let h = Int(hoursString) {
+                hours = h
+            }
+            var mins = 0
+            if let minsString = data.minutes, let m = Int(minsString) {
+                mins = m
+            }
+            log.d("Scheduling reminder notification for \(String(describing: hours)) : \(String(describing: mins))", tags: .ui)
             let timeAtWhichToTriggerNotification: DateComponents = DateComponents(hour: hours, minute: mins)
             let request = UNNotificationRequest(
                 identifier: data.id.rawValue,
@@ -78,7 +84,7 @@ class NotificationShowerImpl: NotificationShower {
             log.d("Request: \(request)", tags: .ui)
             UNUserNotificationCenter.current().add(request) { (error: Error?) in
                 if let e = error {
-                    log.e(e.localizedDescription, tags:.ui)
+                    log.e(e.localizedDescription, tags: .ui)
                 }
             }
         }
@@ -89,6 +95,8 @@ struct NotificationData {
     let id: NotificationId
     let title: String
     let body: String
+    let hours: String?
+    let minutes: String?
 }
 
 enum NotificationId: String {

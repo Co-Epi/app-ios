@@ -43,13 +43,16 @@ class UserSettingsViewModel: ObservableObject {
             kvStore.setFilterAlertsWithSymptoms(value: !value)
         case .remninderNotificationsEnabled:
             kvStore.setReminderNotificationsEnabled(value: value)
-            //test notif
             log.d("Toggling reminder", tags: .ui)
             if value {
+                let hours = kvStore.getReminderHours()
+                let minutes = kvStore.getReminderMinutes()
                 notificationShower.showNotification(data: NotificationData(
                     id: .reminders,
                     title: L10n.Reminder.Notification.title,
-                    body: L10n.Reminder.Notification.body
+                    body: L10n.Reminder.Notification.body,
+                    hours: hours,
+                    minutes: minutes
                  ))
             } else {
               //clear scheduled reminder notifiations
@@ -66,6 +69,11 @@ class UserSettingsViewModel: ObservableObject {
         switch id {
         case .reportProblem: email.openEmail(address: "TODO@TODO.TODO", subject: "TODO")
         }
+    }
+
+    func onReminderSave(hours: String, minutes: String) {
+        kvStore.setReminderHours(value: hours)
+        kvStore.setReminderMinutes(value: minutes)
     }
 }
 
