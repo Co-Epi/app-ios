@@ -41,6 +41,7 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
 
         switch identifier {
         case .alerts: rootNav.navigate(command: .to(destination: .alerts))
+        case .reminders: rootNav.navigate(command: .to(destination: .symptomReport))
         }
     }
 }

@@ -31,11 +31,38 @@ class UserSettingsViewController: UIViewController, ObservableObject {
     }
 }
 
+struct DateSelector: View {
+    @ObservedObject var viewModel: UserSettingsViewModel
+    @State var hours: String = "18"
+    @State var minutes: String = "00"
+    var body: some View {
+        VStack {
+            Spacer()
+            Text("Input date and time")
+            HStack {
+                Spacer()
+                TextField("Enter hours", text: $hours)
+                    .multilineTextAlignment(.trailing)
+                Text(":")
+                TextField("minutes", text: $minutes)
+                Spacer()
+            }
+            .padding([.leading, .trailing], 20)
+            Text("Reminder time \(hours):\(minutes)")
+            Spacer()
+            Button("Save", action: {[viewModel] in
+                log.d("Saving \(hours):\(minutes)", tags: .ui)
+                viewModel.onReminderSave(hours: hours, minutes: minutes)
+            })
+            Spacer()
+        }
+    }
+}
+
 struct UserSettingsView: View {
     @ObservedObject var viewModel: UserSettingsViewModel
-
+    @State var showingDateSelectorScreen = false
     weak var viewController: UserSettingsViewController?
-
     private let greyBGColor = UIColor(hex: "C4C4C4").withAlphaComponent(0.5)
 
     init(viewModel: UserSettingsViewModel, viewController: UserSettingsViewController) {
@@ -91,8 +118,7 @@ struct UserSettingsView: View {
 
     private func toggleView(text: String, value: Bool,
                             id: UserSettingToggleId,
-                            hasBottomLine: Bool) -> some View
-    {
+                            hasBottomLine: Bool) -> some View {
         VStack {
             SettingsToggle(text: text, isToggled: value, onChange: { [viewModel] isOn in
                 viewModel.onToggle(id: id, value: isOn)
@@ -133,6 +159,13 @@ struct UserSettingsView: View {
             .font(.system(size: 13))
             .listRowBackground(Color(greyBGColor))
             .padding(.leading, 20).padding(.trailing, 20)
+            .gesture(TapGesture(count: 3)
+                .onEnded { _ in
+                    log.d("tripple tap", tags: .ui)
+                    self.showingDateSelectorScreen.toggle()
+                }
+            )
+            .sheet(isPresented: $showingDateSelectorScreen, content: {DateSelector(viewModel: viewModel)})
     }
 }
 
@@ -161,5 +194,11 @@ struct SettingsToggle: View {
                 .font(.system(size: 17))
                 .fontWeight(.semibold)
         }
+    }
+}
+
+struct UserSettingsViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

@@ -2,9 +2,30 @@ import UIKit
 
 protocol NotificationShower {
     func showNotification(data: NotificationData)
+    func clearScheduledNotifications()
+    func listScheduledNotifications()
 }
 
 class NotificationShowerImpl: NotificationShower {
+    func listScheduledNotifications() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { pendingNotifications in
+            if 0 == pendingNotifications.count {
+                log.d("There are no pending notification requests", tags: .ui)
+            } else {
+                log.d("Pending local notification requests:", tags: .ui)
+                for notif in pendingNotifications {
+                    log.d(notif.description, tags: .ui)
+                }
+            }
+        })
+    }
+    
+    func clearScheduledNotifications() {
+        log.d("Removing pending local notification requests...", tags: .ui)
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+    }
+    
     func showNotification(data: NotificationData) {
         UNUserNotificationCenter
             .current()
@@ -30,19 +51,43 @@ class NotificationShowerImpl: NotificationShower {
     }
 
     private func showNotification(data: NotificationData, canPlaySound: Bool) {
-        log.d("Showing notification")
-
         let content = UNMutableNotificationContent()
         content.title = data.title
         content.body = data.body
         content.sound = canPlaySound ? .default : nil
-        let request = UNNotificationRequest(
-            identifier: data.id.rawValue,
-            content: content,
-            trigger: UNTimeIntervalNotificationTrigger(timeInterval: 1,
-                                                       repeats: false)
-        )
-        UNUserNotificationCenter.current().add(request)
+        switch data.id {
+        case .alerts:
+            log.d("Showing notification in 1 sec")
+            let request = UNNotificationRequest(
+                identifier: data.id.rawValue,
+                content: content,
+                trigger: UNTimeIntervalNotificationTrigger(timeInterval: 1,
+                                                           repeats: false)
+            )
+            UNUserNotificationCenter.current().add(request)
+        case .reminders:
+            var hours = 18
+            if let hoursString = data.hours, let h = Int(hoursString) {
+                hours = h
+            }
+            var mins = 0
+            if let minsString = data.minutes, let m = Int(minsString) {
+                mins = m
+            }
+            log.d("Scheduling reminder notification for \(String(describing: hours)) : \(String(describing: mins))", tags: .ui)
+            let timeAtWhichToTriggerNotification: DateComponents = DateComponents(hour: hours, minute: mins)
+            let request = UNNotificationRequest(
+                identifier: data.id.rawValue,
+                content: content,
+                trigger: UNCalendarNotificationTrigger(dateMatching: timeAtWhichToTriggerNotification, repeats: true)
+            )
+            log.d("Request: \(request)", tags: .ui)
+            UNUserNotificationCenter.current().add(request) { (error: Error?) in
+                if let e = error {
+                    log.e(e.localizedDescription, tags: .ui)
+                }
+            }
+        }
     }
 }
 
@@ -50,8 +95,11 @@ struct NotificationData {
     let id: NotificationId
     let title: String
     let body: String
+    let hours: String?
+    let minutes: String?
 }
 
 enum NotificationId: String {
     case alerts
+    case reminders
 }

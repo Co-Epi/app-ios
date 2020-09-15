@@ -76,8 +76,7 @@ extension HomeItemsDataSource: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.row]
 
         switch item {

@@ -9,17 +9,23 @@ class UserSettingsViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
 
     private let email: Email
+    
+    private let notificationShower: NotificationShower
 
     init(kvStore: ObservableKeyValueStore, alertFilterSettings: AlertFilterSettings,
-         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter) {
+         envInfos: EnvInfos, email: Email, unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter,
+         notificationShower: NotificationShower) {
         self.kvStore = kvStore
         self.email = email
+        self.notificationShower = notificationShower
 
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
-                                 kvStore.filterAlertsWithLongDuration)
-            .map { filterAlertsWithSymptoms, filterAlertsWithLongDuration in
+                                 kvStore.filterAlertsWithLongDuration,
+                                 kvStore.filterAlertsWithShortDistance)
+            .map { filterAlertsWithSymptoms, filterAlertsWithLongDuration, filterAlertsWithShortDistance in
                 buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
                               filterAlertsWithLongDuration: filterAlertsWithLongDuration,
+                              reminderNotificationsEnabled: filterAlertsWithShortDistance,
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
                               lengthFormatter: lengthFormatter)
@@ -35,15 +41,39 @@ class UserSettingsViewModel: ObservableObject {
         case .filterAlertsWithSymptoms:
             // The text says "show all reports" -> negate for filter
             kvStore.setFilterAlertsWithSymptoms(value: !value)
+        case .reminderNotificationsEnabled:
+            kvStore.setReminderNotificationsEnabled(value: value)
+            log.d("Toggling reminder", tags: .ui)
+            if value {
+                let hours = kvStore.getReminderHours()
+                let minutes = kvStore.getReminderMinutes()
+                notificationShower.showNotification(data: NotificationData(
+                    id: .reminders,
+                    title: L10n.Reminder.Notification.title,
+                    body: L10n.Reminder.Notification.body,
+                    hours: hours,
+                    minutes: minutes
+                 ))
+            } else {
+              //clear scheduled reminder notifiations
+                notificationShower.clearScheduledNotifications()
+            }
         case .filterAlertsWithLongDuration:
             kvStore.setFilterAlertsWithLongDuration(value: value)
         }
+//        sleep(1)
+//        notificationShower.listScheduledNotifications()
     }
 
     func onAction(id: UserSettingActionId) {
         switch id {
         case .reportProblem: email.openEmail(address: "TODO@TODO.TODO", subject: "TODO")
         }
+    }
+
+    func onReminderSave(hours: String, minutes: String) {
+        kvStore.setReminderHours(value: hours)
+        kvStore.setReminderMinutes(value: minutes)
     }
 }
 
@@ -63,6 +93,7 @@ enum UserSettingViewData {
 enum UserSettingToggleId {
     case filterAlertsWithSymptoms
     case filterAlertsWithLongDuration
+    case reminderNotificationsEnabled
 }
 
 enum UserSettingActionId {
@@ -72,6 +103,7 @@ enum UserSettingActionId {
 private func buildSettings(
     filterAlertsWithSymptoms: Bool,
     filterAlertsWithLongDuration: Bool,
+    reminderNotificationsEnabled: Bool,
     alertFilterSettings: AlertFilterSettings,
     appVersionString: String,
     lengthFormatter: LengthFormatter
@@ -94,6 +126,10 @@ private func buildSettings(
             id: .filterAlertsWithLongDuration,
             hasBottomLine: true
         ),
+        UserSettingViewData.toggle(text: L10n.Settings.Item.reminderNotificationsEnabled,
+        value: reminderNotificationsEnabled,
+        id: .reminderNotificationsEnabled,
+        hasBottomLine: false),
 
         UserSettingViewData.link(text: L10n.Settings.Item.privacyStatement,
                                  url: URL(string: "https://www.coepi.org/privacy/")!),
