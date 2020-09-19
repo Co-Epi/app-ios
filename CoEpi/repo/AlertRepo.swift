@@ -109,13 +109,12 @@ class AlertRepoImpl: AlertRepo {
                     let filteredAlerts = filters.apply(to: alerts)
                     log.d("Filtered alerts count: [\(filteredAlerts.count)]")
                     if  nil != filteredAlerts.first(where: { false == $0.isRead }) {
-                        notificationShower.showNotification(data: NotificationData(
+                        notificationShower.scheduleNotification(data: NotificationData(
                             id: .alerts,
                             title: L10n.Alerts.Notification.New.title,
                             body: L10n.Alerts.Notification.New.body,
                             hours: nil,
                             minutes: nil
-                            
                         ))
                     }
                 }

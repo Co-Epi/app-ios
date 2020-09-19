@@ -417,6 +417,7 @@ extension NativeCore: SymptomsInputManager {
         -> Result<Void, ServicesError> {
         let libResult: LibResult<ArbitraryType>? = submit_symptoms()?.toLibResult()
         return libResult?.toVoidResult().mapErrorToServicesError() ?? libraryFailure()
+        //clear notif
     }
 
     func clear()

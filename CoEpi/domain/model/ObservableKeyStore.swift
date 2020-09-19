@@ -10,6 +10,7 @@ protocol ObservableKeyValueStore {
     func setFilterAlertsWithLongDuration(value: Bool)
     func setFilterAlertsWithShortDistance(value: Bool)
     func setReminderNotificationsEnabled(value: Bool)
+    //TODO: use observables
     func setReminderHours(value: String)
     func setReminderMinutes(value: String)
     func getReminderHours() -> String

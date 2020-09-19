@@ -5,6 +5,7 @@ class SymptomFlowManager {
     let symptomRouter: SymptomRouter
     let rootNavigation: RootNav
     let inputsManager: SymptomsInputManager
+    let notificationShower: NotificationShower
 
     var symptomFlow: SymptomFlow?
 
@@ -20,11 +21,13 @@ class SymptomFlowManager {
     init(
         symptomRouter: SymptomRouter,
         rootNavigation: RootNav,
-        inputsManager: SymptomsInputManager
+        inputsManager: SymptomsInputManager,
+        notificationShower: NotificationShower
     ) {
         self.symptomRouter = symptomRouter
         self.rootNavigation = rootNavigation
         self.inputsManager = inputsManager
+        self.notificationShower = notificationShower
 
         finishFlowTrigger
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
@@ -111,6 +114,8 @@ class SymptomFlowManager {
     func clear() {
         symptomFlow = nil
         inputsManager.clear().expect()
+        //clear notif for that day
+        notificationShower.cancelReminderNotificationForTheDay()
     }
 }
 
