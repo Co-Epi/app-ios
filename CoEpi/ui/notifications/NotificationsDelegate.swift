@@ -38,11 +38,11 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
             identifier = .alerts
         } else{
             identifier = NotificationId.reminders(identifierStr)
-
             switch identifier {
             case .alerts: rootNav.navigate(command: .to(destination: .alerts))
             case .reminders: rootNav.navigate(command: .to(destination: .symptomReport))
             }
+
         }
     }
 }

@@ -115,6 +115,7 @@ class AlertRepoImpl: AlertRepo {
                             body: L10n.Alerts.Notification.New.body,
                             hours: nil,
                             minutes: nil
+
                         ))
                     }
                 }

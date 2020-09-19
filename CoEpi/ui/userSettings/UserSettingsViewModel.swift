@@ -26,6 +26,7 @@ class UserSettingsViewModel: ObservableObject {
                 buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
                               filterAlertsWithLongDuration: filterAlertsWithLongDuration,
                               reminderNotificationsEnabled: reminderNotificationsEnabled,
+
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
                               lengthFormatter: lengthFormatter)

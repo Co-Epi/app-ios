@@ -1,6 +1,7 @@
 import UIKit
 
 protocol NotificationShower {
+
     func scheduleNotification(data: NotificationData)
     func clearScheduledNotifications()
     func listScheduledNotifications()
@@ -128,6 +129,7 @@ class NotificationShowerImpl: NotificationShower {
     }
 
     private func scheduleNotificationForShowing(data: NotificationData, canPlaySound: Bool) {
+
         let content = UNMutableNotificationContent()
         content.title = data.title
         content.body = data.body
@@ -142,6 +144,7 @@ class NotificationShowerImpl: NotificationShower {
                                                            repeats: false)
             )
             UNUserNotificationCenter.current().add(request)
+
         case .reminders (let id):
             //id="20200926"
             let year = Int(id.prefix(4))
@@ -186,4 +189,5 @@ struct NotificationData {
 enum NotificationId {
     case alerts
     case reminders(String)
+
 }
