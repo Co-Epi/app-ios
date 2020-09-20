@@ -35,9 +35,11 @@ class NotificationShowerImpl: NotificationShower {
             for notif in pendingNotifications where notifIdentifier == notif.identifier {
                 cancellationIdentifiers.append(notifIdentifier)
             }
-            log.w("Canceling notification with identifiers: \(cancellationIdentifiers)", tags: .ui)
-            UNUserNotificationCenter.current()
-                .removePendingNotificationRequests(withIdentifiers: cancellationIdentifiers)
+            if !cancellationIdentifiers.isEmpty {
+                log.w("Canceling notification with identifiers: \(cancellationIdentifiers)", tags: .ui)
+                UNUserNotificationCenter.current()
+                    .removePendingNotificationRequests(withIdentifiers: cancellationIdentifiers)
+            }
         })
     }
     
@@ -84,10 +86,7 @@ class NotificationShowerImpl: NotificationShower {
                     NotificationData(
                         id: .reminders(stringIdentifier),
                         title: L10n.Reminder.Notification.title,
-                        body: L10n.Reminder.Notification.body,
-                        //TODO: can be removed? (hours, minutes)
-                        hours: nil,
-                        minutes: nil
+                        body: L10n.Reminder.Notification.body
                     )
                 )
             }
@@ -193,8 +192,6 @@ struct NotificationData {
     let id: NotificationId
     let title: String
     let body: String
-    let hours: String?
-    let minutes: String?
 }
 
 enum NotificationId {

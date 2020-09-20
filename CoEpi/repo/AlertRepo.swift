@@ -112,9 +112,7 @@ class AlertRepoImpl: AlertRepo {
                         notificationShower.scheduleNotification(data: NotificationData(
                             id: .alerts,
                             title: L10n.Alerts.Notification.New.title,
-                            body: L10n.Alerts.Notification.New.body,
-                            hours: nil,
-                            minutes: nil
+                            body: L10n.Alerts.Notification.New.body
 
                         ))
                     }
