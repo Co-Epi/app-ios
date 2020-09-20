@@ -21,11 +21,12 @@ class UserSettingsViewModel: ObservableObject {
 
         Observable.combineLatest(kvStore.filterAlertsWithSymptoms,
                                  kvStore.filterAlertsWithLongDuration,
-                                 kvStore.filterAlertsWithShortDistance)
-            .map { filterAlertsWithSymptoms, filterAlertsWithLongDuration, filterAlertsWithShortDistance in
+                                 kvStore.reminderNotificationsEnabled)
+            .map { filterAlertsWithSymptoms, filterAlertsWithLongDuration, reminderNotificationsEnabled in
                 buildSettings(filterAlertsWithSymptoms: filterAlertsWithSymptoms,
                               filterAlertsWithLongDuration: filterAlertsWithLongDuration,
-                              reminderNotificationsEnabled: filterAlertsWithShortDistance,
+                              reminderNotificationsEnabled: reminderNotificationsEnabled,
+
                               alertFilterSettings: alertFilterSettings,
                               appVersionString: "\(envInfos.appVersionName)(\(envInfos.appVersionCode))",
                               lengthFormatter: lengthFormatter)
@@ -34,6 +35,7 @@ class UserSettingsViewModel: ObservableObject {
                 self?.settingsViewData = viewData
             })
             .disposed(by: disposeBag)
+
     }
 
     func onToggle(id: UserSettingToggleId, value: Bool) {
@@ -45,15 +47,7 @@ class UserSettingsViewModel: ObservableObject {
             kvStore.setReminderNotificationsEnabled(value: value)
             log.d("Toggling reminder", tags: .ui)
             if value {
-                let hours = kvStore.getReminderHours()
-                let minutes = kvStore.getReminderMinutes()
-                notificationShower.showNotification(data: NotificationData(
-                    id: .reminders,
-                    title: L10n.Reminder.Notification.title,
-                    body: L10n.Reminder.Notification.body,
-                    hours: hours,
-                    minutes: minutes
-                 ))
+                notificationShower.scheduleReminderNotificationsForNext(days: 14)
             } else {
               //clear scheduled reminder notifiations
                 notificationShower.clearScheduledNotifications()

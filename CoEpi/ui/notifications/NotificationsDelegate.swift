@@ -33,15 +33,16 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
             -> Void
     ) {
         let identifierStr = response.notification.request.identifier
+        var identifier: NotificationId
+        if "alerts" == identifierStr {
+            identifier = .alerts
+        } else{
+            identifier = NotificationId.reminders(identifierStr)
+            switch identifier {
+            case .alerts: rootNav.navigate(command: .to(destination: .alerts))
+            case .reminders: rootNav.navigate(command: .to(destination: .symptomReport))
+            }
 
-        guard let identifier = NotificationId(rawValue: identifierStr) else {
-            log.d("Selected notification with unknown id: \(identifierStr)")
-            return
-        }
-
-        switch identifier {
-        case .alerts: rootNav.navigate(command: .to(destination: .alerts))
-        case .reminders: rootNav.navigate(command: .to(destination: .symptomReport))
         }
     }
 }

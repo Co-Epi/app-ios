@@ -4,6 +4,7 @@ import CoreData
 import Dip
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let container: DependencyContainer = Dependencies().createContainer()
@@ -22,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let bgManager: BackgroundTasksManager = try! container.resolve()
         bgManager.onApplicationFinishLaunching()
+
+        let notificationShower: NotificationShower = try! container.resolve()
+        notificationShower.scheduleReminderNotificationsForNext(days: 14)
 
         return true
     }
@@ -47,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
+/*
     lazy var persistentContainer: NSPersistentContainer = {
         /*
           The persistent container for the application. This implementation
@@ -93,4 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    */
+
 }

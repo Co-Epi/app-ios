@@ -129,7 +129,7 @@ class Dependencies {
 
     private func registerServices(container: DependencyContainer) {
         container.register(.singleton) { AppBadgeUpdaterImpl() as AppBadgeUpdater }
-        container.register(.singleton) { NotificationShowerImpl() as NotificationShower }
+        container.register(.singleton) { NotificationShowerImpl(kvStore: try container.resolve()) as NotificationShower }
 
         container.register(.singleton) { BackgroundTasksManager() }
         container.register(.eagerSingleton) { FetchAlertsBackgroundRegisterer(
@@ -160,7 +160,8 @@ class Dependencies {
         container.register(.singleton) { SymptomFlowManager(
             symptomRouter: try container.resolve(),
             rootNavigation: try container.resolve(),
-            inputsManager: try container.resolve()
+            inputsManager: try container.resolve(),
+            notificationShower: try container.resolve()
         )
         }
         container.register { ObservableAlertFiltersImpl(
