@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+
 
 protocol NotificationShower {
 
@@ -10,10 +12,16 @@ protocol NotificationShower {
 }
 
 class NotificationShowerImpl: NotificationShower {
+    private let disposeBag = DisposeBag()
     private var kvStore: ObservableKeyValueStore
+    private var remindersEnabled: Bool = false
     
     init(kvStore: ObservableKeyValueStore) {
         self.kvStore = kvStore
+        kvStore.reminderNotificationsEnabled.subscribe(onNext: { [weak self] enabled in
+            self?.remindersEnabled  = enabled
+        })
+        .disposed(by: disposeBag)
     }
 
     func cancelReminderNotificationForTheDay() {
@@ -33,7 +41,6 @@ class NotificationShowerImpl: NotificationShower {
         })
     }
     
-    
     private func getIdentifierFromDate(date: Date) -> String {
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
         let notifIdentifier = String(format: "%04d%02d%02d",
@@ -43,6 +50,10 @@ class NotificationShowerImpl: NotificationShower {
     }
     
     func scheduleReminderNotificationsForNext(days: Int) {
+        if false == self.remindersEnabled {
+            log.d("Reminder notifications are not enabled", tags: .ui)
+            return
+        }
         let calendar: Calendar = Calendar.current
 
         var date = Date()
