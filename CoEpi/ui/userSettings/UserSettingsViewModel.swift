@@ -61,7 +61,7 @@ class UserSettingsViewModel: ObservableObject {
 
     func onAction(id: UserSettingActionId) {
         switch id {
-        case .reportProblem: email.openEmail(address: "TODO@TODO.TODO", subject: "TODO")
+        case .reportProblem: email.openEmail(address: "CoEpi@OpenAPS.org", subject: "Problem with CoEpi")
         }
     }
 
