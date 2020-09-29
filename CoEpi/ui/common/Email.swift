@@ -6,7 +6,9 @@ protocol Email {
 
 class EmailImpl: Email {
     func openEmail(address: String, subject: String) {
-        guard let url = URL(string: "mailto:?to=\(address)&subject=\(subject)") else {
+        let encodedSubject = subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        guard let url = URL(string: "mailto:?to=\(address)&subject=\(encodedSubject)") else {
             log.e("Couldn't create email URL for: \(address), \(subject)", tags: .ui)
             return
         }
