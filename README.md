@@ -29,16 +29,14 @@ If you want to contribute to core, create a PR in its [repo](https://github.com/
 
 ## Contribute
 
-1. Read the [code guidelines](https://github.com/Co-Epi/app-ios/wiki/Code-guidelines).
+CoEpi is an open source project with an MIT license - please do feel free to contribute improvements!
 
-2. Create a branch
-- If you belong to the organization:
-Create a branch
-- If you don't belong to the organization:
-Fork and create a branch in the fork
+1. Some [code guidelines](https://github.com/Co-Epi/app-ios/wiki/Code-guidelines) and recommendations exist.
+2. For new contributors, fork the `develop` branch to get started.
+3. Commit changes to your version branch. 
+4. Push your code, and make a pull request back to the CoEpi `develop` branch. 
 
-3. Commit changes to the branch
-4. Push your code and make a pull request
+Need help getting started? Just ask! You can [open an issue](https://github.com/Co-Epi/app-ios/issues/new/choose), or start your PR, and tag `@danamlewis` or `@scottleibrand` in a comment to ask for assistance.
 
 ### Internationalization
 
@@ -54,3 +52,6 @@ See the [Internationalization wiki page](https://github.com/Co-Epi/app-ios/wiki/
 
 This project uses [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) to format code. After installing it, you can format from the [terminal](https://github.com/nicklockwood/SwiftFormat#command-line-tool) or using an [Xcode extension](https://github.com/nicklockwood/SwiftFormat#xcode-source-editor-extension) (you can assign a shortcut to it). For now not integrated in the build process, as it [clears the undo history](https://github.com/nicklockwood/SwiftFormat#xcode-build-phase). 
 
+## Test CoEpi on iOS
+
+Looking to test CoEpi on iOS? You can run it locally, or [use the latest version available on TestFlight here](https://bit.ly/CoEpiTestFlightiOS).
