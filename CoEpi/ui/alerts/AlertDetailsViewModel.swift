@@ -11,6 +11,7 @@ class AlertDetailsViewModel: ObservableObject {
     private let alertRepo: AlertRepo
     private let nav: RootNav
     private var email: Email
+    private let linkedAlerts: [Alert]
 
     @Published var viewData: AlertDetailsViewData = .empty()
 
@@ -21,11 +22,11 @@ class AlertDetailsViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
 
     init(pars: AlertDetailsViewModelParams, alertRepo: AlertRepo, nav: RootNav, email: Email,
-         unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter)
-    {
+         unitsProvider: UnitsProvider, lengthFormatter: LengthFormatter) {
         self.alertRepo = alertRepo
         self.nav = nav
         self.email = email
+        self.linkedAlerts = pars.linkedAlerts
 
         linkedAlertsViewData = pars.linkedAlerts
             .enumerated()
@@ -56,7 +57,23 @@ class AlertDetailsViewModel: ObservableObject {
     }
 
     func reportProblemTapped() {
-        email.openEmail(address: "TODO@TODO.TODO", subject: "TODO")
+        email.openEmail(address: "CoEpi@OpenAPS.org", subject: "Problem with CoEpi")
+    }
+
+    func markLinkedAlertsAsRead() {
+        //updating the DB in Core lib can take several seconds, so we offload the work to background thread
+        DispatchQueue.global().async {
+            self.linkedAlerts.forEach({ alert in
+                if alert.isRead {
+                    return
+                }
+                switch self.alertRepo.updateIsRead(alert: alert, isRead: true) {
+                case .success: log.i("Linked alert: \(alert.id) was marked as read.")
+                case let .failure(e): log.e("Linked alert: \(alert.id) couldn't be marked as read: \(e)")
+                }
+            
+            })
+        }
     }
 }
 
@@ -78,8 +95,7 @@ private extension Alert {
     }
 
     func toLinkedAlertViewData(image: LinkedAlertViewDataConnectionImage,
-                               bottomLine: Bool) -> LinkedAlertViewData
-    {
+                               bottomLine: Bool) -> LinkedAlertViewData {
         LinkedAlertViewData(
             date: formattedStartDate(),
             contactStart: formattedContactStart(),

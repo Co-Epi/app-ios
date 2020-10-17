@@ -103,6 +103,9 @@ struct AlertDetailsView: View {
                 ]
             )
         }
+        .onAppear(perform: {
+            viewModel.markLinkedAlertsAsRead()
+        })
     }
 
     private func linkedAlertRow(linkedAlert: LinkedAlertViewData) -> some View {
