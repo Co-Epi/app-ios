@@ -117,7 +117,7 @@ struct AlertDetailsView: View {
                     .font(.system(size: 13))
                     .fontWeight(.medium)
                     .padding(.top, 10)
-                Text(alertViewData.contactStart)
+                Text(linkedAlert.contactStart)
                     .font(.system(size: 17))
                     .fontWeight(.semibold)
                 Text(linkedAlert.contactDuration)
