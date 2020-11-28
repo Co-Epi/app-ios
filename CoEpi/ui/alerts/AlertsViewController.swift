@@ -2,7 +2,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class AlertsViewController: UIViewController {
+class AlertsViewController: UIViewController, ErrorDisplayer {
     private let viewModel: AlertsViewModel
 
     @IBOutlet var titleLabel: UILabel!
@@ -59,6 +59,10 @@ class AlertsViewController: UIViewController {
                 // Hide refresh control immediately. Progress status is shown in label.
                 refreshControl.endRefreshing()
             })
+            .disposed(by: disposeBag)
+    
+        viewModel.notification
+            .drive(rx.notification)
             .disposed(by: disposeBag)
     }
 

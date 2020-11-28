@@ -13,6 +13,9 @@ class AlertsViewModel {
     private let selectAlertTrigger: PublishSubject<Alert> = PublishSubject()
 
     private let disposeBag = DisposeBag()
+    
+    let notificationSubject: PublishRelay<UINotification> = PublishRelay()
+    let notification: Driver<UINotification>
 
     init(alertRepo: AlertRepo, nav: RootNav) {
         self.alertRepo = alertRepo
@@ -54,6 +57,28 @@ class AlertsViewModel {
             nav.navigate(command: .to(destination: .alertDetails(pars: pars)))
         })
         .disposed(by: disposeBag)
+        
+        notification = notificationSubject
+            .asDriver(
+                onErrorJustReturn: UINotification.error(
+                    message: "Unknown error with notification"))
+        
+        alertRepo.alertState.subscribe(onNext: {[weak self] opState in
+            self?.notifyOperationState(opState: opState)
+        })
+        .disposed(by: disposeBag)
+        
+    }
+    
+    func notifyOperationState(opState: OperationState<[Alert]>) {
+        log.d("toasting...", tags: .ui)
+        switch opState {
+        case let .failure(error):
+            notificationSubject.accept(.error(message: error.localizedDescription))
+        case .notStarted, .progress, .success:
+            return
+        }
+        
     }
 
     func updateReports() {
@@ -124,9 +149,8 @@ private extension OperationState {
     // NOTE: Not localized. At the moment it's only for testing.
     func asText() -> String {
         switch self {
-        case .notStarted, .success: return ""
+        case .notStarted, .success, .failure: return ""
         case .progress: return "Updating..."
-        case let .failure(error): return "Error updating: \(error)"
         }
     }
 }
@@ -143,6 +167,5 @@ private func linkedAlerts(alert: Alert, alerts: [Alert]) -> [Alert] {
         }
 }
 
-private func linkedAlertsPredicate(alert: Alert) -> (Alert) -> Bool {
-    { $0.reportId == alert.reportId && $0.id != alert.id }
+private func linkedAlertsPredicate(alert: Alert) -> (Alert) -> Bool { { $0.reportId == alert.reportId && $0.id != alert.id }
 }
