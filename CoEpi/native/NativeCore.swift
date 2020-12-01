@@ -239,7 +239,7 @@ class NativeCore: AlertsApi {
     }
 
     private func libraryFailure<T>() -> Result<T, ServicesError> {
-        .failure(.error(message: "Couldn't get library result"))
+        .failure(ServicesError(message: "Couldn't get library result", statusCode: 505))
     }
 }
 
@@ -473,12 +473,15 @@ extension Result where Failure == CoreError {
     func mapErrorToServicesError() -> Result<Success, ServicesError> {
         mapError {
             switch $0 {
-            case let .error(message): return .error(message: message)
+            case let .error(message, statusCode):
+                let serviceErrorMessage = (statusCode == 500 ) ? L10n.Alerts.Overview.UiNotification.networkingError : message
+                return ServicesError(message: serviceErrorMessage, statusCode: statusCode)
             }
         }
     }
 }
 
-public enum ServicesError: Error {
-    case error(message: String)
+public struct ServicesError: Error {
+    let message: String
+    let statusCode: Int
 }

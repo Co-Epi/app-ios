@@ -74,7 +74,11 @@ class AlertsViewModel {
         log.d("toasting...", tags: .ui)
         switch opState {
         case let .failure(error):
-            notificationSubject.accept(.error(message: error.localizedDescription))
+            if let e = error as? ServicesError {
+                notificationSubject.accept(.error(message: e.message))
+            } else {
+                notificationSubject.accept(.error(message: error.localizedDescription))
+            }
         case .notStarted, .progress, .success:
             return
         }

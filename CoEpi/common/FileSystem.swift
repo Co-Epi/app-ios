@@ -25,8 +25,7 @@ class FileSystemImpl: FileSystem {
                 ))
         } catch let e {
             return
-                .failure(ServicesError
-                    .error(message: "Couldn't get documents path: \(e)"))
+                .failure(ServicesError(message: "Couldn't get documents path: \(e)", statusCode: 506))// fake status code
         }
     }
 }

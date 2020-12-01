@@ -306,6 +306,10 @@ internal enum L10n {
         /// Repeated\ninteraction
         internal static let hasRepeatedInteraction = L10n.tr("Localizable", "alerts.overview.cell.has_repeated_interaction")
       }
+      internal enum UiNotification {
+        /// Networking error.\nPlease check your internet connection.
+        internal static let networkingError = L10n.tr("Localizable", "alerts.overview.uiNotification.networkingError")
+      }
     }
   }
 

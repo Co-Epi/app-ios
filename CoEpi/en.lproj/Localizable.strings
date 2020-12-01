@@ -28,6 +28,7 @@
 "alerts.label.symptom.runnyNose" = "Runny nose";
 "alerts.label.symptom.other" = "Other symptoms";
 "alerts.overview.cell.has_repeated_interaction" = "Repeated\ninteraction";
+"alerts.overview.uiNotification.networkingError" = "Networking error.\nPlease check your internet connection.";
 
 "alerts.label.archive" = "Archive";
 

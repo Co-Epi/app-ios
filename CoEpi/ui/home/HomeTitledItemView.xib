@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[description]" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcw-TW-9i2">
-                            <rect key="frame" x="28" y="65.5" width="184" height="20.5"/>
+                            <rect key="frame" x="28" y="65.5" width="184" height="61.5"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -60,12 +60,13 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Lcw-TW-9i2" firstAttribute="top" secondItem="Jdf-Ta-jAE" secondAttribute="bottom" id="3oW-cz-IEs"/>
+                        <constraint firstAttribute="bottom" secondItem="Lcw-TW-9i2" secondAttribute="bottom" constant="8" id="8XK-0h-Yte"/>
                         <constraint firstItem="wBB-3S-lC9" firstAttribute="top" secondItem="LBX-xl-VVY" secondAttribute="top" constant="-16" id="Fyj-6H-s4d"/>
                         <constraint firstItem="1x6-FL-N2m" firstAttribute="top" secondItem="LBX-xl-VVY" secondAttribute="top" constant="20" id="Hbn-kX-nsD"/>
-                        <constraint firstAttribute="width" secondItem="LBX-xl-VVY" secondAttribute="height" multiplier="240:119" priority="750" id="HkQ-VO-JcE"/>
+                        <constraint firstAttribute="width" secondItem="LBX-xl-VVY" secondAttribute="height" multiplier="240:119" priority="750" placeholder="YES" id="HkQ-VO-JcE"/>
                         <constraint firstItem="Jdf-Ta-jAE" firstAttribute="leading" secondItem="1x6-FL-N2m" secondAttribute="leading" id="SEb-IW-HOx"/>
                         <constraint firstItem="Jdf-Ta-jAE" firstAttribute="top" secondItem="1x6-FL-N2m" secondAttribute="bottom" id="Sre-m4-VbL"/>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="148" id="U8v-OF-3vo"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="148" placeholder="YES" id="U8v-OF-3vo"/>
                         <constraint firstItem="1x6-FL-N2m" firstAttribute="leading" secondItem="LBX-xl-VVY" secondAttribute="leading" constant="28" id="WES-mS-FYY"/>
                         <constraint firstAttribute="trailing" secondItem="1x6-FL-N2m" secondAttribute="trailing" constant="28" id="ZOU-PF-FoL"/>
                         <constraint firstItem="Lcw-TW-9i2" firstAttribute="trailing" secondItem="1x6-FL-N2m" secondAttribute="trailing" id="bS5-gm-Px0"/>
@@ -73,6 +74,12 @@
                         <constraint firstItem="Lcw-TW-9i2" firstAttribute="leading" secondItem="1x6-FL-N2m" secondAttribute="leading" id="wzm-1f-Be4"/>
                         <constraint firstItem="Jdf-Ta-jAE" firstAttribute="height" secondItem="LBX-xl-VVY" secondAttribute="height" multiplier="0.09" priority="750" id="x9X-or-POd"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="HkQ-VO-JcE"/>
+                            <exclude reference="U8v-OF-3vo"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

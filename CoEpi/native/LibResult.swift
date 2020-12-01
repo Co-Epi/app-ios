@@ -20,10 +20,10 @@ extension LibResult {
                 return .success(data)
             } else {
                 return .failure(.error(
-                    message: "Unexpected: Library result success but no data: \(self)"))
+                    message: "Unexpected: Library result success but no data: \(self)", statusCode: self.status))
             }
         } else {
-            return .failure(.error(message: "Lib error result: \(self)"))
+            return .failure(.error(message: "Lib error result: \(self)", statusCode: self.status))
         }
     }
 
@@ -31,7 +31,7 @@ extension LibResult {
         if isSuccess() {
             return .success(())
         } else {
-            return .failure(.error(message: "Lib error result: \(self)"))
+            return .failure(.error(message: "Lib error result: \(self)", statusCode: self.status))
         }
     }
 }
@@ -58,5 +58,5 @@ extension Unmanaged where Instance == CFString {
 }
 
 public enum CoreError: Error {
-    case error(message: String)
+    case error(message: String, statusCode: Int)
 }
