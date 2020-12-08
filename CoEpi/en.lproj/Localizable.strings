@@ -170,5 +170,5 @@
 
     // local notification reminder
 "reminder.notification.title" = "Do you have any symptoms?";
-"reminder.notification.body" = "Remember to report any symptoms you might be experiencing.";
+"reminder.notification.body" = "Remember to report any symptoms you might be experiencing. Have you checked if you can smell today?";
 
